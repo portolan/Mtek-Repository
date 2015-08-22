@@ -1,0 +1,22 @@
+PROGRAM Janela;
+USES
+  CRT;
+VAR
+  nom :string;
+BEGIN
+textbackground(white);
+clrscr;
+window(2,2,79,24);
+textbackground(black);
+clrscr;
+writeln;
+gotoXY(2,3);
+textcolor(white); {adicionei para determinar a cor padrão inicial}
+writeln('Digite seu nome:');
+window(20,4,70,4);
+textbackground(white);
+textcolor(black); {diferenciar da cor do fundo (que tb é branca}
+clrscr;
+readln(nom); {faltou você ler o 'nom'}
+END.
+
