@@ -85,27 +85,23 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
+        <DCCReference Include="ERP.pas">
+            <Form>TelaInicial</Form>
+        </DCCReference>
         <DCCReference Include="comum\UTelaPadrao.pas">
             <Form>xPesqPadrao</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="venda\Uped001.pas">
-            <Form>PPedido</Form>
-            <FormType>dfm</FormType>
+        <DCCReference Include="Estoque\PProduto.pas">
+            <Form>xPesqPadrao1</Form>
         </DCCReference>
-        <DCCReference Include="datamodulo\dm000.pas">
-            <Form>dmBanco</Form>
+        <DCCReference Include="datamodulo\UDM_Banco.pas">
+            <Form>DM_Banco</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="datamodulo\dm001.pas">
-            <Form>dmPedido</Form>
-            <FormType>dfm</FormType>
+        <DCCReference Include="datamodulo\UDM_Estoque.pas">
+            <Form>DM_Estoque</Form>
             <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="venda\Uped002.pas">
-            <Form>CPedido</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -128,9 +124,9 @@
                     <Source Name="MainSource">ProjectNecessauro.dpr</Source>
                 </Source>
                 <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k210.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k210.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp210.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k210.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp210.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
