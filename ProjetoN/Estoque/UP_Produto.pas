@@ -1,4 +1,4 @@
-unit PProduto;
+unit UP_Produto;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
-  TxPesqPadrao1 = class(TxPesqPadrao)
+  TPProduto = class(TxPesqPadrao)
   private
     { Private declarations }
   public
@@ -16,7 +16,7 @@ type
   end;
 
 var
-  xPesqPadrao1: TxPesqPadrao1;
+  PProduto: TPProduto;
 
 implementation
 
