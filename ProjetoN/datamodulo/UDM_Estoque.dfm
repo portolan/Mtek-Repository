@@ -5,6 +5,7 @@ object DM_Estoque: TDM_Estoque
   object Produtos: TIBQuery
     Database = DM_Banco.Banco
     Transaction = DM_Banco.TBanco
+    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     DataSource = DSProdutos
