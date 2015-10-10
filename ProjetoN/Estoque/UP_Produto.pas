@@ -9,10 +9,12 @@ uses
 
 type
   TPProduto = class(TxPesqPadrao)
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    procedure procSelect; Override;
   end;
 
 var
@@ -21,5 +23,23 @@ var
 implementation
 
 {$R *.dfm}
+
+uses UDM_Estoque;
+
+procedure TPProduto.FormCreate(Sender: TObject);
+begin
+  inherited;
+    procInicializar(DM_Estoque.Produtos, False, False, PProduto, TPProduto);
+end;
+
+
+
+procedure TPProduto.procSelect;
+begin
+  inherited;
+    DM_Estoque.Produtos.Close;
+    DM_Estoque.Produtos.SQL.Text := 'select * from produtos';
+    DM_Estoque.Produtos.Open;
+end;
 
 end.

@@ -4,7 +4,7 @@ uses
   Vcl.Forms,
   ERP in 'ERP.pas' {TelaInicial},
   UTelaPadrao in 'comum\UTelaPadrao.pas' {xPesqPadrao},
-  PProduto in 'Estoque\PProduto.pas' {xPesqPadrao1},
+  UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
   UDM_Banco in 'datamodulo\UDM_Banco.pas' {DM_Banco: TDataModule},
   UDM_Estoque in 'datamodulo\UDM_Estoque.pas' {DM_Estoque: TDataModule};
 

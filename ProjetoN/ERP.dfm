@@ -12,6 +12,7 @@ object TelaInicial: TTelaInicial
   Font.Style = []
   Menu = MainMenu1
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
@@ -2411,6 +2412,7 @@ object TelaInicial: TTelaInicial
       end
       object Produtos1: TMenuItem
         Caption = 'Produtos'
+        OnClick = Produtos1Click
       end
     end
     object PCP1: TMenuItem

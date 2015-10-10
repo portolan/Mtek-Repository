@@ -48,6 +48,7 @@ type
     Image8: TImage;
     Image9: TImage;
     procedure Sair1Click(Sender: TObject);
+    procedure Produtos1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -60,6 +61,18 @@ var
 implementation
 
 {$R *.dfm}
+
+uses UP_Produto;
+
+procedure TTelaInicial.Produtos1Click(Sender: TObject);
+begin
+    PProduto := TPProduto.Create(Self);
+    try
+        PProduto.ShowModal;
+    finally
+        FreeAndNil(PProduto);
+    end;
+end;
 
 procedure TTelaInicial.Sair1Click(Sender: TObject);
 begin
