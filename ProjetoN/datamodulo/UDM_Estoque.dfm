@@ -7,7 +7,6 @@ object DM_Estoque: TDM_Estoque
     Transaction = dmBanco.TBanco
     BufferChunks = 1000
     CachedUpdates = False
-    DataSource = DSProdutos
     ParamCheck = True
     SQL.Strings = (
       'select * from PRODUTOS')
@@ -361,6 +360,7 @@ object DM_Estoque: TDM_Estoque
     Top = 120
   end
   object DSProdutos: TDataSource
+    DataSet = Produtos
     Left = 24
     Top = 64
   end
