@@ -24,7 +24,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_Estoque, UDM_Banco;
+uses UDM_Estoque;
 
 procedure TPProduto.FormCreate(Sender: TObject);
 begin

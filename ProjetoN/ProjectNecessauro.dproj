@@ -94,13 +94,18 @@
         <DCCReference Include="Estoque\UP_Produto.pas">
             <Form>PProduto</Form>
         </DCCReference>
-        <DCCReference Include="datamodulo\UDM_Banco.pas">
-            <Form>DM_Banco</Form>
+        <DCCReference Include="datamodulo\UDM_Estoque.pas">
+            <Form>DM_Estoque</Form>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="datamodulo\dm000.pas">
+            <Form>dmBanco</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="datamodulo\UDM_Estoque.pas">
-            <Form>DM_Estoque</Form>
+        <DCCReference Include="datamodulo\dm001.pas">
+            <Form>dmPedido</Form>
+            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Release">

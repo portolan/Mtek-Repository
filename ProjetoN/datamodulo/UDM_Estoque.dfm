@@ -3,9 +3,8 @@ object DM_Estoque: TDM_Estoque
   Height = 209
   Width = 433
   object Produtos: TIBQuery
-    Database = DM_Banco.Banco
-    Transaction = DM_Banco.TBanco
-    Active = True
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
     BufferChunks = 1000
     CachedUpdates = False
     DataSource = DSProdutos
