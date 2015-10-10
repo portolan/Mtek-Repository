@@ -13,6 +13,9 @@ inherited PProduto: TPProduto
       ExplicitTop = 1
       ExplicitWidth = 777
       ExplicitHeight = 293
+      inherited DBGDados: TDBGrid
+        DataSource = DM_Estoque.DSProdutos
+      end
     end
   end
   inherited pnRodape: TPanel
