@@ -7,7 +7,8 @@ uses
   UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
   UDM_Estoque in 'datamodulo\UDM_Estoque.pas' {DM_Estoque: TDataModule},
   dm000 in 'datamodulo\dm000.pas' {dmBanco: TDataModule},
-  dm001 in 'datamodulo\dm001.pas' {dmPedido: TDataModule};
+  dm001 in 'datamodulo\dm001.pas' {dmPedido: TDataModule},
+  UManuPadrao in 'comum\UManuPadrao.pas' {xManuPadrao};
 
 {$R *.res}
 
@@ -18,5 +19,6 @@ begin
   Application.CreateForm(TDM_Estoque, DM_Estoque);
   Application.CreateForm(TdmBanco, dmBanco);
   Application.CreateForm(TdmPedido, dmPedido);
+  Application.CreateForm(TxManuPadrao, xManuPadrao);
   Application.Run;
 end.

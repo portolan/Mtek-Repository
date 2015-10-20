@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids,
-  Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery;
+  Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery, UManuPadrao;
 
 type
   TxPesqPadrao = class(TForm)
@@ -109,6 +109,12 @@ procedure TxPesqPadrao.procChamaTela;
 begin
    TelaManutencao := CTelaManutencao.Create(Self);
    try
+      if TelaManutencao is TxManuPadrao then
+      begin
+         TxManuPadrao(TelaManutencao).QryPadrao           := Self.QryPadrao;
+         TxManuPadrao(TelaManutencao).b_finalizaTransacao := Self.b_finalizaTransacao;
+      end;
+
       TelaManutencao.ShowModal;
    finally
       FreeAndNil(TelaManutencao);
