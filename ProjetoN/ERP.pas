@@ -47,6 +47,11 @@ type
     Image7: TImage;
     Image8: TImage;
     Image9: TImage;
+    CentrodeCustos1: TMenuItem;
+    CentrodeCustos2: TMenuItem;
+    Empresas1: TMenuItem;
+    PlanodeContas1: TMenuItem;
+    ConsultaMovimentaes1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
   private

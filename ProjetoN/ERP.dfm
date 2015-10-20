@@ -2471,6 +2471,21 @@ object TelaInicial: TTelaInicial
     end
     object Contbil1: TMenuItem
       Caption = 'Cont'#225'bil'
+      object CentrodeCustos1: TMenuItem
+        Caption = 'Lan'#231'amentos'
+      end
+      object CentrodeCustos2: TMenuItem
+        Caption = 'Centro de Custos'
+      end
+      object Empresas1: TMenuItem
+        Caption = 'Empresas'
+      end
+      object PlanodeContas1: TMenuItem
+        Caption = 'Plano de Contas'
+      end
+      object ConsultaMovimentaes1: TMenuItem
+        Caption = 'Consulta Movimenta'#231#227'o'
+      end
     end
     object Manuteno1: TMenuItem
       Caption = 'Sistema'
