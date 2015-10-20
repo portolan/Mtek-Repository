@@ -36,8 +36,6 @@ type
     ContasaReceber1: TMenuItem;
     FluxodeCaixa1: TMenuItem;
     Manuteno3: TMenuItem;
-    GroupBox1: TGroupBox;
-    DBGrid1: TDBGrid;
     Image1: TImage;
     Image2: TImage;
     Image3: TImage;
