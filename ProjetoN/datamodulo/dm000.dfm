@@ -3,6 +3,7 @@ object dmBanco: TdmBanco
   Height = 181
   Width = 197
   object TBanco: TIBTransaction
+    Active = True
     Params.Strings = (
       'read_committed'
       'rec_version'
@@ -11,13 +12,12 @@ object dmBanco: TdmBanco
     Top = 88
   end
   object Banco: TIBDatabase
-    DatabaseName = 
-      'C:\Users\Willian\Desktop\Projeto Pipin'#227'o\Projeto ERP\trunk\Proje' +
-      'toN\BD\DATABASE.FDB'
+    Connected = True
+    DatabaseName = '\\localhost\C:\Users\Danilo de Canini\Desktop\BD\DATABASE.FDB'
     Params.Strings = (
       'user_name=sysdba'
       'password=masterkey'
-      'lc_ctype=UTF8')
+      'lc_ctype=ASCII')
     LoginPrompt = False
     DefaultTransaction = TBanco
     ServerType = 'IBServer'
