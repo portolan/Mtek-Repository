@@ -9,8 +9,7 @@ uses
 type
   TDM_Estoque = class(TDataModule)
     Produtos: TIBQuery;
-    UProdutos: TIBUpdateSQL;
-    DSProdutos: TDataSource;
+    ProdutosPRO_EMPRESA: TIntegerField;
     ProdutosPRO_CODIGO: TIBStringField;
     ProdutosPRO_CODREF: TIBStringField;
     ProdutosPRO_CODBARRAS: TIBStringField;
@@ -45,6 +44,55 @@ type
     ProdutosPRO_VLRVENDA3: TIBBCDField;
     ProdutosPRO_OBS: TIBStringField;
     ProdutosPRO_IMG: TBlobField;
+    UProdutos: TIBUpdateSQL;
+    DSProdutos: TDataSource;
+    Estoque: TIBQuery;
+    EstoqueESTOQ_EMPRESA: TIntegerField;
+    EstoqueESTOQ_PRODUTO: TIBStringField;
+    EstoqueESTOQ_CODIGO: TIBStringField;
+    EstoqueESTOQ_STATUS: TIBStringField;
+    EstoqueESTOQ_QTD: TIBBCDField;
+    EstoqueESTOQ_QTDMIN: TIBBCDField;
+    EstoqueESTOQ_QTDMAX: TIBBCDField;
+    EstoqueESTOQ_CUSTOMEDIO: TIBBCDField;
+    EstoqueESTOQ_PRATELEIRA: TIBStringField;
+    EstoqueESTOQ_CATEGORIA: TIntegerField;
+    EstoqueESTOQ_TIPO: TIntegerField;
+    EstoqueESTOQ_LOCAL: TIBStringField;
+    EstoqueESTOQ_DTCADASTRO: TDateField;
+    EstoqueESTOQ_OBS: TIBStringField;
+    DSEstoque: TDataSource;
+    UEstoque: TIBUpdateSQL;
+    UMarcas: TIBUpdateSQL;
+    DSMarcas: TDataSource;
+    Marcas: TIBQuery;
+    MarcasMARC_CODIGO: TIntegerField;
+    MarcasMARC_DESCRICAO: TIBStringField;
+    MarcasMARC_OBS: TIBStringField;
+    DSRelProdForn: TDataSource;
+    URelProdForn: TIBUpdateSQL;
+    RelProdForn: TIBQuery;
+    RelProdFornRPF_EMPRESA: TIntegerField;
+    RelProdFornRPF_PRODUTO: TIBStringField;
+    RelProdFornRPF_PESSOA: TIBStringField;
+    RelProdFornRPF_CODREF: TIBStringField;
+    RelProdFornRPF_VLRBRUTO: TIBBCDField;
+    RelProdFornRPF_PERCDESC: TIBBCDField;
+    RelProdFornRPF_VLRDESC: TIBBCDField;
+    RelProdFornRPF_VLRLIQUIDO: TIBBCDField;
+    RelProdFornRPF_DTCOMPRA: TDateField;
+    RelProdFornRPF_CONTATO: TIBStringField;
+    MovimentoEstoque: TIBQuery;
+    DSMovimentoEstoque: TDataSource;
+    UMovimentoEstoque: TIBUpdateSQL;
+    MovimentoEstoqueEM_EMPRESA: TIntegerField;
+    MovimentoEstoqueEM_ESTOQUE: TIBStringField;
+    MovimentoEstoqueEM_PRODUTO: TIBStringField;
+    MovimentoEstoqueEM_CODIGO: TIBStringField;
+    MovimentoEstoqueEM_TIPO: TIBStringField;
+    MovimentoEstoqueEM_QTD: TIBBCDField;
+    MovimentoEstoqueEM_DATA: TDateTimeField;
+    MovimentoEstoqueEM_OBS: TIBStringField;
   private
     { Private declarations }
   public
