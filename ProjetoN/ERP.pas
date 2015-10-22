@@ -50,10 +50,12 @@ type
     Empresas1: TMenuItem;
     PlanodeContas1: TMenuItem;
     ConsultaMovimentaes1: TMenuItem;
+    p1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
     procedure Marca1Click(Sender: TObject);
+    procedure Empresas1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -67,9 +69,16 @@ implementation
 
 {$R *.dfm}
 
-uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque;
+uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
+  UP_empresa;
 
 
+
+procedure TTelaInicial.Empresas1Click(Sender: TObject);
+begin
+TxPesqPadrao1.chamatela(self);
+
+end;
 
 procedure TTelaInicial.EnstradaSada1Click(Sender: TObject);
 begin

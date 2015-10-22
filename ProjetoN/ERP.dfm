@@ -3565,13 +3565,17 @@ object TelaInicial: TTelaInicial
         Caption = 'Centro de Custos'
       end
       object Empresas1: TMenuItem
-        Caption = 'Empresas'
+        Caption = 'Empresa'
+        OnClick = Empresas1Click
       end
       object PlanodeContas1: TMenuItem
         Caption = 'Plano de Contas'
       end
       object ConsultaMovimentaes1: TMenuItem
         Caption = 'Consulta Movimenta'#231#227'o'
+      end
+      object p1: TMenuItem
+        Caption = 'Parametros'
       end
     end
     object Manuteno1: TMenuItem
