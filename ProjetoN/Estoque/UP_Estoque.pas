@@ -1,4 +1,4 @@
-unit UP_Produto;
+unit UP_Estoque;
 
 interface
 
@@ -8,36 +8,35 @@ uses
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
-  TPProduto = class(TxPesqPadrao)
+  TPEstoque = class(TxPesqPadrao)
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
-    { Public declarations }
     procedure procSelect; Override;
   end;
 
 var
-  PProduto: TPProduto;
+  PEstoque: TPEstoque;
 
 implementation
 
 {$R *.dfm}
 
-uses UDM_Estoque, dm000, dm001;
+uses UDM_Estoque;
 
-procedure TPProduto.FormCreate(Sender: TObject);
+procedure TPEstoque.FormCreate(Sender: TObject);
 begin
   inherited;
-    procInicializar(DM_Estoque.Produtos, False, False, PProduto, TPProduto);
+    procInicializar(DM_Estoque.Estoque, False, False, PEstoque, TPEstoque);
 end;
 
-procedure TPProduto.procSelect;
+procedure TPEstoque.procSelect;
 begin
   inherited;
-    DM_Estoque.Produtos.Close;
-    DM_Estoque.Produtos.SQL.Text := 'select * from produtos';
-    DM_Estoque.Produtos.Open;
+    DM_Estoque.Estoque.Close;
+    DM_Estoque.Estoque.SQL.Text := 'select * from ESTOQUE';
+    DM_Estoque.Estoque.Open;
 end;
 
 end.
