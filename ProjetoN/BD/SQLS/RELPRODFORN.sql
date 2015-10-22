@@ -16,6 +16,7 @@ SET SQL DIALECT 3;
 
 
 CREATE TABLE RELPRODFORN (
+    RPF_EMPRESA     INTEGER NOT NULL,
     RPF_PRODUTO     VARCHAR(30) NOT NULL,
     RPF_PESSOA      VARCHAR(60) NOT NULL,
     RPF_CODREF      VARCHAR(30),
@@ -34,7 +35,7 @@ CREATE TABLE RELPRODFORN (
 /***                              Primary Keys                              ***/
 /******************************************************************************/
 
-ALTER TABLE RELPRODFORN ADD CONSTRAINT PK_RELPRODFORN PRIMARY KEY (RPF_PRODUTO, RPF_PESSOA);
+ALTER TABLE RELPRODFORN ADD CONSTRAINT PK_RELPRODFORN PRIMARY KEY (RPF_EMPRESA, RPF_PRODUTO, RPF_PESSOA);
 
 
 /******************************************************************************/

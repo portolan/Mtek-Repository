@@ -16,6 +16,7 @@ SET SQL DIALECT 3;
 
 
 CREATE TABLE RELPESSTEL (
+    RPT_EMPRESA   INTEGER NOT NULL,
     RPT_PESSOA    VARCHAR(30) NOT NULL,
     RPT_CODIGO    VARCHAR(30) NOT NULL,
     RPT_TELEFONE  DMTELEFONE /* DMTELEFONE = VARCHAR(12) */,
@@ -29,7 +30,7 @@ CREATE TABLE RELPESSTEL (
 /***                              Primary Keys                              ***/
 /******************************************************************************/
 
-ALTER TABLE RELPESSTEL ADD CONSTRAINT PK_RELPESSTEL PRIMARY KEY (RPT_PESSOA, RPT_CODIGO);
+ALTER TABLE RELPESSTEL ADD CONSTRAINT PK_RELPESSTEL PRIMARY KEY (RPT_EMPRESA, RPT_PESSOA, RPT_CODIGO);
 
 
 /******************************************************************************/

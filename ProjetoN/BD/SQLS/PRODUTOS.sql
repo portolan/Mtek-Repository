@@ -16,6 +16,7 @@ SET SQL DIALECT 3;
 
 
 CREATE TABLE PRODUTOS (
+    PRO_EMPRESA        INTEGER NOT NULL,
     PRO_CODIGO         VARCHAR(30) NOT NULL,
     PRO_CODREF         VARCHAR(30),
     PRO_CODBARRAS      VARCHAR(60),
@@ -59,7 +60,7 @@ CREATE TABLE PRODUTOS (
 /***                              Primary Keys                              ***/
 /******************************************************************************/
 
-ALTER TABLE PRODUTOS ADD CONSTRAINT PK_PRODUTOS PRIMARY KEY (PRO_CODIGO);
+ALTER TABLE PRODUTOS ADD CONSTRAINT PK_PRODUTOS PRIMARY KEY (PRO_EMPRESA, PRO_CODIGO);
 
 
 /******************************************************************************/

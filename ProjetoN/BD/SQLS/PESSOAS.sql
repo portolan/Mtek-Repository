@@ -16,6 +16,7 @@ SET SQL DIALECT 3;
 
 
 CREATE TABLE PESSOAS (
+    PESS_EMPRESA        INTEGER NOT NULL,
     PESS_CODIGO         VARCHAR(30) NOT NULL,
     PESS_DESCRICAO      VARCHAR(100),
     PESS_TIPO           CHAR(1),
@@ -40,7 +41,7 @@ CREATE TABLE PESSOAS (
 /***                              Primary Keys                              ***/
 /******************************************************************************/
 
-ALTER TABLE PESSOAS ADD CONSTRAINT PK_PESSOA PRIMARY KEY (PESS_CODIGO);
+ALTER TABLE PESSOAS ADD CONSTRAINT PK_PESSOA PRIMARY KEY (PESS_EMPRESA, PESS_CODIGO);
 
 
 /******************************************************************************/

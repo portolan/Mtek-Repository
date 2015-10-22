@@ -16,6 +16,7 @@ SET SQL DIALECT 3;
 
 
 CREATE TABLE RELPESSEND (
+    RPE_EMPRESA      INTEGER NOT NULL,
     RPE_PESSOA       VARCHAR(30) NOT NULL,
     RPE_CODIGO       VARCHAR(30) NOT NULL,
     RPE_LOGRADOURO   VARCHAR(60),
@@ -33,7 +34,7 @@ CREATE TABLE RELPESSEND (
 /***                              Primary Keys                              ***/
 /******************************************************************************/
 
-ALTER TABLE RELPESSEND ADD CONSTRAINT PK_RELPESSEND PRIMARY KEY (RPE_PESSOA, RPE_CODIGO);
+ALTER TABLE RELPESSEND ADD CONSTRAINT PK_RELPESSEND PRIMARY KEY (RPE_EMPRESA, RPE_PESSOA, RPE_CODIGO);
 
 
 /******************************************************************************/

@@ -16,6 +16,7 @@ SET SQL DIALECT 3;
 
 
 CREATE TABLE MARCAS (
+    MARC_EMPRESA    INTEGER NOT NULL,
     MARC_CODIGO     INTEGER NOT NULL,
     MARC_DESCRICAO  VARCHAR(60),
     MARC_OBS        VARCHAR(100)
@@ -28,7 +29,7 @@ CREATE TABLE MARCAS (
 /***                              Primary Keys                              ***/
 /******************************************************************************/
 
-ALTER TABLE MARCAS ADD CONSTRAINT PK_MARCAS PRIMARY KEY (MARC_CODIGO);
+ALTER TABLE MARCAS ADD CONSTRAINT PK_MARCAS PRIMARY KEY (MARC_EMPRESA, MARC_CODIGO);
 
 
 /******************************************************************************/

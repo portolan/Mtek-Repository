@@ -16,6 +16,7 @@ SET SQL DIALECT 3;
 
 
 CREATE TABLE ESTOQ_SAIDA (
+    ES_EMPRESA  INTEGER NOT NULL,
     ES_ESTOQUE  VARCHAR(30) NOT NULL,
     ES_PRODUTO  VARCHAR(30) NOT NULL,
     ES_CODIGO   VARCHAR(30) NOT NULL,
@@ -30,7 +31,7 @@ CREATE TABLE ESTOQ_SAIDA (
 /***                              Primary Keys                              ***/
 /******************************************************************************/
 
-ALTER TABLE ESTOQ_SAIDA ADD CONSTRAINT PK_ESTOQ_SAIDA PRIMARY KEY (ES_ESTOQUE, ES_PRODUTO, ES_CODIGO);
+ALTER TABLE ESTOQ_SAIDA ADD CONSTRAINT PK_ESTOQ_SAIDA PRIMARY KEY (ES_EMPRESA, ES_ESTOQUE, ES_PRODUTO, ES_CODIGO);
 
 
 /******************************************************************************/
