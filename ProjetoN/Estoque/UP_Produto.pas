@@ -24,12 +24,12 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_Estoque, dm000, dm001;
+uses UDM_Estoque, dm000, dm001, UM_Produto;
 
 procedure TPProduto.FormCreate(Sender: TObject);
 begin
   inherited;
-    procInicializar(DM_Estoque.Produtos, False, False, PProduto, TPProduto);
+    procInicializar(DM_Estoque.Produtos, False, False, MProduto, TMProduto);
 end;
 
 procedure TPProduto.procSelect;

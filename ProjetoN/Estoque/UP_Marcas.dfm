@@ -21,7 +21,6 @@ inherited PMarcas: TPMarcas
           item
             Expanded = False
             FieldName = 'MARC_OBS'
-            Width = 64
             Visible = True
           end>
       end

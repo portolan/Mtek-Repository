@@ -27,10 +27,9 @@ uses UDM_Estoque, UM_Marcas;
 
 procedure TPMarcas.FormCreate(Sender: TObject);
 begin
-  inherited;
-    procInicializar(DM_Estoque.Marcas, False, False, PMarcas, TPMarcas);
-    TelaManutencao := MMarcas;
-    CTelaManutencao := TPMarcas.ClassInfo;
+   inherited;
+   procInicializar(DM_Estoque.Marcas, False, False, MMarcas, TMMarcas);
+
 end;
 
 procedure TPMarcas.procSelect;
@@ -38,7 +37,7 @@ begin
   inherited;
     DM_Estoque.Marcas.Close;
     DM_Estoque.Marcas.SQL.Text := 'select * from Marcas';
-    DM_Estoque.Marcas.Close;
+    DM_Estoque.Marcas.Open;
 end;
 
 end.
