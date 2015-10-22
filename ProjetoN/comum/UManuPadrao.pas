@@ -91,6 +91,8 @@ begin
          QryPadrao.Transaction.Commit;
 
       b_gravou := True;
+
+      close;
    except
       on E: Exception do
       begin
