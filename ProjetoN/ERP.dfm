@@ -13,6 +13,7 @@ object TelaInicial: TTelaInicial
   Menu = MainMenu1
   OldCreateOrder = False
   Position = poDesktopCenter
+  WindowState = wsMaximized
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
