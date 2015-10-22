@@ -29,8 +29,8 @@ procedure TPMarcas.FormCreate(Sender: TObject);
 begin
   inherited;
     procInicializar(DM_Estoque.Marcas, False, False, PMarcas, TPMarcas);
-    //TelaManutencao := MMarcas;
-    //CTelaManutencao := TPMarcas;
+    TelaManutencao := MMarcas;
+    CTelaManutencao := TPMarcas.ClassInfo;
 end;
 
 procedure TPMarcas.procSelect;
