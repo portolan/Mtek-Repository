@@ -12,6 +12,7 @@ object xManuPadrao: TxManuPadrao
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnClose = FormClose
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
@@ -82,9 +83,5 @@ object xManuPadrao: TxManuPadrao
     Align = alClient
     Caption = 'Dados'
     TabOrder = 1
-    ExplicitLeft = 240
-    ExplicitTop = 48
-    ExplicitWidth = 185
-    ExplicitHeight = 105
   end
 end
