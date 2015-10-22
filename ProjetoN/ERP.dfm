@@ -3490,9 +3490,11 @@ object TelaInicial: TTelaInicial
       Caption = 'Estoque'
       object EnstradaSada1: TMenuItem
         Caption = 'Entrada/Sa'#237'da'
+        OnClick = EnstradaSada1Click
       end
       object Marca1: TMenuItem
         Caption = 'Marca'
+        OnClick = Marca1Click
       end
       object Produtos1: TMenuItem
         Caption = 'Produtos'

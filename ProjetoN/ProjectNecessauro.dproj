@@ -91,9 +91,6 @@
         <DCCReference Include="comum\UTelaPadrao.pas">
             <Form>xPesqPadrao</Form>
         </DCCReference>
-        <DCCReference Include="Estoque\UP_Produto.pas">
-            <Form>PProduto</Form>
-        </DCCReference>
         <DCCReference Include="datamodulo\UDM_Estoque.pas">
             <Form>DM_Estoque</Form>
             <DesignClass>TDataModule</DesignClass>
@@ -110,6 +107,38 @@
         </DCCReference>
         <DCCReference Include="comum\UManuPadrao.pas">
             <Form>xManuPadrao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Estoque.pas">
+            <Form>MEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Marcas.pas">
+            <Form>MMarcas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_MovimentoEstoque.pas">
+            <Form>MMovimentoEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Produto.pas">
+            <Form>MProduto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Estoque.pas">
+            <Form>PEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Marcas.pas">
+            <Form>PMarcas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_MovimentoEstoque.pas">
+            <Form>PMovimentoEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Produto.pas">
+            <Form>PProduto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -481,6 +510,7 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
             </Platforms>
+            <ModelSupport>False</ModelSupport>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

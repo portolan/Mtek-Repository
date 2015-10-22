@@ -52,6 +52,8 @@ type
     ConsultaMovimentaes1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
+    procedure EnstradaSada1Click(Sender: TObject);
+    procedure Marca1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,7 +67,30 @@ implementation
 
 {$R *.dfm}
 
-uses UP_Produto;
+uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque;
+
+
+
+procedure TTelaInicial.EnstradaSada1Click(Sender: TObject);
+begin
+
+    PMovimentoEstoque := TPMovimentoEstoque.Create(Self);
+    try
+        PMovimentoEstoque.ShowModal;
+    finally
+        FreeAndNil(PMovimentoEstoque);
+    end;
+end;
+
+procedure TTelaInicial.Marca1Click(Sender: TObject);
+begin
+    PMarcas := TPMarcas.Create(Self);
+    try
+        PMarcas.ShowModal;
+    finally
+        FreeAndNil(PMarcas);
+    end;
+end;
 
 procedure TTelaInicial.Produtos1Click(Sender: TObject);
 begin
