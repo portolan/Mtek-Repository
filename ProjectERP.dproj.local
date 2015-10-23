@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BorlandProject>
-	<Transactions>
-    <Transaction>2015/10/07 00:00:02.000.785,=C:\Users\Willian\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2015/10/07 00:00:17.000.139,C:\Users\Willian\Desktop\Projeto Pipinão\Projeto\ERP.pas=C:\Users\Willian\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2015/10/07 00:00:17.000.139,C:\Users\Willian\Desktop\Projeto Pipinão\Projeto\ERP.dfm=C:\Users\Willian\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2015/10/07 00:00:31.000.975,C:\Users\Willian\Desktop\Projeto Pipinão\Projeto\ProjectERP.dproj=C:\Users\Willian\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
-  </Transactions>
-</BorlandProject>
