@@ -19,8 +19,38 @@ uses
   UP_Estoque in 'Estoque\UP_Estoque.pas' {PEstoque},
   UP_Marcas in 'Estoque\UP_Marcas.pas' {PMarcas},
   UP_MovimentoEstoque in 'Estoque\UP_MovimentoEstoque.pas' {PMovimentoEstoque},
+  UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
+  UDM_PCP in '..\..\..\ARQUIVOS DO PROJETO\APLICACAO\UDM_PCP.pas' {DM_PCP: TDataModule},
+  UM_PCP in '..\..\..\ARQUIVOS DO PROJETO\APLICACAO\UM_PCP.pas' {M_OP},
+  UP_OP in '..\..\..\ARQUIVOS DO PROJETO\APLICACAO\PESQUISA PADRAO\UP_OP.pas' {P_OP};
   UP_Produto in 'Estoque\UP_Produto.pas' {PProduto};
-
+  UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
+  UDM_contabil in 'datamodulo\UDM_contabil.pas' {DM_contabil: TDataModule},
+  UP_empresa in 'contabil\UP_empresa.pas' {xPesqPadrao1},
+  UM_empresa in 'contabil\UM_empresa.pas' {Mempresa};
+  UManuPadrao in 'comum\UManuPadrao.pas' {xManuPadrao};
+  UManuPadrao in 'comum\UManuPadrao.pas' {xManuPadrao},
+  UM_Estoque in 'Estoque\UM_Estoque.pas' {MEstoque},
+  UM_Marcas in 'Estoque\UM_Marcas.pas' {MMarcas},
+  UM_MovimentoEstoque in 'Estoque\UM_MovimentoEstoque.pas' {MMovimentoEstoque},
+  UM_Produto in 'Estoque\UM_Produto.pas' {MProduto},
+  UP_Estoque in 'Estoque\UP_Estoque.pas' {PEstoque},
+  UP_Marcas in 'Estoque\UP_Marcas.pas' {PMarcas},
+  UP_MovimentoEstoque in 'Estoque\UP_MovimentoEstoque.pas' {PMovimentoEstoque},
+  UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
+  UDM_contabil in 'datamodulo\UDM_contabil.pas' {DM_contabil: TDataModule},
+  UP_empresa in 'contabil\UP_empresa.pas' {xPesqPadrao1},
+  UM_empresa in 'contabil\UM_empresa.pas' {Mempresa};
+  UManuPadrao in 'comum\UManuPadrao.pas' {xManuPadrao};
+  UManuPadrao in 'comum\UManuPadrao.pas' {xManuPadrao},
+  UM_Estoque in 'Estoque\UM_Estoque.pas' {MEstoque},
+  UM_Marcas in 'Estoque\UM_Marcas.pas' {MMarcas},
+  UM_MovimentoEstoque in 'Estoque\UM_MovimentoEstoque.pas' {MMovimentoEstoque},
+  UM_Produto in 'Estoque\UM_Produto.pas' {MProduto},
+  UP_Estoque in 'Estoque\UP_Estoque.pas' {PEstoque},
+  UP_Marcas in 'Estoque\UP_Marcas.pas' {PMarcas},
+  UP_MovimentoEstoque in 'Estoque\UP_MovimentoEstoque.pas' {PMovimentoEstoque},
+  UP_Produto in 'Estoque\UP_Produto.pas' {PProduto};
 {$R *.res}
 
 begin
@@ -44,5 +74,8 @@ begin
   Application.CreateForm(TPMarcas, PMarcas);
   Application.CreateForm(TPMovimentoEstoque, PMovimentoEstoque);
   Application.CreateForm(TPProduto, PProduto);
+  Application.CreateForm(TDM_PCP, DM_PCP);
+  Application.CreateForm(TM_OP, M_OP);
+  Application.CreateForm(TP_OP, P_OP);
   Application.Run;
 end.
