@@ -38,9 +38,9 @@ object CPedido: TCPedido
   object Label5: TLabel
     Left = 16
     Top = 147
-    Width = 116
+    Width = 99
     Height = 13
-    Caption = 'Tipo Movimentacao'#231#227'o :'
+    Caption = 'Tipo Movimenta'#231#227'o :'
   end
   object Label6: TLabel
     Left = 17
@@ -94,7 +94,7 @@ object CPedido: TCPedido
     Text = 'Edit6'
   end
   object Edit4: TEdit
-    Left = 125
+    Left = 126
     Top = 146
     Width = 38
     Height = 21
