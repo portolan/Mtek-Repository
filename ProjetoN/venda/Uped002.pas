@@ -9,10 +9,19 @@ uses
 type
   TCPedido = class(TForm)
     Edit1: TEdit;
-    Edit2: TEdit;
-    Edit3: TEdit;
-    Edit4: TEdit;
     Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Label6: TLabel;
+    Edit6: TEdit;
+    Label7: TLabel;
+    Edit7: TEdit;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
     procedure Edit1Change(Sender: TObject);
   private
     { Private declarations }
