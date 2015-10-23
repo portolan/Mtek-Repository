@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
   TCPedido = class(TForm)
@@ -22,6 +22,7 @@ type
     Edit7: TEdit;
     ComboBox1: TComboBox;
     ComboBox2: TComboBox;
+    Panel1: TPanel;
     procedure Edit1Change(Sender: TObject);
   private
     { Private declarations }
