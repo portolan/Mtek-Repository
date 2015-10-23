@@ -55,6 +55,7 @@ type
     procedure EnstradaSada1Click(Sender: TObject);
     procedure Marca1Click(Sender: TObject);
     procedure OrdemdeProduo1Click(Sender: TObject);
+    procedure ControledeVendas1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -80,6 +81,11 @@ TxPesqPadrao1.chamatela(self);
 procedure TTelaInicial.Empresas1Click(Sender: TObject);
 begin
 //TxPesqPadrao1.chamatela(self);
+
+procedure TTelaInicial.ControledeVendas1Click(Sender: TObject);
+begin
+
+end;
 
 procedure TTelaInicial.EnstradaSada1Click(Sender: TObject);
 begin
