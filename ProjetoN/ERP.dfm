@@ -3563,7 +3563,6 @@ object TelaInicial: TTelaInicial
       end
       object Empresas1: TMenuItem
         Caption = 'Empresa'
-        OnClick = Empresas1Click
       end
       object PlanodeContas1: TMenuItem
         Caption = 'Plano de Contas'

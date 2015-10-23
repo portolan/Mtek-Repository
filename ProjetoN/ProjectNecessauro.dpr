@@ -23,7 +23,8 @@ uses
   UDM_PCP in '..\..\..\ARQUIVOS DO PROJETO\APLICACAO\UDM_PCP.pas' {DM_PCP: TDataModule},
   UM_PCP in '..\..\..\ARQUIVOS DO PROJETO\APLICACAO\UM_PCP.pas' {M_OP},
   UP_OP in '..\..\..\ARQUIVOS DO PROJETO\APLICACAO\PESQUISA PADRAO\UP_OP.pas' {P_OP};
-  UP_Produto in 'Estoque\UP_Produto.pas' {PProduto};
+
+UP_Produto in 'Estoque\UP_Produto.pas' {PProduto};
   UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
   UDM_contabil in 'datamodulo\UDM_contabil.pas' {DM_contabil: TDataModule},
   UP_empresa in 'contabil\UP_empresa.pas' {xPesqPadrao1},
