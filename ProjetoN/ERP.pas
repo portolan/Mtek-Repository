@@ -54,7 +54,6 @@ type
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
     procedure Marca1Click(Sender: TObject);
-    procedure OrdemdeProduo1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -68,18 +67,8 @@ implementation
 
 {$R *.dfm}
 
-uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
-  UP_OP, UM_Pedido;
-uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
-  UP_empresa;
 uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque;
 
-procedure TTelaInicial.Empresas1Click(Sender: TObject);
-begin
-TxPesqPadrao1.chamatela(self);
-procedure TTelaInicial.Empresas1Click(Sender: TObject);
-begin
-//TxPesqPadrao1.chamatela(self);
 
 procedure TTelaInicial.EnstradaSada1Click(Sender: TObject);
 begin
@@ -102,18 +91,6 @@ begin
     end;
 end;
 
-end;
-
-procedure TTelaInicial.OrdemdeProduo1Click(Sender: TObject);
-begin
-    P_OP := TP_OP.Create(Self);
-    try
-      P_OP.ShowModal;
-
-    finally
-      freeandNil(P_OP);
-    end;
-end;
 
 procedure TTelaInicial.Produtos1Click(Sender: TObject);
 begin

@@ -141,15 +141,9 @@
             <Form>PProduto</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\..\..\ARQUIVOS DO PROJETO\APLICACAO\UDM_PCP.pas">
-            <Form>DM_PCP</Form>
+        <DCCReference Include="datamodulo\UDM_contabil.pas">
+            <Form>DM_contabil</Form>
             <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="..\..\..\ARQUIVOS DO PROJETO\APLICACAO\UM_PCP.pas">
-            <Form>M_OP</Form>
-        </DCCReference>
-        <DCCReference Include="..\..\..\ARQUIVOS DO PROJETO\APLICACAO\PESQUISA PADRAO\UP_OP.pas">
-            <Form>P_OP</Form>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
