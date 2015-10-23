@@ -78,7 +78,6 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
 procedure TTelaInicial.Empresas1Click(Sender: TObject);
 begin
 TxPesqPadrao1.chamatela(self);
-=======
 procedure TTelaInicial.Empresas1Click(Sender: TObject);
 begin
 //TxPesqPadrao1.chamatela(self);
