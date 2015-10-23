@@ -29,7 +29,6 @@ type
     CotaoFornecedor1: TMenuItem;
     PedidodeCompra1: TMenuItem;
     SolicitaodeRequisisio1: TMenuItem;
-    NFe1: TMenuItem;
     Oramento1: TMenuItem;
     PedidodeVenda1: TMenuItem;
     ContasaPagar1: TMenuItem;

@@ -3533,15 +3533,12 @@ object TelaInicial: TTelaInicial
       end
     end
     object ControledeVendas1: TMenuItem
-      Caption = 'Vendas'
-      object NFe1: TMenuItem
-        Caption = 'NF-e'
-      end
+      Caption = 'Comercial'
       object Oramento1: TMenuItem
-        Caption = 'Or'#231'amento'
+        Caption = 'Vendas'
       end
       object PedidodeVenda1: TMenuItem
-        Caption = 'Pedido de Venda'
+        Caption = 'Faturamento'
       end
     end
     object Financeiro1: TMenuItem
