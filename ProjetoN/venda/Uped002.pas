@@ -30,6 +30,7 @@ type
     Label11: TLabel;
     Panel3: TPanel;
     procedure Edit1Change(Sender: TObject);
+    procedure Panel1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,6 +47,11 @@ implementation
 procedure TCPedido.Edit1Change(Sender: TObject);
 begin
     Edit1.Text;
+end;
+
+procedure TCPedido.Panel1Click(Sender: TObject);
+begin
+
 end;
 
 end.
