@@ -23,6 +23,12 @@ type
     ComboBox1: TComboBox;
     ComboBox2: TComboBox;
     Panel1: TPanel;
+    Panel2: TPanel;
+    Label8: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Panel3: TPanel;
     procedure Edit1Change(Sender: TObject);
   private
     { Private declarations }
