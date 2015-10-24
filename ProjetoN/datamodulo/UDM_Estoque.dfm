@@ -1,7 +1,7 @@
 object DM_Estoque: TDM_Estoque
   OldCreateOrder = False
   Height = 209
-  Width = 433
+  Width = 544
   object Produtos: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
@@ -875,5 +875,89 @@ object DM_Estoque: TDM_Estoque
       '  EM_PRODUTO = :OLD_EM_PRODUTO')
     Left = 320
     Top = 120
+  end
+  object Categoria: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from categoria'
+      ''
+      '')
+    UpdateObject = IBUpdateSQL1
+    Left = 416
+    Top = 8
+    object CategoriaCAT_EMPRESA: TIntegerField
+      DisplayLabel = 'Empresa'
+      FieldName = 'CAT_EMPRESA'
+      Origin = '"CATEGORIA"."CAT_EMPRESA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object CategoriaCAT_CODIGO: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'CAT_CODIGO'
+      Origin = '"CATEGORIA"."CAT_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object CategoriaCAT_DESCRICAO: TIBStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'CAT_DESCRICAO'
+      Origin = '"CATEGORIA"."CAT_DESCRICAO"'
+      Required = True
+      Size = 60
+    end
+    object CategoriaCAT_NCM: TIBStringField
+      DisplayLabel = 'NCM'
+      FieldName = 'CAT_NCM'
+      Origin = '"CATEGORIA"."CAT_NCM"'
+    end
+    object CategoriaCAT_OBS: TIBStringField
+      DisplayLabel = 'Observa'#231#245'es'
+      FieldName = 'CAT_OBS'
+      Origin = '"CATEGORIA"."CAT_OBS"'
+      Size = 100
+    end
+  end
+  object IBUpdateSQL1: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      'from categoria '
+      'where'
+      '  CAT_CODIGO = :CAT_CODIGO and'
+      '  CAT_EMPRESA = :CAT_EMPRESA')
+    ModifySQL.Strings = (
+      'update categoria'
+      'set'
+      '  CAT_CODIGO = :CAT_CODIGO,'
+      '  CAT_DESCRICAO = :CAT_DESCRICAO,'
+      '  CAT_EMPRESA = :CAT_EMPRESA,'
+      '  CAT_NCM = :CAT_NCM,'
+      '  CAT_OBS = :CAT_OBS'
+      'where'
+      '  CAT_CODIGO = :OLD_CAT_CODIGO and'
+      '  CAT_EMPRESA = :OLD_CAT_EMPRESA')
+    InsertSQL.Strings = (
+      'insert into categoria'
+      '  (CAT_CODIGO, CAT_DESCRICAO, CAT_EMPRESA, CAT_NCM, CAT_OBS)'
+      'values'
+      
+        '  (:CAT_CODIGO, :CAT_DESCRICAO, :CAT_EMPRESA, :CAT_NCM, :CAT_OBS' +
+        ')')
+    DeleteSQL.Strings = (
+      'delete from categoria'
+      'where'
+      '  CAT_CODIGO = :OLD_CAT_CODIGO and'
+      '  CAT_EMPRESA = :OLD_CAT_EMPRESA')
+    Left = 416
+    Top = 120
+  end
+  object DSCategoria: TDataSource
+    DataSet = Categoria
+    Left = 416
+    Top = 64
   end
 end

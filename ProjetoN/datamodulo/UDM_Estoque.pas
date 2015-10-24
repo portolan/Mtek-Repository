@@ -93,6 +93,14 @@ type
     MovimentoEstoqueEM_QTD: TIBBCDField;
     MovimentoEstoqueEM_DATA: TDateTimeField;
     MovimentoEstoqueEM_OBS: TIBStringField;
+    Categoria: TIBQuery;
+    IBUpdateSQL1: TIBUpdateSQL;
+    DSCategoria: TDataSource;
+    CategoriaCAT_EMPRESA: TIntegerField;
+    CategoriaCAT_CODIGO: TIntegerField;
+    CategoriaCAT_DESCRICAO: TIBStringField;
+    CategoriaCAT_NCM: TIBStringField;
+    CategoriaCAT_OBS: TIBStringField;
   private
     { Private declarations }
   public
