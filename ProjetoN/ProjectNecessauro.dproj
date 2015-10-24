@@ -150,8 +150,12 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="venda\xCadastro.pas">
+            <Form>CadastroPadrao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="venda\C001.pas">
-            <Form>FRM_MAN_PED</Form>
+            <Form>FRM_PEDIDO_VENDA</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
