@@ -22,7 +22,8 @@ uses
   UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
   UDM_contabil in 'datamodulo\UDM_contabil.pas' {DM_contabil: TDataModule},
   UM_Pedido in 'venda\UM_Pedido.pas' {dmPedido1: TDataModule},
-  C001 in 'venda\C001.pas' {FRM_MAN_PED};
+  xCadastro in 'venda\xCadastro.pas' {CadastroPadrao},
+  C001 in 'venda\C001.pas' {FRM_PEDIDO_VENDA};
 
 {$R *.res}
 
@@ -34,6 +35,7 @@ begin
   Application.CreateForm(TdmPedido, dmPedido);
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(TdmPedido1, dmPedido1);
-  Application.CreateForm(TFRM_MAN_PED, FRM_MAN_PED);
+  Application.CreateForm(TCadastroPadrao, CadastroPadrao);
+  Application.CreateForm(TFRM_PEDIDO_VENDA, FRM_PEDIDO_VENDA);
   Application.Run;
 end.
