@@ -23,7 +23,9 @@ uses
   UDM_contabil in 'datamodulo\UDM_contabil.pas' {DM_contabil: TDataModule},
   UM_Pedido in 'venda\UM_Pedido.pas' {dmPedido1: TDataModule},
   xCadastro in 'venda\xCadastro.pas' {CadastroPadrao},
-  C001 in 'venda\C001.pas' {FRM_PEDIDO_VENDA};
+  C001 in 'venda\C001.pas' {FRM_PEDIDO_VENDA},
+  UM_Categoria in 'Estoque\UM_Categoria.pas' {MCategoria},
+  UP_Categoria in 'Estoque\UP_Categoria.pas' {PCategoria};
 
 {$R *.res}
 
@@ -37,5 +39,7 @@ begin
   Application.CreateForm(TdmPedido1, dmPedido1);
   Application.CreateForm(TCadastroPadrao, CadastroPadrao);
   Application.CreateForm(TFRM_PEDIDO_VENDA, FRM_PEDIDO_VENDA);
+  Application.CreateForm(TMCategoria, MCategoria);
+  Application.CreateForm(TPCategoria, PCategoria);
   Application.Run;
 end.

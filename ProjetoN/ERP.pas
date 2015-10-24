@@ -74,23 +74,14 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
 
 procedure TTelaInicial.EnstradaSada1Click(Sender: TObject);
 begin
-
     PMovimentoEstoque := TPMovimentoEstoque.Create(Self);
-    try
-        PMovimentoEstoque.ShowModal;
-    finally
-        FreeAndNil(PMovimentoEstoque);
-    end;
+    PMovimentoEstoque.procChamaTela;
 end;
 
 procedure TTelaInicial.Marca1Click(Sender: TObject);
 begin
     PMarcas := TPMarcas.Create(Self);
-    try
-        PMarcas.ShowModal;
-    finally
-        FreeAndNil(PMarcas);
-    end;
+    PMarcas.procChamaTela;
 end;
 
 
@@ -107,11 +98,7 @@ end;
 procedure TTelaInicial.Produtos1Click(Sender: TObject);
 begin
     PProduto := TPProduto.Create(Self);
-    try
-        PProduto.ShowModal;
-    finally
-        FreeAndNil(PProduto);
-    end;
+    PProduto.procChamaTela;
 end;
 
 procedure TTelaInicial.Sair1Click(Sender: TObject);

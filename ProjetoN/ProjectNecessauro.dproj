@@ -158,6 +158,14 @@
             <Form>FRM_PEDIDO_VENDA</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="Estoque\UM_Categoria.pas">
+            <Form>MCategoria</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Categoria.pas">
+            <Form>PCategoria</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
