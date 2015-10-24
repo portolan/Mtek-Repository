@@ -20,7 +20,10 @@ uses
   UP_Marcas in 'Estoque\UP_Marcas.pas' {PMarcas},
   UP_MovimentoEstoque in 'Estoque\UP_MovimentoEstoque.pas' {PMovimentoEstoque},
   UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
-  UDM_contabil in 'datamodulo\UDM_contabil.pas' {DM_contabil: TDataModule};
+  UDM_contabil in 'datamodulo\UDM_contabil.pas' {DM_contabil: TDataModule},
+  UM_Pedido in 'venda\UM_Pedido.pas' {dmPedido1: TDataModule},
+  C001 in 'venda\C001.pas' {FRM_MAN_PED};
+
 {$R *.res}
 
 begin
@@ -30,5 +33,7 @@ begin
   Application.CreateForm(TDM_Estoque, DM_Estoque);
   Application.CreateForm(TdmPedido, dmPedido);
   Application.CreateForm(TTelaInicial, TelaInicial);
+  Application.CreateForm(TdmPedido1, dmPedido1);
+  Application.CreateForm(TFRM_MAN_PED, FRM_MAN_PED);
   Application.Run;
 end.
