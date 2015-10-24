@@ -28,7 +28,7 @@ uses UM_MovimentoEstoque, UDM_Estoque;
 procedure TPMovimentoEstoque.FormCreate(Sender: TObject);
 begin
   inherited;
-    procInicializar(DM_Estoque.MovimentoEstoque,  False, False, PMovimentoEstoque, TPMovimentoEstoque);
+    procInicializar(DM_Estoque.MovimentoEstoque,  False, False, MMovimentoEstoque, TMMovimentoEstoque);
 end;
 
 procedure TPMovimentoEstoque.procSelect;
