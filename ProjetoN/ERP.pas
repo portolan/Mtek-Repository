@@ -96,11 +96,11 @@ end;
 
 procedure TTelaInicial.Oramento1Click(Sender: TObject);
 begin
-   FRM_MAN_PED := TFRM_MAN_PED.Create(Self);
+    FRM_PEDIDO_VENDA:= TFRM_PEDIDO_VENDA.Create(Self);
    TRY
-      FRM_MAN_PED.ShowModal;
+      FRM_PEDIDO_VENDA.ShowModal;
    FINALLY
-      FreeAndNil(FRM_MAN_PED);
+      FreeAndNil(FRM_PEDIDO_VENDA);
    END;
 end;
 
