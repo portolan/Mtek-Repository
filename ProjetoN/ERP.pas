@@ -88,7 +88,11 @@ end;
 procedure TTelaInicial.EnstradaSada1Click(Sender: TObject);
 begin
     PMovimentoEstoque := TPMovimentoEstoque.Create(Self);
-    PMovimentoEstoque.procChamaTela;
+    try
+        PMovimentoEstoque.ShowModal;
+    finally
+        FreeAndNil(PMovimentoEstoque);
+    end;
 end;
 
 procedure TTelaInicial.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -99,13 +103,21 @@ end;
 procedure TTelaInicial.Marca1Click(Sender: TObject);
 begin
     PMarcas := TPMarcas.Create(Self);
-    PMarcas.procChamaTela;
+    try
+        PMarcas.ShowModal;
+    finally
+        FreeAndNil(PMarcas);
+    end;
 end;
 
 procedure TTelaInicial.Produtos1Click(Sender: TObject);
 begin
     PProduto := TPProduto.Create(Self);
-    PProduto.procChamaTela;
+    try
+        PProduto.ShowModal;
+    finally
+        FreeAndNil(PProduto);
+    end;
 end;
 
 procedure TTelaInicial.Sair1Click(Sender: TObject);
