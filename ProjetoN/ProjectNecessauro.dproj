@@ -165,6 +165,14 @@
             <Form>tela_login</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="contabil\UP_centro.pas">
+            <Form>P_centro</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contabil\UM_centro.pas">
+            <Form>M_centro</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

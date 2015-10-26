@@ -23,6 +23,14 @@ type
     empresaEMP_TITULAR: TIBStringField;
     Dempresa: TDataSource;
     Uempresa: TIBUpdateSQL;
+    centro: TIBQuery;
+    Dcentro: TDataSource;
+    Ucentro: TIBUpdateSQL;
+    centroCOD_CC: TIntegerField;
+    centroNUM_CC: TIntegerField;
+    centroDESC_CC: TIBStringField;
+    centroANALITICO: TIBStringField;
+    centroCOD_GRUPO: TIntegerField;
   private
     { Private declarations }
   public

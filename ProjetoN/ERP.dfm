@@ -3561,6 +3561,7 @@ object TelaInicial: TTelaInicial
       end
       object CentrodeCustos2: TMenuItem
         Caption = 'Centro de Custos'
+        OnClick = CentrodeCustos2Click
       end
       object Empresas1: TMenuItem
         Caption = 'Empresa'

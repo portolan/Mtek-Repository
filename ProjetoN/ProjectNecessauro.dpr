@@ -33,7 +33,9 @@ uses
   UP_OP in 'pcp\UP_OP.pas' {P_OP},
   UDM_Servico in 'assistencia\UDM_Servico.pas' {DM_Servico: TDataModule},
   UM_Servico in 'assistencia\UM_Servico.pas' {M_Servico},
-  UP_Servico in 'assistencia\UP_Servico.pas' {P_Servico};
+  UP_Servico in 'assistencia\UP_Servico.pas' {P_Servico},
+  UP_centro in 'contabil\UP_centro.pas' {P_centro},
+  UM_centro in 'contabil\UM_centro.pas' {M_centro};
 
 {$R *.res}
 
@@ -46,10 +48,6 @@ begin
   Application.CreateForm(TDM_contabil, DM_contabil);
   Application.CreateForm(Ttela_login, tela_login);
   Application.CreateForm(TDM_PCP, DM_PCP);
-  Application.CreateForm(TM_OP, M_OP);
-  Application.CreateForm(TP_OP, P_OP);
   Application.CreateForm(TDM_Servico, DM_Servico);
-  Application.CreateForm(TM_Servico, M_Servico);
-  Application.CreateForm(TP_Servico, P_Servico);
   Application.Run;
 end.

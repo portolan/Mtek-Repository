@@ -55,6 +55,7 @@ type
     procedure EnstradaSada1Click(Sender: TObject);
     procedure Marca1Click(Sender: TObject);
     procedure Empresas1Click(Sender: TObject);
+    procedure CentrodeCustos2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
@@ -71,8 +72,13 @@ implementation
 
 
 uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
-  UP_empresa;
+  UP_empresa, UP_centro;
 
+
+procedure TTelaInicial.CentrodeCustos2Click(Sender: TObject);
+begin
+    TP_centro.chamaTela(self);
+end;
 
 procedure TTelaInicial.Empresas1Click(Sender: TObject);
 begin

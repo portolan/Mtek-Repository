@@ -1,7 +1,7 @@
 object DM_contabil: TDM_contabil
   OldCreateOrder = False
-  Height = 169
-  Width = 294
+  Height = 413
+  Width = 376
   object empresa: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
@@ -11,8 +11,8 @@ object DM_contabil: TDM_contabil
     SQL.Strings = (
       'select * from empresa')
     UpdateObject = Uempresa
-    Left = 96
-    Top = 56
+    Left = 104
+    Top = 24
     object empresaCOD_EMPRESA: TIntegerField
       DisplayLabel = 'Codigo'
       FieldName = 'COD_EMPRESA'
@@ -133,5 +133,80 @@ object DM_contabil: TDM_contabil
       '  COD_EMPRESA = :OLD_COD_EMPRESA')
     Left = 48
     Top = 24
+  end
+  object centro: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from centrodecusto'
+      '')
+    UpdateObject = Ucentro
+    Left = 104
+    Top = 104
+    object centroCOD_CC: TIntegerField
+      DisplayLabel = 'C'#243'digo C.C'
+      FieldName = 'COD_CC'
+      Origin = '"CENTRODECUSTO"."COD_CC"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object centroCOD_GRUPO: TIntegerField
+      DisplayLabel = 'Estabelecimento'
+      FieldName = 'COD_GRUPO'
+      Origin = '"CENTRODECUSTO"."COD_GRUPO"'
+    end
+    object centroNUM_CC: TIntegerField
+      DisplayLabel = 'N'#250'mero C.C'
+      FieldName = 'NUM_CC'
+      Origin = '"CENTRODECUSTO"."NUM_CC"'
+    end
+    object centroDESC_CC: TIBStringField
+      DisplayLabel = 'Descri'#231#227'o C.C.'
+      FieldName = 'DESC_CC'
+      Origin = '"CENTRODECUSTO"."DESC_CC"'
+      Size = 60
+    end
+    object centroANALITICO: TIBStringField
+      DisplayLabel = 'Analitico?'
+      FieldName = 'ANALITICO'
+      Origin = '"CENTRODECUSTO"."ANALITICO"'
+      Size = 1
+    end
+  end
+  object Dcentro: TDataSource
+    DataSet = centro
+    Left = 160
+    Top = 104
+  end
+  object Ucentro: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      'from centrodecusto '
+      'where'
+      '  COD_CC = :COD_CC')
+    ModifySQL.Strings = (
+      'update centrodecusto'
+      'set'
+      '  ANALITICO = :ANALITICO,'
+      '  COD_CC = :COD_CC,'
+      '  COD_GRUPO = :COD_GRUPO,'
+      '  DESC_CC = :DESC_CC,'
+      '  NUM_CC = :NUM_CC'
+      'where'
+      '  COD_CC = :OLD_COD_CC')
+    InsertSQL.Strings = (
+      'insert into centrodecusto'
+      '  (ANALITICO, COD_CC, COD_GRUPO, DESC_CC, NUM_CC)'
+      'values'
+      '  (:ANALITICO, :COD_CC, :COD_GRUPO, :DESC_CC, :NUM_CC)')
+    DeleteSQL.Strings = (
+      'delete from centrodecusto'
+      'where'
+      '  COD_CC = :OLD_COD_CC')
+    Left = 48
+    Top = 104
   end
 end
