@@ -13,6 +13,7 @@ type
     campo_usuario: TEdit;
     campo_senha: TEdit;
     entrar: TButton;
+    procedure entrarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,5 +26,18 @@ var
 implementation
 
 {$R *.dfm}
+
+uses ERP;
+
+procedure Ttela_login.entrarClick(Sender: TObject);
+begin
+   telainicial := Ttelainicial.Create(Self);
+   try
+    tela_login.Visible := False;
+    telainicial.ShowModal;
+   finally
+    FreeAndNil(TelaInicial);
+   end;
+end;
 
 end.

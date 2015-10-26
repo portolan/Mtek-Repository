@@ -3262,5 +3262,6 @@ object tela_login: Ttela_login
     Height = 25
     Caption = 'Entrar'
     TabOrder = 2
+    OnClick = entrarClick
   end
 end

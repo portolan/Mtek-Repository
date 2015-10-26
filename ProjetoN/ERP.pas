@@ -55,6 +55,7 @@ type
     procedure EnstradaSada1Click(Sender: TObject);
     procedure Marca1Click(Sender: TObject);
     procedure Empresas1Click(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -82,6 +83,11 @@ procedure TTelaInicial.EnstradaSada1Click(Sender: TObject);
 begin
     PMovimentoEstoque := TPMovimentoEstoque.Create(Self);
     PMovimentoEstoque.procChamaTela;
+end;
+
+procedure TTelaInicial.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  application.Terminate;
 end;
 
 procedure TTelaInicial.Marca1Click(Sender: TObject);

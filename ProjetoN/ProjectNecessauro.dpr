@@ -4,6 +4,8 @@ program ProjectNecessauro;
 
 
 
+
+
 uses
   Vcl.Forms,
   ERP in 'ERP.pas' {TelaInicial},
@@ -24,6 +26,7 @@ uses
   UM_Categoria in 'Estoque\UM_Categoria.pas' {MCategoria},
   UP_Categoria in 'Estoque\UP_Categoria.pas' {PCategoria},
   UP_empresa in 'contabil\UP_empresa.pas' {P_empresa},
+  login in 'login final\login.pas' {tela_login},
   UM_empresa in 'contabil\UM_empresa.pas' {M_empresa},
   UDM_PCP in 'pcp\UDM_PCP.pas' {DM_PCP: TDataModule},
   UM_PCP in 'pcp\UM_PCP.pas' {M_OP},
@@ -40,8 +43,8 @@ begin
   Application.CreateForm(TdmBanco, dmBanco);
   Application.CreateForm(TDM_Estoque, DM_Estoque);
   Application.CreateForm(TdmPedido, dmPedido);
-  Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(TDM_contabil, DM_contabil);
+  Application.CreateForm(Ttela_login, tela_login);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TM_OP, M_OP);
   Application.CreateForm(TP_OP, P_OP);
