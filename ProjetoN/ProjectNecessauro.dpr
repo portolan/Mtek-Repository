@@ -25,7 +25,10 @@ uses
   UP_Categoria in 'Estoque\UP_Categoria.pas' {PCategoria},
   UDM_PCP in 'pcp\UDM_PCP.pas' {DM_PCP: TDataModule},
   UM_PCP in 'pcp\UM_PCP.pas' {M_OP},
-  UP_OP in 'pcp\UP_OP.pas' {P_OP};
+  UP_OP in 'pcp\UP_OP.pas' {P_OP},
+  UDM_Servico in 'assistencia\UDM_Servico.pas' {DM_Servico: TDataModule},
+  UM_Servico in 'assistencia\UM_Servico.pas' {M_Servico},
+  UP_Servico in 'assistencia\UP_Servico.pas' {P_Servico};
 
 {$R *.res}
 
@@ -41,5 +44,8 @@ begin
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TM_OP, M_OP);
   Application.CreateForm(TP_OP, P_OP);
+  Application.CreateForm(TDM_Servico, DM_Servico);
+  Application.CreateForm(TM_Servico, M_Servico);
+  Application.CreateForm(TP_Servico, P_Servico);
   Application.Run;
 end.
