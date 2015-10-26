@@ -17,6 +17,9 @@ BEGIN
         WHERE B.estoq_empresa = :cod_empresa AND B.estoq_produto = :cod_produto AND B.estoq_codigo = :cod_estoque;
         MSG = 'PRODUTO ' || :COD_PRODUTO || ' RETIRADO!';
     END
-    ELSE MSG = 'OPERAÇÃO INVÁLIDA';
+    ELSE
+    BEGIN 
+	MSG = 'OPERAÇÃO INVÁLIDA';
+    END
 END
 
