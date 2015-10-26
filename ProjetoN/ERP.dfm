@@ -3536,6 +3536,7 @@ object TelaInicial: TTelaInicial
       Caption = 'Comercial'
       object Oramento1: TMenuItem
         Caption = 'Vendas'
+        OnClick = Oramento1Click
       end
       object PedidodeVenda1: TMenuItem
         Caption = 'Faturamento'
