@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2015/10/23 15:47:56.000.938,=C:\Users\Paulo Henrique\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2015/10/23 15:48:22.000.243,C:\Users\Paulo Henrique\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Users\Paulo Henrique\Dropbox\Projeto_ERP\login final\login.dfm</Transaction>
+    <Transaction>2015/10/23 15:48:22.000.243,C:\Users\Paulo Henrique\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\Paulo Henrique\Dropbox\Projeto_ERP\login final\login.pas</Transaction>
+    <Transaction>2015/10/23 15:58:44.000.141,C:\Users\Paulo Henrique\Documents\Embarcadero\Studio\Projects\Project2.dproj=C:\Users\Paulo Henrique\Dropbox\Projeto_ERP\login final\Project2.dproj</Transaction>
+    <Transaction>2015/10/23 16:12:59.000.811,C:\Users\Paulo Henrique\Dropbox\Projeto_ERP\login final\Project2.dproj=C:\Users\Paulo Henrique\Dropbox\Projeto_ERP\login final\SolutiosERP.dproj</Transaction>
+    <Transaction>2015/10/23 16:18:03.000.230,=C:\Users\Paulo Henrique\Dropbox\Projeto_ERP\login final\Unit1.pas</Transaction>
+    <Transaction>2015/10/23 16:18:42.000.462,=C:\Users\Paulo Henrique\Dropbox\Projeto_ERP\login final\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
