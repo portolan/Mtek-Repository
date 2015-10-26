@@ -32,10 +32,10 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(TdmBanco, dmBanco);
   Application.CreateForm(TDM_Estoque, DM_Estoque);
   Application.CreateForm(TdmPedido, dmPedido);
-  Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(TdmPedido1, dmPedido1);
   Application.CreateForm(TCadastroPadrao, CadastroPadrao);
   Application.CreateForm(TFRM_PEDIDO_VENDA, FRM_PEDIDO_VENDA);
