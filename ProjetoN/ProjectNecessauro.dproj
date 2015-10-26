@@ -150,14 +150,6 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="venda\xCadastro.pas">
-            <Form>CadastroPadrao</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="venda\C001.pas">
-            <Form>FRM_PEDIDO_VENDA</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="Estoque\UM_Categoria.pas">
             <Form>MCategoria</Form>
             <FormType>dfm</FormType>
@@ -280,7 +272,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectOSXEntitlements">
                     <Platform Name="OSX32">
-                        <RemoteDir>../</RemoteDir>
+                        <RemoteDir>Contents</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -366,7 +358,6 @@
                 </DeployClass>
                 <DeployClass Name="ProjectiOSEntitlements">
                     <Platform Name="iOSDevice">
-                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
