@@ -54,6 +54,7 @@ type
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
     procedure Marca1Click(Sender: TObject);
+    procedure Empresas1Click(Sender: TObject);
     procedure Oramento1Click(Sender: TObject);
   private
     { Private declarations }
@@ -68,9 +69,15 @@ implementation
 
 {$R *.dfm}
 
-uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
-  C001;
 
+uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
+  UP_empresa;
+
+
+procedure TTelaInicial.Empresas1Click(Sender: TObject);
+begin
+    TP_empresa.chamaTela(self);
+end;
 
 procedure TTelaInicial.EnstradaSada1Click(Sender: TObject);
 begin

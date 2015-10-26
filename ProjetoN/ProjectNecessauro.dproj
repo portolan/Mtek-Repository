@@ -153,6 +153,14 @@
             <Form>PCategoria</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="contabil\UP_empresa.pas">
+            <Form>P_empresa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contabil\UM_empresa.pas">
+            <Form>M_empresa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="pcp\UDM_PCP.pas">
             <Form>DM_PCP</Form>
             <FormType>dfm</FormType>
