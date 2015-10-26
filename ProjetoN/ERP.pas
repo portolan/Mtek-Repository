@@ -55,7 +55,6 @@ type
     procedure EnstradaSada1Click(Sender: TObject);
     procedure Marca1Click(Sender: TObject);
     procedure Empresas1Click(Sender: TObject);
-    procedure Oramento1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -89,16 +88,6 @@ procedure TTelaInicial.Marca1Click(Sender: TObject);
 begin
     PMarcas := TPMarcas.Create(Self);
     PMarcas.procChamaTela;
-end;
-
-procedure TTelaInicial.Oramento1Click(Sender: TObject);
-begin
-   FRM_PEDIDO_VENDA := TFRM_PEDIDO_VENDA(Self);
-   try
-      FRM_PEDIDO_VENDA.ShowModal;
-   finally
-      FreeAndNil(FRM_PEDIDO_VENDA);
-   end;
 end;
 
 procedure TTelaInicial.Produtos1Click(Sender: TObject);
