@@ -10,6 +10,7 @@ uses
 type
   TPMarcas = class(TxPesqPadrao)
     procedure FormCreate(Sender: TObject);
+    procedure sbNovoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,6 +39,14 @@ begin
     DM_Estoque.Marcas.Close;
     DM_Estoque.Marcas.SQL.Text := 'select * from Marcas';
     DM_Estoque.Marcas.Open;
+end;
+
+procedure TPMarcas.sbNovoClick(Sender: TObject);
+var
+    gen : integer;
+begin
+  inherited;
+    
 end;
 
 end.

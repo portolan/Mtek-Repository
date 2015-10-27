@@ -7,14 +7,15 @@ inherited MMarcas: TMMarcas
   TextHeight = 13
   inherited pnRodape: TPanel
     Width = 556
+    ExplicitWidth = 556
     inherited sbCancelar: TSpeedButton
       Left = 459
+      ExplicitLeft = 459
     end
   end
   inherited gbInfos: TGroupBox
     Width = 556
-    ExplicitLeft = 8
-    ExplicitTop = 33
+    ExplicitWidth = 556
     object GroupBox1: TGroupBox
       Left = 3
       Top = 16
@@ -51,6 +52,9 @@ inherited MMarcas: TMMarcas
         Height = 21
         DataField = 'MARC_CODIGO'
         DataSource = DM_Estoque.DSMarcas
+        ParentColor = True
+        ParentShowHint = False
+        ShowHint = False
         TabOrder = 0
       end
       object DBEdit2: TDBEdit
@@ -69,6 +73,8 @@ inherited MMarcas: TMMarcas
     Top = 126
     Width = 521
     Height = 99
+    DataField = 'MARC_OBS'
+    DataSource = DM_Estoque.DSMarcas
     TabOrder = 2
   end
 end

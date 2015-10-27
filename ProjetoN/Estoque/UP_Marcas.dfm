@@ -1,6 +1,8 @@
 inherited PMarcas: TPMarcas
   Caption = 'PMarcas'
   OnCreate = FormCreate
+  ExplicitWidth = 799
+  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
@@ -21,6 +23,7 @@ inherited PMarcas: TPMarcas
           item
             Expanded = False
             FieldName = 'MARC_OBS'
+            Width = 64
             Visible = True
           end>
       end
