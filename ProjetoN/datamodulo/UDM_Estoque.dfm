@@ -960,4 +960,13 @@ object DM_Estoque: TDM_Estoque
     Left = 416
     Top = 64
   end
+  object QueryGenerico: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    Left = 496
+    Top = 32
+  end
 end

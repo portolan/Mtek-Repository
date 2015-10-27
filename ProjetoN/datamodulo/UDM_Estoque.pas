@@ -101,10 +101,11 @@ type
     CategoriaCAT_DESCRICAO: TIBStringField;
     CategoriaCAT_NCM: TIBStringField;
     CategoriaCAT_OBS: TIBStringField;
+    QueryGenerico: TIBQuery;
   private
     { Private declarations }
   public
-    { Public declarations }
+     function funcRecuperaProximoIdGenerator(c_generator: String): Integer;
   end;
 
 var
@@ -117,5 +118,18 @@ implementation
 uses dm000;
 
 {$R *.dfm}
+
+{ TDM_Estoque }
+
+function TDM_Estoque.funcRecuperaProximoIdGenerator(
+  c_generator: String): Integer;
+begin
+    QueryGenerico.Close;
+    QueryGenerico.SQL.Text := ' SELECT GEN_ID(' + c_generator +
+      ',1) FROM RDB$DATABASE';
+    QueryGenerico.Open;
+
+    Result := QueryGenerico.FieldByName('GEN_ID').AsInteger;
+end;
 
 end.
