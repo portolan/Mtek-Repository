@@ -16,7 +16,7 @@ BEGIN
         NEW.ESTOQ_CODIGO,
         NEW.ESTOQ_PRODUTO,
         GEN_ID(gen_estoq_movimento,1),
-        IIF(NEW.ESTOQ_QTD > OLD.ESTOQ_QTD, 'E', 'S'),
+        IIF(NEW.ESTOQ_QTD >= OLD.ESTOQ_QTD, 'E', 'S'),
         ROUND(NEW.ESTOQ_QTD - OLD.ESTOQ_QTD),
         current_timestamp,
         'ESTOQUE BAIXADO POR EXTERNOS!');
