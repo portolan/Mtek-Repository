@@ -59,6 +59,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OrdemdeProduo1Click(Sender: TObject);
     procedure ProducaoClick(Sender: TObject);
+    procedure Manuteno3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,7 +75,8 @@ implementation
 
 
 uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
-  UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO;
+  UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO, UM_Servico,
+  UP_Servico;
 
 
 procedure TTelaInicial.CentrodeCustos2Click(Sender: TObject);
@@ -100,6 +102,16 @@ end;
 procedure TTelaInicial.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   application.Terminate;
+end;
+
+procedure TTelaInicial.Manuteno3Click(Sender: TObject);
+begin
+   P_Servico := TP_Servico.Create(Self);
+   try
+     P_Servico.ShowModal;
+   finally
+      FreeAndNil(P_Servico);
+   end;
 end;
 
 procedure TTelaInicial.Marca1Click(Sender: TObject);

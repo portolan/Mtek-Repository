@@ -3583,6 +3583,7 @@ object TelaInicial: TTelaInicial
       Caption = 'Sistema'
       object Manuteno3: TMenuItem
         Caption = 'Manuten'#231#227'o'
+        OnClick = Manuteno3Click
       end
     end
     object Sair1: TMenuItem
