@@ -50,6 +50,7 @@ type
     PlanodeContas1: TMenuItem;
     ConsultaMovimentaes1: TMenuItem;
     p1: TMenuItem;
+    Producao: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -58,6 +59,7 @@ type
     procedure CentrodeCustos2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OrdemdeProduo1Click(Sender: TObject);
+    procedure ProducaoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -73,7 +75,7 @@ implementation
 
 
 uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
-  UP_empresa, UP_centro, UP_OP;
+  UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO;
 
 
 procedure TTelaInicial.CentrodeCustos2Click(Sender: TObject);
@@ -119,6 +121,17 @@ begin
     finally
         FreeAndNil(P_OP);
     end;
+end;
+
+procedure TTelaInicial.ProducaoClick(Sender: TObject);
+begin
+P_PRODUCAO := TP_PRODUCAO.Create(Self);
+try
+    P_PRODUCAO.ShowModal;
+finally
+  FreeAndNil(P_PRODUCAO);
+end;
+
 end;
 
 procedure TTelaInicial.Produtos1Click(Sender: TObject);

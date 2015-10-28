@@ -34,7 +34,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses dm000;
+uses dm000, UP_PRODUCAO;
 
 {$R *.dfm}
 

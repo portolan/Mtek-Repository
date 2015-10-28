@@ -50,17 +50,18 @@ object DM_PCP: TDM_PCP
       'delete from ORDEM_PRODUCAO'
       'where'
       '  OP_COD = :OLD_OP_COD')
-    Left = 200
+    Left = 216
     Top = 96
   end
   object DS_PCP: TDataSource
     DataSet = IB_PCP
-    Left = 296
+    Left = 288
     Top = 24
   end
   object IB_PCP: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -68,7 +69,7 @@ object DM_PCP: TDM_PCP
       'select * from ORDEM_PRODUCAO ')
     UpdateObject = UPD_PCP
     Left = 96
-    Top = 32
+    Top = 40
     object IB_PCPOP_COD: TIntegerField
       FieldName = 'OP_COD'
       Origin = '"ORDEM_PRODUCAO"."OP_COD"'

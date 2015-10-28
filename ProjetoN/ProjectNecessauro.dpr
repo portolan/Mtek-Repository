@@ -35,7 +35,9 @@ uses
   UM_Servico in 'assistencia\UM_Servico.pas' {M_Servico},
   UP_Servico in 'assistencia\UP_Servico.pas' {P_Servico},
   UP_centro in 'contabil\UP_centro.pas' {P_centro},
-  UM_centro in 'contabil\UM_centro.pas' {M_centro};
+  UM_centro in 'contabil\UM_centro.pas' {M_centro},
+  UP_PRODUCAO in 'pcp\UP_PRODUCAO.pas' {P_PRODUCAO},
+  UM_PRODUCAO in 'pcp\UM_PRODUCAO.pas' {M_PRODUCAO};
 
 {$R *.res}
 
@@ -49,5 +51,7 @@ begin
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(Ttela_login, tela_login);
+  Application.CreateForm(TP_PRODUCAO, P_PRODUCAO);
+  Application.CreateForm(TM_PRODUCAO, M_PRODUCAO);
   Application.Run;
 end.
