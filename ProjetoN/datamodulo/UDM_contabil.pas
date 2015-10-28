@@ -31,6 +31,19 @@ type
     centroDESC_CC: TIBStringField;
     centroANALITICO: TIBStringField;
     centroCOD_GRUPO: TIntegerField;
+    lancamento: TIBQuery;
+    Dlancamento: TDataSource;
+    Ulancamento: TIBUpdateSQL;
+    lancamentoNR_LOTE: TIntegerField;
+    lancamentoNR_LANCAMENTO: TIntegerField;
+    lancamentoDT_LANCAMENTO: TDateField;
+    lancamentoDEBITO: TIntegerField;
+    lancamentoCENTRODECUSTO_DB: TIntegerField;
+    lancamentoCREDITO: TIntegerField;
+    lancamentoCENTRODECUSTO_CR: TIntegerField;
+    lancamentoHISTORICO: TIntegerField;
+    lancamentoVAR_HISTORICO: TIBStringField;
+    lancamentoVALOR: TIntegerField;
   private
     { Private declarations }
   public

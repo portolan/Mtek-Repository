@@ -9,14 +9,18 @@ inherited M_centro: TM_centro
   inherited pnRodape: TPanel
     Top = 170
     Width = 451
+    ExplicitTop = 170
+    ExplicitWidth = 451
     inherited sbCancelar: TSpeedButton
       Left = 354
+      ExplicitLeft = 354
     end
   end
   inherited gbInfos: TGroupBox
     Width = 451
     Height = 170
-    ExplicitLeft = 8
+    ExplicitWidth = 451
+    ExplicitHeight = 170
     object Label1: TLabel
       Left = 16
       Top = 21
@@ -55,7 +59,6 @@ inherited M_centro: TM_centro
       Width = 45
       Height = 13
       Caption = 'Analitico?'
-      FocusControl = DBEdit5
     end
     object DBEdit1: TDBEdit
       Left = 16
@@ -93,11 +96,11 @@ inherited M_centro: TM_centro
       DataSource = DataSource1
       TabOrder = 3
     end
-    object DBEdit5: TDBEdit
-      Left = 176
+    object DBCheckBox1: TDBCheckBox
+      Left = 184
       Top = 132
-      Width = 17
-      Height = 21
+      Width = 97
+      Height = 17
       DataField = 'ANALITICO'
       DataSource = DataSource1
       TabOrder = 4

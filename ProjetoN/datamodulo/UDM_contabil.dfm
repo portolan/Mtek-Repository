@@ -11,7 +11,7 @@ object DM_contabil: TDM_contabil
     SQL.Strings = (
       'select * from empresa')
     UpdateObject = Uempresa
-    Left = 104
+    Left = 128
     Top = 24
     object empresaCOD_EMPRESA: TIntegerField
       DisplayLabel = 'Codigo'
@@ -86,7 +86,7 @@ object DM_contabil: TDM_contabil
   end
   object Dempresa: TDataSource
     DataSet = empresa
-    Left = 160
+    Left = 208
     Top = 24
   end
   object Uempresa: TIBUpdateSQL
@@ -144,7 +144,7 @@ object DM_contabil: TDM_contabil
       'select * from centrodecusto'
       '')
     UpdateObject = Ucentro
-    Left = 104
+    Left = 128
     Top = 104
     object centroCOD_CC: TIntegerField
       DisplayLabel = 'C'#243'digo C.C'
@@ -178,7 +178,7 @@ object DM_contabil: TDM_contabil
   end
   object Dcentro: TDataSource
     DataSet = centro
-    Left = 160
+    Left = 208
     Top = 104
   end
   object Ucentro: TIBUpdateSQL
@@ -208,5 +208,115 @@ object DM_contabil: TDM_contabil
       '  COD_CC = :OLD_COD_CC')
     Left = 48
     Top = 104
+  end
+  object lancamento: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from lancamentos'
+      '')
+    UpdateObject = Ulancamento
+    Left = 128
+    Top = 176
+    object lancamentoNR_LOTE: TIntegerField
+      DisplayLabel = 'N'#186' Lote'
+      FieldName = 'NR_LOTE'
+      Origin = '"LANCAMENTOS"."NR_LOTE"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object lancamentoNR_LANCAMENTO: TIntegerField
+      DisplayLabel = 'N'#186' Lan'#231'amento'
+      FieldName = 'NR_LANCAMENTO'
+      Origin = '"LANCAMENTOS"."NR_LANCAMENTO"'
+    end
+    object lancamentoDT_LANCAMENTO: TDateField
+      DisplayLabel = 'Data Lan'#231'amento'
+      FieldName = 'DT_LANCAMENTO'
+      Origin = '"LANCAMENTOS"."DT_LANCAMENTO"'
+    end
+    object lancamentoDEBITO: TIntegerField
+      DisplayLabel = 'D'#233'bito'
+      FieldName = 'DEBITO'
+      Origin = '"LANCAMENTOS"."DEBITO"'
+    end
+    object lancamentoCENTRODECUSTO_DB: TIntegerField
+      DisplayLabel = 'C.C D'#233'bito'
+      FieldName = 'CENTRODECUSTO_DB'
+      Origin = '"LANCAMENTOS"."CENTRODECUSTO_DB"'
+    end
+    object lancamentoCREDITO: TIntegerField
+      DisplayLabel = 'Cr'#233'dito'
+      FieldName = 'CREDITO'
+      Origin = '"LANCAMENTOS"."CREDITO"'
+    end
+    object lancamentoCENTRODECUSTO_CR: TIntegerField
+      DisplayLabel = 'C.C Cr'#233'dito'
+      FieldName = 'CENTRODECUSTO_CR'
+      Origin = '"LANCAMENTOS"."CENTRODECUSTO_CR"'
+    end
+    object lancamentoHISTORICO: TIntegerField
+      DisplayLabel = 'Hist'#243'rico'
+      FieldName = 'HISTORICO'
+      Origin = '"LANCAMENTOS"."HISTORICO"'
+    end
+    object lancamentoVAR_HISTORICO: TIBStringField
+      DisplayLabel = 'Hist'#243'rico Variavel'
+      FieldName = 'VAR_HISTORICO'
+      Origin = '"LANCAMENTOS"."VAR_HISTORICO"'
+      Size = 100
+    end
+    object lancamentoVALOR: TIntegerField
+      DisplayLabel = 'Valor'
+      FieldName = 'VALOR'
+      Origin = '"LANCAMENTOS"."VALOR"'
+    end
+  end
+  object Dlancamento: TDataSource
+    DataSet = lancamento
+    Left = 208
+    Top = 176
+  end
+  object Ulancamento: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      'from lancamentos '
+      'where'
+      '  NR_LOTE = :NR_LOTE')
+    ModifySQL.Strings = (
+      'update lancamentos'
+      'set'
+      '  CENTRODECUSTO_CR = :CENTRODECUSTO_CR,'
+      '  CENTRODECUSTO_DB = :CENTRODECUSTO_DB,'
+      '  CREDITO = :CREDITO,'
+      '  DEBITO = :DEBITO,'
+      '  DT_LANCAMENTO = :DT_LANCAMENTO,'
+      '  HISTORICO = :HISTORICO,'
+      '  NR_LANCAMENTO = :NR_LANCAMENTO,'
+      '  NR_LOTE = :NR_LOTE,'
+      '  VALOR = :VALOR,'
+      '  VAR_HISTORICO = :VAR_HISTORICO'
+      'where'
+      '  NR_LOTE = :OLD_NR_LOTE')
+    InsertSQL.Strings = (
+      'insert into lancamentos'
+      
+        '  (CENTRODECUSTO_CR, CENTRODECUSTO_DB, CREDITO, DEBITO, DT_LANCA' +
+        'MENTO, '
+      '   HISTORICO, NR_LANCAMENTO, NR_LOTE, VALOR, VAR_HISTORICO)'
+      'values'
+      
+        '  (:CENTRODECUSTO_CR, :CENTRODECUSTO_DB, :CREDITO, :DEBITO, :DT_' +
+        'LANCAMENTO, '
+      '   :HISTORICO, :NR_LANCAMENTO, :NR_LOTE, :VALOR, :VAR_HISTORICO)')
+    DeleteSQL.Strings = (
+      'delete from lancamentos'
+      'where'
+      '  NR_LOTE = :OLD_NR_LOTE')
+    Left = 48
+    Top = 176
   end
 end

@@ -19,7 +19,7 @@ type
     Label4: TLabel;
     DBEdit4: TDBEdit;
     Label5: TLabel;
-    DBEdit5: TDBEdit;
+    DBCheckBox1: TDBCheckBox;
   private
     { Private declarations }
   public
