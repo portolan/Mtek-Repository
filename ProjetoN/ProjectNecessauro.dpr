@@ -50,8 +50,6 @@ begin
   Application.CreateForm(TDM_contabil, DM_contabil);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TDM_Servico, DM_Servico);
-  Application.CreateForm(Ttela_login, tela_login);
-  Application.CreateForm(TP_PRODUCAO, P_PRODUCAO);
-  Application.CreateForm(TM_PRODUCAO, M_PRODUCAO);
+  Application.CreateForm(TTelaInicial, TelaInicial);
   Application.Run;
 end.
