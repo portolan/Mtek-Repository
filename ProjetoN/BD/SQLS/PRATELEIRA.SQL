@@ -15,21 +15,11 @@ SET SQL DIALECT 3;
 
 
 
-CREATE TABLE ESTOQUE (
-    ESTOQ_EMPRESA     INTEGER NOT NULL,
-    ESTOQ_PRODUTO     VARCHAR(30) NOT NULL,
-    ESTOQ_BLOCO       INTEGER NOT NULL,
-    ESTOQ_PRATELEIRA  INTEGER NOT NULL,
-    ESTOQ_CODIGO      VARCHAR(30) NOT NULL,
-    ESTOQ_STATUS      CHAR(1) DEFAULT 'A',
-    ESTOQ_QTD         NUMERIC(18,2),
-    ESTOQ_QTDMIN      NUMERIC(18,2),
-    ESTOQ_QTDMAX      NUMERIC(18,2),
-    ESTOQ_CUSTOMEDIO  NUMERIC(18,2),
-    ESTOQ_CATEGORIA   INTEGER,
-    ESTOQ_TIPO        INTEGER,
-    ESTOQ_DTCADASTRO  DATE,
-    ESTOQ_OBS         VARCHAR(100)
+CREATE TABLE PRATELEIRA(
+    PRAT_EMPRESA     INTEGER NOT NULL,
+    PRAT_CODIGO      INTEGER NOT NULL,
+    PRAT_DESCRICAO   VARCHAR(60) NOT NULL,
+    PRAT_OBS         VARCHAR(100)
 );
 
 
@@ -39,16 +29,13 @@ CREATE TABLE ESTOQUE (
 /***                              Primary Keys                              ***/
 /******************************************************************************/
 
-ALTER TABLE ESTOQUE ADD CONSTRAINT PK_ESTOQUE PRIMARY KEY (ESTOQ_EMPRESA, ESTOQ_PRODUTO, ESTOQ_BLOCO, ESTOQ_PRATELEIRA, ESTOQ_CODIGO);
+ALTER TABLE ESTOQUE ADD CONSTRAINT PK_PRATELEIRA PRIMARY KEY (PRAT_EMPRESA, PRAT_CODIGO);
 
 
 /******************************************************************************/
 /***                              Foreign Keys                              ***/
 /******************************************************************************/
 
-ALTER TABLE ESTOQUE ADD CONSTRAINT FK_ESTOQUE_PRODUTO FOREIGN KEY (ESTOQ_EMPRESA, ESTOQ_PRODUTO) REFERENCES PRODUTOS (PRO_EMPRESA, PRO_CODIGO);
-ALTER TABLE ESTOQUE ADD CONSTRAINT FK_ESTOQUE_BLOCO FOREIGN KEY (ESTOQ_EMPRESA, ESTOQ_BLOCO) REFERENCES BLOCO (BLOC_EMPRESA, BLOC_CODIGO);
-ALTER TABLE ESTOQUE ADD CONSTRAINT FK_ESTOQUE_PRATELEIRA FOREIGN KEY (ESTOQ_EMPRESA, ESTOQ_PRATELEIRA) REFERENCES PRATELEIRA (PRAT_EMPRESA, PRAT_CODIGO);
 
 /******************************************************************************/
 /***                               Privileges                               ***/
