@@ -3504,7 +3504,7 @@ object TelaInicial: TTelaInicial
       end
     end
     object PCP1: TMenuItem
-      Caption = 'PCP'
+      Caption = 'PCP/PRODUCAO'
       object FichaTcnica1: TMenuItem
         Caption = 'Ficha T'#233'cnica'
       end
@@ -3513,9 +3513,6 @@ object TelaInicial: TTelaInicial
       end
       object PrevisodeVendas1: TMenuItem
         Caption = 'Previs'#227'o de Vendas'
-      end
-      object Manuteno2: TMenuItem
-        Caption = 'Manuten'#231#227'o'
       end
       object OrdemdeProduo1: TMenuItem
         Caption = 'Ordem de Produ'#231#227'o'

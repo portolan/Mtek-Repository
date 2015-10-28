@@ -24,7 +24,6 @@ type
     FichaTcnica1: TMenuItem;
     PrazosCliente1: TMenuItem;
     PrevisodeVendas1: TMenuItem;
-    Manuteno2: TMenuItem;
     OrdemdeProduo1: TMenuItem;
     CotaoFornecedor1: TMenuItem;
     PedidodeCompra1: TMenuItem;
