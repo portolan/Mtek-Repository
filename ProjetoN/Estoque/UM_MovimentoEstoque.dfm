@@ -9,7 +9,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
   inherited pnRodape: TPanel
     Top = 289
     Width = 699
-    ExplicitTop = 293
+    ExplicitTop = 289
     ExplicitWidth = 699
     inherited sbCancelar: TSpeedButton
       Left = 602
@@ -127,7 +127,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
     Width = 699
     Height = 289
     ExplicitWidth = 699
-    ExplicitHeight = 293
+    ExplicitHeight = 289
     object GroupBox1: TGroupBox
       Left = 3
       Top = 14
@@ -198,6 +198,14 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         Height = 13
         Caption = 'Observa'#231#245'es'
       end
+      object Label9: TLabel
+        Left = 327
+        Top = 102
+        Width = 76
+        Height = 13
+        Caption = 'Valor Financeiro'
+        FocusControl = DBEdit8
+      end
       object DBEdit1: TDBEdit
         Left = 16
         Top = 32
@@ -260,6 +268,15 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         DataField = 'EM_DATA'
         DataSource = DM_Estoque.DSMovimentoEstoque
         TabOrder = 6
+      end
+      object DBEdit8: TDBEdit
+        Left = 327
+        Top = 118
+        Width = 146
+        Height = 21
+        DataField = 'EM_VALOR_FINANCEIRO'
+        DataSource = DM_Estoque.DSMovimentoEstoque
+        TabOrder = 7
       end
     end
   end

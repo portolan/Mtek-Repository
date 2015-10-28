@@ -74,6 +74,10 @@ type
     DBImage1: TDBImage;
     DBMemo1: TDBMemo;
     SpeedButton1: TSpeedButton;
+    Label34: TLabel;
+    DBEdit33: TDBEdit;
+    CheckBox1: TCheckBox;
+    DBRadioGroup1: TDBRadioGroup;
     procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }

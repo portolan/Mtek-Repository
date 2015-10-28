@@ -2,6 +2,7 @@ inherited MProduto: TMProduto
   Caption = 'MProduto'
   ClientHeight = 685
   ClientWidth = 717
+  ExplicitTop = -106
   ExplicitWidth = 733
   ExplicitHeight = 724
   PixelsPerInch = 96
@@ -9,7 +10,7 @@ inherited MProduto: TMProduto
   inherited pnRodape: TPanel
     Top = 644
     Width = 717
-    ExplicitTop = 569
+    ExplicitTop = 644
     ExplicitWidth = 717
     inherited sbCancelar: TSpeedButton
       Left = 620
@@ -19,8 +20,7 @@ inherited MProduto: TMProduto
   inherited gbInfos: TGroupBox
     Width = 717
     Height = 644
-    ExplicitLeft = -1
-    ExplicitTop = -5
+    ExplicitLeft = -8
     ExplicitWidth = 717
     ExplicitHeight = 644
     object Label30: TLabel
@@ -256,6 +256,27 @@ inherited MProduto: TMProduto
         DataSource = DM_Estoque.DSProdutos
         TabOrder = 10
       end
+      object CheckBox1: TCheckBox
+        Left = 664
+        Top = 192
+        Width = 97
+        Height = 17
+        Caption = 'CheckBox1'
+        TabOrder = 11
+      end
+      object DBRadioGroup1: TDBRadioGroup
+        Left = 327
+        Top = 135
+        Width = 375
+        Height = 55
+        Caption = 'DBRadioGroup1'
+        DataSource = DM_Estoque.DSProdutos
+        Items.Strings = (
+          'Bem Imolizado'
+          'Produto Acabado'
+          'Mat'#233'ria Prima')
+        TabOrder = 12
+      end
     end
     object GroupBox2: TGroupBox
       Left = 3
@@ -460,6 +481,14 @@ inherited MProduto: TMProduto
         Caption = '$ Venda 3'
         FocusControl = DBEdit29
       end
+      object Label34: TLabel
+        Left = 208
+        Top = 152
+        Width = 54
+        Height = 13
+        Caption = 'Valoriza'#231#227'o'
+        FocusControl = DBEdit33
+      end
       object DBEdit17: TDBEdit
         Left = 15
         Top = 37
@@ -576,6 +605,15 @@ inherited MProduto: TMProduto
         DataField = 'PRO_VLRVENDA3'
         DataSource = DM_Estoque.DSProdutos
         TabOrder = 12
+      end
+      object DBEdit33: TDBEdit
+        Left = 208
+        Top = 168
+        Width = 251
+        Height = 21
+        DataField = 'PRO_VALORIZACAO'
+        DataSource = DM_Estoque.DSProdutos
+        TabOrder = 13
       end
     end
     object TPanel

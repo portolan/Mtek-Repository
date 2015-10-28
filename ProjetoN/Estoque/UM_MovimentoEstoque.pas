@@ -27,6 +27,8 @@ type
     Label8: TLabel;
     DBMemo1: TDBMemo;
     SpeedButton1: TSpeedButton;
+    Label9: TLabel;
+    DBEdit8: TDBEdit;
     procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
