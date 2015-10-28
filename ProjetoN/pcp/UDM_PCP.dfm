@@ -61,7 +61,6 @@ object DM_PCP: TDM_PCP
   object IB_PCP: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
-    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
