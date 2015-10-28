@@ -57,6 +57,7 @@ type
     procedure Empresas1Click(Sender: TObject);
     procedure CentrodeCustos2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure OrdemdeProduo1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -72,7 +73,7 @@ implementation
 
 
 uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
-  UP_empresa, UP_centro;
+  UP_empresa, UP_centro, UP_OP;
 
 
 procedure TTelaInicial.CentrodeCustos2Click(Sender: TObject);
@@ -107,6 +108,16 @@ begin
         PMarcas.ShowModal;
     finally
         FreeAndNil(PMarcas);
+    end;
+end;
+
+procedure TTelaInicial.OrdemdeProduo1Click(Sender: TObject);
+begin
+ P_OP := TP_OP.Create(Self);
+    try
+        P_OP.ShowModal;
+    finally
+        FreeAndNil(P_OP);
     end;
 end;
 

@@ -3519,6 +3519,7 @@ object TelaInicial: TTelaInicial
       end
       object OrdemdeProduo1: TMenuItem
         Caption = 'Ordem de Produ'#231#227'o'
+        OnClick = OrdemdeProduo1Click
       end
     end
     object Compras1: TMenuItem

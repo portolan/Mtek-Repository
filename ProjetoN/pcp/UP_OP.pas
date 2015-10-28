@@ -36,7 +36,7 @@ procedure TP_OP.procSelect;
 begin
   inherited;
       DM_PCP.IB_PCP.Close;
-      DM_PCP.IB_PCP.SQL.Text:= 'SELECT * FROM CLIENTE';
+      DM_PCP.IB_PCP.SQL.Text:= 'SELECT * FROM ORDEM_PRODUCAO';
       DM_PCP.IB_PCP.Open;
 end;
 

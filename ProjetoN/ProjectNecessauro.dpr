@@ -46,8 +46,8 @@ begin
   Application.CreateForm(TDM_Estoque, DM_Estoque);
   Application.CreateForm(TdmPedido, dmPedido);
   Application.CreateForm(TDM_contabil, DM_contabil);
-  Application.CreateForm(Ttela_login, tela_login);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TDM_Servico, DM_Servico);
+  Application.CreateForm(Ttela_login, tela_login);
   Application.Run;
 end.

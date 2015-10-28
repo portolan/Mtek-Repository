@@ -10,16 +10,17 @@ type
   TDM_PCP = class(TDataModule)
     DS_PCP: TDataSource;
     IB_PCP: TIBQuery;
-    IB_PCPCLI_COD: TIntegerField;
-    IB_PCPCLI_NOME: TIBStringField;
-    IB_PCPCLI_CPF: TIBStringField;
-    IB_PCPCLI_ENDERECO: TIBStringField;
-    IB_PCPCLI_CIDADE: TIBStringField;
-    IB_PCPCLI_BAIRRO: TIBStringField;
-    IB_PCPCLI_CEP: TIBStringField;
-    IB_PCPCLI_NR_RESIDENCIAL: TIBStringField;
-    IB_PCPCLI_NR_CELULAR: TIBStringField;
     UPD_PCP: TIBUpdateSQL;
+    IB_PCPOP_COD: TIntegerField;
+    IB_PCPOP_DATA: TDateField;
+    IB_PCPOP_DT_ORCAMENTO: TDateField;
+    IB_PCPOP_DESCRICAO: TIBStringField;
+    IB_PCPOP_DT_PEDIDO: TDateField;
+    IB_PCPOP_DT_ENTREGA: TDateField;
+    IB_PCPOP_QTD: TIntegerField;
+    IB_PCPOP_CUSTO_PRODUCAO: TIBBCDField;
+    IB_PCPOP_TIPO: TIBStringField;
+    IB_PCPOP_STATUS: TIBStringField;
   private
     { Private declarations }
   public

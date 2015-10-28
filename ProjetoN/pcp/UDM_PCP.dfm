@@ -5,47 +5,51 @@ object DM_PCP: TDM_PCP
   object UPD_PCP: TIBUpdateSQL
     RefreshSQL.Strings = (
       'Select '
-      '  CLI_COD,'
-      '  CLI_NOME,'
-      '  CLI_CPF,'
-      '  CLI_ENDERECO,'
-      '  CLI_CIDADE,'
-      '  CLI_BAIRRO,'
-      '  CLI_CEP,'
-      '  CLI_NR_RESIDENCIAL,'
-      '  CLI_NR_CELULAR'
-      'from CLIENTE '
+      '  OP_COD,'
+      '  OP_DATA,'
+      '  OP_DT_ORCAMENTO,'
+      '  OP_DESCRICAO,'
+      '  OP_DT_PEDIDO,'
+      '  OP_DT_ENTREGA,'
+      '  OP_QTD,'
+      '  OP_CUSTO_PRODUCAO,'
+      '  OP_TIPO,'
+      '  OP_STATUS'
+      'from ORDEM_PRODUCAO '
       'where'
-      '  CLI_COD = :CLI_COD')
+      '  OP_COD = :OP_COD')
     ModifySQL.Strings = (
-      'update CLIENTE'
+      'update ORDEM_PRODUCAO'
       'set'
-      '  CLI_BAIRRO = :CLI_BAIRRO,'
-      '  CLI_CEP = :CLI_CEP,'
-      '  CLI_CIDADE = :CLI_CIDADE,'
-      '  CLI_COD = :CLI_COD,'
-      '  CLI_CPF = :CLI_CPF,'
-      '  CLI_ENDERECO = :CLI_ENDERECO,'
-      '  CLI_NOME = :CLI_NOME,'
-      '  CLI_NR_CELULAR = :CLI_NR_CELULAR,'
-      '  CLI_NR_RESIDENCIAL = :CLI_NR_RESIDENCIAL'
+      '  OP_COD = :OP_COD,'
+      '  OP_CUSTO_PRODUCAO = :OP_CUSTO_PRODUCAO,'
+      '  OP_DATA = :OP_DATA,'
+      '  OP_DESCRICAO = :OP_DESCRICAO,'
+      '  OP_DT_ENTREGA = :OP_DT_ENTREGA,'
+      '  OP_DT_ORCAMENTO = :OP_DT_ORCAMENTO,'
+      '  OP_DT_PEDIDO = :OP_DT_PEDIDO,'
+      '  OP_QTD = :OP_QTD,'
+      '  OP_STATUS = :OP_STATUS,'
+      '  OP_TIPO = :OP_TIPO'
       'where'
-      '  CLI_COD = :OLD_CLI_COD')
+      '  OP_COD = :OLD_OP_COD')
     InsertSQL.Strings = (
-      'insert into CLIENTE'
+      'insert into ORDEM_PRODUCAO'
       
-        '  (CLI_BAIRRO, CLI_CEP, CLI_CIDADE, CLI_COD, CLI_CPF, CLI_ENDERE' +
-        'CO, CLI_NOME, '
-      '   CLI_NR_CELULAR, CLI_NR_RESIDENCIAL)'
+        '  (OP_COD, OP_CUSTO_PRODUCAO, OP_DATA, OP_DESCRICAO, OP_DT_ENTRE' +
+        'GA, OP_DT_ORCAMENTO, '
+      '   OP_DT_PEDIDO, OP_QTD, OP_STATUS, OP_TIPO)'
       'values'
       
-        '  (:CLI_BAIRRO, :CLI_CEP, :CLI_CIDADE, :CLI_COD, :CLI_CPF, :CLI_' +
-        'ENDERECO, '
-      '   :CLI_NOME, :CLI_NR_CELULAR, :CLI_NR_RESIDENCIAL)')
+        '  (:OP_COD, :OP_CUSTO_PRODUCAO, :OP_DATA, :OP_DESCRICAO, :OP_DT_' +
+        'ENTREGA, '
+      
+        '   :OP_DT_ORCAMENTO, :OP_DT_PEDIDO, :OP_QTD, :OP_STATUS, :OP_TIP' +
+        'O)')
     DeleteSQL.Strings = (
-      'delete from CLIENTE'
+      'delete from ORDEM_PRODUCAO'
       'where'
-      '  CLI_COD = :OLD_CLI_COD')
+      '  OP_COD = :OLD_OP_COD')
     Left = 200
     Top = 96
   end
@@ -61,62 +65,56 @@ object DM_PCP: TDM_PCP
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select * from CLIENTE')
+      'select * from ORDEM_PRODUCAO ')
     UpdateObject = UPD_PCP
     Left = 96
     Top = 32
-    object IB_PCPCLI_COD: TIntegerField
-      FieldName = 'CLI_COD'
-      Origin = '"CLIENTE"."CLI_COD"'
+    object IB_PCPOP_COD: TIntegerField
+      FieldName = 'OP_COD'
+      Origin = '"ORDEM_PRODUCAO"."OP_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object IB_PCPCLI_NOME: TIBStringField
-      FieldName = 'CLI_NOME'
-      Origin = '"CLIENTE"."CLI_NOME"'
-      Required = True
-      Size = 80
+    object IB_PCPOP_DATA: TDateField
+      FieldName = 'OP_DATA'
+      Origin = '"ORDEM_PRODUCAO"."OP_DATA"'
     end
-    object IB_PCPCLI_CPF: TIBStringField
-      FieldName = 'CLI_CPF'
-      Origin = '"CLIENTE"."CLI_CPF"'
-      Required = True
-      Size = 80
+    object IB_PCPOP_DT_ORCAMENTO: TDateField
+      FieldName = 'OP_DT_ORCAMENTO'
+      Origin = '"ORDEM_PRODUCAO"."OP_DT_ORCAMENTO"'
     end
-    object IB_PCPCLI_ENDERECO: TIBStringField
-      FieldName = 'CLI_ENDERECO'
-      Origin = '"CLIENTE"."CLI_ENDERECO"'
-      Required = True
-      Size = 200
+    object IB_PCPOP_DESCRICAO: TIBStringField
+      FieldName = 'OP_DESCRICAO'
+      Origin = '"ORDEM_PRODUCAO"."OP_DESCRICAO"'
+      Size = 50
     end
-    object IB_PCPCLI_CIDADE: TIBStringField
-      FieldName = 'CLI_CIDADE'
-      Origin = '"CLIENTE"."CLI_CIDADE"'
-      Required = True
-      Size = 80
+    object IB_PCPOP_DT_PEDIDO: TDateField
+      FieldName = 'OP_DT_PEDIDO'
+      Origin = '"ORDEM_PRODUCAO"."OP_DT_PEDIDO"'
     end
-    object IB_PCPCLI_BAIRRO: TIBStringField
-      FieldName = 'CLI_BAIRRO'
-      Origin = '"CLIENTE"."CLI_BAIRRO"'
-      Required = True
-      Size = 80
+    object IB_PCPOP_DT_ENTREGA: TDateField
+      FieldName = 'OP_DT_ENTREGA'
+      Origin = '"ORDEM_PRODUCAO"."OP_DT_ENTREGA"'
     end
-    object IB_PCPCLI_CEP: TIBStringField
-      FieldName = 'CLI_CEP'
-      Origin = '"CLIENTE"."CLI_CEP"'
-      Required = True
-      Size = 80
+    object IB_PCPOP_QTD: TIntegerField
+      FieldName = 'OP_QTD'
+      Origin = '"ORDEM_PRODUCAO"."OP_QTD"'
     end
-    object IB_PCPCLI_NR_RESIDENCIAL: TIBStringField
-      FieldName = 'CLI_NR_RESIDENCIAL'
-      Origin = '"CLIENTE"."CLI_NR_RESIDENCIAL"'
-      Size = 60
+    object IB_PCPOP_CUSTO_PRODUCAO: TIBBCDField
+      FieldName = 'OP_CUSTO_PRODUCAO'
+      Origin = '"ORDEM_PRODUCAO"."OP_CUSTO_PRODUCAO"'
+      Precision = 18
+      Size = 2
     end
-    object IB_PCPCLI_NR_CELULAR: TIBStringField
-      FieldName = 'CLI_NR_CELULAR'
-      Origin = '"CLIENTE"."CLI_NR_CELULAR"'
-      Required = True
-      Size = 80
+    object IB_PCPOP_TIPO: TIBStringField
+      FieldName = 'OP_TIPO'
+      Origin = '"ORDEM_PRODUCAO"."OP_TIPO"'
+      Size = 30
+    end
+    object IB_PCPOP_STATUS: TIBStringField
+      FieldName = 'OP_STATUS'
+      Origin = '"ORDEM_PRODUCAO"."OP_STATUS"'
+      Size = 1
     end
   end
 end
