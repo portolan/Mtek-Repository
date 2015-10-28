@@ -102,6 +102,11 @@ type
     CategoriaCAT_NCM: TIBStringField;
     CategoriaCAT_OBS: TIBStringField;
     QueryGenerico: TIBQuery;
+    MovimentoEstoqueEM_VALOR_FINANCEIRO: TIBBCDField;
+    ProdutosPRO_BEM_IMOBILIZADO: TIBStringField;
+    ProdutosPRO_ACABADO: TIBStringField;
+    ProdutosPRO_MATERIA_PRIMA: TIBStringField;
+    ProdutosPRO_VALORIZACAO: TIBBCDField;
   private
     { Private declarations }
   public

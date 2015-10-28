@@ -240,6 +240,34 @@ object DM_Estoque: TDM_Estoque
       ProviderFlags = [pfInUpdate]
       Size = 8
     end
+    object ProdutosPRO_ACABADO: TIBStringField
+      DisplayLabel = 'Produto Acabado'
+      FieldName = 'PRO_ACABADO'
+      Origin = '"PRODUTOS"."PRO_ACABADO"'
+      FixedChar = True
+      Size = 1
+    end
+    object ProdutosPRO_BEM_IMOBILIZADO: TIBStringField
+      DisplayLabel = 'Bem Imobilizado'
+      FieldName = 'PRO_BEM_IMOBILIZADO'
+      Origin = '"PRODUTOS"."PRO_BEM_IMOBILIZADO"'
+      FixedChar = True
+      Size = 1
+    end
+    object ProdutosPRO_MATERIA_PRIMA: TIBStringField
+      DisplayLabel = 'Materia Prima'
+      FieldName = 'PRO_MATERIA_PRIMA'
+      Origin = '"PRODUTOS"."PRO_MATERIA_PRIMA"'
+      FixedChar = True
+      Size = 1
+    end
+    object ProdutosPRO_VALORIZACAO: TIBBCDField
+      DisplayLabel = 'Valoriza'#231#227'o'
+      FieldName = 'PRO_VALORIZACAO'
+      Origin = '"PRODUTOS"."PRO_VALORIZACAO"'
+      Precision = 18
+      Size = 2
+    end
   end
   object UProdutos: TIBUpdateSQL
     RefreshSQL.Strings = (
@@ -815,6 +843,13 @@ object DM_Estoque: TDM_Estoque
       FieldName = 'EM_OBS'
       Origin = '"ESTOQ_MOVIMENTO"."EM_OBS"'
       Size = 400
+    end
+    object MovimentoEstoqueEM_VALOR_FINANCEIRO: TIBBCDField
+      DisplayLabel = 'Valor Financeiro'
+      FieldName = 'EM_VALOR_FINANCEIRO'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_VALOR_FINANCEIRO"'
+      Precision = 18
+      Size = 2
     end
   end
   object DSMovimentoEstoque: TDataSource
