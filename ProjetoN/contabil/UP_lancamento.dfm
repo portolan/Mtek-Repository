@@ -1,5 +1,6 @@
 inherited P_lancamento: TP_lancamento
   Caption = 'Pesquisar Lan'#231'amentos - ProjetoDesnecessauro'
+  OnCreate = FormCreate
   ExplicitWidth = 799
   ExplicitHeight = 441
   PixelsPerInch = 96
@@ -21,8 +22,8 @@ inherited P_lancamento: TP_lancamento
     object Ncredito: TLabel [1]
       Left = 160
       Top = 264
-      Width = 49
-      Height = 20
+      Width = 46
+      Height = 16
       Caption = 'Cr'#233'dito:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -118,12 +119,6 @@ inherited P_lancamento: TP_lancamento
       Width = 771
       Height = 33
       TabOrder = 1
-    end
-  end
-  inherited pnCabecalho: TPanel
-    inherited gbFiltro: TGroupBox
-      ExplicitLeft = -6
-      ExplicitTop = -3
     end
   end
 end

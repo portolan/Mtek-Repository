@@ -50,6 +50,7 @@ type
     ConsultaMovimentaes1: TMenuItem;
     p1: TMenuItem;
     Producao: TMenuItem;
+    Historicos1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -59,6 +60,7 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure OrdemdeProduo1Click(Sender: TObject);
     procedure ProducaoClick(Sender: TObject);
+    procedure CentrodeCustos1Click(Sender: TObject);
     procedure Manuteno3Click(Sender: TObject);
   private
     { Private declarations }
@@ -75,9 +77,13 @@ implementation
 
 
 uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
-  UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO, UM_Servico,
+  UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO, UP_lancamento, UM_Servico,
   UP_Servico;
 
+procedure TTelaInicial.CentrodeCustos1Click(Sender: TObject);
+begin
+    TP_lancamento.chamaTela(self);
+end;
 
 procedure TTelaInicial.CentrodeCustos2Click(Sender: TObject);
 begin

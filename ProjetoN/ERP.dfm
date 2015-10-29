@@ -3560,6 +3560,7 @@ object TelaInicial: TTelaInicial
       Caption = 'Cont'#225'bil'
       object CentrodeCustos1: TMenuItem
         Caption = 'Lan'#231'amentos'
+        OnClick = CentrodeCustos1Click
       end
       object CentrodeCustos2: TMenuItem
         Caption = 'Centro de Custos'
@@ -3577,6 +3578,9 @@ object TelaInicial: TTelaInicial
       end
       object p1: TMenuItem
         Caption = 'Parametros'
+        object Historicos1: TMenuItem
+          Caption = 'Historicos'
+        end
       end
     end
     object Manuteno1: TMenuItem
