@@ -14,6 +14,7 @@ type
     campo_senha: TEdit;
     entrar: TButton;
     procedure entrarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -31,13 +32,12 @@ uses ERP;
 
 procedure Ttela_login.entrarClick(Sender: TObject);
 begin
-   telainicial := Ttelainicial.Create(Self);
-   try
-    tela_login.Visible := False;
-    telainicial.ShowModal;
-   finally
-    FreeAndNil(TelaInicial);
-   end;
+   telainicial.ShowModal;
+end;
+
+procedure Ttela_login.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+    application.Terminate;
 end;
 
 end.

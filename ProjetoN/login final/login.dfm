@@ -1016,6 +1016,7 @@ object tela_login: Ttela_login
   OldCreateOrder = False
   Position = poScreenCenter
   PrintScale = poNone
+  OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
