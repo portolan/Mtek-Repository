@@ -39,10 +39,7 @@ uses
   UP_PRODUCAO in 'pcp\UP_PRODUCAO.pas' {P_PRODUCAO},
   UM_PRODUCAO in 'pcp\UM_PRODUCAO.pas' {M_PRODUCAO},
   UP_lancamento in 'contabil\UP_lancamento.pas' {P_lancamento},
-  UM_lancamento in 'contabil\UM_lancamento.pas' {M_lancamento},
-  UM_MCaixa in 'Caixa\UM_MCaixa.pas' {M_MCaixa},
-  UP_Caixa in 'Caixa\UP_Caixa.pas' {P_Caixa},
-  UDM_Caixa in 'datamodulo\UDM_Caixa.pas' {DM_Caixa: TDataModule};
+  UM_lancamento in 'contabil\UM_lancamento.pas' {M_lancamento};
 
 {$R *.res}
 
@@ -58,8 +55,5 @@ begin
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(TP_lancamento, P_lancamento);
   Application.CreateForm(TM_lancamento, M_lancamento);
-  Application.CreateForm(TM_MCaixa, M_MCaixa);
-  Application.CreateForm(TP_Caixa, P_Caixa);
-  Application.CreateForm(TDM_Caixa, DM_Caixa);
   Application.Run;
 end.
