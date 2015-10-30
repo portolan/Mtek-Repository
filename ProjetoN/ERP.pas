@@ -114,7 +114,7 @@ procedure TTelaInicial.Manuteno3Click(Sender: TObject);
 begin
    P_Servico := TP_Servico.Create(Self);
    try
-     P_Servico.ShowModal;
+     P_Servico.ShowModal;  // d
    finally
       FreeAndNil(P_Servico);
    end;
