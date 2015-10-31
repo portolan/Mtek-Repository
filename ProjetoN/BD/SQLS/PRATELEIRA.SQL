@@ -29,7 +29,7 @@ CREATE TABLE PRATELEIRA(
 /***                              Primary Keys                              ***/
 /******************************************************************************/
 
-ALTER TABLE ESTOQUE ADD CONSTRAINT PK_PRATELEIRA PRIMARY KEY (PRAT_EMPRESA, PRAT_CODIGO);
+ALTER TABLE PRATELEIRA ADD CONSTRAINT PK_PRATELEIRA PRIMARY KEY (PRAT_EMPRESA, PRAT_CODIGO);
 
 
 /******************************************************************************/

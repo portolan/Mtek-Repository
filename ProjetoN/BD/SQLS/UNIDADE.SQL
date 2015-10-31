@@ -15,11 +15,11 @@ SET SQL DIALECT 3;
 
 
 
-CREATE TABLE BLOCO(
-    BLOC_EMPRESA     INTEGER NOT NULL,
-    BLOC_CODIGO      INTEGER NOT NULL,
-    BLOC_DESCRICAO   VARCHAR(60) NOT NULL,
-    BLOC_OBS         VARCHAR(100)
+CREATE TABLE UNIDADE(
+    UN_EMPRESA     INTEGER NOT NULL,
+    UN_CODIGO      INTEGER NOT NULL,
+    UN_DESCRICAO   VARCHAR(60) NOT NULL,
+    UN_OBS         VARCHAR(100)
 );
 
 
@@ -29,7 +29,7 @@ CREATE TABLE BLOCO(
 /***                              Primary Keys                              ***/
 /******************************************************************************/
 
-ALTER TABLE BLOCO ADD CONSTRAINT PK_BLOCO PRIMARY KEY (BLOC_EMPRESA, BLOC_CODIGO);
+ALTER TABLE UNIDADE ADD CONSTRAINT PK_UNIDADE PRIMARY KEY (UN_EMPRESA, UN_CODIGO);
 
 
 /******************************************************************************/
