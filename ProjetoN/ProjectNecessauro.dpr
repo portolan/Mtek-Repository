@@ -39,7 +39,11 @@ uses
   UP_PRODUCAO in 'pcp\UP_PRODUCAO.pas' {P_PRODUCAO},
   UM_PRODUCAO in 'pcp\UM_PRODUCAO.pas' {M_PRODUCAO},
   UP_lancamento in 'contabil\UP_lancamento.pas' {P_lancamento},
-  UM_lancamento in 'contabil\UM_lancamento.pas' {M_lancamento};
+  UM_lancamento in 'contabil\UM_lancamento.pas' {M_lancamento},
+  UP_Bloco in 'Estoque\UP_Bloco.pas' {PBloco},
+  UP_Prateleira in 'Estoque\UP_Prateleira.pas' {PPrateleira},
+  UM_Bloco in 'Estoque\UM_Bloco.pas' {MBloco},
+  UM_Prateleira in 'Estoque\UM_Prateleira.pas' {MPrateleira};
 
 {$R *.res}
 
@@ -55,5 +59,9 @@ begin
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(TP_lancamento, P_lancamento);
   Application.CreateForm(TM_lancamento, M_lancamento);
+  Application.CreateForm(TPBloco, PBloco);
+  Application.CreateForm(TPPrateleira, PPrateleira);
+  Application.CreateForm(TMBloco, MBloco);
+  Application.CreateForm(TMPrateleira, MPrateleira);
   Application.Run;
 end.

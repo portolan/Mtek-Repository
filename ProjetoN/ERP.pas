@@ -51,6 +51,17 @@ type
     p1: TMenuItem;
     Producao: TMenuItem;
     Historicos1: TMenuItem;
+    Bloco1: TMenuItem;
+    Prateleira1: TMenuItem;
+    Relatrios1: TMenuItem;
+    Produtos2: TMenuItem;
+    N1: TMenuItem;
+    MovimentaodeEstoqueData1: TMenuItem;
+    MovimentaodeEstoqueProdutoscomMaisEntrada1: TMenuItem;
+    MovimentaodeEstoqueProdutoscomMaisSada1: TMenuItem;
+    MovimentaodeEstoquePorCustoMdio1: TMenuItem;
+    ProdutosMaisValorizados1: TMenuItem;
+    Categoria1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -62,6 +73,9 @@ type
     procedure ProducaoClick(Sender: TObject);
     procedure CentrodeCustos1Click(Sender: TObject);
     procedure Manuteno3Click(Sender: TObject);
+    procedure Bloco1Click(Sender: TObject);
+    procedure Prateleira1Click(Sender: TObject);
+    procedure Categoria1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -78,7 +92,27 @@ implementation
 
 uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
   UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO, UP_lancamento, UM_Servico,
-  UP_Servico;
+  UP_Servico, UP_Bloco, UM_Prateleira, UP_Categoria, UP_Prateleira;
+
+procedure TTelaInicial.Bloco1Click(Sender: TObject);
+begin
+    PBloco := TPBloco.Create(Self);
+    try
+        PBloco.ShowModal;
+    finally
+        FreeAndNil(PBloco);
+    end;
+end;
+
+procedure TTelaInicial.Categoria1Click(Sender: TObject);
+begin
+    PCategoria := TPCategoria.Create(Self);
+    try
+        PCategoria.ShowModal;    
+    finally
+        FreeAndNil(PCategoria);
+    end;
+end;
 
 procedure TTelaInicial.CentrodeCustos1Click(Sender: TObject);
 begin
@@ -137,6 +171,16 @@ begin
         P_OP.ShowModal;
     finally
         FreeAndNil(P_OP);
+    end;
+end;
+
+procedure TTelaInicial.Prateleira1Click(Sender: TObject);
+begin
+    PPrateleira := TPPrateleira.Create(Self);
+    try
+        PPrateleira.ShowModal;
+    finally
+        FreeAndNil(PPrateleira);
     end;
 end;
 

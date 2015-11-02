@@ -3502,6 +3502,42 @@ object TelaInicial: TTelaInicial
         Caption = 'Produtos'
         OnClick = Produtos1Click
       end
+      object Bloco1: TMenuItem
+        Caption = 'Bloco'
+        OnClick = Bloco1Click
+      end
+      object Prateleira1: TMenuItem
+        Caption = 'Prateleira'
+        OnClick = Prateleira1Click
+      end
+      object Relatrios1: TMenuItem
+        Caption = 'Relat'#243'rios'
+        object Produtos2: TMenuItem
+          Caption = 'Produtos'
+        end
+        object ProdutosMaisValorizados1: TMenuItem
+          Caption = 'Produtos - Mais Valorizados'
+        end
+        object N1: TMenuItem
+          Caption = '-'
+        end
+        object MovimentaodeEstoqueData1: TMenuItem
+          Caption = 'Movimenta'#231#227'o de Estoque - Por Data'
+        end
+        object MovimentaodeEstoqueProdutoscomMaisEntrada1: TMenuItem
+          Caption = 'Movimenta'#231#227'o de Estoque - Produtos com Mais Entrada'
+        end
+        object MovimentaodeEstoqueProdutoscomMaisSada1: TMenuItem
+          Caption = 'Movimenta'#231#227'o de Estoque - Produtos com Mais Sa'#237'da'
+        end
+        object MovimentaodeEstoquePorCustoMdio1: TMenuItem
+          Caption = 'Movimenta'#231#227'o de Estoque - Por Custo M'#233'dio'
+        end
+      end
+      object Categoria1: TMenuItem
+        Caption = 'Categoria'
+        OnClick = Categoria1Click
+      end
     end
     object PCP1: TMenuItem
       Caption = 'PCP/PRODUCAO'
