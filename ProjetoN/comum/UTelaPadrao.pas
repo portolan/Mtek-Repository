@@ -281,6 +281,9 @@ begin
    procBotaoVisivelHabilitado(Sender);
 
    try
+      if Application.MessageBox('Confirma a exclusão do Registro selecionado?','Aviso ao Usuário',MB_YESNO+MB_ICONQUESTION) = IDNO then
+         Exit;
+
       procAntesRemover;
       QryPadrao.Delete;
       procDepoisRemover;
