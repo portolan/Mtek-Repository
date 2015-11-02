@@ -25,9 +25,6 @@ object xPesqPadrao: TxPesqPadrao
     Align = alClient
     BorderStyle = bsSingle
     TabOrder = 0
-    ExplicitTop = 61
-    ExplicitWidth = 783
-    ExplicitHeight = 299
     object gbDados: TGroupBox
       Left = 1
       Top = 1
@@ -36,8 +33,6 @@ object xPesqPadrao: TxPesqPadrao
       Align = alClient
       Caption = 'Dados:'
       TabOrder = 0
-      ExplicitWidth = 777
-      ExplicitHeight = 293
       object DBGDados: TDBGrid
         Left = 2
         Top = 15
@@ -63,7 +58,6 @@ object xPesqPadrao: TxPesqPadrao
     Align = alBottom
     BevelOuter = bvSpace
     TabOrder = 1
-    ExplicitWidth = 783
     object sbRemover: TSpeedButton
       Left = 193
       Top = 1
@@ -335,7 +329,6 @@ object xPesqPadrao: TxPesqPadrao
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitWidth = 783
     object gbStatus: TGroupBox
       Left = 703
       Top = 0
@@ -344,9 +337,6 @@ object xPesqPadrao: TxPesqPadrao
       Align = alRight
       Caption = 'Status'
       TabOrder = 0
-      ExplicitLeft = 625
-      ExplicitTop = -32
-      ExplicitHeight = 61
     end
     object gbFiltro: TGroupBox
       Left = 0
@@ -356,14 +346,12 @@ object xPesqPadrao: TxPesqPadrao
       Align = alClient
       Caption = 'Filtros'
       TabOrder = 1
-      ExplicitWidth = 622
-      ExplicitHeight = 17
       object cbContent: TComboBox
         Left = 156
         Top = 17
         Width = 145
         Height = 21
-        TabOrder = 0
+        TabOrder = 1
         Text = 'Selecione...'
         Items.Strings = (
           #201' igual'
@@ -375,7 +363,7 @@ object xPesqPadrao: TxPesqPadrao
         Top = 17
         Width = 145
         Height = 21
-        TabOrder = 1
+        TabOrder = 0
         Text = 'Selecione...'
       end
       object editPesquisa: TEdit
