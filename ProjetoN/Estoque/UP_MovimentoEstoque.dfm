@@ -1,7 +1,7 @@
 inherited PMovimentoEstoque: TPMovimentoEstoque
   Caption = 'PMovimentoEstoque'
   OnCreate = FormCreate
-  ExplicitWidth = 799
+  ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
@@ -43,31 +43,26 @@ inherited PMovimentoEstoque: TPMovimentoEstoque
           item
             Expanded = False
             FieldName = 'EM_TIPO'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_QTD'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_DATA'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_OBS'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_VALOR_FINANCEIRO'
-            Width = 64
             Visible = True
           end>
       end

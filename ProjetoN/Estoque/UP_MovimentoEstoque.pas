@@ -29,6 +29,8 @@ procedure TPMovimentoEstoque.FormCreate(Sender: TObject);
 begin
   inherited;
     procInicializar(DM_Estoque.MovimentoEstoque,  False, False, MMovimentoEstoque, TMMovimentoEstoque);
+    funcAtribuiFiltros;
+    nomeQry := 'ESTOQ_MOVIMENTO';
 end;
 
 procedure TPMovimentoEstoque.procSelect;
