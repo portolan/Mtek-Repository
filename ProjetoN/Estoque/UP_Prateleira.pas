@@ -30,6 +30,8 @@ procedure TPPrateleira.FormCreate(Sender: TObject);
 begin
   inherited;
     procInicializar(DM_Estoque.Prateleira, False, False, MPrateleira, TMPrateleira);
+    funcAtribuiFiltros;
+    nomeQry := 'prateleira';
 end;
 
 procedure TPPrateleira.procSelect;

@@ -30,6 +30,8 @@ procedure TPMarcas.FormCreate(Sender: TObject);
 begin
    inherited;
    procInicializar(DM_Estoque.Marcas, False, False, MMarcas, TMMarcas);
+   funcAtribuiFiltros;
+    nomeQry := 'marcas';
 
 end;
 

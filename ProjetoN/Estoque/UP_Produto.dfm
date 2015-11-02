@@ -1,8 +1,6 @@
 inherited PProduto: TPProduto
   Caption = 'Produtos'
   OnCreate = FormCreate
-  ExplicitWidth = 799
-  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel

@@ -1,12 +1,13 @@
 inherited PMarcas: TPMarcas
   Caption = 'PMarcas'
   OnCreate = FormCreate
-  ExplicitWidth = 799
-  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
+    ExplicitTop = 53
+    ExplicitHeight = 307
     inherited gbDados: TGroupBox
+      ExplicitHeight = 301
       inherited DBGDados: TDBGrid
         DataSource = DM_Estoque.DSMarcas
         Columns = <
@@ -26,6 +27,16 @@ inherited PMarcas: TPMarcas
             Visible = True
           end>
       end
+    end
+  end
+  inherited pnCabecalho: TPanel
+    inherited gbStatus: TGroupBox
+      ExplicitLeft = 622
+      ExplicitTop = 0
+      ExplicitHeight = 53
+    end
+    inherited gbFiltro: TGroupBox
+      ExplicitHeight = 53
     end
   end
 end

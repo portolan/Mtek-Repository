@@ -30,6 +30,8 @@ procedure TPCategoria.FormCreate(Sender: TObject);
 begin
   inherited;
     procInicializar(DM_Estoque.Categoria, False, False, MCategoria, TMCategoria);
+    funcAtribuiFiltros;
+    nomeQry := 'categoria';
 end;
 
 procedure TPCategoria.procSelect;

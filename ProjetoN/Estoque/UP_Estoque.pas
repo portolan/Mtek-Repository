@@ -29,6 +29,8 @@ procedure TPEstoque.FormCreate(Sender: TObject);
 begin
   inherited;
     procInicializar(DM_Estoque.Estoque, False, False, MEstoque, TMEstoque);
+    funcAtribuiFiltros;
+    nomeQry := 'estoque';
 end;
 
 procedure TPEstoque.procSelect;
