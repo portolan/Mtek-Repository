@@ -3,7 +3,7 @@ object xPesqPadrao: TxPesqPadrao
   Top = 0
   Caption = 'xPesqPadrao'
   ClientHeight = 402
-  ClientWidth = 783
+  ClientWidth = 864
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,25 +19,30 @@ object xPesqPadrao: TxPesqPadrao
   TextHeight = 13
   object pnCorpo: TPanel
     Left = 0
-    Top = 61
-    Width = 783
-    Height = 299
+    Top = 53
+    Width = 864
+    Height = 307
     Align = alClient
     BorderStyle = bsSingle
     TabOrder = 0
+    ExplicitTop = 61
+    ExplicitWidth = 783
+    ExplicitHeight = 299
     object gbDados: TGroupBox
       Left = 1
       Top = 1
-      Width = 777
-      Height = 293
+      Width = 858
+      Height = 301
       Align = alClient
       Caption = 'Dados:'
       TabOrder = 0
+      ExplicitWidth = 777
+      ExplicitHeight = 293
       object DBGDados: TDBGrid
         Left = 2
         Top = 15
-        Width = 773
-        Height = 276
+        Width = 854
+        Height = 284
         Align = alClient
         DrawingStyle = gdsGradient
         ReadOnly = True
@@ -53,11 +58,12 @@ object xPesqPadrao: TxPesqPadrao
   object pnRodape: TPanel
     Left = 0
     Top = 360
-    Width = 783
+    Width = 864
     Height = 42
     Align = alBottom
     BevelOuter = bvSpace
     TabOrder = 1
+    ExplicitWidth = 783
     object sbRemover: TSpeedButton
       Left = 193
       Top = 1
@@ -253,7 +259,7 @@ object xPesqPadrao: TxPesqPadrao
       OnClick = sbNovoClick
     end
     object sbSair: TSpeedButton
-      Left = 686
+      Left = 767
       Top = 1
       Width = 96
       Height = 40
@@ -324,28 +330,70 @@ object xPesqPadrao: TxPesqPadrao
   object pnCabecalho: TPanel
     Left = 0
     Top = 0
-    Width = 783
-    Height = 61
+    Width = 864
+    Height = 53
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 2
+    ExplicitWidth = 783
     object gbStatus: TGroupBox
-      Left = 622
+      Left = 703
       Top = 0
       Width = 161
-      Height = 61
+      Height = 53
       Align = alRight
       Caption = 'Status'
       TabOrder = 0
+      ExplicitLeft = 625
+      ExplicitTop = -32
+      ExplicitHeight = 61
     end
     object gbFiltro: TGroupBox
       Left = 0
       Top = 0
-      Width = 622
-      Height = 61
+      Width = 703
+      Height = 53
       Align = alClient
       Caption = 'Filtros'
       TabOrder = 1
+      ExplicitWidth = 622
+      ExplicitHeight = 17
+      object cbContent: TComboBox
+        Left = 156
+        Top = 17
+        Width = 145
+        Height = 21
+        TabOrder = 0
+        Text = 'Selecione...'
+        Items.Strings = (
+          #201' igual'
+          #201' diferente'
+          'Cont'#233'm')
+      end
+      object cBoxFiltro: TComboBox
+        Left = 5
+        Top = 17
+        Width = 145
+        Height = 21
+        TabOrder = 1
+        Text = 'Selecione...'
+      end
+      object editPesquisa: TEdit
+        Left = 307
+        Top = 17
+        Width = 309
+        Height = 21
+        TabOrder = 2
+      end
+      object Pesquisar: TButton
+        Left = 622
+        Top = 15
+        Width = 75
+        Height = 25
+        Caption = 'Pesquisar'
+        TabOrder = 3
+        OnClick = PesquisarClick
+      end
     end
   end
 end

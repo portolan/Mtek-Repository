@@ -20,12 +20,17 @@ type
     sbSair: TSpeedButton;
     gbStatus: TGroupBox;
     gbFiltro: TGroupBox;
+    cbContent: TComboBox;
+    cBoxFiltro: TComboBox;
+    editPesquisa: TEdit;
+    Pesquisar: TButton;
     procedure sbSairClick(Sender: TObject);
     procedure sbNovoClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure sbRemoverClick(Sender: TObject);
     procedure sbAlterarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure PesquisarClick(Sender: TObject);
   private
 
   public
@@ -34,6 +39,8 @@ type
     QryPadrao : TIBQuery;
     TelaManutencao : TForm;
     CTelaManutencao : TFormClass;
+    Filtros : TFieldList;
+    nomeQry : String;
 
     procedure procBotaoVisivelHabilitado(botao: TObject);
     procedure procInicializar(Query: TIBQuery; b_finalizaTransacao: Boolean; b_somenteConsulta: Boolean; TelaManutencao: TForm; CTelaManutencao: TFormClass);
@@ -49,6 +56,11 @@ type
     procedure procDepoisRemover; dynamic;
 
     procedure procChamaTela; dynamic;
+
+    function funcAtribuiFiltros: TFieldList;
+    function funcFiltroAtual: TField;
+    function funcFiltroIsString: boolean;
+    function funcPesquisa: boolean;
   end;
 
 var
@@ -79,6 +91,89 @@ begin
       sbAlterar.Visible := False;
       sbRemover.Visible := False;
    end;
+end;
+
+function TxPesqPadrao.funcAtribuiFiltros: TFieldList;
+var
+    I: integer;
+begin
+    Filtros := QryPadrao.FieldList;
+
+    for I := 0 to Filtros.Count - 1 do
+        cBoxFiltro.Items.Add(Filtros[I].DisplayLabel);
+end;
+
+function TxPesqPadrao.funcFiltroAtual: TField;
+var
+    I: integer;
+begin
+    Filtros := QryPadrao.FieldList;
+
+    for I := 0 to Filtros.Count - 1 do
+        if Filtros[I].DisplayLabel = cBoxFiltro.Text then
+            Result := Filtros[I];
+end;
+
+function TxPesqPadrao.funcFiltroIsString: boolean;
+var
+    I: integer;
+begin
+    for I := 0 to Filtros.Count - 1 do
+    begin
+        if Filtros[I].DisplayLabel = cBoxFiltro.Text then
+        begin
+            if Filtros[I].DataType <> ftInteger then
+                Result := true;
+        end;
+    end;
+end;
+
+function TxPesqPadrao.funcPesquisa: boolean;
+var
+    filtro: String;
+begin
+    QryPadrao.Close;
+
+    if editPesquisa.Text = '' then
+        QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' '
+    else
+    begin
+        if funcFiltroIsString then
+        begin
+            if cbContent.Text = 'É igual' then
+            begin
+                QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' where ' +
+                  funcFiltroAtual.FieldName + ' = ''' + editPesquisa.Text + '''';
+            end
+            else if cbContent.Text = 'É diferente' then
+            begin
+                QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' where ' +
+                  funcFiltroAtual.FieldName + ' <> ''' + editPesquisa.Text + '''';
+            end
+            else if cbContent.Text = 'Contém' then
+            begin
+                QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' where ' +
+                  funcFiltroAtual.FieldName + ' like ''' + editPesquisa.Text + '''';
+            end;
+        end
+        else
+            if cbContent.Text = 'É igual' then
+            begin
+                QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' where ' +
+                  funcFiltroAtual.FieldName + ' = ' + editPesquisa.Text;
+            end
+            else if cbContent.Text = 'É diferente' then
+            begin
+                QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' where ' +
+                  funcFiltroAtual.FieldName + ' <> ' + editPesquisa.Text;
+            end;
+    end;
+    QryPadrao.Open;
+end;
+
+procedure TxPesqPadrao.PesquisarClick(Sender: TObject);
+begin
+    funcPesquisa;
 end;
 
 procedure TxPesqPadrao.procAntesAlterar;
