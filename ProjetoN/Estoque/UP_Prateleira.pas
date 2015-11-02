@@ -1,4 +1,4 @@
-unit UP_Categoria;
+unit UP_Prateleira;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
-  TPCategoria = class(TxPesqPadrao)
+  TPPrateleira = class(TxPesqPadrao)
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -18,26 +18,26 @@ type
   end;
 
 var
-  PCategoria: TPCategoria;
+  PPrateleira: TPPrateleira;
 
 implementation
 
 {$R *.dfm}
 
-uses UDM_Estoque, UM_Categoria;
+uses UDM_Estoque, UM_Prateleira;
 
-procedure TPCategoria.FormCreate(Sender: TObject);
+procedure TPPrateleira.FormCreate(Sender: TObject);
 begin
   inherited;
-    procInicializar(DM_Estoque.Categoria, False, False, MCategoria, TMCategoria);
+    procInicializar(DM_Estoque.Prateleira, False, False, MPrateleira, TMPrateleira);
 end;
 
-procedure TPCategoria.procSelect;
+procedure TPPrateleira.procSelect;
 begin
   inherited;
-    DM_Estoque.Categoria.Close;
-    DM_Estoque.Categoria.SQL.Text := 'select * from categoria';
-    DM_Estoque.Categoria.Open;
+    DM_Estoque.Prateleira.Close;
+    DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira';
+    DM_Estoque.Prateleira.Open;
 end;
 
 end.

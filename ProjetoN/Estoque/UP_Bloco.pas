@@ -1,4 +1,4 @@
-unit UP_Categoria;
+unit UP_Bloco;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls;
 
 type
-  TPCategoria = class(TxPesqPadrao)
+  TPBloco = class(TxPesqPadrao)
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -18,26 +18,26 @@ type
   end;
 
 var
-  PCategoria: TPCategoria;
+  PBloco: TPBloco;
 
 implementation
 
 {$R *.dfm}
 
-uses UDM_Estoque, UM_Categoria;
+uses UDM_Estoque, UM_Bloco;
 
-procedure TPCategoria.FormCreate(Sender: TObject);
+procedure TPBloco.FormCreate(Sender: TObject);
 begin
   inherited;
-    procInicializar(DM_Estoque.Categoria, False, False, MCategoria, TMCategoria);
+    procInicializar(DM_Estoque.Bloco, False, False, MBloco, TMBloco);
 end;
 
-procedure TPCategoria.procSelect;
+procedure TPBloco.procSelect;
 begin
   inherited;
-    DM_Estoque.Categoria.Close;
-    DM_Estoque.Categoria.SQL.Text := 'select * from categoria';
-    DM_Estoque.Categoria.Open;
+    DM_Estoque.Bloco.Close;
+    DM_Estoque.Bloco.SQL.Text := 'select * from bloco';
+    DM_Estoque.Bloco.Open;
 end;
 
 end.

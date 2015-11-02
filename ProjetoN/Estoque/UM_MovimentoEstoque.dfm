@@ -1,18 +1,18 @@
 inherited MMovimentoEstoque: TMMovimentoEstoque
   Caption = 'Movimenta'#231#227'o de estoque'
   ClientHeight = 330
-  ClientWidth = 699
-  ExplicitWidth = 715
+  ClientWidth = 713
+  ExplicitWidth = 729
   ExplicitHeight = 369
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnRodape: TPanel
     Top = 289
-    Width = 699
+    Width = 713
     ExplicitTop = 289
     ExplicitWidth = 699
     inherited sbCancelar: TSpeedButton
-      Left = 602
+      Left = 616
       ExplicitLeft = 602
     end
     object SpeedButton1: TSpeedButton
@@ -124,17 +124,22 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
     end
   end
   inherited gbInfos: TGroupBox
-    Width = 699
+    Width = 713
     Height = 289
     ExplicitWidth = 699
     ExplicitHeight = 289
     object GroupBox1: TGroupBox
-      Left = 3
-      Top = 14
-      Width = 694
-      Height = 267
+      Left = 2
+      Top = 15
+      Width = 709
+      Height = 272
+      Align = alClient
       Caption = ' Entrada/Sa'#237'da '
       TabOrder = 0
+      ExplicitLeft = 3
+      ExplicitTop = 14
+      ExplicitWidth = 694
+      ExplicitHeight = 267
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -144,7 +149,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         FocusControl = DBEdit1
       end
       object Label2: TLabel
-        Left = 156
+        Left = 508
         Top = 16
         Width = 39
         Height = 13
@@ -152,7 +157,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         FocusControl = DBEdit2
       end
       object Label3: TLabel
-        Left = 16
+        Left = 180
         Top = 59
         Width = 38
         Height = 13
@@ -160,8 +165,8 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         FocusControl = DBEdit3
       end
       object Label4: TLabel
-        Left = 327
-        Top = 16
+        Left = 16
+        Top = 59
         Width = 33
         Height = 13
         Caption = 'C'#243'digo'
@@ -173,7 +178,6 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         Width = 20
         Height = 13
         Caption = 'Tipo'
-        FocusControl = DBEdit5
       end
       object Label6: TLabel
         Left = 156
@@ -184,8 +188,8 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         FocusControl = DBEdit6
       end
       object Label7: TLabel
-        Left = 543
-        Top = 16
+        Left = 479
+        Top = 102
         Width = 23
         Height = 13
         Caption = 'Data'
@@ -206,6 +210,118 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         Caption = 'Valor Financeiro'
         FocusControl = DBEdit8
       end
+      object Label10: TLabel
+        Left = 156
+        Top = 16
+        Width = 25
+        Height = 13
+        Caption = 'Bloco'
+        FocusControl = DBEdit9
+      end
+      object Label11: TLabel
+        Left = 332
+        Top = 16
+        Width = 46
+        Height = 13
+        Caption = 'Prateleira'
+        FocusControl = DBEdit10
+      end
+      object SpeedButton2: TSpeedButton
+        Left = 294
+        Top = 31
+        Width = 32
+        Height = 23
+        Glyph.Data = {
+          06030000424D060300000000000036000000280000000F0000000F0000000100
+          180000000000D0020000C40E0000C40E00000000000000000000F2F2F2F2F2F2
+          F2F2F2F2F2F2F3F3F4E3DCCA9460458D4F2E946045E3DCCAF3F3F4F2F2F2F2F2
+          F2F2F2F2F2F2F2000000F2F2F2F2F2F2F2F2F2F2F2F2F6F9FA9B6A4F8C51318D
+          4F2E8E5130A47C67F6F8F9F2F2F2F2F2F2F2F2F2F2F2F2000000F0F0F0F0F0F0
+          F0F0F0F2F2F2F6F8FAA6754D94592B955B2D925728B78C6CF5F7F9F2F2F2F2F2
+          F2F2F2F2F2F2F2000000F2F2F2F2F2F2F2F2F2F2F2F2F5F8FAAD7E4D9E672B9F
+          682D9D6528BB956BF5F7F9F2F2F2F2F2F2F2F2F2F2F2F2000000F2F2F3F4F5F8
+          F4F5F8F4F6F8F7FBFFB78C4EA8742BA9752DA87228C4A170F6FAFFF4F6F8F4F5
+          F8F4F5F8F2F2F2000000F5F0E5CDAE7BCCAD77CCAD77CDAE79B58638AF7E2BB0
+          7F2CAF7E2AB88B41CDB07BCCAD77CCAD76CEB07EF9F5EE000000CEB072B38222
+          B48425B48425B38425B6862AB6872BB6872BB6872BB58629B38425B48425B484
+          25B28221D8BF8D000000CFB169BC8F28BC9029BC9029BC9029BC9029BC9029BC
+          9029BC9029BC9029BC9029BC9029BC9029BB8F27DAC186000000D1B462BE9520
+          BF9623BF9623BF9623BF9622C09726C09726C09726BF9622BF9623BF9623BF96
+          23BE951FDAC280000000EFE4C5CCAB4BCCAC4DCCAA4DCCAB4EC7A43DC19C20C1
+          9C22C19C21C9A642CCAC4ECCAA4DCCAB4DCBAB4CF3EDD7000000F0F1F2F5F4F2
+          F5F4F2F6F6F3F7F8F9D1B559C3A01CC4A120C29F1DD9C277F6F6F8F4F4F1F4F3
+          F1F5F4F3F0F0F1000000EFEFEFEFEFEFF0F0F0F2F2F2F4F5FAD2B757C5A518C5
+          A51CC4A418DAC373F0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
+          F0F0F0F2F2F2F4F5FAD3BA54C7AA15C8AB19C6A914DBC672F0F1F5EFEFEFEFEF
+          EFEFEFEFEFEFEF000000EFEFEFEFEFEFF0F0F0F2F2F2F4F5FAD5BD52C8B011C9
+          B115C8AF11DBC86FF0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
+          F2F2F2F2F2F2F1F2F4EEE7BAD2BC3FD3BD3ED4BD45F4EFD3EFEFF1EFEFEFEFEF
+          EFEFEFEFEFEFEF000000}
+      end
+      object SpeedButton3: TSpeedButton
+        Left = 470
+        Top = 31
+        Width = 32
+        Height = 23
+        Glyph.Data = {
+          06030000424D060300000000000036000000280000000F0000000F0000000100
+          180000000000D0020000C40E0000C40E00000000000000000000F2F2F2F2F2F2
+          F2F2F2F2F2F2F3F3F4E3DCCA9460458D4F2E946045E3DCCAF3F3F4F2F2F2F2F2
+          F2F2F2F2F2F2F2000000F2F2F2F2F2F2F2F2F2F2F2F2F6F9FA9B6A4F8C51318D
+          4F2E8E5130A47C67F6F8F9F2F2F2F2F2F2F2F2F2F2F2F2000000F0F0F0F0F0F0
+          F0F0F0F2F2F2F6F8FAA6754D94592B955B2D925728B78C6CF5F7F9F2F2F2F2F2
+          F2F2F2F2F2F2F2000000F2F2F2F2F2F2F2F2F2F2F2F2F5F8FAAD7E4D9E672B9F
+          682D9D6528BB956BF5F7F9F2F2F2F2F2F2F2F2F2F2F2F2000000F2F2F3F4F5F8
+          F4F5F8F4F6F8F7FBFFB78C4EA8742BA9752DA87228C4A170F6FAFFF4F6F8F4F5
+          F8F4F5F8F2F2F2000000F5F0E5CDAE7BCCAD77CCAD77CDAE79B58638AF7E2BB0
+          7F2CAF7E2AB88B41CDB07BCCAD77CCAD76CEB07EF9F5EE000000CEB072B38222
+          B48425B48425B38425B6862AB6872BB6872BB6872BB58629B38425B48425B484
+          25B28221D8BF8D000000CFB169BC8F28BC9029BC9029BC9029BC9029BC9029BC
+          9029BC9029BC9029BC9029BC9029BC9029BB8F27DAC186000000D1B462BE9520
+          BF9623BF9623BF9623BF9622C09726C09726C09726BF9622BF9623BF9623BF96
+          23BE951FDAC280000000EFE4C5CCAB4BCCAC4DCCAA4DCCAB4EC7A43DC19C20C1
+          9C22C19C21C9A642CCAC4ECCAA4DCCAB4DCBAB4CF3EDD7000000F0F1F2F5F4F2
+          F5F4F2F6F6F3F7F8F9D1B559C3A01CC4A120C29F1DD9C277F6F6F8F4F4F1F4F3
+          F1F5F4F3F0F0F1000000EFEFEFEFEFEFF0F0F0F2F2F2F4F5FAD2B757C5A518C5
+          A51CC4A418DAC373F0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
+          F0F0F0F2F2F2F4F5FAD3BA54C7AA15C8AB19C6A914DBC672F0F1F5EFEFEFEFEF
+          EFEFEFEFEFEFEF000000EFEFEFEFEFEFF0F0F0F2F2F2F4F5FAD5BD52C8B011C9
+          B115C8AF11DBC86FF0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
+          F2F2F2F2F2F2F1F2F4EEE7BAD2BC3FD3BD3ED4BD45F4EFD3EFEFF1EFEFEFEFEF
+          EFEFEFEFEFEFEF000000}
+      end
+      object SpeedButton4: TSpeedButton
+        Left = 673
+        Top = 73
+        Width = 32
+        Height = 23
+        Glyph.Data = {
+          06030000424D060300000000000036000000280000000F0000000F0000000100
+          180000000000D0020000C40E0000C40E00000000000000000000F2F2F2F2F2F2
+          F2F2F2F2F2F2F3F3F4E3DCCA9460458D4F2E946045E3DCCAF3F3F4F2F2F2F2F2
+          F2F2F2F2F2F2F2000000F2F2F2F2F2F2F2F2F2F2F2F2F6F9FA9B6A4F8C51318D
+          4F2E8E5130A47C67F6F8F9F2F2F2F2F2F2F2F2F2F2F2F2000000F0F0F0F0F0F0
+          F0F0F0F2F2F2F6F8FAA6754D94592B955B2D925728B78C6CF5F7F9F2F2F2F2F2
+          F2F2F2F2F2F2F2000000F2F2F2F2F2F2F2F2F2F2F2F2F5F8FAAD7E4D9E672B9F
+          682D9D6528BB956BF5F7F9F2F2F2F2F2F2F2F2F2F2F2F2000000F2F2F3F4F5F8
+          F4F5F8F4F6F8F7FBFFB78C4EA8742BA9752DA87228C4A170F6FAFFF4F6F8F4F5
+          F8F4F5F8F2F2F2000000F5F0E5CDAE7BCCAD77CCAD77CDAE79B58638AF7E2BB0
+          7F2CAF7E2AB88B41CDB07BCCAD77CCAD76CEB07EF9F5EE000000CEB072B38222
+          B48425B48425B38425B6862AB6872BB6872BB6872BB58629B38425B48425B484
+          25B28221D8BF8D000000CFB169BC8F28BC9029BC9029BC9029BC9029BC9029BC
+          9029BC9029BC9029BC9029BC9029BC9029BB8F27DAC186000000D1B462BE9520
+          BF9623BF9623BF9623BF9622C09726C09726C09726BF9622BF9623BF9623BF96
+          23BE951FDAC280000000EFE4C5CCAB4BCCAC4DCCAA4DCCAB4EC7A43DC19C20C1
+          9C22C19C21C9A642CCAC4ECCAA4DCCAB4DCBAB4CF3EDD7000000F0F1F2F5F4F2
+          F5F4F2F6F6F3F7F8F9D1B559C3A01CC4A120C29F1DD9C277F6F6F8F4F4F1F4F3
+          F1F5F4F3F0F0F1000000EFEFEFEFEFEFF0F0F0F2F2F2F4F5FAD2B757C5A518C5
+          A51CC4A418DAC373F0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
+          F0F0F0F2F2F2F4F5FAD3BA54C7AA15C8AB19C6A914DBC672F0F1F5EFEFEFEFEF
+          EFEFEFEFEFEFEF000000EFEFEFEFEFEFF0F0F0F2F2F2F4F5FAD5BD52C8B011C9
+          B115C8AF11DBC86FF0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
+          F2F2F2F2F2F2F1F2F4EEE7BAD2BC3FD3BD3ED4BD45F4EFD3EFEFF1EFEFEFEFEF
+          EFEFEFEFEFEFEF000000}
+      end
       object DBEdit1: TDBEdit
         Left = 16
         Top = 32
@@ -216,40 +332,31 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         TabOrder = 0
       end
       object DBEdit2: TDBEdit
-        Left = 156
+        Left = 508
         Top = 32
-        Width = 165
+        Width = 197
         Height = 21
         DataField = 'EM_ESTOQUE'
         DataSource = DM_Estoque.DSMovimentoEstoque
         TabOrder = 1
       end
       object DBEdit3: TDBEdit
-        Left = 16
+        Left = 180
         Top = 75
-        Width = 665
+        Width = 488
         Height = 21
         DataField = 'EM_PRODUTO'
         DataSource = DM_Estoque.DSMovimentoEstoque
         TabOrder = 2
       end
       object DBEdit4: TDBEdit
-        Left = 327
-        Top = 32
-        Width = 210
+        Left = 16
+        Top = 75
+        Width = 158
         Height = 21
         DataField = 'EM_CODIGO'
         DataSource = DM_Estoque.DSMovimentoEstoque
         TabOrder = 3
-      end
-      object DBEdit5: TDBEdit
-        Left = 16
-        Top = 118
-        Width = 134
-        Height = 21
-        DataField = 'EM_TIPO'
-        DataSource = DM_Estoque.DSMovimentoEstoque
-        TabOrder = 4
       end
       object DBEdit6: TDBEdit
         Left = 156
@@ -258,16 +365,16 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         Height = 21
         DataField = 'EM_QTD'
         DataSource = DM_Estoque.DSMovimentoEstoque
-        TabOrder = 5
+        TabOrder = 4
       end
       object DBEdit7: TDBEdit
-        Left = 543
-        Top = 32
+        Left = 479
+        Top = 118
         Width = 138
         Height = 21
         DataField = 'EM_DATA'
         DataSource = DM_Estoque.DSMovimentoEstoque
-        TabOrder = 6
+        TabOrder = 5
       end
       object DBEdit8: TDBEdit
         Left = 327
@@ -276,7 +383,25 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         Height = 21
         DataField = 'EM_VALOR_FINANCEIRO'
         DataSource = DM_Estoque.DSMovimentoEstoque
+        TabOrder = 6
+      end
+      object DBEdit9: TDBEdit
+        Left = 156
+        Top = 32
+        Width = 134
+        Height = 21
+        DataField = 'EM_BLOCO'
+        DataSource = DM_Estoque.DSMovimentoEstoque
         TabOrder = 7
+      end
+      object DBEdit10: TDBEdit
+        Left = 332
+        Top = 32
+        Width = 134
+        Height = 21
+        DataField = 'EM_PRATELEIRA'
+        DataSource = DM_Estoque.DSMovimentoEstoque
+        TabOrder = 8
       end
     end
   end
@@ -286,5 +411,17 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
     Width = 664
     Height = 89
     TabOrder = 2
+  end
+  object DBComboBox1: TDBComboBox
+    Left = 19
+    Top = 133
+    Width = 134
+    Height = 21
+    DataField = 'EM_TIPO'
+    DataSource = DM_Estoque.DSMovimentoEstoque
+    Items.Strings = (
+      'Entrada'
+      'Sa'#237'da')
+    TabOrder = 3
   end
 end

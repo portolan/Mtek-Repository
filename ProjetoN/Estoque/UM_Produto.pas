@@ -46,10 +46,6 @@ type
     GroupBox3: TGroupBox;
     Label17: TLabel;
     DBEdit17: TDBEdit;
-    Label18: TLabel;
-    DBEdit18: TDBEdit;
-    Label19: TLabel;
-    DBEdit19: TDBEdit;
     Label20: TLabel;
     DBEdit20: TDBEdit;
     Label21: TLabel;
@@ -60,24 +56,17 @@ type
     DBEdit23: TDBEdit;
     Label24: TLabel;
     DBEdit24: TDBEdit;
-    Label25: TLabel;
-    DBEdit25: TDBEdit;
-    Label26: TLabel;
-    DBEdit26: TDBEdit;
-    Label27: TLabel;
-    DBEdit27: TDBEdit;
-    Label28: TLabel;
-    DBEdit28: TDBEdit;
-    Label29: TLabel;
-    DBEdit29: TDBEdit;
     Label30: TLabel;
     DBImage1: TDBImage;
     DBMemo1: TDBMemo;
     SpeedButton1: TSpeedButton;
     Label34: TLabel;
     DBEdit33: TDBEdit;
-    CheckBox1: TCheckBox;
-    DBRadioGroup1: TDBRadioGroup;
+    Grupo: TDBRadioGroup;
+    Label18: TLabel;
+    DBEdit18: TDBEdit;
+    Label19: TLabel;
+    DBEdit19: TDBEdit;
     procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }

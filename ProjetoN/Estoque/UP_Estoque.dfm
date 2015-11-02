@@ -22,6 +22,16 @@ inherited PEstoque: TPEstoque
           end
           item
             Expanded = False
+            FieldName = 'ESTOQ_BLOCO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ESTOQ_PRATELEIRA'
+            Visible = True
+          end
+          item
+            Expanded = False
             FieldName = 'ESTOQ_CODIGO'
             Visible = True
           end
@@ -52,22 +62,12 @@ inherited PEstoque: TPEstoque
           end
           item
             Expanded = False
-            FieldName = 'ESTOQ_PRATELEIRA'
-            Visible = True
-          end
-          item
-            Expanded = False
             FieldName = 'ESTOQ_CATEGORIA'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'ESTOQ_TIPO'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'ESTOQ_LOCAL'
             Visible = True
           end
           item

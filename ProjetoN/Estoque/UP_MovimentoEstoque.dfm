@@ -17,12 +17,22 @@ inherited PMovimentoEstoque: TPMovimentoEstoque
           end
           item
             Expanded = False
-            FieldName = 'EM_ESTOQUE'
+            FieldName = 'EM_PRODUTO'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'EM_PRODUTO'
+            FieldName = 'EM_BLOCO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'EM_PRATELEIRA'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'EM_ESTOQUE'
             Visible = True
           end
           item
@@ -33,21 +43,31 @@ inherited PMovimentoEstoque: TPMovimentoEstoque
           item
             Expanded = False
             FieldName = 'EM_TIPO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_QTD'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_DATA'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_OBS'
+            Width = 64
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'EM_VALOR_FINANCEIRO'
+            Width = 64
             Visible = True
           end>
       end

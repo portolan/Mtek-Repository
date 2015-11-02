@@ -1,14 +1,14 @@
 inherited MProduto: TMProduto
   Caption = 'MProduto'
-  ClientHeight = 685
+  ClientHeight = 656
   ClientWidth = 717
-  ExplicitTop = -106
+  ExplicitTop = -130
   ExplicitWidth = 733
-  ExplicitHeight = 724
+  ExplicitHeight = 695
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnRodape: TPanel
-    Top = 644
+    Top = 615
     Width = 717
     ExplicitTop = 644
     ExplicitWidth = 717
@@ -19,13 +19,12 @@ inherited MProduto: TMProduto
   end
   inherited gbInfos: TGroupBox
     Width = 717
-    Height = 644
-    ExplicitLeft = -8
+    Height = 615
     ExplicitWidth = 717
     ExplicitHeight = 644
     object Label30: TLabel
-      Left = 12
-      Top = 540
+      Left = 10
+      Top = 503
       Width = 63
       Height = 13
       Caption = 'Observa'#231#245'es'
@@ -213,7 +212,7 @@ inherited MProduto: TMProduto
       end
       object DBEdit7: TDBEdit
         Left = 9
-        Top = 111
+        Top = 110
         Width = 693
         Height = 21
         DataField = 'PRO_DESCRICAO'
@@ -256,26 +255,19 @@ inherited MProduto: TMProduto
         DataSource = DM_Estoque.DSProdutos
         TabOrder = 10
       end
-      object CheckBox1: TCheckBox
-        Left = 664
-        Top = 192
-        Width = 97
-        Height = 17
-        Caption = 'CheckBox1'
-        TabOrder = 11
-      end
-      object DBRadioGroup1: TDBRadioGroup
-        Left = 327
-        Top = 135
+      object Grupo: TDBRadioGroup
+        Left = 334
+        Top = 131
         Width = 375
         Height = 55
-        Caption = 'DBRadioGroup1'
+        Caption = 'Grupo'
+        DataField = 'PRO_GRUPO'
         DataSource = DM_Estoque.DSProdutos
         Items.Strings = (
           'Bem Imolizado'
           'Produto Acabado'
           'Mat'#233'ria Prima')
-        TabOrder = 12
+        TabOrder = 11
       end
     end
     object GroupBox2: TGroupBox
@@ -375,7 +367,7 @@ inherited MProduto: TMProduto
       Left = 3
       Top = 335
       Width = 510
-      Height = 202
+      Height = 162
       TabOrder = 2
       object Label17: TLabel
         Left = 15
@@ -384,22 +376,6 @@ inherited MProduto: TMProduto
         Height = 13
         Caption = 'Peso'
         FocusControl = DBEdit17
-      end
-      object Label18: TLabel
-        Left = 149
-        Top = 18
-        Width = 47
-        Height = 13
-        Caption = 'Vlr. Custo'
-        FocusControl = DBEdit18
-      end
-      object Label19: TLabel
-        Left = 272
-        Top = 21
-        Width = 40
-        Height = 13
-        Caption = '% Frete'
-        FocusControl = DBEdit19
       end
       object Label20: TLabel
         Left = 390
@@ -441,53 +417,29 @@ inherited MProduto: TMProduto
         Caption = '$ Margem Lucro'
         FocusControl = DBEdit24
       end
-      object Label25: TLabel
-        Left = 15
-        Top = 111
-        Width = 48
-        Height = 13
-        Caption = '$ Venda 1'
-        FocusControl = DBEdit25
-      end
-      object Label26: TLabel
-        Left = 149
-        Top = 111
-        Width = 53
-        Height = 13
-        Caption = '% Venda 1'
-        FocusControl = DBEdit26
-      end
-      object Label27: TLabel
-        Left = 272
-        Top = 111
-        Width = 48
-        Height = 13
-        Caption = '$ Venda 2'
-        FocusControl = DBEdit27
-      end
-      object Label28: TLabel
-        Left = 390
-        Top = 111
-        Width = 53
-        Height = 13
-        Caption = '% Venda 2'
-        FocusControl = DBEdit28
-      end
-      object Label29: TLabel
-        Left = 15
-        Top = 152
-        Width = 48
-        Height = 13
-        Caption = '$ Venda 3'
-        FocusControl = DBEdit29
-      end
       object Label34: TLabel
-        Left = 208
-        Top = 152
+        Left = 202
+        Top = 110
         Width = 54
         Height = 13
         Caption = 'Valoriza'#231#227'o'
         FocusControl = DBEdit33
+      end
+      object Label18: TLabel
+        Left = 148
+        Top = 21
+        Width = 59
+        Height = 13
+        Caption = 'Custo M'#233'dio'
+        FocusControl = DBEdit18
+      end
+      object Label19: TLabel
+        Left = 15
+        Top = 110
+        Width = 45
+        Height = 13
+        Caption = 'Vlr Venda'
+        FocusControl = DBEdit19
       end
       object DBEdit17: TDBEdit
         Left = 15
@@ -498,24 +450,6 @@ inherited MProduto: TMProduto
         DataSource = DM_Estoque.DSProdutos
         TabOrder = 0
       end
-      object DBEdit18: TDBEdit
-        Left = 149
-        Top = 37
-        Width = 117
-        Height = 21
-        DataField = 'PRO_VLRCUSTO'
-        DataSource = DM_Estoque.DSProdutos
-        TabOrder = 1
-      end
-      object DBEdit19: TDBEdit
-        Left = 272
-        Top = 37
-        Width = 112
-        Height = 21
-        DataField = 'PRO_PERCFRETE'
-        DataSource = DM_Estoque.DSProdutos
-        TabOrder = 2
-      end
       object DBEdit20: TDBEdit
         Left = 390
         Top = 37
@@ -523,7 +457,7 @@ inherited MProduto: TMProduto
         Height = 21
         DataField = 'PRO_VLRFRETE'
         DataSource = DM_Estoque.DSProdutos
-        TabOrder = 3
+        TabOrder = 1
       end
       object DBEdit21: TDBEdit
         Left = 15
@@ -532,7 +466,7 @@ inherited MProduto: TMProduto
         Height = 21
         DataField = 'PRO_PERCENCARG'
         DataSource = DM_Estoque.DSProdutos
-        TabOrder = 4
+        TabOrder = 2
       end
       object DBEdit22: TDBEdit
         Left = 149
@@ -541,16 +475,17 @@ inherited MProduto: TMProduto
         Height = 21
         DataField = 'PRO_VLRENCARG'
         DataSource = DM_Estoque.DSProdutos
-        TabOrder = 5
+        TabOrder = 3
       end
       object DBEdit23: TDBEdit
         Left = 272
         Top = 83
         Width = 112
         Height = 21
+        TabStop = False
         DataField = 'PRO_PERCMARGLUCR'
         DataSource = DM_Estoque.DSProdutos
-        TabOrder = 6
+        TabOrder = 4
       end
       object DBEdit24: TDBEdit
         Left = 390
@@ -559,82 +494,57 @@ inherited MProduto: TMProduto
         Height = 21
         DataField = 'PRO_VLRMARGLUCR'
         DataSource = DM_Estoque.DSProdutos
-        TabOrder = 7
-      end
-      object DBEdit25: TDBEdit
-        Left = 15
-        Top = 127
-        Width = 128
-        Height = 21
-        DataField = 'PRO_VLRVENDA1'
-        DataSource = DM_Estoque.DSProdutos
-        TabOrder = 8
-      end
-      object DBEdit26: TDBEdit
-        Left = 149
-        Top = 127
-        Width = 117
-        Height = 21
-        DataField = 'PRO_PERCVLRVENDA2'
-        DataSource = DM_Estoque.DSProdutos
-        TabOrder = 9
-      end
-      object DBEdit27: TDBEdit
-        Left = 272
-        Top = 127
-        Width = 112
-        Height = 21
-        DataField = 'PRO_VLRVENDA2'
-        DataSource = DM_Estoque.DSProdutos
-        TabOrder = 10
-      end
-      object DBEdit28: TDBEdit
-        Left = 390
-        Top = 127
-        Width = 112
-        Height = 21
-        DataField = 'PRO_PERCVLRVENDA3'
-        DataSource = DM_Estoque.DSProdutos
-        TabOrder = 11
-      end
-      object DBEdit29: TDBEdit
-        Left = 15
-        Top = 168
-        Width = 187
-        Height = 21
-        DataField = 'PRO_VLRVENDA3'
-        DataSource = DM_Estoque.DSProdutos
-        TabOrder = 12
+        TabOrder = 5
       end
       object DBEdit33: TDBEdit
-        Left = 208
-        Top = 168
-        Width = 251
+        Left = 202
+        Top = 126
+        Width = 182
         Height = 21
+        TabStop = False
         DataField = 'PRO_VALORIZACAO'
         DataSource = DM_Estoque.DSProdutos
-        TabOrder = 13
+        TabOrder = 6
+      end
+      object DBEdit18: TDBEdit
+        Left = 149
+        Top = 37
+        Width = 235
+        Height = 21
+        TabStop = False
+        DataField = 'PRO_CUSTOMEDIO'
+        DataSource = DM_Estoque.DSProdutos
+        TabOrder = 7
+      end
+      object DBEdit19: TDBEdit
+        Left = 15
+        Top = 126
+        Width = 181
+        Height = 21
+        DataField = 'PRO_VLRVENDA'
+        DataSource = DM_Estoque.DSProdutos
+        TabOrder = 8
       end
     end
     object TPanel
       Left = 519
       Top = 335
       Width = 195
-      Height = 202
+      Height = 178
       TabOrder = 3
       object DBImage1: TDBImage
         Left = 0
         Top = 0
         Width = 193
-        Height = 202
+        Height = 177
         DataField = 'PRO_IMG'
         DataSource = DM_Estoque.DSProdutos
         TabOrder = 0
       end
     end
     object DBMemo1: TDBMemo
-      Left = 12
-      Top = 556
+      Left = 10
+      Top = 519
       Width = 693
       Height = 82
       TabOrder = 4
