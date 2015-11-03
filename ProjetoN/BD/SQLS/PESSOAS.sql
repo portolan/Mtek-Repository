@@ -15,35 +15,34 @@ SET SQL DIALECT 3;
 
 
 
-CREATE TABLE PESSOAS (
-    PESS_EMPRESA        INTEGER NOT NULL,
+CREATE TABLE PESSOAS (    
     PESS_CODIGO         VARCHAR(30) NOT NULL,
     PESS_DESCRICAO      VARCHAR(100),
     PESS_TIPO           CHAR(1),
     PESS_APELIDO        VARCHAR(60),
     PESS_CONTATO        VARCHAR(60),
-    PESS_TELCONTATO     DMTELEFONE /* DMTELEFONE = VARCHAR(12) */,
-    PESS_FAX            DMTELEFONE /* DMTELEFONE = VARCHAR(12) */,
+    PESS_TELCONTATO     VARCHAR(15),
+	PESS_TEL1     VARCHAR(15),
+	PESS_TEL2     VARCHAR(15),
+	PESS_TEL3     VARCHAR(15),
+    PESS_FAX            VARCHAR(12),
     PESS_RAMAL          INTEGER,
-    PESS_CNPJ           DMCNPJ /* DMCNPJ = VARCHAR(14) */,
-    PESS_CPF            DMCPF /* DMCPF = VARCHAR(11) */,
+    PESS_CNPJ           VARCHAR(14),
+    PESS_CPF            VARCHAR(11),
     PESS_RG             VARCHAR(10),
-    PESS_INSCESTADUAL   DMINSCESTADUAL /* DMINSCESTADUAL = VARCHAR(9) */,
-    PESS_INSCMUNICIPAL  DMINSCMUNICIPAL /* DMINSCMUNICIPAL = VARCHAR(15) */,
+    PESS_INSCESTADUAL   VARCHAR(9),
+    PESS_INSCMUNICIPAL  VARCHAR(15),
     PESS_EMAIL          VARCHAR(60),
-    PESS_DTCADASTRO     DATE
+    PESS_DTCADASTRO     TIMESTAMP NOT NULL,
+	PESS_LOGRADOURO       VARCHAR(60),
+	PESS_BAIRRO        VARCHAR(60),
+	PESS_COMPLEMENTO       VARCHAR(60),
+	PESS_NR       VARCHAR(60),
+	PESS_CIDADE        VARCHAR(60) DEFAULT 'PR',
+	PESS_UF        VARCHAR(60),
+	PESS_PAIS       VARCHAR(60) DEFAULT 'BRASIL'
 );
 
 
 
 
-/******************************************************************************/
-/***                              Primary Keys                              ***/
-/******************************************************************************/
-
-ALTER TABLE PESSOAS ADD CONSTRAINT PK_PESSOA PRIMARY KEY (PESS_EMPRESA, PESS_CODIGO);
-
-
-/******************************************************************************/
-/***                               Privileges                               ***/
-/******************************************************************************/
