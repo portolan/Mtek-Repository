@@ -3606,6 +3606,9 @@ object TelaInicial: TTelaInicial
         Caption = 'Empresa'
         OnClick = Empresas1Click
       end
+      object Departamentos1: TMenuItem
+        Caption = 'Departamentos'
+      end
       object PlanodeContas1: TMenuItem
         Caption = 'Plano de Contas'
       end

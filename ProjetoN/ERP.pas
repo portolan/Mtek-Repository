@@ -62,6 +62,7 @@ type
     MovimentaodeEstoquePorCustoMdio1: TMenuItem;
     ProdutosMaisValorizados1: TMenuItem;
     Categoria1: TMenuItem;
+    Departamentos1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);

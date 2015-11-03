@@ -42,6 +42,8 @@ procedure TP_empresa.FormCreate(Sender: TObject);
 begin
   inherited;
 procInicializar(DM_contabil.empresa,true,false,M_empresa,TM_empresa);
+funcAtribuiFiltros;
+nomeQry := 'EMPRESA';
 end;
 
 procedure TP_empresa.procselect;
