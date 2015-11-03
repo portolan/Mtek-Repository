@@ -8,19 +8,19 @@ uses
 
 type
   TDM_PCP = class(TDataModule)
-    DS_PCP: TDataSource;
-    IB_PCP: TIBQuery;
-    UPD_PCP: TIBUpdateSQL;
-    IB_PCPOP_COD: TIntegerField;
-    IB_PCPOP_DATA: TDateField;
-    IB_PCPOP_DT_ORCAMENTO: TDateField;
-    IB_PCPOP_DESCRICAO: TIBStringField;
-    IB_PCPOP_DT_PEDIDO: TDateField;
-    IB_PCPOP_DT_ENTREGA: TDateField;
-    IB_PCPOP_QTD: TIntegerField;
-    IB_PCPOP_CUSTO_PRODUCAO: TIBBCDField;
-    IB_PCPOP_TIPO: TIBStringField;
-    IB_PCPOP_STATUS: TIBStringField;
+    DS_OrdemProducao: TDataSource;
+    OrdemProducao: TIBQuery;
+    UPD_OrdemProducao: TIBUpdateSQL;
+    OrdemProducaoOP_COD: TIntegerField;
+    OrdemProducaoOP_DATA: TDateField;
+    OrdemProducaoOP_DT_ORCAMENTO: TDateField;
+    OrdemProducaoOP_DESCRICAO: TIBStringField;
+    OrdemProducaoOP_DT_PEDIDO: TDateField;
+    OrdemProducaoOP_DT_ENTREGA: TDateField;
+    OrdemProducaoOP_QTD: TIntegerField;
+    OrdemProducaoOP_CUSTO_PRODUCAO: TIBBCDField;
+    OrdemProducaoOP_TIPO: TIBStringField;
+    OrdemProducaoOP_STATUS: TIBStringField;
   private
     { Private declarations }
   public

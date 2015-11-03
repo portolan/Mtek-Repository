@@ -29,15 +29,18 @@ uses UDM_PCP, UM_PCP;
 procedure TP_OP.FormCreate(Sender: TObject);
 begin
   inherited;
-    procInicializar(DM_PCP.IB_PCP,TRUE,FALSE,M_OP,TM_OP);
+    procInicializar(DM_PCP.OrdemProducao,TRUE,FALSE,M_OP,TM_OP);
+    funcAtribuiFiltros;
+    nomeQry := 'ordem_producao';
+
 end;
 
 procedure TP_OP.procSelect;
 begin
   inherited;
-      DM_PCP.IB_PCP.Close;
-      DM_PCP.IB_PCP.SQL.Text:= 'SELECT * FROM ORDEM_PRODUCAO';
-      DM_PCP.IB_PCP.Open;
+      DM_PCP.OrdemProducao.Close;
+      DM_PCP.OrdemProducao.SQL.Text:= 'SELECT * FROM ORDEM_PRODUCAO';
+      DM_PCP.OrdemProducao.Open;
 end;
 
 end.

@@ -28,7 +28,7 @@ uses UDM_PCP, dm000, UM_PRODUCAO;
 procedure TP_PRODUCAO.FormCreate(Sender: TObject);
 begin
   inherited;
-    procInicializar(DM_PCP.IB_PCP,TRUE,FALSE,M_PRODUCAO,TM_PRODUCAO);
+    procInicializar(DM_PCP.OrdemProducao,TRUE,FALSE,M_PRODUCAO,TM_PRODUCAO);
 end;
 
 end.
