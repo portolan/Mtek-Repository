@@ -28,15 +28,15 @@ uses UDM_Servico, UM_Servico, dm000, ERP;
 procedure TP_Servico.FormCreate(Sender: TObject);
 begin
   inherited;
-  procInicializar(DM_Servico.IB_Servico,TRUE,FALSE,M_Servico,TM_Servico);
+  procInicializar(DM_Servico.IB_Chamado,TRUE,FALSE,M_Servico,TM_Servico);
 end;
 
 procedure TP_Servico.procselect;
 begin
   inherited;
-  DM_Servico.IB_Servico.Close;
-  DM_Servico.IB_Servico.SQL.Text := 'SELECT * FROM CHAMADOS';
-  DM_Servico.IB_Servico.Open;
+  DM_Servico.IB_Chamado.Close;
+  DM_Servico.IB_Chamado.SQL.Text := 'SELECT * FROM CHAMADOS';
+  DM_Servico.IB_Chamado.Open;
 end;
 
 end.
