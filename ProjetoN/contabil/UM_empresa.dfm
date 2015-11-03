@@ -1,4 +1,5 @@
 inherited M_empresa: TM_empresa
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cadastro de Empresas - ProjetoDesnecessauro'
   ExplicitWidth = 597
   ExplicitHeight = 320

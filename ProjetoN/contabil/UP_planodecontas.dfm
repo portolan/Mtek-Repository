@@ -1,40 +1,36 @@
-inherited P_centro: TP_centro
-  Caption = 'Pesquisar Centro de Custo - ProjetoDesnecessauro'
+inherited P_planodecontas: TP_planodecontas
+  Caption = 'Pesquisar Plano de Contas - ProjetoDesnecessauro'
   OnCreate = FormCreate
-  ExplicitWidth = 799
+  ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
     inherited gbDados: TGroupBox
       inherited DBGDados: TDBGrid
-        DataSource = DM_contabil.Dcentro
+        DataSource = DM_contabil.Dplanodecontas
         Columns = <
           item
             Expanded = False
-            FieldName = 'COD_CC'
+            FieldName = 'COD_CONTA'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'NUM_CC'
+            FieldName = 'CONTA'
+            Width = 82
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'DESC_CC'
+            FieldName = 'DESC_CONTA'
+            Width = 245
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'ANALITICO'
-            Width = 64
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'COD_GRUPO'
-            Width = 64
+            FieldName = 'ANALITICA'
+            Width = 60
             Visible = True
           end>
       end

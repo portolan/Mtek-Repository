@@ -1,4 +1,5 @@
 inherited M_centro: TM_centro
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cadastro de Centro de Custo'
   ClientHeight = 211
   ClientWidth = 451
@@ -97,13 +98,15 @@ inherited M_centro: TM_centro
       TabOrder = 3
     end
     object DBCheckBox1: TDBCheckBox
-      Left = 184
+      Left = 176
       Top = 132
       Width = 97
       Height = 17
       DataField = 'ANALITICO'
       DataSource = DataSource1
       TabOrder = 4
+      ValueChecked = 'S'
+      ValueUnchecked = 'N'
     end
   end
   object DataSource1: TDataSource

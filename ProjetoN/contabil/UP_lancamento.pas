@@ -47,6 +47,8 @@ procedure TP_lancamento.FormCreate(Sender: TObject);
 begin
   inherited;
 procInicializar(DM_contabil.lancamento,true,false,M_lancamento,TM_lancamento);
+funcAtribuiFiltros;
+nomeQry := 'LANCAMENTOS';
 end;
 
 procedure TP_lancamento.procselect;

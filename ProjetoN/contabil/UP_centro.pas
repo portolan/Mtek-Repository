@@ -41,6 +41,8 @@ procedure TP_centro.FormCreate(Sender: TObject);
 begin
   inherited;
 procInicializar(DM_contabil.centro,true,false,M_centro,TM_centro);
+funcAtribuiFiltros;
+nomeQry := 'CENTRODECUSTO';
 end;
 
 procedure TP_centro.procselect;

@@ -43,7 +43,13 @@ uses
   UP_Bloco in 'Estoque\UP_Bloco.pas' {PBloco},
   UP_Prateleira in 'Estoque\UP_Prateleira.pas' {PPrateleira},
   UM_Bloco in 'Estoque\UM_Bloco.pas' {MBloco},
-  UM_Prateleira in 'Estoque\UM_Prateleira.pas' {MPrateleira};
+  UM_Prateleira in 'Estoque\UM_Prateleira.pas' {MPrateleira},
+  UP_departamento in 'contabil\UP_departamento.pas' {P_departamento},
+  UM_departamento in 'contabil\UM_departamento.pas' {M_departamento},
+  UP_planodecontas in 'contabil\UP_planodecontas.pas' {P_planodecontas},
+  UM_planodecontas in 'contabil\UM_planodecontas.pas' {M_planodecontas},
+  UP_historico in 'contabil\UP_historico.pas' {P_historico},
+  UM_historico in 'contabil\UM_historico.pas' {M_historico};
 
 {$R *.res}
 

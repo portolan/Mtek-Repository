@@ -225,6 +225,30 @@
             <Form>MPrateleira</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="contabil\UP_departamento.pas">
+            <Form>P_departamento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contabil\UM_departamento.pas">
+            <Form>M_departamento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contabil\UP_planodecontas.pas">
+            <Form>P_planodecontas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contabil\UM_planodecontas.pas">
+            <Form>M_planodecontas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contabil\UP_historico.pas">
+            <Form>P_historico</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contabil\UM_historico.pas">
+            <Form>M_historico</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -248,6 +272,7 @@
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k210.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp210.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k210.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp210.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
@@ -338,7 +363,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectOSXEntitlements">
                     <Platform Name="OSX32">
-                        <RemoteDir>../</RemoteDir>
+                        <RemoteDir>Contents</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -424,7 +449,6 @@
                 </DeployClass>
                 <DeployClass Name="ProjectiOSEntitlements">
                     <Platform Name="iOSDevice">
-                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>

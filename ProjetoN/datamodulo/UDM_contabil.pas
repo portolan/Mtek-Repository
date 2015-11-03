@@ -44,6 +44,27 @@ type
     lancamentoHISTORICO: TIntegerField;
     lancamentoVAR_HISTORICO: TIBStringField;
     lancamentoVALOR: TIntegerField;
+    departamento: TIBQuery;
+    Ddepartamento: TDataSource;
+    Udepartamento: TIBUpdateSQL;
+    departamentoCOD_DEP: TIntegerField;
+    departamentoCOD_EMPRESAR: TIntegerField;
+    departamentoDP_NOME: TIBStringField;
+    departamentoDP_DESC: TIBStringField;
+    planodecontas: TIBQuery;
+    Dplanodecontas: TDataSource;
+    Uplanodecontas: TIBUpdateSQL;
+    planodecontasCOD_CONTA: TIntegerField;
+    planodecontasCONTA: TIntegerField;
+    planodecontasDESC_CONTA: TIBStringField;
+    planodecontasANALITICA: TIBStringField;
+    historico: TIBQuery;
+    Dhistorico: TDataSource;
+    Uhistorico: TIBUpdateSQL;
+    historicoCOD_HIST: TIntegerField;
+    historicoHIST_NOME: TIBStringField;
+    procedure planodecontasAfterInsert(DataSet: TDataSet);
+    procedure centroAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -57,6 +78,19 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
+uses dm000;
+
 {$R *.dfm}
+
+procedure TDM_contabil.centroAfterInsert(DataSet: TDataSet);
+begin
+  DM_contabil.centroANALITICO.AsString := 'N';
+
+end;
+
+procedure TDM_contabil.planodecontasAfterInsert(DataSet: TDataSet);
+begin
+  DM_contabil.planodecontasANALITICA.AsString := 'N';
+end;
 
 end.

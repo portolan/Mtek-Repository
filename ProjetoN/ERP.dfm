@@ -4611,9 +4611,11 @@ object TelaInicial: TTelaInicial
       end
       object Departamentos1: TMenuItem
         Caption = 'Departamentos'
+        OnClick = Departamentos1Click
       end
       object PlanodeContas1: TMenuItem
         Caption = 'Plano de Contas'
+        OnClick = PlanodeContas1Click
       end
       object ConsultaMovimentaes1: TMenuItem
         Caption = 'Consulta Movimenta'#231#227'o'
@@ -4622,6 +4624,7 @@ object TelaInicial: TTelaInicial
         Caption = 'Parametros'
         object Historicos1: TMenuItem
           Caption = 'Historicos'
+          OnClick = Historicos1Click
         end
       end
     end

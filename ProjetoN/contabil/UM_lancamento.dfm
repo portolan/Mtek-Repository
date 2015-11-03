@@ -1,4 +1,5 @@
 inherited M_lancamento: TM_lancamento
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Inserindo Dados - Lan'#231'amentos - ProjetoDesnecessauro'
   ClientHeight = 505
   ClientWidth = 508
@@ -19,8 +20,6 @@ inherited M_lancamento: TM_lancamento
   inherited gbInfos: TGroupBox
     Width = 508
     Height = 464
-    ExplicitLeft = -1
-    ExplicitTop = -5
     ExplicitWidth = 508
     ExplicitHeight = 464
     object Label1: TLabel

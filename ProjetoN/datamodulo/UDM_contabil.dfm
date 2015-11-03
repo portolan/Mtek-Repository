@@ -1,7 +1,7 @@
 object DM_contabil: TDM_contabil
   OldCreateOrder = False
-  Height = 413
-  Width = 376
+  Height = 389
+  Width = 679
   object empresa: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
@@ -137,6 +137,7 @@ object DM_contabil: TDM_contabil
   object centro: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = centroAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -220,7 +221,7 @@ object DM_contabil: TDM_contabil
       '')
     UpdateObject = Ulancamento
     Left = 128
-    Top = 176
+    Top = 184
     object lancamentoNR_LOTE: TIntegerField
       DisplayLabel = 'N'#186' Lote'
       FieldName = 'NR_LOTE'
@@ -278,7 +279,7 @@ object DM_contabil: TDM_contabil
   object Dlancamento: TDataSource
     DataSet = lancamento
     Left = 208
-    Top = 176
+    Top = 184
   end
   object Ulancamento: TIBUpdateSQL
     RefreshSQL.Strings = (
@@ -317,6 +318,210 @@ object DM_contabil: TDM_contabil
       'where'
       '  NR_LOTE = :OLD_NR_LOTE')
     Left = 48
-    Top = 176
+    Top = 184
+  end
+  object departamento: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from DEPARTAMENTO')
+    UpdateObject = Udepartamento
+    Left = 128
+    Top = 264
+    object departamentoCOD_DEP: TIntegerField
+      DisplayLabel = 'C'#243'digo Departamento'
+      FieldName = 'COD_DEP'
+      Origin = '"DEPARTAMENTO"."COD_DEP"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object departamentoCOD_EMPRESAR: TIntegerField
+      DisplayLabel = 'Empresa Relacionada'
+      FieldName = 'COD_EMPRESAR'
+      Origin = '"DEPARTAMENTO"."COD_EMPRESAR"'
+      Required = True
+    end
+    object departamentoDP_NOME: TIBStringField
+      DisplayLabel = 'Departamento'
+      FieldName = 'DP_NOME'
+      Origin = '"DEPARTAMENTO"."DP_NOME"'
+      Required = True
+      Size = 40
+    end
+    object departamentoDP_DESC: TIBStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'DP_DESC'
+      Origin = '"DEPARTAMENTO"."DP_DESC"'
+      Required = True
+      Size = 60
+    end
+  end
+  object Ddepartamento: TDataSource
+    DataSet = departamento
+    Left = 208
+    Top = 264
+  end
+  object Udepartamento: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      '  COD_DEP,'
+      '  COD_EMPRESAR,'
+      '  DP_NOME,'
+      '  DP_DESC'
+      'from DEPARTAMENTO '
+      'where'
+      '  COD_DEP = :COD_DEP')
+    ModifySQL.Strings = (
+      'update DEPARTAMENTO'
+      'set'
+      '  COD_DEP = :COD_DEP,'
+      '  COD_EMPRESAR = :COD_EMPRESAR,'
+      '  DP_DESC = :DP_DESC,'
+      '  DP_NOME = :DP_NOME'
+      'where'
+      '  COD_DEP = :OLD_COD_DEP')
+    InsertSQL.Strings = (
+      'insert into DEPARTAMENTO'
+      '  (COD_DEP, COD_EMPRESAR, DP_DESC, DP_NOME)'
+      'values'
+      '  (:COD_DEP, :COD_EMPRESAR, :DP_DESC, :DP_NOME)')
+    DeleteSQL.Strings = (
+      'delete from DEPARTAMENTO'
+      'where'
+      '  COD_DEP = :OLD_COD_DEP')
+    Left = 48
+    Top = 264
+  end
+  object planodecontas: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    AfterInsert = planodecontasAfterInsert
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from PLANODECONTAS')
+    UpdateObject = Uplanodecontas
+    Left = 456
+    Top = 24
+    object planodecontasCOD_CONTA: TIntegerField
+      DisplayLabel = 'C'#243'digo:'
+      FieldName = 'COD_CONTA'
+      Origin = '"PLANODECONTAS"."COD_CONTA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object planodecontasCONTA: TIntegerField
+      DisplayLabel = 'N'#250'mero Conta'
+      FieldName = 'CONTA'
+      Origin = '"PLANODECONTAS"."CONTA"'
+    end
+    object planodecontasDESC_CONTA: TIBStringField
+      DisplayLabel = 'Nome Conta'
+      FieldName = 'DESC_CONTA'
+      Origin = '"PLANODECONTAS"."DESC_CONTA"'
+    end
+    object planodecontasANALITICA: TIBStringField
+      DisplayLabel = 'Anal'#237'tica?'
+      FieldName = 'ANALITICA'
+      Origin = '"PLANODECONTAS"."ANALITICA"'
+      Size = 1
+    end
+  end
+  object Dplanodecontas: TDataSource
+    DataSet = planodecontas
+    Left = 536
+    Top = 24
+  end
+  object Uplanodecontas: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      '  COD_CONTA,'
+      '  CONTA,'
+      '  DESC_CONTA,'
+      '  ANALITICA'
+      'from PLANODECONTAS '
+      'where'
+      '  COD_CONTA = :COD_CONTA')
+    ModifySQL.Strings = (
+      'update PLANODECONTAS'
+      'set'
+      '  ANALITICA = :ANALITICA,'
+      '  COD_CONTA = :COD_CONTA,'
+      '  CONTA = :CONTA,'
+      '  DESC_CONTA = :DESC_CONTA'
+      'where'
+      '  COD_CONTA = :OLD_COD_CONTA')
+    InsertSQL.Strings = (
+      'insert into PLANODECONTAS'
+      '  (ANALITICA, COD_CONTA, CONTA, DESC_CONTA)'
+      'values'
+      '  (:ANALITICA, :COD_CONTA, :CONTA, :DESC_CONTA)')
+    DeleteSQL.Strings = (
+      'delete from PLANODECONTAS'
+      'where'
+      '  COD_CONTA = :OLD_COD_CONTA')
+    Left = 376
+    Top = 24
+  end
+  object historico: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from HISTORICO')
+    UpdateObject = Uhistorico
+    Left = 456
+    Top = 104
+    object historicoCOD_HIST: TIntegerField
+      DisplayLabel = 'Codigo Historico'
+      FieldName = 'COD_HIST'
+      Origin = '"HISTORICO"."COD_HIST"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object historicoHIST_NOME: TIBStringField
+      DisplayLabel = 'Hist'#243'rico'
+      FieldName = 'HIST_NOME'
+      Origin = '"HISTORICO"."HIST_NOME"'
+      Required = True
+    end
+  end
+  object Dhistorico: TDataSource
+    DataSet = historico
+    Left = 536
+    Top = 104
+  end
+  object Uhistorico: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      '  COD_HIST,'
+      '  HIST_NOME'
+      'from HISTORICO '
+      'where'
+      '  COD_HIST = :COD_HIST')
+    ModifySQL.Strings = (
+      'update HISTORICO'
+      'set'
+      '  COD_HIST = :COD_HIST,'
+      '  HIST_NOME = :HIST_NOME'
+      'where'
+      '  COD_HIST = :OLD_COD_HIST')
+    InsertSQL.Strings = (
+      'insert into HISTORICO'
+      '  (COD_HIST, HIST_NOME)'
+      'values'
+      '  (:COD_HIST, :HIST_NOME)')
+    DeleteSQL.Strings = (
+      'delete from HISTORICO'
+      'where'
+      '  COD_HIST = :OLD_COD_HIST')
+    Left = 376
+    Top = 104
   end
 end
