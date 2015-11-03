@@ -57,11 +57,5 @@ begin
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(TP_lancamento, P_lancamento);
-  Application.CreateForm(TM_lancamento, M_lancamento);
-  Application.CreateForm(TPBloco, PBloco);
-  Application.CreateForm(TPPrateleira, PPrateleira);
-  Application.CreateForm(TMBloco, MBloco);
-  Application.CreateForm(TMPrateleira, MPrateleira);
   Application.Run;
 end.
