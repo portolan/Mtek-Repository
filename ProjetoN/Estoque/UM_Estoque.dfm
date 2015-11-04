@@ -379,8 +379,11 @@ inherited MEstoque: TMEstoque
         Top = 32
         Width = 134
         Height = 21
+        TabStop = False
         DataField = 'ESTOQ_CODIGO'
         DataSource = DM_Estoque.DSEstoque
+        ParentColor = True
+        ReadOnly = True
         TabOrder = 12
       end
     end

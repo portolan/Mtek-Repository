@@ -3,8 +3,6 @@ inherited MPrateleira: TMPrateleira
   PixelsPerInch = 96
   TextHeight = 13
   inherited gbInfos: TGroupBox
-    ExplicitLeft = 56
-    ExplicitTop = 8
     object Label1: TLabel
       Left = 9
       Top = 16
@@ -47,11 +45,14 @@ inherited MPrateleira: TMPrateleira
     end
     object DBEdit2: TDBEdit
       Left = 149
-      Top = 32
+      Top = 35
       Width = 134
       Height = 21
+      TabStop = False
       DataField = 'PRAT_CODIGO'
       DataSource = DM_Estoque.DSPrateleira
+      ParentColor = True
+      ReadOnly = True
       TabOrder = 1
     end
     object DBEdit3: TDBEdit

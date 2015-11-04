@@ -1,5 +1,7 @@
 inherited MBloco: TMBloco
   Caption = 'MBloco'
+  ExplicitWidth = 597
+  ExplicitHeight = 320
   PixelsPerInch = 96
   TextHeight = 13
   inherited gbInfos: TGroupBox
@@ -48,8 +50,13 @@ inherited MBloco: TMBloco
       Top = 32
       Width = 134
       Height = 21
+      TabStop = False
+      Ctl3D = True
       DataField = 'BLOC_CODIGO'
       DataSource = DM_Estoque.DSBloco
+      ParentColor = True
+      ParentCtl3D = False
+      ReadOnly = True
       TabOrder = 1
     end
     object DBEdit3: TDBEdit

@@ -2,7 +2,6 @@ inherited MProduto: TMProduto
   Caption = 'MProduto'
   ClientHeight = 656
   ClientWidth = 717
-  ExplicitTop = -130
   ExplicitWidth = 733
   ExplicitHeight = 695
   PixelsPerInch = 96
@@ -10,7 +9,7 @@ inherited MProduto: TMProduto
   inherited pnRodape: TPanel
     Top = 615
     Width = 717
-    ExplicitTop = 644
+    ExplicitTop = 615
     ExplicitWidth = 717
     inherited sbCancelar: TSpeedButton
       Left = 620
@@ -21,7 +20,7 @@ inherited MProduto: TMProduto
     Width = 717
     Height = 615
     ExplicitWidth = 717
-    ExplicitHeight = 644
+    ExplicitHeight = 615
     object Label30: TLabel
       Left = 10
       Top = 503

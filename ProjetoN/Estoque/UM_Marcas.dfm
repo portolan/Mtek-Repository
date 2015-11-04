@@ -54,6 +54,7 @@ inherited MMarcas: TMMarcas
         DataSource = DM_Estoque.DSMarcas
         ParentColor = True
         ParentShowHint = False
+        ReadOnly = True
         ShowHint = False
         TabOrder = 0
       end

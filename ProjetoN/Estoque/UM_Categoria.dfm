@@ -9,13 +9,18 @@ inherited MCategoria: TMCategoria
   inherited pnRodape: TPanel
     Top = 253
     Width = 552
+    ExplicitTop = 253
+    ExplicitWidth = 552
     inherited sbCancelar: TSpeedButton
       Left = 455
+      ExplicitLeft = 455
     end
   end
   inherited gbInfos: TGroupBox
     Width = 552
     Height = 253
+    ExplicitWidth = 552
+    ExplicitHeight = 253
     object GroupBox1: TGroupBox
       Left = 3
       Top = 16
@@ -74,7 +79,10 @@ inherited MCategoria: TMCategoria
         Top = 24
         Width = 134
         Height = 21
+        TabStop = False
         DataField = 'CAT_CODIGO'
+        ParentColor = True
+        ReadOnly = True
         TabOrder = 1
       end
       object DBEdit3: TDBEdit
