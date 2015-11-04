@@ -251,6 +251,8 @@ object xPesqPadrao: TxPesqPadrao
         9388A2BF463D1B1B1B1B1B1B1B1B1B1B0D77BEB38A87868FBDBE770D1B1B1B1B
         1B1B1B1B1B1B1B1B1B1B761A314646311A761B1B1B1B1B1B1B1B}
       OnClick = sbNovoClick
+      ExplicitLeft = -5
+      ExplicitTop = 3
     end
     object sbSair: TSpeedButton
       Left = 767
