@@ -1021,7 +1021,7 @@ object TelaInicial: TTelaInicial
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = 8
+    Left = 404
     Top = 8
     Width = 60
     Height = 60
@@ -1784,7 +1784,7 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image3: TImage
-    Left = 470
+    Left = 338
     Top = 8
     Width = 60
     Height = 60
@@ -2169,7 +2169,7 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image4: TImage
-    Left = 74
+    Left = 272
     Top = 8
     Width = 60
     Height = 60
@@ -2559,7 +2559,7 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image5: TImage
-    Left = 404
+    Left = 8
     Top = 8
     Width = 60
     Height = 60
@@ -3715,7 +3715,7 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image8: TImage
-    Left = 272
+    Left = 74
     Top = 8
     Width = 60
     Height = 60
@@ -4102,7 +4102,7 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image9: TImage
-    Left = 338
+    Left = 470
     Top = 8
     Width = 60
     Height = 60
@@ -4547,12 +4547,6 @@ object TelaInicial: TTelaInicial
       object FichaTcnica1: TMenuItem
         Caption = 'Ficha T'#233'cnica'
       end
-      object PrazosCliente1: TMenuItem
-        Caption = 'Prazos/Cliente'
-      end
-      object PrevisodeVendas1: TMenuItem
-        Caption = 'Previs'#227'o de Vendas'
-      end
       object OrdemdeProduo1: TMenuItem
         Caption = 'Ordem de Produ'#231#227'o'
         OnClick = OrdemdeProduo1Click
@@ -4560,6 +4554,9 @@ object TelaInicial: TTelaInicial
       object Producao: TMenuItem
         Caption = 'Producao'
         OnClick = ProducaoClick
+      end
+      object E1: TMenuItem
+        Caption = 'Relatorios'
       end
     end
     object Compras1: TMenuItem

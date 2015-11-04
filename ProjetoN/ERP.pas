@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg;
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg, frxClass, frxExportPDF;
 
 type
   TTelaInicial = class(TForm)
@@ -22,8 +22,6 @@ type
     Marca1: TMenuItem;
     Produtos1: TMenuItem;
     FichaTcnica1: TMenuItem;
-    PrazosCliente1: TMenuItem;
-    PrevisodeVendas1: TMenuItem;
     OrdemdeProduo1: TMenuItem;
     CotaoFornecedor1: TMenuItem;
     PedidodeCompra1: TMenuItem;
@@ -62,6 +60,7 @@ type
     ProdutosMaisValorizados1: TMenuItem;
     Categoria1: TMenuItem;
     Departamentos1: TMenuItem;
+    E1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
