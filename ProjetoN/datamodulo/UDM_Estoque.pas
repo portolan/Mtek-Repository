@@ -33,7 +33,6 @@ type
     RelProdFornRPF_VLRLIQUIDO: TIBBCDField;
     RelProdFornRPF_DTCOMPRA: TDateField;
     RelProdFornRPF_CONTATO: TIBStringField;
-    MovimentoEstoque: TIBQuery;
     DSMovimentoEstoque: TDataSource;
     UMovimentoEstoque: TIBUpdateSQL;
     Categoria: TIBQuery;
@@ -100,6 +99,12 @@ type
     PrateleiraPRAT_CODIGO: TIntegerField;
     PrateleiraPRAT_DESCRICAO: TIBStringField;
     PrateleiraPRAT_OBS: TIBStringField;
+    CategoriaCAT_EMPRESA: TIntegerField;
+    CategoriaCAT_CODIGO: TIntegerField;
+    CategoriaCAT_DESCRICAO: TIBStringField;
+    CategoriaCAT_NCM: TIBStringField;
+    CategoriaCAT_OBS: TIBStringField;
+    MovimentoEstoque: TIBQuery;
     MovimentoEstoqueEM_EMPRESA: TIntegerField;
     MovimentoEstoqueEM_PRODUTO: TIBStringField;
     MovimentoEstoqueEM_BLOCO: TIntegerField;
@@ -111,15 +116,14 @@ type
     MovimentoEstoqueEM_DATA: TDateTimeField;
     MovimentoEstoqueEM_OBS: TIBStringField;
     MovimentoEstoqueEM_VALOR_FINANCEIRO: TIBBCDField;
-    CategoriaCAT_EMPRESA: TIntegerField;
-    CategoriaCAT_CODIGO: TIntegerField;
-    CategoriaCAT_DESCRICAO: TIBStringField;
-    CategoriaCAT_NCM: TIBStringField;
-    CategoriaCAT_OBS: TIBStringField;
+    MovimentoEstoqueEM_PEDIDOCOMPRAORIGEM: TIntegerField;
+    procedure ProdutosAfterInsert(DataSet: TDataSet);
+    procedure EstoqueAfterInsert(DataSet: TDataSet);
+    procedure MarcasAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
-     function funcRecuperaProximoIdGenerator(c_generator: String): Integer;
+
   end;
 
 var
@@ -135,15 +139,19 @@ uses dm000;
 
 { TDM_Estoque }
 
-function TDM_Estoque.funcRecuperaProximoIdGenerator(
-  c_generator: String): Integer;
+procedure TDM_Estoque.EstoqueAfterInsert(DataSet: TDataSet);
 begin
-    QueryGenerico.Close;
-    QueryGenerico.SQL.Text := ' SELECT GEN_ID(' + c_generator +
-      ',1) FROM RDB$DATABASE';
-    QueryGenerico.Open;
+    Produtos.FieldByName('ESTOQ_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQUE');
+end;
 
-    Result := QueryGenerico.FieldByName('GEN_ID').AsInteger;
+procedure TDM_Estoque.MarcasAfterInsert(DataSet: TDataSet);
+begin
+    Produtos.FieldByName('MARC_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_MARCAS');
+end;
+
+procedure TDM_Estoque.ProdutosAfterInsert(DataSet: TDataSet);
+begin
+    Produtos.FieldByName('PRO_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRODUTOS');
 end;
 
 end.

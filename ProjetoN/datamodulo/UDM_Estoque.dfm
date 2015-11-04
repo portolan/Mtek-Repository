@@ -5,6 +5,7 @@ object DM_Estoque: TDM_Estoque
   object Produtos: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = ProdutosAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -359,6 +360,7 @@ object DM_Estoque: TDM_Estoque
   object Estoque: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = EstoqueAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -556,6 +558,7 @@ object DM_Estoque: TDM_Estoque
   object Marcas: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = MarcasAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -728,96 +731,7 @@ object DM_Estoque: TDM_Estoque
       Size = 80
     end
   end
-  object MovimentoEstoque: TIBQuery
-    Database = dmBanco.Banco
-    Transaction = dmBanco.TBanco
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
-    SQL.Strings = (
-      'select * from ESTOQ_MOVIMENTO'
-      '')
-    UpdateObject = UMovimentoEstoque
-    Left = 320
-    Top = 8
-    object MovimentoEstoqueEM_EMPRESA: TIntegerField
-      DisplayLabel = 'Empresa'
-      FieldName = 'EM_EMPRESA'
-      Origin = '"ESTOQ_MOVIMENTO"."EM_EMPRESA"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object MovimentoEstoqueEM_PRODUTO: TIBStringField
-      DisplayLabel = 'Produto'
-      FieldName = 'EM_PRODUTO'
-      Origin = '"ESTOQ_MOVIMENTO"."EM_PRODUTO"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-      Size = 30
-    end
-    object MovimentoEstoqueEM_BLOCO: TIntegerField
-      DisplayLabel = 'Bloco'
-      FieldName = 'EM_BLOCO'
-      Origin = '"ESTOQ_MOVIMENTO"."EM_BLOCO"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object MovimentoEstoqueEM_PRATELEIRA: TIntegerField
-      DisplayLabel = 'Prateleira'
-      FieldName = 'EM_PRATELEIRA'
-      Origin = '"ESTOQ_MOVIMENTO"."EM_PRATELEIRA"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object MovimentoEstoqueEM_ESTOQUE: TIntegerField
-      DisplayLabel = 'Estoque'
-      FieldName = 'EM_ESTOQUE'
-      Origin = '"ESTOQ_MOVIMENTO"."EM_ESTOQUE"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object MovimentoEstoqueEM_CODIGO: TIntegerField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'EM_CODIGO'
-      Origin = '"ESTOQ_MOVIMENTO"."EM_CODIGO"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object MovimentoEstoqueEM_TIPO: TIBStringField
-      DisplayLabel = 'Tipo'
-      FieldName = 'EM_TIPO'
-      Origin = '"ESTOQ_MOVIMENTO"."EM_TIPO"'
-      FixedChar = True
-      Size = 1
-    end
-    object MovimentoEstoqueEM_QTD: TIBBCDField
-      DisplayLabel = 'Qtd'
-      FieldName = 'EM_QTD'
-      Origin = '"ESTOQ_MOVIMENTO"."EM_QTD"'
-      Precision = 18
-      Size = 2
-    end
-    object MovimentoEstoqueEM_DATA: TDateTimeField
-      DisplayLabel = 'Data'
-      FieldName = 'EM_DATA'
-      Origin = '"ESTOQ_MOVIMENTO"."EM_DATA"'
-    end
-    object MovimentoEstoqueEM_OBS: TIBStringField
-      DisplayLabel = 'Observa'#231#245'es'
-      FieldName = 'EM_OBS'
-      Origin = '"ESTOQ_MOVIMENTO"."EM_OBS"'
-      Size = 100
-    end
-    object MovimentoEstoqueEM_VALOR_FINANCEIRO: TIBBCDField
-      DisplayLabel = 'Vlr Financeiro'
-      FieldName = 'EM_VALOR_FINANCEIRO'
-      Origin = '"ESTOQ_MOVIMENTO"."EM_VALOR_FINANCEIRO"'
-      Precision = 18
-      Size = 2
-    end
-  end
   object DSMovimentoEstoque: TDataSource
-    DataSet = MovimentoEstoque
     Left = 320
     Top = 64
   end
@@ -1124,6 +1038,98 @@ object DM_Estoque: TDM_Estoque
       FieldName = 'PRAT_OBS'
       Origin = '"PRATELEIRA"."PRAT_OBS"'
       Size = 100
+    end
+  end
+  object MovimentoEstoque: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from ESTOQ_MOVIMENTO'
+      '')
+    UpdateObject = UMovimentoEstoque
+    Left = 320
+    Top = 8
+    object MovimentoEstoqueEM_EMPRESA: TIntegerField
+      DisplayLabel = 'Empresa'
+      FieldName = 'EM_EMPRESA'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_EMPRESA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object MovimentoEstoqueEM_PRODUTO: TIBStringField
+      DisplayLabel = 'Produto'
+      FieldName = 'EM_PRODUTO'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_PRODUTO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
+    end
+    object MovimentoEstoqueEM_BLOCO: TIntegerField
+      DisplayLabel = 'Bloco'
+      FieldName = 'EM_BLOCO'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_BLOCO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object MovimentoEstoqueEM_PRATELEIRA: TIntegerField
+      DisplayLabel = 'Prateleira'
+      FieldName = 'EM_PRATELEIRA'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_PRATELEIRA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object MovimentoEstoqueEM_ESTOQUE: TIntegerField
+      DisplayLabel = 'Estoque'
+      FieldName = 'EM_ESTOQUE'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_ESTOQUE"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object MovimentoEstoqueEM_CODIGO: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'EM_CODIGO'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object MovimentoEstoqueEM_TIPO: TIBStringField
+      DisplayLabel = 'Tipo'
+      FieldName = 'EM_TIPO'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_TIPO"'
+      FixedChar = True
+      Size = 1
+    end
+    object MovimentoEstoqueEM_QTD: TIBBCDField
+      DisplayLabel = 'Qtd'
+      FieldName = 'EM_QTD'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_QTD"'
+      Precision = 18
+      Size = 2
+    end
+    object MovimentoEstoqueEM_DATA: TDateTimeField
+      DisplayLabel = 'Data'
+      FieldName = 'EM_DATA'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_DATA"'
+    end
+    object MovimentoEstoqueEM_OBS: TIBStringField
+      DisplayLabel = 'Observa'#231#245'es'
+      FieldName = 'EM_OBS'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_OBS"'
+      Size = 100
+    end
+    object MovimentoEstoqueEM_VALOR_FINANCEIRO: TIBBCDField
+      DisplayLabel = 'Vlr Financeiro'
+      FieldName = 'EM_VALOR_FINANCEIRO'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_VALOR_FINANCEIRO"'
+      Precision = 18
+      Size = 2
+    end
+    object MovimentoEstoqueEM_PEDIDOCOMPRAORIGEM: TIntegerField
+      FieldName = 'EM_PEDIDOCOMPRAORIGEM'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_PEDIDOCOMPRAORIGEM"'
     end
   end
 end
