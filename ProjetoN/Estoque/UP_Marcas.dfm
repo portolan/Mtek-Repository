@@ -4,10 +4,7 @@ inherited PMarcas: TPMarcas
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
-    ExplicitTop = 53
-    ExplicitHeight = 307
     inherited gbDados: TGroupBox
-      ExplicitHeight = 301
       inherited DBGDados: TDBGrid
         DataSource = DM_Estoque.DSMarcas
         Columns = <
@@ -30,13 +27,9 @@ inherited PMarcas: TPMarcas
     end
   end
   inherited pnCabecalho: TPanel
-    inherited gbStatus: TGroupBox
-      ExplicitLeft = 622
-      ExplicitTop = 0
-      ExplicitHeight = 53
-    end
     inherited gbFiltro: TGroupBox
-      ExplicitHeight = 53
+      ExplicitLeft = -6
+      ExplicitTop = -3
     end
   end
 end
