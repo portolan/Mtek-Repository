@@ -4621,7 +4621,6 @@ object TelaInicial: TTelaInicial
         Caption = 'Parametros'
         object Historicos1: TMenuItem
           Caption = 'Historicos'
-          OnClick = Historicos1Click
         end
       end
     end

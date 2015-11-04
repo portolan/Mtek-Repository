@@ -78,7 +78,6 @@ type
     procedure Categoria1Click(Sender: TObject);
     procedure Departamentos1Click(Sender: TObject);
     procedure PlanodeContas1Click(Sender: TObject);
-    procedure Historicos1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -96,7 +95,7 @@ implementation
 uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
   UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO, UP_lancamento, UM_Servico,
   UP_Servico, UP_Bloco, UM_Prateleira, UP_Categoria, UP_Prateleira,
-  UP_departamento, UM_departamento, UP_planodecontas, UP_historico;
+  UP_departamento, UM_departamento, UP_planodecontas;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -151,11 +150,6 @@ end;
 procedure TTelaInicial.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   application.Terminate;
-end;
-
-procedure TTelaInicial.Historicos1Click(Sender: TObject);
-begin
-  TP_historico.chamaTela(Self);
 end;
 
 procedure TTelaInicial.Manuteno3Click(Sender: TObject);

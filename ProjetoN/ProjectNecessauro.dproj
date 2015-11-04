@@ -165,7 +165,7 @@
             <Form>M_empresa</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="pcp\UDM_PCP.pas">
+        <DCCReference Include="datamodulo\UDM_PCP.pas">
             <Form>DM_PCP</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
@@ -239,14 +239,6 @@
         </DCCReference>
         <DCCReference Include="contabil\UM_planodecontas.pas">
             <Form>M_planodecontas</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="contabil\UP_historico.pas">
-            <Form>P_historico</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="contabil\UM_historico.pas">
-            <Form>M_historico</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
@@ -363,7 +355,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectOSXEntitlements">
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents</RemoteDir>
+                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -449,6 +441,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectiOSEntitlements">
                     <Platform Name="iOSDevice">
+                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>

@@ -28,7 +28,7 @@ uses
   UP_empresa in 'contabil\UP_empresa.pas' {P_empresa},
   login in 'login final\login.pas' {tela_login},
   UM_empresa in 'contabil\UM_empresa.pas' {M_empresa},
-  UDM_PCP in 'pcp\UDM_PCP.pas' {DM_PCP: TDataModule},
+  UDM_PCP in 'datamodulo\UDM_PCP.pas' {DM_PCP: TDataModule},
   UM_PCP in 'pcp\UM_PCP.pas' {M_OP},
   UP_OP in 'pcp\UP_OP.pas' {P_OP},
   UDM_Servico in 'assistencia\UDM_Servico.pas' {DM_Servico: TDataModule},
@@ -47,9 +47,7 @@ uses
   UP_departamento in 'contabil\UP_departamento.pas' {P_departamento},
   UM_departamento in 'contabil\UM_departamento.pas' {M_departamento},
   UP_planodecontas in 'contabil\UP_planodecontas.pas' {P_planodecontas},
-  UM_planodecontas in 'contabil\UM_planodecontas.pas' {M_planodecontas},
-  UP_historico in 'contabil\UP_historico.pas' {P_historico},
-  UM_historico in 'contabil\UM_historico.pas' {M_historico};
+  UM_planodecontas in 'contabil\UM_planodecontas.pas' {M_planodecontas};
 
 {$R *.res}
 
