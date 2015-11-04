@@ -143,7 +143,7 @@ begin
             if cbContent.Text = 'É igual' then
             begin
                 QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' where ' +
-                  funcFiltroAtual.FieldName + ' = ''' + editPesquisa.Text + '''';
+                  funcFiltroAtual.FieldName + ' = ' + QuotedStr(editPesquisa.Text);
             end
             else if cbContent.Text = 'É diferente' then
             begin
