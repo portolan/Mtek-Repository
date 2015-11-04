@@ -120,6 +120,10 @@ type
     procedure ProdutosAfterInsert(DataSet: TDataSet);
     procedure EstoqueAfterInsert(DataSet: TDataSet);
     procedure MarcasAfterInsert(DataSet: TDataSet);
+    procedure MovimentoEstoqueAfterInsert(DataSet: TDataSet);
+    procedure CategoriaAfterInsert(DataSet: TDataSet);
+    procedure BlocoAfterInsert(DataSet: TDataSet);
+    procedure PrateleiraAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -139,14 +143,34 @@ uses dm000;
 
 { TDM_Estoque }
 
+procedure TDM_Estoque.BlocoAfterInsert(DataSet: TDataSet);
+begin
+    Bloco.FieldByName('BLOC_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_BLOCO');
+end;
+
+procedure TDM_Estoque.CategoriaAfterInsert(DataSet: TDataSet);
+begin
+    Categoria.FieldByName('CAT_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_CATEGORIA');
+end;
+
 procedure TDM_Estoque.EstoqueAfterInsert(DataSet: TDataSet);
 begin
-    Produtos.FieldByName('ESTOQ_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQUE');
+    Estoque.FieldByName('ESTOQ_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQUE');
 end;
 
 procedure TDM_Estoque.MarcasAfterInsert(DataSet: TDataSet);
 begin
-    Produtos.FieldByName('MARC_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_MARCAS');
+    Marcas.FieldByName('MARC_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_MARCAS');
+end;
+
+procedure TDM_Estoque.MovimentoEstoqueAfterInsert(DataSet: TDataSet);
+begin
+    MovimentoEstoque.FieldByName('EM_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQ_MOVIMENTO');
+end;
+
+procedure TDM_Estoque.PrateleiraAfterInsert(DataSet: TDataSet);
+begin
+    Prateleira.FieldByName('PRAT_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRATELEIRA');
 end;
 
 procedure TDM_Estoque.ProdutosAfterInsert(DataSet: TDataSet);

@@ -732,6 +732,7 @@ object DM_Estoque: TDM_Estoque
     end
   end
   object DSMovimentoEstoque: TDataSource
+    DataSet = MovimentoEstoque
     Left = 320
     Top = 64
   end
@@ -739,52 +740,71 @@ object DM_Estoque: TDM_Estoque
     RefreshSQL.Strings = (
       'Select '
       '  EM_EMPRESA,'
-      '  EM_ESTOQUE,'
       '  EM_PRODUTO,'
+      '  EM_BLOCO,'
+      '  EM_PRATELEIRA,'
+      '  EM_ESTOQUE,'
       '  EM_CODIGO,'
       '  EM_TIPO,'
       '  EM_QTD,'
       '  EM_DATA,'
-      '  EM_OBS'
+      '  EM_OBS,'
+      '  EM_VALOR_FINANCEIRO,'
+      '  EM_PEDIDOCOMPRAORIGEM'
       'from ESTOQ_MOVIMENTO '
       'where'
+      '  EM_BLOCO = :EM_BLOCO and'
       '  EM_CODIGO = :EM_CODIGO and'
       '  EM_EMPRESA = :EM_EMPRESA and'
       '  EM_ESTOQUE = :EM_ESTOQUE and'
+      '  EM_PRATELEIRA = :EM_PRATELEIRA and'
       '  EM_PRODUTO = :EM_PRODUTO')
     ModifySQL.Strings = (
       'update ESTOQ_MOVIMENTO'
       'set'
+      '  EM_BLOCO = :EM_BLOCO,'
       '  EM_CODIGO = :EM_CODIGO,'
       '  EM_DATA = :EM_DATA,'
       '  EM_EMPRESA = :EM_EMPRESA,'
       '  EM_ESTOQUE = :EM_ESTOQUE,'
       '  EM_OBS = :EM_OBS,'
+      '  EM_PEDIDOCOMPRAORIGEM = :EM_PEDIDOCOMPRAORIGEM,'
+      '  EM_PRATELEIRA = :EM_PRATELEIRA,'
       '  EM_PRODUTO = :EM_PRODUTO,'
       '  EM_QTD = :EM_QTD,'
-      '  EM_TIPO = :EM_TIPO'
+      '  EM_TIPO = :EM_TIPO,'
+      '  EM_VALOR_FINANCEIRO = :EM_VALOR_FINANCEIRO'
       'where'
+      '  EM_BLOCO = :OLD_EM_BLOCO and'
       '  EM_CODIGO = :OLD_EM_CODIGO and'
       '  EM_EMPRESA = :OLD_EM_EMPRESA and'
       '  EM_ESTOQUE = :OLD_EM_ESTOQUE and'
+      '  EM_PRATELEIRA = :OLD_EM_PRATELEIRA and'
       '  EM_PRODUTO = :OLD_EM_PRODUTO')
     InsertSQL.Strings = (
       'insert into ESTOQ_MOVIMENTO'
       
-        '  (EM_CODIGO, EM_DATA, EM_EMPRESA, EM_ESTOQUE, EM_OBS, EM_PRODUT' +
-        'O, EM_QTD, '
-      '   EM_TIPO)'
+        '  (EM_BLOCO, EM_CODIGO, EM_DATA, EM_EMPRESA, EM_ESTOQUE, EM_OBS,' +
+        ' EM_PEDIDOCOMPRAORIGEM, '
+      
+        '   EM_PRATELEIRA, EM_PRODUTO, EM_QTD, EM_TIPO, EM_VALOR_FINANCEI' +
+        'RO)'
       'values'
       
-        '  (:EM_CODIGO, :EM_DATA, :EM_EMPRESA, :EM_ESTOQUE, :EM_OBS, :EM_' +
-        'PRODUTO, '
-      '   :EM_QTD, :EM_TIPO)')
+        '  (:EM_BLOCO, :EM_CODIGO, :EM_DATA, :EM_EMPRESA, :EM_ESTOQUE, :E' +
+        'M_OBS, '
+      
+        '   :EM_PEDIDOCOMPRAORIGEM, :EM_PRATELEIRA, :EM_PRODUTO, :EM_QTD,' +
+        ' :EM_TIPO, '
+      '   :EM_VALOR_FINANCEIRO)')
     DeleteSQL.Strings = (
       'delete from ESTOQ_MOVIMENTO'
       'where'
+      '  EM_BLOCO = :OLD_EM_BLOCO and'
       '  EM_CODIGO = :OLD_EM_CODIGO and'
       '  EM_EMPRESA = :OLD_EM_EMPRESA and'
       '  EM_ESTOQUE = :OLD_EM_ESTOQUE and'
+      '  EM_PRATELEIRA = :OLD_EM_PRATELEIRA and'
       '  EM_PRODUTO = :OLD_EM_PRODUTO')
     Left = 320
     Top = 120
@@ -792,6 +812,7 @@ object DM_Estoque: TDM_Estoque
   object Categoria: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = CategoriaAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -885,6 +906,7 @@ object DM_Estoque: TDM_Estoque
   object Bloco: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = BlocoAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -931,66 +953,60 @@ object DM_Estoque: TDM_Estoque
   object UBloco: TIBUpdateSQL
     RefreshSQL.Strings = (
       'Select '
-      'from categoria '
+      'from bloco '
       'where'
-      '  CAT_CODIGO = :CAT_CODIGO and'
-      '  CAT_EMPRESA = :CAT_EMPRESA')
+      '  BLOC_CODIGO = :BLOC_CODIGO and'
+      '  BLOC_EMPRESA = :BLOC_EMPRESA')
     ModifySQL.Strings = (
-      'update categoria'
+      'update bloco'
       'set'
-      '  CAT_CODIGO = :CAT_CODIGO,'
-      '  CAT_DESCRICAO = :CAT_DESCRICAO,'
-      '  CAT_EMPRESA = :CAT_EMPRESA,'
-      '  CAT_NCM = :CAT_NCM,'
-      '  CAT_OBS = :CAT_OBS'
+      '  BLOC_CODIGO = :BLOC_CODIGO,'
+      '  BLOC_DESCRICAO = :BLOC_DESCRICAO,'
+      '  BLOC_EMPRESA = :BLOC_EMPRESA,'
+      '  BLOC_OBS = :BLOC_OBS'
       'where'
-      '  CAT_CODIGO = :OLD_CAT_CODIGO and'
-      '  CAT_EMPRESA = :OLD_CAT_EMPRESA')
+      '  BLOC_CODIGO = :OLD_BLOC_CODIGO and'
+      '  BLOC_EMPRESA = :OLD_BLOC_EMPRESA')
     InsertSQL.Strings = (
-      'insert into categoria'
-      '  (CAT_CODIGO, CAT_DESCRICAO, CAT_EMPRESA, CAT_NCM, CAT_OBS)'
+      'insert into bloco'
+      '  (BLOC_CODIGO, BLOC_DESCRICAO, BLOC_EMPRESA, BLOC_OBS)'
       'values'
-      
-        '  (:CAT_CODIGO, :CAT_DESCRICAO, :CAT_EMPRESA, :CAT_NCM, :CAT_OBS' +
-        ')')
+      '  (:BLOC_CODIGO, :BLOC_DESCRICAO, :BLOC_EMPRESA, :BLOC_OBS)')
     DeleteSQL.Strings = (
-      'delete from categoria'
+      'delete from bloco'
       'where'
-      '  CAT_CODIGO = :OLD_CAT_CODIGO and'
-      '  CAT_EMPRESA = :OLD_CAT_EMPRESA')
+      '  BLOC_CODIGO = :OLD_BLOC_CODIGO and'
+      '  BLOC_EMPRESA = :OLD_BLOC_EMPRESA')
     Left = 504
     Top = 120
   end
   object UPrateleira: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select '
-      'from categoria '
+      'Select *'
+      'from prateleira '
       'where'
-      '  CAT_CODIGO = :CAT_CODIGO and'
-      '  CAT_EMPRESA = :CAT_EMPRESA')
+      '  PRAT_CODIGO = :PRAT_CODIGO and'
+      '  PRAT_EMPRESA = :PRAT_EMPRESA')
     ModifySQL.Strings = (
-      'update categoria'
+      'update prateleira'
       'set'
-      '  CAT_CODIGO = :CAT_CODIGO,'
-      '  CAT_DESCRICAO = :CAT_DESCRICAO,'
-      '  CAT_EMPRESA = :CAT_EMPRESA,'
-      '  CAT_NCM = :CAT_NCM,'
-      '  CAT_OBS = :CAT_OBS'
+      '  PRAT_CODIGO = :PRAT_CODIGO,'
+      '  PRAT_DESCRICAO = :PRAT_DESCRICAO,'
+      '  PRAT_EMPRESA = :PRAT_EMPRESA,'
+      '  PRAT_OBS = :PRAT_OBS'
       'where'
-      '  CAT_CODIGO = :OLD_CAT_CODIGO and'
-      '  CAT_EMPRESA = :OLD_CAT_EMPRESA')
+      '  PRAT_CODIGO = :OLD_PRAT_CODIGO and'
+      '  PRAT_EMPRESA = :OLD_PRAT_EMPRESA')
     InsertSQL.Strings = (
-      'insert into categoria'
-      '  (CAT_CODIGO, CAT_DESCRICAO, CAT_EMPRESA, CAT_NCM, CAT_OBS)'
+      'insert into prateleira'
+      '  (PRAT_CODIGO, PRAT_DESCRICAO, PRAT_EMPRESA, PRAT_OBS)'
       'values'
-      
-        '  (:CAT_CODIGO, :CAT_DESCRICAO, :CAT_EMPRESA, :CAT_NCM, :CAT_OBS' +
-        ')')
+      '  (:PRAT_CODIGO, :PRAT_DESCRICAO, :PRAT_EMPRESA, :PRAT_OBS)')
     DeleteSQL.Strings = (
-      'delete from categoria'
+      'delete from prateleira'
       'where'
-      '  CAT_CODIGO = :OLD_CAT_CODIGO and'
-      '  CAT_EMPRESA = :OLD_CAT_EMPRESA')
+      '  PRAT_CODIGO = :OLD_PRAT_CODIGO and'
+      '  PRAT_EMPRESA = :OLD_PRAT_EMPRESA')
     Left = 568
     Top = 120
   end
@@ -1002,6 +1018,7 @@ object DM_Estoque: TDM_Estoque
   object Prateleira: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = PrateleiraAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -1043,6 +1060,7 @@ object DM_Estoque: TDM_Estoque
   object MovimentoEstoque: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = MovimentoEstoqueAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -1128,6 +1146,7 @@ object DM_Estoque: TDM_Estoque
       Size = 2
     end
     object MovimentoEstoqueEM_PEDIDOCOMPRAORIGEM: TIntegerField
+      DisplayLabel = 'Pedido de Compra Origem'
       FieldName = 'EM_PEDIDOCOMPRAORIGEM'
       Origin = '"ESTOQ_MOVIMENTO"."EM_PEDIDOCOMPRAORIGEM"'
     end
