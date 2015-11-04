@@ -4617,9 +4617,6 @@ object TelaInicial: TTelaInicial
         Caption = 'Plano de Contas'
         OnClick = PlanodeContas1Click
       end
-      object ConsultaMovimentaes1: TMenuItem
-        Caption = 'Consulta Movimenta'#231#227'o'
-      end
       object p1: TMenuItem
         Caption = 'Parametros'
         object Historicos1: TMenuItem

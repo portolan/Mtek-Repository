@@ -47,7 +47,6 @@ type
     CentrodeCustos2: TMenuItem;
     Empresas1: TMenuItem;
     PlanodeContas1: TMenuItem;
-    ConsultaMovimentaes1: TMenuItem;
     p1: TMenuItem;
     Producao: TMenuItem;
     Historicos1: TMenuItem;
