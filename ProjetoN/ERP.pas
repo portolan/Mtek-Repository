@@ -77,6 +77,7 @@ type
     procedure Categoria1Click(Sender: TObject);
     procedure Departamentos1Click(Sender: TObject);
     procedure PlanodeContas1Click(Sender: TObject);
+    procedure ContasaPagar1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -94,7 +95,7 @@ implementation
 uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
   UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO, UP_lancamento, UM_Servico,
   UP_Servico, UP_Bloco, UM_Prateleira, UP_Categoria, UP_Prateleira,
-  UP_departamento, UM_departamento, UP_planodecontas;
+  UP_departamento, UM_departamento, UP_planodecontas, Up_titulospagar;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -124,6 +125,16 @@ end;
 procedure TTelaInicial.CentrodeCustos2Click(Sender: TObject);
 begin
     TP_centro.chamaTela(self);
+end;
+
+procedure TTelaInicial.ContasaPagar1Click(Sender: TObject);
+begin
+     p_titulospagar := Tp_titulospagar.Create(Self);
+    try
+        p_titulospagar.ShowModal;
+    finally
+      p_titulospagar.Free;
+    end;
 end;
 
 procedure TTelaInicial.Departamentos1Click(Sender: TObject);

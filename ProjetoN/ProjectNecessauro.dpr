@@ -64,8 +64,5 @@ begin
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
-  Application.CreateForm(Tm_titulospagar, m_titulospagar);
-  Application.CreateForm(Tp_titulospagar, p_titulospagar);
   Application.Run;
 end.

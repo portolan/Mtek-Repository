@@ -4584,6 +4584,7 @@ object TelaInicial: TTelaInicial
       Caption = 'Financeiro'
       object ContasaPagar1: TMenuItem
         Caption = 'Contas a Pagar'
+        OnClick = ContasaPagar1Click
       end
       object ContasaReceber1: TMenuItem
         Caption = 'Contas a Receber'
