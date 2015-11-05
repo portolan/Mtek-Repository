@@ -30,8 +30,7 @@ type
     Label10: TLabel;
     DBEdit10: TDBEdit;
     Label11: TLabel;
-    DBEdit11: TDBEdit;
-    DB_Lista_Produtos_Utilizado: TDBGrid;
+    DBMemo1: TDBMemo;
   private
     { Private declarations }
   public
