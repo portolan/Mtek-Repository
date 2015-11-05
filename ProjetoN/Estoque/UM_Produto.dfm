@@ -267,6 +267,10 @@ inherited MProduto: TMProduto
           'Produto Acabado'
           'Mat'#233'ria Prima')
         TabOrder = 11
+        Values.Strings = (
+          'B'
+          'P'
+          'M')
       end
     end
     object GroupBox2: TGroupBox
@@ -314,7 +318,6 @@ inherited MProduto: TMProduto
         Width = 65
         Height = 13
         Caption = 'Sit. Tribut'#225'ria'
-        FocusControl = DBEdit16
       end
       object DBEdit12: TDBEdit
         Left = 13
@@ -362,12 +365,35 @@ inherited MProduto: TMProduto
         TabOrder = 4
       end
     end
+    object TPanel
+      Left = 519
+      Top = 335
+      Width = 195
+      Height = 178
+      TabOrder = 2
+      object DBImage1: TDBImage
+        Left = 0
+        Top = 0
+        Width = 193
+        Height = 177
+        DataField = 'PRO_IMG'
+        DataSource = DM_Estoque.DSProdutos
+        TabOrder = 0
+      end
+    end
+    object DBMemo1: TDBMemo
+      Left = 10
+      Top = 519
+      Width = 693
+      Height = 82
+      TabOrder = 3
+    end
     object GroupBox3: TGroupBox
       Left = 3
       Top = 335
       Width = 510
       Height = 162
-      TabOrder = 2
+      TabOrder = 4
       object Label17: TLabel
         Left = 15
         Top = 21
@@ -524,29 +550,6 @@ inherited MProduto: TMProduto
         DataSource = DM_Estoque.DSProdutos
         TabOrder = 8
       end
-    end
-    object TPanel
-      Left = 519
-      Top = 335
-      Width = 195
-      Height = 178
-      TabOrder = 3
-      object DBImage1: TDBImage
-        Left = 0
-        Top = 0
-        Width = 193
-        Height = 177
-        DataField = 'PRO_IMG'
-        DataSource = DM_Estoque.DSProdutos
-        TabOrder = 0
-      end
-    end
-    object DBMemo1: TDBMemo
-      Left = 10
-      Top = 519
-      Width = 693
-      Height = 82
-      TabOrder = 4
     end
   end
 end

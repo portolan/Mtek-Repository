@@ -72,6 +72,7 @@ inherited MCategoria: TMCategoria
         Width = 134
         Height = 21
         DataField = 'CAT_EMPRESA'
+        DataSource = DM_Estoque.DSCategoria
         TabOrder = 0
       end
       object DBEdit2: TDBEdit
@@ -81,6 +82,7 @@ inherited MCategoria: TMCategoria
         Height = 21
         TabStop = False
         DataField = 'CAT_CODIGO'
+        DataSource = DM_Estoque.DSCategoria
         ParentColor = True
         ReadOnly = True
         TabOrder = 1
@@ -91,6 +93,7 @@ inherited MCategoria: TMCategoria
         Width = 528
         Height = 21
         DataField = 'CAT_DESCRICAO'
+        DataSource = DM_Estoque.DSCategoria
         TabOrder = 2
       end
       object DBEdit4: TDBEdit
@@ -99,6 +102,7 @@ inherited MCategoria: TMCategoria
         Width = 248
         Height = 21
         DataField = 'CAT_NCM'
+        DataSource = DM_Estoque.DSCategoria
         TabOrder = 3
       end
     end
@@ -108,6 +112,8 @@ inherited MCategoria: TMCategoria
     Top = 130
     Width = 528
     Height = 119
+    DataField = 'CAT_OBS'
+    DataSource = DM_Estoque.DSCategoria
     TabOrder = 2
   end
 end
