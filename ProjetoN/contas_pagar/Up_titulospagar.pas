@@ -15,6 +15,7 @@ type
   public
     procedure procSelect; override;
     class procedure chamaTela(xPai: TComponent);
+    class procedure procChamaTela(Owner : TComponent);
   end;
 
 var
@@ -43,6 +44,16 @@ begin
    procInicializar(dm_contaspagar.titulospagar, true, false, m_titulospagar, Tm_titulospagar);
    funcAtribuiFiltros;
    nomeQry := 'TITULOSP';
+end;
+
+class procedure Tp_titulospagar.procChamaTela(Owner: TComponent);
+begin
+  p_titulospagar := Tp_titulospagar.Create(Owner);
+  try
+     p_titulospagar.ShowModal;
+  finally
+     FreeAndNil(p_titulospagar);
+  end;
 end;
 
 procedure Tp_titulospagar.procSelect;

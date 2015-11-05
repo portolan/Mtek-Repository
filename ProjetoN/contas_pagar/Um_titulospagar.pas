@@ -43,10 +43,7 @@ type
     Label19: TLabel;
     DBEdit19: TDBEdit;
     Label5: TLabel;
-    RadioButton1: TRadioButton;
     SITUAÇÃO: TLabel;
-    RadioButton2: TRadioButton;
-    RadioButton3: TRadioButton;
     Label20: TLabel;
     DBEdit20: TDBEdit;
     Label21: TLabel;
@@ -61,10 +58,9 @@ type
     DBEdit25: TDBEdit;
     Label26: TLabel;
     DBEdit26: TDBEdit;
-    RadioButton4: TRadioButton;
-    RadioButton5: TRadioButton;
-    RadioButton6: TRadioButton;
-    RadioButton7: TRadioButton;
+    DBRadioGroup1: TDBRadioGroup;
+    DBRadioGroup2: TDBRadioGroup;
+    DBRadioGroup3: TDBRadioGroup;
   private
     { Private declarations }
   public

@@ -30,6 +30,9 @@ type
     titulospagarTTP_VL_TOTAL: TIBBCDField;
     titulospagarTTP_MR_DIARIA: TIBBCDField;
     titulospagarTTP_MT_ATRASO: TIBBCDField;
+    titulospagarTTP_SITUACAO: TIBStringField;
+    titulospagarTTP_TP_MORA: TIBStringField;
+    titulospagarTTP_TP_MULTA: TIBStringField;
   private
     { Private declarations }
   public

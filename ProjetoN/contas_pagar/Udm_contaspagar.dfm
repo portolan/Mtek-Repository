@@ -52,6 +52,7 @@ object dm_contaspagar: Tdm_contaspagar
       DisplayLabel = 'DATA EMISS'#195'O'
       FieldName = 'TTP_DT_EMISSAO'
       Origin = '"TITULOSP"."TTP_DT_EMISSAO"'
+      EditMask = '!99/99/9999;1;_'
     end
     object titulospagarTTP_DT_VENCIMENTO: TDateField
       DisplayLabel = 'DATA VENCIMENTO'
@@ -111,6 +112,8 @@ object dm_contaspagar: Tdm_contaspagar
       DisplayLabel = 'VALOR TOTAL'
       FieldName = 'TTP_VL_TOTAL'
       Origin = '"TITULOSP"."TTP_VL_TOTAL"'
+      DisplayFormat = '00.00'
+      EditFormat = '00.00'
       Precision = 18
       Size = 2
     end
@@ -127,6 +130,18 @@ object dm_contaspagar: Tdm_contaspagar
       Origin = '"TITULOSP"."TTP_MT_ATRASO"'
       Precision = 18
       Size = 2
+    end
+    object titulospagarTTP_SITUACAO: TIBStringField
+      FieldName = 'TTP_SITUACAO'
+      Origin = '"TITULOSP"."TTP_SITUACAO"'
+    end
+    object titulospagarTTP_TP_MORA: TIBStringField
+      FieldName = 'TTP_TP_MORA'
+      Origin = '"TITULOSP"."TTP_TP_MORA"'
+    end
+    object titulospagarTTP_TP_MULTA: TIBStringField
+      FieldName = 'TTP_TP_MULTA'
+      Origin = '"TITULOSP"."TTP_TP_MULTA"'
     end
   end
   object Dtitulospagar: TDataSource

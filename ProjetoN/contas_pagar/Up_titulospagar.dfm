@@ -3,13 +3,14 @@ inherited p_titulospagar: Tp_titulospagar
   ClientWidth = 809
   OnCreate = FormCreate
   ExplicitWidth = 825
-  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
     Width = 809
+    ExplicitWidth = 809
     inherited gbDados: TGroupBox
       Width = 803
+      ExplicitWidth = 803
       inherited DBGDados: TDBGrid
         Width = 799
         DataSource = dm_contaspagar.Dtitulospagar
@@ -132,12 +133,15 @@ inherited p_titulospagar: Tp_titulospagar
   end
   inherited pnRodape: TPanel
     Width = 809
+    ExplicitWidth = 809
     inherited sbSair: TSpeedButton
       Left = 712
+      ExplicitLeft = 712
     end
   end
   inherited pnCabecalho: TPanel
     Width = 809
+    ExplicitWidth = 809
     inherited gbStatus: TGroupBox
       Width = 106
       ExplicitWidth = 106

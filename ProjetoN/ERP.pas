@@ -138,12 +138,7 @@ end;
 
 procedure TTelaInicial.ContasaPagar1Click(Sender: TObject);
 begin
-     p_titulospagar := Tp_titulospagar.Create(Self);
-    try
-        p_titulospagar.ShowModal;
-    finally
-      p_titulospagar.Free;
-    end;
+   Tp_titulospagar.procChamaTela(self);
 end;
 
 procedure TTelaInicial.Departamentos1Click(Sender: TObject);
