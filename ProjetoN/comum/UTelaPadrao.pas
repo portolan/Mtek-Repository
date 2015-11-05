@@ -31,6 +31,7 @@ type
     procedure sbAlterarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure PesquisarClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
 
   public
@@ -69,6 +70,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TxPesqPadrao.FormActivate(Sender: TObject);
+begin
+    editPesquisa.SetFocus;
+end;
 
 procedure TxPesqPadrao.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);

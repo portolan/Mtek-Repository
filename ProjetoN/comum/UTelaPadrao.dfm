@@ -13,6 +13,7 @@ object xPesqPadrao: TxPesqPadrao
   KeyPreview = True
   OldCreateOrder = False
   Position = poDesktopCenter
+  OnActivate = FormActivate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   PixelsPerInch = 96
