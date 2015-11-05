@@ -354,8 +354,9 @@ object xPesqPadrao: TxPesqPadrao
         Top = 17
         Width = 145
         Height = 21
+        ItemIndex = 0
         TabOrder = 1
-        Text = 'Selecione...'
+        Text = #201' igual'
         Items.Strings = (
           #201' igual'
           #201' diferente'
@@ -367,7 +368,6 @@ object xPesqPadrao: TxPesqPadrao
         Width = 145
         Height = 21
         TabOrder = 0
-        Text = 'Selecione...'
       end
       object editPesquisa: TEdit
         Left = 307
@@ -375,6 +375,7 @@ object xPesqPadrao: TxPesqPadrao
         Width = 309
         Height = 21
         TabOrder = 2
+        OnChange = editPesquisaChange
       end
       object Pesquisar: TButton
         Left = 622

@@ -32,6 +32,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure PesquisarClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure editPesquisaChange(Sender: TObject);
   private
 
   public
@@ -71,9 +72,15 @@ implementation
 
 {$R *.dfm}
 
+procedure TxPesqPadrao.editPesquisaChange(Sender: TObject);
+begin
+    funcPesquisa;
+end;
+
 procedure TxPesqPadrao.FormActivate(Sender: TObject);
 begin
     editPesquisa.SetFocus;
+    cBoxFiltro.ItemIndex := 1;
 end;
 
 procedure TxPesqPadrao.FormKeyDown(Sender: TObject; var Key: Word;
