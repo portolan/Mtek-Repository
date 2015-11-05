@@ -13,17 +13,17 @@ object DM_contabil: TDM_contabil
     UpdateObject = Uempresa
     Left = 128
     Top = 24
-    object empresaCOD_EMPRESA: TIntegerField
-      DisplayLabel = 'Codigo'
-      FieldName = 'COD_EMPRESA'
-      Origin = '"EMPRESA"."COD_EMPRESA"'
+    object empresaEMP_COD: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'EMP_COD'
+      Origin = '"EMPRESA"."EMP_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object empresaCNPJ_EMPRESA: TIBBCDField
+    object empresaEMP_CNPJ: TIBBCDField
       DisplayLabel = 'CNPJ'
-      FieldName = 'CNPJ_EMPRESA'
-      Origin = '"EMPRESA"."CNPJ_EMPRESA"'
+      FieldName = 'EMP_CNPJ'
+      Origin = '"EMPRESA"."EMP_CNPJ"'
       Precision = 18
       Size = 2
     end
@@ -46,7 +46,7 @@ object DM_contabil: TDM_contabil
       Size = 60
     end
     object empresaEMP_END_NUM: TIntegerField
-      DisplayLabel = 'Numero'
+      DisplayLabel = 'N'#250'mero'
       FieldName = 'EMP_END_NUM'
       Origin = '"EMPRESA"."EMP_END_NUM"'
     end
@@ -78,7 +78,7 @@ object DM_contabil: TDM_contabil
       Origin = '"EMPRESA"."EMP_FONE"'
     end
     object empresaEMP_TITULAR: TIBStringField
-      DisplayLabel = 'TitulaR'
+      DisplayLabel = 'Respons'#225'vel'
       FieldName = 'EMP_TITULAR'
       Origin = '"EMPRESA"."EMP_TITULAR"'
       Size = 60
@@ -91,18 +91,18 @@ object DM_contabil: TDM_contabil
   end
   object Uempresa: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select *'
+      'Select '
       'from empresa '
       'where'
-      '  COD_EMPRESA = :COD_EMPRESA')
+      '  EMP_COD = :EMP_COD')
     ModifySQL.Strings = (
       'update empresa'
       'set'
-      '  CNPJ_EMPRESA = :CNPJ_EMPRESA,'
-      '  COD_EMPRESA = :COD_EMPRESA,'
       '  EMP_BAIRRO = :EMP_BAIRRO,'
       '  EMP_CEP = :EMP_CEP,'
       '  EMP_CIDADE = :EMP_CIDADE,'
+      '  EMP_CNPJ = :EMP_CNPJ,'
+      '  EMP_COD = :EMP_COD,'
       '  EMP_END_NUM = :EMP_END_NUM,'
       '  EMP_ENDERECO = :EMP_ENDERECO,'
       '  EMP_FONE = :EMP_FONE,'
@@ -111,26 +111,24 @@ object DM_contabil: TDM_contabil
       '  EMP_TITULAR = :EMP_TITULAR,'
       '  EMP_UF = :EMP_UF'
       'where'
-      '  COD_EMPRESA = :OLD_COD_EMPRESA')
+      '  EMP_COD = :OLD_EMP_COD')
     InsertSQL.Strings = (
       'insert into empresa'
       
-        '  (CNPJ_EMPRESA, COD_EMPRESA, EMP_BAIRRO, EMP_CEP, EMP_CIDADE, E' +
-        'MP_END_NUM, '
-      
-        '   EMP_ENDERECO, EMP_FONE, EMP_NOMEF, EMP_RAZAO, EMP_TITULAR, EM' +
-        'P_UF)'
+        '  (EMP_BAIRRO, EMP_CEP, EMP_CIDADE, EMP_CNPJ, EMP_COD, EMP_END_N' +
+        'UM, EMP_ENDERECO, '
+      '   EMP_FONE, EMP_NOMEF, EMP_RAZAO, EMP_TITULAR, EMP_UF)'
       'values'
       
-        '  (:CNPJ_EMPRESA, :COD_EMPRESA, :EMP_BAIRRO, :EMP_CEP, :EMP_CIDA' +
-        'DE, :EMP_END_NUM, '
+        '  (:EMP_BAIRRO, :EMP_CEP, :EMP_CIDADE, :EMP_CNPJ, :EMP_COD, :EMP' +
+        '_END_NUM, '
       
         '   :EMP_ENDERECO, :EMP_FONE, :EMP_NOMEF, :EMP_RAZAO, :EMP_TITULA' +
         'R, :EMP_UF)')
     DeleteSQL.Strings = (
       'delete from empresa'
       'where'
-      '  COD_EMPRESA = :OLD_COD_EMPRESA')
+      '  EMP_COD = :OLD_EMP_COD')
     Left = 48
     Top = 24
   end
@@ -147,34 +145,34 @@ object DM_contabil: TDM_contabil
     UpdateObject = Ucentro
     Left = 128
     Top = 104
-    object centroCOD_CC: TIntegerField
-      DisplayLabel = 'C'#243'digo C.C'
-      FieldName = 'COD_CC'
-      Origin = '"CENTRODECUSTO"."COD_CC"'
+    object centroCEC_COD: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'CEC_COD'
+      Origin = '"CENTRODECUSTO"."CEC_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object centroCOD_GRUPO: TIntegerField
-      DisplayLabel = 'Estabelecimento'
-      FieldName = 'COD_GRUPO'
-      Origin = '"CENTRODECUSTO"."COD_GRUPO"'
+    object centroCEC_NUM_CC: TIntegerField
+      DisplayLabel = 'Centro de Custo'
+      FieldName = 'CEC_NUM_CC'
+      Origin = '"CENTRODECUSTO"."CEC_NUM_CC"'
     end
-    object centroNUM_CC: TIntegerField
-      DisplayLabel = 'N'#250'mero C.C'
-      FieldName = 'NUM_CC'
-      Origin = '"CENTRODECUSTO"."NUM_CC"'
-    end
-    object centroDESC_CC: TIBStringField
-      DisplayLabel = 'Descri'#231#227'o C.C.'
-      FieldName = 'DESC_CC'
-      Origin = '"CENTRODECUSTO"."DESC_CC"'
+    object centroCEC_DESC_CC: TIBStringField
+      DisplayLabel = 'Desccri'#231'ao'
+      FieldName = 'CEC_DESC_CC'
+      Origin = '"CENTRODECUSTO"."CEC_DESC_CC"'
       Size = 60
     end
-    object centroANALITICO: TIBStringField
-      DisplayLabel = 'Analitico?'
-      FieldName = 'ANALITICO'
-      Origin = '"CENTRODECUSTO"."ANALITICO"'
+    object centroCEC_ANALITICO: TIBStringField
+      DisplayLabel = 'Codigo do Grupo'
+      FieldName = 'CEC_ANALITICO'
+      Origin = '"CENTRODECUSTO"."CEC_ANALITICO"'
       Size = 1
+    end
+    object centroCEC_COD_GRUPO: TIntegerField
+      DisplayLabel = 'Grupo'
+      FieldName = 'CEC_COD_GRUPO'
+      Origin = '"CENTRODECUSTO"."CEC_COD_GRUPO"'
     end
   end
   object Dcentro: TDataSource
@@ -187,26 +185,30 @@ object DM_contabil: TDM_contabil
       'Select '
       'from centrodecusto '
       'where'
-      '  COD_CC = :COD_CC')
+      '  CEC_COD = :CEC_COD')
     ModifySQL.Strings = (
       'update centrodecusto'
       'set'
-      '  ANALITICO = :ANALITICO,'
-      '  COD_CC = :COD_CC,'
-      '  COD_GRUPO = :COD_GRUPO,'
-      '  DESC_CC = :DESC_CC,'
-      '  NUM_CC = :NUM_CC'
+      '  CEC_ANALITICO = :CEC_ANALITICO,'
+      '  CEC_COD = :CEC_COD,'
+      '  CEC_COD_GRUPO = :CEC_COD_GRUPO,'
+      '  CEC_DESC_CC = :CEC_DESC_CC,'
+      '  CEC_NUM_CC = :CEC_NUM_CC'
       'where'
-      '  COD_CC = :OLD_COD_CC')
+      '  CEC_COD = :OLD_CEC_COD')
     InsertSQL.Strings = (
       'insert into centrodecusto'
-      '  (ANALITICO, COD_CC, COD_GRUPO, DESC_CC, NUM_CC)'
+      
+        '  (CEC_ANALITICO, CEC_COD, CEC_COD_GRUPO, CEC_DESC_CC, CEC_NUM_C' +
+        'C)'
       'values'
-      '  (:ANALITICO, :COD_CC, :COD_GRUPO, :DESC_CC, :NUM_CC)')
+      
+        '  (:CEC_ANALITICO, :CEC_COD, :CEC_COD_GRUPO, :CEC_DESC_CC, :CEC_' +
+        'NUM_CC)')
     DeleteSQL.Strings = (
       'delete from centrodecusto'
       'where'
-      '  COD_CC = :OLD_COD_CC')
+      '  CEC_COD = :OLD_CEC_COD')
     Left = 48
     Top = 104
   end
@@ -222,58 +224,58 @@ object DM_contabil: TDM_contabil
     UpdateObject = Ulancamento
     Left = 128
     Top = 184
-    object lancamentoNR_LOTE: TIntegerField
+    object lancamentoLANC_NR_LOTE: TIntegerField
       DisplayLabel = 'N'#186' Lote'
-      FieldName = 'NR_LOTE'
-      Origin = '"LANCAMENTOS"."NR_LOTE"'
+      FieldName = 'LANC_NR_LOTE'
+      Origin = '"LANCAMENTOS"."LANC_NR_LOTE"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object lancamentoNR_LANCAMENTO: TIntegerField
+    object lancamentoLANC_NR_LANCAMENTO: TIntegerField
       DisplayLabel = 'N'#186' Lan'#231'amento'
-      FieldName = 'NR_LANCAMENTO'
-      Origin = '"LANCAMENTOS"."NR_LANCAMENTO"'
+      FieldName = 'LANC_NR_LANCAMENTO'
+      Origin = '"LANCAMENTOS"."LANC_NR_LANCAMENTO"'
     end
-    object lancamentoDT_LANCAMENTO: TDateField
-      DisplayLabel = 'Data Lan'#231'amento'
-      FieldName = 'DT_LANCAMENTO'
-      Origin = '"LANCAMENTOS"."DT_LANCAMENTO"'
+    object lancamentoLANC_DT_LANCAMENTO: TDateField
+      DisplayLabel = 'Data Lan'#231
+      FieldName = 'LANC_DT_LANCAMENTO'
+      Origin = '"LANCAMENTOS"."LANC_DT_LANCAMENTO"'
     end
-    object lancamentoDEBITO: TIntegerField
-      DisplayLabel = 'D'#233'bito'
-      FieldName = 'DEBITO'
-      Origin = '"LANCAMENTOS"."DEBITO"'
+    object lancamentoLANC_DEBITO: TIntegerField
+      DisplayLabel = 'Conta D'#233'bito'
+      FieldName = 'LANC_DEBITO'
+      Origin = '"LANCAMENTOS"."LANC_DEBITO"'
     end
-    object lancamentoCENTRODECUSTO_DB: TIntegerField
+    object lancamentoLANC_CENTRODECUSTO_DB: TIntegerField
       DisplayLabel = 'C.C D'#233'bito'
-      FieldName = 'CENTRODECUSTO_DB'
-      Origin = '"LANCAMENTOS"."CENTRODECUSTO_DB"'
+      FieldName = 'LANC_CENTRODECUSTO_DB'
+      Origin = '"LANCAMENTOS"."LANC_CENTRODECUSTO_DB"'
     end
-    object lancamentoCREDITO: TIntegerField
-      DisplayLabel = 'Cr'#233'dito'
-      FieldName = 'CREDITO'
-      Origin = '"LANCAMENTOS"."CREDITO"'
+    object lancamentoLANC_CREDITO: TIntegerField
+      DisplayLabel = 'Conta Credito'
+      FieldName = 'LANC_CREDITO'
+      Origin = '"LANCAMENTOS"."LANC_CREDITO"'
     end
-    object lancamentoCENTRODECUSTO_CR: TIntegerField
+    object lancamentoLANC_CENTRODECUSTO_CR: TIntegerField
       DisplayLabel = 'C.C Cr'#233'dito'
-      FieldName = 'CENTRODECUSTO_CR'
-      Origin = '"LANCAMENTOS"."CENTRODECUSTO_CR"'
+      FieldName = 'LANC_CENTRODECUSTO_CR'
+      Origin = '"LANCAMENTOS"."LANC_CENTRODECUSTO_CR"'
     end
-    object lancamentoHISTORICO: TIntegerField
+    object lancamentoLANC_HISTORICO: TIntegerField
       DisplayLabel = 'Hist'#243'rico'
-      FieldName = 'HISTORICO'
-      Origin = '"LANCAMENTOS"."HISTORICO"'
+      FieldName = 'LANC_HISTORICO'
+      Origin = '"LANCAMENTOS"."LANC_HISTORICO"'
     end
-    object lancamentoVAR_HISTORICO: TIBStringField
-      DisplayLabel = 'Hist'#243'rico Variavel'
-      FieldName = 'VAR_HISTORICO'
-      Origin = '"LANCAMENTOS"."VAR_HISTORICO"'
+    object lancamentoLANC_VAR_HISTORICO: TIBStringField
+      DisplayLabel = 'Vari'#225'vel Hist'#243'rico'
+      FieldName = 'LANC_VAR_HISTORICO'
+      Origin = '"LANCAMENTOS"."LANC_VAR_HISTORICO"'
       Size = 100
     end
-    object lancamentoVALOR: TIntegerField
+    object lancamentoLANC_VALOR: TIntegerField
       DisplayLabel = 'Valor'
-      FieldName = 'VALOR'
-      Origin = '"LANCAMENTOS"."VALOR"'
+      FieldName = 'LANC_VALOR'
+      Origin = '"LANCAMENTOS"."LANC_VALOR"'
     end
   end
   object Dlancamento: TDataSource
@@ -286,37 +288,43 @@ object DM_contabil: TDM_contabil
       'Select '
       'from lancamentos '
       'where'
-      '  NR_LOTE = :NR_LOTE')
+      '  LANC_NR_LOTE = :LANC_NR_LOTE')
     ModifySQL.Strings = (
       'update lancamentos'
       'set'
-      '  CENTRODECUSTO_CR = :CENTRODECUSTO_CR,'
-      '  CENTRODECUSTO_DB = :CENTRODECUSTO_DB,'
-      '  CREDITO = :CREDITO,'
-      '  DEBITO = :DEBITO,'
-      '  DT_LANCAMENTO = :DT_LANCAMENTO,'
-      '  HISTORICO = :HISTORICO,'
-      '  NR_LANCAMENTO = :NR_LANCAMENTO,'
-      '  NR_LOTE = :NR_LOTE,'
-      '  VALOR = :VALOR,'
-      '  VAR_HISTORICO = :VAR_HISTORICO'
+      '  LANC_CENTRODECUSTO_CR = :LANC_CENTRODECUSTO_CR,'
+      '  LANC_CENTRODECUSTO_DB = :LANC_CENTRODECUSTO_DB,'
+      '  LANC_CREDITO = :LANC_CREDITO,'
+      '  LANC_DEBITO = :LANC_DEBITO,'
+      '  LANC_DT_LANCAMENTO = :LANC_DT_LANCAMENTO,'
+      '  LANC_HISTORICO = :LANC_HISTORICO,'
+      '  LANC_NR_LANCAMENTO = :LANC_NR_LANCAMENTO,'
+      '  LANC_NR_LOTE = :LANC_NR_LOTE,'
+      '  LANC_VALOR = :LANC_VALOR,'
+      '  LANC_VAR_HISTORICO = :LANC_VAR_HISTORICO'
       'where'
-      '  NR_LOTE = :OLD_NR_LOTE')
+      '  LANC_NR_LOTE = :OLD_LANC_NR_LOTE')
     InsertSQL.Strings = (
       'insert into lancamentos'
       
-        '  (CENTRODECUSTO_CR, CENTRODECUSTO_DB, CREDITO, DEBITO, DT_LANCA' +
-        'MENTO, '
-      '   HISTORICO, NR_LANCAMENTO, NR_LOTE, VALOR, VAR_HISTORICO)'
+        '  (LANC_CENTRODECUSTO_CR, LANC_CENTRODECUSTO_DB, LANC_CREDITO, L' +
+        'ANC_DEBITO, '
+      
+        '   LANC_DT_LANCAMENTO, LANC_HISTORICO, LANC_NR_LANCAMENTO, LANC_' +
+        'NR_LOTE, '
+      '   LANC_VALOR, LANC_VAR_HISTORICO)'
       'values'
       
-        '  (:CENTRODECUSTO_CR, :CENTRODECUSTO_DB, :CREDITO, :DEBITO, :DT_' +
-        'LANCAMENTO, '
-      '   :HISTORICO, :NR_LANCAMENTO, :NR_LOTE, :VALOR, :VAR_HISTORICO)')
+        '  (:LANC_CENTRODECUSTO_CR, :LANC_CENTRODECUSTO_DB, :LANC_CREDITO' +
+        ', :LANC_DEBITO, '
+      
+        '   :LANC_DT_LANCAMENTO, :LANC_HISTORICO, :LANC_NR_LANCAMENTO, :L' +
+        'ANC_NR_LOTE, '
+      '   :LANC_VALOR, :LANC_VAR_HISTORICO)')
     DeleteSQL.Strings = (
       'delete from lancamentos'
       'where'
-      '  NR_LOTE = :OLD_NR_LOTE')
+      '  LANC_NR_LOTE = :OLD_LANC_NR_LOTE')
     Left = 48
     Top = 184
   end
@@ -331,30 +339,30 @@ object DM_contabil: TDM_contabil
     UpdateObject = Udepartamento
     Left = 128
     Top = 264
-    object departamentoCOD_DEP: TIntegerField
-      DisplayLabel = 'C'#243'digo Departamento'
-      FieldName = 'COD_DEP'
-      Origin = '"DEPARTAMENTO"."COD_DEP"'
+    object departamentoDEP_COD: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'DEP_COD'
+      Origin = '"DEPARTAMENTO"."DEP_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object departamentoCOD_EMPRESAR: TIntegerField
+    object departamentoDEP_EMPRESAR: TIntegerField
       DisplayLabel = 'Empresa Relacionada'
-      FieldName = 'COD_EMPRESAR'
-      Origin = '"DEPARTAMENTO"."COD_EMPRESAR"'
+      FieldName = 'DEP_EMPRESAR'
+      Origin = '"DEPARTAMENTO"."DEP_EMPRESAR"'
       Required = True
     end
-    object departamentoDP_NOME: TIBStringField
+    object departamentoDEP_NOME: TIBStringField
       DisplayLabel = 'Departamento'
-      FieldName = 'DP_NOME'
-      Origin = '"DEPARTAMENTO"."DP_NOME"'
+      FieldName = 'DEP_NOME'
+      Origin = '"DEPARTAMENTO"."DEP_NOME"'
       Required = True
       Size = 40
     end
-    object departamentoDP_DESC: TIBStringField
+    object departamentoDEP_DESC: TIBStringField
       DisplayLabel = 'Descri'#231#227'o'
-      FieldName = 'DP_DESC'
-      Origin = '"DEPARTAMENTO"."DP_DESC"'
+      FieldName = 'DEP_DESC'
+      Origin = '"DEPARTAMENTO"."DEP_DESC"'
       Required = True
       Size = 60
     end
@@ -367,31 +375,31 @@ object DM_contabil: TDM_contabil
   object Udepartamento: TIBUpdateSQL
     RefreshSQL.Strings = (
       'Select '
-      '  COD_DEP,'
-      '  COD_EMPRESAR,'
-      '  DP_NOME,'
-      '  DP_DESC'
+      '  DEP_COD,'
+      '  DEP_EMPRESAR,'
+      '  DEP_NOME,'
+      '  DEP_DESC'
       'from DEPARTAMENTO '
       'where'
-      '  COD_DEP = :COD_DEP')
+      '  DEP_COD = :DEP_COD')
     ModifySQL.Strings = (
       'update DEPARTAMENTO'
       'set'
-      '  COD_DEP = :COD_DEP,'
-      '  COD_EMPRESAR = :COD_EMPRESAR,'
-      '  DP_DESC = :DP_DESC,'
-      '  DP_NOME = :DP_NOME'
+      '  DEP_COD = :DEP_COD,'
+      '  DEP_DESC = :DEP_DESC,'
+      '  DEP_EMPRESAR = :DEP_EMPRESAR,'
+      '  DEP_NOME = :DEP_NOME'
       'where'
-      '  COD_DEP = :OLD_COD_DEP')
+      '  DEP_COD = :OLD_DEP_COD')
     InsertSQL.Strings = (
       'insert into DEPARTAMENTO'
-      '  (COD_DEP, COD_EMPRESAR, DP_DESC, DP_NOME)'
+      '  (DEP_COD, DEP_DESC, DEP_EMPRESAR, DEP_NOME)'
       'values'
-      '  (:COD_DEP, :COD_EMPRESAR, :DP_DESC, :DP_NOME)')
+      '  (:DEP_COD, :DEP_DESC, :DEP_EMPRESAR, :DEP_NOME)')
     DeleteSQL.Strings = (
       'delete from DEPARTAMENTO'
       'where'
-      '  COD_DEP = :OLD_COD_DEP')
+      '  DEP_COD = :OLD_DEP_COD')
     Left = 48
     Top = 264
   end
@@ -407,27 +415,27 @@ object DM_contabil: TDM_contabil
     UpdateObject = Uplanodecontas
     Left = 456
     Top = 24
-    object planodecontasCOD_CONTA: TIntegerField
-      DisplayLabel = 'C'#243'digo:'
-      FieldName = 'COD_CONTA'
-      Origin = '"PLANODECONTAS"."COD_CONTA"'
+    object planodecontasPLN_COD_CONTA: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'PLN_COD_CONTA'
+      Origin = '"PLANODECONTAS"."PLN_COD_CONTA"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object planodecontasCONTA: TIntegerField
-      DisplayLabel = 'N'#250'mero Conta'
-      FieldName = 'CONTA'
-      Origin = '"PLANODECONTAS"."CONTA"'
+    object planodecontasPLN_CONTA: TIntegerField
+      DisplayLabel = 'Conta'
+      FieldName = 'PLN_CONTA'
+      Origin = '"PLANODECONTAS"."PLN_CONTA"'
     end
-    object planodecontasDESC_CONTA: TIBStringField
-      DisplayLabel = 'Nome Conta'
-      FieldName = 'DESC_CONTA'
-      Origin = '"PLANODECONTAS"."DESC_CONTA"'
+    object planodecontasPLN_DESC_CONTA: TIBStringField
+      DisplayLabel = 'Nome da Conta'
+      FieldName = 'PLN_DESC_CONTA'
+      Origin = '"PLANODECONTAS"."PLN_DESC_CONTA"'
     end
-    object planodecontasANALITICA: TIBStringField
-      DisplayLabel = 'Anal'#237'tica?'
-      FieldName = 'ANALITICA'
-      Origin = '"PLANODECONTAS"."ANALITICA"'
+    object planodecontasPLN_ANALITICA: TIBStringField
+      DisplayLabel = 'Analitica'
+      FieldName = 'PLN_ANALITICA'
+      Origin = '"PLANODECONTAS"."PLN_ANALITICA"'
       Size = 1
     end
   end
@@ -439,31 +447,31 @@ object DM_contabil: TDM_contabil
   object Uplanodecontas: TIBUpdateSQL
     RefreshSQL.Strings = (
       'Select '
-      '  COD_CONTA,'
-      '  CONTA,'
-      '  DESC_CONTA,'
-      '  ANALITICA'
+      '  PLN_COD_CONTA,'
+      '  PLN_CONTA,'
+      '  PLN_DESC_CONTA,'
+      '  PLN_ANALITICA'
       'from PLANODECONTAS '
       'where'
-      '  COD_CONTA = :COD_CONTA')
+      '  PLN_COD_CONTA = :PLN_COD_CONTA')
     ModifySQL.Strings = (
       'update PLANODECONTAS'
       'set'
-      '  ANALITICA = :ANALITICA,'
-      '  COD_CONTA = :COD_CONTA,'
-      '  CONTA = :CONTA,'
-      '  DESC_CONTA = :DESC_CONTA'
+      '  PLN_ANALITICA = :PLN_ANALITICA,'
+      '  PLN_COD_CONTA = :PLN_COD_CONTA,'
+      '  PLN_CONTA = :PLN_CONTA,'
+      '  PLN_DESC_CONTA = :PLN_DESC_CONTA'
       'where'
-      '  COD_CONTA = :OLD_COD_CONTA')
+      '  PLN_COD_CONTA = :OLD_PLN_COD_CONTA')
     InsertSQL.Strings = (
       'insert into PLANODECONTAS'
-      '  (ANALITICA, COD_CONTA, CONTA, DESC_CONTA)'
+      '  (PLN_ANALITICA, PLN_COD_CONTA, PLN_CONTA, PLN_DESC_CONTA)'
       'values'
-      '  (:ANALITICA, :COD_CONTA, :CONTA, :DESC_CONTA)')
+      '  (:PLN_ANALITICA, :PLN_COD_CONTA, :PLN_CONTA, :PLN_DESC_CONTA)')
     DeleteSQL.Strings = (
       'delete from PLANODECONTAS'
       'where'
-      '  COD_CONTA = :OLD_COD_CONTA')
+      '  PLN_COD_CONTA = :OLD_PLN_COD_CONTA')
     Left = 376
     Top = 24
   end
@@ -478,15 +486,15 @@ object DM_contabil: TDM_contabil
     UpdateObject = Uhistorico
     Left = 456
     Top = 104
-    object historicoCOD_HIST: TIntegerField
-      DisplayLabel = 'Codigo Historico'
-      FieldName = 'COD_HIST'
-      Origin = '"HISTORICO"."COD_HIST"'
+    object historicoHIST_COD: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'HIST_COD'
+      Origin = '"HISTORICO"."HIST_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object historicoHIST_NOME: TIBStringField
-      DisplayLabel = 'Hist'#243'rico'
+      DisplayLabel = 'Nome'
       FieldName = 'HIST_NOME'
       Origin = '"HISTORICO"."HIST_NOME"'
       Required = True
@@ -500,27 +508,26 @@ object DM_contabil: TDM_contabil
   object Uhistorico: TIBUpdateSQL
     RefreshSQL.Strings = (
       'Select '
-      '  COD_HIST,'
+      '  HIST_COD,'
       '  HIST_NOME'
       'from HISTORICO '
       'where'
-      '  COD_HIST = :COD_HIST')
+      '  HIST_COD = :HIST_COD')
     ModifySQL.Strings = (
       'update HISTORICO'
       'set'
-      '  COD_HIST = :COD_HIST,'
       '  HIST_NOME = :HIST_NOME'
       'where'
-      '  COD_HIST = :OLD_COD_HIST')
+      '  HIST_COD = :OLD_HIST_COD')
     InsertSQL.Strings = (
       'insert into HISTORICO'
-      '  (COD_HIST, HIST_NOME)'
+      '  (HIST_NOME)'
       'values'
-      '  (:COD_HIST, :HIST_NOME)')
+      '  (:HIST_NOME)')
     DeleteSQL.Strings = (
       'delete from HISTORICO'
       'where'
-      '  COD_HIST = :OLD_COD_HIST')
+      '  HIST_COD = :OLD_HIST_COD')
     Left = 376
     Top = 104
   end

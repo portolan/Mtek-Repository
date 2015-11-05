@@ -1,7 +1,7 @@
 inherited P_lancamento: TP_lancamento
   Caption = 'Pesquisar Lan'#231'amentos - ProjetoDesnecessauro'
   OnCreate = FormCreate
-  ExplicitWidth = 799
+  ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
@@ -45,6 +45,12 @@ inherited P_lancamento: TP_lancamento
       Font.Style = []
       ParentFont = False
     end
+    object Rtotal: TLabel [3]
+      Left = 88
+      Top = 264
+      Width = 3
+      Height = 13
+    end
     inherited gbDados: TGroupBox
       Height = 257
       Align = alTop
@@ -55,60 +61,56 @@ inherited P_lancamento: TP_lancamento
         Columns = <
           item
             Expanded = False
-            FieldName = 'NR_LOTE'
-            Width = 55
+            FieldName = 'LANC_NR_LOTE'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'NR_LANCAMENTO'
+            FieldName = 'LANC_NR_LANCAMENTO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'LANC_DT_LANCAMENTO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'LANC_DEBITO'
+            Width = 76
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'LANC_CENTRODECUSTO_DB'
+            Width = 68
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'LANC_CREDITO'
+            Width = 79
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'LANC_CENTRODECUSTO_CR'
             Width = 81
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'DT_LANCAMENTO'
-            Width = 92
+            FieldName = 'LANC_HISTORICO'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'DEBITO'
-            Width = 71
+            FieldName = 'LANC_VAR_HISTORICO'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'CENTRODECUSTO_DB'
-            Width = 74
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'CREDITO'
-            Width = 71
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'CENTRODECUSTO_CR'
-            Width = 74
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'HISTORICO'
-            Width = 84
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'VAR_HISTORICO'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'VALOR'
+            FieldName = 'LANC_VALOR'
             Visible = True
           end>
       end
@@ -116,8 +118,8 @@ inherited P_lancamento: TP_lancamento
     object pnInfo: TPanel
       Left = 3
       Top = 259
-      Width = 771
-      Height = 33
+      Width = 854
+      Height = 41
       TabOrder = 1
     end
   end

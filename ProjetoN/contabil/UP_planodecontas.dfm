@@ -12,25 +12,25 @@ inherited P_planodecontas: TP_planodecontas
         Columns = <
           item
             Expanded = False
-            FieldName = 'COD_CONTA'
+            FieldName = 'PLN_COD_CONTA'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'CONTA'
-            Width = 82
+            FieldName = 'PLN_CONTA'
+            Width = 92
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'DESC_CONTA'
-            Width = 245
+            FieldName = 'PLN_DESC_CONTA'
+            Width = 248
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'ANALITICA'
-            Width = 60
+            FieldName = 'PLN_ANALITICA'
+            Width = 50
             Visible = True
           end>
       end

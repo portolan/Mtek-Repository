@@ -66,7 +66,7 @@ inherited M_centro: TM_centro
       Top = 40
       Width = 134
       Height = 21
-      DataField = 'COD_CC'
+      DataField = 'CEC_COD'
       DataSource = DataSource1
       TabOrder = 0
     end
@@ -75,7 +75,7 @@ inherited M_centro: TM_centro
       Top = 86
       Width = 49
       Height = 21
-      DataField = 'COD_GRUPO'
+      DataField = 'CEC_COD_GRUPO'
       DataSource = DataSource1
       TabOrder = 1
     end
@@ -84,7 +84,7 @@ inherited M_centro: TM_centro
       Top = 132
       Width = 134
       Height = 21
-      DataField = 'NUM_CC'
+      DataField = 'CEC_NUM_CC'
       DataSource = DataSource1
       TabOrder = 2
     end
@@ -93,7 +93,7 @@ inherited M_centro: TM_centro
       Top = 86
       Width = 225
       Height = 21
-      DataField = 'DESC_CC'
+      DataField = 'CEC_DESC_CC'
       DataSource = DataSource1
       TabOrder = 3
     end
@@ -102,7 +102,7 @@ inherited M_centro: TM_centro
       Top = 132
       Width = 97
       Height = 17
-      DataField = 'ANALITICO'
+      DataField = 'CEC_ANALITICO'
       DataSource = DataSource1
       TabOrder = 4
       ValueChecked = 'S'

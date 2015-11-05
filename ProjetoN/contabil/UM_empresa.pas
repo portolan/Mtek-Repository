@@ -13,7 +13,6 @@ type
     DBEdit1: TDBEdit;
     DataSource1: TDataSource;
     Label2: TLabel;
-    DBEdit2: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
     Label4: TLabel;
@@ -34,6 +33,7 @@ type
     DBEdit11: TDBEdit;
     Label12: TLabel;
     DBEdit12: TDBEdit;
+    DBEdit2: TDBEdit;
   private
     { Private declarations }
   public

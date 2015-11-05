@@ -9,8 +9,25 @@ uses
 type
   TDM_contabil = class(TDataModule)
     empresa: TIBQuery;
-    empresaCOD_EMPRESA: TIntegerField;
-    empresaCNPJ_EMPRESA: TIBBCDField;
+    Dempresa: TDataSource;
+    Uempresa: TIBUpdateSQL;
+    centro: TIBQuery;
+    Dcentro: TDataSource;
+    Ucentro: TIBUpdateSQL;
+    lancamento: TIBQuery;
+    Dlancamento: TDataSource;
+    Ulancamento: TIBUpdateSQL;
+    departamento: TIBQuery;
+    Ddepartamento: TDataSource;
+    Udepartamento: TIBUpdateSQL;
+    planodecontas: TIBQuery;
+    Dplanodecontas: TDataSource;
+    Uplanodecontas: TIBUpdateSQL;
+    historico: TIBQuery;
+    Dhistorico: TDataSource;
+    Uhistorico: TIBUpdateSQL;
+    empresaEMP_COD: TIntegerField;
+    empresaEMP_CNPJ: TIBBCDField;
     empresaEMP_RAZAO: TIBStringField;
     empresaEMP_NOMEF: TIBStringField;
     empresaEMP_ENDERECO: TIBStringField;
@@ -21,47 +38,30 @@ type
     empresaEMP_CEP: TIntegerField;
     empresaEMP_FONE: TIntegerField;
     empresaEMP_TITULAR: TIBStringField;
-    Dempresa: TDataSource;
-    Uempresa: TIBUpdateSQL;
-    centro: TIBQuery;
-    Dcentro: TDataSource;
-    Ucentro: TIBUpdateSQL;
-    centroCOD_CC: TIntegerField;
-    centroNUM_CC: TIntegerField;
-    centroDESC_CC: TIBStringField;
-    centroANALITICO: TIBStringField;
-    centroCOD_GRUPO: TIntegerField;
-    lancamento: TIBQuery;
-    Dlancamento: TDataSource;
-    Ulancamento: TIBUpdateSQL;
-    lancamentoNR_LOTE: TIntegerField;
-    lancamentoNR_LANCAMENTO: TIntegerField;
-    lancamentoDT_LANCAMENTO: TDateField;
-    lancamentoDEBITO: TIntegerField;
-    lancamentoCENTRODECUSTO_DB: TIntegerField;
-    lancamentoCREDITO: TIntegerField;
-    lancamentoCENTRODECUSTO_CR: TIntegerField;
-    lancamentoHISTORICO: TIntegerField;
-    lancamentoVAR_HISTORICO: TIBStringField;
-    lancamentoVALOR: TIntegerField;
-    departamento: TIBQuery;
-    Ddepartamento: TDataSource;
-    Udepartamento: TIBUpdateSQL;
-    departamentoCOD_DEP: TIntegerField;
-    departamentoCOD_EMPRESAR: TIntegerField;
-    departamentoDP_NOME: TIBStringField;
-    departamentoDP_DESC: TIBStringField;
-    planodecontas: TIBQuery;
-    Dplanodecontas: TDataSource;
-    Uplanodecontas: TIBUpdateSQL;
-    planodecontasCOD_CONTA: TIntegerField;
-    planodecontasCONTA: TIntegerField;
-    planodecontasDESC_CONTA: TIBStringField;
-    planodecontasANALITICA: TIBStringField;
-    historico: TIBQuery;
-    Dhistorico: TDataSource;
-    Uhistorico: TIBUpdateSQL;
-    historicoCOD_HIST: TIntegerField;
+    centroCEC_COD: TIntegerField;
+    centroCEC_NUM_CC: TIntegerField;
+    centroCEC_DESC_CC: TIBStringField;
+    centroCEC_ANALITICO: TIBStringField;
+    centroCEC_COD_GRUPO: TIntegerField;
+    lancamentoLANC_NR_LOTE: TIntegerField;
+    lancamentoLANC_NR_LANCAMENTO: TIntegerField;
+    lancamentoLANC_DT_LANCAMENTO: TDateField;
+    lancamentoLANC_DEBITO: TIntegerField;
+    lancamentoLANC_CENTRODECUSTO_DB: TIntegerField;
+    lancamentoLANC_CREDITO: TIntegerField;
+    lancamentoLANC_CENTRODECUSTO_CR: TIntegerField;
+    lancamentoLANC_HISTORICO: TIntegerField;
+    lancamentoLANC_VAR_HISTORICO: TIBStringField;
+    lancamentoLANC_VALOR: TIntegerField;
+    departamentoDEP_COD: TIntegerField;
+    departamentoDEP_EMPRESAR: TIntegerField;
+    departamentoDEP_NOME: TIBStringField;
+    departamentoDEP_DESC: TIBStringField;
+    planodecontasPLN_COD_CONTA: TIntegerField;
+    planodecontasPLN_CONTA: TIntegerField;
+    planodecontasPLN_DESC_CONTA: TIBStringField;
+    planodecontasPLN_ANALITICA: TIBStringField;
+    historicoHIST_COD: TIntegerField;
     historicoHIST_NOME: TIBStringField;
     procedure planodecontasAfterInsert(DataSet: TDataSet);
     procedure centroAfterInsert(DataSet: TDataSet);
@@ -84,13 +84,13 @@ uses dm000;
 
 procedure TDM_contabil.centroAfterInsert(DataSet: TDataSet);
 begin
-  DM_contabil.centroANALITICO.AsString := 'N';
+  DM_contabil.centroCEC_ANALITICO.AsString := 'N';
 
 end;
 
 procedure TDM_contabil.planodecontasAfterInsert(DataSet: TDataSet);
 begin
-  DM_contabil.planodecontasANALITICA.AsString := 'N';
+  DM_contabil.planodecontasPLN_ANALITICA.AsString := 'N';
 end;
 
 end.

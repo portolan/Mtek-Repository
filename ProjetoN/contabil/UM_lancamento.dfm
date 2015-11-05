@@ -277,7 +277,7 @@ inherited M_lancamento: TM_lancamento
       Top = 35
       Width = 69
       Height = 21
-      DataField = 'NR_LOTE'
+      DataField = 'LANC_NR_LOTE'
       DataSource = DM_contabil.Dlancamento
       TabOrder = 0
     end
@@ -286,7 +286,7 @@ inherited M_lancamento: TM_lancamento
       Top = 35
       Width = 73
       Height = 21
-      DataField = 'NR_LANCAMENTO'
+      DataField = 'LANC_NR_LANCAMENTO'
       DataSource = DM_contabil.Dlancamento
       TabOrder = 1
     end
@@ -295,7 +295,7 @@ inherited M_lancamento: TM_lancamento
       Top = 35
       Width = 84
       Height = 21
-      DataField = 'DT_LANCAMENTO'
+      DataField = 'LANC_DT_LANCAMENTO'
       DataSource = DM_contabil.Dlancamento
       TabOrder = 2
     end
@@ -304,7 +304,7 @@ inherited M_lancamento: TM_lancamento
       Top = 99
       Width = 134
       Height = 21
-      DataField = 'DEBITO'
+      DataField = 'LANC_DEBITO'
       DataSource = DM_contabil.Dlancamento
       TabOrder = 3
     end
@@ -313,7 +313,7 @@ inherited M_lancamento: TM_lancamento
       Top = 145
       Width = 134
       Height = 21
-      DataField = 'CENTRODECUSTO_DB'
+      DataField = 'LANC_CENTRODECUSTO_DB'
       DataSource = DM_contabil.Dlancamento
       TabOrder = 4
     end
@@ -322,7 +322,7 @@ inherited M_lancamento: TM_lancamento
       Top = 191
       Width = 134
       Height = 21
-      DataField = 'CREDITO'
+      DataField = 'LANC_CREDITO'
       DataSource = DM_contabil.Dlancamento
       TabOrder = 5
     end
@@ -331,7 +331,7 @@ inherited M_lancamento: TM_lancamento
       Top = 237
       Width = 134
       Height = 21
-      DataField = 'CENTRODECUSTO_CR'
+      DataField = 'LANC_CENTRODECUSTO_CR'
       DataSource = DM_contabil.Dlancamento
       TabOrder = 6
     end
@@ -340,7 +340,7 @@ inherited M_lancamento: TM_lancamento
       Top = 283
       Width = 134
       Height = 21
-      DataField = 'HISTORICO'
+      DataField = 'LANC_HISTORICO'
       DataSource = DM_contabil.Dlancamento
       TabOrder = 7
     end
@@ -350,7 +350,7 @@ inherited M_lancamento: TM_lancamento
       Width = 345
       Height = 64
       AutoSize = False
-      DataField = 'VAR_HISTORICO'
+      DataField = 'LANC_VAR_HISTORICO'
       DataSource = DM_contabil.Dlancamento
       TabOrder = 8
     end
@@ -359,7 +359,7 @@ inherited M_lancamento: TM_lancamento
       Top = 418
       Width = 84
       Height = 21
-      DataField = 'VALOR'
+      DataField = 'LANC_VALOR'
       DataSource = DM_contabil.Dlancamento
       TabOrder = 9
     end

@@ -58,7 +58,7 @@ inherited M_planodecontas: TM_planodecontas
       Top = 53
       Width = 73
       Height = 21
-      DataField = 'COD_CONTA'
+      DataField = 'PLN_COD_CONTA'
       DataSource = DM_contabil.Dplanodecontas
       TabOrder = 0
     end
@@ -67,7 +67,7 @@ inherited M_planodecontas: TM_planodecontas
       Top = 99
       Width = 109
       Height = 21
-      DataField = 'CONTA'
+      DataField = 'PLN_DESC_CONTA'
       DataSource = DM_contabil.Dplanodecontas
       TabOrder = 1
     end
@@ -76,7 +76,7 @@ inherited M_planodecontas: TM_planodecontas
       Top = 99
       Width = 145
       Height = 21
-      DataField = 'DESC_CONTA'
+      DataField = 'PLN_DESC_CONTA'
       DataSource = DM_contabil.Dplanodecontas
       TabOrder = 2
     end
@@ -85,7 +85,7 @@ inherited M_planodecontas: TM_planodecontas
       Top = 99
       Width = 97
       Height = 17
-      DataField = 'ANALITICA'
+      DataField = 'PLN_ANALITICA'
       DataSource = DM_contabil.Dplanodecontas
       TabOrder = 3
       ValueChecked = 'S'

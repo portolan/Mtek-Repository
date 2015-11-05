@@ -10,15 +10,18 @@ inherited M_departamento: TM_departamento
   inherited pnRodape: TPanel
     Top = 222
     Width = 396
+    ExplicitTop = 222
+    ExplicitWidth = 396
     inherited sbCancelar: TSpeedButton
       Left = 299
+      ExplicitLeft = 299
     end
   end
   inherited gbInfos: TGroupBox
     Width = 396
     Height = 222
-    ExplicitLeft = 1
-    ExplicitTop = -5
+    ExplicitWidth = 396
+    ExplicitHeight = 222
     object Label1: TLabel
       Left = 16
       Top = 24
@@ -56,7 +59,7 @@ inherited M_departamento: TM_departamento
       Top = 43
       Width = 65
       Height = 21
-      DataField = 'COD_DEP'
+      DataField = 'DEP_COD'
       DataSource = DM_contabil.Ddepartamento
       TabOrder = 0
     end
@@ -65,7 +68,7 @@ inherited M_departamento: TM_departamento
       Top = 43
       Width = 92
       Height = 21
-      DataField = 'COD_EMPRESAR'
+      DataField = 'DEP_EMPRESAR'
       DataSource = DM_contabil.Ddepartamento
       TabOrder = 1
     end
@@ -74,7 +77,7 @@ inherited M_departamento: TM_departamento
       Top = 99
       Width = 193
       Height = 21
-      DataField = 'DP_NOME'
+      DataField = 'DEP_NOME'
       DataSource = DM_contabil.Ddepartamento
       TabOrder = 2
     end
@@ -84,7 +87,7 @@ inherited M_departamento: TM_departamento
       Width = 329
       Height = 56
       AutoSize = False
-      DataField = 'DP_DESC'
+      DataField = 'DEP_DESC'
       DataSource = DM_contabil.Ddepartamento
       TabOrder = 3
     end

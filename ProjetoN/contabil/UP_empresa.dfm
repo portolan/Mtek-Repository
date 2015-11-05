@@ -12,37 +12,37 @@ inherited P_empresa: TP_empresa
         Columns = <
           item
             Expanded = False
-            FieldName = 'COD_EMPRESA'
-            Width = 47
+            FieldName = 'EMP_COD'
+            Width = 41
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'CNPJ_EMPRESA'
-            Width = 79
+            FieldName = 'EMP_CNPJ'
+            Width = 108
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EMP_RAZAO'
-            Width = 177
+            Width = 170
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EMP_NOMEF'
-            Width = 175
+            Width = 174
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EMP_ENDERECO'
-            Width = 158
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EMP_END_NUM'
+            Width = 78
             Visible = True
           end
           item
@@ -53,13 +53,12 @@ inherited P_empresa: TP_empresa
           item
             Expanded = False
             FieldName = 'EMP_CIDADE'
-            Width = 117
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EMP_UF'
-            Width = 20
+            Width = 43
             Visible = True
           end
           item

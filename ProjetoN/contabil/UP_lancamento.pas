@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UTelaPadrao, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls;
+  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, IBX.IBQuery;
 
 type
   TP_lancamento = class(TxPesqPadrao)
@@ -13,6 +13,7 @@ type
     Ntotal: TLabel;
     Ncredito: TLabel;
     Ndebito: TLabel;
+    Rtotal: TLabel;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -29,7 +30,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_contabil, UM_lancamento;
+uses UDM_contabil, UM_lancamento, dm000;
 
 { TP_lancamento }
 
@@ -44,11 +45,19 @@ end;
 end;
 
 procedure TP_lancamento.FormCreate(Sender: TObject);
+var Qry:TIBQuery;
+    soma : integer;
 begin
   inherited;
-procInicializar(DM_contabil.lancamento,true,false,M_lancamento,TM_lancamento);
-funcAtribuiFiltros;
-nomeQry := 'LANCAMENTOS';
+    Qry := dmBanco.funcCriaQuery;
+    Qry.Close;
+    Qry.SQL.Text := 'select sum(a.LANC_VALOR) soma from lancamentos a ';
+    Qry.open;
+    soma := qry.FieldByName('soma').AsInteger;
+    Rtotal.Caption := IntToStr(soma);
+    procInicializar(DM_contabil.lancamento,true,false,M_lancamento,TM_lancamento);
+    funcAtribuiFiltros;
+    nomeQry := 'LANCAMENTOS';
 end;
 
 procedure TP_lancamento.procselect;

@@ -4622,11 +4622,12 @@ object TelaInicial: TTelaInicial
         Caption = 'Plano de Contas'
         OnClick = PlanodeContas1Click
       end
-      object p1: TMenuItem
-        Caption = 'Parametros'
-        object Historicos1: TMenuItem
-          Caption = 'Historicos'
-        end
+      object Histricos1: TMenuItem
+        Caption = 'Hist'#243'ricos'
+        OnClick = Histricos1Click
+      end
+      object Relatrios2: TMenuItem
+        Caption = 'Relat'#243'rios'
       end
     end
     object Manuteno1: TMenuItem

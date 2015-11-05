@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg, frxClass, frxExportPDF;
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg;
 
 type
   TTelaInicial = class(TForm)
@@ -45,9 +45,7 @@ type
     CentrodeCustos2: TMenuItem;
     Empresas1: TMenuItem;
     PlanodeContas1: TMenuItem;
-    p1: TMenuItem;
     Producao: TMenuItem;
-    Historicos1: TMenuItem;
     Bloco1: TMenuItem;
     Prateleira1: TMenuItem;
     Relatrios1: TMenuItem;
@@ -61,6 +59,8 @@ type
     Categoria1: TMenuItem;
     Departamentos1: TMenuItem;
     E1: TMenuItem;
+    Histricos1: TMenuItem;
+    Relatrios2: TMenuItem;
     N2: TMenuItem;
     Blocos1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
@@ -79,6 +79,7 @@ type
     procedure Categoria1Click(Sender: TObject);
     procedure Departamentos1Click(Sender: TObject);
     procedure PlanodeContas1Click(Sender: TObject);
+    procedure Histricos1Click(Sender: TObject);
     procedure ContasaPagar1Click(Sender: TObject);
     procedure Blocos1Click(Sender: TObject);
   private
@@ -98,7 +99,7 @@ implementation
 uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
   UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO, UP_lancamento, UM_Servico,
   UP_Servico, UP_Bloco, UM_Prateleira, UP_Categoria, UP_Prateleira,
-  UP_departamento, UM_departamento, UP_planodecontas, Up_titulospagar,
+  UP_departamento, UM_departamento, UP_planodecontas, UP_historico, Up_titulospagar,
   UR_EstoqueRelatorios;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
@@ -164,6 +165,11 @@ end;
 procedure TTelaInicial.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   application.Terminate;
+end;
+
+procedure TTelaInicial.Histricos1Click(Sender: TObject);
+begin
+    TP_historico.chamaTela(Self);
 end;
 
 procedure TTelaInicial.Manuteno3Click(Sender: TObject);

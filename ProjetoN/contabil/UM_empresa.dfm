@@ -20,7 +20,6 @@ inherited M_empresa: TM_empresa
       Width = 29
       Height = 13
       Caption = 'CNPJ:'
-      FocusControl = DBEdit2
     end
     object Label3: TLabel
       Left = 24
@@ -107,18 +106,9 @@ inherited M_empresa: TM_empresa
       Top = 21
       Width = 50
       Height = 21
-      DataField = 'COD_EMPRESA'
+      DataField = 'EMP_COD'
       DataSource = DataSource1
       TabOrder = 0
-    end
-    object DBEdit2: TDBEdit
-      Left = 198
-      Top = 21
-      Width = 159
-      Height = 21
-      DataField = 'CNPJ_EMPRESA'
-      DataSource = DataSource1
-      TabOrder = 1
     end
     object DBEdit3: TDBEdit
       Left = 24
@@ -127,7 +117,7 @@ inherited M_empresa: TM_empresa
       Height = 21
       DataField = 'EMP_RAZAO'
       DataSource = DataSource1
-      TabOrder = 2
+      TabOrder = 1
     end
     object DBEdit4: TDBEdit
       Left = 295
@@ -136,7 +126,7 @@ inherited M_empresa: TM_empresa
       Height = 21
       DataField = 'EMP_NOMEF'
       DataSource = DataSource1
-      TabOrder = 3
+      TabOrder = 2
     end
     object DBEdit5: TDBEdit
       Left = 24
@@ -145,7 +135,7 @@ inherited M_empresa: TM_empresa
       Height = 21
       DataField = 'EMP_ENDERECO'
       DataSource = DataSource1
-      TabOrder = 4
+      TabOrder = 3
     end
     object DBEdit6: TDBEdit
       Left = 218
@@ -154,7 +144,7 @@ inherited M_empresa: TM_empresa
       Height = 21
       DataField = 'EMP_END_NUM'
       DataSource = DataSource1
-      TabOrder = 5
+      TabOrder = 4
     end
     object DBEdit7: TDBEdit
       Left = 292
@@ -163,7 +153,7 @@ inherited M_empresa: TM_empresa
       Height = 21
       DataField = 'EMP_BAIRRO'
       DataSource = DataSource1
-      TabOrder = 6
+      TabOrder = 5
     end
     object DBEdit8: TDBEdit
       Left = 24
@@ -172,7 +162,7 @@ inherited M_empresa: TM_empresa
       Height = 21
       DataField = 'EMP_CIDADE'
       DataSource = DataSource1
-      TabOrder = 7
+      TabOrder = 6
     end
     object DBEdit9: TDBEdit
       Left = 218
@@ -181,7 +171,7 @@ inherited M_empresa: TM_empresa
       Height = 21
       DataField = 'EMP_UF'
       DataSource = DataSource1
-      TabOrder = 8
+      TabOrder = 7
     end
     object DBEdit10: TDBEdit
       Left = 292
@@ -190,7 +180,7 @@ inherited M_empresa: TM_empresa
       Height = 21
       DataField = 'EMP_CEP'
       DataSource = DataSource1
-      TabOrder = 9
+      TabOrder = 8
     end
     object DBEdit11: TDBEdit
       Left = 432
@@ -199,7 +189,7 @@ inherited M_empresa: TM_empresa
       Height = 21
       DataField = 'EMP_FONE'
       DataSource = DataSource1
-      TabOrder = 10
+      TabOrder = 9
     end
     object DBEdit12: TDBEdit
       Left = 24
@@ -207,6 +197,15 @@ inherited M_empresa: TM_empresa
       Width = 532
       Height = 21
       DataField = 'EMP_TITULAR'
+      DataSource = DataSource1
+      TabOrder = 10
+    end
+    object DBEdit2: TDBEdit
+      Left = 202
+      Top = 21
+      Width = 151
+      Height = 21
+      DataField = 'EMP_CNPJ'
       DataSource = DataSource1
       TabOrder = 11
     end
