@@ -11,14 +11,14 @@ object EstoqueRelatorios: TEstoqueRelatorios
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42312.919971284700000000
-    ReportOptions.LastChange = 42312.996348298600000000
+    ReportOptions.LastChange = 42313.001745428200000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
       ''
       'end.')
-    Left = 56
-    Top = 64
+    Left = 40
+    Top = 16
     Datasets = <
       item
         DataSet = frxDBDatasetBloco
@@ -149,7 +149,7 @@ object EstoqueRelatorios: TEstoqueRelatorios
     CloseDataSource = False
     DataSet = DM_Estoque.Bloco
     BCDToCurrency = False
-    Left = 256
-    Top = 104
+    Left = 40
+    Top = 72
   end
 end
