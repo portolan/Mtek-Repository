@@ -43,6 +43,7 @@ begin
       if (not b_gravou) and (QryPadrao.Transaction.Intransaction) then
          QryPadrao.Transaction.Rollback;
    end;
+   sbCancelar.Click;//Willian Colocou p nao dar pau ao clicar botao fechar
 end;
 
 procedure TxManuPadrao.FormCreate(Sender: TObject);
