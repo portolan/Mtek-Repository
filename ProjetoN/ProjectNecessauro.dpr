@@ -50,7 +50,8 @@ uses
   UM_planodecontas in 'contabil\UM_planodecontas.pas' {M_planodecontas},
   Udm_contaspagar in 'contas_pagar\Udm_contaspagar.pas' {dm_contaspagar: TDataModule},
   Um_titulospagar in 'contas_pagar\Um_titulospagar.pas' {m_titulospagar},
-  Up_titulospagar in 'contas_pagar\Up_titulospagar.pas' {p_titulospagar};
+  Up_titulospagar in 'contas_pagar\Up_titulospagar.pas' {p_titulospagar},
+  UR_EstoqueRelatorios in 'Estoque\UR_EstoqueRelatorios.pas' {EstoqueRelatorios: TDataModule};
 
 {$R *.res}
 
@@ -64,5 +65,6 @@ begin
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TTelaInicial, TelaInicial);
+  Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
   Application.Run;
 end.

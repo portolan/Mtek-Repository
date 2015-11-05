@@ -61,6 +61,8 @@ type
     Categoria1: TMenuItem;
     Departamentos1: TMenuItem;
     E1: TMenuItem;
+    N2: TMenuItem;
+    Blocos1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -78,6 +80,7 @@ type
     procedure Departamentos1Click(Sender: TObject);
     procedure PlanodeContas1Click(Sender: TObject);
     procedure ContasaPagar1Click(Sender: TObject);
+    procedure Blocos1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -95,7 +98,8 @@ implementation
 uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_MovimentoEstoque,
   UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO, UP_lancamento, UM_Servico,
   UP_Servico, UP_Bloco, UM_Prateleira, UP_Categoria, UP_Prateleira,
-  UP_departamento, UM_departamento, UP_planodecontas, Up_titulospagar;
+  UP_departamento, UM_departamento, UP_planodecontas, Up_titulospagar,
+  UR_EstoqueRelatorios;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -105,6 +109,11 @@ begin
     finally
         FreeAndNil(PBloco);
     end;
+end;
+
+procedure TTelaInicial.Blocos1Click(Sender: TObject);
+begin
+    EstoqueRelatorios.frxReportBloco.ShowReport();
 end;
 
 procedure TTelaInicial.Categoria1Click(Sender: TObject);

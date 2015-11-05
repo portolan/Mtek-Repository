@@ -4536,6 +4536,13 @@ object TelaInicial: TTelaInicial
         object MovimentaodeEstoquePorCustoMdio1: TMenuItem
           Caption = 'Movimenta'#231#227'o de Estoque - Por Custo M'#233'dio'
         end
+        object N2: TMenuItem
+          Caption = '-'
+        end
+        object Blocos1: TMenuItem
+          Caption = 'Blocos'
+          OnClick = Blocos1Click
+        end
       end
       object Categoria1: TMenuItem
         Caption = 'Categoria'
