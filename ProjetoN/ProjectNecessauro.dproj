@@ -109,49 +109,9 @@
             <Form>xManuPadrao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Estoque\UM_Estoque.pas">
-            <Form>MEstoque</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_Marcas.pas">
-            <Form>MMarcas</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_MovimentoEstoque.pas">
-            <Form>MMovimentoEstoque</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_Produto.pas">
-            <Form>MProduto</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Estoque.pas">
-            <Form>PEstoque</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Marcas.pas">
-            <Form>PMarcas</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_MovimentoEstoque.pas">
-            <Form>PMovimentoEstoque</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Produto.pas">
-            <Form>PProduto</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="datamodulo\UDM_contabil.pas">
             <Form>DM_contabil</Form>
             <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_Categoria.pas">
-            <Form>MCategoria</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Categoria.pas">
-            <Form>PCategoria</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="login final\login.pas">
             <Form>tela_login</Form>
@@ -195,22 +155,6 @@
         </DCCReference>
         <DCCReference Include="contabil\UP_lancamento.pas">
             <Form>P_lancamento</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Bloco.pas">
-            <Form>PBloco</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Prateleira.pas">
-            <Form>PPrateleira</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_Bloco.pas">
-            <Form>MBloco</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_Prateleira.pas">
-            <Form>MPrateleira</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="contabil\UM_departamento.pas">
@@ -266,6 +210,79 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="contas_receber\UM_contasreceber.pas">
+            <Form>M_contasreceber</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contas_receber\UP_contasreceber.pas">
+            <Form>P_receber</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UEstoque.pas"/>
+        <DCCReference Include="Estoque\UM_Bloco.pas">
+            <Form>MBloco</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Categoria.pas">
+            <Form>MCategoria</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Estoque.pas">
+            <Form>MEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Marcas.pas">
+            <Form>MMarcas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_MovimentoEstoque.pas">
+            <Form>MMovimentoEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Prateleira.pas">
+            <Form>MPrateleira</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Produto.pas">
+            <Form>MProduto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Unidade.pas">
+            <Form>MUnidade</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Bloco.pas">
+            <Form>PBloco</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Categoria.pas">
+            <Form>PCategoria</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Estoque.pas">
+            <Form>PEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Marcas.pas">
+            <Form>PMarcas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_MovimentoEstoque.pas">
+            <Form>PMovimentoEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Prateleira.pas">
+            <Form>PPrateleira</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Produto.pas">
+            <Form>PProduto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Unidade.pas">
+            <Form>PUnidade</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="Estoque\UR_EstoqueRelatorios.pas">
             <Form>EstoqueRelatorios</Form>
             <FormType>dfm</FormType>
@@ -275,14 +292,6 @@
             <Form>DataModule1</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="contas_receber\UM_contasreceber.pas">
-            <Form>M_contasreceber</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="contas_receber\UP_contasreceber.pas">
-            <Form>P_receber</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
@@ -399,7 +408,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectOSXEntitlements">
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents</RemoteDir>
+                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -485,6 +494,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectiOSEntitlements">
                     <Platform Name="iOSDevice">
+                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
