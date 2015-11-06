@@ -1,5 +1,6 @@
 inherited M_contasreceber: TM_contasreceber
   Caption = 'Contas Receber'
+  OnCreate = sbCancelarClick
   ExplicitWidth = 597
   ExplicitHeight = 320
   PixelsPerInch = 96
