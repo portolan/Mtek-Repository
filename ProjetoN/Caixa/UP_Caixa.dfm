@@ -5,7 +5,6 @@ inherited P_caixa: TP_caixa
   inherited pnCorpo: TPanel
     inherited gbDados: TGroupBox
       inherited DBGDados: TDBGrid
-        DataSource = DM_caixa.DCaixa
         Columns = <
           item
             Expanded = False
