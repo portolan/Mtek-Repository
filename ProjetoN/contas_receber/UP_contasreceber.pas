@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UTelaPadrao, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls;
+  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, UM_contasreceber;
 
 type
   TP_contasreceber = class(TxPesqPadrao)
@@ -29,11 +29,11 @@ implementation
 
 procedure TP_contasreceber.sbNovoClick(Sender: TObject);
 begin
-  P_contasreceber := TP_contasreceber.Create(Self);
+  M_contasreceber := TM_contasreceber.Create(Self);
     try
-        P_contasreceber.ShowModal;
+        M_contasreceber.ShowModal;
     finally
-        FreeAndNil(P_caixa);
+        FreeAndNil(M_contasreceber);
     end;
 end;
 
