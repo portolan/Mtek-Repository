@@ -1,3 +1,6 @@
+-- Arrumar campos de relacionamento
+
+
 CREATE TABLE CHAMADOS (
     CHA_CODIGO        INTEGER NOT NULL,
     CHA_EMPRESA       INTEGER NOT NULL,
