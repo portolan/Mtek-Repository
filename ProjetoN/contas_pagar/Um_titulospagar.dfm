@@ -9,7 +9,7 @@
   inherited pnRodape: TPanel
     Top = 294
     Width = 744
-    ExplicitTop = 415
+    ExplicitTop = 294
     ExplicitWidth = 744
     inherited sbCancelar: TSpeedButton
       Left = 647
@@ -19,33 +19,31 @@
   inherited gbInfos: TGroupBox
     Width = 744
     Height = 294
-    ExplicitLeft = -1
-    ExplicitTop = -6
     ExplicitWidth = 744
-    ExplicitHeight = 415
+    ExplicitHeight = 294
     object Label1: TLabel
       Left = 76
-      Top = 46
+      Top = 18
       Width = 41
       Height = 13
       Caption = 'C'#211'DIGO'
-      FocusControl = DBEdit1
+      FocusControl = ttp_codigo
     end
     object Label2: TLabel
-      Left = 193
-      Top = 46
+      Left = 71
+      Top = 43
       Width = 46
       Height = 13
       Caption = 'EMPRESA'
-      FocusControl = DBEdit2
+      FocusControl = ttp_empresa
     end
     object Label3: TLabel
-      Left = 328
-      Top = 46
+      Left = 395
+      Top = 43
       Width = 39
       Height = 13
       Caption = 'PESSOA'
-      FocusControl = DBEdit3
+      FocusControl = ttp_pessoa
     end
     object Label4: TLabel
       Left = 283
@@ -53,7 +51,7 @@
       Width = 90
       Height = 13
       Caption = 'CONTA BANC'#193'RIA'
-      FocusControl = DBEdit4
+      FocusControl = ttp_conta
     end
     object Label5: TLabel
       Left = 497
@@ -61,15 +59,15 @@
       Width = 120
       Height = 13
       Caption = 'CONDI'#199#195'O PAGAMENTO'
-      FocusControl = DBEdit5
+      FocusControl = ttp_condicao
     end
     object Label6: TLabel
       Left = 19
-      Top = 70
+      Top = 68
       Width = 98
       Height = 13
       Caption = 'DESCRI'#199#195'O TITULO'
-      FocusControl = DBEdit6
+      FocusControl = ttp_descricao
     end
     object Label7: TLabel
       Left = 42
@@ -77,7 +75,7 @@
       Width = 75
       Height = 13
       Caption = 'DATA EMISS'#195'O'
-      FocusControl = DBEdit7
+      FocusControl = ttp_emissao
     end
     object Label8: TLabel
       Left = 278
@@ -85,7 +83,7 @@
       Width = 95
       Height = 13
       Caption = 'DATA VENCIMENTO'
-      FocusControl = DBEdit8
+      FocusControl = ttp_vencimento
     end
     object Label9: TLabel
       Left = 525
@@ -93,7 +91,7 @@
       Width = 92
       Height = 13
       Caption = 'DATA PAGAMENTO'
-      FocusControl = DBEdit9
+      FocusControl = ttp_dt_pagamento
     end
     object Label10: TLabel
       Left = 313
@@ -101,7 +99,7 @@
       Width = 60
       Height = 13
       Caption = 'DATA BAIXA'
-      FocusControl = DBEdit10
+      FocusControl = ttp_dt_baixa
     end
     object Label11: TLabel
       Left = 504
@@ -109,15 +107,15 @@
       Width = 111
       Height = 13
       Caption = 'DATA CANCELAMENTO'
-      FocusControl = DBEdit11
+      FocusControl = ttp_dt_cancelamento
     end
     object Label12: TLabel
       Left = 54
-      Top = 111
+      Top = 114
       Width = 63
       Height = 13
       Caption = 'TIPO TITULO'
-      FocusControl = DBEdit12
+      FocusControl = ttp_tp_titulo
     end
     object Label15: TLabel
       Left = 24
@@ -172,23 +170,23 @@
       Width = 55
       Height = 13
       Caption = 'DESCONTO'
-      FocusControl = DBEdit20
+      FocusControl = ttp_desconto
     end
     object Label21: TLabel
       Left = 72
-      Top = 157
+      Top = 160
       Width = 45
       Height = 13
       Caption = 'PARCELA'
-      FocusControl = DBEdit21
+      FocusControl = ttp_parcela
     end
     object Label22: TLabel
       Left = 32
-      Top = 184
+      Top = 183
       Width = 85
       Height = 13
       Caption = 'VALOR ORIGINAL'
-      FocusControl = DBEdit22
+      FocusControl = ttp_vl_original
     end
     object Label23: TLabel
       Left = 309
@@ -196,7 +194,7 @@
       Width = 64
       Height = 13
       Caption = 'VALOR PAGO'
-      FocusControl = DBEdit23
+      FocusControl = ttp_vl_pago
     end
     object Label24: TLabel
       Left = 547
@@ -204,7 +202,7 @@
       Width = 68
       Height = 13
       Caption = 'VALOR TOTAL'
-      FocusControl = DBEdit24
+      FocusControl = ttp_vl_total
     end
     object Label25: TLabel
       Left = 304
@@ -212,7 +210,7 @@
       Width = 69
       Height = 13
       Caption = 'MORA DI'#193'RIA'
-      FocusControl = DBEdit25
+      FocusControl = ttp_mora
     end
     object Label26: TLabel
       Left = 524
@@ -220,36 +218,36 @@
       Width = 93
       Height = 13
       Caption = 'MULTA DE ATRASO'
-      FocusControl = DBEdit26
+      FocusControl = ttp_multa
     end
-    object DBEdit1: TDBEdit
+    object ttp_codigo: TDBEdit
       Left = 123
-      Top = 43
+      Top = 15
       Width = 54
       Height = 21
       DataField = 'TTP_CODIGO'
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 0
     end
-    object DBEdit2: TDBEdit
-      Left = 253
-      Top = 43
+    object ttp_empresa: TDBEdit
+      Left = 123
+      Top = 40
       Width = 52
       Height = 21
       DataField = 'TTP_EMP_CODIGO'
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 1
     end
-    object DBEdit3: TDBEdit
-      Left = 373
-      Top = 43
+    object ttp_pessoa: TDBEdit
+      Left = 439
+      Top = 40
       Width = 52
       Height = 21
       DataField = 'TTP_PES_CODIGO'
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 2
     end
-    object DBEdit4: TDBEdit
+    object ttp_conta: TDBEdit
       Left = 379
       Top = 111
       Width = 112
@@ -258,7 +256,7 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 3
     end
-    object DBEdit5: TDBEdit
+    object ttp_condicao: TDBEdit
       Left = 618
       Top = 111
       Width = 111
@@ -267,7 +265,7 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 4
     end
-    object DBEdit6: TDBEdit
+    object ttp_descricao: TDBEdit
       Left = 123
       Top = 65
       Width = 606
@@ -276,7 +274,7 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 5
     end
-    object DBEdit7: TDBEdit
+    object ttp_emissao: TDBEdit
       Left = 123
       Top = 89
       Width = 149
@@ -285,7 +283,7 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 6
     end
-    object DBEdit8: TDBEdit
+    object ttp_vencimento: TDBEdit
       Left = 379
       Top = 89
       Width = 112
@@ -294,16 +292,16 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 7
     end
-    object DBEdit9: TDBEdit
+    object ttp_dt_pagamento: TDBEdit
       Left = 618
-      Top = 84
+      Top = 88
       Width = 111
       Height = 21
       DataField = 'TTP_DT_PAGAMENTO'
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 8
     end
-    object DBEdit10: TDBEdit
+    object ttp_dt_baixa: TDBEdit
       Left = 379
       Top = 218
       Width = 114
@@ -312,7 +310,7 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 9
     end
-    object DBEdit11: TDBEdit
+    object ttp_dt_cancelamento: TDBEdit
       Left = 621
       Top = 218
       Width = 107
@@ -321,7 +319,7 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 10
     end
-    object DBEdit12: TDBEdit
+    object ttp_tp_titulo: TDBEdit
       Left = 123
       Top = 111
       Width = 149
@@ -375,7 +373,7 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 16
     end
-    object DBEdit20: TDBEdit
+    object ttp_desconto: TDBEdit
       Left = 123
       Top = 135
       Width = 149
@@ -384,7 +382,7 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 17
     end
-    object DBEdit21: TDBEdit
+    object ttp_parcela: TDBEdit
       Left = 123
       Top = 157
       Width = 149
@@ -393,16 +391,16 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 18
     end
-    object DBEdit22: TDBEdit
+    object ttp_vl_original: TDBEdit
       Left = 123
-      Top = 184
-      Width = 152
+      Top = 180
+      Width = 149
       Height = 21
       DataField = 'TTP_VL_ORIGINAL'
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 19
     end
-    object DBEdit23: TDBEdit
+    object ttp_vl_pago: TDBEdit
       Left = 379
       Top = 196
       Width = 114
@@ -411,7 +409,7 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 20
     end
-    object DBEdit24: TDBEdit
+    object ttp_vl_total: TDBEdit
       Left = 621
       Top = 196
       Width = 107
@@ -420,7 +418,7 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 21
     end
-    object DBEdit25: TDBEdit
+    object ttp_mora: TDBEdit
       Left = 379
       Top = 135
       Width = 112
@@ -429,7 +427,7 @@
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 22
     end
-    object DBEdit26: TDBEdit
+    object ttp_multa: TDBEdit
       Left = 618
       Top = 135
       Width = 110
