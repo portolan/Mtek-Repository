@@ -2557,7 +2557,6 @@ object TelaInicial: TTelaInicial
     Proportional = True
     ShowHint = False
     Stretch = True
-    OnDblClick = Image4DblClick
   end
   object Image5: TImage
     Left = 8

@@ -64,8 +64,7 @@ uses
   UDM_caixa in 'datamodulo\UDM_caixa.pas' {DM_caixa: TDataModule},
   UM_contasreceber in 'contas_receber\UM_contasreceber.pas' {M_contasreceber},
   UP_contasreceber in 'contas_receber\UP_contasreceber.pas' {P_receber},
-  UDM_contasreceber in 'datamodulo\UDM_contasreceber.pas' {DM_contasreceber: TDataModule},
-  Unit2 in 'Unit2.pas' {egg};
+  UDM_contasreceber in 'datamodulo\UDM_contasreceber.pas' {DM_contasreceber: TDataModule};
 
 {$R *.res}
 
@@ -79,6 +78,5 @@ begin
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(Tegg, egg);
   Application.Run;
 end.
