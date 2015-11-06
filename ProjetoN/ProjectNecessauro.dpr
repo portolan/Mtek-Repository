@@ -40,8 +40,6 @@ uses
   UP_empresa in 'contabil\UP_empresa.pas' {P_empresa},
   UP_historico in 'contabil\UP_historico.pas' {P_historico},
   R_contabil in 'contabil\R_contabil.pas' {Form1},
-  UM_contasreceber in 'contas_receber\UM_contasreceber.pas' {M_contasreceber},
-  UP_contasreceber in 'contas_receber\UP_contasreceber.pas' {P_receber},
   UEstoque in 'Estoque\UEstoque.pas',
   UM_Bloco in 'Estoque\UM_Bloco.pas' {MBloco},
   UM_Categoria in 'Estoque\UM_Categoria.pas' {MCategoria},
@@ -63,7 +61,10 @@ uses
   UR_Relatorios in 'Estoque\UR_Relatorios.pas' {DataModule1: TDataModule},
   UM_caixa in 'Caixa\UM_caixa.pas' {M_caixa},
   UP_Caixa in 'Caixa\UP_Caixa.pas' {P_caixa},
-  UDM_caixa in 'datamodulo\UDM_caixa.pas' {DM_caixa: TDataModule};
+  UDM_caixa in 'datamodulo\UDM_caixa.pas' {DM_caixa: TDataModule},
+  UM_contasreceber in 'contas_receber\UM_contasreceber.pas' {M_contasreceber},
+  UP_contasreceber in 'contas_receber\UP_contasreceber.pas' {P_receber},
+  UDM_contasreceber in 'datamodulo\UDM_contasreceber.pas' {DM_contasreceber: TDataModule};
 
 {$R *.res}
 
@@ -80,5 +81,8 @@ begin
   Application.CreateForm(TM_caixa, M_caixa);
   Application.CreateForm(TP_caixa, P_caixa);
   Application.CreateForm(TDM_caixa, DM_caixa);
+  Application.CreateForm(TM_contasreceber, M_contasreceber);
+  Application.CreateForm(TP_receber, P_receber);
+  Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.Run;
 end.
