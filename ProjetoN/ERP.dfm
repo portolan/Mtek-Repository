@@ -4595,6 +4595,7 @@ object TelaInicial: TTelaInicial
       end
       object ContasaReceber1: TMenuItem
         Caption = 'Contas a Receber'
+        OnClick = ContasaReceber1Click
       end
       object FluxodeCaixa1: TMenuItem
         Caption = 'Controle Caixa'

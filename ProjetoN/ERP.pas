@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.Grids,
-  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg;
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg, UDM_contasreceber,
+  UM_contasreceber, UP_contasreceber;
 
 type
   TTelaInicial = class(TForm)
@@ -83,6 +84,7 @@ type
     procedure ContasaPagar1Click(Sender: TObject);
     procedure Blocos1Click(Sender: TObject);
     procedure FluxodeCaixa1Click(Sender: TObject);
+    procedure ContasaReceber1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -141,6 +143,16 @@ end;
 procedure TTelaInicial.ContasaPagar1Click(Sender: TObject);
 begin
    Tp_titulospagar.procChamaTela(self);
+end;
+
+procedure TTelaInicial.ContasaReceber1Click(Sender: TObject);
+begin
+    P_contasreceber := TP_contasreceber.Create(Self);
+    try
+        P_contasreceber.ShowModal;
+    finally
+        FreeAndNil(P_caixa);
+    end;
 end;
 
 procedure TTelaInicial.Departamentos1Click(Sender: TObject);
