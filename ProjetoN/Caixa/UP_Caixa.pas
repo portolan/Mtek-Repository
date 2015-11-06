@@ -1,20 +1,15 @@
-unit UP_Caixa;
+unit UP_caixa;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UTelaPadrao, Vcl.Buttons, Vcl.Grids,
-  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Menus;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UTelaPadrao, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls;
 
 type
-  TP_Caixa = class(TxPesqPadrao)
-    MainMenu1: TMainMenu;
-    Movimentao1: TMenuItem;
-    Relatrios1: TMenuItem;
-    Movimentao2: TMenuItem;
-    SpeedButton1: TSpeedButton;
-    procedure FormCreate(Sender: TObject);
+  TP_caixa = class(TxPesqPadrao)
+
   private
     { Private declarations }
   public
@@ -22,18 +17,12 @@ type
   end;
 
 var
-  P_Caixa: TP_Caixa;
+  P_caixa: TP_caixa;
 
 implementation
 
 {$R *.dfm}
 
-uses UDM_Caixa, UM_Marcas, UM_MCaixa;
-
-procedure TP_Caixa.FormCreate(Sender: TObject);
-begin
-  inherited;
-     procInicializar(DM_Caixa.Caixa,TRUE,FALSE,M_MCaixa,TM_MCaixa);
-end;
+uses UDM_caixa, UM_caixa;
 
 end.
