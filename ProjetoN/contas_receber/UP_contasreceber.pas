@@ -9,6 +9,7 @@ uses
 
 type
   TP_contasreceber = class(TxPesqPadrao)
+    procedure sbNovoClick(Sender: TObject);
 
 
   private
@@ -25,5 +26,15 @@ implementation
 {$R *.dfm}
 
 
+
+procedure TP_contasreceber.sbNovoClick(Sender: TObject);
+begin
+  P_contasreceber := TP_contasreceber.Create(Self);
+    try
+        P_contasreceber.ShowModal;
+    finally
+        FreeAndNil(P_caixa);
+    end;
+end;
 
 end.
