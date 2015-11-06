@@ -55,7 +55,6 @@ type
     ProdutosPRO_CSTPIS: TIBBCDField;
     ProdutosPRO_ESTATUAL: TIBStringField;
     ProdutosPRO_DESCRICAO: TIBStringField;
-    ProdutosPRO_UNID: TIBStringField;
     ProdutosPRO_MARCA: TIntegerField;
     ProdutosPRO_MOEDA: TIBStringField;
     ProdutosPRO_CATEGORIA: TIntegerField;
@@ -70,7 +69,6 @@ type
     ProdutosPRO_VLRVENDA: TIBBCDField;
     ProdutosPRO_OBS: TIBStringField;
     ProdutosPRO_IMG: TBlobField;
-    ProdutosPRO_GRUPO: TIBStringField;
     EstoqueESTOQ_EMPRESA: TIntegerField;
     EstoqueESTOQ_PRODUTO: TIBStringField;
     EstoqueESTOQ_BLOCO: TIntegerField;
@@ -117,6 +115,14 @@ type
     MovimentoEstoqueEM_OBS: TIBStringField;
     MovimentoEstoqueEM_VALOR_FINANCEIRO: TIBBCDField;
     MovimentoEstoqueEM_PEDIDOCOMPRAORIGEM: TIntegerField;
+    Unidade: TIBQuery;
+    DSUnidade: TDataSource;
+    UUnidade: TIBUpdateSQL;
+    ProdutosPRO_UNID: TIntegerField;
+    UnidadeUN_CODIGO: TIntegerField;
+    UnidadeUN_DESCRICAO: TIBStringField;
+    UnidadeUN_OBS: TIBStringField;
+    ProdutosPRO_GRUPO: TIBStringField;
     procedure ProdutosAfterInsert(DataSet: TDataSet);
     procedure EstoqueAfterInsert(DataSet: TDataSet);
     procedure MarcasAfterInsert(DataSet: TDataSet);
@@ -124,6 +130,7 @@ type
     procedure CategoriaAfterInsert(DataSet: TDataSet);
     procedure BlocoAfterInsert(DataSet: TDataSet);
     procedure PrateleiraAfterInsert(DataSet: TDataSet);
+    procedure UnidadeAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -176,6 +183,11 @@ end;
 procedure TDM_Estoque.ProdutosAfterInsert(DataSet: TDataSet);
 begin
     Produtos.FieldByName('PRO_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRODUTOS');
+end;
+
+procedure TDM_Estoque.UnidadeAfterInsert(DataSet: TDataSet);
+begin
+    Unidade.FieldByName('UN_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_UNIDADE');
 end;
 
 end.

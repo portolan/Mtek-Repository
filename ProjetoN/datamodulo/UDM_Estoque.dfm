@@ -1,6 +1,6 @@
 object DM_Estoque: TDM_Estoque
   OldCreateOrder = False
-  Height = 209
+  Height = 291
   Width = 714
   object Produtos: TIBQuery
     Database = dmBanco.Banco
@@ -52,6 +52,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Dt. Cadastro'
       FieldName = 'PRO_DTCADASTRO'
       Origin = '"PRODUTOS"."PRO_DTCADASTRO"'
+      EditMask = '!99/99/00;1;_'
     end
     object ProdutosPRO_CLASSFISCAL: TIBStringField
       DisplayLabel = 'Class. Fiscal'
@@ -115,12 +116,6 @@ object DM_Estoque: TDM_Estoque
       Origin = '"PRODUTOS"."PRO_DESCRICAO"'
       Size = 60
     end
-    object ProdutosPRO_UNID: TIBStringField
-      DisplayLabel = 'Unidade'
-      FieldName = 'PRO_UNID'
-      Origin = '"PRODUTOS"."PRO_UNID"'
-      Size = 5
-    end
     object ProdutosPRO_MARCA: TIntegerField
       DisplayLabel = 'Marca'
       FieldName = 'PRO_MARCA'
@@ -141,6 +136,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Peso'
       FieldName = 'PRO_PESO'
       Origin = '"PRODUTOS"."PRO_PESO"'
+      DisplayFormat = '0.00000'
       Precision = 18
       Size = 2
     end
@@ -148,6 +144,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Custo M'#233'dio'
       FieldName = 'PRO_CUSTOMEDIO'
       Origin = '"PRODUTOS"."PRO_CUSTOMEDIO"'
+      DisplayFormat = '0.000'
       Precision = 18
       Size = 2
     end
@@ -155,6 +152,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Valoriza'#231#227'o'
       FieldName = 'PRO_VALORIZACAO'
       Origin = '"PRODUTOS"."PRO_VALORIZACAO"'
+      DisplayFormat = '0.000'
       Precision = 18
       Size = 2
     end
@@ -162,6 +160,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Vlr Frete'
       FieldName = 'PRO_VLRFRETE'
       Origin = '"PRODUTOS"."PRO_VLRFRETE"'
+      DisplayFormat = '0.000'
       Precision = 18
       Size = 2
     end
@@ -169,6 +168,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = '% Encargos'
       FieldName = 'PRO_PERCENCARG'
       Origin = '"PRODUTOS"."PRO_PERCENCARG"'
+      DisplayFormat = '0.000'
       Precision = 18
       Size = 2
     end
@@ -176,6 +176,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Vlr Encargos'
       FieldName = 'PRO_VLRENCARG'
       Origin = '"PRODUTOS"."PRO_VLRENCARG"'
+      DisplayFormat = '0.000'
       Precision = 18
       Size = 2
     end
@@ -183,6 +184,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = '% Margem Lucro'
       FieldName = 'PRO_PERCMARGLUCR'
       Origin = '"PRODUTOS"."PRO_PERCMARGLUCR"'
+      DisplayFormat = '0.000'
       Precision = 18
       Size = 2
     end
@@ -190,6 +192,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Vlr Margem Lucro'
       FieldName = 'PRO_VLRMARGLUCR'
       Origin = '"PRODUTOS"."PRO_VLRMARGLUCR"'
+      DisplayFormat = '0.000'
       Precision = 18
       Size = 2
     end
@@ -197,6 +200,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Vlr Venda'
       FieldName = 'PRO_VLRVENDA'
       Origin = '"PRODUTOS"."PRO_VLRVENDA"'
+      DisplayFormat = '0.000'
       Precision = 18
       Size = 2
     end
@@ -214,11 +218,15 @@ object DM_Estoque: TDM_Estoque
       Size = 8
     end
     object ProdutosPRO_GRUPO: TIBStringField
-      DisplayLabel = 'Grupo'
       FieldName = 'PRO_GRUPO'
       Origin = '"PRODUTOS"."PRO_GRUPO"'
       FixedChar = True
-      Size = 1
+      Size = 4
+    end
+    object ProdutosPRO_UNID: TIntegerField
+      DisplayLabel = 'Unidade'
+      FieldName = 'PRO_UNID'
+      Origin = '"PRODUTOS"."PRO_UNID"'
     end
   end
   object UProdutos: TIBUpdateSQL
@@ -235,33 +243,31 @@ object DM_Estoque: TDM_Estoque
       '  PRO_NCMSH,'
       '  PRO_EXTIPI,'
       '  PRO_SITTRIB,'
+      '  PRO_PIS,'
+      '  PRO_COFINS,'
+      '  PRO_CSTPIS,'
+      '  PRO_ESTATUAL,'
       '  PRO_DESCRICAO,'
       '  PRO_UNID,'
       '  PRO_MARCA,'
       '  PRO_MOEDA,'
       '  PRO_CATEGORIA,'
-      '  PRO_PIS,'
-      '  PRO_COFINS,'
-      '  PRO_CSTPIS,'
-      '  PRO_ESTATUAL,'
       '  PRO_PESO,'
-      '  PRO_VLRCUSTO,'
-      '  PRO_PERCFRETE,'
+      '  PRO_CUSTOMEDIO,'
+      '  PRO_VALORIZACAO,'
       '  PRO_VLRFRETE,'
       '  PRO_PERCENCARG,'
       '  PRO_VLRENCARG,'
       '  PRO_PERCMARGLUCR,'
       '  PRO_VLRMARGLUCR,'
-      '  PRO_VLRVENDA1,'
-      '  PRO_PERCVLRVENDA2,'
-      '  PRO_VLRVENDA2,'
-      '  PRO_PERCVLRVENDA3,'
-      '  PRO_VLRVENDA3,'
+      '  PRO_VLRVENDA,'
       '  PRO_OBS,'
-      '  PRO_IMG'
+      '  PRO_IMG,'
+      '  PRO_GRUPO'
       'from PRODUTOS '
       'where'
-      '  PRO_CODIGO = :PRO_CODIGO')
+      '  PRO_CODIGO = :PRO_CODIGO and'
+      '  PRO_EMPRESA = :PRO_EMPRESA')
     ModifySQL.Strings = (
       'update PRODUTOS'
       'set'
@@ -273,82 +279,75 @@ object DM_Estoque: TDM_Estoque
       '  PRO_COFINS = :PRO_COFINS,'
       '  PRO_CSTCSOSN = :PRO_CSTCSOSN,'
       '  PRO_CSTPIS = :PRO_CSTPIS,'
+      '  PRO_CUSTOMEDIO = :PRO_CUSTOMEDIO,'
       '  PRO_DESCRICAO = :PRO_DESCRICAO,'
       '  PRO_DTCADASTRO = :PRO_DTCADASTRO,'
       '  PRO_EMPRESA = :PRO_EMPRESA,'
       '  PRO_ESTATUAL = :PRO_ESTATUAL,'
       '  PRO_EXTIPI = :PRO_EXTIPI,'
+      '  PRO_GRUPO = :PRO_GRUPO,'
       '  PRO_IMG = :PRO_IMG,'
       '  PRO_MARCA = :PRO_MARCA,'
       '  PRO_MOEDA = :PRO_MOEDA,'
       '  PRO_NCMSH = :PRO_NCMSH,'
       '  PRO_OBS = :PRO_OBS,'
       '  PRO_PERCENCARG = :PRO_PERCENCARG,'
-      '  PRO_PERCFRETE = :PRO_PERCFRETE,'
       '  PRO_PERCMARGLUCR = :PRO_PERCMARGLUCR,'
-      '  PRO_PERCVLRVENDA2 = :PRO_PERCVLRVENDA2,'
-      '  PRO_PERCVLRVENDA3 = :PRO_PERCVLRVENDA3,'
       '  PRO_PESO = :PRO_PESO,'
       '  PRO_PIS = :PRO_PIS,'
       '  PRO_SITTRIB = :PRO_SITTRIB,'
       '  PRO_STATUS = :PRO_STATUS,'
       '  PRO_UNID = :PRO_UNID,'
-      '  PRO_VLRCUSTO = :PRO_VLRCUSTO,'
+      '  PRO_VALORIZACAO = :PRO_VALORIZACAO,'
       '  PRO_VLRENCARG = :PRO_VLRENCARG,'
       '  PRO_VLRFRETE = :PRO_VLRFRETE,'
       '  PRO_VLRMARGLUCR = :PRO_VLRMARGLUCR,'
-      '  PRO_VLRVENDA1 = :PRO_VLRVENDA1,'
-      '  PRO_VLRVENDA2 = :PRO_VLRVENDA2,'
-      '  PRO_VLRVENDA3 = :PRO_VLRVENDA3'
+      '  PRO_VLRVENDA = :PRO_VLRVENDA'
       'where'
-      '  PRO_CODIGO = :OLD_PRO_CODIGO')
+      '  PRO_CODIGO = :OLD_PRO_CODIGO and'
+      '  PRO_EMPRESA = :OLD_PRO_EMPRESA')
     InsertSQL.Strings = (
       'insert into PRODUTOS'
       
         '  (PRO_CATEGORIA, PRO_CLASSFISCAL, PRO_CODBARRAS, PRO_CODIGO, PR' +
         'O_CODREF, '
       
-        '   PRO_COFINS, PRO_CSTCSOSN, PRO_CSTPIS, PRO_DESCRICAO, PRO_DTCA' +
-        'DASTRO, '
+        '   PRO_COFINS, PRO_CSTCSOSN, PRO_CSTPIS, PRO_CUSTOMEDIO, PRO_DES' +
+        'CRICAO, '
       
-        '   PRO_EMPRESA, PRO_ESTATUAL, PRO_EXTIPI, PRO_IMG, PRO_MARCA, PR' +
-        'O_MOEDA, '
+        '   PRO_DTCADASTRO, PRO_EMPRESA, PRO_ESTATUAL, PRO_EXTIPI, PRO_GR' +
+        'UPO, PRO_IMG, '
       
-        '   PRO_NCMSH, PRO_OBS, PRO_PERCENCARG, PRO_PERCFRETE, PRO_PERCMA' +
-        'RGLUCR, '
+        '   PRO_MARCA, PRO_MOEDA, PRO_NCMSH, PRO_OBS, PRO_PERCENCARG, PRO' +
+        '_PERCMARGLUCR, '
       
-        '   PRO_PERCVLRVENDA2, PRO_PERCVLRVENDA3, PRO_PESO, PRO_PIS, PRO_' +
-        'SITTRIB, '
-      
-        '   PRO_STATUS, PRO_UNID, PRO_VLRCUSTO, PRO_VLRENCARG, PRO_VLRFRE' +
-        'TE, PRO_VLRMARGLUCR, '
-      '   PRO_VLRVENDA1, PRO_VLRVENDA2, PRO_VLRVENDA3)'
+        '   PRO_PESO, PRO_PIS, PRO_SITTRIB, PRO_STATUS, PRO_UNID, PRO_VAL' +
+        'ORIZACAO, '
+      '   PRO_VLRENCARG, PRO_VLRFRETE, PRO_VLRMARGLUCR, PRO_VLRVENDA)'
       'values'
       
         '  (:PRO_CATEGORIA, :PRO_CLASSFISCAL, :PRO_CODBARRAS, :PRO_CODIGO' +
         ', :PRO_CODREF, '
       
-        '   :PRO_COFINS, :PRO_CSTCSOSN, :PRO_CSTPIS, :PRO_DESCRICAO, :PRO' +
-        '_DTCADASTRO, '
+        '   :PRO_COFINS, :PRO_CSTCSOSN, :PRO_CSTPIS, :PRO_CUSTOMEDIO, :PR' +
+        'O_DESCRICAO, '
       
-        '   :PRO_EMPRESA, :PRO_ESTATUAL, :PRO_EXTIPI, :PRO_IMG, :PRO_MARC' +
-        'A, :PRO_MOEDA, '
+        '   :PRO_DTCADASTRO, :PRO_EMPRESA, :PRO_ESTATUAL, :PRO_EXTIPI, :P' +
+        'RO_GRUPO, '
       
-        '   :PRO_NCMSH, :PRO_OBS, :PRO_PERCENCARG, :PRO_PERCFRETE, :PRO_P' +
-        'ERCMARGLUCR, '
+        '   :PRO_IMG, :PRO_MARCA, :PRO_MOEDA, :PRO_NCMSH, :PRO_OBS, :PRO_' +
+        'PERCENCARG, '
       
-        '   :PRO_PERCVLRVENDA2, :PRO_PERCVLRVENDA3, :PRO_PESO, :PRO_PIS, ' +
-        ':PRO_SITTRIB, '
+        '   :PRO_PERCMARGLUCR, :PRO_PESO, :PRO_PIS, :PRO_SITTRIB, :PRO_ST' +
+        'ATUS, :PRO_UNID, '
       
-        '   :PRO_STATUS, :PRO_UNID, :PRO_VLRCUSTO, :PRO_VLRENCARG, :PRO_V' +
-        'LRFRETE, '
-      
-        '   :PRO_VLRMARGLUCR, :PRO_VLRVENDA1, :PRO_VLRVENDA2, :PRO_VLRVEN' +
-        'DA3)')
+        '   :PRO_VALORIZACAO, :PRO_VLRENCARG, :PRO_VLRFRETE, :PRO_VLRMARG' +
+        'LUCR, :PRO_VLRVENDA)')
     DeleteSQL.Strings = (
       'delete from PRODUTOS'
       'where'
-      '  PRO_CODIGO = :OLD_PRO_CODIGO')
+      '  PRO_CODIGO = :OLD_PRO_CODIGO and'
+      '  PRO_EMPRESA = :OLD_PRO_EMPRESA')
     Left = 24
     Top = 120
   end
@@ -416,6 +415,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Qtd'
       FieldName = 'ESTOQ_QTD'
       Origin = '"ESTOQUE"."ESTOQ_QTD"'
+      DisplayFormat = '0.00000'
       Precision = 18
       Size = 2
     end
@@ -423,6 +423,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Qtd M'#237'nima'
       FieldName = 'ESTOQ_QTDMIN'
       Origin = '"ESTOQUE"."ESTOQ_QTDMIN"'
+      DisplayFormat = '0.00000'
       Precision = 18
       Size = 2
     end
@@ -430,6 +431,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Qtd M'#225'xima'
       FieldName = 'ESTOQ_QTDMAX'
       Origin = '"ESTOQUE"."ESTOQ_QTDMAX"'
+      DisplayFormat = '0.00000'
       Precision = 18
       Size = 2
     end
@@ -437,6 +439,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Custo M'#233'dio'
       FieldName = 'ESTOQ_CUSTOMEDIO'
       Origin = '"ESTOQUE"."ESTOQ_CUSTOMEDIO"'
+      DisplayFormat = '0.000'
       Precision = 18
       Size = 2
     end
@@ -900,8 +903,8 @@ object DM_Estoque: TDM_Estoque
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
-    Left = 640
-    Top = 40
+    Left = 648
+    Top = 184
   end
   object Bloco: TIBQuery
     Database = dmBanco.Banco
@@ -1124,6 +1127,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Qtd'
       FieldName = 'EM_QTD'
       Origin = '"ESTOQ_MOVIMENTO"."EM_QTD"'
+      DisplayFormat = '0.00000'
       Precision = 18
       Size = 2
     end
@@ -1142,6 +1146,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Vlr Financeiro'
       FieldName = 'EM_VALOR_FINANCEIRO'
       Origin = '"ESTOQ_MOVIMENTO"."EM_VALOR_FINANCEIRO"'
+      DisplayFormat = '0.000'
       Precision = 18
       Size = 2
     end
@@ -1150,5 +1155,71 @@ object DM_Estoque: TDM_Estoque
       FieldName = 'EM_PEDIDOCOMPRAORIGEM'
       Origin = '"ESTOQ_MOVIMENTO"."EM_PEDIDOCOMPRAORIGEM"'
     end
+  end
+  object Unidade: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    AfterInsert = UnidadeAfterInsert
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from unidade'
+      ''
+      '')
+    UpdateObject = UUnidade
+    Left = 632
+    Top = 8
+    object UnidadeUN_CODIGO: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'UN_CODIGO'
+      Origin = '"UNIDADE"."UN_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object UnidadeUN_DESCRICAO: TIBStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'UN_DESCRICAO'
+      Origin = '"UNIDADE"."UN_DESCRICAO"'
+      Required = True
+      Size = 240
+    end
+    object UnidadeUN_OBS: TIBStringField
+      DisplayLabel = 'Observa'#231#245'es'
+      FieldName = 'UN_OBS'
+      Origin = '"UNIDADE"."UN_OBS"'
+      Size = 400
+    end
+  end
+  object DSUnidade: TDataSource
+    DataSet = Unidade
+    Left = 632
+    Top = 64
+  end
+  object UUnidade: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select *'
+      'from unidade '
+      'where'
+      '  UN_CODIGO = :UN_CODIGO')
+    ModifySQL.Strings = (
+      'update unidade'
+      'set'
+      '  UN_CODIGO = :UN_CODIGO,'
+      '  UN_DESCRICAO = :UN_DESCRICAO,'
+      '  UN_OBS = :UN_OBS'
+      'where'
+      '  UN_CODIGO = :OLD_UN_CODIGO')
+    InsertSQL.Strings = (
+      'insert into unidade'
+      '  (UN_CODIGO, UN_DESCRICAO, UN_OBS)'
+      'values'
+      '  (:UN_CODIGO, :UN_DESCRICAO, :UN_OBS)')
+    DeleteSQL.Strings = (
+      'delete from unidade'
+      'where'
+      '  UN_CODIGO = :OLD_UN_CODIGO')
+    Left = 632
+    Top = 120
   end
 end
