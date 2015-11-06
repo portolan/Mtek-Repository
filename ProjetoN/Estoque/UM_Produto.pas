@@ -103,7 +103,7 @@ begin
     if TComboBox(Sender).ItemIndex = 0 then
         DM_Estoque.ProdutosPRO_STATUS.Value := 'a'
     else
-        DM_Estoque.ProdutosPRO_STATUS.Value := 'i'
+        DM_Estoque.ProdutosPRO_STATUS.Value := 'i';
 
 
 end;

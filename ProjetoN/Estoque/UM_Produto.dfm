@@ -3,7 +3,6 @@ inherited MProduto: TMProduto
   ClientHeight = 656
   ClientWidth = 717
   OnActivate = FormActivate
-  ExplicitTop = -119
   ExplicitWidth = 733
   ExplicitHeight = 695
   PixelsPerInch = 96
@@ -37,8 +36,8 @@ inherited MProduto: TMProduto
       Height = 193
       Align = alTop
       TabOrder = 0
-      ExplicitLeft = -110
-      ExplicitTop = 51
+      ExplicitLeft = 3
+      ExplicitTop = 16
       object Label1: TLabel
         Left = 9
         Top = 6
