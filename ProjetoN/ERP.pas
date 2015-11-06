@@ -151,7 +151,7 @@ begin
     try
         P_contasreceber.ShowModal;
     finally
-        FreeAndNil(P_caixa);
+        FreeAndNil(P_contasreceber);
     end;
 end;
 
