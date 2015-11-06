@@ -82,7 +82,7 @@ begin
   Application.CreateForm(TP_caixa, P_caixa);
   Application.CreateForm(TDM_caixa, DM_caixa);
   Application.CreateForm(TM_contasreceber, M_contasreceber);
-  Application.CreateForm(TP_receber, P_receber);
+  Application.CreateForm(TP_contasreceber, P_contasreceber);
   Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.Run;
 end.
