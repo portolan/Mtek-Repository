@@ -1,6 +1,5 @@
 inherited M_contasreceber: TM_contasreceber
   Caption = 'Contas Receber'
-  OnCreate = sbCancelarClick
   ExplicitWidth = 597
   ExplicitHeight = 320
   PixelsPerInch = 96
@@ -12,7 +11,7 @@ inherited M_contasreceber: TM_contasreceber
       ExplicitHeight = 39
     end
     inherited sbCancelar: TSpeedButton
-      OnClick = FormCreate
+      OnClick = nil
     end
   end
 end
