@@ -64,6 +64,7 @@ type
     Relatrios2: TMenuItem;
     N2: TMenuItem;
     Blocos1: TMenuItem;
+    ProdutosemEstoque1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -85,6 +86,7 @@ type
     procedure Blocos1Click(Sender: TObject);
     procedure FluxodeCaixa1Click(Sender: TObject);
     procedure ContasaReceber1Click(Sender: TObject);
+    procedure ProdutosemEstoque1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -259,6 +261,16 @@ begin
         PProduto.ShowModal;
     finally
         FreeAndNil(PProduto);
+    end;
+end;
+
+procedure TTelaInicial.ProdutosemEstoque1Click(Sender: TObject);
+begin
+    PEstoque := TPEstoque.Create(Self);
+    try
+        PEstoque.ShowModal;
+    finally
+        FreeAndNil(PEstoque);
     end;
 end;
 

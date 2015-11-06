@@ -4493,6 +4493,10 @@ object TelaInicial: TTelaInicial
     Top = 296
     object Estoque1: TMenuItem
       Caption = 'Estoque'
+      object ProdutosemEstoque1: TMenuItem
+        Caption = 'Produtos em Estoque'
+        OnClick = ProdutosemEstoque1Click
+      end
       object EnstradaSada1: TMenuItem
         Caption = 'Entrada/Sa'#237'da'
         OnClick = EnstradaSada1Click
