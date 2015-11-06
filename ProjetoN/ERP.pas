@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg, UDM_contasreceber,
-  UM_contasreceber, UP_contasreceber;
+  UM_contasreceber, UP_contasreceber, Unit2;
 
 type
   TTelaInicial = class(TForm)
@@ -85,6 +85,7 @@ type
     procedure Blocos1Click(Sender: TObject);
     procedure FluxodeCaixa1Click(Sender: TObject);
     procedure ContasaReceber1Click(Sender: TObject);
+    procedure Image4DblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -120,11 +121,12 @@ begin
     EstoqueRelatorios.frxReportBloco.ShowReport();
 end;
 
+
 procedure TTelaInicial.Categoria1Click(Sender: TObject);
 begin
     PCategoria := TPCategoria.Create(Self);
     try
-        PCategoria.ShowModal;    
+        PCategoria.ShowModal;
     finally
         FreeAndNil(PCategoria);
     end;
@@ -193,6 +195,11 @@ end;
 procedure TTelaInicial.Histricos1Click(Sender: TObject);
 begin
     TP_historico.chamaTela(Self);
+end;
+
+procedure TTelaInicial.Image4DblClick(Sender: TObject);
+begin
+egg.ShowModal;
 end;
 
 procedure TTelaInicial.Manuteno3Click(Sender: TObject);
