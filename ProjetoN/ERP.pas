@@ -101,7 +101,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO, UP_lancamento, UM_Servico,
   UP_Servico, UP_Bloco, UM_Prateleira, UP_Categoria, UP_Prateleira,
   UP_departamento, UM_departamento, UP_planodecontas, UP_historico, Up_titulospagar,
-  UR_EstoqueRelatorios, UP_caixa, UM_caixa;
+  UR_EstoqueRelatorios, UP_Caixa;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -165,7 +165,7 @@ end;
 
 procedure TTelaInicial.FluxodeCaixa1Click(Sender: TObject);
 begin
-   P_caixa := TP_caixa.Create(Self);
+    P_caixa := TP_caixa.Create(Self);
     try
         P_caixa.ShowModal;
     finally

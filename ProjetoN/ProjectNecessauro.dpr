@@ -60,7 +60,10 @@ uses
   UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
   UP_Unidade in 'Estoque\UP_Unidade.pas' {PUnidade},
   UR_EstoqueRelatorios in 'Estoque\UR_EstoqueRelatorios.pas' {EstoqueRelatorios: TDataModule},
-  UR_Relatorios in 'Estoque\UR_Relatorios.pas' {DataModule1: TDataModule};
+  UR_Relatorios in 'Estoque\UR_Relatorios.pas' {DataModule1: TDataModule},
+  UM_caixa in 'Caixa\UM_caixa.pas' {M_caixa},
+  UP_Caixa in 'Caixa\UP_Caixa.pas' {P_caixa},
+  UDM_caixa in 'datamodulo\UDM_caixa.pas' {DM_caixa: TDataModule};
 
 {$R *.res}
 
@@ -74,38 +77,8 @@ begin
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
-  Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
-  Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
-  Application.CreateForm(TM_historico, M_historico);
-  Application.CreateForm(TM_lancamento, M_lancamento);
-  Application.CreateForm(TM_planodecontas, M_planodecontas);
-  Application.CreateForm(TP_centro, P_centro);
-  Application.CreateForm(TP_departamento, P_departamento);
-  Application.CreateForm(TP_empresa, P_empresa);
-  Application.CreateForm(TP_historico, P_historico);
-  Application.CreateForm(TForm1, Form1);
-  Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
-  Application.CreateForm(TDataModule1, DataModule1);
-  Application.CreateForm(TM_contasreceber, M_contasreceber);
-  Application.CreateForm(TP_receber, P_receber);
-  Application.CreateForm(TMBloco, MBloco);
-  Application.CreateForm(TMCategoria, MCategoria);
-  Application.CreateForm(TMEstoque, MEstoque);
-  Application.CreateForm(TMMarcas, MMarcas);
-  Application.CreateForm(TMMovimentoEstoque, MMovimentoEstoque);
-  Application.CreateForm(TMPrateleira, MPrateleira);
-  Application.CreateForm(TMProduto, MProduto);
-  Application.CreateForm(TMUnidade, MUnidade);
-  Application.CreateForm(TPBloco, PBloco);
-  Application.CreateForm(TPCategoria, PCategoria);
-  Application.CreateForm(TPEstoque, PEstoque);
-  Application.CreateForm(TPMarcas, PMarcas);
-  Application.CreateForm(TPMovimentoEstoque, PMovimentoEstoque);
-  Application.CreateForm(TPPrateleira, PPrateleira);
-  Application.CreateForm(TPProduto, PProduto);
-  Application.CreateForm(TPUnidade, PUnidade);
-  Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
-  Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TM_caixa, M_caixa);
+  Application.CreateForm(TP_caixa, P_caixa);
+  Application.CreateForm(TDM_caixa, DM_caixa);
   Application.Run;
 end.
