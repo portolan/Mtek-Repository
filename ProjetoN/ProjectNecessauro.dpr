@@ -78,11 +78,5 @@ begin
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(TM_caixa, M_caixa);
-  Application.CreateForm(TP_caixa, P_caixa);
-  Application.CreateForm(TDM_caixa, DM_caixa);
-  Application.CreateForm(TM_contasreceber, M_contasreceber);
-  Application.CreateForm(TP_contasreceber, P_contasreceber);
-  Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.Run;
 end.
