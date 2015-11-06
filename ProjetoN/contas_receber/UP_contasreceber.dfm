@@ -7,7 +7,6 @@ inherited P_receber: TP_receber
   inherited pnCorpo: TPanel
     inherited gbDados: TGroupBox
       inherited DBGDados: TDBGrid
-        DataSource = DM_contasreceber.D_contasreceber
         Columns = <
           item
             Expanded = False
