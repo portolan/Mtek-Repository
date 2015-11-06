@@ -9,6 +9,8 @@ uses
 
 type
   TM_contasreceber = class(TxManuPadrao)
+    procedure sbCancelarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -21,5 +23,17 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TM_contasreceber.FormCreate(Sender: TObject);
+begin
+  inherited;
+   M_contasreceber.Close;
+end;
+
+procedure TM_contasreceber.sbCancelarClick(Sender: TObject);
+begin
+  inherited;
+  M_contasreceber.Close;
+end;
 
 end.
