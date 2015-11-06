@@ -1,4 +1,4 @@
-inherited P_receber: TP_receber
+inherited P_contasreceber: TP_contasreceber
   Caption = 'Contas Receber'
   ExplicitWidth = 880
   ExplicitHeight = 441

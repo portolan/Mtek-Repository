@@ -8,7 +8,7 @@ uses
   Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls;
 
 type
-  TP_receber = class(TxPesqPadrao)
+  TP_contasreceber = class(TxPesqPadrao)
 
 
   private
@@ -18,7 +18,7 @@ type
   end;
 
 var
-  P_receber: TP_receber;
+  P_contasreceber: TP_contasreceber;
 
 implementation
 
