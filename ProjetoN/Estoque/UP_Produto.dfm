@@ -1,6 +1,8 @@
 inherited PProduto: TPProduto
   Caption = 'Produtos'
   OnCreate = FormCreate
+  ExplicitWidth = 880
+  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
@@ -90,11 +92,6 @@ inherited PProduto: TPProduto
           end
           item
             Expanded = False
-            FieldName = 'PRO_UNID'
-            Visible = True
-          end
-          item
-            Expanded = False
             FieldName = 'PRO_MARCA'
             Visible = True
           end
@@ -166,6 +163,11 @@ inherited PProduto: TPProduto
           item
             Expanded = False
             FieldName = 'PRO_GRUPO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_UNID'
             Visible = True
           end>
       end
