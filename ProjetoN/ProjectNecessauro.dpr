@@ -55,7 +55,9 @@ uses
   UP_historico in 'contabil\UP_historico.pas' {P_historico},
   R_contabil in 'contabil\R_contabil.pas' {Form1},
   UR_EstoqueRelatorios in 'Estoque\UR_EstoqueRelatorios.pas' {EstoqueRelatorios: TDataModule},
-  UR_Relatorios in 'Estoque\UR_Relatorios.pas' {DataModule1: TDataModule};
+  UR_Relatorios in 'Estoque\UR_Relatorios.pas' {DataModule1: TDataModule},
+  UM_contasreceber in 'contas_receber\UM_contasreceber.pas' {M_contasreceber},
+  UP_contasreceber in 'contas_receber\UP_contasreceber.pas' {P_receber};
 
 {$R *.res}
 
@@ -82,5 +84,7 @@ begin
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
   Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TM_contasreceber, M_contasreceber);
+  Application.CreateForm(TP_receber, P_receber);
   Application.Run;
 end.
