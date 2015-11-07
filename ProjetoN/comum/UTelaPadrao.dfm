@@ -355,9 +355,9 @@ object xPesqPadrao: TxPesqPadrao
         Width = 145
         Height = 21
         Style = csDropDownList
-        ItemIndex = 0
+        ItemIndex = 2
         TabOrder = 1
-        Text = #201' igual'
+        Text = 'Cont'#233'm'
         Items.Strings = (
           #201' igual'
           #201' diferente'
