@@ -381,7 +381,7 @@ object DM_Estoque: TDM_Estoque
       Origin = '"ESTOQUE"."ESTOQ_PRODUTO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
-      Size = 30
+      Size = 120
     end
     object EstoqueESTOQ_BLOCO: TIntegerField
       DisplayLabel = 'Bloco'
@@ -409,29 +409,26 @@ object DM_Estoque: TDM_Estoque
       FieldName = 'ESTOQ_STATUS'
       Origin = '"ESTOQUE"."ESTOQ_STATUS"'
       FixedChar = True
-      Size = 1
+      Size = 4
     end
     object EstoqueESTOQ_QTD: TIBBCDField
       DisplayLabel = 'Qtd'
       FieldName = 'ESTOQ_QTD'
       Origin = '"ESTOQUE"."ESTOQ_QTD"'
-      DisplayFormat = '0.00000'
       Precision = 18
       Size = 2
     end
     object EstoqueESTOQ_QTDMIN: TIBBCDField
-      DisplayLabel = 'Qtd M'#237'nima'
+      DisplayLabel = 'Qtd. M'#237'nima'
       FieldName = 'ESTOQ_QTDMIN'
       Origin = '"ESTOQUE"."ESTOQ_QTDMIN"'
-      DisplayFormat = '0.00000'
       Precision = 18
       Size = 2
     end
     object EstoqueESTOQ_QTDMAX: TIBBCDField
-      DisplayLabel = 'Qtd M'#225'xima'
+      DisplayLabel = 'Qtd. M'#225'xima'
       FieldName = 'ESTOQ_QTDMAX'
       Origin = '"ESTOQUE"."ESTOQ_QTDMAX"'
-      DisplayFormat = '0.00000'
       Precision = 18
       Size = 2
     end
@@ -439,7 +436,6 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Custo M'#233'dio'
       FieldName = 'ESTOQ_CUSTOMEDIO'
       Origin = '"ESTOQUE"."ESTOQ_CUSTOMEDIO"'
-      DisplayFormat = '0.000'
       Precision = 18
       Size = 2
     end
@@ -454,7 +450,7 @@ object DM_Estoque: TDM_Estoque
       Origin = '"ESTOQUE"."ESTOQ_TIPO"'
     end
     object EstoqueESTOQ_DTCADASTRO: TDateField
-      DisplayLabel = 'Cadastro'
+      DisplayLabel = 'Dt. Cadastro'
       FieldName = 'ESTOQ_DTCADASTRO'
       Origin = '"ESTOQUE"."ESTOQ_DTCADASTRO"'
     end
@@ -462,7 +458,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Observa'#231#245'es'
       FieldName = 'ESTOQ_OBS'
       Origin = '"ESTOQUE"."ESTOQ_OBS"'
-      Size = 100
+      Size = 400
     end
   end
   object DSEstoque: TDataSource
@@ -472,21 +468,23 @@ object DM_Estoque: TDM_Estoque
   end
   object UEstoque: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select '
+      'Select * '
       'from estoque '
       'where'
+      '  ESTOQ_BLOCO = :ESTOQ_BLOCO and'
       '  ESTOQ_CODIGO = :ESTOQ_CODIGO and'
       '  ESTOQ_EMPRESA = :ESTOQ_EMPRESA and'
+      '  ESTOQ_PRATELEIRA = :ESTOQ_PRATELEIRA and'
       '  ESTOQ_PRODUTO = :ESTOQ_PRODUTO')
     ModifySQL.Strings = (
       'update estoque'
       'set'
+      '  ESTOQ_BLOCO = :ESTOQ_BLOCO,'
       '  ESTOQ_CATEGORIA = :ESTOQ_CATEGORIA,'
       '  ESTOQ_CODIGO = :ESTOQ_CODIGO,'
       '  ESTOQ_CUSTOMEDIO = :ESTOQ_CUSTOMEDIO,'
       '  ESTOQ_DTCADASTRO = :ESTOQ_DTCADASTRO,'
       '  ESTOQ_EMPRESA = :ESTOQ_EMPRESA,'
-      '  ESTOQ_LOCAL = :ESTOQ_LOCAL,'
       '  ESTOQ_OBS = :ESTOQ_OBS,'
       '  ESTOQ_PRATELEIRA = :ESTOQ_PRATELEIRA,'
       '  ESTOQ_PRODUTO = :ESTOQ_PRODUTO,'
@@ -496,33 +494,35 @@ object DM_Estoque: TDM_Estoque
       '  ESTOQ_STATUS = :ESTOQ_STATUS,'
       '  ESTOQ_TIPO = :ESTOQ_TIPO'
       'where'
+      '  ESTOQ_BLOCO = :OLD_ESTOQ_BLOCO and'
       '  ESTOQ_CODIGO = :OLD_ESTOQ_CODIGO and'
       '  ESTOQ_EMPRESA = :OLD_ESTOQ_EMPRESA and'
+      '  ESTOQ_PRATELEIRA = :OLD_ESTOQ_PRATELEIRA and'
       '  ESTOQ_PRODUTO = :OLD_ESTOQ_PRODUTO')
     InsertSQL.Strings = (
       'insert into estoque'
       
-        '  (ESTOQ_CATEGORIA, ESTOQ_CODIGO, ESTOQ_CUSTOMEDIO, ESTOQ_DTCADA' +
-        'STRO, ESTOQ_EMPRESA, '
+        '  (ESTOQ_BLOCO, ESTOQ_CATEGORIA, ESTOQ_CODIGO, ESTOQ_CUSTOMEDIO,' +
+        ' ESTOQ_DTCADASTRO, '
       
-        '   ESTOQ_LOCAL, ESTOQ_OBS, ESTOQ_PRATELEIRA, ESTOQ_PRODUTO, ESTO' +
-        'Q_QTD, '
+        '   ESTOQ_EMPRESA, ESTOQ_OBS, ESTOQ_PRATELEIRA, ESTOQ_PRODUTO, ES' +
+        'TOQ_QTD, '
       '   ESTOQ_QTDMAX, ESTOQ_QTDMIN, ESTOQ_STATUS, ESTOQ_TIPO)'
       'values'
       
-        '  (:ESTOQ_CATEGORIA, :ESTOQ_CODIGO, :ESTOQ_CUSTOMEDIO, :ESTOQ_DT' +
-        'CADASTRO, '
+        '  (:ESTOQ_BLOCO, :ESTOQ_CATEGORIA, :ESTOQ_CODIGO, :ESTOQ_CUSTOME' +
+        'DIO, :ESTOQ_DTCADASTRO, '
       
-        '   :ESTOQ_EMPRESA, :ESTOQ_LOCAL, :ESTOQ_OBS, :ESTOQ_PRATELEIRA, ' +
-        ':ESTOQ_PRODUTO, '
-      
-        '   :ESTOQ_QTD, :ESTOQ_QTDMAX, :ESTOQ_QTDMIN, :ESTOQ_STATUS, :EST' +
-        'OQ_TIPO)')
+        '   :ESTOQ_EMPRESA, :ESTOQ_OBS, :ESTOQ_PRATELEIRA, :ESTOQ_PRODUTO' +
+        ', :ESTOQ_QTD, '
+      '   :ESTOQ_QTDMAX, :ESTOQ_QTDMIN, :ESTOQ_STATUS, :ESTOQ_TIPO)')
     DeleteSQL.Strings = (
       'delete from estoque'
       'where'
+      '  ESTOQ_BLOCO = :OLD_ESTOQ_BLOCO and'
       '  ESTOQ_CODIGO = :OLD_ESTOQ_CODIGO and'
       '  ESTOQ_EMPRESA = :OLD_ESTOQ_EMPRESA and'
+      '  ESTOQ_PRATELEIRA = :OLD_ESTOQ_PRATELEIRA and'
       '  ESTOQ_PRODUTO = :OLD_ESTOQ_PRODUTO')
     Left = 88
     Top = 120
