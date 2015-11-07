@@ -1015,7 +1015,7 @@ object TelaInicial: TTelaInicial
     000000000000}
   Menu = MainMenu1
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poScreenCenter
   WindowState = wsMaximized
   OnClose = FormClose
   PixelsPerInch = 96
