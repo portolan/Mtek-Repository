@@ -60,7 +60,7 @@ begin
    inherited;
    procMontaWhere;
    dm_contaspagar.titulospagar.Close;
-   dm_contaspagar.titulospagar.SQL.Text:='select a.*  from TITULOSP a where '+c_where;
+   dm_contaspagar.titulospagar.SQL.Text:='select a.* from TITULOSP a where '+c_where;
    dm_contaspagar.titulospagar.open;
 end;
 
