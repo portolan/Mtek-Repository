@@ -29,7 +29,6 @@ type
     SpeedButton3: TSpeedButton;
     SpeedButton4: TSpeedButton;
     DBEdit1: TDBEdit;
-    DBEdit2: TDBEdit;
     DBEdit5: TDBEdit;
     DBEdit6: TDBEdit;
     DBEdit7: TDBEdit;
@@ -40,17 +39,19 @@ type
     ComboBox1: TComboBox;
     DBLookupComboBox1: TDBLookupComboBox;
     DBLookupComboBox2: TDBLookupComboBox;
-    procedure DBEdit2Enter(Sender: TObject);
+    editProduto: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure ComboBox1Exit(Sender: TObject);
+    procedure editProdutoEnter(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    c_codigoProduto : String;
   end;
 
 var
@@ -72,17 +73,17 @@ begin
         DM_Estoque.EstoqueESTOQ_STATUS.Value := 'i';
 end;
 
-procedure TMEstoque.DBEdit2Enter(Sender: TObject);
+procedure TMEstoque.editProdutoEnter(Sender: TObject);
 begin
   inherited;
     PProduto := TPProduto.Create(Self);
     try
-        PProduto.procInicializar(DM_Estoque.Marcas, True, True, PProduto, TPProduto);
+        PProduto.procInicializar(DM_Estoque.Marcas, False, True, PProduto, TPProduto);
 
         PProduto.ShowModal;
     finally
-        DBEdit2.Field.Value := DM_Estoque.Produtos.FieldByName('pro_codigo').AsInteger;
-        DBEdit2.Text := DM_Estoque.Produtos.FieldByName('pro_descricao').AsString;
+        DM_Estoque.EstoqueESTOQ_PRODUTO.Value := DM_Estoque.Produtos.FieldByName('pro_codigo').AsString;
+        editProduto.Text := DM_Estoque.Produtos.FieldByName('PRO_DESCRICAO').AsString;
         FreeAndNil(PProduto);
     end;
 end;
@@ -104,6 +105,10 @@ begin
     DM_Estoque.Categoria.SQL.Text := 'select * from categoria';
     DM_Estoque.Categoria.Open;
     DM_Estoque.Categoria.FetchAll;
+
+    DM_Estoque.Produtos.Close;
+    DM_Estoque.Produtos.SQL.Text := 'select * from Produtos';
+    DM_Estoque.Produtos.Open;
 end;
 
 procedure TMEstoque.SpeedButton1Click(Sender: TObject);

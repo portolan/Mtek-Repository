@@ -19,6 +19,7 @@ inherited MEstoque: TMEstoque
   inherited gbInfos: TGroupBox
     Width = 726
     Height = 322
+    ExplicitTop = -16
     ExplicitWidth = 726
     ExplicitHeight = 322
     object GroupBox1: TGroupBox
@@ -28,10 +29,8 @@ inherited MEstoque: TMEstoque
       Height = 305
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 103
-      ExplicitTop = -26
-      ExplicitWidth = 717
-      ExplicitHeight = 348
+      ExplicitLeft = -4
+      ExplicitTop = 119
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -46,7 +45,6 @@ inherited MEstoque: TMEstoque
         Width = 38
         Height = 13
         Caption = 'Produto'
-        FocusControl = DBEdit2
       end
       object Label4: TLabel
         Left = 16
@@ -272,18 +270,6 @@ inherited MEstoque: TMEstoque
         DataSource = DM_Estoque.DSEstoque
         TabOrder = 0
       end
-      object DBEdit2: TDBEdit
-        Left = 16
-        Top = 75
-        Width = 660
-        Height = 21
-        DataField = 'ESTOQ_PRODUTO'
-        DataSource = DM_Estoque.DSEstoque
-        ParentShowHint = False
-        ShowHint = False
-        TabOrder = 1
-        OnEnter = DBEdit2Enter
-      end
       object DBEdit5: TDBEdit
         Left = 16
         Top = 123
@@ -291,7 +277,7 @@ inherited MEstoque: TMEstoque
         Height = 21
         DataField = 'ESTOQ_QTD'
         DataSource = DM_Estoque.DSEstoque
-        TabOrder = 2
+        TabOrder = 1
       end
       object DBEdit6: TDBEdit
         Left = 156
@@ -300,7 +286,7 @@ inherited MEstoque: TMEstoque
         Height = 21
         DataField = 'ESTOQ_QTDMIN'
         DataSource = DM_Estoque.DSEstoque
-        TabOrder = 3
+        TabOrder = 2
       end
       object DBEdit7: TDBEdit
         Left = 287
@@ -309,7 +295,7 @@ inherited MEstoque: TMEstoque
         Height = 21
         DataField = 'ESTOQ_QTDMAX'
         DataSource = DM_Estoque.DSEstoque
-        TabOrder = 4
+        TabOrder = 3
       end
       object DBEdit8: TDBEdit
         Left = 423
@@ -321,7 +307,7 @@ inherited MEstoque: TMEstoque
         DataField = 'ESTOQ_CUSTOMEDIO'
         DataSource = DM_Estoque.DSEstoque
         ReadOnly = True
-        TabOrder = 5
+        TabOrder = 4
       end
       object DBEdit12: TDBEdit
         Left = 600
@@ -333,7 +319,7 @@ inherited MEstoque: TMEstoque
         DataSource = DM_Estoque.DSEstoque
         ParentColor = True
         ReadOnly = True
-        TabOrder = 6
+        TabOrder = 5
       end
       object DBEdit16: TDBEdit
         Left = 512
@@ -345,7 +331,7 @@ inherited MEstoque: TMEstoque
         DataSource = DM_Estoque.DSEstoque
         ParentColor = True
         ReadOnly = True
-        TabOrder = 7
+        TabOrder = 6
       end
       object DBLookupComboBox3: TDBLookupComboBox
         Left = 153
@@ -357,15 +343,15 @@ inherited MEstoque: TMEstoque
         KeyField = 'CAT_CODIGO'
         ListField = 'CAT_DESCRICAO'
         ListSource = DM_Estoque.DSCategoria
-        TabOrder = 8
+        TabOrder = 7
       end
       object ComboBox1: TComboBox
         Left = 16
         Top = 164
         Width = 128
         Height = 21
-        TabOrder = 9
-        Text = 'ComboBox1'
+        Style = csDropDownList
+        TabOrder = 8
         OnExit = ComboBox1Exit
         Items.Strings = (
           'Ativo'
@@ -381,7 +367,7 @@ inherited MEstoque: TMEstoque
         KeyField = 'BLOC_CODIGO'
         ListField = 'BLOC_DESCRICAO'
         ListSource = DM_Estoque.DSBloco
-        TabOrder = 10
+        TabOrder = 9
       end
       object DBLookupComboBox2: TDBLookupComboBox
         Left = 335
@@ -393,7 +379,16 @@ inherited MEstoque: TMEstoque
         KeyField = 'PRAT_CODIGO'
         ListField = 'PRAT_DESCRICAO'
         ListSource = DM_Estoque.DSPrateleira
+        TabOrder = 10
+      end
+      object editProduto: TEdit
+        Left = 16
+        Top = 74
+        Width = 665
+        Height = 21
+        ReadOnly = True
         TabOrder = 11
+        OnEnter = editProdutoEnter
       end
     end
   end
