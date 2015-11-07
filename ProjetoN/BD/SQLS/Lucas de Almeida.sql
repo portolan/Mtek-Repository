@@ -4,7 +4,8 @@
 /***                                 Tables                                 ***/
 /******************************************************************************/
 
-
+--Todas tabelas tem que ter primary key empresa
+--por exemplo : emi_empresa integer not null || fat_empresa integer not null
 
 CREATE TABLE CONDICAO_PAGAMENTO (
     CON_CODIGO     INTEGER NOT NULL,
@@ -34,6 +35,7 @@ CREATE TABLE FATURAMENTO (
     FAT_CHAVE_ACESSO   NUMERIC(9,0)
 );
 
+--Isto aqui, pra que serve? ja tem mov de estoque
 CREATE TABLE MOV_PEDIDO_VENDA (
     MOV_NUMERO      INTEGER NOT NULL,
     MOV_DTPEDIDO    DATE,
@@ -47,9 +49,10 @@ CREATE TABLE MOV_PEDIDO_VENDA (
     MOV_DTFINAL     DATE
 );
 
+-- Falta campos
 CREATE TABLE ORDEM_VENDA (
     ORD_NUMERO  INTEGER NOT NULL
-);
+); 
 
 CREATE TABLE PEDIDOVENDA (
     PED_NUMERO            INTEGER NOT NULL,
