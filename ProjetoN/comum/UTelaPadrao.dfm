@@ -377,6 +377,7 @@ object xPesqPadrao: TxPesqPadrao
         Width = 309
         Height = 21
         TabOrder = 2
+        OnChange = editPesquisaChange
       end
       object Pesquisar: TButton
         Left = 622

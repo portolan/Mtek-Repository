@@ -32,6 +32,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure PesquisarClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure editPesquisaChange(Sender: TObject);
   private
 
   public
@@ -71,6 +72,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TxPesqPadrao.editPesquisaChange(Sender: TObject);
+begin
+    procSelect;
+end;
 
 procedure TxPesqPadrao.FormActivate(Sender: TObject);
 begin
