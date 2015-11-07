@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls;
+  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, Data.DB;
 
 type
   TMEstoque = class(TxManuPadrao)
@@ -51,10 +51,13 @@ type
     procedure editProdutoEnter(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
+
     { Private declarations }
   public
     { Public declarations }
     c_codigoProduto : String;
+
+    procedure procSelecionaItems;
   end;
 
 var
@@ -89,20 +92,8 @@ begin
         DM_Estoque.EstoqueESTOQ_EMPRESA.value := DM_Estoque.Produtos.FieldByName('pro_empresa').AsInteger;
         editProduto.Text := DM_Estoque.Produtos.FieldByName('PRO_DESCRICAO').AsString;
 
-        DM_Estoque.Bloco.Close;
-        DM_Estoque.Bloco.SQL.Text := 'select * from bloco where bloc_empresa = ' + DM_Estoque.Produtos.FieldByName('PRO_EMPRESA').AsString;
-        DM_Estoque.Bloco.Open;
-        DM_Estoque.Bloco.FetchAll;
-
-        DM_Estoque.Prateleira.Close;
-        DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira where prat_empresa = ' + DM_Estoque.Produtos.FieldByName('PRO_EMPRESA').AsString;
-        DM_Estoque.Prateleira.Open;
-        DM_Estoque.Prateleira.FetchAll;
-
-        DM_Estoque.Categoria.Close;
-        DM_Estoque.Categoria.SQL.Text := 'select * from categoria where cat_empresa = ' + DM_Estoque.Produtos.FieldByName('CAT_EMPRESA').AsString;
-        DM_Estoque.Categoria.Open;
-        DM_Estoque.Categoria.FetchAll;
+        if DM_Estoque.Estoque.State in [dsEdit, dsInsert] then
+            procSelecionaItems;
 
         FreeAndNil(PProduto);
     end;
@@ -126,6 +117,27 @@ begin
     DM_Estoque.Produtos.Open;
 
     editProduto.Text := DM_Estoque.ProdutosPRO_DESCRICAO.AsString;
+
+    if DM_Estoque.Estoque.State in [dsEdit] then
+            procSelecionaItems;
+end;
+
+procedure TMEstoque.procSelecionaItems;
+begin
+    DM_Estoque.Bloco.Close;
+    DM_Estoque.Bloco.SQL.Text := 'select * from bloco where bloc_empresa = ' + DM_Estoque.EstoqueESTOQ_EMPRESA.AsString;
+    DM_Estoque.Bloco.Open;
+    DM_Estoque.Bloco.FetchAll;
+
+    DM_Estoque.Prateleira.Close;
+    DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira where prat_empresa = ' + DM_Estoque.EstoqueESTOQ_EMPRESA.AsString;
+    DM_Estoque.Prateleira.Open;
+    DM_Estoque.Prateleira.FetchAll;
+
+    DM_Estoque.Categoria.Close;
+    DM_Estoque.Categoria.SQL.Text := 'select * from categoria where cat_empresa = ' + DM_Estoque.EstoqueESTOQ_EMPRESA.AsString;
+    DM_Estoque.Categoria.Open;
+    DM_Estoque.Categoria.FetchAll;
 end;
 
 procedure TMEstoque.SpeedButton1Click(Sender: TObject);

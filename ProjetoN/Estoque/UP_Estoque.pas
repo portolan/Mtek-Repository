@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UTelaPadrao, Vcl.Buttons, Vcl.Grids,
-  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls;
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB;
 
 type
   TPEstoque = class(TxPesqPadrao)
@@ -45,7 +45,7 @@ begin
 
     procMontaWhere;
     DM_Estoque.Estoque.Close;
-    DM_Estoque.Estoque.SQL.Text := 'select a.*, pro_descricao, bloc_descricao, prat_descricao from ESTOQUE a         ' +
+    DM_Estoque.Estoque.SQL.Text := 'select * from ESTOQUE         ' +
                         'inner join produtos on pro_codigo = estoq_produto and pro_empresa = estoq_empresa           ' +
                         'inner join bloco on bloc_codigo = estoq_bloco and bloc_empresa = estoq_empresa              ' +
                         'inner join prateleira on prat_codigo = estoq_prateleira and prat_empresa = estoq_prateleira ' +
