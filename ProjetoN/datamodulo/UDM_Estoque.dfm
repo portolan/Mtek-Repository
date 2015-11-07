@@ -54,62 +54,6 @@ object DM_Estoque: TDM_Estoque
       Origin = '"PRODUTOS"."PRO_DTCADASTRO"'
       EditMask = '!99/99/00;1;_'
     end
-    object ProdutosPRO_CLASSFISCAL: TIBStringField
-      DisplayLabel = 'Class. Fiscal'
-      FieldName = 'PRO_CLASSFISCAL'
-      Origin = '"PRODUTOS"."PRO_CLASSFISCAL"'
-      Size = 30
-    end
-    object ProdutosPRO_CSTCSOSN: TIBStringField
-      DisplayLabel = 'CSTCSOSN'
-      FieldName = 'PRO_CSTCSOSN'
-      Origin = '"PRODUTOS"."PRO_CSTCSOSN"'
-      Size = 30
-    end
-    object ProdutosPRO_NCMSH: TIBStringField
-      DisplayLabel = 'NCM/SH'
-      FieldName = 'PRO_NCMSH'
-      Origin = '"PRODUTOS"."PRO_NCMSH"'
-      Size = 30
-    end
-    object ProdutosPRO_EXTIPI: TIBStringField
-      DisplayLabel = 'Ex. TIPI'
-      FieldName = 'PRO_EXTIPI'
-      Origin = '"PRODUTOS"."PRO_EXTIPI"'
-      Size = 30
-    end
-    object ProdutosPRO_SITTRIB: TIBStringField
-      DisplayLabel = 'Sit. Tribut'#225'ria'
-      FieldName = 'PRO_SITTRIB'
-      Origin = '"PRODUTOS"."PRO_SITTRIB"'
-      Size = 30
-    end
-    object ProdutosPRO_PIS: TIBBCDField
-      DisplayLabel = 'PIS'
-      FieldName = 'PRO_PIS'
-      Origin = '"PRODUTOS"."PRO_PIS"'
-      Precision = 18
-      Size = 2
-    end
-    object ProdutosPRO_COFINS: TIBBCDField
-      DisplayLabel = 'COFINS'
-      FieldName = 'PRO_COFINS'
-      Origin = '"PRODUTOS"."PRO_COFINS"'
-      Precision = 18
-      Size = 2
-    end
-    object ProdutosPRO_CSTPIS: TIBBCDField
-      DisplayLabel = 'CSTPIS'
-      FieldName = 'PRO_CSTPIS'
-      Origin = '"PRODUTOS"."PRO_CSTPIS"'
-      Precision = 18
-      Size = 2
-    end
-    object ProdutosPRO_ESTATUAL: TIBStringField
-      DisplayLabel = 'Est. Atual'
-      FieldName = 'PRO_ESTATUAL'
-      Origin = '"PRODUTOS"."PRO_ESTATUAL"'
-    end
     object ProdutosPRO_DESCRICAO: TIBStringField
       DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'PRO_DESCRICAO'
@@ -227,6 +171,60 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Unidade'
       FieldName = 'PRO_UNID'
       Origin = '"PRODUTOS"."PRO_UNID"'
+    end
+    object ProdutosPRO_CLASSFISCAL: TIBStringField
+      DisplayLabel = 'Class. Fiscal'
+      FieldName = 'PRO_CLASSFISCAL'
+      Origin = '"PRODUTOS"."PRO_CLASSFISCAL"'
+      Size = 120
+    end
+    object ProdutosPRO_CSTCSOSN: TIBStringField
+      DisplayLabel = 'CSTCSOSN'
+      FieldName = 'PRO_CSTCSOSN'
+      Origin = '"PRODUTOS"."PRO_CSTCSOSN"'
+      Size = 120
+    end
+    object ProdutosPRO_NCMSH: TIBStringField
+      DisplayLabel = 'NCM/SH'
+      FieldName = 'PRO_NCMSH'
+      Origin = '"PRODUTOS"."PRO_NCMSH"'
+      Size = 120
+    end
+    object ProdutosPRO_EXTIPI: TIBStringField
+      DisplayLabel = 'Ex. TIPI'
+      FieldName = 'PRO_EXTIPI'
+      Origin = '"PRODUTOS"."PRO_EXTIPI"'
+      Size = 120
+    end
+    object ProdutosPRO_SITTRIB: TIBStringField
+      DisplayLabel = 'Sit. Tribut'#225'ria'
+      FieldName = 'PRO_SITTRIB'
+      Origin = '"PRODUTOS"."PRO_SITTRIB"'
+      Size = 120
+    end
+    object ProdutosPRO_PIS: TIBStringField
+      DisplayLabel = 'PIS'
+      FieldName = 'PRO_PIS'
+      Origin = '"PRODUTOS"."PRO_PIS"'
+      Size = 80
+    end
+    object ProdutosPRO_COFINS: TIBStringField
+      DisplayLabel = 'COFINS'
+      FieldName = 'PRO_COFINS'
+      Origin = '"PRODUTOS"."PRO_COFINS"'
+      Size = 72
+    end
+    object ProdutosPRO_CSTPIS: TIBStringField
+      DisplayLabel = 'CSTPIS'
+      FieldName = 'PRO_CSTPIS'
+      Origin = '"PRODUTOS"."PRO_CSTPIS"'
+      Size = 72
+    end
+    object ProdutosPRO_ESTATUAL: TIBStringField
+      DisplayLabel = 'Est. Atual'
+      FieldName = 'PRO_ESTATUAL'
+      Origin = '"PRODUTOS"."PRO_ESTATUAL"'
+      Size = 80
     end
   end
   object UProdutos: TIBUpdateSQL
