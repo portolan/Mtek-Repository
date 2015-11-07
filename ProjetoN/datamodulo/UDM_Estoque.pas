@@ -123,6 +123,10 @@ type
     ProdutosPRO_COFINS: TIBStringField;
     ProdutosPRO_CSTPIS: TIBStringField;
     ProdutosPRO_ESTATUAL: TIBStringField;
+    EstoqueESTOQ_CHAVE: TIBStringField;
+    EstoquePRO_DESCRICAO: TIBStringField;
+    EstoqueBLOC_DESCRICAO: TIBStringField;
+    EstoquePRAT_DESCRICAO: TIBStringField;
     procedure ProdutosAfterInsert(DataSet: TDataSet);
     procedure EstoqueAfterInsert(DataSet: TDataSet);
     procedure MarcasAfterInsert(DataSet: TDataSet);
@@ -144,7 +148,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses dm000;
+uses dm000, UDM_contabil;
 
 {$R *.dfm}
 

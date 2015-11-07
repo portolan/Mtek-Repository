@@ -229,7 +229,7 @@ object DM_Estoque: TDM_Estoque
   end
   object UProdutos: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select '
+      'Select * '
       '  PRO_EMPRESA,'
       '  PRO_CODIGO,'
       '  PRO_CODREF,'
@@ -362,7 +362,18 @@ object DM_Estoque: TDM_Estoque
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select * from estoque')
+      
+        'select a.*, pro_descricao, bloc_descricao, prat_descricao from e' +
+        'stoque a '
+      
+        'inner join produtos on pro_codigo = estoq_produto and pro_empres' +
+        'a = estoq_empresa '
+      
+        'inner join bloco on bloc_codigo = estoq_bloco and bloc_empresa =' +
+        ' estoq_empresa '
+      
+        'inner join prateleira on prat_codigo = estoq_prateleira and prat' +
+        '_empresa = estoq_prateleira ')
     UpdateObject = UEstoque
     Left = 88
     Top = 8
@@ -379,7 +390,7 @@ object DM_Estoque: TDM_Estoque
       Origin = '"ESTOQUE"."ESTOQ_PRODUTO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
-      Size = 120
+      Size = 30
     end
     object EstoqueESTOQ_BLOCO: TIntegerField
       DisplayLabel = 'Bloco'
@@ -407,7 +418,7 @@ object DM_Estoque: TDM_Estoque
       FieldName = 'ESTOQ_STATUS'
       Origin = '"ESTOQUE"."ESTOQ_STATUS"'
       FixedChar = True
-      Size = 4
+      Size = 1
     end
     object EstoqueESTOQ_QTD: TIBBCDField
       DisplayLabel = 'Qtd'
@@ -456,7 +467,33 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Observa'#231#245'es'
       FieldName = 'ESTOQ_OBS'
       Origin = '"ESTOQUE"."ESTOQ_OBS"'
-      Size = 400
+      Size = 100
+    end
+    object EstoqueESTOQ_CHAVE: TIBStringField
+      DisplayLabel = 'Chave'
+      FieldName = 'ESTOQ_CHAVE'
+      Origin = '"ESTOQUE"."ESTOQ_CHAVE"'
+      Size = 10
+    end
+    object EstoquePRO_DESCRICAO: TIBStringField
+      DisplayLabel = 'Produto'
+      FieldName = 'PRO_DESCRICAO'
+      Origin = '"PRODUTOS"."PRO_DESCRICAO"'
+      Size = 60
+    end
+    object EstoqueBLOC_DESCRICAO: TIBStringField
+      DisplayLabel = 'Bloco'
+      FieldName = 'BLOC_DESCRICAO'
+      Origin = '"BLOCO"."BLOC_DESCRICAO"'
+      Required = True
+      Size = 60
+    end
+    object EstoquePRAT_DESCRICAO: TIBStringField
+      DisplayLabel = 'Prateleira'
+      FieldName = 'PRAT_DESCRICAO'
+      Origin = '"PRATELEIRA"."PRAT_DESCRICAO"'
+      Required = True
+      Size = 60
     end
   end
   object DSEstoque: TDataSource
@@ -477,8 +514,10 @@ object DM_Estoque: TDM_Estoque
     ModifySQL.Strings = (
       'update estoque'
       'set'
+      '  BLOC_DESCRICAO = :BLOC_DESCRICAO,'
       '  ESTOQ_BLOCO = :ESTOQ_BLOCO,'
       '  ESTOQ_CATEGORIA = :ESTOQ_CATEGORIA,'
+      '  ESTOQ_CHAVE = :ESTOQ_CHAVE,'
       '  ESTOQ_CODIGO = :ESTOQ_CODIGO,'
       '  ESTOQ_CUSTOMEDIO = :ESTOQ_CUSTOMEDIO,'
       '  ESTOQ_DTCADASTRO = :ESTOQ_DTCADASTRO,'
@@ -490,7 +529,8 @@ object DM_Estoque: TDM_Estoque
       '  ESTOQ_QTDMAX = :ESTOQ_QTDMAX,'
       '  ESTOQ_QTDMIN = :ESTOQ_QTDMIN,'
       '  ESTOQ_STATUS = :ESTOQ_STATUS,'
-      '  ESTOQ_TIPO = :ESTOQ_TIPO'
+      '  ESTOQ_TIPO = :ESTOQ_TIPO,'
+      '  PRAT_DESCRICAO = :PRAT_DESCRICAO'
       'where'
       '  ESTOQ_BLOCO = :OLD_ESTOQ_BLOCO and'
       '  ESTOQ_CODIGO = :OLD_ESTOQ_CODIGO and'
@@ -500,20 +540,26 @@ object DM_Estoque: TDM_Estoque
     InsertSQL.Strings = (
       'insert into estoque'
       
-        '  (ESTOQ_BLOCO, ESTOQ_CATEGORIA, ESTOQ_CODIGO, ESTOQ_CUSTOMEDIO,' +
-        ' ESTOQ_DTCADASTRO, '
+        '  (BLOC_DESCRICAO, ESTOQ_BLOCO, ESTOQ_CATEGORIA, ESTOQ_CHAVE, ES' +
+        'TOQ_CODIGO, '
       
-        '   ESTOQ_EMPRESA, ESTOQ_OBS, ESTOQ_PRATELEIRA, ESTOQ_PRODUTO, ES' +
-        'TOQ_QTD, '
-      '   ESTOQ_QTDMAX, ESTOQ_QTDMIN, ESTOQ_STATUS, ESTOQ_TIPO)'
+        '   ESTOQ_CUSTOMEDIO, ESTOQ_DTCADASTRO, ESTOQ_EMPRESA, ESTOQ_OBS,' +
+        ' ESTOQ_PRATELEIRA, '
+      
+        '   ESTOQ_PRODUTO, ESTOQ_QTD, ESTOQ_QTDMAX, ESTOQ_QTDMIN, ESTOQ_S' +
+        'TATUS, '
+      '   ESTOQ_TIPO, PRAT_DESCRICAO)'
       'values'
       
-        '  (:ESTOQ_BLOCO, :ESTOQ_CATEGORIA, :ESTOQ_CODIGO, :ESTOQ_CUSTOME' +
-        'DIO, :ESTOQ_DTCADASTRO, '
+        '  (:BLOC_DESCRICAO, :ESTOQ_BLOCO, :ESTOQ_CATEGORIA, :ESTOQ_CHAVE' +
+        ', :ESTOQ_CODIGO, '
       
-        '   :ESTOQ_EMPRESA, :ESTOQ_OBS, :ESTOQ_PRATELEIRA, :ESTOQ_PRODUTO' +
-        ', :ESTOQ_QTD, '
-      '   :ESTOQ_QTDMAX, :ESTOQ_QTDMIN, :ESTOQ_STATUS, :ESTOQ_TIPO)')
+        '   :ESTOQ_CUSTOMEDIO, :ESTOQ_DTCADASTRO, :ESTOQ_EMPRESA, :ESTOQ_' +
+        'OBS, :ESTOQ_PRATELEIRA, '
+      
+        '   :ESTOQ_PRODUTO, :ESTOQ_QTD, :ESTOQ_QTDMAX, :ESTOQ_QTDMIN, :ES' +
+        'TOQ_STATUS, '
+      '   :ESTOQ_TIPO, :PRAT_DESCRICAO)')
     DeleteSQL.Strings = (
       'delete from estoque'
       'where'
