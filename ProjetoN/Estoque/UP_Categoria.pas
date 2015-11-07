@@ -31,14 +31,14 @@ begin
   inherited;
     procInicializar(DM_Estoque.Categoria, False, False, MCategoria, TMCategoria);
     funcAtribuiFiltros;
-    nomeQry := 'categoria';
 end;
 
 procedure TPCategoria.procSelect;
 begin
   inherited;
+    procMontaWhere;
     DM_Estoque.Categoria.Close;
-    DM_Estoque.Categoria.SQL.Text := 'select * from categoria';
+    DM_Estoque.Categoria.SQL.Text := 'select * from categoria where '+c_where;
     DM_Estoque.Categoria.Open;
 end;
 

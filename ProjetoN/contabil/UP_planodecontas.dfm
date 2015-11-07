@@ -1,8 +1,6 @@
 inherited P_planodecontas: TP_planodecontas
   Caption = 'Pesquisar Plano de Contas - ProjetoDesnecessauro'
   OnCreate = FormCreate
-  ExplicitWidth = 880
-  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel

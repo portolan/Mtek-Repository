@@ -44,14 +44,15 @@ begin
   inherited;
 procInicializar(DM_contabil.planodecontas,true,false,M_planodecontas,TM_planodecontas);
 funcAtribuiFiltros;
-nomeQry := 'PLANODECONTAS';
+
 end;
 
 procedure TP_planodecontas.procselect;
 begin
   inherited;
+   procMontaWhere;
   DM_contabil.planodecontas.Close;
-  DM_contabil.planodecontas.SQL.Text := 'select * from planodecontas';
+  DM_contabil.planodecontas.SQL.Text := 'select * from planodecontas where '+c_where;
   DM_contabil.planodecontas.Open;
 
 end;

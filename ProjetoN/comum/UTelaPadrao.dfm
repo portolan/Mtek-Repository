@@ -354,6 +354,7 @@ object xPesqPadrao: TxPesqPadrao
         Top = 17
         Width = 145
         Height = 21
+        Style = csDropDownList
         ItemIndex = 0
         TabOrder = 1
         Text = #201' igual'
@@ -367,6 +368,7 @@ object xPesqPadrao: TxPesqPadrao
         Top = 17
         Width = 145
         Height = 21
+        Style = csDropDownList
         TabOrder = 0
       end
       object editPesquisa: TEdit
@@ -375,7 +377,6 @@ object xPesqPadrao: TxPesqPadrao
         Width = 309
         Height = 21
         TabOrder = 2
-        OnChange = editPesquisaChange
       end
       object Pesquisar: TButton
         Left = 622

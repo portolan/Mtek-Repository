@@ -33,14 +33,14 @@ begin
   inherited;
     procInicializar(DM_Estoque.Unidade, False, False, MUnidade, TMUnidade);
     funcAtribuiFiltros;
-    nomeQry := 'unidade';
 end;
 
 procedure TPUnidade.procSelect;
 begin
   inherited;
+    procMontaWhere;
     DM_Estoque.Unidade.Close;
-    DM_Estoque.Unidade.SQL.Text := 'select * from unidade';
+    DM_Estoque.Unidade.SQL.Text := 'select * from unidade where '+c_where;
     DM_Estoque.Unidade.Open;
 end;
 

@@ -1,8 +1,6 @@
 inherited P_lancamento: TP_lancamento
   Caption = 'Pesquisar Lan'#231'amentos - ProjetoDesnecessauro'
   OnCreate = FormCreate
-  ExplicitWidth = 880
-  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel

@@ -1,8 +1,6 @@
 inherited P_centro: TP_centro
   Caption = 'Pesquisar Centro de Custo - ProjetoDesnecessauro'
   OnCreate = FormCreate
-  ExplicitWidth = 880
-  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
@@ -23,11 +21,13 @@ inherited P_centro: TP_centro
           item
             Expanded = False
             FieldName = 'CEC_DESC_CC'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CEC_ANALITICO'
+            Width = 64
             Visible = True
           end
           item

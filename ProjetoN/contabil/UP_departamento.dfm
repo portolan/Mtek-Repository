@@ -1,9 +1,6 @@
 inherited P_departamento: TP_departamento
   Caption = 'Pesquisar Departamentos - ProjetoDesnecessauro'
   OnCreate = FormCreate
-  ExplicitLeft = -104
-  ExplicitWidth = 880
-  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel

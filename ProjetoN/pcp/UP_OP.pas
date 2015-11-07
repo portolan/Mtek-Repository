@@ -31,15 +31,14 @@ begin
   inherited;
     procInicializar(DM_PCP.OrdemProducao,TRUE,FALSE,M_OP,TM_OP);
     funcAtribuiFiltros;
-    nomeQry := 'ordem_producao';
-
 end;
 
 procedure TP_OP.procSelect;
 begin
   inherited;
+     procMontaWhere;
       DM_PCP.OrdemProducao.Close;
-      DM_PCP.OrdemProducao.SQL.Text:= 'SELECT * FROM ORDEM_PRODUCAO';
+      DM_PCP.OrdemProducao.SQL.Text:= 'SELECT * FROM ORDEM_PRODUCAO WHERE '+c_where;
       DM_PCP.OrdemProducao.Open;
 end;
 

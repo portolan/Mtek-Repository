@@ -1,8 +1,6 @@
 inherited P_empresa: TP_empresa
   Caption = 'Pesquisar Empresas - ProjetoDesnessauro'
   OnCreate = FormCreate
-  ExplicitWidth = 880
-  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel

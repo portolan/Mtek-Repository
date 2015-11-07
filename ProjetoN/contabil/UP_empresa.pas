@@ -43,14 +43,14 @@ begin
   inherited;
 procInicializar(DM_contabil.empresa,true,false,M_empresa,TM_empresa);
 funcAtribuiFiltros;
-nomeQry := 'EMPRESA';
 end;
 
 procedure TP_empresa.procselect;
 begin
   inherited;
+  procMontaWhere;
   DM_contabil.empresa.Close;
-  DM_contabil.empresa.SQL.Text := 'select * from empresa';
+  DM_contabil.empresa.SQL.Text := 'select * from empresa where '+c_where;
   DM_contabil.empresa.Open;
 
 end;

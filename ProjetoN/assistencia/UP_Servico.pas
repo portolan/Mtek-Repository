@@ -34,9 +34,10 @@ end;
 procedure TP_Servico.procselect;
 begin
   inherited;
-  DM_Servico.IB_Chamado.Close;
-  DM_Servico.IB_Chamado.SQL.Text := 'SELECT * FROM CHAMADOS';
-  DM_Servico.IB_Chamado.Open;
+   procMontaWhere;
+   DM_Servico.IB_Chamado.Close;
+   DM_Servico.IB_Chamado.SQL.Text := 'SELECT * FROM CHAMADOS WHERE '+ C_WHERE;
+   DM_Servico.IB_Chamado.Open;
 end;
 
 end.

@@ -43,7 +43,6 @@ begin
   inherited;
    procInicializar(dm_contaspagar.titulospagar, true, false, m_titulospagar, Tm_titulospagar);
    funcAtribuiFiltros;
-   nomeQry := 'TITULOSP';
 end;
 
 class procedure Tp_titulospagar.procChamaTela(Owner: TComponent);
@@ -58,9 +57,10 @@ end;
 
 procedure Tp_titulospagar.procSelect;
 begin
-  inherited;
+   inherited;
+   procMontaWhere;
    dm_contaspagar.titulospagar.Close;
-   dm_contaspagar.titulospagar.SQL.Text:='select a.*  from TITULOSP a';
+   dm_contaspagar.titulospagar.SQL.Text:='select a.*  from TITULOSP a where '+c_where;
    dm_contaspagar.titulospagar.open;
 end;
 

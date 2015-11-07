@@ -26,10 +26,4 @@ inherited PMarcas: TPMarcas
       end
     end
   end
-  inherited pnCabecalho: TPanel
-    inherited gbFiltro: TGroupBox
-      ExplicitLeft = -6
-      ExplicitTop = -3
-    end
-  end
 end

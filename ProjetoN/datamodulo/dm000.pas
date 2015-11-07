@@ -40,12 +40,15 @@ var
     QryGen : TIBQuery;
 begin
     QryGen := funcCriaQuery;
-    QryGen.Close;
-    QryGen.SQL.Text := ' SELECT GEN_ID(' + c_generator +
-      ',1) FROM RDB$DATABASE';
-    QryGen.Open;
+    try
+       QryGen.Close;
+       QryGen.SQL.Text := ' SELECT GEN_ID(' + c_generator +',1) FROM RDB$DATABASE';
+       QryGen.Open;
 
-    Result := QryGen.FieldByName('GEN_ID').AsInteger;
+       Result := QryGen.FieldByName('GEN_ID').AsInteger;
+    finally
+       FreeAndNil(QryGen);
+    end;
 end;
 
 end.

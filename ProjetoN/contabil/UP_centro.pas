@@ -42,14 +42,14 @@ begin
   inherited;
 procInicializar(DM_contabil.centro,true,false,M_centro,TM_centro);
 funcAtribuiFiltros;
-nomeQry := 'CENTRODECUSTO';
 end;
 
 procedure TP_centro.procselect;
 begin
   inherited;
+  procMontaWhere;
   DM_contabil.centro.Close;
-  DM_contabil.centro.SQL.Text := 'select * from centrodecusto';
+  DM_contabil.centro.SQL.Text := 'select * from centrodecusto where '+c_where;
   DM_contabil.centro.Open;
 end;
 

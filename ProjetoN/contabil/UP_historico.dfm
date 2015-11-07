@@ -1,8 +1,6 @@
 inherited P_historico: TP_historico
   Caption = 'Pesquisar Historicos - ProjetoDesnecessauro'
   OnCreate = FormCreate
-  ExplicitWidth = 880
-  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel

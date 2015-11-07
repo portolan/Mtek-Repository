@@ -31,14 +31,14 @@ begin
   inherited;
     procInicializar(DM_Estoque.Prateleira, False, False, MPrateleira, TMPrateleira);
     funcAtribuiFiltros;
-    nomeQry := 'prateleira';
 end;
 
 procedure TPPrateleira.procSelect;
 begin
   inherited;
+     procMontaWhere;
     DM_Estoque.Prateleira.Close;
-    DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira';
+    DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira where '+c_where;
     DM_Estoque.Prateleira.Open;
 end;
 

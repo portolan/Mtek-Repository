@@ -32,7 +32,6 @@ type
     procedure FormShow(Sender: TObject);
     procedure PesquisarClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
-    procedure editPesquisaChange(Sender: TObject);
   private
 
   public
@@ -42,7 +41,8 @@ type
     TelaManutencao : TForm;
     CTelaManutencao : TFormClass;
     Filtros : TFieldList;
-    nomeQry : String;
+    c_where : String;
+
 
     procedure procBotaoVisivelHabilitado(botao: TObject);
     procedure procInicializar(Query: TIBQuery; b_finalizaTransacao: Boolean; b_somenteConsulta: Boolean; TelaManutencao: TForm; CTelaManutencao: TFormClass);
@@ -62,7 +62,7 @@ type
     function funcAtribuiFiltros: TFieldList;
     function funcFiltroAtual: TField;
     function funcFiltroIsString: boolean;
-    function funcPesquisa: boolean;
+    procedure procMontaWhere;
   end;
 
 var
@@ -71,11 +71,6 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TxPesqPadrao.editPesquisaChange(Sender: TObject);
-begin
-    funcPesquisa;
-end;
 
 procedure TxPesqPadrao.FormActivate(Sender: TObject);
 begin
@@ -92,9 +87,6 @@ begin
       VK_F4 : sbRemover.Click;
       VK_ESCAPE : sbSair.Click;
    end;
-
-   if (b_somenteConsulta = true) and (key = VK_RETURN) then
-        sbSair.Click;
 end;
 
 procedure TxPesqPadrao.FormShow(Sender: TObject);
@@ -144,52 +136,33 @@ begin
     end;
 end;
 
-function TxPesqPadrao.funcPesquisa: boolean;
+procedure TxPesqPadrao.procMontaWhere;
 var
     filtro: String;
 begin
-    QryPadrao.Close;
+   c_where := ' (1 = 1) ';
 
-    if editPesquisa.Text = '' then
-        QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' '
-    else
-    begin
-        if funcFiltroIsString then
-        begin
-            if cbContent.Text = 'É igual' then
-            begin
-                QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' where ' +
-                  funcFiltroAtual.FieldName + ' = ' + QuotedStr(editPesquisa.Text);
-            end
-            else if cbContent.Text = 'É diferente' then
-            begin
-                QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' where ' +
-                  funcFiltroAtual.FieldName + ' <> ''' + editPesquisa.Text + '''';
-            end
-            else if cbContent.Text = 'Contém' then
-            begin
-                QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' where ' +
-                  funcFiltroAtual.FieldName + ' like ''' + editPesquisa.Text + '''';
-            end;
-        end
-        else
-            if cbContent.Text = 'É igual' then
-            begin
-                QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' where ' +
-                  funcFiltroAtual.FieldName + ' = ' + editPesquisa.Text;
-            end
-            else if cbContent.Text = 'É diferente' then
-            begin
-                QryPadrao.SQL.Text := 'SELECT * FROM '+nomeQry+' where ' +
-                  funcFiltroAtual.FieldName + ' <> ' + editPesquisa.Text;
-            end;
-    end;
-    QryPadrao.Open;
+   if editPesquisa.Text = EmptyStr then
+      Exit;
+
+   if funcFiltroIsString then
+   begin
+      if cbContent.Text = 'É igual' then
+         c_where := funcFiltroAtual.FieldName + ' = ' + QuotedStr(editPesquisa.Text)
+      else if cbContent.Text = 'É diferente' then
+         c_where := funcFiltroAtual.FieldName + ' <> ' + QuotedStr(editPesquisa.Text)
+      else if cbContent.Text = 'Contém' then
+         c_where := funcFiltroAtual.FieldName + ' LIKE ' + QuotedStr('%'+editPesquisa.Text+'%');
+   end
+   else if cbContent.Text = 'É igual' then
+      c_where := funcFiltroAtual.FieldName + ' = ' + editPesquisa.Text
+   else if cbContent.Text = 'É diferente' then
+      c_where := funcFiltroAtual.FieldName + ' <> ' + editPesquisa.Text;
 end;
 
 procedure TxPesqPadrao.PesquisarClick(Sender: TObject);
 begin
-    funcPesquisa;
+   procSelect;
 end;
 
 procedure TxPesqPadrao.procAntesAlterar;

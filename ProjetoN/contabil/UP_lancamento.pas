@@ -50,21 +50,27 @@ var Qry:TIBQuery;
 begin
   inherited;
     Qry := dmBanco.funcCriaQuery;
-    Qry.Close;
-    Qry.SQL.Text := 'select sum(a.LANC_VALOR) soma from lancamentos a ';
-    Qry.open;
-    soma := qry.FieldByName('soma').AsInteger;
+    try
+       Qry.Close;
+       Qry.SQL.Text := 'select sum(a.LANC_VALOR) soma from lancamentos a ';
+       Qry.open;
+
+       soma := qry.FieldByName('soma').AsInteger;
+    finally
+       FreeAndNil(Qry);
+    end;
+
     Rtotal.Caption := IntToStr(soma);
     procInicializar(DM_contabil.lancamento,true,false,M_lancamento,TM_lancamento);
     funcAtribuiFiltros;
-    nomeQry := 'LANCAMENTOS';
 end;
 
 procedure TP_lancamento.procselect;
 begin
   inherited;
+     procMontaWhere;
   DM_contabil.lancamento.Close;
-  DM_contabil.lancamento.SQL.Text := 'select * from lancamentos';
+  DM_contabil.lancamento.SQL.Text := 'select * from lancamentos where '+c_where ;
   DM_contabil.lancamento.Open;
 
 end;

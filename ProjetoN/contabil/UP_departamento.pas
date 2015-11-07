@@ -42,15 +42,14 @@ begin
   inherited;
 procInicializar(DM_contabil.departamento,true,false,M_departamento,TM_departamento);
 funcAtribuiFiltros;
-nomeQry := 'DEPARTAMENTO';
-
 end;
 
 procedure TP_departamento.procselect;
 begin
   inherited;
+  procMontaWhere;
   DM_contabil.departamento.Close;
-  DM_contabil.departamento.SQL.Text := 'select * from departamento';
+  DM_contabil.departamento.SQL.Text := 'select * from departamento where '+c_where;
   DM_contabil.departamento.Open;
 
 end;

@@ -42,14 +42,14 @@ begin
   inherited;
 procInicializar(DM_contabil.historico,true,false,M_historico,TM_historico);
 funcAtribuiFiltros;
-nomeQry := 'HISTORICO';
 end;
 
 procedure TP_historico.procselect;
 begin
   inherited;
+  procMontaWhere;
   DM_contabil.historico.Close;
-  DM_contabil.historico.SQL.Text := 'select * from historico';
+  DM_contabil.historico.SQL.Text := 'select * from historico where '+c_where;
   DM_contabil.historico.Open;
 
 end;
