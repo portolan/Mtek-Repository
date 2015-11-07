@@ -26,13 +26,11 @@ inherited PCategoria: TPCategoria
           item
             Expanded = False
             FieldName = 'CAT_NCM'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CAT_OBS'
-            Width = 64
             Visible = True
           end>
       end
