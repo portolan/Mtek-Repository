@@ -64,13 +64,16 @@ uses
   UDM_caixa in 'datamodulo\UDM_caixa.pas' {DM_caixa: TDataModule},
   UM_contasreceber in 'contas_receber\UM_contasreceber.pas' {M_contasreceber},
   UP_contasreceber in 'contas_receber\UP_contasreceber.pas' {P_receber},
-  UDM_contasreceber in 'datamodulo\UDM_contasreceber.pas' {DM_contasreceber: TDataModule};
+  UDM_contasreceber in 'datamodulo\UDM_contasreceber.pas' {DM_contasreceber: TDataModule},
+  Vcl.Themes,
+  Vcl.Styles;
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  TStyleManager.TrySetStyle('Sapphire Kamri');
   Application.CreateForm(TdmBanco, dmBanco);
   Application.CreateForm(TDM_Estoque, DM_Estoque);
   Application.CreateForm(TdmPedido, dmPedido);
