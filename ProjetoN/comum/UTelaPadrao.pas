@@ -33,6 +33,7 @@ type
     procedure PesquisarClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure editPesquisaChange(Sender: TObject);
+    procedure DBGDadosDblClick(Sender: TObject);
   private
 
   public
@@ -72,6 +73,14 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TxPesqPadrao.DBGDadosDblClick(Sender: TObject);
+begin
+    if b_somenteConsulta then
+        sbSair.Click
+    else
+        sbAlterar.Click;
+end;
 
 procedure TxPesqPadrao.editPesquisaChange(Sender: TObject);
 begin

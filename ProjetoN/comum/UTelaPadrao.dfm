@@ -48,6 +48,7 @@ object xPesqPadrao: TxPesqPadrao
         TitleFont.Height = -11
         TitleFont.Name = 'Tahoma'
         TitleFont.Style = []
+        OnDblClick = DBGDadosDblClick
       end
     end
   end
