@@ -10,13 +10,14 @@ uses
 type
   TMBloco = class(TxManuPadrao)
     Label1: TLabel;
-    DBEdit1: TDBEdit;
     Label2: TLabel;
     DBEdit2: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
     Label4: TLabel;
     DBMemo1: TDBMemo;
+    DBLookupComboBox4: TDBLookupComboBox;
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,6 +31,15 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_Estoque;
+uses UDM_Estoque, UDM_contabil;
+
+procedure TMBloco.FormCreate(Sender: TObject);
+begin
+  inherited;
+    DM_contabil.empresa.Close;
+    DM_contabil.empresa.SQL.Text := 'select * from empresa';
+    DM_contabil.empresa.Open;
+    DM_contabil.empresa.FetchAll;
+end;
 
 end.

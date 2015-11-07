@@ -29,7 +29,7 @@ uses UDM_Estoque, UM_Bloco;
 procedure TPBloco.FormCreate(Sender: TObject);
 begin
   inherited;
-    procInicializar(DM_Estoque.Bloco, False, False, MBloco, TMBloco);
+    procInicializar(DM_Estoque.Bloco, True, False, MBloco, TMBloco);
     funcAtribuiFiltros;
 end;
 

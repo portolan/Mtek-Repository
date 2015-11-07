@@ -36,6 +36,8 @@ inherited MProduto: TMProduto
       Height = 193
       Align = alTop
       TabOrder = 0
+      ExplicitLeft = -78
+      ExplicitTop = 32
       object Label1: TLabel
         Left = 9
         Top = 6
@@ -222,15 +224,6 @@ inherited MProduto: TMProduto
         ReadOnly = True
         TabOrder = 3
       end
-      object DBEdit1: TDBEdit
-        Left = 9
-        Top = 25
-        Width = 134
-        Height = 21
-        DataField = 'PRO_EMPRESA'
-        DataSource = DM_Estoque.DSProdutos
-        TabOrder = 0
-      end
       object DBLookupComboBox1: TDBLookupComboBox
         Left = 209
         Top = 155
@@ -316,6 +309,18 @@ inherited MProduto: TMProduto
         ListField = 'MARC_DESCRICAO'
         ListSource = DM_Estoque.DSMarcas
         TabOrder = 11
+      end
+      object DBLookupComboBox4: TDBLookupComboBox
+        Left = 9
+        Top = 25
+        Width = 134
+        Height = 21
+        DataField = 'PRO_EMPRESA'
+        DataSource = DM_Estoque.DSProdutos
+        KeyField = 'EMP_COD'
+        ListField = 'EMP_RAZAO'
+        ListSource = DM_contabil.Dempresa
+        TabOrder = 0
       end
     end
     object GroupBox2: TGroupBox

@@ -9,6 +9,7 @@ inherited MEstoque: TMEstoque
   inherited pnRodape: TPanel
     Top = 322
     Width = 726
+    ExplicitLeft = 11
     ExplicitTop = 322
     ExplicitWidth = 726
     inherited sbCancelar: TSpeedButton
@@ -19,6 +20,7 @@ inherited MEstoque: TMEstoque
   inherited gbInfos: TGroupBox
     Width = 726
     Height = 322
+    ExplicitTop = -2
     ExplicitWidth = 726
     ExplicitHeight = 322
     object GroupBox1: TGroupBox
@@ -28,14 +30,6 @@ inherited MEstoque: TMEstoque
       Height = 305
       Align = alClient
       TabOrder = 0
-      object Label1: TLabel
-        Left = 16
-        Top = 16
-        Width = 41
-        Height = 13
-        Caption = 'Empresa'
-        FocusControl = DBEdit1
-      end
       object Label2: TLabel
         Left = 16
         Top = 59
@@ -105,22 +99,22 @@ inherited MEstoque: TMEstoque
         Caption = 'Observa'#231#245'es'
       end
       object Label16: TLabel
-        Left = 156
-        Top = 16
+        Left = 364
+        Top = 15
         Width = 25
         Height = 13
         Caption = 'Bloco'
       end
       object Label15: TLabel
-        Left = 334
-        Top = 16
+        Left = 542
+        Top = 15
         Width = 46
         Height = 13
         Caption = 'Prateleira'
       end
       object SpeedButton1: TSpeedButton
-        Left = 296
-        Top = 31
+        Left = 504
+        Top = 30
         Width = 32
         Height = 23
         Glyph.Data = {
@@ -152,8 +146,8 @@ inherited MEstoque: TMEstoque
         OnClick = SpeedButton1Click
       end
       object SpeedButton2: TSpeedButton
-        Left = 474
-        Top = 31
+        Left = 682
+        Top = 30
         Width = 32
         Height = 23
         Glyph.Data = {
@@ -183,14 +177,6 @@ inherited MEstoque: TMEstoque
           F2F2F2F2F2F2F1F2F4EEE7BAD2BC3FD3BD3ED4BD45F4EFD3EFEFF1EFEFEFEFEF
           EFEFEFEFEFEFEF000000}
         OnClick = SpeedButton2Click
-      end
-      object Label17: TLabel
-        Left = 512
-        Top = 16
-        Width = 33
-        Height = 13
-        Caption = 'C'#243'digo'
-        FocusControl = DBEdit16
       end
       object SpeedButton3: TSpeedButton
         Left = 682
@@ -258,14 +244,29 @@ inherited MEstoque: TMEstoque
           EFEFEFEFEFEFEF000000}
         OnClick = SpeedButton4Click
       end
-      object DBEdit1: TDBEdit
+      object Label3: TLabel
         Left = 16
-        Top = 32
-        Width = 134
-        Height = 21
-        DataField = 'ESTOQ_EMPRESA'
-        DataSource = DM_Estoque.DSEstoque
-        TabOrder = 0
+        Top = 16
+        Width = 41
+        Height = 13
+        Caption = 'Empresa'
+        FocusControl = DBEdit1
+      end
+      object Label17: TLabel
+        Left = 156
+        Top = 16
+        Width = 92
+        Height = 13
+        Caption = 'C'#243'digo em Estoque'
+        FocusControl = DBEdit16
+      end
+      object Label1: TLabel
+        Left = 412
+        Top = 148
+        Width = 31
+        Height = 13
+        Caption = 'Chave'
+        FocusControl = DBEdit2
       end
       object DBEdit5: TDBEdit
         Left = 16
@@ -274,7 +275,7 @@ inherited MEstoque: TMEstoque
         Height = 21
         DataField = 'ESTOQ_QTD'
         DataSource = DM_Estoque.DSEstoque
-        TabOrder = 1
+        TabOrder = 0
       end
       object DBEdit6: TDBEdit
         Left = 156
@@ -283,7 +284,7 @@ inherited MEstoque: TMEstoque
         Height = 21
         DataField = 'ESTOQ_QTDMIN'
         DataSource = DM_Estoque.DSEstoque
-        TabOrder = 2
+        TabOrder = 1
       end
       object DBEdit7: TDBEdit
         Left = 287
@@ -292,11 +293,11 @@ inherited MEstoque: TMEstoque
         Height = 21
         DataField = 'ESTOQ_QTDMAX'
         DataSource = DM_Estoque.DSEstoque
-        TabOrder = 3
+        TabOrder = 2
       end
       object DBEdit8: TDBEdit
         Left = 423
-        Top = 126
+        Top = 123
         Width = 170
         Height = 21
         TabStop = False
@@ -304,7 +305,7 @@ inherited MEstoque: TMEstoque
         DataField = 'ESTOQ_CUSTOMEDIO'
         DataSource = DM_Estoque.DSEstoque
         ReadOnly = True
-        TabOrder = 4
+        TabOrder = 3
       end
       object DBEdit12: TDBEdit
         Left = 600
@@ -316,19 +317,7 @@ inherited MEstoque: TMEstoque
         DataSource = DM_Estoque.DSEstoque
         ParentColor = True
         ReadOnly = True
-        TabOrder = 5
-      end
-      object DBEdit16: TDBEdit
-        Left = 512
-        Top = 32
-        Width = 134
-        Height = 21
-        TabStop = False
-        DataField = 'ESTOQ_CODIGO'
-        DataSource = DM_Estoque.DSEstoque
-        ParentColor = True
-        ReadOnly = True
-        TabOrder = 6
+        TabOrder = 4
       end
       object DBLookupComboBox3: TDBLookupComboBox
         Left = 153
@@ -340,7 +329,7 @@ inherited MEstoque: TMEstoque
         KeyField = 'CAT_CODIGO'
         ListField = 'CAT_DESCRICAO'
         ListSource = DM_Estoque.DSCategoria
-        TabOrder = 7
+        TabOrder = 5
       end
       object ComboBox1: TComboBox
         Left = 16
@@ -348,15 +337,15 @@ inherited MEstoque: TMEstoque
         Width = 128
         Height = 21
         Style = csDropDownList
-        TabOrder = 8
+        TabOrder = 6
         OnExit = ComboBox1Exit
         Items.Strings = (
           'Ativo'
           'Inativo')
       end
       object DBLookupComboBox1: TDBLookupComboBox
-        Left = 156
-        Top = 32
+        Left = 364
+        Top = 31
         Width = 134
         Height = 21
         DataField = 'ESTOQ_BLOCO'
@@ -364,11 +353,11 @@ inherited MEstoque: TMEstoque
         KeyField = 'BLOC_CODIGO'
         ListField = 'BLOC_DESCRICAO'
         ListSource = DM_Estoque.DSBloco
-        TabOrder = 9
+        TabOrder = 7
       end
       object DBLookupComboBox2: TDBLookupComboBox
-        Left = 335
-        Top = 32
+        Left = 543
+        Top = 31
         Width = 134
         Height = 21
         DataField = 'ESTOQ_PRATELEIRA'
@@ -376,7 +365,7 @@ inherited MEstoque: TMEstoque
         KeyField = 'PRAT_CODIGO'
         ListField = 'PRAT_DESCRICAO'
         ListSource = DM_Estoque.DSPrateleira
-        TabOrder = 10
+        TabOrder = 8
       end
       object editProduto: TEdit
         Left = 16
@@ -384,14 +373,47 @@ inherited MEstoque: TMEstoque
         Width = 665
         Height = 21
         ReadOnly = True
-        TabOrder = 11
+        TabOrder = 9
         OnEnter = editProdutoEnter
+      end
+      object DBEdit1: TDBEdit
+        Left = 16
+        Top = 32
+        Width = 134
+        Height = 21
+        TabStop = False
+        DataField = 'ESTOQ_EMPRESA'
+        DataSource = DM_Estoque.DSEstoque
+        ParentColor = True
+        ReadOnly = True
+        TabOrder = 10
+      end
+      object DBEdit16: TDBEdit
+        Left = 156
+        Top = 32
+        Width = 134
+        Height = 21
+        TabStop = False
+        DataField = 'ESTOQ_CODIGO'
+        DataSource = DM_Estoque.DSEstoque
+        ParentColor = True
+        ReadOnly = True
+        TabOrder = 11
+      end
+      object DBEdit2: TDBEdit
+        Left = 412
+        Top = 164
+        Width = 134
+        Height = 21
+        DataField = 'ESTOQ_CHAVE'
+        DataSource = DM_Estoque.DSEstoque
+        TabOrder = 12
       end
     end
   end
   object DBMemo1: TDBMemo
     Left = 22
-    Top = 229
+    Top = 228
     Width = 696
     Height = 81
     DataField = 'ESTOQ_OBS'

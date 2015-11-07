@@ -1,6 +1,8 @@
 inherited PEstoque: TPEstoque
   Caption = 'PEstoque'
   OnCreate = FormCreate
+  ExplicitWidth = 880
+  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
@@ -16,16 +18,34 @@ inherited PEstoque: TPEstoque
           item
             Expanded = False
             FieldName = 'ESTOQ_PRODUTO'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_DESCRICAO'
+            Width = 280
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'ESTOQ_BLOCO'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'BLOC_DESCRICAO'
+            Width = 171
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'ESTOQ_PRATELEIRA'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'PRAT_DESCRICAO'
+            Width = 151
             Visible = True
           end
           item
@@ -76,6 +96,11 @@ inherited PEstoque: TPEstoque
           item
             Expanded = False
             FieldName = 'ESTOQ_OBS'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ESTOQ_CHAVE'
             Visible = True
           end>
       end

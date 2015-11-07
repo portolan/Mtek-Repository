@@ -11,7 +11,6 @@ inherited MBloco: TMBloco
       Width = 41
       Height = 13
       Caption = 'Empresa'
-      FocusControl = DBEdit1
     end
     object Label2: TLabel
       Left = 156
@@ -36,15 +35,6 @@ inherited MBloco: TMBloco
       Height = 13
       Caption = 'Observa'#231#245'es'
     end
-    object DBEdit1: TDBEdit
-      Left = 16
-      Top = 32
-      Width = 134
-      Height = 21
-      DataField = 'BLOC_EMPRESA'
-      DataSource = DM_Estoque.DSBloco
-      TabOrder = 0
-    end
     object DBEdit2: TDBEdit
       Left = 156
       Top = 32
@@ -57,7 +47,7 @@ inherited MBloco: TMBloco
       ParentColor = True
       ParentCtl3D = False
       ReadOnly = True
-      TabOrder = 1
+      TabOrder = 0
     end
     object DBEdit3: TDBEdit
       Left = 16
@@ -66,7 +56,7 @@ inherited MBloco: TMBloco
       Height = 21
       DataField = 'BLOC_DESCRICAO'
       DataSource = DM_Estoque.DSBloco
-      TabOrder = 2
+      TabOrder = 1
     end
     object DBMemo1: TDBMemo
       Left = 16
@@ -75,6 +65,18 @@ inherited MBloco: TMBloco
       Height = 117
       DataField = 'BLOC_OBS'
       DataSource = DM_Estoque.DSBloco
+      TabOrder = 2
+    end
+    object DBLookupComboBox4: TDBLookupComboBox
+      Left = 16
+      Top = 32
+      Width = 134
+      Height = 21
+      DataField = 'BLOC_EMPRESA'
+      DataSource = DM_Estoque.DSBloco
+      KeyField = 'EMP_COD'
+      ListField = 'EMP_RAZAO'
+      ListSource = DM_contabil.Dempresa
       TabOrder = 3
     end
   end

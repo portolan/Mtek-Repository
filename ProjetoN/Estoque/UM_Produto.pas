@@ -62,7 +62,6 @@ type
     DBEdit19: TDBEdit;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
-    DBEdit1: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
     DBEdit7: TDBEdit;
     cbStatus: TComboBox;
@@ -71,6 +70,7 @@ type
     Grupo: TRadioGroup;
     OpenPictureDialog: TOpenPictureDialog;
     DBLookupComboBox3: TDBLookupComboBox;
+    DBLookupComboBox4: TDBLookupComboBox;
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -93,7 +93,8 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_Estoque, UP_Categoria, UP_Produto, UP_Marcas, dm000, UP_Unidade;
+uses UDM_Estoque, UP_Categoria, UP_Produto, UP_Marcas, dm000, UP_Unidade,
+  UDM_contabil;
 
 procedure TMProduto.cbStatusExit(Sender: TObject);
 begin
@@ -136,6 +137,11 @@ begin
     DM_Estoque.Marcas.SQL.Text := 'select * from marcas';
     DM_Estoque.Marcas.Open;
     DM_Estoque.Marcas.FetchAll;
+
+    DM_contabil.empresa.Close;
+    DM_contabil.empresa.SQL.Text := 'select * from empresa';
+    DM_contabil.empresa.Open;
+    DM_contabil.empresa.FetchAll;
 
 end;
 

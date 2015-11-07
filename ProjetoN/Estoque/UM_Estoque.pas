@@ -11,7 +11,6 @@ type
   TMEstoque = class(TxManuPadrao)
     DBMemo1: TDBMemo;
     GroupBox1: TGroupBox;
-    Label1: TLabel;
     Label2: TLabel;
     Label4: TLabel;
     Label5: TLabel;
@@ -25,21 +24,24 @@ type
     Label15: TLabel;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
-    Label17: TLabel;
     SpeedButton3: TSpeedButton;
-    SpeedButton4: TSpeedButton;
-    DBEdit1: TDBEdit;
     DBEdit5: TDBEdit;
     DBEdit6: TDBEdit;
     DBEdit7: TDBEdit;
     DBEdit8: TDBEdit;
     DBEdit12: TDBEdit;
-    DBEdit16: TDBEdit;
     DBLookupComboBox3: TDBLookupComboBox;
     ComboBox1: TComboBox;
     DBLookupComboBox1: TDBLookupComboBox;
     DBLookupComboBox2: TDBLookupComboBox;
     editProduto: TEdit;
+    SpeedButton4: TSpeedButton;
+    Label3: TLabel;
+    DBEdit1: TDBEdit;
+    DBEdit16: TDBEdit;
+    Label17: TLabel;
+    DBEdit2: TDBEdit;
+    Label1: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -47,6 +49,7 @@ type
     procedure SpeedButton4Click(Sender: TObject);
     procedure ComboBox1Exit(Sender: TObject);
     procedure editProdutoEnter(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -62,7 +65,7 @@ implementation
 {$R *.dfm}
 
 uses UDM_Estoque, UM_Produto, UP_Produto, UP_Marcas, UM_Bloco, UP_Prateleira,
-  UP_Bloco, UP_Categoria;
+  UP_Bloco, UP_Categoria, UDM_contabil;
 
 procedure TMEstoque.ComboBox1Exit(Sender: TObject);
 begin
@@ -83,28 +86,40 @@ begin
         PProduto.ShowModal;
     finally
         DM_Estoque.EstoqueESTOQ_PRODUTO.Value := DM_Estoque.Produtos.FieldByName('pro_codigo').AsString;
+        DM_Estoque.EstoqueESTOQ_EMPRESA.value := DM_Estoque.Produtos.FieldByName('pro_empresa').AsInteger;
         editProduto.Text := DM_Estoque.Produtos.FieldByName('PRO_DESCRICAO').AsString;
+
+        DM_Estoque.Bloco.Close;
+        DM_Estoque.Bloco.SQL.Text := 'select * from bloco where bloc_empresa = ' + DM_Estoque.Produtos.FieldByName('PRO_EMPRESA').AsString;
+        DM_Estoque.Bloco.Open;
+        DM_Estoque.Bloco.FetchAll;
+
+        DM_Estoque.Prateleira.Close;
+        DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira where prat_empresa = ' + DM_Estoque.Produtos.FieldByName('PRO_EMPRESA').AsString;
+        DM_Estoque.Prateleira.Open;
+        DM_Estoque.Prateleira.FetchAll;
+
+        DM_Estoque.Categoria.Close;
+        DM_Estoque.Categoria.SQL.Text := 'select * from categoria where cat_empresa = ' + DM_Estoque.Produtos.FieldByName('CAT_EMPRESA').AsString;
+        DM_Estoque.Categoria.Open;
+        DM_Estoque.Categoria.FetchAll;
+
         FreeAndNil(PProduto);
     end;
+end;
+
+procedure TMEstoque.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+    DM_Estoque.Estoque.Close;
+    DM_Estoque.Produtos.Close;
+    DM_Estoque.Bloco.Close;
+    DM_Estoque.Prateleira.Close;
 end;
 
 procedure TMEstoque.FormCreate(Sender: TObject);
 begin
   inherited;
-    DM_Estoque.Bloco.Close;
-    DM_Estoque.Bloco.SQL.Text := 'select * from bloco';
-    DM_Estoque.Bloco.Open;
-    DM_Estoque.Bloco.FetchAll;
-
-    DM_Estoque.Prateleira.Close;
-    DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira';
-    DM_Estoque.Prateleira.Open;
-    DM_Estoque.Prateleira.FetchAll;
-
-    DM_Estoque.Categoria.Close;
-    DM_Estoque.Categoria.SQL.Text := 'select * from categoria';
-    DM_Estoque.Categoria.Open;
-    DM_Estoque.Categoria.FetchAll;
 
     DM_Estoque.Produtos.Close;
     DM_Estoque.Produtos.SQL.Text := 'select * from Produtos';

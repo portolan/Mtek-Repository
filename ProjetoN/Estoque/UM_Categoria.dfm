@@ -33,7 +33,6 @@ inherited MCategoria: TMCategoria
         Width = 41
         Height = 13
         Caption = 'Empresa'
-        FocusControl = DBEdit1
       end
       object Label2: TLabel
         Left = 154
@@ -66,15 +65,6 @@ inherited MCategoria: TMCategoria
         Height = 13
         Caption = 'Observa'#231#245'es'
       end
-      object DBEdit1: TDBEdit
-        Left = 14
-        Top = 24
-        Width = 134
-        Height = 21
-        DataField = 'CAT_EMPRESA'
-        DataSource = DM_Estoque.DSCategoria
-        TabOrder = 0
-      end
       object DBEdit2: TDBEdit
         Left = 154
         Top = 24
@@ -85,7 +75,7 @@ inherited MCategoria: TMCategoria
         DataSource = DM_Estoque.DSCategoria
         ParentColor = True
         ReadOnly = True
-        TabOrder = 1
+        TabOrder = 0
       end
       object DBEdit3: TDBEdit
         Left = 14
@@ -94,7 +84,7 @@ inherited MCategoria: TMCategoria
         Height = 21
         DataField = 'CAT_DESCRICAO'
         DataSource = DM_Estoque.DSCategoria
-        TabOrder = 2
+        TabOrder = 1
       end
       object DBEdit4: TDBEdit
         Left = 294
@@ -103,6 +93,18 @@ inherited MCategoria: TMCategoria
         Height = 21
         DataField = 'CAT_NCM'
         DataSource = DM_Estoque.DSCategoria
+        TabOrder = 2
+      end
+      object DBLookupComboBox4: TDBLookupComboBox
+        Left = 14
+        Top = 24
+        Width = 134
+        Height = 21
+        DataField = 'CAT_EMPRESA'
+        DataSource = DM_Estoque.DSCategoria
+        KeyField = 'EMP_COD'
+        ListField = 'EMP_RAZAO'
+        ListSource = DM_contabil.Dempresa
         TabOrder = 3
       end
     end

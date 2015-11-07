@@ -1,5 +1,7 @@
 inherited MPrateleira: TMPrateleira
   Caption = 'MPrateleira'
+  ExplicitWidth = 597
+  ExplicitHeight = 320
   PixelsPerInch = 96
   TextHeight = 13
   inherited gbInfos: TGroupBox
@@ -9,7 +11,6 @@ inherited MPrateleira: TMPrateleira
       Width = 41
       Height = 13
       Caption = 'Empresa'
-      FocusControl = DBEdit1
     end
     object Label2: TLabel
       Left = 149
@@ -34,18 +35,9 @@ inherited MPrateleira: TMPrateleira
       Height = 13
       Caption = 'Observa'#231#245'es'
     end
-    object DBEdit1: TDBEdit
-      Left = 9
-      Top = 32
-      Width = 134
-      Height = 21
-      DataField = 'PRAT_EMPRESA'
-      DataSource = DM_Estoque.DSPrateleira
-      TabOrder = 0
-    end
     object DBEdit2: TDBEdit
       Left = 149
-      Top = 35
+      Top = 32
       Width = 134
       Height = 21
       TabStop = False
@@ -53,7 +45,7 @@ inherited MPrateleira: TMPrateleira
       DataSource = DM_Estoque.DSPrateleira
       ParentColor = True
       ReadOnly = True
-      TabOrder = 1
+      TabOrder = 0
     end
     object DBEdit3: TDBEdit
       Left = 9
@@ -62,7 +54,7 @@ inherited MPrateleira: TMPrateleira
       Height = 21
       DataField = 'PRAT_DESCRICAO'
       DataSource = DM_Estoque.DSPrateleira
-      TabOrder = 2
+      TabOrder = 1
     end
     object DBMemo1: TDBMemo
       Left = 9
@@ -71,6 +63,18 @@ inherited MPrateleira: TMPrateleira
       Height = 117
       DataField = 'PRAT_OBS'
       DataSource = DM_Estoque.DSPrateleira
+      TabOrder = 2
+    end
+    object DBLookupComboBox4: TDBLookupComboBox
+      Left = 9
+      Top = 32
+      Width = 134
+      Height = 21
+      DataField = 'PRAT_EMPRESA'
+      DataSource = DM_Estoque.DSPrateleira
+      KeyField = 'EMP_COD'
+      ListField = 'EMP_RAZAO'
+      ListSource = DM_contabil.Dempresa
       TabOrder = 3
     end
   end
