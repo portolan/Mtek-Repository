@@ -12,7 +12,7 @@ object xPesqPadrao: TxPesqPadrao
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   OnActivate = FormActivate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
