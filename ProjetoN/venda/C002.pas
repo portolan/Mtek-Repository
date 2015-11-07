@@ -8,7 +8,7 @@ uses
   Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Mask;
 
 type
-  TCAD_DETALHE_PEDIDO = class(TxManuPadrao)
+  TUM_VENDA = class(TxManuPadrao)
     lb_Pedido: TLabel;
     DBEdit1: TDBEdit;
     lb_Tipo_Movimentacao: TLabel;
@@ -55,9 +55,7 @@ type
     SpeedButton2: TSpeedButton;
     DBEdit13: TDBEdit;
     Label1: TLabel;
-    ComboBox1: TComboBox;
-    procedure SpeedButton3Click(Sender: TObject);
-    procedure sbGravarClick(Sender: TObject);
+    DBComboBox6: TDBComboBox;
 
   private
     { Private declarations }
@@ -66,33 +64,10 @@ type
   end;
 
 var
-  CAD_DETALHE_PEDIDO: TCAD_DETALHE_PEDIDO;
+  UM_VENDA: TUM_VENDA;
 
 implementation
 
 {$R *.dfm}
-
-uses C001;
-
-
-procedure TCAD_DETALHE_PEDIDO.sbGravarClick(Sender: TObject);
-begin
-   CAD_PEDIDO_VENDA := TCAD_PEDIDO_VENDA.Create(Self);
-   try
-      CAD_PEDIDO_VENDA.ShowModal;
-   finally
-      FreeAndNil(CAD_PEDIDO_VENDA);
-   end;
-end;
-
-procedure TCAD_DETALHE_PEDIDO.SpeedButton3Click(Sender: TObject);
-begin
-   CAD_PEDIDO_VENDA := TCAD_PEDIDO_VENDA.Create(Self);
-   try
-      CAD_PEDIDO_VENDA.ShowModal;
-   finally
-      FreeAndNil(CAD_PEDIDO_VENDA);
-   end;
-end;
 
 end.

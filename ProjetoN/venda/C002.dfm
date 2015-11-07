@@ -1,4 +1,4 @@
-inherited CAD_DETALHE_PEDIDO: TCAD_DETALHE_PEDIDO
+inherited UM_VENDA: TUM_VENDA
   Caption = 'Detalhe do Pedido'
   ClientHeight = 530
   ClientWidth = 700
@@ -349,13 +349,12 @@ inherited CAD_DETALHE_PEDIDO: TCAD_DETALHE_PEDIDO
         Height = 21
         TabOrder = 10
       end
-      object ComboBox1: TComboBox
+      object DBComboBox6: TDBComboBox
         Left = 128
-        Top = 151
+        Top = 148
         Width = 145
         Height = 21
         TabOrder = 11
-        Text = 'ComboBox1'
       end
     end
   end
