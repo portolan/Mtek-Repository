@@ -23,21 +23,6 @@ inherited CAD_DETALHE_PEDIDO: TCAD_DETALHE_PEDIDO
       ExplicitLeft = 604
       ExplicitHeight = 39
     end
-    object SpeedButton3: TSpeedButton
-      Left = 169
-      Top = 1
-      Width = 90
-      Height = 37
-      Caption = 'Exibir Detalhes'
-      OnClick = SpeedButton3Click
-    end
-    object SpeedButton4: TSpeedButton
-      Left = 383
-      Top = 2
-      Width = 90
-      Height = 35
-      Caption = 'Enviar '
-    end
   end
   inherited gbInfos: TGroupBox
     Width = 700
@@ -115,21 +100,21 @@ inherited CAD_DETALHE_PEDIDO: TCAD_DETALHE_PEDIDO
       Height = 138
       TabOrder = 1
       object lb_Estabelecimento: TLabel
-        Left = 26
+        Left = 49
         Top = 8
-        Width = 78
+        Width = 69
         Height = 13
-        Caption = 'Estabelecimento'
+        Caption = 'Departamento'
       end
       object lb_Deposito: TLabel
-        Left = 62
+        Left = 76
         Top = 48
         Width = 42
         Height = 13
         Caption = 'Dep'#243'sito'
       end
       object lb_Produto: TLabel
-        Left = 73
+        Left = 80
         Top = 80
         Width = 38
         Height = 13
@@ -198,14 +183,14 @@ inherited CAD_DETALHE_PEDIDO: TCAD_DETALHE_PEDIDO
       Height = 236
       TabOrder = 2
       object lb_Quantidade: TLabel
-        Left = 62
+        Left = 66
         Top = 13
         Width = 56
         Height = 13
         Caption = 'Quantidade'
       end
       object lb_Lista_Preco: TLabel
-        Left = 51
+        Left = 55
         Top = 51
         Width = 67
         Height = 13
@@ -263,9 +248,9 @@ inherited CAD_DETALHE_PEDIDO: TCAD_DETALHE_PEDIDO
       object lb_n_ordem_compra: TLabel
         Left = 26
         Top = 190
-        Width = 87
+        Width = 80
         Height = 13
-        Caption = 'N'#186' Ordem Compra'
+        Caption = 'N'#186' Ordem Venda'
       end
       object lb_Reajuste: TLabel
         Left = 452

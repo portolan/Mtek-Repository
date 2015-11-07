@@ -54,11 +54,10 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     DBEdit13: TDBEdit;
-    SpeedButton3: TSpeedButton;
     Label1: TLabel;
     ComboBox1: TComboBox;
-    SpeedButton4: TSpeedButton;
     procedure SpeedButton3Click(Sender: TObject);
+    procedure sbGravarClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -75,6 +74,16 @@ implementation
 
 uses C001;
 
+
+procedure TCAD_DETALHE_PEDIDO.sbGravarClick(Sender: TObject);
+begin
+   CAD_PEDIDO_VENDA := TCAD_PEDIDO_VENDA.Create(Self);
+   try
+      CAD_PEDIDO_VENDA.ShowModal;
+   finally
+      FreeAndNil(CAD_PEDIDO_VENDA);
+   end;
+end;
 
 procedure TCAD_DETALHE_PEDIDO.SpeedButton3Click(Sender: TObject);
 begin
