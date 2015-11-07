@@ -26,7 +26,6 @@ inherited PBloco: TPBloco
           item
             Expanded = False
             FieldName = 'BLOC_OBS'
-            Width = 64
             Visible = True
           end>
       end

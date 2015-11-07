@@ -36,8 +36,6 @@ inherited MProduto: TMProduto
       Height = 193
       Align = alTop
       TabOrder = 0
-      ExplicitLeft = 3
-      ExplicitTop = 16
       object Label1: TLabel
         Left = 9
         Top = 6
@@ -217,8 +215,11 @@ inherited MProduto: TMProduto
         Top = 25
         Width = 134
         Height = 21
+        TabStop = False
         DataField = 'PRO_DTCADASTRO'
         DataSource = DM_Estoque.DSProdutos
+        ParentColor = True
+        ReadOnly = True
         TabOrder = 3
       end
       object DBEdit1: TDBEdit
@@ -242,17 +243,7 @@ inherited MProduto: TMProduto
         ListSource = DM_Estoque.DSCategoria
         ParentShowHint = False
         ShowHint = False
-        TabOrder = 10
-      end
-      object DBEdit9: TDBEdit
-        Left = 9
-        Top = 155
-        Width = 51
-        Height = 21
-        DataField = 'PRO_MARCA'
-        DataSource = DM_Estoque.DSProdutos
         TabOrder = 9
-        OnEnter = DBEdit9Enter
       end
       object DBEdit7: TDBEdit
         Left = 9
@@ -311,8 +302,20 @@ inherited MProduto: TMProduto
           'Bem Imobilizado'
           'Produto Acabado'
           'Mat'#233'ria Prima')
-        TabOrder = 11
+        TabOrder = 10
         OnClick = GrupoClick
+      end
+      object DBLookupComboBox3: TDBLookupComboBox
+        Left = 9
+        Top = 155
+        Width = 194
+        Height = 21
+        DataField = 'PRO_MARCA'
+        DataSource = DM_Estoque.DSProdutos
+        KeyField = 'MARC_CODIGO'
+        ListField = 'MARC_DESCRICAO'
+        ListSource = DM_Estoque.DSMarcas
+        TabOrder = 11
       end
     end
     object GroupBox2: TGroupBox
@@ -625,16 +628,6 @@ inherited MProduto: TMProduto
         TabOrder = 7
       end
     end
-  end
-  object edtMarcaDescricao: TEdit
-    Left = 63
-    Top = 170
-    Width = 143
-    Height = 21
-    TabStop = False
-    ParentColor = True
-    ReadOnly = True
-    TabOrder = 2
   end
   object OpenPictureDialog: TOpenPictureDialog
     DefaultExt = '*.jpg;*.png'

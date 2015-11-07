@@ -32,11 +32,14 @@ type
     Label11: TLabel;
     DBEdit10: TDBEdit;
     SpeedButton2: TSpeedButton;
-    SpeedButton3: TSpeedButton;
     SpeedButton4: TSpeedButton;
     DBMemo1: TDBMemo;
     DBComboBox1: TDBComboBox;
+    SpeedButton3: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -50,7 +53,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_Estoque, UM_Estoque, UP_Estoque;
+uses UDM_Estoque, UM_Estoque, UP_Estoque, UP_Bloco, UP_Prateleira, UP_Produto;
 
 procedure TMMovimentoEstoque.SpeedButton1Click(Sender: TObject);
 begin
@@ -58,5 +61,41 @@ begin
     PEstoque := TPEstoque.Create(Self);
     PEstoque.procChamaTela;
 end;
+
+procedure TMMovimentoEstoque.SpeedButton2Click(Sender: TObject);
+begin
+  inherited;
+    PBloco := TPBloco.Create(Self);
+    try
+        PBloco.ShowModal;
+    finally
+        FreeAndNil(PBloco);
+    end;
+end;
+
+procedure TMMovimentoEstoque.SpeedButton3Click(Sender: TObject);
+begin
+  inherited;
+    PPrateleira := TPPrateleira.Create(Self);
+    try
+        PPrateleira.ShowModal;
+    finally
+        FreeAndNil(PPrateleira);
+    end;
+end;
+
+procedure TMMovimentoEstoque.SpeedButton4Click(Sender: TObject);
+begin
+  inherited;
+    PProduto := TPProduto.Create(Self);
+    try
+        PProduto.showModal;
+    finally
+        FreeAndNil(PProduto);
+    end;
+end;
+
+
+
 
 end.

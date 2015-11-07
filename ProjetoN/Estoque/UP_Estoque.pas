@@ -28,16 +28,16 @@ uses UDM_Estoque, UM_Estoque;
 procedure TPEstoque.FormCreate(Sender: TObject);
 begin
   inherited;
-    procInicializar(DM_Estoque.Estoque, False, False, MEstoque, TMEstoque);
+    procInicializar(DM_Estoque.Estoque, True, False, MEstoque, TMEstoque);
     funcAtribuiFiltros;
+    nomeQry := 'estoque';
 end;
 
 procedure TPEstoque.procSelect;
 begin
   inherited;
-    procMontaWhere;
     DM_Estoque.Estoque.Close;
-    DM_Estoque.Estoque.SQL.Text := 'select * from ESTOQUE where '+c_where;
+    DM_Estoque.Estoque.SQL.Text := 'select * from ESTOQUE';
     DM_Estoque.Estoque.Open;
 end;
 

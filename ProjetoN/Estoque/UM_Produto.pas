@@ -60,20 +60,18 @@ type
     DBEdit33: TDBEdit;
     DBEdit18: TDBEdit;
     DBEdit19: TDBEdit;
-    edtMarcaDescricao: TEdit;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     DBEdit1: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
-    DBEdit9: TDBEdit;
     DBEdit7: TDBEdit;
     cbStatus: TComboBox;
     DBComboBox1: TDBComboBox;
     DBLookupComboBox2: TDBLookupComboBox;
     Grupo: TRadioGroup;
     OpenPictureDialog: TOpenPictureDialog;
+    DBLookupComboBox3: TDBLookupComboBox;
     procedure SpeedButton1Click(Sender: TObject);
-    procedure DBEdit9Enter(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure cbStatusExit(Sender: TObject);
@@ -104,23 +102,6 @@ begin
         DM_Estoque.ProdutosPRO_STATUS.Value := 'a'
     else
         DM_Estoque.ProdutosPRO_STATUS.Value := 'i';
-
-
-end;
-
-procedure TMProduto.DBEdit9Enter(Sender: TObject);
-begin
-  inherited;
-    PMarcas := TPMarcas.Create(Self);
-    try
-        PMarcas.procInicializar(DM_Estoque.Marcas, True, True, PMarcas, TPMarcas);
-        
-        PMarcas.ShowModal;
-    finally
-        DBEdit9.Field.Value := DM_Estoque.Marcas.FieldByName('marc_codigo').AsInteger;
-        edtMarcaDescricao.Text := DM_Estoque.Marcas.FieldByName('marc_descricao').AsString;
-        FreeAndNil(PMarcas);
-    end;
 end;
 
 procedure TMProduto.DBImage1DblClick(Sender: TObject);
@@ -150,6 +131,11 @@ begin
     DM_Estoque.Unidade.SQL.Text := 'select * from unidade';
     DM_Estoque.Unidade.Open;
     DM_Estoque.Unidade.FetchAll;
+
+    DM_Estoque.Marcas.Close;
+    DM_Estoque.Marcas.SQL.Text := 'select * from marcas';
+    DM_Estoque.Marcas.Open;
+    DM_Estoque.Marcas.FetchAll;
 
 end;
 

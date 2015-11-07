@@ -29,16 +29,17 @@ uses UDM_Estoque, UM_Marcas;
 procedure TPMarcas.FormCreate(Sender: TObject);
 begin
    inherited;
-   procInicializar(DM_Estoque.Marcas, False, False, MMarcas, TMMarcas);
+   procInicializar(DM_Estoque.Marcas, True, False, MMarcas, TMMarcas);
    funcAtribuiFiltros;
+   nomeQry := 'marcas';
+
 end;
 
 procedure TPMarcas.procSelect;
 begin
   inherited;
-     procMontaWhere;
     DM_Estoque.Marcas.Close;
-    DM_Estoque.Marcas.SQL.Text := 'select * from Marcas where '+c_where;
+    DM_Estoque.Marcas.SQL.Text := 'select * from Marcas';
     DM_Estoque.Marcas.Open;
 end;
 

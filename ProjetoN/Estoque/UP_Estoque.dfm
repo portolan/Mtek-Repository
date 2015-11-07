@@ -1,6 +1,8 @@
 inherited PEstoque: TPEstoque
   Caption = 'PEstoque'
   OnCreate = FormCreate
+  ExplicitWidth = 880
+  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
