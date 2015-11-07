@@ -36,8 +36,6 @@ inherited MProduto: TMProduto
       Height = 193
       Align = alTop
       TabOrder = 0
-      ExplicitLeft = -78
-      ExplicitTop = 32
       object Label1: TLabel
         Left = 9
         Top = 6
@@ -99,8 +97,8 @@ inherited MProduto: TMProduto
         Caption = 'Un. Medida'
       end
       object Label9: TLabel
-        Left = 9
-        Top = 138
+        Left = 192
+        Top = 140
         Width = 29
         Height = 13
         Caption = 'Marca'
@@ -113,14 +111,14 @@ inherited MProduto: TMProduto
         Caption = 'Moeda'
       end
       object Label11: TLabel
-        Left = 209
-        Top = 137
+        Left = 10
+        Top = 140
         Width = 47
         Height = 13
         Caption = 'Categoria'
       end
       object SpeedButton1: TSpeedButton
-        Left = 349
+        Left = 151
         Top = 154
         Width = 32
         Height = 23
@@ -189,9 +187,14 @@ inherited MProduto: TMProduto
         Left = 149
         Top = 25
         Width = 172
-        Height = 21
+        Height = 19
+        BevelInner = bvNone
+        CharCase = ecUpperCase
+        Ctl3D = False
         DataField = 'PRO_CODIGO'
         DataSource = DM_Estoque.DSProdutos
+        ParentColor = True
+        ParentCtl3D = False
         TabOrder = 1
       end
       object DBEdit3: TDBEdit
@@ -216,16 +219,18 @@ inherited MProduto: TMProduto
         Left = 446
         Top = 25
         Width = 134
-        Height = 21
+        Height = 19
         TabStop = False
+        Ctl3D = False
         DataField = 'PRO_DTCADASTRO'
         DataSource = DM_Estoque.DSProdutos
         ParentColor = True
+        ParentCtl3D = False
         ReadOnly = True
         TabOrder = 3
       end
       object DBLookupComboBox1: TDBLookupComboBox
-        Left = 209
+        Left = 10
         Top = 155
         Width = 137
         Height = 21
@@ -299,7 +304,7 @@ inherited MProduto: TMProduto
         OnClick = GrupoClick
       end
       object DBLookupComboBox3: TDBLookupComboBox
-        Left = 9
+        Left = 192
         Top = 155
         Width = 194
         Height = 21
@@ -313,7 +318,7 @@ inherited MProduto: TMProduto
       object DBLookupComboBox4: TDBLookupComboBox
         Left = 9
         Top = 25
-        Width = 134
+        Width = 130
         Height = 21
         DataField = 'PRO_EMPRESA'
         DataSource = DM_Estoque.DSProdutos
@@ -329,7 +334,7 @@ inherited MProduto: TMProduto
       Width = 714
       Height = 114
       Caption = 'Fiscal'
-      TabOrder = 4
+      TabOrder = 3
       object Label12: TLabel
         Left = 13
         Top = 16
@@ -373,11 +378,13 @@ inherited MProduto: TMProduto
         Left = 13
         Top = 32
         Width = 187
-        Height = 21
+        Height = 19
         TabStop = False
         Color = clGradientInactiveCaption
+        Ctl3D = False
         DataField = 'PRO_CLASSFISCAL'
         DataSource = DM_Estoque.DSProdutos
+        ParentCtl3D = False
         ReadOnly = True
         TabOrder = 0
       end
@@ -385,11 +392,13 @@ inherited MProduto: TMProduto
         Left = 206
         Top = 32
         Width = 219
-        Height = 21
+        Height = 19
         TabStop = False
         Color = clGradientInactiveCaption
+        Ctl3D = False
         DataField = 'PRO_CSTCSOSN'
         DataSource = DM_Estoque.DSProdutos
+        ParentCtl3D = False
         ReadOnly = True
         TabOrder = 1
       end
@@ -397,11 +406,13 @@ inherited MProduto: TMProduto
         Left = 431
         Top = 32
         Width = 274
-        Height = 21
+        Height = 19
         TabStop = False
         Color = clGradientInactiveCaption
+        Ctl3D = False
         DataField = 'PRO_NCMSH'
         DataSource = DM_Estoque.DSProdutos
+        ParentCtl3D = False
         ReadOnly = True
         TabOrder = 2
       end
@@ -409,11 +420,13 @@ inherited MProduto: TMProduto
         Left = 13
         Top = 75
         Width = 202
-        Height = 21
+        Height = 19
         TabStop = False
         Color = clGradientInactiveCaption
+        Ctl3D = False
         DataField = 'PRO_EXTIPI'
         DataSource = DM_Estoque.DSProdutos
+        ParentCtl3D = False
         ReadOnly = True
         TabOrder = 3
       end
@@ -421,11 +434,13 @@ inherited MProduto: TMProduto
         Left = 221
         Top = 75
         Width = 204
-        Height = 21
+        Height = 19
         TabStop = False
         Color = clGradientInactiveCaption
+        Ctl3D = False
         DataField = 'PRO_SITTRIB'
         DataSource = DM_Estoque.DSProdutos
+        ParentCtl3D = False
         ReadOnly = True
         TabOrder = 4
       end
@@ -437,7 +452,7 @@ inherited MProduto: TMProduto
       Height = 178
       TabOrder = 1
       object DBImage1: TDBImage
-        Left = 0
+        Left = 2
         Top = 0
         Width = 193
         Height = 178
@@ -447,26 +462,18 @@ inherited MProduto: TMProduto
         OnDblClick = DBImage1DblClick
       end
     end
-    object DBMemo1: TDBMemo
-      Left = 10
-      Top = 519
-      Width = 693
-      Height = 82
-      TabOrder = 2
-    end
     object GroupBox3: TGroupBox
       Left = 3
       Top = 335
       Width = 510
       Height = 162
-      TabOrder = 3
+      TabOrder = 2
       object Label17: TLabel
         Left = 15
         Top = 21
         Width = 23
         Height = 13
         Caption = 'Peso'
-        FocusControl = DBEdit17
       end
       object Label20: TLabel
         Left = 390
@@ -474,7 +481,6 @@ inherited MProduto: TMProduto
         Width = 35
         Height = 13
         Caption = '$ Frete'
-        FocusControl = DBEdit20
       end
       object Label21: TLabel
         Left = 15
@@ -482,7 +488,6 @@ inherited MProduto: TMProduto
         Width = 58
         Height = 13
         Caption = '% Encargos'
-        FocusControl = DBEdit21
       end
       object Label22: TLabel
         Left = 149
@@ -490,7 +495,6 @@ inherited MProduto: TMProduto
         Width = 53
         Height = 13
         Caption = '$ Encargos'
-        FocusControl = DBEdit22
       end
       object Label23: TLabel
         Left = 272
@@ -498,7 +502,6 @@ inherited MProduto: TMProduto
         Width = 81
         Height = 13
         Caption = '% Margem Lucro'
-        FocusControl = DBEdit23
       end
       object Label24: TLabel
         Left = 390
@@ -506,7 +509,6 @@ inherited MProduto: TMProduto
         Width = 76
         Height = 13
         Caption = '$ Margem Lucro'
-        FocusControl = DBEdit24
       end
       object Label34: TLabel
         Left = 202
@@ -514,7 +516,6 @@ inherited MProduto: TMProduto
         Width = 54
         Height = 13
         Caption = 'Valoriza'#231#227'o'
-        FocusControl = DBEdit33
       end
       object Label18: TLabel
         Left = 148
@@ -522,7 +523,6 @@ inherited MProduto: TMProduto
         Width = 59
         Height = 13
         Caption = 'Custo M'#233'dio'
-        FocusControl = DBEdit18
       end
       object Label19: TLabel
         Left = 15
@@ -530,16 +530,35 @@ inherited MProduto: TMProduto
         Width = 45
         Height = 13
         Caption = 'Vlr Venda'
-        FocusControl = DBEdit19
       end
       object DBEdit17: TDBEdit
         Left = 15
-        Top = 40
+        Top = 37
         Width = 128
         Height = 21
         DataField = 'PRO_PESO'
         DataSource = DM_Estoque.DSProdutos
         TabOrder = 0
+      end
+      object DBEdit18: TDBEdit
+        Left = 149
+        Top = 37
+        Width = 235
+        Height = 19
+        TabStop = False
+        Ctl3D = False
+        DataField = 'PRO_CUSTOMEDIO'
+        DataSource = DM_Estoque.DSProdutos
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentColor = True
+        ParentCtl3D = False
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 1
       end
       object DBEdit20: TDBEdit
         Left = 390
@@ -573,7 +592,6 @@ inherited MProduto: TMProduto
         Top = 83
         Width = 112
         Height = 21
-        TabStop = False
         DataField = 'PRO_PERCMARGLUCR'
         DataSource = DM_Estoque.DSProdutos
         TabOrder = 5
@@ -587,51 +605,42 @@ inherited MProduto: TMProduto
         DataSource = DM_Estoque.DSProdutos
         TabOrder = 6
       end
-      object DBEdit33: TDBEdit
-        Left = 202
-        Top = 126
-        Width = 182
-        Height = 21
-        TabStop = False
-        Color = clGray
-        DataField = 'PRO_VALORIZACAO'
-        DataSource = DM_Estoque.DSProdutos
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clHighlightText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        ReadOnly = True
-        TabOrder = 8
-      end
-      object DBEdit18: TDBEdit
-        Left = 149
-        Top = 37
-        Width = 235
-        Height = 21
-        TabStop = False
-        Color = cl3DDkShadow
-        DataField = 'PRO_CUSTOMEDIO'
-        DataSource = DM_Estoque.DSProdutos
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clMenuBar
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        ReadOnly = True
-        TabOrder = 1
-      end
       object DBEdit19: TDBEdit
         Left = 15
-        Top = 129
+        Top = 126
         Width = 181
         Height = 21
         DataField = 'PRO_VLRVENDA'
         DataSource = DM_Estoque.DSProdutos
         TabOrder = 7
       end
+      object DBEdit33: TDBEdit
+        Left = 202
+        Top = 126
+        Width = 182
+        Height = 19
+        TabStop = False
+        Ctl3D = False
+        DataField = 'PRO_VALORIZACAO'
+        DataSource = DM_Estoque.DSProdutos
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentColor = True
+        ParentCtl3D = False
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 8
+      end
+    end
+    object DBMemo1: TDBMemo
+      Left = 10
+      Top = 519
+      Width = 693
+      Height = 82
+      TabOrder = 4
     end
   end
   object OpenPictureDialog: TOpenPictureDialog

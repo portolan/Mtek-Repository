@@ -9,7 +9,6 @@ uses
 
 type
   TMEstoque = class(TxManuPadrao)
-    DBMemo1: TDBMemo;
     GroupBox1: TGroupBox;
     Label2: TLabel;
     Label4: TLabel;
@@ -20,28 +19,29 @@ type
     Label10: TLabel;
     Label12: TLabel;
     Label14: TLabel;
-    Label16: TLabel;
-    Label15: TLabel;
     SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    Label3: TLabel;
+    Label17: TLabel;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    DBEdit16: TDBEdit;
+    DBLookupComboBox1: TDBLookupComboBox;
+    Label16: TLabel;
+    DBLookupComboBox2: TDBLookupComboBox;
+    Label15: TLabel;
+    SpeedButton2: TSpeedButton;
+    editProduto: TEdit;
     DBEdit5: TDBEdit;
     DBEdit6: TDBEdit;
     DBEdit7: TDBEdit;
     DBEdit8: TDBEdit;
     DBEdit12: TDBEdit;
-    DBLookupComboBox3: TDBLookupComboBox;
     ComboBox1: TComboBox;
-    DBLookupComboBox1: TDBLookupComboBox;
-    DBLookupComboBox2: TDBLookupComboBox;
-    editProduto: TEdit;
-    SpeedButton4: TSpeedButton;
-    Label3: TLabel;
-    DBEdit1: TDBEdit;
-    DBEdit16: TDBEdit;
-    Label17: TLabel;
+    DBLookupComboBox3: TDBLookupComboBox;
     DBEdit2: TDBEdit;
-    Label1: TLabel;
+    DBMemo1: TDBMemo;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -116,8 +116,6 @@ begin
     DM_Estoque.Produtos.SQL.Text := 'select * from Produtos';
     DM_Estoque.Produtos.Open;
 
-    editProduto.Text := DM_Estoque.ProdutosPRO_DESCRICAO.AsString;
-
     if DM_Estoque.Estoque.State in [dsEdit] then
             procSelecionaItems;
 end;
@@ -138,6 +136,8 @@ begin
     DM_Estoque.Categoria.SQL.Text := 'select * from categoria where cat_empresa = ' + DM_Estoque.EstoqueESTOQ_EMPRESA.AsString;
     DM_Estoque.Categoria.Open;
     DM_Estoque.Categoria.FetchAll;
+
+    editProduto.Text := DM_Estoque.ProdutosPRO_DESCRICAO.AsString;
 end;
 
 procedure TMEstoque.SpeedButton1Click(Sender: TObject);

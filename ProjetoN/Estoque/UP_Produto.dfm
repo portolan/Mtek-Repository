@@ -22,6 +22,11 @@ inherited PProduto: TPProduto
           end
           item
             Expanded = False
+            FieldName = 'PRO_DESCRICAO'
+            Visible = True
+          end
+          item
+            Expanded = False
             FieldName = 'PRO_CODREF'
             Visible = True
           end
@@ -38,56 +43,6 @@ inherited PProduto: TPProduto
           item
             Expanded = False
             FieldName = 'PRO_DTCADASTRO'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRO_CLASSFISCAL'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRO_CSTCSOSN'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRO_NCMSH'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRO_EXTIPI'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRO_SITTRIB'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRO_PIS'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRO_COFINS'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRO_CSTPIS'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRO_ESTATUAL'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRO_DESCRICAO'
             Visible = True
           end
           item
@@ -168,6 +123,51 @@ inherited PProduto: TPProduto
           item
             Expanded = False
             FieldName = 'PRO_UNID'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_CLASSFISCAL'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_CSTCSOSN'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_NCMSH'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_EXTIPI'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_SITTRIB'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_PIS'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_COFINS'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_CSTPIS'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_ESTATUAL'
             Visible = True
           end>
       end

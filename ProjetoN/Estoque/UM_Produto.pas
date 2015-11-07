@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
   Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, IBX.IBCustomDataSet, IBX.IBQuery,
   IBX.IBUpdateSQL, System.Actions, Vcl.ActnList,
-  Vcl.ExtDlgs;
+  Vcl.ExtDlgs, Data.DB;
 
 type
   TMProduto = class(TxManuPadrao)
@@ -38,8 +38,6 @@ type
     DBEdit15: TDBEdit;
     Label16: TLabel;
     Label30: TLabel;
-    DBImage1: TDBImage;
-    DBMemo1: TDBMemo;
     DBEdit16: TDBEdit;
     GroupBox3: TGroupBox;
     Label17: TLabel;
@@ -51,15 +49,6 @@ type
     Label34: TLabel;
     Label18: TLabel;
     Label19: TLabel;
-    DBEdit17: TDBEdit;
-    DBEdit20: TDBEdit;
-    DBEdit21: TDBEdit;
-    DBEdit22: TDBEdit;
-    DBEdit23: TDBEdit;
-    DBEdit24: TDBEdit;
-    DBEdit33: TDBEdit;
-    DBEdit18: TDBEdit;
-    DBEdit19: TDBEdit;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     DBLookupComboBox1: TDBLookupComboBox;
@@ -71,6 +60,17 @@ type
     OpenPictureDialog: TOpenPictureDialog;
     DBLookupComboBox3: TDBLookupComboBox;
     DBLookupComboBox4: TDBLookupComboBox;
+    DBMemo1: TDBMemo;
+    DBImage1: TDBImage;
+    DBEdit17: TDBEdit;
+    DBEdit18: TDBEdit;
+    DBEdit20: TDBEdit;
+    DBEdit21: TDBEdit;
+    DBEdit22: TDBEdit;
+    DBEdit23: TDBEdit;
+    DBEdit24: TDBEdit;
+    DBEdit19: TDBEdit;
+    DBEdit33: TDBEdit;
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -142,6 +142,12 @@ begin
     DM_contabil.empresa.SQL.Text := 'select * from empresa';
     DM_contabil.empresa.Open;
     DM_contabil.empresa.FetchAll;
+
+    {
+    if DM_Estoque.Produtos.State in [dsEdit] then
+    begin
+
+    end;     }
 
 end;
 

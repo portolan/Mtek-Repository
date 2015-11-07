@@ -9,7 +9,6 @@ inherited MEstoque: TMEstoque
   inherited pnRodape: TPanel
     Top = 322
     Width = 726
-    ExplicitLeft = 11
     ExplicitTop = 322
     ExplicitWidth = 726
     inherited sbCancelar: TSpeedButton
@@ -20,7 +19,6 @@ inherited MEstoque: TMEstoque
   inherited gbInfos: TGroupBox
     Width = 726
     Height = 322
-    ExplicitTop = -2
     ExplicitWidth = 726
     ExplicitHeight = 322
     object GroupBox1: TGroupBox
@@ -50,7 +48,6 @@ inherited MEstoque: TMEstoque
         Width = 18
         Height = 13
         Caption = 'Qtd'
-        FocusControl = DBEdit5
       end
       object Label6: TLabel
         Left = 156
@@ -58,7 +55,6 @@ inherited MEstoque: TMEstoque
         Width = 53
         Height = 13
         Caption = 'Qtd M'#237'nima'
-        FocusControl = DBEdit6
       end
       object Label7: TLabel
         Left = 287
@@ -66,7 +62,6 @@ inherited MEstoque: TMEstoque
         Width = 57
         Height = 13
         Caption = 'Qtd M'#225'xima'
-        FocusControl = DBEdit7
       end
       object Label8: TLabel
         Left = 423
@@ -74,7 +69,6 @@ inherited MEstoque: TMEstoque
         Width = 59
         Height = 13
         Caption = 'Custo M'#233'dio'
-        FocusControl = DBEdit8
       end
       object Label10: TLabel
         Left = 150
@@ -89,7 +83,6 @@ inherited MEstoque: TMEstoque
         Width = 62
         Height = 13
         Caption = 'Dt. Cadastro'
-        FocusControl = DBEdit12
       end
       object Label14: TLabel
         Left = 16
@@ -98,23 +91,9 @@ inherited MEstoque: TMEstoque
         Height = 13
         Caption = 'Observa'#231#245'es'
       end
-      object Label16: TLabel
-        Left = 364
-        Top = 15
-        Width = 25
-        Height = 13
-        Caption = 'Bloco'
-      end
-      object Label15: TLabel
-        Left = 542
-        Top = 15
-        Width = 46
-        Height = 13
-        Caption = 'Prateleira'
-      end
       object SpeedButton1: TSpeedButton
-        Left = 504
-        Top = 30
+        Left = 434
+        Top = 31
         Width = 32
         Height = 23
         Glyph.Data = {
@@ -144,39 +123,6 @@ inherited MEstoque: TMEstoque
           F2F2F2F2F2F2F1F2F4EEE7BAD2BC3FD3BD3ED4BD45F4EFD3EFEFF1EFEFEFEFEF
           EFEFEFEFEFEFEF000000}
         OnClick = SpeedButton1Click
-      end
-      object SpeedButton2: TSpeedButton
-        Left = 682
-        Top = 30
-        Width = 32
-        Height = 23
-        Glyph.Data = {
-          06030000424D060300000000000036000000280000000F0000000F0000000100
-          180000000000D0020000C40E0000C40E00000000000000000000F2F2F2F2F2F2
-          F2F2F2F2F2F2F3F3F4E3DCCA9460458D4F2E946045E3DCCAF3F3F4F2F2F2F2F2
-          F2F2F2F2F2F2F2000000F2F2F2F2F2F2F2F2F2F2F2F2F6F9FA9B6A4F8C51318D
-          4F2E8E5130A47C67F6F8F9F2F2F2F2F2F2F2F2F2F2F2F2000000F0F0F0F0F0F0
-          F0F0F0F2F2F2F6F8FAA6754D94592B955B2D925728B78C6CF5F7F9F2F2F2F2F2
-          F2F2F2F2F2F2F2000000F2F2F2F2F2F2F2F2F2F2F2F2F5F8FAAD7E4D9E672B9F
-          682D9D6528BB956BF5F7F9F2F2F2F2F2F2F2F2F2F2F2F2000000F2F2F3F4F5F8
-          F4F5F8F4F6F8F7FBFFB78C4EA8742BA9752DA87228C4A170F6FAFFF4F6F8F4F5
-          F8F4F5F8F2F2F2000000F5F0E5CDAE7BCCAD77CCAD77CDAE79B58638AF7E2BB0
-          7F2CAF7E2AB88B41CDB07BCCAD77CCAD76CEB07EF9F5EE000000CEB072B38222
-          B48425B48425B38425B6862AB6872BB6872BB6872BB58629B38425B48425B484
-          25B28221D8BF8D000000CFB169BC8F28BC9029BC9029BC9029BC9029BC9029BC
-          9029BC9029BC9029BC9029BC9029BC9029BB8F27DAC186000000D1B462BE9520
-          BF9623BF9623BF9623BF9622C09726C09726C09726BF9622BF9623BF9623BF96
-          23BE951FDAC280000000EFE4C5CCAB4BCCAC4DCCAA4DCCAB4EC7A43DC19C20C1
-          9C22C19C21C9A642CCAC4ECCAA4DCCAB4DCBAB4CF3EDD7000000F0F1F2F5F4F2
-          F5F4F2F6F6F3F7F8F9D1B559C3A01CC4A120C29F1DD9C277F6F6F8F4F4F1F4F3
-          F1F5F4F3F0F0F1000000EFEFEFEFEFEFF0F0F0F2F2F2F4F5FAD2B757C5A518C5
-          A51CC4A418DAC373F0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
-          F0F0F0F2F2F2F4F5FAD3BA54C7AA15C8AB19C6A914DBC672F0F1F5EFEFEFEFEF
-          EFEFEFEFEFEFEF000000EFEFEFEFEFEFF0F0F0F2F2F2F4F5FAD5BD52C8B011C9
-          B115C8AF11DBC86FF0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
-          F2F2F2F2F2F2F1F2F4EEE7BAD2BC3FD3BD3ED4BD45F4EFD3EFEFF1EFEFEFEFEF
-          EFEFEFEFEFEFEF000000}
-        OnClick = SpeedButton2Click
       end
       object SpeedButton3: TSpeedButton
         Left = 682
@@ -213,7 +159,7 @@ inherited MEstoque: TMEstoque
       end
       object SpeedButton4: TSpeedButton
         Left = 374
-        Top = 164
+        Top = 163
         Width = 32
         Height = 23
         Glyph.Data = {
@@ -250,7 +196,6 @@ inherited MEstoque: TMEstoque
         Width = 41
         Height = 13
         Caption = 'Empresa'
-        FocusControl = DBEdit1
       end
       object Label17: TLabel
         Left = 156
@@ -258,7 +203,6 @@ inherited MEstoque: TMEstoque
         Width = 92
         Height = 13
         Caption = 'C'#243'digo em Estoque'
-        FocusControl = DBEdit16
       end
       object Label1: TLabel
         Left = 412
@@ -266,115 +210,53 @@ inherited MEstoque: TMEstoque
         Width = 31
         Height = 13
         Caption = 'Chave'
-        FocusControl = DBEdit2
       end
-      object DBEdit5: TDBEdit
-        Left = 16
-        Top = 123
-        Width = 134
-        Height = 21
-        DataField = 'ESTOQ_QTD'
-        DataSource = DM_Estoque.DSEstoque
-        TabOrder = 0
+      object Label16: TLabel
+        Left = 296
+        Top = 16
+        Width = 25
+        Height = 13
+        Caption = 'Bloco'
       end
-      object DBEdit6: TDBEdit
-        Left = 156
-        Top = 123
-        Width = 125
-        Height = 21
-        DataField = 'ESTOQ_QTDMIN'
-        DataSource = DM_Estoque.DSEstoque
-        TabOrder = 1
+      object Label15: TLabel
+        Left = 471
+        Top = 16
+        Width = 46
+        Height = 13
+        Caption = 'Prateleira'
       end
-      object DBEdit7: TDBEdit
-        Left = 287
-        Top = 123
-        Width = 130
-        Height = 21
-        DataField = 'ESTOQ_QTDMAX'
-        DataSource = DM_Estoque.DSEstoque
-        TabOrder = 2
-      end
-      object DBEdit8: TDBEdit
-        Left = 423
-        Top = 123
-        Width = 170
-        Height = 21
-        TabStop = False
-        Color = clSkyBlue
-        DataField = 'ESTOQ_CUSTOMEDIO'
-        DataSource = DM_Estoque.DSEstoque
-        ReadOnly = True
-        TabOrder = 3
-      end
-      object DBEdit12: TDBEdit
-        Left = 600
-        Top = 123
-        Width = 114
-        Height = 21
-        TabStop = False
-        DataField = 'ESTOQ_DTCADASTRO'
-        DataSource = DM_Estoque.DSEstoque
-        ParentColor = True
-        ReadOnly = True
-        TabOrder = 4
-      end
-      object DBLookupComboBox3: TDBLookupComboBox
-        Left = 153
-        Top = 165
-        Width = 218
-        Height = 21
-        DataField = 'ESTOQ_CATEGORIA'
-        DataSource = DM_Estoque.DSEstoque
-        KeyField = 'CAT_CODIGO'
-        ListField = 'CAT_DESCRICAO'
-        ListSource = DM_Estoque.DSCategoria
-        TabOrder = 5
-      end
-      object ComboBox1: TComboBox
-        Left = 16
-        Top = 164
-        Width = 128
-        Height = 21
-        Style = csDropDownList
-        TabOrder = 6
-        OnExit = ComboBox1Exit
-        Items.Strings = (
-          'Ativo'
-          'Inativo')
-      end
-      object DBLookupComboBox1: TDBLookupComboBox
-        Left = 364
+      object SpeedButton2: TSpeedButton
+        Left = 611
         Top = 31
-        Width = 134
-        Height = 21
-        DataField = 'ESTOQ_BLOCO'
-        DataSource = DM_Estoque.DSEstoque
-        KeyField = 'BLOC_CODIGO'
-        ListField = 'BLOC_DESCRICAO'
-        ListSource = DM_Estoque.DSBloco
-        TabOrder = 7
-      end
-      object DBLookupComboBox2: TDBLookupComboBox
-        Left = 543
-        Top = 31
-        Width = 134
-        Height = 21
-        DataField = 'ESTOQ_PRATELEIRA'
-        DataSource = DM_Estoque.DSEstoque
-        KeyField = 'PRAT_CODIGO'
-        ListField = 'PRAT_DESCRICAO'
-        ListSource = DM_Estoque.DSPrateleira
-        TabOrder = 8
-      end
-      object editProduto: TEdit
-        Left = 16
-        Top = 74
-        Width = 665
-        Height = 21
-        ReadOnly = True
-        TabOrder = 9
-        OnEnter = editProdutoEnter
+        Width = 32
+        Height = 23
+        Glyph.Data = {
+          06030000424D060300000000000036000000280000000F0000000F0000000100
+          180000000000D0020000C40E0000C40E00000000000000000000F2F2F2F2F2F2
+          F2F2F2F2F2F2F3F3F4E3DCCA9460458D4F2E946045E3DCCAF3F3F4F2F2F2F2F2
+          F2F2F2F2F2F2F2000000F2F2F2F2F2F2F2F2F2F2F2F2F6F9FA9B6A4F8C51318D
+          4F2E8E5130A47C67F6F8F9F2F2F2F2F2F2F2F2F2F2F2F2000000F0F0F0F0F0F0
+          F0F0F0F2F2F2F6F8FAA6754D94592B955B2D925728B78C6CF5F7F9F2F2F2F2F2
+          F2F2F2F2F2F2F2000000F2F2F2F2F2F2F2F2F2F2F2F2F5F8FAAD7E4D9E672B9F
+          682D9D6528BB956BF5F7F9F2F2F2F2F2F2F2F2F2F2F2F2000000F2F2F3F4F5F8
+          F4F5F8F4F6F8F7FBFFB78C4EA8742BA9752DA87228C4A170F6FAFFF4F6F8F4F5
+          F8F4F5F8F2F2F2000000F5F0E5CDAE7BCCAD77CCAD77CDAE79B58638AF7E2BB0
+          7F2CAF7E2AB88B41CDB07BCCAD77CCAD76CEB07EF9F5EE000000CEB072B38222
+          B48425B48425B38425B6862AB6872BB6872BB6872BB58629B38425B48425B484
+          25B28221D8BF8D000000CFB169BC8F28BC9029BC9029BC9029BC9029BC9029BC
+          9029BC9029BC9029BC9029BC9029BC9029BB8F27DAC186000000D1B462BE9520
+          BF9623BF9623BF9623BF9622C09726C09726C09726BF9622BF9623BF9623BF96
+          23BE951FDAC280000000EFE4C5CCAB4BCCAC4DCCAA4DCCAB4EC7A43DC19C20C1
+          9C22C19C21C9A642CCAC4ECCAA4DCCAB4DCBAB4CF3EDD7000000F0F1F2F5F4F2
+          F5F4F2F6F6F3F7F8F9D1B559C3A01CC4A120C29F1DD9C277F6F6F8F4F4F1F4F3
+          F1F5F4F3F0F0F1000000EFEFEFEFEFEFF0F0F0F2F2F2F4F5FAD2B757C5A518C5
+          A51CC4A418DAC373F0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
+          F0F0F0F2F2F2F4F5FAD3BA54C7AA15C8AB19C6A914DBC672F0F1F5EFEFEFEFEF
+          EFEFEFEFEFEFEF000000EFEFEFEFEFEFF0F0F0F2F2F2F4F5FAD5BD52C8B011C9
+          B115C8AF11DBC86FF0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
+          F2F2F2F2F2F2F1F2F4EEE7BAD2BC3FD3BD3ED4BD45F4EFD3EFEFF1EFEFEFEFEF
+          EFEFEFEFEFEFEF000000}
+        OnClick = SpeedButton2Click
       end
       object DBEdit1: TDBEdit
         Left = 16
@@ -386,7 +268,7 @@ inherited MEstoque: TMEstoque
         DataSource = DM_Estoque.DSEstoque
         ParentColor = True
         ReadOnly = True
-        TabOrder = 10
+        TabOrder = 0
       end
       object DBEdit16: TDBEdit
         Left = 156
@@ -398,6 +280,114 @@ inherited MEstoque: TMEstoque
         DataSource = DM_Estoque.DSEstoque
         ParentColor = True
         ReadOnly = True
+        TabOrder = 1
+      end
+      object DBLookupComboBox1: TDBLookupComboBox
+        Left = 296
+        Top = 32
+        Width = 134
+        Height = 21
+        DataField = 'ESTOQ_BLOCO'
+        DataSource = DM_Estoque.DSEstoque
+        KeyField = 'BLOC_CODIGO'
+        ListField = 'BLOC_DESCRICAO'
+        ListSource = DM_Estoque.DSBloco
+        TabOrder = 2
+      end
+      object DBLookupComboBox2: TDBLookupComboBox
+        Left = 472
+        Top = 32
+        Width = 134
+        Height = 21
+        DataField = 'ESTOQ_PRATELEIRA'
+        DataSource = DM_Estoque.DSEstoque
+        KeyField = 'PRAT_CODIGO'
+        ListField = 'PRAT_DESCRICAO'
+        ListSource = DM_Estoque.DSPrateleira
+        TabOrder = 3
+      end
+      object editProduto: TEdit
+        Left = 16
+        Top = 75
+        Width = 665
+        Height = 21
+        ReadOnly = True
+        TabOrder = 4
+        OnEnter = editProdutoEnter
+      end
+      object DBEdit5: TDBEdit
+        Left = 16
+        Top = 123
+        Width = 134
+        Height = 21
+        DataField = 'ESTOQ_QTD'
+        DataSource = DM_Estoque.DSEstoque
+        TabOrder = 5
+      end
+      object DBEdit6: TDBEdit
+        Left = 156
+        Top = 123
+        Width = 125
+        Height = 21
+        DataField = 'ESTOQ_QTDMIN'
+        DataSource = DM_Estoque.DSEstoque
+        TabOrder = 6
+      end
+      object DBEdit7: TDBEdit
+        Left = 287
+        Top = 123
+        Width = 130
+        Height = 21
+        DataField = 'ESTOQ_QTDMAX'
+        DataSource = DM_Estoque.DSEstoque
+        TabOrder = 7
+      end
+      object DBEdit8: TDBEdit
+        Left = 423
+        Top = 123
+        Width = 170
+        Height = 21
+        TabStop = False
+        Color = clSkyBlue
+        DataField = 'ESTOQ_CUSTOMEDIO'
+        DataSource = DM_Estoque.DSEstoque
+        ReadOnly = True
+        TabOrder = 8
+      end
+      object DBEdit12: TDBEdit
+        Left = 600
+        Top = 123
+        Width = 114
+        Height = 21
+        TabStop = False
+        DataField = 'ESTOQ_DTCADASTRO'
+        DataSource = DM_Estoque.DSEstoque
+        ParentColor = True
+        ReadOnly = True
+        TabOrder = 9
+      end
+      object ComboBox1: TComboBox
+        Left = 16
+        Top = 164
+        Width = 128
+        Height = 21
+        Style = csDropDownList
+        TabOrder = 10
+        OnExit = ComboBox1Exit
+        Items.Strings = (
+          'Ativo'
+          'Inativo')
+      end
+      object DBLookupComboBox3: TDBLookupComboBox
+        Left = 153
+        Top = 164
+        Width = 218
+        Height = 21
+        DataField = 'ESTOQ_CATEGORIA'
+        DataSource = DM_Estoque.DSEstoque
+        KeyField = 'CAT_CODIGO'
+        ListField = 'CAT_DESCRICAO'
+        ListSource = DM_Estoque.DSCategoria
         TabOrder = 11
       end
       object DBEdit2: TDBEdit
@@ -409,15 +399,15 @@ inherited MEstoque: TMEstoque
         DataSource = DM_Estoque.DSEstoque
         TabOrder = 12
       end
+      object DBMemo1: TDBMemo
+        Left = 16
+        Top = 210
+        Width = 696
+        Height = 81
+        DataField = 'ESTOQ_OBS'
+        DataSource = DM_Estoque.DSEstoque
+        TabOrder = 13
+      end
     end
-  end
-  object DBMemo1: TDBMemo
-    Left = 22
-    Top = 228
-    Width = 696
-    Height = 81
-    DataField = 'ESTOQ_OBS'
-    DataSource = DM_Estoque.DSEstoque
-    TabOrder = 2
   end
 end
