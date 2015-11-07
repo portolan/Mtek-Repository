@@ -39,7 +39,6 @@ type
     UCategoria: TIBUpdateSQL;
     DSCategoria: TDataSource;
     QueryGenerico: TIBQuery;
-    ProdutosPRO_EMPRESA: TIntegerField;
     ProdutosPRO_CODIGO: TIBStringField;
     ProdutosPRO_CODREF: TIBStringField;
     ProdutosPRO_CODBARRAS: TIBStringField;
@@ -164,6 +163,7 @@ type
     EstoquePRAT_EMPRESA: TIntegerField;
     EstoquePRAT_CODIGO: TIntegerField;
     EstoquePRAT_OBS: TIBStringField;
+    ProdutosPRO_EMPRESA: TIntegerField;
     procedure ProdutosAfterInsert(DataSet: TDataSet);
     procedure EstoqueAfterInsert(DataSet: TDataSet);
     procedure MarcasAfterInsert(DataSet: TDataSet);
