@@ -362,9 +362,7 @@ object DM_Estoque: TDM_Estoque
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      
-        'select a.*, pro_descricao, bloc_descricao, prat_descricao from e' +
-        'stoque a '
+      'select * from estoque '
       
         'inner join produtos on pro_codigo = estoq_produto and pro_empres' +
         'a = estoq_empresa '
@@ -495,6 +493,203 @@ object DM_Estoque: TDM_Estoque
       Required = True
       Size = 60
     end
+    object EstoquePRO_EMPRESA: TIntegerField
+      FieldName = 'PRO_EMPRESA'
+      Origin = '"PRODUTOS"."PRO_EMPRESA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object EstoquePRO_CODIGO: TIBStringField
+      FieldName = 'PRO_CODIGO'
+      Origin = '"PRODUTOS"."PRO_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
+    end
+    object EstoquePRO_CODREF: TIBStringField
+      FieldName = 'PRO_CODREF'
+      Origin = '"PRODUTOS"."PRO_CODREF"'
+      Size = 30
+    end
+    object EstoquePRO_CODBARRAS: TIBStringField
+      FieldName = 'PRO_CODBARRAS'
+      Origin = '"PRODUTOS"."PRO_CODBARRAS"'
+      Size = 60
+    end
+    object EstoquePRO_STATUS: TIBStringField
+      FieldName = 'PRO_STATUS'
+      Origin = '"PRODUTOS"."PRO_STATUS"'
+      Size = 5
+    end
+    object EstoquePRO_DTCADASTRO: TDateField
+      FieldName = 'PRO_DTCADASTRO'
+      Origin = '"PRODUTOS"."PRO_DTCADASTRO"'
+    end
+    object EstoquePRO_CLASSFISCAL: TIBStringField
+      FieldName = 'PRO_CLASSFISCAL'
+      Origin = '"PRODUTOS"."PRO_CLASSFISCAL"'
+      Size = 30
+    end
+    object EstoquePRO_CSTCSOSN: TIBStringField
+      FieldName = 'PRO_CSTCSOSN'
+      Origin = '"PRODUTOS"."PRO_CSTCSOSN"'
+      Size = 30
+    end
+    object EstoquePRO_NCMSH: TIBStringField
+      FieldName = 'PRO_NCMSH'
+      Origin = '"PRODUTOS"."PRO_NCMSH"'
+      Size = 30
+    end
+    object EstoquePRO_EXTIPI: TIBStringField
+      FieldName = 'PRO_EXTIPI'
+      Origin = '"PRODUTOS"."PRO_EXTIPI"'
+      Size = 30
+    end
+    object EstoquePRO_SITTRIB: TIBStringField
+      FieldName = 'PRO_SITTRIB'
+      Origin = '"PRODUTOS"."PRO_SITTRIB"'
+      Size = 30
+    end
+    object EstoquePRO_PIS: TIBStringField
+      FieldName = 'PRO_PIS'
+      Origin = '"PRODUTOS"."PRO_PIS"'
+    end
+    object EstoquePRO_COFINS: TIBStringField
+      FieldName = 'PRO_COFINS'
+      Origin = '"PRODUTOS"."PRO_COFINS"'
+      Size = 18
+    end
+    object EstoquePRO_CSTPIS: TIBStringField
+      FieldName = 'PRO_CSTPIS'
+      Origin = '"PRODUTOS"."PRO_CSTPIS"'
+      Size = 18
+    end
+    object EstoquePRO_ESTATUAL: TIBStringField
+      FieldName = 'PRO_ESTATUAL'
+      Origin = '"PRODUTOS"."PRO_ESTATUAL"'
+    end
+    object EstoquePRO_UNID: TIntegerField
+      FieldName = 'PRO_UNID'
+      Origin = '"PRODUTOS"."PRO_UNID"'
+    end
+    object EstoquePRO_MARCA: TIntegerField
+      FieldName = 'PRO_MARCA'
+      Origin = '"PRODUTOS"."PRO_MARCA"'
+    end
+    object EstoquePRO_MOEDA: TIBStringField
+      FieldName = 'PRO_MOEDA'
+      Origin = '"PRODUTOS"."PRO_MOEDA"'
+      Size = 10
+    end
+    object EstoquePRO_CATEGORIA: TIntegerField
+      FieldName = 'PRO_CATEGORIA'
+      Origin = '"PRODUTOS"."PRO_CATEGORIA"'
+    end
+    object EstoquePRO_PESO: TIBBCDField
+      FieldName = 'PRO_PESO'
+      Origin = '"PRODUTOS"."PRO_PESO"'
+      Precision = 18
+      Size = 2
+    end
+    object EstoquePRO_CUSTOMEDIO: TIBBCDField
+      FieldName = 'PRO_CUSTOMEDIO'
+      Origin = '"PRODUTOS"."PRO_CUSTOMEDIO"'
+      Precision = 18
+      Size = 2
+    end
+    object EstoquePRO_VALORIZACAO: TIBBCDField
+      FieldName = 'PRO_VALORIZACAO'
+      Origin = '"PRODUTOS"."PRO_VALORIZACAO"'
+      Precision = 18
+      Size = 2
+    end
+    object EstoquePRO_VLRFRETE: TIBBCDField
+      FieldName = 'PRO_VLRFRETE'
+      Origin = '"PRODUTOS"."PRO_VLRFRETE"'
+      Precision = 18
+      Size = 2
+    end
+    object EstoquePRO_PERCENCARG: TIBBCDField
+      FieldName = 'PRO_PERCENCARG'
+      Origin = '"PRODUTOS"."PRO_PERCENCARG"'
+      Precision = 18
+      Size = 2
+    end
+    object EstoquePRO_VLRENCARG: TIBBCDField
+      FieldName = 'PRO_VLRENCARG'
+      Origin = '"PRODUTOS"."PRO_VLRENCARG"'
+      Precision = 18
+      Size = 2
+    end
+    object EstoquePRO_PERCMARGLUCR: TIBBCDField
+      FieldName = 'PRO_PERCMARGLUCR'
+      Origin = '"PRODUTOS"."PRO_PERCMARGLUCR"'
+      Precision = 18
+      Size = 2
+    end
+    object EstoquePRO_VLRMARGLUCR: TIBBCDField
+      FieldName = 'PRO_VLRMARGLUCR'
+      Origin = '"PRODUTOS"."PRO_VLRMARGLUCR"'
+      Precision = 18
+      Size = 2
+    end
+    object EstoquePRO_VLRVENDA: TIBBCDField
+      FieldName = 'PRO_VLRVENDA'
+      Origin = '"PRODUTOS"."PRO_VLRVENDA"'
+      Precision = 18
+      Size = 2
+    end
+    object EstoquePRO_OBS: TIBStringField
+      FieldName = 'PRO_OBS'
+      Origin = '"PRODUTOS"."PRO_OBS"'
+      Size = 100
+    end
+    object EstoquePRO_IMG: TBlobField
+      FieldName = 'PRO_IMG'
+      Origin = '"PRODUTOS"."PRO_IMG"'
+      ProviderFlags = [pfInUpdate]
+      Size = 8
+    end
+    object EstoquePRO_GRUPO: TIBStringField
+      FieldName = 'PRO_GRUPO'
+      Origin = '"PRODUTOS"."PRO_GRUPO"'
+      FixedChar = True
+      Size = 1
+    end
+    object EstoqueBLOC_EMPRESA: TIntegerField
+      FieldName = 'BLOC_EMPRESA'
+      Origin = '"BLOCO"."BLOC_EMPRESA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object EstoqueBLOC_CODIGO: TIntegerField
+      FieldName = 'BLOC_CODIGO'
+      Origin = '"BLOCO"."BLOC_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object EstoqueBLOC_OBS: TIBStringField
+      FieldName = 'BLOC_OBS'
+      Origin = '"BLOCO"."BLOC_OBS"'
+      Size = 100
+    end
+    object EstoquePRAT_EMPRESA: TIntegerField
+      FieldName = 'PRAT_EMPRESA'
+      Origin = '"PRATELEIRA"."PRAT_EMPRESA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object EstoquePRAT_CODIGO: TIntegerField
+      FieldName = 'PRAT_CODIGO'
+      Origin = '"PRATELEIRA"."PRAT_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object EstoquePRAT_OBS: TIBStringField
+      FieldName = 'PRAT_OBS'
+      Origin = '"PRATELEIRA"."PRAT_OBS"'
+      Size = 100
+    end
   end
   object DSEstoque: TDataSource
     DataSet = Estoque
@@ -503,7 +698,7 @@ object DM_Estoque: TDM_Estoque
   end
   object UEstoque: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select * '
+      'Select '
       'from estoque '
       'where'
       '  ESTOQ_BLOCO = :ESTOQ_BLOCO and'
@@ -514,7 +709,6 @@ object DM_Estoque: TDM_Estoque
     ModifySQL.Strings = (
       'update estoque'
       'set'
-      '  BLOC_DESCRICAO = :BLOC_DESCRICAO,'
       '  ESTOQ_BLOCO = :ESTOQ_BLOCO,'
       '  ESTOQ_CATEGORIA = :ESTOQ_CATEGORIA,'
       '  ESTOQ_CHAVE = :ESTOQ_CHAVE,'
@@ -529,8 +723,7 @@ object DM_Estoque: TDM_Estoque
       '  ESTOQ_QTDMAX = :ESTOQ_QTDMAX,'
       '  ESTOQ_QTDMIN = :ESTOQ_QTDMIN,'
       '  ESTOQ_STATUS = :ESTOQ_STATUS,'
-      '  ESTOQ_TIPO = :ESTOQ_TIPO,'
-      '  PRAT_DESCRICAO = :PRAT_DESCRICAO'
+      '  ESTOQ_TIPO = :ESTOQ_TIPO'
       'where'
       '  ESTOQ_BLOCO = :OLD_ESTOQ_BLOCO and'
       '  ESTOQ_CODIGO = :OLD_ESTOQ_CODIGO and'
@@ -540,26 +733,24 @@ object DM_Estoque: TDM_Estoque
     InsertSQL.Strings = (
       'insert into estoque'
       
-        '  (BLOC_DESCRICAO, ESTOQ_BLOCO, ESTOQ_CATEGORIA, ESTOQ_CHAVE, ES' +
-        'TOQ_CODIGO, '
+        '  (ESTOQ_BLOCO, ESTOQ_CATEGORIA, ESTOQ_CHAVE, ESTOQ_CODIGO, ESTO' +
+        'Q_CUSTOMEDIO, '
       
-        '   ESTOQ_CUSTOMEDIO, ESTOQ_DTCADASTRO, ESTOQ_EMPRESA, ESTOQ_OBS,' +
-        ' ESTOQ_PRATELEIRA, '
+        '   ESTOQ_DTCADASTRO, ESTOQ_EMPRESA, ESTOQ_OBS, ESTOQ_PRATELEIRA,' +
+        ' ESTOQ_PRODUTO, '
       
-        '   ESTOQ_PRODUTO, ESTOQ_QTD, ESTOQ_QTDMAX, ESTOQ_QTDMIN, ESTOQ_S' +
-        'TATUS, '
-      '   ESTOQ_TIPO, PRAT_DESCRICAO)'
+        '   ESTOQ_QTD, ESTOQ_QTDMAX, ESTOQ_QTDMIN, ESTOQ_STATUS, ESTOQ_TI' +
+        'PO)'
       'values'
       
-        '  (:BLOC_DESCRICAO, :ESTOQ_BLOCO, :ESTOQ_CATEGORIA, :ESTOQ_CHAVE' +
-        ', :ESTOQ_CODIGO, '
+        '  (:ESTOQ_BLOCO, :ESTOQ_CATEGORIA, :ESTOQ_CHAVE, :ESTOQ_CODIGO, ' +
+        ':ESTOQ_CUSTOMEDIO, '
       
-        '   :ESTOQ_CUSTOMEDIO, :ESTOQ_DTCADASTRO, :ESTOQ_EMPRESA, :ESTOQ_' +
-        'OBS, :ESTOQ_PRATELEIRA, '
+        '   :ESTOQ_DTCADASTRO, :ESTOQ_EMPRESA, :ESTOQ_OBS, :ESTOQ_PRATELE' +
+        'IRA, :ESTOQ_PRODUTO, '
       
-        '   :ESTOQ_PRODUTO, :ESTOQ_QTD, :ESTOQ_QTDMAX, :ESTOQ_QTDMIN, :ES' +
-        'TOQ_STATUS, '
-      '   :ESTOQ_TIPO, :PRAT_DESCRICAO)')
+        '   :ESTOQ_QTD, :ESTOQ_QTDMAX, :ESTOQ_QTDMIN, :ESTOQ_STATUS, :EST' +
+        'OQ_TIPO)')
     DeleteSQL.Strings = (
       'delete from estoque'
       'where'
