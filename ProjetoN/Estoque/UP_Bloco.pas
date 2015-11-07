@@ -38,7 +38,7 @@ begin
   inherited;
     procMontaWhere;
     DM_Estoque.Bloco.Close;
-    DM_Estoque.Bloco.SQL.Text := 'select * from bloco where'+c_where;
+    DM_Estoque.Bloco.SQL.Text := 'select * from bloco where '+c_where;
     DM_Estoque.Bloco.Open;
 end;
 

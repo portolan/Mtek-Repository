@@ -38,7 +38,7 @@ begin
   inherited;
     procMontaWhere;
     DM_Estoque.Prateleira.Close;
-    DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira where' + c_where;
+    DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira where ' + c_where;
     DM_Estoque.Prateleira.Open;
 end;
 

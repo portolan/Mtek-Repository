@@ -37,7 +37,7 @@ begin
   inherited;
     procMontaWhere;
     DM_Estoque.Estoque.Close;
-    DM_Estoque.Estoque.SQL.Text := 'select * from ESTOQUE where'+c_where;
+    DM_Estoque.Estoque.SQL.Text := 'select * from ESTOQUE where '+c_where;
     DM_Estoque.Estoque.Open;
 end;
 
