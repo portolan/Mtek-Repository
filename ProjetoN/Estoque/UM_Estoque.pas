@@ -109,6 +109,8 @@ begin
     DM_Estoque.Produtos.Close;
     DM_Estoque.Produtos.SQL.Text := 'select * from Produtos';
     DM_Estoque.Produtos.Open;
+
+    editProduto.Text := DM_Estoque.ProdutosPRO_DESCRICAO.AsString;
 end;
 
 procedure TMEstoque.SpeedButton1Click(Sender: TObject);

@@ -19,7 +19,6 @@ inherited MEstoque: TMEstoque
   inherited gbInfos: TGroupBox
     Width = 726
     Height = 322
-    ExplicitTop = -16
     ExplicitWidth = 726
     ExplicitHeight = 322
     object GroupBox1: TGroupBox
@@ -29,8 +28,6 @@ inherited MEstoque: TMEstoque
       Height = 305
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = -4
-      ExplicitTop = 119
       object Label1: TLabel
         Left = 16
         Top = 16
