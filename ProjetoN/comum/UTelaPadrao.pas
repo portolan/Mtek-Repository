@@ -87,6 +87,10 @@ begin
       VK_F4 : sbRemover.Click;
       VK_ESCAPE : sbSair.Click;
    end;
+   if b_somenteConsulta then
+        if Key = VK_RETURN then
+            sbSair.Click;
+
 end;
 
 procedure TxPesqPadrao.FormShow(Sender: TObject);
