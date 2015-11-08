@@ -49,23 +49,14 @@ type
     Producao: TMenuItem;
     Bloco1: TMenuItem;
     Prateleira1: TMenuItem;
-    Relatrios1: TMenuItem;
-    Produtos2: TMenuItem;
-    N1: TMenuItem;
-    MovimentaodeEstoqueData1: TMenuItem;
-    MovimentaodeEstoqueProdutoscomMaisEntrada1: TMenuItem;
-    MovimentaodeEstoqueProdutoscomMaisSada1: TMenuItem;
-    MovimentaodeEstoquePorCustoMdio1: TMenuItem;
-    ProdutosMaisValorizados1: TMenuItem;
     Categoria1: TMenuItem;
     Departamentos1: TMenuItem;
     E1: TMenuItem;
     Histricos1: TMenuItem;
     Relatrios2: TMenuItem;
-    N2: TMenuItem;
-    Blocos1: TMenuItem;
     ProdutosemEstoque1: TMenuItem;
     Image10: TImage;
+    Relatrios1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -88,6 +79,7 @@ type
     procedure FluxodeCaixa1Click(Sender: TObject);
     procedure ContasaReceber1Click(Sender: TObject);
     procedure ProdutosemEstoque1Click(Sender: TObject);
+    procedure Relatrios1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -106,7 +98,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO, UP_lancamento, UM_Servico,
   UP_Servico, UP_Bloco, UM_Prateleira, UP_Categoria, UP_Prateleira,
   UP_departamento, UM_departamento, UP_planodecontas, UP_historico, Up_titulospagar,
-  UR_EstoqueRelatorios, UP_Caixa;
+  UR_EstoqueRelatorios, UP_Caixa, UF_EstoqueRelatorios;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -272,6 +264,16 @@ begin
         PEstoque.ShowModal;
     finally
         FreeAndNil(PEstoque);
+    end;
+end;
+
+procedure TTelaInicial.Relatrios1Click(Sender: TObject);
+begin
+    FEstoqueRelatorios := TFEstoqueRelatorios.Create(Self);
+    try
+        FEstoqueRelatorios.ShowModal;
+    finally
+        FreeAndNil(FEstoqueRelatorios);
     end;
 end;
 

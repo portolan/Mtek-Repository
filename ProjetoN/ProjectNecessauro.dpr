@@ -66,7 +66,8 @@ uses
   UP_contasreceber in 'contas_receber\UP_contasreceber.pas' {P_receber},
   UDM_contasreceber in 'datamodulo\UDM_contasreceber.pas' {DM_contasreceber: TDataModule},
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  UF_EstoqueRelatorios in 'Estoque\UF_EstoqueRelatorios.pas' {FEstoqueRelatorios};
 
 {$R *.res}
 
@@ -81,5 +82,6 @@ begin
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TTelaInicial, TelaInicial);
+  Application.CreateForm(TFEstoqueRelatorios, FEstoqueRelatorios);
   Application.Run;
 end.
