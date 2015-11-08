@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, Data.DB;
+  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, Data.DB, IBX.IBQuery;
 
 type
   TMEstoque = class(TxManuPadrao)
@@ -70,34 +70,40 @@ implementation
 {$R *.dfm}
 
 uses UDM_Estoque, UM_Produto, UP_Produto, UP_Marcas, UM_Bloco, UP_Prateleira,
-  UP_Bloco, UP_Categoria, UDM_contabil;
+  UP_Bloco, UP_Categoria, UDM_contabil, dm000, UEstoque;
 
 procedure TMEstoque.ComboBox1Exit(Sender: TObject);
 begin
   inherited;
     if TComboBox(Sender).ItemIndex = 0 then
-        DM_Estoque.EstoqueESTOQ_STATUS.Value := 'a'
+        DM_Estoque.EstoqueESTOQ_STATUS.Value := 'A'
     else
-        DM_Estoque.EstoqueESTOQ_STATUS.Value := 'i';
+        DM_Estoque.EstoqueESTOQ_STATUS.Value := 'I';
 end;
 
 procedure TMEstoque.editProdutoEnter(Sender: TObject);
 begin
   inherited;
-    PProduto := TPProduto.Create(Self);
-    try
-        PProduto.procInicializar(DM_Estoque.Marcas, False, True, PProduto, TPProduto);
+    if DM_Estoque.Estoque.State in [dsInsert] then
+    begin
+        PProduto := TPProduto.Create(Self);
+        try
+            PProduto.procInicializar(DM_Estoque.Produtos, False, True, PProduto, TPProduto);
 
-        PProduto.ShowModal;
-    finally
-        DM_Estoque.EstoqueESTOQ_PRODUTO.Value := DM_Estoque.Produtos.FieldByName('pro_codigo').AsString;
-        DM_Estoque.EstoqueESTOQ_EMPRESA.value := DM_Estoque.Produtos.FieldByName('pro_empresa').AsInteger;
-        editProduto.Text := DM_Estoque.Produtos.FieldByName('PRO_DESCRICAO').AsString;
+            PProduto.Caption := 'Selecione um Produto...';
+            PProduto.Height := 350;
+            PProduto.ShowModal;
 
-        if DM_Estoque.Estoque.State in [dsEdit, dsInsert] then
-            procSelecionaItems;
+        finally
+            DM_Estoque.EstoqueESTOQ_PRODUTO.Value := DM_Estoque.Produtos.FieldByName('pro_codigo').AsString;
+            DM_Estoque.EstoqueESTOQ_EMPRESA.value := DM_Estoque.Produtos.FieldByName('pro_empresa').AsInteger;
+            editProduto.Text := DM_Estoque.Produtos.FieldByName('PRO_DESCRICAO').AsString;
 
-        FreeAndNil(PProduto);
+            if DM_Estoque.Estoque.State in [dsEdit, dsInsert] then
+                procSelecionaItems;
+
+            FreeAndNil(PProduto);
+        end;
     end;
 end;
 
@@ -114,15 +120,13 @@ procedure TMEstoque.FormCreate(Sender: TObject);
 begin
   inherited;
 
-    DM_Estoque.Produtos.Close;
-    DM_Estoque.Produtos.SQL.Text := 'select * from Produtos';
-    DM_Estoque.Produtos.Open;
-
     if DM_Estoque.Estoque.State in [dsEdit] then
             procSelecionaItems;
 end;
 
 procedure TMEstoque.procSelecionaItems;
+var
+    qryDin : TIBQuery;
 begin
     DM_Estoque.Bloco.Close;
     DM_Estoque.Bloco.SQL.Text := 'select * from bloco where bloc_empresa = ' + DM_Estoque.EstoqueESTOQ_EMPRESA.AsString;
@@ -139,7 +143,14 @@ begin
     DM_Estoque.Categoria.Open;
     DM_Estoque.Categoria.FetchAll;
 
-    editProduto.Text := DM_Estoque.ProdutosPRO_DESCRICAO.AsString;
+    qryDin := funcCriaQuery;
+    qryDin.Close;
+    qryDin.SQL.Text := 'select a.pro_descricao nomeProduto from produtos a where ' +
+                       'pro_empresa = ' + DM_Estoque.EstoqueESTOQ_EMPRESA.AsString + ' and ' +
+                       'pro_codigo  = ' + DM_Estoque.EstoqueESTOQ_PRODUTO.AsString;
+    qryDin.Open;
+
+    editProduto.Text := qryDin.FieldByName('nomeProduto').AsString;
 end;
 
 procedure TMEstoque.SpeedButton1Click(Sender: TObject);

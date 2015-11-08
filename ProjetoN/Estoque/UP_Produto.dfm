@@ -1,6 +1,7 @@
 inherited PProduto: TPProduto
   Caption = 'Produtos'
   OnCreate = FormCreate
+  ExplicitLeft = -38
   ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96
@@ -13,21 +14,41 @@ inherited PProduto: TPProduto
           item
             Expanded = False
             FieldName = 'PRO_EMPRESA'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'EMP_RAZAO'
+            Width = 159
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PRO_CODIGO'
+            Width = 109
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PRO_DESCRICAO'
+            Width = 354
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_CATEGORIA'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'CAT_DESCRICAO'
+            Width = 178
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'PRO_CODREF'
+            Width = 134
             Visible = True
           end
           item
@@ -53,11 +74,6 @@ inherited PProduto: TPProduto
           item
             Expanded = False
             FieldName = 'PRO_MOEDA'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRO_CATEGORIA'
             Visible = True
           end
           item

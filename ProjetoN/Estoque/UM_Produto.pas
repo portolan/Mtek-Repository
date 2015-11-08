@@ -102,9 +102,9 @@ procedure TMProduto.cbStatusExit(Sender: TObject);
 begin
   inherited;
     if TComboBox(Sender).ItemIndex = 0 then
-        DM_Estoque.ProdutosPRO_STATUS.Value := 'a'
+        DM_Estoque.ProdutosPRO_STATUS.Value := 'A'
     else
-        DM_Estoque.ProdutosPRO_STATUS.Value := 'i';
+        DM_Estoque.ProdutosPRO_STATUS.Value := 'I';
 end;
 
 procedure TMProduto.DBImage1DblClick(Sender: TObject);

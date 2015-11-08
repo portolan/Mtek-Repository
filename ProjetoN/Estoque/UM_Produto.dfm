@@ -20,8 +20,6 @@ inherited MProduto: TMProduto
   inherited gbInfos: TGroupBox
     Width = 717
     Height = 615
-    ExplicitLeft = 8
-    ExplicitTop = 41
     ExplicitWidth = 717
     ExplicitHeight = 615
     object Label30: TLabel
