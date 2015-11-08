@@ -41,6 +41,7 @@ object xPesqPadrao: TxPesqPadrao
         Height = 284
         Align = alClient
         DrawingStyle = gdsGradient
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         ReadOnly = True
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
