@@ -10,7 +10,11 @@ object DM_Estoque: TDM_Estoque
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select * from produtos')
+      'select b.*, emp_razao, cat_descricao from produtos b'
+      'inner join empresa on emp_cod = pro_empresa'
+      
+        'inner join categoria on cat_empresa = pro_empresa and cat_codigo' +
+        ' = pro_categoria')
     UpdateObject = UProdutos
     Left = 24
     Top = 8
@@ -224,6 +228,19 @@ object DM_Estoque: TDM_Estoque
       FieldName = 'PRO_ESTATUAL'
       Origin = '"PRODUTOS"."PRO_ESTATUAL"'
     end
+    object ProdutosEMP_RAZAO: TIBStringField
+      DisplayLabel = 'Empresa'
+      FieldName = 'EMP_RAZAO'
+      Origin = '"EMPRESA"."EMP_RAZAO"'
+      Size = 60
+    end
+    object ProdutosCAT_DESCRICAO: TIBStringField
+      DisplayLabel = 'Categoria'
+      FieldName = 'CAT_DESCRICAO'
+      Origin = '"CATEGORIA"."CAT_DESCRICAO"'
+      Required = True
+      Size = 60
+    end
   end
   object UProdutos: TIBUpdateSQL
     RefreshSQL.Strings = (
@@ -328,7 +345,9 @@ object DM_Estoque: TDM_Estoque
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select * from estoque')
+      'select a.*, pro_descricao from estoque a'
+      'inner join produtos on estoq_empresa = pro_empresa and '
+      'estoq_produto = pro_codigo')
     UpdateObject = UEstoque
     Left = 88
     Top = 8
@@ -429,6 +448,12 @@ object DM_Estoque: TDM_Estoque
       FieldName = 'ESTOQ_CHAVE'
       Origin = '"ESTOQUE"."ESTOQ_CHAVE"'
       Size = 10
+    end
+    object EstoquePRO_DESCRICAO: TIBStringField
+      DisplayLabel = 'Produto'
+      FieldName = 'PRO_DESCRICAO'
+      Origin = '"PRODUTOS"."PRO_DESCRICAO"'
+      Size = 60
     end
   end
   object DSEstoque: TDataSource

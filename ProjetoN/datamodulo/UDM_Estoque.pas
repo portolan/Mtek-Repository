@@ -124,6 +124,9 @@ type
     ProdutosPRO_ESTATUAL: TIBStringField;
     EstoqueESTOQ_CHAVE: TIBStringField;
     ProdutosPRO_EMPRESA: TIntegerField;
+    EstoquePRO_DESCRICAO: TIBStringField;
+    ProdutosEMP_RAZAO: TIBStringField;
+    ProdutosCAT_DESCRICAO: TIBStringField;
     procedure ProdutosAfterInsert(DataSet: TDataSet);
     procedure EstoqueAfterInsert(DataSet: TDataSet);
     procedure MarcasAfterInsert(DataSet: TDataSet);
