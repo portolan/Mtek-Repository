@@ -127,6 +127,14 @@ type
     EstoquePRO_DESCRICAO: TIBStringField;
     ProdutosEMP_RAZAO: TIBStringField;
     ProdutosCAT_DESCRICAO: TIBStringField;
+    MovimentoEstoquePRO_DESCRICAO: TIBStringField;
+    MovimentoEstoqueEMP_RAZAO: TIBStringField;
+    MovimentoEstoqueBLOC_DESCRICAO: TIBStringField;
+    MovimentoEstoquePRAT_DESCRICAO: TIBStringField;
+    EstoqueEMP_RAZAO: TIBStringField;
+    EstoqueBLOC_DESCRICAO: TIBStringField;
+    EstoquePRAT_DESCRICAO: TIBStringField;
+    EstoqueCAT_DESCRICAO: TIBStringField;
     procedure ProdutosAfterInsert(DataSet: TDataSet);
     procedure EstoqueAfterInsert(DataSet: TDataSet);
     procedure MarcasAfterInsert(DataSet: TDataSet);

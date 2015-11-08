@@ -13,8 +13,8 @@ object DM_Estoque: TDM_Estoque
       'select b.*, emp_razao, cat_descricao from produtos b'
       'inner join empresa on emp_cod = pro_empresa'
       
-        'inner join categoria on cat_empresa = pro_empresa and cat_codigo' +
-        ' = pro_categoria')
+        'left join categoria on cat_empresa = pro_empresa and cat_codigo ' +
+        '= pro_categoria')
     UpdateObject = UProdutos
     Left = 24
     Top = 8
@@ -238,7 +238,6 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Categoria'
       FieldName = 'CAT_DESCRICAO'
       Origin = '"CATEGORIA"."CAT_DESCRICAO"'
-      Required = True
       Size = 60
     end
   end
@@ -345,9 +344,22 @@ object DM_Estoque: TDM_Estoque
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select a.*, pro_descricao from estoque a'
-      'inner join produtos on estoq_empresa = pro_empresa and '
-      'estoq_produto = pro_codigo')
+      
+        'select a.*, pro_descricao, emp_razao, bloc_descricao, prat_descr' +
+        'icao, cat_descricao from estoque a'
+      
+        'inner join produtos on estoq_empresa = pro_empresa and estoq_pro' +
+        'duto = pro_codigo'
+      'inner join empresa on emp_cod = pro_empresa'
+      
+        'inner join bloco on estoq_bloco = bloc_codigo and estoq_empresa ' +
+        '= bloc_empresa'
+      
+        'inner join prateleira on estoq_prateleira = prat_codigo and esto' +
+        'q_empresa = prat_empresa'
+      
+        'left join categoria on estoq_categoria = cat_codigo and estoq_em' +
+        'presa = cat_empresa')
     UpdateObject = UEstoque
     Left = 88
     Top = 8
@@ -453,6 +465,31 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Produto'
       FieldName = 'PRO_DESCRICAO'
       Origin = '"PRODUTOS"."PRO_DESCRICAO"'
+      Size = 60
+    end
+    object EstoqueEMP_RAZAO: TIBStringField
+      DisplayLabel = 'Empresa'
+      FieldName = 'EMP_RAZAO'
+      Origin = '"EMPRESA"."EMP_RAZAO"'
+      Size = 60
+    end
+    object EstoqueBLOC_DESCRICAO: TIBStringField
+      DisplayLabel = 'Bloco'
+      FieldName = 'BLOC_DESCRICAO'
+      Origin = '"BLOCO"."BLOC_DESCRICAO"'
+      Size = 60
+    end
+    object EstoquePRAT_DESCRICAO: TIBStringField
+      DisplayLabel = 'Prateleira'
+      FieldName = 'PRAT_DESCRICAO'
+      Origin = '"PRATELEIRA"."PRAT_DESCRICAO"'
+      Size = 60
+    end
+    object EstoqueCAT_DESCRICAO: TIBStringField
+      DisplayLabel = 'Categoria'
+      FieldName = 'CAT_DESCRICAO'
+      Origin = '"CATEGORIA"."CAT_DESCRICAO"'
+      Required = True
       Size = 60
     end
   end
@@ -1068,8 +1105,19 @@ object DM_Estoque: TDM_Estoque
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select * from ESTOQ_MOVIMENTO'
-      '')
+      
+        'select c.*, pro_descricao, emp_razao, bloc_descricao, prat_descr' +
+        'icao from ESTOQ_MOVIMENTO c'
+      
+        'inner join produtos on em_produto = pro_codigo and em_empresa = ' +
+        'pro_empresa'
+      'inner join empresa on em_empresa = emp_cod'
+      
+        'inner join bloco on bloc_codigo = em_bloco and bloc_empresa = em' +
+        '_empresa'
+      
+        'inner join prateleira on prat_codigo = em_prateleira and prat_em' +
+        'presa = em_empresa')
     UpdateObject = UMovimentoEstoque
     Left = 320
     Top = 8
@@ -1154,6 +1202,30 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Pedido de Compra Origem'
       FieldName = 'EM_PEDIDOCOMPRAORIGEM'
       Origin = '"ESTOQ_MOVIMENTO"."EM_PEDIDOCOMPRAORIGEM"'
+    end
+    object MovimentoEstoquePRO_DESCRICAO: TIBStringField
+      DisplayLabel = 'Produto'
+      FieldName = 'PRO_DESCRICAO'
+      Origin = '"PRODUTOS"."PRO_DESCRICAO"'
+      Size = 60
+    end
+    object MovimentoEstoqueEMP_RAZAO: TIBStringField
+      DisplayLabel = 'Empresa'
+      FieldName = 'EMP_RAZAO'
+      Origin = '"EMPRESA"."EMP_RAZAO"'
+      Size = 60
+    end
+    object MovimentoEstoqueBLOC_DESCRICAO: TIBStringField
+      DisplayLabel = 'Bloco'
+      FieldName = 'BLOC_DESCRICAO'
+      Origin = '"BLOCO"."BLOC_DESCRICAO"'
+      Size = 60
+    end
+    object MovimentoEstoquePRAT_DESCRICAO: TIBStringField
+      DisplayLabel = 'Prateleira'
+      FieldName = 'PRAT_DESCRICAO'
+      Origin = '"PRATELEIRA"."PRAT_DESCRICAO"'
+      Size = 60
     end
   end
   object Unidade: TIBQuery
