@@ -453,7 +453,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         ParentColor = True
         ReadOnly = True
         TabOrder = 10
-        OnEnter = editProdutoEnter
+        OnEnter = FormActivate
       end
       object cbTipo: TComboBox
         Left = 16

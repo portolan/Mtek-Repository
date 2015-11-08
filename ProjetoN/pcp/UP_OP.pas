@@ -36,7 +36,7 @@ end;
 procedure TP_OP.procSelect;
 begin
   inherited;
-     procMontaWhere;
+      procMontaWhere;
       DM_PCP.OrdemProducao.Close;
       DM_PCP.OrdemProducao.SQL.Text:= 'SELECT * FROM ORDEM_PRODUCAO WHERE '+c_where;
       DM_PCP.OrdemProducao.Open;

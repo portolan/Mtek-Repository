@@ -80,7 +80,6 @@ begin
   if DM_Estoque.MovimentoEstoque.State in [dsInsert] then
         exibeTelaProduto;
 end;
-
 procedure TMMovimentoEstoque.exibeTelaProduto;
 var
     qryDin : TIBQuery;

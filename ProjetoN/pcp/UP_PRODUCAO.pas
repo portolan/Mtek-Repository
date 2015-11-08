@@ -29,6 +29,7 @@ procedure TP_PRODUCAO.FormCreate(Sender: TObject);
 begin
   inherited;
     procInicializar(DM_PCP.OrdemProducao,TRUE,FALSE,M_PRODUCAO,TM_PRODUCAO);
+    funcAtribuiFiltros;
 end;
 
 end.
