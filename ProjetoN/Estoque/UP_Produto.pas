@@ -40,7 +40,7 @@ begin
     DM_Estoque.Produtos.Close;
     DM_Estoque.Produtos.SQL.Text := 'select b.*, emp_razao, cat_descricao from produtos b  ' +
                                     'inner join empresa on emp_cod = pro_empresa           ' +
-                                    'inner join categoria on cat_empresa = pro_empresa and ' +
+                                    'left join categoria on cat_empresa = pro_empresa and ' +
                                     'cat_codigo = pro_categoria where '+c_where;
     DM_Estoque.Produtos.Open;
 end;

@@ -13,6 +13,12 @@ inherited PEstoque: TPEstoque
           item
             Expanded = False
             FieldName = 'ESTOQ_EMPRESA'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'EMP_RAZAO'
+            Width = 108
             Visible = True
           end
           item
@@ -23,16 +29,29 @@ inherited PEstoque: TPEstoque
           item
             Expanded = False
             FieldName = 'PRO_DESCRICAO'
+            Width = 322
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'ESTOQ_BLOCO'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'BLOC_DESCRICAO'
+            Width = 159
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'ESTOQ_PRATELEIRA'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'PRAT_DESCRICAO'
+            Width = 153
             Visible = True
           end
           item
@@ -68,6 +87,12 @@ inherited PEstoque: TPEstoque
           item
             Expanded = False
             FieldName = 'ESTOQ_CATEGORIA'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'CAT_DESCRICAO'
+            Width = 173
             Visible = True
           end
           item

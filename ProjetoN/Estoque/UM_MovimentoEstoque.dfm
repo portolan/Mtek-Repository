@@ -137,8 +137,6 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
       Align = alClient
       Caption = ' Entrada/Sa'#237'da '
       TabOrder = 0
-      ExplicitLeft = -14
-      ExplicitTop = 111
       object Label1: TLabel
         Left = 16
         Top = 16
@@ -464,6 +462,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         Height = 21
         Style = csDropDownList
         TabOrder = 0
+        OnChange = cbTipoChange
         OnExit = cbTipoExit
         Items.Strings = (
           'Entrada'

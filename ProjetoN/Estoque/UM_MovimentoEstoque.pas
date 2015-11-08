@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, Data.DB;
+  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, Data.DB, IBX.IBQuery;
 
 type
   TMMovimentoEstoque = class(TxManuPadrao)
@@ -43,11 +43,13 @@ type
     procedure cbTipoExit(Sender: TObject);
     procedure editProdutoEnter(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure cbTipoChange(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     procedure exibeTelaProduto;
+    procedure procDefineTipo;
   end;
 
 var
@@ -57,15 +59,19 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_Estoque, UM_Estoque, UP_Estoque, UP_Bloco, UP_Prateleira, UP_Produto;
+uses UDM_Estoque, UM_Estoque, UP_Estoque, UP_Bloco, UP_Prateleira, UP_Produto,
+  UEstoque;
+
+procedure TMMovimentoEstoque.cbTipoChange(Sender: TObject);
+begin
+  inherited;
+    procDefineTipo;
+end;
 
 procedure TMMovimentoEstoque.cbTipoExit(Sender: TObject);
 begin
   inherited;
-    if TComboBox(Sender).ItemIndex = 0 then
-        DM_Estoque.MovimentoEstoqueEM_TIPO.value := 'E'
-    else
-        DM_Estoque.MovimentoEstoqueEM_TIPO.Value := 'S';
+    procDefineTipo;
 end;
 
 procedure TMMovimentoEstoque.editProdutoEnter(Sender: TObject);
@@ -76,35 +82,66 @@ begin
 end;
 
 procedure TMMovimentoEstoque.exibeTelaProduto;
+var
+    qryDin : TIBQuery;
 begin
     PEstoque := TPEstoque.Create(Self);
     try
-        PEstoque.procInicializar(DM_Estoque.Estoque, False, True, PEstoque, TPEstoque);
+
+        qryDin := funcCriaQuery;
+        qryDin.Close;
+        qryDin.SQL.Text := 'select a.*, pro_descricao from estoque a '+
+            'inner join produtos on estoq_empresa = pro_empresa and estoq_produto = pro_codigo';
+        qryDin.Open;
+
+        PEstoque.procInicializar(qryDin, False, True, PEstoque, TPEstoque);
         PEstoque.ShowModal;
     finally
 
-        editProduto.Text := DM_Estoque.Estoque.FieldByName('ESTOQ_PRODUTO').AsString;
-        DM_Estoque.MovimentoEstoqueEM_EMPRESA.Value := DM_Estoque.Estoque.FieldByName('ESTOQ_EMPRESA').AsInteger;
-        DM_Estoque.MovimentoEstoqueEM_BLOCO.Value := DM_Estoque.Estoque.FieldByName('ESTOQ_BLOCO').AsInteger;
-        DM_Estoque.MovimentoEstoqueEM_PRATELEIRA.Value := DM_Estoque.Estoque.FieldByName('ESTOQ_PRATELEIRA').AsInteger;
-        DM_Estoque.MovimentoEstoqueEM_ESTOQUE.Value := DM_Estoque.Estoque.FieldByName('ESTOQ_CODIGO').AsInteger;
-        DM_Estoque.MovimentoEstoqueEM_PRODUTO.Value := DM_Estoque.Estoque.FieldByName('ESTOQ_PRODUTO').AsString;
+        editProduto.Text := qryDin.FieldByName('ESTOQ_PRODUTO').AsString;
+        DM_Estoque.MovimentoEstoqueEM_EMPRESA.Value := qryDin.FieldByName('ESTOQ_EMPRESA').AsInteger;
+        DM_Estoque.MovimentoEstoqueEM_BLOCO.Value := qryDin.FieldByName('ESTOQ_BLOCO').AsInteger;
+        DM_Estoque.MovimentoEstoqueEM_PRATELEIRA.Value := qryDin.FieldByName('ESTOQ_PRATELEIRA').AsInteger;
+        DM_Estoque.MovimentoEstoqueEM_ESTOQUE.Value := qryDin.FieldByName('ESTOQ_CODIGO').AsInteger;
+        DM_Estoque.MovimentoEstoqueEM_PRODUTO.Value := qryDin.FieldByName('ESTOQ_PRODUTO').AsString;
 
         FreeAndNil(PEstoque);
     end;
 end;
 
 procedure TMMovimentoEstoque.FormActivate(Sender: TObject);
+var
+    qryDin : TIBQuery;
 begin
   inherited;
     if DM_Estoque.MovimentoEstoque.State in [dsEdit] then
     begin
-        editProduto.Text := DM_Estoque.MovimentoEstoqueEM_PRODUTO.Value;
+        qryDin := funcCriaQuery;
+        qryDin.Close;
+        qryDin.SQL.Text := 'select pro_descricao from produtos where pro_empresa = ' + DM_Estoque.MovimentoEstoqueEM_EMPRESA.AsString
+           + 'and pro_codigo = ' + DM_Estoque.MovimentoEstoqueEM_PRODUTO.AsString;
+        qryDin.Open;
+        editProduto.Text := qryDin.FieldByName('pro_descricao').AsString;
+
+        if DM_Estoque.MovimentoEstoqueEM_TIPO.Value = 'E' then
+            cbTipo.ItemIndex := 0
+        else
+        if DM_Estoque.MovimentoEstoqueEM_TIPO.Value = 'S' then
+            cbTipo.ItemIndex := 1;
+
     end
     else if DM_Estoque.MovimentoEstoque.State in [dsInsert] then
     begin
         editProduto.SetFocus;
     end;
+end;
+
+procedure TMMovimentoEstoque.procDefineTipo;
+begin
+    if cbTipo.ItemIndex = 0 then
+        DM_Estoque.MovimentoEstoqueEM_TIPO.value := 'E'
+    else
+        DM_Estoque.MovimentoEstoqueEM_TIPO.Value := 'S';
 end;
 
 procedure TMMovimentoEstoque.SpeedButton1Click(Sender: TObject);
