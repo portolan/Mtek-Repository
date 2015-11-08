@@ -20,6 +20,8 @@ inherited MProduto: TMProduto
   inherited gbInfos: TGroupBox
     Width = 717
     Height = 615
+    ExplicitLeft = 8
+    ExplicitTop = 41
     ExplicitWidth = 717
     ExplicitHeight = 615
     object Label30: TLabel
@@ -326,6 +328,7 @@ inherited MProduto: TMProduto
         ListField = 'EMP_RAZAO'
         ListSource = DM_contabil.Dempresa
         TabOrder = 0
+        OnExit = DBLookupComboBox4Exit
       end
     end
     object GroupBox2: TGroupBox
@@ -640,12 +643,14 @@ inherited MProduto: TMProduto
       Top = 519
       Width = 693
       Height = 82
+      DataField = 'PRO_OBS'
+      DataSource = DM_Estoque.DSProdutos
       TabOrder = 4
     end
   end
   object OpenPictureDialog: TOpenPictureDialog
     DefaultExt = '*.jpg;*.png'
-    Left = 640
-    Top = 400
+    Left = 656
+    Top = 456
   end
 end

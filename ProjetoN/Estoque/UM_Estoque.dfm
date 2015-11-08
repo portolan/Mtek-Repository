@@ -258,6 +258,14 @@ inherited MEstoque: TMEstoque
           EFEFEFEFEFEFEF000000}
         OnClick = SpeedButton2Click
       end
+      object Label9: TLabel
+        Left = 560
+        Top = 148
+        Width = 25
+        Height = 13
+        Caption = 'Bloco'
+        FocusControl = DBEdit3
+      end
       object DBEdit1: TDBEdit
         Left = 16
         Top = 32
@@ -268,7 +276,7 @@ inherited MEstoque: TMEstoque
         DataSource = DM_Estoque.DSEstoque
         ParentColor = True
         ReadOnly = True
-        TabOrder = 0
+        TabOrder = 1
       end
       object DBEdit16: TDBEdit
         Left = 156
@@ -280,7 +288,7 @@ inherited MEstoque: TMEstoque
         DataSource = DM_Estoque.DSEstoque
         ParentColor = True
         ReadOnly = True
-        TabOrder = 1
+        TabOrder = 2
       end
       object DBLookupComboBox1: TDBLookupComboBox
         Left = 296
@@ -292,7 +300,7 @@ inherited MEstoque: TMEstoque
         KeyField = 'BLOC_CODIGO'
         ListField = 'BLOC_DESCRICAO'
         ListSource = DM_Estoque.DSBloco
-        TabOrder = 2
+        TabOrder = 3
       end
       object DBLookupComboBox2: TDBLookupComboBox
         Left = 472
@@ -304,7 +312,7 @@ inherited MEstoque: TMEstoque
         KeyField = 'PRAT_CODIGO'
         ListField = 'PRAT_DESCRICAO'
         ListSource = DM_Estoque.DSPrateleira
-        TabOrder = 3
+        TabOrder = 4
       end
       object editProduto: TEdit
         Left = 16
@@ -312,7 +320,7 @@ inherited MEstoque: TMEstoque
         Width = 665
         Height = 21
         ReadOnly = True
-        TabOrder = 4
+        TabOrder = 0
         OnEnter = editProdutoEnter
       end
       object DBEdit5: TDBEdit
@@ -407,6 +415,15 @@ inherited MEstoque: TMEstoque
         DataField = 'ESTOQ_OBS'
         DataSource = DM_Estoque.DSEstoque
         TabOrder = 13
+      end
+      object DBEdit3: TDBEdit
+        Left = 560
+        Top = 164
+        Width = 134
+        Height = 21
+        DataField = 'ESTOQ_BLOCO'
+        DataSource = DM_Estoque.DSEstoque
+        TabOrder = 14
       end
     end
   end

@@ -45,11 +45,7 @@ begin
 
     procMontaWhere;
     DM_Estoque.Estoque.Close;
-    DM_Estoque.Estoque.SQL.Text := 'select * from ESTOQUE         ' +
-                        'inner join produtos on pro_codigo = estoq_produto and pro_empresa = estoq_empresa           ' +
-                        'inner join bloco on bloc_codigo = estoq_bloco and bloc_empresa = estoq_empresa              ' +
-                        'inner join prateleira on prat_codigo = estoq_prateleira and prat_empresa = estoq_prateleira ' +
-                        'where '+c_where;
+    DM_Estoque.Estoque.SQL.Text := 'select * from estoque where '+c_where;
     DM_Estoque.Estoque.Open;
 end;
 

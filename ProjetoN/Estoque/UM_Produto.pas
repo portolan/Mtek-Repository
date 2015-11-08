@@ -57,7 +57,6 @@ type
     DBComboBox1: TDBComboBox;
     DBLookupComboBox2: TDBLookupComboBox;
     Grupo: TRadioGroup;
-    OpenPictureDialog: TOpenPictureDialog;
     DBLookupComboBox3: TDBLookupComboBox;
     DBLookupComboBox4: TDBLookupComboBox;
     DBMemo1: TDBMemo;
@@ -71,6 +70,7 @@ type
     DBEdit24: TDBEdit;
     DBEdit19: TDBEdit;
     DBEdit33: TDBEdit;
+    OpenPictureDialog: TOpenPictureDialog;
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -79,11 +79,13 @@ type
     procedure FormActivate(Sender: TObject);
     procedure sbLoadClick(Sender: TObject);
     procedure DBImage1DblClick(Sender: TObject);
+    procedure DBLookupComboBox4Exit(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     procedure procSelecionaGrupo;
+    procedure procSelecionaItems;
   end;
 
 var
@@ -114,6 +116,13 @@ begin
     end;
 end;
 
+procedure TMProduto.DBLookupComboBox4Exit(Sender: TObject);
+begin
+  inherited;
+    if TDBLookupComboBox(Sender).Text <> EmptyStr then
+        procSelecionaItems;
+end;
+
 procedure TMProduto.FormActivate(Sender: TObject);
 begin
   inherited;
@@ -123,10 +132,8 @@ end;
 procedure TMProduto.FormCreate(Sender: TObject);
 begin
   inherited;
-    DM_Estoque.Categoria.Close;
-    DM_Estoque.Categoria.SQL.Text := 'select * from categoria';
-    DM_Estoque.Categoria.Open;
-    DM_Estoque.Categoria.FetchAll;
+    if DM_Estoque.Produtos.State in [dsEdit] then
+        procSelecionaItems;
 
     DM_Estoque.Unidade.Close;
     DM_Estoque.Unidade.SQL.Text := 'select * from unidade';
@@ -142,13 +149,6 @@ begin
     DM_contabil.empresa.SQL.Text := 'select * from empresa';
     DM_contabil.empresa.Open;
     DM_contabil.empresa.FetchAll;
-
-    {
-    if DM_Estoque.Produtos.State in [dsEdit] then
-    begin
-
-    end;     }
-
 end;
 
 procedure TMProduto.GrupoClick(Sender: TObject);
@@ -173,22 +173,27 @@ begin
     if DM_Estoque.Produtos.FieldByName('PRO_GRUPO').AsString = 'B' then
     begin
         Grupo.ItemIndex := 0;
-        ShowMessage('b');
     end
     else if DM_Estoque.Produtos.FieldByName('PRO_GRUPO').AsString = 'P' then
     begin
         Grupo.ItemIndex := 1;
-        ShowMessage('p');
     end
     else if DM_Estoque.Produtos.FieldByName('PRO_GRUPO').AsString = 'M' then
     begin
         Grupo.ItemIndex := 2;
-        ShowMessage('m');
     end
     else
     begin
 
     end;
+end;
+
+procedure TMProduto.procSelecionaItems;
+begin
+    DM_Estoque.Categoria.Close;
+    DM_Estoque.Categoria.SQL.Text := 'select * from categoria where CAT_EMPRESA = ' + DM_Estoque.ProdutosPRO_EMPRESA.AsString;
+    DM_Estoque.Categoria.Open;
+    DM_Estoque.Categoria.FetchAll;
 end;
 
 procedure TMProduto.sbLoadClick(Sender: TObject);

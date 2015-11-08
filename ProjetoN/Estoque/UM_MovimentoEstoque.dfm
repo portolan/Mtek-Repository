@@ -2,6 +2,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
   Caption = 'Movimenta'#231#227'o de estoque'
   ClientHeight = 330
   ClientWidth = 713
+  OnActivate = FormActivate
   ExplicitWidth = 729
   ExplicitHeight = 369
   PixelsPerInch = 96
@@ -136,13 +137,15 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
       Align = alClient
       Caption = ' Entrada/Sa'#237'da '
       TabOrder = 0
+      ExplicitLeft = -14
+      ExplicitTop = 111
       object Label1: TLabel
         Left = 16
         Top = 16
         Width = 41
         Height = 13
         Caption = 'Empresa'
-        FocusControl = DBEdit1
+        FocusControl = editEmpresa
       end
       object Label2: TLabel
         Left = 508
@@ -150,15 +153,14 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         Width = 39
         Height = 13
         Caption = 'Estoque'
-        FocusControl = DBEdit2
+        FocusControl = editEstoque
       end
       object Label3: TLabel
         Left = 180
         Top = 59
-        Width = 38
+        Width = 97
         Height = 13
-        Caption = 'Produto'
-        FocusControl = DBEdit3
+        Caption = 'Produto em Estoque'
       end
       object Label4: TLabel
         Left = 16
@@ -212,7 +214,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         Width = 25
         Height = 13
         Caption = 'Bloco'
-        FocusControl = DBEdit9
+        FocusControl = editBloco
       end
       object Label11: TLabel
         Left = 332
@@ -220,7 +222,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         Width = 46
         Height = 13
         Caption = 'Prateleira'
-        FocusControl = DBEdit10
+        FocusControl = editPrateleira
       end
       object SpeedButton2: TSpeedButton
         Left = 294
@@ -259,7 +261,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         Left = 673
         Top = 73
         Width = 32
-        Height = 23
+        Height = 25
         Glyph.Data = {
           06030000424D060300000000000036000000280000000F0000000F0000000100
           180000000000D0020000C40E0000C40E00000000000000000000F2F2F2F2F2F2
@@ -321,44 +323,50 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
           EFEFEFEFEFEFEF000000}
         OnClick = SpeedButton3Click
       end
-      object DBEdit1: TDBEdit
+      object editEmpresa: TDBEdit
         Left = 16
-        Top = 32
+        Top = 34
         Width = 134
-        Height = 21
+        Height = 19
+        Ctl3D = False
         DataField = 'EM_EMPRESA'
         DataSource = DM_Estoque.DSMovimentoEstoque
-        TabOrder = 0
+        ParentColor = True
+        ParentCtl3D = False
+        ParentShowHint = False
+        ReadOnly = True
+        ShowHint = False
+        TabOrder = 4
       end
-      object DBEdit2: TDBEdit
+      object editEstoque: TDBEdit
         Left = 508
         Top = 32
         Width = 197
-        Height = 21
+        Height = 19
+        Ctl3D = False
         DataField = 'EM_ESTOQUE'
         DataSource = DM_Estoque.DSMovimentoEstoque
-        TabOrder = 3
-      end
-      object DBEdit3: TDBEdit
-        Left = 180
-        Top = 75
-        Width = 488
-        Height = 21
-        DataField = 'EM_PRODUTO'
-        DataSource = DM_Estoque.DSMovimentoEstoque
-        TabOrder = 5
+        ParentColor = True
+        ParentCtl3D = False
+        ParentShowHint = False
+        ReadOnly = True
+        ShowHint = False
+        TabOrder = 7
       end
       object DBEdit4: TDBEdit
         Left = 16
         Top = 75
         Width = 158
-        Height = 21
-        TabStop = False
+        Height = 19
+        Ctl3D = False
         DataField = 'EM_CODIGO'
         DataSource = DM_Estoque.DSMovimentoEstoque
         ParentColor = True
+        ParentCtl3D = False
+        ParentShowHint = False
         ReadOnly = True
-        TabOrder = 4
+        ShowHint = False
+        TabOrder = 8
       end
       object DBEdit6: TDBEdit
         Left = 156
@@ -367,17 +375,19 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         Height = 21
         DataField = 'EM_QTD'
         DataSource = DM_Estoque.DSMovimentoEstoque
-        TabOrder = 7
+        TabOrder = 1
       end
       object DBEdit7: TDBEdit
         Left = 479
         Top = 118
         Width = 138
-        Height = 21
+        Height = 19
         TabStop = False
+        Ctl3D = False
         DataField = 'EM_DATA'
         DataSource = DM_Estoque.DSMovimentoEstoque
         ParentColor = True
+        ParentCtl3D = False
         ParentShowHint = False
         ReadOnly = True
         ShowHint = False
@@ -387,47 +397,77 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         Left = 327
         Top = 118
         Width = 146
-        Height = 21
+        Height = 19
+        TabStop = False
+        Ctl3D = False
         DataField = 'EM_VALOR_FINANCEIRO'
         DataSource = DM_Estoque.DSMovimentoEstoque
-        TabOrder = 8
+        ParentColor = True
+        ParentCtl3D = False
+        ReadOnly = True
+        TabOrder = 2
       end
-      object DBEdit9: TDBEdit
+      object editBloco: TDBEdit
         Left = 156
         Top = 32
         Width = 134
-        Height = 21
+        Height = 19
+        Ctl3D = False
         DataField = 'EM_BLOCO'
         DataSource = DM_Estoque.DSMovimentoEstoque
-        TabOrder = 1
+        ParentColor = True
+        ParentCtl3D = False
+        ParentShowHint = False
+        ReadOnly = True
+        ShowHint = False
+        TabOrder = 5
       end
-      object DBEdit10: TDBEdit
+      object editPrateleira: TDBEdit
         Left = 332
         Top = 32
         Width = 134
-        Height = 21
+        Height = 19
+        Ctl3D = False
         DataField = 'EM_PRATELEIRA'
         DataSource = DM_Estoque.DSMovimentoEstoque
-        TabOrder = 2
+        ParentColor = True
+        ParentCtl3D = False
+        ParentShowHint = False
+        ReadOnly = True
+        ShowHint = False
+        TabOrder = 6
       end
       object DBMemo1: TDBMemo
         Left = 18
         Top = 164
         Width = 688
         Height = 89
-        TabOrder = 10
+        DataField = 'EM_OBS'
+        DataSource = DM_Estoque.DSMovimentoEstoque
+        TabOrder = 3
       end
-      object DBComboBox1: TDBComboBox
+      object editProduto: TEdit
+        Left = 180
+        Top = 75
+        Width = 489
+        Height = 21
+        TabStop = False
+        ParentColor = True
+        ReadOnly = True
+        TabOrder = 10
+        OnEnter = editProdutoEnter
+      end
+      object cbTipo: TComboBox
         Left = 16
         Top = 118
         Width = 134
         Height = 21
-        DataField = 'EM_TIPO'
-        DataSource = DM_Estoque.DSMovimentoEstoque
+        Style = csDropDownList
+        TabOrder = 0
+        OnExit = cbTipoExit
         Items.Strings = (
           'Entrada'
-          'Sa'#237'da')
-        TabOrder = 6
+          'Saida')
       end
     end
   end
