@@ -3279,10 +3279,7 @@ object TelaInicial: TTelaInicial
       3F4FFEBD145653DBEE3A30FF001BF47F91D251914515AF439C3228CD145200C8
       A3228A2980668C8A28A00FFFD9}
     Stretch = True
-    ExplicitLeft = 280
-    ExplicitTop = 192
-    ExplicitWidth = 105
-    ExplicitHeight = 105
+    ExplicitLeft = 8
   end
   object Image1: TImage
     Left = 404
