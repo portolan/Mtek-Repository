@@ -36,7 +36,6 @@ inherited M_departamento: TM_departamento
       Width = 106
       Height = 13
       Caption = 'Empresa Relacionada:'
-      FocusControl = DBEdit2
     end
     object Label3: TLabel
       Left = 16
@@ -63,15 +62,6 @@ inherited M_departamento: TM_departamento
       DataSource = DM_contabil.Ddepartamento
       TabOrder = 0
     end
-    object DBEdit2: TDBEdit
-      Left = 117
-      Top = 43
-      Width = 92
-      Height = 21
-      DataField = 'DEP_EMPRESAR'
-      DataSource = DM_contabil.Ddepartamento
-      TabOrder = 1
-    end
     object DBEdit3: TDBEdit
       Left = 16
       Top = 99
@@ -90,6 +80,18 @@ inherited M_departamento: TM_departamento
       DataField = 'DEP_DESC'
       DataSource = DM_contabil.Ddepartamento
       TabOrder = 3
+    end
+    object DBLookupComboBox4: TDBLookupComboBox
+      Left = 117
+      Top = 43
+      Width = 236
+      Height = 21
+      DataField = 'DEP_EMPRESAR'
+      DataSource = DM_contabil.Ddepartamento
+      KeyField = 'EMP_COD'
+      ListField = 'EMP_RAZAO'
+      ListSource = DM_contabil.Dempresa
+      TabOrder = 1
     end
   end
 end

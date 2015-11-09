@@ -63,6 +63,8 @@ type
     empresaEMP_CEP: TIBStringField;
     empresaEMP_FONE: TIBStringField;
     empresaEMP_TITULAR: TIBStringField;
+    lancamentoLANC_EMP: TIntegerField;
+    centroCEC_DEP: TIntegerField;
     procedure planodecontasAfterInsert(DataSet: TDataSet);
     procedure centroAfterInsert(DataSet: TDataSet);
     procedure empresaBeforePost(DataSet: TDataSet);

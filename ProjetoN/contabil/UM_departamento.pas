@@ -12,11 +12,11 @@ type
     Label1: TLabel;
     DBEdit1: TDBEdit;
     Label2: TLabel;
-    DBEdit2: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
     Label4: TLabel;
     DBEdit4: TDBEdit;
+    DBLookupComboBox4: TDBLookupComboBox;
   private
     { Private declarations }
   public

@@ -91,7 +91,7 @@ object DM_contabil: TDM_contabil
     end
   end
   object Dempresa: TDataSource
-    DataSet = empresa
+    DataSet = departamento
     Left = 208
     Top = 24
   end
@@ -164,7 +164,7 @@ object DM_contabil: TDM_contabil
       Origin = '"CENTRODECUSTO"."CEC_NUM_CC"'
     end
     object centroCEC_DESC_CC: TIBStringField
-      DisplayLabel = 'Desccri'#231'ao'
+      DisplayLabel = 'Descri'#231'ao'
       FieldName = 'CEC_DESC_CC'
       Origin = '"CENTRODECUSTO"."CEC_DESC_CC"'
       Size = 60
@@ -176,9 +176,15 @@ object DM_contabil: TDM_contabil
       Size = 1
     end
     object centroCEC_COD_GRUPO: TIntegerField
-      DisplayLabel = 'Grupo'
+      DisplayLabel = 'Empresa'
       FieldName = 'CEC_COD_GRUPO'
       Origin = '"CENTRODECUSTO"."CEC_COD_GRUPO"'
+    end
+    object centroCEC_DEP: TIntegerField
+      DisplayLabel = 'Departamento'
+      FieldName = 'CEC_DEP'
+      Origin = '"CENTRODECUSTO"."CEC_DEP"'
+      Required = True
     end
   end
   object Dcentro: TDataSource
@@ -246,6 +252,7 @@ object DM_contabil: TDM_contabil
       DisplayLabel = 'Data Lan'#231
       FieldName = 'LANC_DT_LANCAMENTO'
       Origin = '"LANCAMENTOS"."LANC_DT_LANCAMENTO"'
+      EditMask = '!99/99/0000;1;_'
     end
     object lancamentoLANC_DEBITO: TIntegerField
       DisplayLabel = 'Conta D'#233'bito'
@@ -282,6 +289,12 @@ object DM_contabil: TDM_contabil
       DisplayLabel = 'Valor'
       FieldName = 'LANC_VALOR'
       Origin = '"LANCAMENTOS"."LANC_VALOR"'
+    end
+    object lancamentoLANC_EMP: TIntegerField
+      DisplayLabel = 'Empresa'
+      FieldName = 'LANC_EMP'
+      Origin = '"LANCAMENTOS"."LANC_EMP"'
+      Required = True
     end
   end
   object Dlancamento: TDataSource

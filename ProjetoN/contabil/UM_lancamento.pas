@@ -29,11 +29,13 @@ type
     DBEdit9: TDBEdit;
     Label10: TLabel;
     DBEdit10: TDBEdit;
-    search1: TImage;
-    search2: TImage;
-    search3: TImage;
-    search4: TImage;
-    search5: TImage;
+    Label11: TLabel;
+    DBLookupComboBox4: TDBLookupComboBox;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
   private
     { Private declarations }
   public
