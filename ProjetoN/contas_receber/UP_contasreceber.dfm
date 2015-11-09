@@ -67,6 +67,10 @@ inherited P_contasreceber: TP_contasreceber
             Expanded = False
             FieldName = 'TIT_DESCRICAO'
             Visible = True
+          end
+          item
+            Expanded = False
+            Visible = True
           end>
       end
     end

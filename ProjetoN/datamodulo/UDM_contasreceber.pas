@@ -11,18 +11,28 @@ type
     contasreceber: TIBQuery;
     D_contasreceber: TDataSource;
     U_contasreceber: TIBUpdateSQL;
-    contasreceberTIT_CODIGO: TIntegerField;
-    contasreceberTIT_VALOR: TFloatField;
-    contasreceberTIT_DESCONTO: TFloatField;
-    contasreceberTIT_TOTAL_BRUTO: TFloatField;
-    contasreceberTIT_TOTAL_LIQUIDO: TFloatField;
-    contasreceberTIT_DATA_VENCIMENTO: TDateField;
-    contasreceberTIT_NUMERO_TITULO: TIntegerField;
-    contasreceberTIT_SITUACAO: TIBStringField;
-    contasreceberTIT_DATA_EMISSAO: TDateTimeField;
-    contasreceberTIT_TIPO: TIBStringField;
-    contasreceberTIT_DATA_PAGAMENTO: TDateField;
-    contasreceberTIT_DESCRICAO: TIBStringField;
+    contasreceberTTR_CODIGO: TIntegerField;
+    contasreceberTTR_EMP_CODIGO: TIntegerField;
+    contasreceberTTR_PES_CODIGO: TIntegerField;
+    contasreceberTTR_CTB_CODIGO: TIntegerField;
+    contasreceberTTR_CON_CODIGO: TIntegerField;
+    contasreceberTTR_DESCRICAO: TIBStringField;
+    contasreceberTTR_DT_EMISSAO: TDateField;
+    contasreceberTTR_DT_VENCIMENTO: TDateField;
+    contasreceberTTR_DT_PAGAMENTO: TDateField;
+    contasreceberTTR_DT_BAIXA: TDateField;
+    contasreceberTTR_DT_CANCELAMENTO: TDateField;
+    contasreceberTTR_TP_TITULO: TIBStringField;
+    contasreceberTTR_DESCONTO: TIBBCDField;
+    contasreceberTTR_PARCELA: TIBBCDField;
+    contasreceberTTR_VL_ORIGINAL: TIBBCDField;
+    contasreceberTTR_VL_PAGO: TIBBCDField;
+    contasreceberTTR_VL_TOTAL: TIBBCDField;
+    contasreceberTTR_MR_DIARIA: TIBBCDField;
+    contasreceberTTR_MT_ATRASO: TIBBCDField;
+    contasreceberTTR_SITUACAO: TIBStringField;
+    contasreceberTTR_TP_MORA: TIBStringField;
+    contasreceberTTR_TP_MULTA: TIBStringField;
   private
     { Private declarations }
   public
