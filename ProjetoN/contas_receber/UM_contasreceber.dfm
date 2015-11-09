@@ -25,18 +25,20 @@
     Width = 736
     Height = 303
     Caption = ''
+    ExplicitLeft = 80
+    ExplicitTop = 96
     ExplicitWidth = 736
     ExplicitHeight = 303
     object GroupBox1: TGroupBox
-      Left = 2
-      Top = 15
-      Width = 732
-      Height = 286
-      Align = alClient
+      Left = -1
+      Top = 0
+      Width = 736
+      Height = 298
+      Align = alCustom
       TabOrder = 0
       object Label1: TLabel
         Left = 76
-        Top = 15
+        Top = 19
         Width = 41
         Height = 13
         Caption = 'C'#211'DIGO'
@@ -247,7 +249,7 @@
         Top = 33
         Width = 52
         Height = 21
-        DataField = 'TTR_EMP_CODIGO'
+        DataField = 'TTR_MR_DIARIA'
         DataSource = DM_contasreceber.D_contasreceber
         TabOrder = 1
       end

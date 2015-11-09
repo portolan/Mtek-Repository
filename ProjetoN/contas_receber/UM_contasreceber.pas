@@ -36,14 +36,13 @@ type
     Label25: TLabel;
     Label26: TLabel;
     ttr_codigo: TDBEdit;
-    ttr_empresa: TDBEdit;
     ttr_pessoa: TDBEdit;
     ttr_conta: TDBEdit;
-    ttr_condicao: TDBEdit;
+    ttp_condicao: TDBEdit;
     ttr_descricao: TDBEdit;
     ttr_emissao: TDBEdit;
     ttr_vencimento: TDBEdit;
-    ttr_dt_pagamento: TDBEdit;
+    ttp_dt_pagamento: TDBEdit;
     ttr_dt_baixa: TDBEdit;
     ttr_dt_cancelamento: TDBEdit;
     ttr_tp_titulo: TDBEdit;
@@ -58,10 +57,11 @@ type
     ttr_vl_pago: TDBEdit;
     ttr_vl_total: TDBEdit;
     ttr_mora: TDBEdit;
-    ttr_multa: TDBEdit;
+    ttp_multa: TDBEdit;
     DBRadioGroup1: TDBRadioGroup;
     DBRadioGroup2: TDBRadioGroup;
     DBRadioGroup3: TDBRadioGroup;
+    ttr_empresa: TDBEdit;
     procedure sbCancelarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
