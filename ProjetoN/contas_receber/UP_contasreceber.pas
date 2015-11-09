@@ -25,6 +25,8 @@ implementation
 
 {$R *.dfm}
 
+uses UDM_contasreceber;
+
 
 
 procedure TP_contasreceber.sbNovoClick(Sender: TObject);
