@@ -1,7 +1,7 @@
 object DM_PCP: TDM_PCP
   OldCreateOrder = False
-  Height = 192
-  Width = 662
+  Height = 220
+  Width = 501
   object UPD_OrdemProducao: TIBUpdateSQL
     RefreshSQL.Strings = (
       'Select '
@@ -229,7 +229,7 @@ object DM_PCP: TDM_PCP
       '  PROD_COD = :OLD_PROD_COD and'
       '  PROD_EMPRESA = :OLD_PROD_EMPRESA')
     Left = 136
-    Top = 144
+    Top = 136
   end
   object Ficha_Tecnica: TIBQuery
     Database = dmBanco.Banco
@@ -402,7 +402,7 @@ object DM_PCP: TDM_PCP
   object DS_Itens_Ficha: TDataSource
     DataSet = Itens_Ficha
     Left = 312
-    Top = 72
+    Top = 64
   end
   object UPD_Itens_Ficha: TIBUpdateSQL
     RefreshSQL.Strings = (

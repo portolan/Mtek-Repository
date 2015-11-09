@@ -1,6 +1,6 @@
 inherited P_OP: TP_OP
   ActiveControl = DBGDados
-  Caption = 'Pesquisa Ordem Producao'
+  Caption = 'Ordem Producao'
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -18,7 +18,19 @@ inherited P_OP: TP_OP
         Columns = <
           item
             Expanded = False
-            FieldName = 'C'#243'digo'
+            FieldName = 'C'#243'digo da venda'
+            Width = 98
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'C'#243'digo da Ordem'
+            Width = 89
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'Empresa'
             Visible = True
           end
           item
@@ -74,6 +86,14 @@ inherited P_OP: TP_OP
             Visible = True
           end>
       end
+    end
+  end
+  inherited pnRodape: TPanel
+    ExplicitTop = 363
+    inherited sbNovo: TSpeedButton
+      ParentShowHint = False
+      ExplicitLeft = 25
+      ExplicitTop = 33
     end
   end
 end

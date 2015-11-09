@@ -67,7 +67,9 @@ uses
   UDM_contasreceber in 'datamodulo\UDM_contasreceber.pas' {DM_contasreceber: TDataModule},
   Vcl.Themes,
   Vcl.Styles,
-  UF_EstoqueRelatorios in 'Estoque\UF_EstoqueRelatorios.pas' {FEstoqueRelatorios};
+  UF_EstoqueRelatorios in 'Estoque\UF_EstoqueRelatorios.pas' {FEstoqueRelatorios},
+  UP_FichaTecnica in 'pcp\UP_FichaTecnica.pas' {P_FichaTecnica},
+  UM_FichaTecnica in 'pcp\UM_FichaTecnica.pas' {M_FichaTecnica};
 
 {$R *.res}
 
@@ -83,5 +85,7 @@ begin
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(TFEstoqueRelatorios, FEstoqueRelatorios);
+  Application.CreateForm(TP_FichaTecnica, P_FichaTecnica);
+  Application.CreateForm(TM_FichaTecnica, M_FichaTecnica);
   Application.Run;
 end.

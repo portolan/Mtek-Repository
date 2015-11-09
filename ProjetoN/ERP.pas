@@ -83,6 +83,7 @@ type
     procedure ProdutosemEstoque1Click(Sender: TObject);
     procedure Relatrios1Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure FichaTcnica1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -101,7 +102,8 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UP_empresa, UP_centro, UP_OP, UP_PRODUCAO, UM_PRODUCAO, UP_lancamento, UM_Servico,
   UP_Servico, UP_Bloco, UM_Prateleira, UP_Categoria, UP_Prateleira,
   UP_departamento, UM_departamento, UP_planodecontas, UP_historico, Up_titulospagar,
-  UR_EstoqueRelatorios, UP_Caixa, UF_EstoqueRelatorios;
+  UR_EstoqueRelatorios, UP_Caixa, UF_EstoqueRelatorios, UM_FichaTecnica, UM_PCP,
+  UP_FichaTecnica;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -172,6 +174,16 @@ begin
     finally
         FreeAndNil(PMovimentoEstoque);
     end;
+end;
+
+procedure TTelaInicial.FichaTcnica1Click(Sender: TObject);
+begin
+P_FichaTecnica := TP_FichaTecnica.Create(Self);
+try
+   P_FichaTecnica.ShowModal;
+finally
+  FreeAndNil(P_FichaTecnica);
+end;
 end;
 
 procedure TTelaInicial.FluxodeCaixa1Click(Sender: TObject);

@@ -1024,7 +1024,7 @@ object TelaInicial: TTelaInicial
     Left = 0
     Top = 0
     Width = 606
-    Height = 314
+    Height = 308
     Align = alClient
     Picture.Data = {
       0A544A504547496D6167653E190100FFD8FFE000104A46494600010100000100
@@ -6752,9 +6752,9 @@ object TelaInicial: TTelaInicial
   end
   object relogio: TLabel
     Left = 0
-    Top = 314
+    Top = 308
     Width = 606
-    Height = 44
+    Height = 50
     Align = alBottom
     Caption = '00:00:00'
     Font.Charset = DEFAULT_CHARSET
@@ -6763,6 +6763,8 @@ object TelaInicial: TTelaInicial
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
+    ExplicitTop = 314
+    ExplicitWidth = 162
   end
   object MainMenu1: TMainMenu
     Left = 528
@@ -6806,6 +6808,7 @@ object TelaInicial: TTelaInicial
       Caption = 'PCP/PRODUCAO'
       object FichaTcnica1: TMenuItem
         Caption = 'Ficha T'#233'cnica'
+        OnClick = FichaTcnica1Click
       end
       object OrdemdeProduo1: TMenuItem
         Caption = 'Ordem de Produ'#231#227'o'

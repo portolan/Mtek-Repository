@@ -1,15 +1,14 @@
-unit UM_PCP;
+unit UM_FichaTecnica;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.Menus, Vcl.ToolWin, Vcl.ComCtrls;
+  Vcl.ExtCtrls;
 
 type
-  TM_OP = class(TxManuPadrao)
-    ToolBar1: TToolBar;
+  TM_FichaTecnica = class(TxManuPadrao)
   private
     { Private declarations }
   public
@@ -17,12 +16,12 @@ type
   end;
 
 var
-  M_OP: TM_OP;
+  M_FichaTecnica: TM_FichaTecnica;
 
 implementation
 
 {$R *.dfm}
 
-uses UDM_PCP;
+uses dm000, UDM_PCP;
 
 end.
