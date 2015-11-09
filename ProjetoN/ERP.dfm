@@ -1024,7 +1024,7 @@ object TelaInicial: TTelaInicial
     Left = 0
     Top = 0
     Width = 606
-    Height = 358
+    Height = 314
     Align = alClient
     Picture.Data = {
       0A544A504547496D6167653E190100FFD8FFE000104A46494600010100000100
@@ -3280,6 +3280,7 @@ object TelaInicial: TTelaInicial
       A3228A2980668C8A28A00FFFD9}
     Stretch = True
     ExplicitLeft = 8
+    ExplicitHeight = 358
   end
   object Image1: TImage
     Left = 404
@@ -6749,6 +6750,20 @@ object TelaInicial: TTelaInicial
     ShowHint = False
     Stretch = True
   end
+  object relogio: TLabel
+    Left = 0
+    Top = 314
+    Width = 606
+    Height = 44
+    Align = alBottom
+    Caption = '00:00:00'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = 50
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
   object MainMenu1: TMainMenu
     Left = 528
     Top = 296
@@ -6893,5 +6908,10 @@ object TelaInicial: TTelaInicial
       Caption = 'Sair'
       OnClick = Sair1Click
     end
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 480
+    Top = 296
   end
 end

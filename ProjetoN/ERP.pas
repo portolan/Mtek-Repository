@@ -57,6 +57,8 @@ type
     ProdutosemEstoque1: TMenuItem;
     Image10: TImage;
     Relatrios1: TMenuItem;
+    relogio: TLabel;
+    Timer1: TTimer;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -80,6 +82,7 @@ type
     procedure ContasaReceber1Click(Sender: TObject);
     procedure ProdutosemEstoque1Click(Sender: TObject);
     procedure Relatrios1Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -277,9 +280,15 @@ begin
     end;
 end;
 
+
 procedure TTelaInicial.Sair1Click(Sender: TObject);
 begin
     close;
+end;
+
+procedure TTelaInicial.Timer1Timer(Sender: TObject);
+begin
+relogio.caption := timetostr(time);
 end;
 
 end.

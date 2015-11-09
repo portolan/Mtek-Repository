@@ -1,11 +1,22 @@
 inherited M_empresa: TM_empresa
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cadastro de Empresas - ProjetoDesnecessauro'
-  ExplicitWidth = 597
-  ExplicitHeight = 320
+  ClientHeight = 283
+  ClientWidth = 500
+  ExplicitWidth = 516
+  ExplicitHeight = 322
   PixelsPerInch = 96
   TextHeight = 13
+  inherited pnRodape: TPanel
+    Top = 242
+    Width = 500
+    inherited sbCancelar: TSpeedButton
+      Left = 403
+    end
+  end
   inherited gbInfos: TGroupBox
+    Width = 500
+    Height = 242
     object Label1: TLabel
       Left = 24
       Top = 24
@@ -30,7 +41,7 @@ inherited M_empresa: TM_empresa
       FocusControl = DBEdit3
     end
     object Label4: TLabel
-      Left = 295
+      Left = 278
       Top = 48
       Width = 75
       Height = 13
@@ -54,7 +65,7 @@ inherited M_empresa: TM_empresa
       FocusControl = DBEdit6
     end
     object Label7: TLabel
-      Left = 292
+      Left = 278
       Top = 94
       Width = 32
       Height = 13
@@ -70,7 +81,7 @@ inherited M_empresa: TM_empresa
       FocusControl = DBEdit8
     end
     object Label9: TLabel
-      Left = 218
+      Left = 167
       Top = 140
       Width = 13
       Height = 13
@@ -86,7 +97,7 @@ inherited M_empresa: TM_empresa
       FocusControl = DBEdit12
     end
     object Label10: TLabel
-      Left = 295
+      Left = 278
       Top = 140
       Width = 23
       Height = 13
@@ -94,8 +105,8 @@ inherited M_empresa: TM_empresa
       FocusControl = DBEdit10
     end
     object Label11: TLabel
-      Left = 440
-      Top = 140
+      Left = 392
+      Top = 94
       Width = 46
       Height = 13
       Caption = 'Telefone:'
@@ -116,7 +127,7 @@ inherited M_empresa: TM_empresa
     object DBEdit3: TDBEdit
       Left = 24
       Top = 67
-      Width = 265
+      Width = 231
       Height = 21
       BiDiMode = bdLeftToRight
       DataField = 'EMP_RAZAO'
@@ -125,9 +136,9 @@ inherited M_empresa: TM_empresa
       TabOrder = 2
     end
     object DBEdit4: TDBEdit
-      Left = 295
+      Left = 278
       Top = 67
-      Width = 190
+      Width = 203
       Height = 21
       BiDiMode = bdLeftToRight
       DataField = 'EMP_NOMEF'
@@ -158,9 +169,9 @@ inherited M_empresa: TM_empresa
       TabOrder = 5
     end
     object DBEdit7: TDBEdit
-      Left = 292
+      Left = 278
       Top = 113
-      Width = 264
+      Width = 108
       Height = 21
       BiDiMode = bdLeftToRight
       DataField = 'EMP_BAIRRO'
@@ -171,7 +182,7 @@ inherited M_empresa: TM_empresa
     object DBEdit8: TDBEdit
       Left = 24
       Top = 159
-      Width = 188
+      Width = 121
       Height = 21
       BiDiMode = bdLeftToRight
       DataField = 'EMP_CIDADE'
@@ -180,7 +191,7 @@ inherited M_empresa: TM_empresa
       TabOrder = 7
     end
     object DBEdit9: TDBEdit
-      Left = 218
+      Left = 166
       Top = 159
       Width = 30
       Height = 21
@@ -193,13 +204,13 @@ inherited M_empresa: TM_empresa
     object DBEdit12: TDBEdit
       Left = 24
       Top = 205
-      Width = 532
+      Width = 379
       Height = 21
       BiDiMode = bdLeftToRight
       DataField = 'EMP_TITULAR'
       DataSource = DataSource1
       ParentBiDiMode = False
-      TabOrder = 9
+      TabOrder = 11
     end
     object DBEdit2: TDBEdit
       Left = 202
@@ -213,27 +224,27 @@ inherited M_empresa: TM_empresa
       TabOrder = 1
     end
     object DBEdit10: TDBEdit
-      Left = 295
+      Left = 278
       Top = 159
       Width = 108
       Height = 21
       DataField = 'EMP_CEP'
       DataSource = DataSource1
-      TabOrder = 10
+      TabOrder = 9
     end
     object DBEdit11: TDBEdit
-      Left = 440
-      Top = 159
+      Left = 392
+      Top = 113
       Width = 89
       Height = 21
       DataField = 'EMP_FONE'
       DataSource = DataSource1
-      TabOrder = 11
+      TabOrder = 10
     end
   end
   object DataSource1: TDataSource
     DataSet = DM_contabil.empresa
-    Left = 536
+    Left = 448
     Top = 16
   end
 end
