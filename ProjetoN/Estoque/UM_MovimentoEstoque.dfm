@@ -10,7 +10,8 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
   inherited pnRodape: TPanel
     Top = 289
     Width = 713
-    ExplicitTop = 289
+    ExplicitLeft = 8
+    ExplicitTop = 313
     ExplicitWidth = 713
     inherited sbCancelar: TSpeedButton
       Left = 616

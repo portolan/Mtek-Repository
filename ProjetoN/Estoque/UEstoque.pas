@@ -4,16 +4,16 @@ unit UEstoque;
 
 interface
 
-uses System.SysUtils, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery, IBX.IBUpdateSQL;
+uses System.SysUtils, System.Variants, System.Classes, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery, IBX.IBUpdateSQL;
 
-function funcBaixaEstoque(codEmpresa:integer; codProduto:String; codBloco, codPrateleira, codEstoque: integer; qtd:real; tipo: String): Boolean;
+function funcBaixaEstoque(codEmpresa:integer; codProduto:String; codBloco, codPrateleira, codEstoque: integer; qtd:double; tipo: String): Boolean;
 function funcCriaQuery:TIBQuery;
 
 implementation
 
 uses UDM_Estoque, dm000;
 
-function funcBaixaEstoque(codEmpresa:integer; codProduto:String; codBloco, codPrateleira, codEstoque: integer; qtd: real; tipo: String): Boolean;
+function funcBaixaEstoque(codEmpresa:integer; codProduto:String; codBloco, codPrateleira, codEstoque: integer; qtd: double; tipo: String): Boolean;
 var QryDinamica : TIBQuery;
     i_qtd_estoque : Integer;
 begin

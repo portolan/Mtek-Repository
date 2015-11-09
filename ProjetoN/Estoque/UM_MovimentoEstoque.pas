@@ -44,6 +44,7 @@ type
     procedure editProdutoEnter(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure cbTipoChange(Sender: TObject);
+    procedure sbGravarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -141,6 +142,18 @@ begin
         DM_Estoque.MovimentoEstoqueEM_TIPO.value := 'E'
     else
         DM_Estoque.MovimentoEstoqueEM_TIPO.Value := 'S';
+end;
+
+procedure TMMovimentoEstoque.sbGravarClick(Sender: TObject);
+begin
+  inherited;
+    funcBaixaEstoque(DM_Estoque.Produtos.FieldByName('EM_EMPRESA').AsInteger,
+                     DM_Estoque.Produtos.FieldByName('EM_PRODUTO').AsString,
+                     DM_Estoque.Produtos.FieldByName('EM_BLOCO').AsInteger,
+                     DM_Estoque.Produtos.FieldByName('EM_PRATELEIRA').AsInteger,
+                     DM_Estoque.Produtos.FieldByName('EM_ESTOQUE').AsInteger,
+                     DM_Estoque.Produtos.FieldByName('EM_QTD').AsFloat,
+                     DM_Estoque.Produtos.FieldByName('EM_TIPO').AsString);
 end;
 
 procedure TMMovimentoEstoque.SpeedButton1Click(Sender: TObject);

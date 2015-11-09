@@ -42,8 +42,6 @@ type
     DBLookupComboBox3: TDBLookupComboBox;
     DBEdit2: TDBEdit;
     DBMemo1: TDBMemo;
-    Label9: TLabel;
-    DBEdit3: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);

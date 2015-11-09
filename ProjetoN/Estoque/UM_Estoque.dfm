@@ -258,14 +258,6 @@ inherited MEstoque: TMEstoque
           EFEFEFEFEFEFEF000000}
         OnClick = SpeedButton2Click
       end
-      object Label9: TLabel
-        Left = 560
-        Top = 148
-        Width = 25
-        Height = 13
-        Caption = 'Bloco'
-        FocusControl = DBEdit3
-      end
       object DBEdit1: TDBEdit
         Left = 16
         Top = 32
@@ -415,15 +407,6 @@ inherited MEstoque: TMEstoque
         DataField = 'ESTOQ_OBS'
         DataSource = DM_Estoque.DSEstoque
         TabOrder = 13
-      end
-      object DBEdit3: TDBEdit
-        Left = 560
-        Top = 164
-        Width = 134
-        Height = 21
-        DataField = 'ESTOQ_BLOCO'
-        DataSource = DM_Estoque.DSEstoque
-        TabOrder = 14
       end
     end
   end
