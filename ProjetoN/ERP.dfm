@@ -6059,8 +6059,8 @@ object TelaInicial: TTelaInicial
     ExplicitHeight = 358
   end
   object Image1: TImage
-    Left = 140
-    Top = 74
+    Left = 206
+    Top = 8
     Width = 60
     Height = 60
     AutoSize = True
@@ -6822,8 +6822,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image3: TImage
-    Left = 74
-    Top = 74
+    Left = 272
+    Top = 8
     Width = 60
     Height = 60
     AutoSize = True
@@ -7207,8 +7207,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image4: TImage
-    Left = 8
-    Top = 74
+    Left = 404
+    Top = 8
     Width = 60
     Height = 60
     AutoSize = True
@@ -7983,8 +7983,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image6: TImage
-    Left = 140
-    Top = 140
+    Left = 536
+    Top = 8
     Width = 60
     Height = 60
     AutoSize = True
@@ -8370,8 +8370,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image7: TImage
-    Left = 8
-    Top = 140
+    Left = 470
+    Top = 8
     Width = 60
     Height = 60
     AutoSize = True
@@ -9140,8 +9140,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image9: TImage
-    Left = 74
-    Top = 140
+    Left = 338
+    Top = 8
     Width = 60
     Height = 60
     AutoSize = True
