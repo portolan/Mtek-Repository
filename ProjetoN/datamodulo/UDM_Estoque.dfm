@@ -489,7 +489,6 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Categoria'
       FieldName = 'CAT_DESCRICAO'
       Origin = '"CATEGORIA"."CAT_DESCRICAO"'
-      Required = True
       Size = 60
     end
   end
