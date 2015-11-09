@@ -42,7 +42,7 @@ begin
             begin
                 QryDinamica.Close;
                 QryDinamica.SQL.Text := ' UPDATE ESTOQUE '+
-                                        '    SET ESTOQ_QTD = ESTOQ_QTD + :QTD'+
+                                        '    SET ESTOQ_QTD = ESTOQ_QTD + :QTD '+
                                         '  WHERE ESTOQ_EMPRESA = :COD_EMPRESA '+
                                         '    AND ESTOQ_PRODUTO = :COD_PRODUTO '+
                                         '    AND ESTOQ_BLOCO = :COD_BLOCO '+
@@ -62,7 +62,7 @@ begin
                 begin
                     QryDinamica.Close;
                     QryDinamica.SQL.Text := ' UPDATE ESTOQUE '+
-                                            '    SET ESTOQ_QTD = ESTOQ_QTD - :QTD' +
+                                            '    SET ESTOQ_QTD = ESTOQ_QTD - :QTD ' +
                                             '  WHERE ESTOQ_EMPRESA = :COD_EMPRESA '+
                                             '    AND ESTOQ_PRODUTO = :COD_PRODUTO '+
                                             '    AND ESTOQ_BLOCO = :COD_BLOCO '+
@@ -82,6 +82,7 @@ begin
             else
                 raise Exception.Create('Operação Inválida!');
         finally
+            QryDinamica.Transaction.Commit;
             FreeAndNil(QryDinamica);
         end;
     except
