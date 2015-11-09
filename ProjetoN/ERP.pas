@@ -55,10 +55,10 @@ type
     Histricos1: TMenuItem;
     Relatrios2: TMenuItem;
     ProdutosemEstoque1: TMenuItem;
-    Image10: TImage;
     Relatrios1: TMenuItem;
     relogio: TLabel;
     Timer1: TTimer;
+    Image10: TImage;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
