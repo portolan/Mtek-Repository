@@ -32,7 +32,6 @@ end;
 
 procedure TM_contasreceber.sbCancelarClick(Sender: TObject);
 begin
-  inherited;
   M_contasreceber.Close;
 end;
 

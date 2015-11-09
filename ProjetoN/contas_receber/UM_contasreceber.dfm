@@ -10,8 +10,5 @@ inherited M_contasreceber: TM_contasreceber
       ExplicitTop = 6
       ExplicitHeight = 39
     end
-    inherited sbCancelar: TSpeedButton
-      OnClick = nil
-    end
   end
 end
