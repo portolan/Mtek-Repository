@@ -49,8 +49,11 @@ type
     { Private declarations }
   public
     { Public declarations }
+    tipoMovimento:String;
+
     procedure exibeTelaProduto;
     procedure procDefineTipo;
+
   end;
 
 var
@@ -142,18 +145,25 @@ begin
         DM_Estoque.MovimentoEstoqueEM_TIPO.value := 'E'
     else
         DM_Estoque.MovimentoEstoqueEM_TIPO.Value := 'S';
+
+    tipoMovimento := DM_Estoque.MovimentoEstoque.FieldByName('EM_TIPO').AsString;
 end;
 
 procedure TMMovimentoEstoque.sbGravarClick(Sender: TObject);
 begin
   inherited;
-    funcBaixaEstoque(DM_Estoque.Produtos.FieldByName('EM_EMPRESA').AsInteger,
-                     DM_Estoque.Produtos.FieldByName('EM_PRODUTO').AsString,
-                     DM_Estoque.Produtos.FieldByName('EM_BLOCO').AsInteger,
-                     DM_Estoque.Produtos.FieldByName('EM_PRATELEIRA').AsInteger,
-                     DM_Estoque.Produtos.FieldByName('EM_ESTOQUE').AsInteger,
-                     DM_Estoque.Produtos.FieldByName('EM_QTD').AsFloat,
-                     DM_Estoque.Produtos.FieldByName('EM_TIPO').AsString);
+    ShowMessage(tipoMovimento);
+    try
+        funcBaixaEstoque(DM_Estoque.MovimentoEstoque.FieldByName('EM_EMPRESA').AsInteger,
+                     DM_Estoque.MovimentoEstoque.FieldByName('EM_PRODUTO').AsString,
+                     DM_Estoque.MovimentoEstoque.FieldByName('EM_BLOCO').AsInteger,
+                     DM_Estoque.MovimentoEstoque.FieldByName('EM_PRATELEIRA').AsInteger,
+                     DM_Estoque.MovimentoEstoque.FieldByName('EM_ESTOQUE').AsInteger,
+                     DM_Estoque.MovimentoEstoque.FieldByName('EM_QTD').AsFloat,
+                     tipoMovimento);
+    except on E: Exception do
+        showMessage(E.Message);
+    end;
 end;
 
 procedure TMMovimentoEstoque.SpeedButton1Click(Sender: TObject);

@@ -4,7 +4,7 @@ unit UEstoque;
 
 interface
 
-uses System.SysUtils, System.Variants, System.Classes, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery, IBX.IBUpdateSQL;
+uses System.SysUtils, System.Variants, System.Classes, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery, IBX.IBUpdateSQL, Vcl.Dialogs;
 
 function funcBaixaEstoque(codEmpresa:integer; codProduto:String; codBloco, codPrateleira, codEstoque: integer; qtd:double; tipo: String): Boolean;
 function funcCriaQuery:TIBQuery;
@@ -17,60 +17,62 @@ function funcBaixaEstoque(codEmpresa:integer; codProduto:String; codBloco, codPr
 var QryDinamica : TIBQuery;
     i_qtd_estoque : Integer;
 begin
+    Result := false;
     try
         QryDinamica := funcCriaQuery;
         try
             QryDinamica.Close;
-            QryDinamica.SQL.Text := ' SELECT Q.ESTOQ_QTD '+
-                                    '   FROM ESTOQUE Q '+
-                                    '  WHERE Q.ESTOQ_EMPRESA = :COD_EMPRESA '+
-                                    '    AND Q.ESTOQ_PRODUTO = :COD_PRODUTO '+
-                                    '    AND Q.ESTOQ_BLOCO = :COD_BLOCO '+
-                                    '    AND Q.ESTOQ_PRATELEIRA = :COD_PRATELEIRA '+
-                                    '    AND Q.ESTOQ_CODIGO = :COD_ESTOQUE';
+            QryDinamica.SQL.Text := ' SELECT ESTOQ_QTD '+
+                                    '   FROM ESTOQUE '+
+                                    '  WHERE ESTOQ_EMPRESA = :COD_EMPRESA '+
+                                    '    AND ESTOQ_PRODUTO = :COD_PRODUTO '+
+                                    '    AND ESTOQ_BLOCO = :COD_BLOCO '+
+                                    '    AND ESTOQ_PRATELEIRA = :COD_PRATELEIRA '+
+                                    '    AND ESTOQ_CODIGO = :COD_ESTOQUE';
             QryDinamica.ParamByName('COD_EMPRESA').AsInteger := codEmpresa;
             QryDinamica.ParamByName('COD_PRODUTO').AsString  := codProduto;
             QryDinamica.ParamByName('COD_BLOCO').AsInteger := codBloco;
             QryDinamica.ParamByName('COD_PRATELEIRA').AsInteger := codPrateleira;
-            QryDinamica.ParamByName('COD_CODIGO').AsInteger := codEstoque;
+            QryDinamica.ParamByName('COD_ESTOQUE').AsInteger := codEstoque;
             QryDinamica.Open;
 
             i_qtd_estoque := QryDinamica.FieldByName('ESTOQ_QTD').AsInteger;
 
-            if tipo = 'E' then
+            if UpperCase(tipo) = 'E' then
             begin
                 QryDinamica.Close;
-                QryDinamica.SQL.Text := ' UPDATE ESTOQUE A '+
-                                        '    SET A.ESTOQ_QTD = A.ESTOQ_QTD + :QTD '+
-                                        '  WHERE Q.ESTOQ_EMPRESA = :COD_EMPRESA '+
-                                        '    AND Q.ESTOQ_PRODUTO = :COD_PRODUTO '+
-                                        '    AND Q.ESTOQ_BLOCO = :COD_BLOCO '+
-                                        '    AND Q.ESTOQ_PRATELEIRA = :COD_PRATELEIRA '+
-                                        '    AND Q.ESTOQ_CODIGO = :COD_ESTOQUE';
+                QryDinamica.SQL.Text := ' UPDATE ESTOQUE '+
+                                        '    SET ESTOQ_QTD = ESTOQ_QTD + :QTD'+
+                                        '  WHERE ESTOQ_EMPRESA = :COD_EMPRESA '+
+                                        '    AND ESTOQ_PRODUTO = :COD_PRODUTO '+
+                                        '    AND ESTOQ_BLOCO = :COD_BLOCO '+
+                                        '    AND ESTOQ_PRATELEIRA = :COD_PRATELEIRA '+
+                                        '    AND ESTOQ_CODIGO = :COD_ESTOQUE';
                 QryDinamica.ParamByName('COD_EMPRESA').AsInteger := codEmpresa;
                 QryDinamica.ParamByName('COD_PRODUTO').AsString  := codProduto;
                 QryDinamica.ParamByName('COD_BLOCO').AsInteger := codBloco;
                 QryDinamica.ParamByName('COD_PRATELEIRA').AsInteger := codPrateleira;
-                QryDinamica.ParamByName('COD_CODIGO').AsInteger := codEstoque;
+                QryDinamica.ParamByName('COD_ESTOQUE').AsInteger := codEstoque;
                 QryDinamica.ParamByName('QTD').AsFloat         := qtd;
                 QryDinamica.ExecSQL;
             end
-            else if tipo = 'S' then
+            else if UpperCase(tipo) = 'S' then
             begin
                 if i_qtd_estoque >= qtd then
                 begin
                     QryDinamica.Close;
-                    QryDinamica.SQL.Text := ' UPDATE ESTOQUE B '+
-                                            '    SET B.ESTOQ_QTD = B.ESTOQ_QTD - :QTD' +
-                                            '    AND Q.ESTOQ_PRODUTO = :COD_PRODUTO '+
-                                            '    AND Q.ESTOQ_BLOCO = :COD_BLOCO '+
-                                            '    AND Q.ESTOQ_PRATELEIRA = :COD_PRATELEIRA '+
-                                            '    AND Q.ESTOQ_CODIGO = :COD_ESTOQUE';
+                    QryDinamica.SQL.Text := ' UPDATE ESTOQUE '+
+                                            '    SET ESTOQ_QTD = ESTOQ_QTD - :QTD' +
+                                            '  WHERE ESTOQ_EMPRESA = :COD_EMPRESA '+
+                                            '    AND ESTOQ_PRODUTO = :COD_PRODUTO '+
+                                            '    AND ESTOQ_BLOCO = :COD_BLOCO '+
+                                            '    AND ESTOQ_PRATELEIRA = :COD_PRATELEIRA '+
+                                            '    AND ESTOQ_CODIGO = :COD_ESTOQUE';
                     QryDinamica.ParamByName('COD_EMPRESA').AsInteger := codEmpresa;
                     QryDinamica.ParamByName('COD_PRODUTO').AsString  := codProduto;
                     QryDinamica.ParamByName('COD_BLOCO').AsInteger := codBloco;
                     QryDinamica.ParamByName('COD_PRATELEIRA').AsInteger := codPrateleira;
-                    QryDinamica.ParamByName('COD_CODIGO').AsInteger := codEstoque;
+                    QryDinamica.ParamByName('COD_ESTOQUE').AsInteger := codEstoque;
                     QryDinamica.ParamByName('QTD').AsFloat         := qtd;
                     QryDinamica.ExecSQL;
                 end
@@ -89,6 +91,7 @@ begin
                                   e.Message);
         end;
     end;
+    Result := true;
 end;
 
 function funcCriaQuery: TIBQuery;

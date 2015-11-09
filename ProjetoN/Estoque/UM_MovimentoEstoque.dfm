@@ -10,8 +10,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
   inherited pnRodape: TPanel
     Top = 289
     Width = 713
-    ExplicitLeft = 8
-    ExplicitTop = 313
+    ExplicitTop = 289
     ExplicitWidth = 713
     inherited sbCancelar: TSpeedButton
       Left = 616
@@ -454,7 +453,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
         ParentColor = True
         ReadOnly = True
         TabOrder = 10
-        OnEnter = FormActivate
+        OnEnter = editProdutoEnter
       end
       object cbTipo: TComboBox
         Left = 16
