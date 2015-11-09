@@ -1,6 +1,9 @@
 inherited P_empresa: TP_empresa
   Caption = 'Pesquisar Empresas - ProjetoDesnessauro'
   OnCreate = FormCreate
+  ExplicitLeft = -116
+  ExplicitWidth = 880
+  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
@@ -23,7 +26,7 @@ inherited P_empresa: TP_empresa
           item
             Expanded = False
             FieldName = 'EMP_RAZAO'
-            Width = 170
+            Width = 177
             Visible = True
           end
           item
@@ -35,12 +38,13 @@ inherited P_empresa: TP_empresa
           item
             Expanded = False
             FieldName = 'EMP_ENDERECO'
+            Width = 156
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EMP_END_NUM'
-            Width = 78
+            Width = 45
             Visible = True
           end
           item
@@ -51,12 +55,13 @@ inherited P_empresa: TP_empresa
           item
             Expanded = False
             FieldName = 'EMP_CIDADE'
+            Width = 119
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EMP_UF'
-            Width = 43
+            Width = 25
             Visible = True
           end
           item
@@ -72,6 +77,7 @@ inherited P_empresa: TP_empresa
           item
             Expanded = False
             FieldName = 'EMP_TITULAR'
+            Width = 217
             Visible = True
           end>
       end

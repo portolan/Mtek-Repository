@@ -77,22 +77,6 @@ inherited M_empresa: TM_empresa
       Caption = 'UF'
       FocusControl = DBEdit9
     end
-    object Label10: TLabel
-      Left = 292
-      Top = 140
-      Width = 23
-      Height = 13
-      Caption = 'CEP:'
-      FocusControl = DBEdit10
-    end
-    object Label11: TLabel
-      Left = 432
-      Top = 140
-      Width = 46
-      Height = 13
-      Caption = 'Telefone:'
-      FocusControl = DBEdit11
-    end
     object Label12: TLabel
       Left = 24
       Top = 186
@@ -101,13 +85,32 @@ inherited M_empresa: TM_empresa
       Caption = 'Titular Responsavel:'
       FocusControl = DBEdit12
     end
+    object Label10: TLabel
+      Left = 295
+      Top = 140
+      Width = 23
+      Height = 13
+      Caption = 'CEP:'
+      FocusControl = DBEdit10
+    end
+    object Label11: TLabel
+      Left = 440
+      Top = 140
+      Width = 46
+      Height = 13
+      Caption = 'Telefone:'
+      FocusControl = DBEdit11
+    end
     object DBEdit1: TDBEdit
       Left = 63
       Top = 21
       Width = 50
       Height = 21
+      BiDiMode = bdLeftToRight
+      Color = clBtnFace
       DataField = 'EMP_COD'
       DataSource = DataSource1
+      ParentBiDiMode = False
       TabOrder = 0
     end
     object DBEdit3: TDBEdit
@@ -115,97 +118,115 @@ inherited M_empresa: TM_empresa
       Top = 67
       Width = 265
       Height = 21
+      BiDiMode = bdLeftToRight
       DataField = 'EMP_RAZAO'
       DataSource = DataSource1
-      TabOrder = 1
+      ParentBiDiMode = False
+      TabOrder = 2
     end
     object DBEdit4: TDBEdit
       Left = 295
       Top = 67
       Width = 190
       Height = 21
+      BiDiMode = bdLeftToRight
       DataField = 'EMP_NOMEF'
       DataSource = DataSource1
-      TabOrder = 2
+      ParentBiDiMode = False
+      TabOrder = 3
     end
     object DBEdit5: TDBEdit
       Left = 24
       Top = 113
       Width = 188
       Height = 21
+      BiDiMode = bdLeftToRight
       DataField = 'EMP_ENDERECO'
       DataSource = DataSource1
-      TabOrder = 3
+      ParentBiDiMode = False
+      TabOrder = 4
     end
     object DBEdit6: TDBEdit
       Left = 218
       Top = 113
       Width = 37
       Height = 21
+      BiDiMode = bdLeftToRight
       DataField = 'EMP_END_NUM'
       DataSource = DataSource1
-      TabOrder = 4
+      ParentBiDiMode = False
+      TabOrder = 5
     end
     object DBEdit7: TDBEdit
       Left = 292
       Top = 113
       Width = 264
       Height = 21
+      BiDiMode = bdLeftToRight
       DataField = 'EMP_BAIRRO'
       DataSource = DataSource1
-      TabOrder = 5
+      ParentBiDiMode = False
+      TabOrder = 6
     end
     object DBEdit8: TDBEdit
       Left = 24
       Top = 159
       Width = 188
       Height = 21
+      BiDiMode = bdLeftToRight
       DataField = 'EMP_CIDADE'
       DataSource = DataSource1
-      TabOrder = 6
+      ParentBiDiMode = False
+      TabOrder = 7
     end
     object DBEdit9: TDBEdit
       Left = 218
       Top = 159
       Width = 30
       Height = 21
+      BiDiMode = bdLeftToRight
       DataField = 'EMP_UF'
       DataSource = DataSource1
-      TabOrder = 7
-    end
-    object DBEdit10: TDBEdit
-      Left = 292
-      Top = 159
-      Width = 134
-      Height = 21
-      DataField = 'EMP_CEP'
-      DataSource = DataSource1
+      ParentBiDiMode = False
       TabOrder = 8
-    end
-    object DBEdit11: TDBEdit
-      Left = 432
-      Top = 159
-      Width = 124
-      Height = 21
-      DataField = 'EMP_FONE'
-      DataSource = DataSource1
-      TabOrder = 9
     end
     object DBEdit12: TDBEdit
       Left = 24
       Top = 205
       Width = 532
       Height = 21
+      BiDiMode = bdLeftToRight
       DataField = 'EMP_TITULAR'
       DataSource = DataSource1
-      TabOrder = 10
+      ParentBiDiMode = False
+      TabOrder = 9
     end
     object DBEdit2: TDBEdit
       Left = 202
       Top = 21
       Width = 151
       Height = 21
+      BiDiMode = bdLeftToRight
       DataField = 'EMP_CNPJ'
+      DataSource = DataSource1
+      ParentBiDiMode = False
+      TabOrder = 1
+    end
+    object DBEdit10: TDBEdit
+      Left = 295
+      Top = 159
+      Width = 108
+      Height = 21
+      DataField = 'EMP_CEP'
+      DataSource = DataSource1
+      TabOrder = 10
+    end
+    object DBEdit11: TDBEdit
+      Left = 440
+      Top = 159
+      Width = 89
+      Height = 21
+      DataField = 'EMP_FONE'
       DataSource = DataSource1
       TabOrder = 11
     end

@@ -5,6 +5,8 @@ object DM_contabil: TDM_contabil
   object empresa: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = empresaAfterInsert
+    BeforePost = empresaBeforePost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -20,12 +22,12 @@ object DM_contabil: TDM_contabil
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object empresaEMP_CNPJ: TIBBCDField
+    object empresaEMP_CNPJ: TIBStringField
       DisplayLabel = 'CNPJ'
       FieldName = 'EMP_CNPJ'
       Origin = '"EMPRESA"."EMP_CNPJ"'
-      Precision = 18
-      Size = 2
+      EditMask = '99.999.999/9999-99;0'
+      Size = 18
     end
     object empresaEMP_RAZAO: TIBStringField
       DisplayLabel = 'Raz'#227'o Social'
@@ -67,18 +69,22 @@ object DM_contabil: TDM_contabil
       Origin = '"EMPRESA"."EMP_UF"'
       Size = 2
     end
-    object empresaEMP_CEP: TIntegerField
+    object empresaEMP_CEP: TIBStringField
       DisplayLabel = 'CEP'
       FieldName = 'EMP_CEP'
       Origin = '"EMPRESA"."EMP_CEP"'
+      EditMask = '00000\-999;1;_'
+      Size = 12
     end
-    object empresaEMP_FONE: TIntegerField
+    object empresaEMP_FONE: TIBStringField
       DisplayLabel = 'Telefone'
       FieldName = 'EMP_FONE'
       Origin = '"EMPRESA"."EMP_FONE"'
+      EditMask = '!\(99\)0000-0000;1;_'
+      Size = 14
     end
     object empresaEMP_TITULAR: TIBStringField
-      DisplayLabel = 'Respons'#225'vel'
+      DisplayLabel = 'Titular'
       FieldName = 'EMP_TITULAR'
       Origin = '"EMPRESA"."EMP_TITULAR"'
       Size = 60

@@ -27,13 +27,13 @@ type
     DBEdit8: TDBEdit;
     Label9: TLabel;
     DBEdit9: TDBEdit;
+    Label12: TLabel;
+    DBEdit12: TDBEdit;
+    DBEdit2: TDBEdit;
     Label10: TLabel;
     DBEdit10: TDBEdit;
     Label11: TLabel;
     DBEdit11: TDBEdit;
-    Label12: TLabel;
-    DBEdit12: TDBEdit;
-    DBEdit2: TDBEdit;
   private
     { Private declarations }
   public
