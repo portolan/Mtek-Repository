@@ -5,7 +5,6 @@ object DM_contasreceber: TDM_contasreceber
   object contasreceber: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
-    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
