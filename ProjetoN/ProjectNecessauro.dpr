@@ -84,8 +84,5 @@ begin
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(TFEstoqueRelatorios, FEstoqueRelatorios);
-  Application.CreateForm(TP_FichaTecnica, P_FichaTecnica);
-  Application.CreateForm(TM_FichaTecnica, M_FichaTecnica);
   Application.Run;
 end.
