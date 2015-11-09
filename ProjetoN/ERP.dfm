@@ -6755,11 +6755,11 @@ object TelaInicial: TTelaInicial
   end
   object relogio: TLabel
     AlignWithMargins = True
-    Left = 1
+    Left = 9
     Top = 305
     Width = 600
     Height = 44
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Anchors = [akLeft, akRight, akBottom]
     Caption = '00:00:00'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -6768,8 +6768,6 @@ object TelaInicial: TTelaInicial
     Font.Style = []
     ParentFont = False
     Layout = tlCenter
-    ExplicitWidth = 606
-    ExplicitHeight = 50
   end
   object MainMenu1: TMainMenu
     Left = 528
