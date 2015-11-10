@@ -58,6 +58,7 @@ type
     Relatrios1: TMenuItem;
     relogio: TLabel;
     Timer1: TTimer;
+    Image10: TImage;
     ipodeErro1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
