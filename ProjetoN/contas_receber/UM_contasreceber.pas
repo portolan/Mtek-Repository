@@ -62,8 +62,6 @@ type
     DBRadioGroup2: TDBRadioGroup;
     DBRadioGroup3: TDBRadioGroup;
     ttr_empresa: TDBEdit;
-    procedure sbCancelarClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -79,15 +77,6 @@ implementation
 
 uses UDM_contasreceber;
 
-procedure TM_contasreceber.FormCreate(Sender: TObject);
-begin
-  inherited;
-   M_contasreceber.Close;
-end;
 
-procedure TM_contasreceber.sbCancelarClick(Sender: TObject);
-begin
-  M_contasreceber.Close;
-end;
 
 end.

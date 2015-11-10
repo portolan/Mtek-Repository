@@ -9,13 +9,13 @@ uses
 
 type
   TP_contasreceber = class(TxPesqPadrao)
-    procedure sbNovoClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
 
 
   private
     { Private declarations }
   public
-    { Public declarations }
+     procedure procSelect; override;
   end;
 
 var
@@ -29,14 +29,20 @@ uses UDM_contasreceber;
 
 
 
-procedure TP_contasreceber.sbNovoClick(Sender: TObject);
+procedure TP_contasreceber.FormCreate(Sender: TObject);
 begin
-  M_contasreceber := TM_contasreceber.Create(Self);
-    try
-        M_contasreceber.ShowModal;
-    finally
-        FreeAndNil(M_contasreceber);
-    end;
+  inherited;
+  procInicializar(DM_contasreceber.contasreceber,true,false,M_contasreceber,TM_contasreceber);
+end;
+
+procedure TP_contasreceber.procSelect;
+begin
+  inherited;
+  procMontaWhere;
+
+  DM_contasreceber.contasreceber.Close;
+  DM_contasreceber.contasreceber.SQL.Text := 'select * from TITULO_RECEBER ';
+  DM_contasreceber.contasreceber.Open;
 end;
 
 end.

@@ -5,11 +5,13 @@ object DM_contasreceber: TDM_contasreceber
   object contasreceber: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
       'select * from TITULO_RECEBER')
+    UpdateObject = U_contasreceber
     Left = 32
     Top = 24
     object contasreceberTTR_CODIGO: TIntegerField
@@ -39,7 +41,7 @@ object DM_contasreceber: TDM_contasreceber
     object contasreceberTTR_DESCRICAO: TIBStringField
       FieldName = 'TTR_DESCRICAO'
       Origin = '"TITULO_RECEBER"."TTR_DESCRICAO"'
-      Size = 400
+      Size = 100
     end
     object contasreceberTTR_DT_EMISSAO: TDateField
       FieldName = 'TTR_DT_EMISSAO'
@@ -64,7 +66,7 @@ object DM_contasreceber: TDM_contasreceber
     object contasreceberTTR_TP_TITULO: TIBStringField
       FieldName = 'TTR_TP_TITULO'
       Origin = '"TITULO_RECEBER"."TTR_TP_TITULO"'
-      Size = 120
+      Size = 30
     end
     object contasreceberTTR_DESCONTO: TIBBCDField
       FieldName = 'TTR_DESCONTO'
@@ -111,17 +113,17 @@ object DM_contasreceber: TDM_contasreceber
     object contasreceberTTR_SITUACAO: TIBStringField
       FieldName = 'TTR_SITUACAO'
       Origin = '"TITULO_RECEBER"."TTR_SITUACAO"'
-      Size = 4
+      Size = 1
     end
     object contasreceberTTR_TP_MORA: TIBStringField
       FieldName = 'TTR_TP_MORA'
       Origin = '"TITULO_RECEBER"."TTR_TP_MORA"'
-      Size = 4
+      Size = 1
     end
     object contasreceberTTR_TP_MULTA: TIBStringField
       FieldName = 'TTR_TP_MULTA'
       Origin = '"TITULO_RECEBER"."TTR_TP_MULTA"'
-      Size = 4
+      Size = 1
     end
   end
   object D_contasreceber: TDataSource
@@ -130,6 +132,95 @@ object DM_contasreceber: TDM_contasreceber
     Top = 96
   end
   object U_contasreceber: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      '  TTR_CODIGO,'
+      '  TTR_EMP_CODIGO,'
+      '  TTR_PES_CODIGO,'
+      '  TTR_CTB_CODIGO,'
+      '  TTR_CON_CODIGO,'
+      '  TTR_DESCRICAO,'
+      '  TTR_DT_EMISSAO,'
+      '  TTR_DT_VENCIMENTO,'
+      '  TTR_DT_PAGAMENTO,'
+      '  TTR_DT_BAIXA,'
+      '  TTR_DT_CANCELAMENTO,'
+      '  TTR_TP_TITULO,'
+      '  TTR_DESCONTO,'
+      '  TTR_PARCELA,'
+      '  TTR_VL_ORIGINAL,'
+      '  TTR_VL_PAGO,'
+      '  TTR_VL_TOTAL,'
+      '  TTR_MR_DIARIA,'
+      '  TTR_MT_ATRASO,'
+      '  TTR_SITUACAO,'
+      '  TTR_TP_MORA,'
+      '  TTR_TP_MULTA'
+      'from TITULO_RECEBER '
+      'where'
+      '  TTR_CODIGO = :TTR_CODIGO')
+    ModifySQL.Strings = (
+      'update TITULO_RECEBER'
+      'set'
+      '  TTR_CODIGO = :TTR_CODIGO,'
+      '  TTR_CON_CODIGO = :TTR_CON_CODIGO,'
+      '  TTR_CTB_CODIGO = :TTR_CTB_CODIGO,'
+      '  TTR_DESCONTO = :TTR_DESCONTO,'
+      '  TTR_DESCRICAO = :TTR_DESCRICAO,'
+      '  TTR_DT_BAIXA = :TTR_DT_BAIXA,'
+      '  TTR_DT_CANCELAMENTO = :TTR_DT_CANCELAMENTO,'
+      '  TTR_DT_EMISSAO = :TTR_DT_EMISSAO,'
+      '  TTR_DT_PAGAMENTO = :TTR_DT_PAGAMENTO,'
+      '  TTR_DT_VENCIMENTO = :TTR_DT_VENCIMENTO,'
+      '  TTR_EMP_CODIGO = :TTR_EMP_CODIGO,'
+      '  TTR_MR_DIARIA = :TTR_MR_DIARIA,'
+      '  TTR_MT_ATRASO = :TTR_MT_ATRASO,'
+      '  TTR_PARCELA = :TTR_PARCELA,'
+      '  TTR_PES_CODIGO = :TTR_PES_CODIGO,'
+      '  TTR_SITUACAO = :TTR_SITUACAO,'
+      '  TTR_TP_MORA = :TTR_TP_MORA,'
+      '  TTR_TP_MULTA = :TTR_TP_MULTA,'
+      '  TTR_TP_TITULO = :TTR_TP_TITULO,'
+      '  TTR_VL_ORIGINAL = :TTR_VL_ORIGINAL,'
+      '  TTR_VL_PAGO = :TTR_VL_PAGO,'
+      '  TTR_VL_TOTAL = :TTR_VL_TOTAL'
+      'where'
+      '  TTR_CODIGO = :OLD_TTR_CODIGO')
+    InsertSQL.Strings = (
+      'insert into TITULO_RECEBER'
+      
+        '  (TTR_CODIGO, TTR_CON_CODIGO, TTR_CTB_CODIGO, TTR_DESCONTO, TTR' +
+        '_DESCRICAO, '
+      
+        '   TTR_DT_BAIXA, TTR_DT_CANCELAMENTO, TTR_DT_EMISSAO, TTR_DT_PAG' +
+        'AMENTO, '
+      
+        '   TTR_DT_VENCIMENTO, TTR_EMP_CODIGO, TTR_MR_DIARIA, TTR_MT_ATRA' +
+        'SO, TTR_PARCELA, '
+      
+        '   TTR_PES_CODIGO, TTR_SITUACAO, TTR_TP_MORA, TTR_TP_MULTA, TTR_' +
+        'TP_TITULO, '
+      '   TTR_VL_ORIGINAL, TTR_VL_PAGO, TTR_VL_TOTAL)'
+      'values'
+      
+        '  (:TTR_CODIGO, :TTR_CON_CODIGO, :TTR_CTB_CODIGO, :TTR_DESCONTO,' +
+        ' :TTR_DESCRICAO, '
+      
+        '   :TTR_DT_BAIXA, :TTR_DT_CANCELAMENTO, :TTR_DT_EMISSAO, :TTR_DT' +
+        '_PAGAMENTO, '
+      
+        '   :TTR_DT_VENCIMENTO, :TTR_EMP_CODIGO, :TTR_MR_DIARIA, :TTR_MT_' +
+        'ATRASO, '
+      
+        '   :TTR_PARCELA, :TTR_PES_CODIGO, :TTR_SITUACAO, :TTR_TP_MORA, :' +
+        'TTR_TP_MULTA, '
+      
+        '   :TTR_TP_TITULO, :TTR_VL_ORIGINAL, :TTR_VL_PAGO, :TTR_VL_TOTAL' +
+        ')')
+    DeleteSQL.Strings = (
+      'delete from TITULO_RECEBER'
+      'where'
+      '  TTR_CODIGO = :OLD_TTR_CODIGO')
     Left = 32
     Top = 168
   end

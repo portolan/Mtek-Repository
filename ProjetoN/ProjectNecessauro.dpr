@@ -85,6 +85,9 @@ begin
   Application.CreateForm(TDM_contabil, DM_contabil);
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDM_PCP, DM_PCP);
+  Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
+  Application.CreateForm(TDM_contasreceber, DM_contasreceber);
+  Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.Run;
 end.

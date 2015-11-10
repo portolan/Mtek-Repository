@@ -1,5 +1,6 @@
 inherited P_contasreceber: TP_contasreceber
   Caption = 'Contas Receber'
+  OnCreate = FormCreate
   ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96
@@ -17,106 +18,127 @@ inherited P_contasreceber: TP_contasreceber
           item
             Expanded = False
             FieldName = 'TTR_EMP_CODIGO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_PES_CODIGO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_CTB_CODIGO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_CON_CODIGO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_DESCRICAO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_DT_EMISSAO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_DT_VENCIMENTO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_DT_PAGAMENTO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_DT_BAIXA'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_DT_CANCELAMENTO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_TP_TITULO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_DESCONTO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_PARCELA'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_VL_ORIGINAL'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_VL_PAGO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_VL_TOTAL'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_MR_DIARIA'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_MT_ATRASO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_SITUACAO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_TP_MORA'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TTR_TP_MULTA'
+            Width = 64
             Visible = True
           end>
       end

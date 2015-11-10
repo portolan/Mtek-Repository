@@ -25,8 +25,6 @@
     Width = 736
     Height = 303
     Caption = ''
-    ExplicitLeft = 80
-    ExplicitTop = 96
     ExplicitWidth = 736
     ExplicitHeight = 303
     object GroupBox1: TGroupBox
