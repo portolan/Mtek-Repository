@@ -247,6 +247,12 @@ object DM_PCP: TDM_PCP
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
+    object Ficha_TecnicaFT_EMPRESA: TIntegerField
+      FieldName = 'FT_EMPRESA'
+      Origin = '"FICHA_TECNICA"."FT_EMPRESA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
     object Ficha_TecnicaFT_PRODUTO: TIBStringField
       FieldName = 'FT_PRODUTO'
       Origin = '"FICHA_TECNICA"."FT_PRODUTO"'
@@ -261,6 +267,7 @@ object DM_PCP: TDM_PCP
     object Ficha_TecnicaFT_CUSTO_UNITARIO: TIBBCDField
       FieldName = 'FT_CUSTO_UNITARIO'
       Origin = '"FICHA_TECNICA"."FT_CUSTO_UNITARIO"'
+      DisplayFormat = '0.00'
       Precision = 18
       Size = 4
     end
@@ -277,18 +284,14 @@ object DM_PCP: TDM_PCP
     object Ficha_TecnicaFT_CUSTO_TOTAL: TIBBCDField
       FieldName = 'FT_CUSTO_TOTAL'
       Origin = '"FICHA_TECNICA"."FT_CUSTO_TOTAL"'
+      DisplayFormat = '0.00'
       Precision = 18
       Size = 4
     end
     object Ficha_TecnicaFT_TEMPO_PRODUCAO: TDateTimeField
       FieldName = 'FT_TEMPO_PRODUCAO'
       Origin = '"FICHA_TECNICA"."FT_TEMPO_PRODUCAO"'
-    end
-    object Ficha_TecnicaFT_EMPRESA: TIntegerField
-      FieldName = 'FT_EMPRESA'
-      Origin = '"FICHA_TECNICA"."FT_EMPRESA"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
+      EditMask = '!90:00;1;_'
     end
   end
   object DS_Ficha_Tecnica: TDataSource
@@ -491,7 +494,7 @@ object DM_PCP: TDM_PCP
   object DS_Entrega_Materia: TDataSource
     DataSet = Ficha_Tecnica
     Left = 424
-    Top = 72
+    Top = 64
   end
   object UPD_Entrega_Materia: TIBUpdateSQL
     RefreshSQL.Strings = (
@@ -534,6 +537,6 @@ object DM_PCP: TDM_PCP
       '  EM0_COD = :OLD_EM0_COD and'
       '  EM0_EMPRESA = :OLD_EM0_EMPRESA')
     Left = 424
-    Top = 136
+    Top = 128
   end
 end
