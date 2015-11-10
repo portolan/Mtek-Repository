@@ -1,7 +1,5 @@
 unit UEstoque;
 
-
-
 interface
 
 uses System.SysUtils, System.Variants, System.Classes, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery, IBX.IBUpdateSQL, Vcl.Dialogs;
@@ -82,7 +80,6 @@ begin
             else
                 raise Exception.Create('Operação Inválida!');
         finally
-            QryDinamica.Transaction.Commit;
             FreeAndNil(QryDinamica);
         end;
     except
