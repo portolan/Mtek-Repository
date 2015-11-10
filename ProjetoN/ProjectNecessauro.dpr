@@ -70,6 +70,7 @@ uses
   UF_EstoqueRelatorios in 'Estoque\UF_EstoqueRelatorios.pas' {FEstoqueRelatorios},
   UP_FichaTecnica in 'pcp\UP_FichaTecnica.pas' {P_FichaTecnica},
   UM_FichaTecnica in 'pcp\UM_FichaTecnica.pas' {M_FichaTecnica},
+  UDM_PedCompra in 'datamodulo\UDM_PedCompra.pas' {dmPedCompra: TDataModule},
   UR_Relatorio_Chamado in 'assistencia\UR_Relatorio_Chamado.pas' {UR_Relatorio};
 
 {$R *.res}
@@ -85,6 +86,6 @@ begin
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(TUR_Relatorio, UR_Relatorio);
+  Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.Run;
 end.
