@@ -2,8 +2,8 @@ object TelaInicial: TTelaInicial
   Left = 0
   Top = 0
   Caption = 'ERP'
-  ClientHeight = 358
-  ClientWidth = 606
+  ClientHeight = 386
+  ClientWidth = 605
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -1019,15 +1019,15 @@ object TelaInicial: TTelaInicial
   WindowState = wsMaximized
   OnClose = FormClose
   DesignSize = (
-    606
-    358)
+    605
+    386)
   PixelsPerInch = 96
   TextHeight = 13
   object Image10: TImage
     Left = 0
     Top = 0
-    Width = 606
-    Height = 358
+    Width = 605
+    Height = 386
     Align = alClient
     DragKind = dkDock
     Picture.Data = {
@@ -3283,8 +3283,10 @@ object TelaInicial: TTelaInicial
       3F4FFEBD145653DBEE3A30FF001BF47F91D251914515AF439C3228CD145200C8
       A3228A2980668C8A28A00FFFD9}
     Stretch = True
-    ExplicitLeft = -16
-    ExplicitTop = 56
+    ExplicitLeft = -192
+    ExplicitTop = -152
+    ExplicitWidth = 606
+    ExplicitHeight = 358
   end
   object Image1: TImage
     Left = 206
@@ -6757,8 +6759,8 @@ object TelaInicial: TTelaInicial
   object relogio: TLabel
     AlignWithMargins = True
     Left = 9
-    Top = 305
-    Width = 162
+    Top = 333
+    Width = 161
     Height = 50
     Anchors = [akLeft, akRight, akBottom]
     Caption = '00:00:00'
@@ -6769,6 +6771,8 @@ object TelaInicial: TTelaInicial
     Font.Style = []
     ParentFont = False
     Layout = tlCenter
+    ExplicitTop = 305
+    ExplicitWidth = 162
   end
   object MainMenu1: TMainMenu
     Left = 528
