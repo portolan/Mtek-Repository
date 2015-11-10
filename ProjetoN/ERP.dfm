@@ -3283,7 +3283,8 @@ object TelaInicial: TTelaInicial
       3F4FFEBD145653DBEE3A30FF001BF47F91D251914515AF439C3228CD145200C8
       A3228A2980668C8A28A00FFFD9}
     Stretch = True
-    ExplicitLeft = 8
+    ExplicitLeft = -16
+    ExplicitTop = 56
   end
   object Image1: TImage
     Left = 206
@@ -6757,8 +6758,8 @@ object TelaInicial: TTelaInicial
     AlignWithMargins = True
     Left = 9
     Top = 305
-    Width = 600
-    Height = 44
+    Width = 162
+    Height = 50
     Anchors = [akLeft, akRight, akBottom]
     Caption = '00:00:00'
     Font.Charset = DEFAULT_CHARSET
