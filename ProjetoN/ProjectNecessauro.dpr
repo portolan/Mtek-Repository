@@ -78,7 +78,7 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  TStyleManager.TrySetStyle('Glossy');
+  TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.CreateForm(TdmBanco, dmBanco);
   Application.CreateForm(TDM_Estoque, DM_Estoque);
   Application.CreateForm(TdmPedido, dmPedido);
@@ -86,6 +86,5 @@ begin
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.Run;
 end.
