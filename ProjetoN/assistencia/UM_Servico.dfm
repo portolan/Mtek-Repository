@@ -19,8 +19,6 @@ inherited M_Servico: TM_Servico
   inherited gbInfos: TGroupBox
     Width = 709
     Height = 402
-    ExplicitLeft = 1
-    ExplicitTop = -5
     ExplicitWidth = 709
     ExplicitHeight = 402
     object Label1: TLabel
@@ -89,7 +87,7 @@ inherited M_Servico: TM_Servico
     end
     object Label9: TLabel
       Left = 432
-      Top = 112
+      Top = 128
       Width = 31
       Height = 13
       Caption = 'Status'
@@ -97,11 +95,10 @@ inherited M_Servico: TM_Servico
     end
     object Label10: TLabel
       Left = 432
-      Top = 152
+      Top = 181
       Width = 58
       Height = 13
       Caption = 'Tipo de Erro'
-      FocusControl = DBEdit10
     end
     object Label11: TLabel
       Left = 24
@@ -117,7 +114,7 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_CODIGO'
       DataSource = DM_Servico.DS_Chamado
-      ReadOnly = True
+      Enabled = False
       TabOrder = 0
     end
     object DBEdit2: TDBEdit
@@ -127,8 +124,9 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_EMPRESA'
       DataSource = DM_Servico.DS_Chamado
+      ReadOnly = True
       TabOrder = 1
-      OnEnter = DBEdit2Enter
+      OnClick = DBEdit2Click
     end
     object DBEdit3: TDBEdit
       Left = 216
@@ -137,7 +135,9 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_DEPARTAMENTO'
       DataSource = DM_Servico.DS_Chamado
+      ReadOnly = True
       TabOrder = 2
+      OnClick = DBEdit3Click
     end
     object DBEdit4: TDBEdit
       Left = 24
@@ -146,6 +146,7 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_FUNCIONARIO'
       DataSource = DM_Servico.DS_Chamado
+      ReadOnly = True
       TabOrder = 3
     end
     object DBEdit5: TDBEdit
@@ -155,6 +156,7 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_PROPRIETARIO'
       DataSource = DM_Servico.DS_Chamado
+      ReadOnly = True
       TabOrder = 4
     end
     object DBEdit6: TDBEdit
@@ -187,21 +189,12 @@ inherited M_Servico: TM_Servico
     end
     object DBEdit9: TDBEdit
       Left = 432
-      Top = 128
+      Top = 144
       Width = 97
       Height = 21
       DataField = 'CHA_STATUS'
       DataSource = DM_Servico.DS_Chamado
       TabOrder = 8
-    end
-    object DBEdit10: TDBEdit
-      Left = 432
-      Top = 168
-      Width = 113
-      Height = 21
-      DataField = 'CHA_TIPO_ERRO'
-      DataSource = DM_Servico.DS_Chamado
-      TabOrder = 9
     end
     object DBMemo1: TDBMemo
       Left = 24
@@ -210,6 +203,18 @@ inherited M_Servico: TM_Servico
       Height = 135
       DataField = 'CHA_DESCRICAO'
       DataSource = DM_Servico.DS_Chamado
+      TabOrder = 9
+    end
+    object DBLookupComboBox1: TDBLookupComboBox
+      Left = 432
+      Top = 200
+      Width = 137
+      Height = 21
+      DataField = 'CHA_TIPO_ERRO'
+      DataSource = DM_Servico.DS_Chamado
+      KeyField = 'TER_CODIGO'
+      ListField = 'TER_DESCRICAO'
+      ListSource = DM_Servico.DS_Tipo_Erro
       TabOrder = 10
     end
   end

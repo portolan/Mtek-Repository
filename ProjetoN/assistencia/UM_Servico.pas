@@ -28,11 +28,12 @@ type
     Label9: TLabel;
     DBEdit9: TDBEdit;
     Label10: TLabel;
-    DBEdit10: TDBEdit;
     Label11: TLabel;
     DBMemo1: TDBMemo;
+    DBLookupComboBox1: TDBLookupComboBox;
     procedure FormCreate(Sender: TObject);
-    procedure DBEdit2Enter(Sender: TObject);
+    procedure DBEdit2Click(Sender: TObject);
+    procedure DBEdit3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -46,9 +47,10 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_Servico, UDM_contabil, UP_empresa;
+uses UDM_Servico, UDM_contabil, UP_empresa, UP_departamento;
 
-procedure TM_Servico.DBEdit2Enter(Sender: TObject);
+
+procedure TM_Servico.DBEdit2Click(Sender: TObject);
 begin
   inherited;
   P_empresa := TP_empresa.Create(self);
@@ -57,6 +59,18 @@ begin
     P_empresa.ShowModal;
   finally
     DM_Servico.IB_ChamadoCHA_EMPRESA.Value := DM_contabil.empresaEMP_COD.AsInteger;
+  end;
+end;
+
+procedure TM_Servico.DBEdit3Click(Sender: TObject);
+begin
+  inherited;
+  P_departamento := TP_departamento.Create(Self);
+  try
+    P_departamento.procInicializar(DM_contabil.departamento,false,true,P_departamento,TP_departamento);
+    P_departamento.ShowModal;
+  finally
+    DM_Servico.IB_ChamadoCHA_DEPARTAMENTO.Value := DM_contabil.departamentoDEP_COD.AsInteger;
   end;
 end;
 
