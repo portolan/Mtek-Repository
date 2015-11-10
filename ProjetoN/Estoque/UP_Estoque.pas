@@ -24,7 +24,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_Estoque, UM_Estoque;
+uses UDM_Estoque, UM_Estoque, UEstoque;
 
 procedure TPEstoque.FormActivate(Sender: TObject);
 begin
@@ -33,10 +33,13 @@ begin
 end;
 
 procedure TPEstoque.FormCreate(Sender: TObject);
+var
+    bloc,prat,est:integer;
 begin
   inherited;
     procInicializar(DM_Estoque.Estoque, True, False, MEstoque, TMEstoque);
     funcAtribuiFiltros;
+
 end;
 
 procedure TPEstoque.procSelect;

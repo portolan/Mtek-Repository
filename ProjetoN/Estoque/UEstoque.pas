@@ -5,6 +5,7 @@ interface
 uses System.SysUtils, System.Variants, System.Classes, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery, IBX.IBUpdateSQL, Vcl.Dialogs;
 
 function funcBaixaEstoque(codEmpresa:integer; codProduto:String; codBloco, codPrateleira, codEstoque: integer; qtd:double; tipo: String): Boolean;
+function funcVerificaEstoque(codEmpresa : integer; codProduto : String; qtd : double; var codBloco, codPrateleira, codEstoque : integer):double;
 function funcCriaQuery:TIBQuery;
 
 implementation
@@ -97,6 +98,33 @@ begin
         end;
     end;
     Result := true;
+end;
+
+function funcVerificaEstoque(codEmpresa : integer; codProduto : String; qtd : double; var codBloco, codPrateleira, codEstoque : integer):double;
+var
+    qryDin : TIBQuery;
+begin
+    try
+        qryDin := funcCriaQuery;
+        qryDin.Close;
+        qryDin.SQL.Text := 'select first 1 estoq_bloco, estoq_prateleira, estoq_codigo, estoq_qtd from estoque ' +
+                           ' where estoq_empresa = :codEmpresa and ' +
+                           ' estoq_produto = :codProduto and ' +
+                           ' estoq_qtd    >= :qtd';
+        qryDin.ParamByName('codEmpresa').AsInteger := codEmpresa;
+        qryDin.ParamByName('codProduto').AsString  := codProduto;
+        qryDin.ParamByName('qtd').AsFloat          := qtd;
+        qryDin.Open;
+
+        codBloco        := qryDin.FieldByName('estoq_bloco').AsInteger;
+        codPrateleira   := qryDin.FieldByName('estoq_prateleira').AsInteger;
+        codEstoque      := qryDin.FieldByName('estoq_codigo').AsInteger;
+        Result             := qryDin.FieldByName('estoq_qtd').AsFloat;
+    except on E: Exception do
+        raise Exception.Create('Erro ao verificar estoque!');
+    end;
+
+
 end;
 
 function funcCriaQuery: TIBQuery;
