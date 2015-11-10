@@ -1100,7 +1100,6 @@ object DM_Estoque: TDM_Estoque
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = MovimentoEstoqueAfterInsert
-    AfterPost = MovimentoEstoqueAfterPost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
