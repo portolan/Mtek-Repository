@@ -351,6 +351,9 @@ object xPesqPadrao: TxPesqPadrao
       Align = alClient
       Caption = 'Filtros'
       TabOrder = 1
+      DesignSize = (
+        703
+        53)
       object cbContent: TComboBox
         Left = 156
         Top = 17
@@ -378,6 +381,7 @@ object xPesqPadrao: TxPesqPadrao
         Top = 17
         Width = 309
         Height = 21
+        Anchors = [akLeft, akTop, akRight]
         TabOrder = 2
         OnChange = editPesquisaChange
       end
@@ -386,6 +390,7 @@ object xPesqPadrao: TxPesqPadrao
         Top = 15
         Width = 75
         Height = 25
+        Anchors = [akTop, akRight]
         Caption = 'Pesquisar'
         TabOrder = 3
         OnClick = PesquisarClick
