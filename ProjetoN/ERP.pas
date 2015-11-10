@@ -58,6 +58,8 @@ type
     Relatrios1: TMenuItem;
     relogio: TLabel;
     Timer1: TTimer;
+    GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
     Image10: TImage;
     ipodeErro1: TMenuItem;
     procedure Sair1Click(Sender: TObject);

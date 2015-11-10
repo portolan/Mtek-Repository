@@ -22,7 +22,6 @@ type
     DBEdit6: TDBEdit;
     Label7: TLabel;
     Label8: TLabel;
-    DBEdit8: TDBEdit;
     Label9: TLabel;
     DBEdit9: TDBEdit;
     Label10: TLabel;
@@ -36,10 +35,12 @@ type
     SpeedButton5: TSpeedButton;
     DBEdit5: TDBEdit;
     DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -53,7 +54,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_contabil, UP_planodecontas, UP_centro;
+uses UDM_contabil, UP_planodecontas, UP_centro, UP_historico;
 
 procedure TM_lancamento.SpeedButton1Click(Sender: TObject);
 begin
@@ -81,6 +82,21 @@ P_planodecontas := TP_planodecontas.Create(Self);
     finally
       P_planodecontas.Free;
     end;
+end;
+
+procedure TM_lancamento.SpeedButton3Click(Sender: TObject);
+begin
+  inherited;
+  P_historico := TP_historico.Create(Self);
+    try
+      P_historico.procInicializar(DM_contabil.historico, false, true, P_historico, TP_historico);
+      P_historico.ShowModal;
+
+      DM_contabil.lancamentoLANC_HISTORICO.Value := DM_contabil.historicoHIST_NOME.AsString;
+    finally
+      P_historico.Free;
+    end;
+
 end;
 
 procedure TM_lancamento.SpeedButton4Click(Sender: TObject);

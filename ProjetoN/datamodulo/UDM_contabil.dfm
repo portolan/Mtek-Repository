@@ -285,10 +285,11 @@ object DM_contabil: TDM_contabil
       EditMask = '000\.000\.000;0;_'
       Size = 9
     end
-    object lancamentoLANC_HISTORICO: TIntegerField
+    object lancamentoLANC_HISTORICO: TIBStringField
       DisplayLabel = 'Hist'#243'rico'
       FieldName = 'LANC_HISTORICO'
       Origin = '"LANCAMENTOS"."LANC_HISTORICO"'
+      Size = 100
     end
     object lancamentoLANC_VAR_HISTORICO: TIBStringField
       DisplayLabel = 'Vari'#225'vel Hist'#243'rico'
@@ -321,6 +322,7 @@ object DM_contabil: TDM_contabil
       '  LANC_CREDITO = :LANC_CREDITO,'
       '  LANC_DEBITO = :LANC_DEBITO,'
       '  LANC_DT_LANCAMENTO = :LANC_DT_LANCAMENTO,'
+      '  LANC_EMP = :LANC_EMP,'
       '  LANC_HISTORICO = :LANC_HISTORICO,'
       '  LANC_NR_LANCAMENTO = :LANC_NR_LANCAMENTO,'
       '  LANC_NR_LOTE = :LANC_NR_LOTE,'
@@ -334,17 +336,17 @@ object DM_contabil: TDM_contabil
         '  (LANC_CENTRODECUSTO_CR, LANC_CENTRODECUSTO_DB, LANC_CREDITO, L' +
         'ANC_DEBITO, '
       
-        '   LANC_DT_LANCAMENTO, LANC_HISTORICO, LANC_NR_LANCAMENTO, LANC_' +
-        'NR_LOTE, '
+        '   LANC_DT_LANCAMENTO, LANC_EMP, LANC_HISTORICO, LANC_NR_LANCAME' +
+        'NTO, LANC_NR_LOTE, '
       '   LANC_VALOR, LANC_VAR_HISTORICO)'
       'values'
       
         '  (:LANC_CENTRODECUSTO_CR, :LANC_CENTRODECUSTO_DB, :LANC_CREDITO' +
         ', :LANC_DEBITO, '
       
-        '   :LANC_DT_LANCAMENTO, :LANC_HISTORICO, :LANC_NR_LANCAMENTO, :L' +
-        'ANC_NR_LOTE, '
-      '   :LANC_VALOR, :LANC_VAR_HISTORICO)')
+        '   :LANC_DT_LANCAMENTO, :LANC_EMP, :LANC_HISTORICO, :LANC_NR_LAN' +
+        'CAMENTO, '
+      '   :LANC_NR_LOTE, :LANC_VALOR, :LANC_VAR_HISTORICO)')
     DeleteSQL.Strings = (
       'delete from lancamentos'
       'where'

@@ -3,7 +3,7 @@ object TelaInicial: TTelaInicial
   Top = 0
   Caption = 'ERP'
   ClientHeight = 386
-  ClientWidth = 605
+  ClientWidth = 900
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -1019,7 +1019,7 @@ object TelaInicial: TTelaInicial
   WindowState = wsMaximized
   OnClose = FormClose
   DesignSize = (
-    605
+    900
     386)
   PixelsPerInch = 96
   TextHeight = 13
@@ -3288,8 +3288,8 @@ object TelaInicial: TTelaInicial
     ExplicitHeight = 105
   end
   object Image1: TImage
-    Left = 206
-    Top = 8
+    Left = 310
+    Top = 24
     Width = 60
     Height = 60
     AutoSize = True
@@ -3668,8 +3668,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image2: TImage
-    Left = 140
-    Top = 8
+    Left = 208
+    Top = 24
     Width = 60
     Height = 60
     AutoSize = True
@@ -4051,8 +4051,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image3: TImage
-    Left = 272
-    Top = 8
+    Left = 416
+    Top = 24
     Width = 60
     Height = 60
     AutoSize = True
@@ -4436,8 +4436,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image4: TImage
-    Left = 404
-    Top = 8
+    Left = 618
+    Top = 24
     Width = 60
     Height = 60
     AutoSize = True
@@ -4826,8 +4826,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image5: TImage
-    Left = 8
-    Top = 8
+    Left = 24
+    Top = 24
     Width = 60
     Height = 60
     AutoSize = True
@@ -5212,8 +5212,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image6: TImage
-    Left = 536
-    Top = 8
+    Left = 822
+    Top = 24
     Width = 60
     Height = 60
     AutoSize = True
@@ -5599,8 +5599,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image7: TImage
-    Left = 470
-    Top = 8
+    Left = 720
+    Top = 24
     Width = 60
     Height = 60
     AutoSize = True
@@ -5982,8 +5982,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image8: TImage
-    Left = 74
-    Top = 8
+    Left = 114
+    Top = 24
     Width = 60
     Height = 60
     AutoSize = True
@@ -6369,8 +6369,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image9: TImage
-    Left = 338
-    Top = 8
+    Left = 520
+    Top = 24
     Width = 60
     Height = 60
     AutoSize = True
@@ -6757,9 +6757,9 @@ object TelaInicial: TTelaInicial
   end
   object relogio: TLabel
     AlignWithMargins = True
-    Left = 9
-    Top = 333
-    Width = 162
+    Left = 25
+    Top = 328
+    Width = 165
     Height = 50
     Anchors = [akLeft, akRight, akBottom]
     Caption = '00:00:00'
@@ -6770,6 +6770,27 @@ object TelaInicial: TTelaInicial
     Font.Style = []
     ParentFont = False
     Layout = tlCenter
+  end
+  object GroupBox2: TGroupBox
+    Left = 11
+    Top = 314
+    Width = 179
+    Height = 62
+    Margins.Bottom = 5
+    Align = alCustom
+    Anchors = [akLeft, akBottom]
+    Caption = 'Data e Hora'
+    Padding.Left = 3
+    Padding.Bottom = 3
+    TabOrder = 1
+  end
+  object GroupBox1: TGroupBox
+    Left = 8
+    Top = 0
+    Width = 884
+    Height = 105
+    Caption = 'Atalhos'
+    TabOrder = 0
   end
   object MainMenu1: TMainMenu
     Left = 528
