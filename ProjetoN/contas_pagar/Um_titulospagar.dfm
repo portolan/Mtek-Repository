@@ -438,8 +438,8 @@
       TabOrder = 23
     end
     object DBRadioGroup1: TDBRadioGroup
-      Left = 243
-      Top = 232
+      Left = 242
+      Top = 234
       Width = 250
       Height = 54
       Columns = 3
