@@ -33,8 +33,6 @@ begin
 end;
 
 procedure TPEstoque.FormCreate(Sender: TObject);
-var
-    bloc,prat,est:integer;
 begin
   inherited;
     procInicializar(DM_Estoque.Estoque, True, False, MEstoque, TMEstoque);
