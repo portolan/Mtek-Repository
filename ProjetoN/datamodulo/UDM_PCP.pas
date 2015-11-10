@@ -65,6 +65,9 @@ type
     Entrega_MateriaEM0_DESCRICAO: TIBStringField;
     Entrega_MateriaEM0_DT_ENTREGA: TDateField;
     Entrega_MateriaEM0_EMPRESA: TIntegerField;
+    queryGenerica: TIBQuery;
+    DataSource1: TDataSource;
+    IBUpdateSQL1: TIBUpdateSQL;
   private
     { Private declarations }
   public

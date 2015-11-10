@@ -1,7 +1,7 @@
 object DM_PCP: TDM_PCP
   OldCreateOrder = False
   Height = 220
-  Width = 501
+  Width = 690
   object UPD_OrdemProducao: TIBUpdateSQL
     RefreshSQL.Strings = (
       'Select '
@@ -350,7 +350,7 @@ object DM_PCP: TDM_PCP
       '  FT_EMPRESA = :OLD_FT_EMPRESA and'
       '  FT_PRODUTO = :OLD_FT_PRODUTO')
     Left = 216
-    Top = 128
+    Top = 144
   end
   object Itens_Ficha: TIBQuery
     Database = dmBanco.Banco
@@ -448,7 +448,7 @@ object DM_PCP: TDM_PCP
       'where'
       '  IFT_EMPRESA = :OLD_IFT_EMPRESA')
     Left = 320
-    Top = 136
+    Top = 144
   end
   object Entrega_Materia: TIBQuery
     Database = dmBanco.Banco
@@ -538,6 +538,24 @@ object DM_PCP: TDM_PCP
       '  EM0_COD = :OLD_EM0_COD and'
       '  EM0_EMPRESA = :OLD_EM0_EMPRESA')
     Left = 424
-    Top = 144
+    Top = 136
+  end
+  object queryGenerica: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    Left = 584
+    Top = 64
+  end
+  object DataSource1: TDataSource
+    DataSet = queryGenerica
+    Left = 584
+    Top = 112
+  end
+  object IBUpdateSQL1: TIBUpdateSQL
+    Left = 584
+    Top = 160
   end
 end
