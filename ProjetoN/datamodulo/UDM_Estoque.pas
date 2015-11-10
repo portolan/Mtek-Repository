@@ -13,7 +13,7 @@ type
     DSProdutos: TDataSource;
     Estoque: TIBQuery;
     DSEstoque: TDataSource;
-    UEstoque: TIBUpdateSQL;
+    UuEstoque: TIBUpdateSQL;
     UMarcas: TIBUpdateSQL;
     DSMarcas: TDataSource;
     Marcas: TIBQuery;
@@ -143,6 +143,7 @@ type
     procedure BlocoAfterInsert(DataSet: TDataSet);
     procedure PrateleiraAfterInsert(DataSet: TDataSet);
     procedure UnidadeAfterInsert(DataSet: TDataSet);
+    procedure MovimentoEstoqueAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -156,7 +157,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses dm000, UDM_contabil;
+uses dm000, UDM_contabil, UEstoque;
 
 {$R *.dfm}
 
@@ -186,6 +187,17 @@ end;
 procedure TDM_Estoque.MovimentoEstoqueAfterInsert(DataSet: TDataSet);
 begin
     MovimentoEstoque.FieldByName('EM_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQ_MOVIMENTO');
+end;
+
+procedure TDM_Estoque.MovimentoEstoqueAfterPost(DataSet: TDataSet);
+begin
+    funcBaixaEstoque(DM_Estoque.MovimentoEstoque.FieldByName('EM_EMPRESA').AsInteger,
+                     DM_Estoque.MovimentoEstoque.FieldByName('EM_PRODUTO').AsString,
+                     DM_Estoque.MovimentoEstoque.FieldByName('EM_BLOCO').AsInteger,
+                     DM_Estoque.MovimentoEstoque.FieldByName('EM_PRATELEIRA').AsInteger,
+                     DM_Estoque.MovimentoEstoque.FieldByName('EM_ESTOQUE').AsInteger,
+                     DM_Estoque.MovimentoEstoque.FieldByName('EM_QTD').AsFloat,
+                     DM_Estoque.MovimentoEstoque.FieldByName('EM_TIPO').AsString);
 end;
 
 procedure TDM_Estoque.PrateleiraAfterInsert(DataSet: TDataSet);

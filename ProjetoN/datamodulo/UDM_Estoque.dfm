@@ -360,7 +360,7 @@ object DM_Estoque: TDM_Estoque
       
         'left join categoria on estoq_categoria = cat_codigo and estoq_em' +
         'presa = cat_empresa')
-    UpdateObject = UEstoque
+    UpdateObject = UuEstoque
     Left = 88
     Top = 8
     object EstoqueESTOQ_EMPRESA: TIntegerField
@@ -497,7 +497,7 @@ object DM_Estoque: TDM_Estoque
     Left = 88
     Top = 64
   end
-  object UEstoque: TIBUpdateSQL
+  object UuEstoque: TIBUpdateSQL
     RefreshSQL.Strings = (
       'Select * '
       'from estoque '
@@ -1100,6 +1100,7 @@ object DM_Estoque: TDM_Estoque
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = MovimentoEstoqueAfterInsert
+    AfterPost = MovimentoEstoqueAfterPost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
