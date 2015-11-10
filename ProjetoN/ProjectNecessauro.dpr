@@ -20,9 +20,6 @@ uses
   UDM_PCP in 'datamodulo\UDM_PCP.pas' {DM_PCP: TDataModule},
   UM_PCP in 'pcp\UM_PCP.pas' {M_OP},
   UP_OP in 'pcp\UP_OP.pas' {P_OP},
-  UDM_Servico in 'assistencia\UDM_Servico.pas' {DM_Servico: TDataModule},
-  UM_Servico in 'assistencia\UM_Servico.pas' {M_Servico},
-  UP_Servico in 'assistencia\UP_Servico.pas' {P_Servico},
   UM_centro in 'contabil\UM_centro.pas' {M_centro},
   UP_PRODUCAO in 'pcp\UP_PRODUCAO.pas' {P_PRODUCAO},
   UM_PRODUCAO in 'pcp\UM_PRODUCAO.pas' {M_PRODUCAO},
@@ -71,6 +68,11 @@ uses
   UP_FichaTecnica in 'pcp\UP_FichaTecnica.pas' {P_FichaTecnica},
   UM_FichaTecnica in 'pcp\UM_FichaTecnica.pas' {M_FichaTecnica},
   UDM_PedCompra in 'datamodulo\UDM_PedCompra.pas' {dmPedCompra: TDataModule},
+  UDM_Servico in 'assistencia\UDM_Servico.pas' {DM_Servico: TDataModule},
+  UM_Servico in 'assistencia\UM_Servico.pas' {M_Servico},
+  UM_Tipo_Erro in 'assistencia\UM_Tipo_Erro.pas' {M_Tipo_Erro},
+  UP_Servico in 'assistencia\UP_Servico.pas' {P_Servico},
+  UP_Tipo_Erro in 'assistencia\UP_Tipo_Erro.pas' {P_Tipo_Erro},
   UR_Relatorio_Chamado in 'assistencia\UR_Relatorio_Chamado.pas' {UR_Relatorio};
 
 {$R *.res}
@@ -89,5 +91,11 @@ begin
   Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TTelaInicial, TelaInicial);
+  Application.CreateForm(TDM_Servico, DM_Servico);
+  Application.CreateForm(TM_Servico, M_Servico);
+  Application.CreateForm(TM_Tipo_Erro, M_Tipo_Erro);
+  Application.CreateForm(TP_Servico, P_Servico);
+  Application.CreateForm(TP_Tipo_Erro, P_Tipo_Erro);
+  Application.CreateForm(TUR_Relatorio, UR_Relatorio);
   Application.Run;
 end.

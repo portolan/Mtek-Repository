@@ -4647,6 +4647,10 @@ object TelaInicial: TTelaInicial
         Caption = 'Manuten'#231#227'o'
         OnClick = Manuteno3Click
       end
+      object ipodeErro1: TMenuItem
+        Caption = 'Tipo de Erro'
+        OnClick = ipodeErro1Click
+      end
     end
     object Sair1: TMenuItem
       Caption = 'Sair'

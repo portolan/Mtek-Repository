@@ -58,6 +58,7 @@ type
     Relatrios1: TMenuItem;
     relogio: TLabel;
     Timer1: TTimer;
+    ipodeErro1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -83,6 +84,7 @@ type
     procedure Relatrios1Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure FichaTcnica1Click(Sender: TObject);
+    procedure ipodeErro1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -102,7 +104,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UP_Servico, UP_Bloco, UM_Prateleira, UP_Categoria, UP_Prateleira,
   UP_departamento, UM_departamento, UP_planodecontas, UP_historico, Up_titulospagar,
   UR_EstoqueRelatorios, UP_Caixa, UF_EstoqueRelatorios, UM_FichaTecnica, UM_PCP,
-  UP_FichaTecnica;
+  UP_FichaTecnica, UP_Tipo_Erro;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -203,6 +205,16 @@ end;
 procedure TTelaInicial.Histricos1Click(Sender: TObject);
 begin
     TP_historico.chamaTela(Self);
+end;
+
+procedure TTelaInicial.ipodeErro1Click(Sender: TObject);
+begin
+    P_Tipo_Erro := TP_Tipo_Erro.Create(Self);
+  try
+     P_Tipo_Erro.ShowModal;
+  finally
+     FreeAndNil(P_Tipo_Erro);
+  end;
 end;
 
 procedure TTelaInicial.Manuteno3Click(Sender: TObject);

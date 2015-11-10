@@ -72,7 +72,6 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <Icon_MainIcon>ProjectNecessauro_Icon.ico</Icon_MainIcon>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
@@ -132,16 +131,6 @@
         </DCCReference>
         <DCCReference Include="pcp\UP_OP.pas">
             <Form>P_OP</Form>
-        </DCCReference>
-        <DCCReference Include="assistencia\UDM_Servico.pas">
-            <Form>DM_Servico</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="assistencia\UM_Servico.pas">
-            <Form>M_Servico</Form>
-        </DCCReference>
-        <DCCReference Include="assistencia\UP_Servico.pas">
-            <Form>P_Servico</Form>
         </DCCReference>
         <DCCReference Include="contabil\UM_centro.pas">
             <Form>M_centro</Form>
@@ -330,6 +319,27 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="assistencia\UDM_Servico.pas">
+            <Form>DM_Servico</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="assistencia\UM_Servico.pas">
+            <Form>M_Servico</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="assistencia\UM_Tipo_Erro.pas">
+            <Form>M_Tipo_Erro</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="assistencia\UP_Servico.pas">
+            <Form>P_Servico</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="assistencia\UP_Tipo_Erro.pas">
+            <Form>P_Tipo_Erro</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="assistencia\UR_Relatorio_Chamado.pas">
             <Form>UR_Relatorio</Form>
             <FormType>dfm</FormType>
@@ -448,7 +458,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectOSXEntitlements">
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents</RemoteDir>
+                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -534,6 +544,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectiOSEntitlements">
                     <Platform Name="iOSDevice">
+                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
