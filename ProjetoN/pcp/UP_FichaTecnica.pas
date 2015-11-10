@@ -29,7 +29,7 @@ uses dm000, UDM_PCP, UM_FichaTecnica, ERP;
 procedure TP_FichaTecnica.FormCreate(Sender: TObject);
 begin
   inherited;
-  procInicializar(DM_PCP.Ficha_Tecnica,TRUE,FALSE,M_FichaTecnica,TM_FichaTecnica);
+    procInicializar(DM_PCP.Ficha_Tecnica,TRUE,FALSE,M_FichaTecnica,TM_FichaTecnica);
     funcAtribuiFiltros;
 end;
 
