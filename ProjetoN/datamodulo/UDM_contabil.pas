@@ -30,9 +30,7 @@ type
     lancamentoLANC_NR_LANCAMENTO: TIntegerField;
     lancamentoLANC_DT_LANCAMENTO: TDateField;
     lancamentoLANC_DEBITO: TIntegerField;
-    lancamentoLANC_CENTRODECUSTO_DB: TIntegerField;
     lancamentoLANC_CREDITO: TIntegerField;
-    lancamentoLANC_CENTRODECUSTO_CR: TIntegerField;
     lancamentoLANC_HISTORICO: TIntegerField;
     lancamentoLANC_VAR_HISTORICO: TIBStringField;
     lancamentoLANC_VALOR: TIntegerField;
@@ -64,6 +62,8 @@ type
     centroCEC_NUM_CC: TIBStringField;
     centroCEC_DESC_CC: TIBStringField;
     centroCEC_ANALITICO: TIBStringField;
+    lancamentoLANC_CENTRODECUSTO_CR: TIBStringField;
+    lancamentoLANC_CENTRODECUSTO_DB: TIBStringField;
     procedure planodecontasAfterInsert(DataSet: TDataSet);
     procedure centroAfterInsert(DataSet: TDataSet);
     procedure empresaBeforePost(DataSet: TDataSet);

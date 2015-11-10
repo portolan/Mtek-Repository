@@ -1,7 +1,6 @@
 inherited P_lancamento: TP_lancamento
   Caption = 'Pesquisar Lan'#231'amentos - ProjetoDesnecessauro'
   OnCreate = FormCreate
-  ExplicitLeft = -116
   ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96
@@ -49,7 +48,7 @@ inherited P_lancamento: TP_lancamento
     object Rtotal: TLabel [3]
       Left = 64
       Top = 272
-      Width = 29
+      Width = 3
       Height = 13
     end
     inherited gbDados: TGroupBox
@@ -63,7 +62,6 @@ inherited P_lancamento: TP_lancamento
           item
             Expanded = False
             FieldName = 'LANC_EMP'
-            Width = 137
             Visible = True
           end
           item

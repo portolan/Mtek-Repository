@@ -60,7 +60,6 @@ inherited M_lancamento: TM_lancamento
       Width = 52
       Height = 13
       Caption = 'C.C D'#233'bito'
-      FocusControl = DBEdit5
     end
     object Label6: TLabel
       Left = 14
@@ -76,7 +75,6 @@ inherited M_lancamento: TM_lancamento
       Width = 56
       Height = 13
       Caption = 'C.C Cr'#233'dito'
-      FocusControl = DBEdit7
     end
     object Label8: TLabel
       Left = 13
@@ -173,6 +171,7 @@ inherited M_lancamento: TM_lancamento
         B115C8AF11DBC86FF0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
         F2F2F2F2F2F2F1F2F4EEE7BAD2BC3FD3BD3ED4BD45F4EFD3EFEFF1EFEFEFEFEF
         EFEFEFEFEFEFEF000000}
+      OnClick = SpeedButton2Click
     end
     object SpeedButton3: TSpeedButton
       Left = 153
@@ -237,6 +236,7 @@ inherited M_lancamento: TM_lancamento
         B115C8AF11DBC86FF0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
         F2F2F2F2F2F2F1F2F4EEE7BAD2BC3FD3BD3ED4BD45F4EFD3EFEFF1EFEFEFEFEF
         EFEFEFEFEFEFEF000000}
+      OnClick = SpeedButton4Click
     end
     object SpeedButton5: TSpeedButton
       Left = 388
@@ -269,6 +269,7 @@ inherited M_lancamento: TM_lancamento
         B115C8AF11DBC86FF0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
         F2F2F2F2F2F2F1F2F4EEE7BAD2BC3FD3BD3ED4BD45F4EFD3EFEFF1EFEFEFEFEF
         EFEFEFEFEFEFEF000000}
+      OnClick = SpeedButton5Click
     end
     object DBEdit1: TDBEdit
       Left = 13
@@ -306,15 +307,6 @@ inherited M_lancamento: TM_lancamento
       DataSource = DM_contabil.Dlancamento
       TabOrder = 4
     end
-    object DBEdit5: TDBEdit
-      Left = 248
-      Top = 185
-      Width = 134
-      Height = 21
-      DataField = 'LANC_CENTRODECUSTO_DB'
-      DataSource = DM_contabil.Dlancamento
-      TabOrder = 5
-    end
     object DBEdit6: TDBEdit
       Left = 13
       Top = 237
@@ -322,16 +314,7 @@ inherited M_lancamento: TM_lancamento
       Height = 21
       DataField = 'LANC_CREDITO'
       DataSource = DM_contabil.Dlancamento
-      TabOrder = 6
-    end
-    object DBEdit7: TDBEdit
-      Left = 248
-      Top = 237
-      Width = 134
-      Height = 21
-      DataField = 'LANC_CENTRODECUSTO_CR'
-      DataSource = DM_contabil.Dlancamento
-      TabOrder = 7
+      TabOrder = 5
     end
     object DBEdit8: TDBEdit
       Left = 13
@@ -340,7 +323,7 @@ inherited M_lancamento: TM_lancamento
       Height = 21
       DataField = 'LANC_HISTORICO'
       DataSource = DM_contabil.Dlancamento
-      TabOrder = 8
+      TabOrder = 6
     end
     object DBEdit9: TDBEdit
       Left = 13
@@ -350,7 +333,7 @@ inherited M_lancamento: TM_lancamento
       AutoSize = False
       DataField = 'LANC_VAR_HISTORICO'
       DataSource = DM_contabil.Dlancamento
-      TabOrder = 9
+      TabOrder = 7
     end
     object DBEdit10: TDBEdit
       Left = 13
@@ -359,7 +342,7 @@ inherited M_lancamento: TM_lancamento
       Height = 21
       DataField = 'LANC_VALOR'
       DataSource = DM_contabil.Dlancamento
-      TabOrder = 10
+      TabOrder = 8
     end
     object DBLookupComboBox4: TDBLookupComboBox
       Left = 14
@@ -372,6 +355,24 @@ inherited M_lancamento: TM_lancamento
       ListField = 'EMP_RAZAO'
       ListSource = DM_contabil.Dempresa
       TabOrder = 0
+    end
+    object DBEdit5: TDBEdit
+      Left = 248
+      Top = 185
+      Width = 121
+      Height = 21
+      DataField = 'LANC_CENTRODECUSTO_DB'
+      DataSource = DM_contabil.Dlancamento
+      TabOrder = 9
+    end
+    object DBEdit7: TDBEdit
+      Left = 248
+      Top = 237
+      Width = 121
+      Height = 21
+      DataField = 'LANC_CENTRODECUSTO_CR'
+      DataSource = DM_contabil.Dlancamento
+      TabOrder = 10
     end
   end
 end

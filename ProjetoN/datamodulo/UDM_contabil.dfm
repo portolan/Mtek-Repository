@@ -266,20 +266,24 @@ object DM_contabil: TDM_contabil
       FieldName = 'LANC_DEBITO'
       Origin = '"LANCAMENTOS"."LANC_DEBITO"'
     end
-    object lancamentoLANC_CENTRODECUSTO_DB: TIntegerField
+    object lancamentoLANC_CENTRODECUSTO_DB: TIBStringField
       DisplayLabel = 'C.C D'#233'bito'
       FieldName = 'LANC_CENTRODECUSTO_DB'
       Origin = '"LANCAMENTOS"."LANC_CENTRODECUSTO_DB"'
+      EditMask = '000\.000\.000;0;_'
+      Size = 9
     end
     object lancamentoLANC_CREDITO: TIntegerField
       DisplayLabel = 'Conta Credito'
       FieldName = 'LANC_CREDITO'
       Origin = '"LANCAMENTOS"."LANC_CREDITO"'
     end
-    object lancamentoLANC_CENTRODECUSTO_CR: TIntegerField
+    object lancamentoLANC_CENTRODECUSTO_CR: TIBStringField
       DisplayLabel = 'C.C Cr'#233'dito'
       FieldName = 'LANC_CENTRODECUSTO_CR'
       Origin = '"LANCAMENTOS"."LANC_CENTRODECUSTO_CR"'
+      EditMask = '000\.000\.000;0;_'
+      Size = 9
     end
     object lancamentoLANC_HISTORICO: TIntegerField
       DisplayLabel = 'Hist'#243'rico'
