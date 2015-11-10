@@ -2,23 +2,23 @@ inherited M_planodecontas: TM_planodecontas
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Manuten'#231#227'o Plano de Contas - ProjetoDesnecessauro'
   ClientHeight = 189
-  ClientWidth = 424
-  ExplicitWidth = 440
+  ClientWidth = 385
+  ExplicitWidth = 401
   ExplicitHeight = 228
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnRodape: TPanel
     Top = 148
-    Width = 424
+    Width = 385
     ExplicitTop = 148
     ExplicitWidth = 424
     inherited sbCancelar: TSpeedButton
-      Left = 327
+      Left = 288
       ExplicitLeft = 327
     end
   end
   inherited gbInfos: TGroupBox
-    Width = 424
+    Width = 385
     Height = 148
     ExplicitWidth = 424
     ExplicitHeight = 148
@@ -39,7 +39,7 @@ inherited M_planodecontas: TM_planodecontas
       FocusControl = DBEdit2
     end
     object Label3: TLabel
-      Left = 184
+      Left = 152
       Top = 80
       Width = 78
       Height = 13
@@ -47,7 +47,7 @@ inherited M_planodecontas: TM_planodecontas
       FocusControl = DBEdit3
     end
     object Label4: TLabel
-      Left = 344
+      Left = 319
       Top = 80
       Width = 45
       Height = 13
@@ -72,7 +72,7 @@ inherited M_planodecontas: TM_planodecontas
       TabOrder = 1
     end
     object DBEdit3: TDBEdit
-      Left = 184
+      Left = 152
       Top = 99
       Width = 145
       Height = 21
@@ -81,7 +81,7 @@ inherited M_planodecontas: TM_planodecontas
       TabOrder = 2
     end
     object DBCheckBox1: TDBCheckBox
-      Left = 344
+      Left = 327
       Top = 99
       Width = 97
       Height = 17

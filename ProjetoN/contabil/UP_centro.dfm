@@ -13,21 +13,19 @@ inherited P_centro: TP_centro
           item
             Expanded = False
             FieldName = 'CEC_COD'
+            Width = 42
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CEC_COD_GRUPO'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'CEC_DEP'
+            Width = 159
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CEC_NUM_CC'
+            Width = 99
             Visible = True
           end
           item

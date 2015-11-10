@@ -20,6 +20,8 @@ inherited M_departamento: TM_departamento
   inherited gbInfos: TGroupBox
     Width = 396
     Height = 222
+    ExplicitLeft = 1
+    ExplicitTop = -5
     ExplicitWidth = 396
     ExplicitHeight = 222
     object Label1: TLabel

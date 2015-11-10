@@ -1,34 +1,34 @@
 inherited M_centro: TM_centro
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Cadastro de Centro de Custo'
-  ClientHeight = 211
-  ClientWidth = 451
-  ExplicitWidth = 467
-  ExplicitHeight = 250
+  ClientHeight = 214
+  ClientWidth = 506
+  ExplicitWidth = 522
+  ExplicitHeight = 253
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnRodape: TPanel
-    Top = 170
-    Width = 451
-    ExplicitTop = 170
-    ExplicitWidth = 451
+    Top = 173
+    Width = 506
+    ExplicitTop = 224
+    ExplicitWidth = 402
     inherited sbCancelar: TSpeedButton
-      Left = 354
+      Left = 409
       ExplicitLeft = 354
     end
   end
   inherited gbInfos: TGroupBox
-    Width = 451
-    Height = 170
-    ExplicitWidth = 451
-    ExplicitHeight = 170
+    Width = 506
+    Height = 173
+    ExplicitTop = -6
+    ExplicitWidth = 506
+    ExplicitHeight = 201
     object Label1: TLabel
       Left = 16
       Top = 21
       Width = 54
       Height = 13
       Caption = 'C'#243'digo C.C'
-      FocusControl = DBEdit1
     end
     object Label2: TLabel
       Left = 16
@@ -36,27 +36,24 @@ inherited M_centro: TM_centro
       Width = 78
       Height = 13
       Caption = 'Estabelecimento'
-      FocusControl = DBEdit2
     end
     object Label3: TLabel
-      Left = 16
-      Top = 113
+      Left = 272
+      Top = 67
       Width = 58
       Height = 13
       Caption = 'N'#250'mero C.C'
-      FocusControl = DBEdit3
     end
     object Label4: TLabel
-      Left = 176
-      Top = 67
+      Left = 16
+      Top = 113
       Width = 71
       Height = 13
       Caption = 'Descri'#231#227'o C.C.'
-      FocusControl = DBEdit4
     end
     object Label5: TLabel
-      Left = 176
-      Top = 113
+      Left = 409
+      Top = 67
       Width = 45
       Height = 13
       Caption = 'Analitico?'
@@ -64,54 +61,52 @@ inherited M_centro: TM_centro
     object DBEdit1: TDBEdit
       Left = 16
       Top = 40
-      Width = 134
+      Width = 54
       Height = 21
       DataField = 'CEC_COD'
-      DataSource = DataSource1
+      DataSource = DM_contabil.Dcentro
       TabOrder = 0
     end
     object DBEdit2: TDBEdit
-      Left = 16
+      Left = 272
       Top = 86
-      Width = 49
+      Width = 121
       Height = 21
-      DataField = 'CEC_COD_GRUPO'
-      DataSource = DataSource1
+      DataField = 'CEC_NUM_CC'
+      DataSource = DM_contabil.Dcentro
       TabOrder = 1
     end
     object DBEdit3: TDBEdit
       Left = 16
       Top = 132
-      Width = 134
-      Height = 21
-      DataField = 'CEC_NUM_CC'
-      DataSource = DataSource1
-      TabOrder = 2
-    end
-    object DBEdit4: TDBEdit
-      Left = 176
-      Top = 86
-      Width = 225
+      Width = 236
       Height = 21
       DataField = 'CEC_DESC_CC'
-      DataSource = DataSource1
-      TabOrder = 3
+      DataSource = DM_contabil.Dcentro
+      TabOrder = 2
     end
     object DBCheckBox1: TDBCheckBox
-      Left = 176
-      Top = 132
+      Left = 417
+      Top = 86
       Width = 97
       Height = 17
       DataField = 'CEC_ANALITICO'
-      DataSource = DataSource1
-      TabOrder = 4
+      DataSource = DM_contabil.Dcentro
+      TabOrder = 3
       ValueChecked = 'S'
       ValueUnchecked = 'N'
     end
   end
-  object DataSource1: TDataSource
-    DataSet = DM_contabil.centro
-    Left = 408
-    Top = 8
+  object DBLookupComboBox4: TDBLookupComboBox
+    Left = 16
+    Top = 86
+    Width = 236
+    Height = 21
+    DataField = 'CEC_COD_GRUPO'
+    DataSource = DM_contabil.Dcentro
+    KeyField = 'EMP_COD'
+    ListField = 'EMP_RAZAO'
+    ListSource = DM_contabil.Dempresa
+    TabOrder = 2
   end
 end

@@ -20,7 +20,6 @@ inherited M_lancamento: TM_lancamento
   inherited gbInfos: TGroupBox
     Width = 508
     Height = 464
-    ExplicitTop = -5
     ExplicitWidth = 508
     ExplicitHeight = 464
     object Label1: TLabel
@@ -141,6 +140,7 @@ inherited M_lancamento: TM_lancamento
         B115C8AF11DBC86FF0F1F5EFEFEFEFEFEFEFEFEFEFEFEF000000EFEFEFEFEFEF
         F2F2F2F2F2F2F1F2F4EEE7BAD2BC3FD3BD3ED4BD45F4EFD3EFEFF1EFEFEFEFEF
         EFEFEFEFEFEFEF000000}
+      OnClick = SpeedButton1Click
     end
     object SpeedButton2: TSpeedButton
       Left = 153

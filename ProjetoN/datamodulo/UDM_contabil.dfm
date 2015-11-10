@@ -91,7 +91,7 @@ object DM_contabil: TDM_contabil
     end
   end
   object Dempresa: TDataSource
-    DataSet = departamento
+    DataSet = empresa
     Left = 208
     Top = 24
   end
@@ -142,6 +142,7 @@ object DM_contabil: TDM_contabil
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = centroAfterInsert
+    BeforePost = centroBeforePost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -158,33 +159,30 @@ object DM_contabil: TDM_contabil
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object centroCEC_NUM_CC: TIntegerField
-      DisplayLabel = 'Centro de Custo'
-      FieldName = 'CEC_NUM_CC'
-      Origin = '"CENTRODECUSTO"."CEC_NUM_CC"'
-    end
-    object centroCEC_DESC_CC: TIBStringField
-      DisplayLabel = 'Descri'#231'ao'
-      FieldName = 'CEC_DESC_CC'
-      Origin = '"CENTRODECUSTO"."CEC_DESC_CC"'
-      Size = 60
-    end
-    object centroCEC_ANALITICO: TIBStringField
-      DisplayLabel = 'Codigo do Grupo'
-      FieldName = 'CEC_ANALITICO'
-      Origin = '"CENTRODECUSTO"."CEC_ANALITICO"'
-      Size = 1
-    end
     object centroCEC_COD_GRUPO: TIntegerField
       DisplayLabel = 'Empresa'
       FieldName = 'CEC_COD_GRUPO'
       Origin = '"CENTRODECUSTO"."CEC_COD_GRUPO"'
     end
-    object centroCEC_DEP: TIntegerField
-      DisplayLabel = 'Departamento'
-      FieldName = 'CEC_DEP'
-      Origin = '"CENTRODECUSTO"."CEC_DEP"'
+    object centroCEC_DESC_CC: TIBStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'CEC_DESC_CC'
+      Origin = '"CENTRODECUSTO"."CEC_DESC_CC"'
+      Size = 60
+    end
+    object centroCEC_NUM_CC: TIBStringField
+      DisplayLabel = 'Centro de Custo'
+      FieldName = 'CEC_NUM_CC'
+      Origin = '"CENTRODECUSTO"."CEC_NUM_CC"'
       Required = True
+      EditMask = '000\.000\.000;0;_'
+      Size = 9
+    end
+    object centroCEC_ANALITICO: TIBStringField
+      DisplayLabel = 'Anal'#237'tico?'
+      FieldName = 'CEC_ANALITICO'
+      Origin = '"CENTRODECUSTO"."CEC_ANALITICO"'
+      Size = 1
     end
   end
   object Dcentro: TDataSource
@@ -227,6 +225,8 @@ object DM_contabil: TDM_contabil
   object lancamento: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = lancamentoAfterInsert
+    BeforePost = lancamentoBeforePost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -236,6 +236,12 @@ object DM_contabil: TDM_contabil
     UpdateObject = Ulancamento
     Left = 128
     Top = 184
+    object lancamentoLANC_EMP: TIntegerField
+      DisplayLabel = 'Empresa'
+      FieldName = 'LANC_EMP'
+      Origin = '"LANCAMENTOS"."LANC_EMP"'
+      Required = True
+    end
     object lancamentoLANC_NR_LOTE: TIntegerField
       DisplayLabel = 'N'#186' Lote'
       FieldName = 'LANC_NR_LOTE'
@@ -252,6 +258,7 @@ object DM_contabil: TDM_contabil
       DisplayLabel = 'Data Lan'#231
       FieldName = 'LANC_DT_LANCAMENTO'
       Origin = '"LANCAMENTOS"."LANC_DT_LANCAMENTO"'
+      DisplayFormat = 'DD/MM/YYYY'
       EditMask = '!99/99/0000;1;_'
     end
     object lancamentoLANC_DEBITO: TIntegerField
@@ -289,12 +296,6 @@ object DM_contabil: TDM_contabil
       DisplayLabel = 'Valor'
       FieldName = 'LANC_VALOR'
       Origin = '"LANCAMENTOS"."LANC_VALOR"'
-    end
-    object lancamentoLANC_EMP: TIntegerField
-      DisplayLabel = 'Empresa'
-      FieldName = 'LANC_EMP'
-      Origin = '"LANCAMENTOS"."LANC_EMP"'
-      Required = True
     end
   end
   object Dlancamento: TDataSource
@@ -350,6 +351,8 @@ object DM_contabil: TDM_contabil
   object departamento: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = departamentoAfterInsert
+    BeforePost = departamentoBeforePost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -426,6 +429,7 @@ object DM_contabil: TDM_contabil
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = planodecontasAfterInsert
+    BeforePost = planodecontasBeforePost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -497,6 +501,8 @@ object DM_contabil: TDM_contabil
   object historico: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = historicoAfterInsert
+    BeforePost = historicoBeforePost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True

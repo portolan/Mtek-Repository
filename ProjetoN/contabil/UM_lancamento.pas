@@ -36,6 +36,7 @@ type
     SpeedButton3: TSpeedButton;
     SpeedButton4: TSpeedButton;
     SpeedButton5: TSpeedButton;
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,6 +50,20 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_contabil;
+uses UDM_contabil, UP_planodecontas;
+
+procedure TM_lancamento.SpeedButton1Click(Sender: TObject);
+begin
+  inherited;
+    P_planodecontas := TP_planodecontas.Create(Self);
+    try
+      P_planodecontas.procInicializar(DM_contabil.planodecontas, false, true, P_planodecontas, TP_planodecontas);
+      P_planodecontas.ShowModal;
+
+      DM_contabil.lancamentoLANC_DEBITO.Value := DM_contabil.planodecontasPLN_CONTA.AsInteger;
+    finally
+      P_planodecontas.Free;
+    end;
+end;
 
 end.

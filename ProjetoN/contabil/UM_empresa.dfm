@@ -1,6 +1,6 @@
 inherited M_empresa: TM_empresa
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = 'Cadastro de Empresas - ProjetoDesnecessauro'
+  Caption = 'Cadastro de Empresas - ProjetoNecessauro'
   ClientHeight = 283
   ClientWidth = 500
   ExplicitWidth = 516
@@ -10,13 +10,18 @@ inherited M_empresa: TM_empresa
   inherited pnRodape: TPanel
     Top = 242
     Width = 500
+    ExplicitTop = 242
+    ExplicitWidth = 500
     inherited sbCancelar: TSpeedButton
       Left = 403
+      ExplicitLeft = 403
     end
   end
   inherited gbInfos: TGroupBox
     Width = 500
     Height = 242
+    ExplicitWidth = 500
+    ExplicitHeight = 242
     object Label1: TLabel
       Left = 24
       Top = 24
