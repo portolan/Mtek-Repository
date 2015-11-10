@@ -29,6 +29,7 @@ procedure TP_Servico.FormCreate(Sender: TObject);
 begin
   inherited;
   procInicializar(DM_Servico.IB_Chamado,TRUE,FALSE,M_Servico,TM_Servico);
+  funcAtribuiFiltros;
 end;
 
 procedure TP_Servico.procselect;

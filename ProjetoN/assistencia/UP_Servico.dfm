@@ -66,7 +66,6 @@ inherited P_Servico: TP_Servico
           item
             Expanded = False
             FieldName = 'CHA_TIPO_ERRO'
-            Width = 64
             Visible = True
           end
           item
