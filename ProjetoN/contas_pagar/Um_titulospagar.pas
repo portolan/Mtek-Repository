@@ -61,6 +61,8 @@ type
     DBRadioGroup1: TDBRadioGroup;
     DBRadioGroup2: TDBRadioGroup;
     DBRadioGroup3: TDBRadioGroup;
+    emp_razao: TDBEdit;
+    pess_descricao: TDBEdit;
   private
     { Private declarations }
   public

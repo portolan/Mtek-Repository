@@ -40,7 +40,7 @@
     end
     object Label3: TLabel
       Left = 395
-      Top = 43
+      Top = 38
       Width = 39
       Height = 13
       Caption = 'PESSOA'
@@ -159,7 +159,7 @@
       FocusControl = DBEdit19
     end
     object SITUAÇÃO: TLabel
-      Left = 210
+      Left = 184
       Top = 253
       Width = 52
       Height = 13
@@ -241,7 +241,7 @@
     end
     object ttp_pessoa: TDBEdit
       Left = 439
-      Top = 35
+      Top = 34
       Width = 52
       Height = 21
       DataField = 'TTP_PES_CODIGO'
@@ -438,7 +438,7 @@
       TabOrder = 23
     end
     object DBRadioGroup1: TDBRadioGroup
-      Left = 268
+      Left = 243
       Top = 232
       Width = 250
       Height = 54
@@ -476,6 +476,24 @@
         'R$'
         '%')
       TabOrder = 26
+    end
+    object emp_razao: TDBEdit
+      Left = 176
+      Top = 34
+      Width = 218
+      Height = 21
+      DataField = 'EMP_RAZAO'
+      DataSource = dm_contaspagar.Dtitulospagar
+      TabOrder = 27
+    end
+    object pess_descricao: TDBEdit
+      Left = 492
+      Top = 34
+      Width = 236
+      Height = 21
+      DataField = 'PESS_DESCRICAO'
+      DataSource = dm_contaspagar.Dtitulospagar
+      TabOrder = 28
     end
   end
 end

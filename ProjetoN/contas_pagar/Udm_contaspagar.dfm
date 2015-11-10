@@ -9,7 +9,34 @@ object dm_contaspagar: Tdm_contaspagar
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select a.*  from TITULOSP a')
+      'select TTP_CODIGO, '
+      '          TTP_CON_CODIGO, '
+      '          TTP_CTB_CODIGO, '
+      '          TTP_DESCONTO, '
+      '          TTP_DESCRICAO,'
+      '          TTP_DT_BAIXA, '
+      '          TTP_DT_CANCELAMENTO, '
+      '          TTP_DT_EMISSAO,'
+      '          TTP_DT_PAGAMENTO,'
+      '          TTP_DT_VENCIMENTO, '
+      '          TTP_EMP_CODIGO, '
+      '          TTP_MR_DIARIA, '
+      '          TTP_MT_ATRASO, '
+      '          TTP_PARCELA, '
+      '          TTP_PES_CODIGO, '
+      '          TTP_SITUACAO, '
+      '          TTP_TP_MORA, '
+      '          TTP_TP_MULTA,'
+      '          TTP_TP_TITULO, '
+      '          TTP_VL_ORIGINAL,'
+      '          TTP_VL_PAGO, '
+      '          TTP_VL_TOTAL, '
+      '          EMP_RAZAO, '
+      '          PESS_DESCRICAO '
+      ' from TITULOSP a'
+      'inner join empresa on EMP_COD=TTP_EMP_CODIGO '
+      'INNER JOIN PESSOAS ON PESS_CODIGO=TTP_PES_CODIGO'
+      '')
     UpdateObject = Utitulospagar
     Left = 88
     Top = 32
@@ -143,6 +170,16 @@ object dm_contaspagar: Tdm_contaspagar
       FieldName = 'TTP_TP_MULTA'
       Origin = '"TITULOSP"."TTP_TP_MULTA"'
     end
+    object titulospagarEMP_RAZAO: TIBStringField
+      FieldName = 'EMP_RAZAO'
+      Origin = '"EMPRESA"."EMP_RAZAO"'
+      Size = 240
+    end
+    object titulospagarPESS_DESCRICAO: TIBStringField
+      FieldName = 'PESS_DESCRICAO'
+      Origin = '"PESSOAS"."PESS_DESCRICAO"'
+      Size = 400
+    end
   end
   object Dtitulospagar: TDataSource
     AutoEdit = False
@@ -152,8 +189,33 @@ object dm_contaspagar: Tdm_contaspagar
   end
   object Utitulospagar: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select *'
-      'from TITULOSP '
+      'select TTP_CODIGO, '
+      '          TTP_CON_CODIGO, '
+      '          TTP_CTB_CODIGO, '
+      '          TTP_DESCONTO, '
+      '          TTP_DESCRICAO,'
+      '          TTP_DT_BAIXA, '
+      '          TTP_DT_CANCELAMENTO, '
+      '          TTP_DT_EMISSAO,'
+      '          TTP_DT_PAGAMENTO,'
+      '          TTP_DT_VENCIMENTO, '
+      '          TTP_EMP_CODIGO, '
+      '          TTP_MR_DIARIA, '
+      '          TTP_MT_ATRASO, '
+      '          TTP_PARCELA, '
+      '          TTP_PES_CODIGO, '
+      '          TTP_SITUACAO, '
+      '          TTP_TP_MORA, '
+      '          TTP_TP_MULTA,'
+      '          TTP_TP_TITULO, '
+      '          TTP_VL_ORIGINAL,'
+      '          TTP_VL_PAGO, '
+      '          TTP_VL_TOTAL, '
+      '          EMP_RAZAO, '
+      '          PESS_DESCRICAO '
+      ' from TITULOSP'
+      'inner join empresa on EMP_COD=TTP_EMP_CODIGO '
+      'INNER JOIN PESSOAS ON PESS_CODIGO=TTP_PES_CODIGO'
       'where'
       '  TTP_CODIGO = :TTP_CODIGO')
     ModifySQL.Strings = (

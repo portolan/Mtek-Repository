@@ -33,6 +33,8 @@ type
     titulospagarTTP_SITUACAO: TIBStringField;
     titulospagarTTP_TP_MORA: TIBStringField;
     titulospagarTTP_TP_MULTA: TIBStringField;
+    titulospagarEMP_RAZAO: TIBStringField;
+    titulospagarPESS_DESCRICAO: TIBStringField;
   private
     { Private declarations }
   public

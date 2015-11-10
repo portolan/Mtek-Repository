@@ -9,6 +9,8 @@ uses
 
 type
   Tp_titulospagar = class(TxPesqPadrao)
+    Label1: TLabel;
+    Label2: TLabel;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -60,7 +62,33 @@ begin
    inherited;
    procMontaWhere;
    dm_contaspagar.titulospagar.Close;
-   dm_contaspagar.titulospagar.SQL.Text:='select a.* from TITULOSP a where '+c_where;
+   dm_contaspagar.titulospagar.SQL.Text:='select TTP_CODIGO,'+
+                                         '          TTP_CON_CODIGO,      '+
+                                         '          TTP_CTB_CODIGO,      '+
+                                         '          TTP_DESCONTO,        '+
+                                         '          TTP_DESCRICAO,       '+
+                                         '          TTP_DT_BAIXA,        '+
+                                         '          TTP_DT_CANCELAMENTO, '+
+                                         '          TTP_DT_EMISSAO,      '+
+                                         '          TTP_DT_PAGAMENTO,    '+
+                                         '          TTP_DT_VENCIMENTO,   '+
+                                         '          TTP_EMP_CODIGO,      '+
+                                         '          TTP_MR_DIARIA,       '+
+                                         '          TTP_MT_ATRASO,       '+
+                                         '          TTP_PARCELA,         '+
+                                         '          TTP_PES_CODIGO,      '+
+                                         '          TTP_SITUACAO,        '+
+                                         '          TTP_TP_MORA,         '+
+                                         '          TTP_TP_MULTA,        '+
+                                         '          TTP_TP_TITULO,       '+
+                                         '          TTP_VL_ORIGINAL,     '+
+                                         '          TTP_VL_PAGO,         '+
+                                         '          TTP_VL_TOTAL,        '+
+                                         '          EMP_RAZAO,           '+
+                                         '          PESS_DESCRICAO       '+
+                                         'from TITULOSP '+
+                                         'inner join empresa on EMP_COD=TTP_EMP_CODIGO '+
+                                         'INNER JOIN PESSOAS ON PESS_CODIGO=TTP_PES_CODIGO where '+c_where;
    dm_contaspagar.titulospagar.open;
 end;
 
