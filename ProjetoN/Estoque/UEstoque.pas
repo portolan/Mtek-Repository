@@ -123,9 +123,8 @@ begin
     except on E: Exception do
         raise Exception.Create('Erro ao verificar estoque!');
     end;
-
-
 end;
+
 
 function funcCriaQuery: TIBQuery;
 begin
@@ -133,7 +132,5 @@ begin
    Result.Database    := dmBanco.Banco;
    Result.Transaction := dmBanco.TBanco;
 end;
-
-
 
 end.

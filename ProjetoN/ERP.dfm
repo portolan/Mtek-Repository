@@ -3283,10 +3283,8 @@ object TelaInicial: TTelaInicial
       3F4FFEBD145653DBEE3A30FF001BF47F91D251914515AF439C3228CD145200C8
       A3228A2980668C8A28A00FFFD9}
     Stretch = True
-    ExplicitLeft = -192
-    ExplicitTop = -152
-    ExplicitWidth = 606
-    ExplicitHeight = 358
+    ExplicitLeft = -176
+    ExplicitTop = 74
   end
   object Image1: TImage
     Left = 206
@@ -6760,7 +6758,7 @@ object TelaInicial: TTelaInicial
     AlignWithMargins = True
     Left = 9
     Top = 333
-    Width = 161
+    Width = 162
     Height = 50
     Anchors = [akLeft, akRight, akBottom]
     Caption = '00:00:00'
@@ -6771,8 +6769,6 @@ object TelaInicial: TTelaInicial
     Font.Style = []
     ParentFont = False
     Layout = tlCenter
-    ExplicitTop = 305
-    ExplicitWidth = 162
   end
   object MainMenu1: TMainMenu
     Left = 528

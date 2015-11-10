@@ -9,7 +9,13 @@ uses
 
 type
   TM_OP = class(TxManuPadrao)
-    ToolBar1: TToolBar;
+    pc_ordem: TPageControl;
+    TabSheet1: TTabSheet;
+    ts_aguardandoliberacao: TTabSheet;
+    ts_producao: TTabSheet;
+    ts_cancelada: TTabSheet;
+    ts_concluida: TTabSheet;
+    Button1: TButton;
   private
     { Private declarations }
   public
