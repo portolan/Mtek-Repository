@@ -31,6 +31,8 @@ type
     DBEdit10: TDBEdit;
     Label11: TLabel;
     DBMemo1: TDBMemo;
+    procedure FormCreate(Sender: TObject);
+    procedure DBEdit2Enter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,6 +46,24 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_Servico;
+uses UDM_Servico, UDM_contabil, UP_empresa;
+
+procedure TM_Servico.DBEdit2Enter(Sender: TObject);
+begin
+  inherited;
+  P_empresa := TP_empresa.Create(self);
+  try
+    P_empresa.procInicializar(DM_contabil.empresa,false,true,P_empresa,TP_empresa);
+    P_empresa.ShowModal;
+  finally
+    DM_Servico.IB_ChamadoCHA_EMPRESA.Value := DM_contabil.empresaEMP_COD.AsInteger;
+  end;
+end;
+
+procedure TM_Servico.FormCreate(Sender: TObject);
+begin
+  inherited;
+  DBEdit6.Text := DateToStr(date);
+end;
 
 end.

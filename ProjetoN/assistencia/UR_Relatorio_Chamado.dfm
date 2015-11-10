@@ -1,7 +1,7 @@
-object Form1: TForm1
+object UR_Relatorio: TUR_Relatorio
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'Relatorio'
   ClientHeight = 268
   ClientWidth = 562
   Color = clBtnFace
@@ -22,7 +22,7 @@ object Form1: TForm1
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42313.806204733800000000
-    ReportOptions.LastChange = 42313.893854953710000000
+    ReportOptions.LastChange = 42317.884900972230000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -87,7 +87,7 @@ object Form1: TForm1
       end
       object MD_Chamados: TfrxMasterData
         FillType = ftBrush
-        Height = 506.457020000000000000
+        Height = 937.323440000000000000
         Top = 136.063080000000000000
         Width = 718.110700000000000000
         DataSet = frxDBChamado
@@ -96,417 +96,21 @@ object Form1: TForm1
         object frxDBChamadoCHA_CODIGO: TfrxMemoView
           Align = baLeft
           Top = 22.677180000000000000
-          Width = 219.212740000000000000
+          Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'CHA_CODIGO'
           DataSet = frxDBChamado
           DataSetName = 'frxDBChamado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBChamado."CHA_CODIGO"]')
-          ParentFont = False
         end
-        object frxDBChamadoCHA_EMPRESA: TfrxMemoView
-          Left = 3.779530000000000000
-          Top = 109.606370000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHA_EMPRESA'
-          DataSet = frxDBChamado
-          DataSetName = 'frxDBChamado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxDBChamado."CHA_EMPRESA"]')
-          ParentFont = False
-        end
-        object frxDBChamadoCHA_DEPARTAMENTO: TfrxMemoView
-          Align = baWidth
-          Left = 83.149660000000000000
-          Top = 109.606370000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHA_DEPARTAMENTO'
-          DataSet = frxDBChamado
-          DataSetName = 'frxDBChamado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxDBChamado."CHA_DEPARTAMENTO"]')
-          ParentFont = False
-        end
-        object frxDBChamadoCHA_FUNCIONARIO: TfrxMemoView
+        object Memo2: TfrxMemoView
           Align = baLeft
-          Top = 166.299320000000000000
-          Width = 79.370130000000000000
+          Width = 94.488250000000000000
           Height = 18.897650000000000000
-          DataField = 'CHA_FUNCIONARIO'
-          DataSet = frxDBChamado
-          DataSetName = 'frxDBChamado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxDBChamado."CHA_FUNCIONARIO"]')
-          ParentFont = False
-        end
-        object frxDBChamadoCHA_PROPRIETARIO: TfrxMemoView
-          Left = 192.756030000000000000
-          Top = 166.299320000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHA_PROPRIETARIO'
-          DataSet = frxDBChamado
-          DataSetName = 'frxDBChamado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxDBChamado."CHA_PROPRIETARIO"]')
-          ParentFont = False
-        end
-        object frxDBChamadoCHA_DATA_ENTRADA: TfrxMemoView
-          Align = baWidth
-          Left = 162.519790000000000000
-          Top = 109.606370000000000000
-          Width = 434.645950000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHA_DATA_ENTRADA'
-          DataSet = frxDBChamado
-          DataSetName = 'frxDBChamado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxDBChamado."CHA_DATA_ENTRADA"]')
-          ParentFont = False
-        end
-        object frxDBChamadoCHA_DATA_SAIDA: TfrxMemoView
-          Left = 385.512060000000000000
-          Top = 166.299320000000000000
-          Width = 79.370130000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHA_DATA_SAIDA'
-          DataSet = frxDBChamado
-          DataSetName = 'frxDBChamado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxDBChamado."CHA_DATA_SAIDA"]')
-          ParentFont = False
-        end
-        object frxDBChamadoCHA_PRIORIDADE: TfrxMemoView
-          Align = baLeft
-          Top = 222.992270000000000000
-          Width = 158.740260000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHA_PRIORIDADE'
-          DataSet = frxDBChamado
-          DataSetName = 'frxDBChamado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxDBChamado."CHA_PRIORIDADE"]')
-          ParentFont = False
-        end
-        object frxDBChamadoCHA_STATUS: TfrxMemoView
-          Left = 566.929500000000000000
-          Top = 222.992270000000000000
-          Width = 120.944960000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHA_STATUS'
-          DataSet = frxDBChamado
-          DataSetName = 'frxDBChamado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxDBChamado."CHA_STATUS"]')
-          ParentFont = False
-        end
-        object frxDBChamadoCHA_STATUS1: TfrxMemoView
-          Align = baRight
-          Left = 597.165740000000000000
-          Top = 109.606370000000000000
-          Width = 120.944960000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHA_STATUS'
-          DataSet = frxDBChamado
-          DataSetName = 'frxDBChamado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxDBChamado."CHA_STATUS"]')
-          ParentFont = False
-        end
-        object frxDBChamadoCHA_TIPO_ERRO: TfrxMemoView
-          Left = 257.008040000000000000
-          Top = 222.992270000000000000
-          Width = 158.740260000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHA_TIPO_ERRO'
-          DataSet = frxDBChamado
-          DataSetName = 'frxDBChamado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxDBChamado."CHA_TIPO_ERRO"]')
-          ParentFont = False
-        end
-        object frxDBChamadoCHA_DESCRICAO: TfrxMemoView
-          Left = 3.779530000000000000
-          Top = 279.685220000000000000
-          Width = 702.992580000000000000
-          Height = 222.992270000000000000
-          DataField = 'CHA_DESCRICAO'
-          DataSet = frxDBChamado
-          DataSetName = 'frxDBChamado'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            '[frxDBChamado."CHA_DESCRICAO"]')
-          ParentFont = False
-        end
-        object Memo3: TfrxMemoView
-          Align = baLeft
-          Width = 71.811070000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
           Memo.UTF8W = (
             'Codigo')
-          ParentFont = False
         end
-        object Memo4: TfrxMemoView
-          Left = 3.779530000000000000
-          Top = 75.590600000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Empresa')
-          ParentFont = False
-        end
-        object Memo5: TfrxMemoView
-          Left = 245.669450000000000000
-          Top = 41.574830000000000000
-          Width = 113.385900000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Departamento')
-          ParentFont = False
-        end
-        object Memo6: TfrxMemoView
-          Align = baWidth
-          Left = 98.267780000000000000
-          Top = 75.590600000000000000
-          Width = 498.897960000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Data de Entrada')
-          ParentFont = False
-        end
-        object Memo7: TfrxMemoView
-          Align = baRight
-          Left = 597.165740000000000000
-          Top = 79.370130000000000000
-          Width = 120.944960000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Memo.UTF8W = (
-            'Status')
-          ParentFont = False
-        end
-        object Memo8: TfrxMemoView
-          Align = baLeft
-          Top = 147.401670000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Funcionario')
-          ParentFont = False
-        end
-        object Memo9: TfrxMemoView
-          Left = 196.535560000000000000
-          Top = 147.401670000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Proprietario')
-          ParentFont = False
-        end
-        object Memo10: TfrxMemoView
-          Left = 389.291590000000000000
-          Top = 143.622140000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Data de Saida')
-          ParentFont = False
-        end
-        object Memo11: TfrxMemoView
-          Align = baLeft
-          Top = 200.315090000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Prioridade')
-          ParentFont = False
-        end
-        object Memo12: TfrxMemoView
-          Left = 264.567100000000000000
-          Top = 196.535560000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Tipo de erro')
-          ParentFont = False
-        end
-        object Memo13: TfrxMemoView
-          Left = 570.709030000000000000
-          Top = 192.756030000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Status')
-          ParentFont = False
-        end
-        object Memo14: TfrxMemoView
-          Left = 3.779530000000000000
-          Top = 257.008040000000000000
-          Width = 94.488250000000000000
-          Height = 18.897650000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          HAlign = haCenter
-          Memo.UTF8W = (
-            'Descri'#231#227'o')
-          ParentFont = False
-        end
-      end
-      object Memo2: TfrxMemoView
-        Align = baWidth
-        Top = 94.488250000000000000
-        Width = 718.110700000000000000
-        Height = 18.897650000000000000
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = []
-        HAlign = haCenter
-        Memo.UTF8W = (
-          'Chamados do Dia')
-        ParentFont = False
       end
     end
   end

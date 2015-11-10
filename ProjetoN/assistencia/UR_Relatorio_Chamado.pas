@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, frxClass, frxDBSet;
 
 type
-  TForm1 = class(TForm)
+  TUR_Relatorio = class(TForm)
     frxChamado: TfrxReport;
     frxDBChamado: TfrxDBDataset;
   private
@@ -17,7 +17,7 @@ type
   end;
 
 var
-  Form1: TForm1;
+  UR_Relatorio: TUR_Relatorio;
 
 implementation
 

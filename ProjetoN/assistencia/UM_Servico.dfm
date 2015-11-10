@@ -107,16 +107,17 @@ inherited M_Servico: TM_Servico
       Left = 24
       Top = 227
       Width = 46
-      Height = 17
+      Height = 13
       Caption = 'Descri'#231#227'o'
     end
     object DBEdit1: TDBEdit
       Left = 24
       Top = 40
-      Width = 73
+      Width = 33
       Height = 21
       DataField = 'CHA_CODIGO'
       DataSource = DM_Servico.DS_Chamado
+      ReadOnly = True
       TabOrder = 0
     end
     object DBEdit2: TDBEdit
@@ -127,6 +128,7 @@ inherited M_Servico: TM_Servico
       DataField = 'CHA_EMPRESA'
       DataSource = DM_Servico.DS_Chamado
       TabOrder = 1
+      OnEnter = DBEdit2Enter
     end
     object DBEdit3: TDBEdit
       Left = 216
@@ -162,6 +164,7 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_DATA_ENTRADA'
       DataSource = DM_Servico.DS_Chamado
+      Enabled = False
       TabOrder = 5
     end
     object DBEdit7: TDBEdit

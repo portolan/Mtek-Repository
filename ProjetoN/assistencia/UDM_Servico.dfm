@@ -50,17 +50,6 @@ object DM_Servico: TDM_Servico
       Origin = '"CHAMADOS"."CHA_DESCRICAO"'
       Size = 100
     end
-    object IB_ChamadoCHA_DATA_ENTRADA: TDateField
-      DisplayLabel = 'Data de Entrada'
-      FieldName = 'CHA_DATA_ENTRADA'
-      Origin = '"CHAMADOS"."CHA_DATA_ENTRADA"'
-      Required = True
-    end
-    object IB_ChamadoCHA_DATA_SAIDA: TDateField
-      DisplayLabel = 'Data de Saida'
-      FieldName = 'CHA_DATA_SAIDA'
-      Origin = '"CHAMADOS"."CHA_DATA_SAIDA"'
-    end
     object IB_ChamadoCHA_PRIORIDADE: TIBStringField
       DisplayLabel = 'Prioridade'
       FieldName = 'CHA_PRIORIDADE'
@@ -72,17 +61,27 @@ object DM_Servico: TDM_Servico
       Origin = '"CHAMADOS"."CHA_STATUS"'
       Size = 15
     end
-    object IB_ChamadoCHA_TIPO_ERRO: TIBStringField
-      DisplayLabel = 'Tipo de Erro'
+    object IB_ChamadoCHA_DATA_ENTRADA: TDateField
+      DisplayLabel = 'Data de Entrada'
+      FieldName = 'CHA_DATA_ENTRADA'
+      Origin = '"CHAMADOS"."CHA_DATA_ENTRADA"'
+      Required = True
+    end
+    object IB_ChamadoCHA_TIPO_ERRO: TIntegerField
+      DisplayLabel = 'Tipo Erro'
       FieldName = 'CHA_TIPO_ERRO'
       Origin = '"CHAMADOS"."CHA_TIPO_ERRO"'
       Required = True
     end
+    object IB_ChamadoCHA_DATA_SAIDA: TDateField
+      DisplayLabel = 'Data de Saida'
+      FieldName = 'CHA_DATA_SAIDA'
+      Origin = '"CHAMADOS"."CHA_DATA_SAIDA"'
+    end
     object IB_ChamadoCHA_PRODUTO_UTILIZADO: TIntegerField
-      DisplayLabel = 'Produto Utilizado'
+      DisplayLabel = 'Produto Utilizados'
       FieldName = 'CHA_PRODUTO_UTILIZADO'
       Origin = '"CHAMADOS"."CHA_PRODUTO_UTILIZADO"'
-      Required = True
       Visible = False
     end
   end
