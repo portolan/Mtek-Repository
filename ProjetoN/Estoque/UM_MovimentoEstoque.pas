@@ -44,6 +44,7 @@ type
     procedure editProdutoEnter(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure cbTipoChange(Sender: TObject);
+    procedure sbGravarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -146,6 +147,46 @@ begin
         DM_Estoque.MovimentoEstoqueEM_TIPO.Value := 'S';
 
     tipoMovimento := DM_Estoque.MovimentoEstoque.FieldByName('EM_TIPO').AsString;
+end;
+
+procedure TMMovimentoEstoque.sbGravarClick(Sender: TObject);
+var
+    baixou:boolean;
+begin
+    procBotaoVisivelHabilitado(Sender);
+
+   try
+      if QryPadrao.State in [dsInsert,dsEdit] then
+      begin
+         QryPadrao.Post;
+         baixou := funcBaixaEstoque(DM_Estoque.MovimentoEstoque.FieldByName('EM_EMPRESA').AsInteger,
+                 DM_Estoque.MovimentoEstoque.FieldByName('EM_PRODUTO').AsString,
+                 DM_Estoque.MovimentoEstoque.FieldByName('EM_BLOCO').AsInteger,
+                 DM_Estoque.MovimentoEstoque.FieldByName('EM_PRATELEIRA').AsInteger,
+                 DM_Estoque.MovimentoEstoque.FieldByName('EM_ESTOQUE').AsInteger,
+                 DM_Estoque.MovimentoEstoque.FieldByName('EM_QTD').AsFloat,
+                 DM_Estoque.MovimentoEstoque.FieldByName('EM_TIPO').AsString);
+      end;
+
+      if b_finalizaTransacao and (QryPadrao.Transaction.Intransaction) and (baixou) then
+         QryPadrao.Transaction.Commit
+      else
+      begin
+         QryPadrao.Transaction.Rollback;
+         close;
+      end;
+
+      b_gravou := True;
+
+      close;
+   except
+      on E: Exception do
+      begin
+         Application.MessageBox(PChar('Erro ao Gravar Registro! '+sLineBreak+sLineBreak+
+                                ' Erro :'+sLineBreak+ e.Message),PChar(Self.Caption), MB_OK+MB_ICONERROR);
+
+      end;
+   end;
 end;
 
 procedure TMMovimentoEstoque.SpeedButton1Click(Sender: TObject);
