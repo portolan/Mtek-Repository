@@ -8,8 +8,6 @@ object DM_Caixa: TDM_Caixa
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
-    SQL.Strings = (
-      'select * from CX_CONTROLECAIXA')
     UpdateObject = UCaixa
     Left = 40
     Top = 32
@@ -55,7 +53,6 @@ object DM_Caixa: TDM_Caixa
     Top = 48
   end
   object DS_Caixa: TDataSource
-    AutoEdit = False
     DataSet = Caixa
     Left = 184
     Top = 96
