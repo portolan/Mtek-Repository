@@ -1,59 +1,70 @@
 inherited P_caixa: TP_caixa
   Caption = 'Controle de Caixa'
+  ClientHeight = 362
   Menu = MainMenu1
   ExplicitWidth = 880
-  ExplicitHeight = 461
+  ExplicitHeight = 421
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
+    Height = 267
+    ExplicitHeight = 267
     inherited gbDados: TGroupBox
+      Height = 261
+      ExplicitHeight = 261
       inherited DBGDados: TDBGrid
+        Height = 244
+        DataSource = DM_Caixa.DS_Caixa
         Columns = <
           item
             Expanded = False
             FieldName = 'CX_CODEMPRESA'
-            Visible = True
+            Visible = False
           end
           item
             Expanded = False
             FieldName = 'CX_IDCAIXA'
-            Visible = True
+            Visible = False
           end
           item
             Expanded = False
             FieldName = 'CX_DATAINICIAL'
-            Visible = True
+            Visible = False
           end
           item
             Expanded = False
             FieldName = 'CX_DATAFINAL'
-            Visible = True
+            Visible = False
           end
           item
             Expanded = False
             FieldName = 'CX_SALDOANTERIOR'
-            Visible = True
+            Visible = False
           end
           item
             Expanded = False
             FieldName = 'CX_TOTALENTRADA'
-            Visible = True
+            Visible = False
           end
           item
             Expanded = False
             FieldName = 'CX_TOTALSAIDA'
-            Visible = True
+            Visible = False
           end
           item
             Expanded = False
             FieldName = 'CX_SALDOTOTAL'
-            Visible = True
+            Visible = False
           end>
       end
     end
   end
+  inherited pnRodape: TPanel
+    Top = 320
+    ExplicitTop = 320
+  end
   object MainMenu1: TMainMenu
-    Left = 761
+    Left = 769
     Top = 278
     object Caixa1: TMenuItem
       Caption = 'Caixa'

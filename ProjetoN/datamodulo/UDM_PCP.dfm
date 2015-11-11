@@ -60,6 +60,7 @@ object DM_PCP: TDM_PCP
   object OrdemProducao: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = OrdemProducaoAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -125,6 +126,7 @@ object DM_PCP: TDM_PCP
   object Producao: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = ProducaoAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -234,6 +236,7 @@ object DM_PCP: TDM_PCP
   object Ficha_Tecnica: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = Ficha_TecnicaAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -453,6 +456,7 @@ object DM_PCP: TDM_PCP
   object Entrega_Materia: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = Entrega_MateriaAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True

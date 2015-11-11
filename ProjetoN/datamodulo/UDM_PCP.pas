@@ -68,6 +68,10 @@ type
     queryGenerica: TIBQuery;
     DataSource1: TDataSource;
     IBUpdateSQL1: TIBUpdateSQL;
+    procedure OrdemProducaoAfterInsert(DataSet: TDataSet);
+    procedure ProducaoAfterInsert(DataSet: TDataSet);
+    procedure Ficha_TecnicaAfterInsert(DataSet: TDataSet);
+    procedure Entrega_MateriaAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -84,5 +88,25 @@ implementation
 uses dm000, UP_PRODUCAO;
 
 {$R *.dfm}
+
+procedure TDM_PCP.Entrega_MateriaAfterInsert(DataSet: TDataSet);
+begin
+    Entrega_Materia.FieldByName('EM0_COD').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ENTREGA_MATERIA_ID');
+end;
+
+procedure TDM_PCP.Ficha_TecnicaAfterInsert(DataSet: TDataSet);
+begin
+    Ficha_Tecnica.FieldByName('FT_COD').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_FICHA');
+end;
+
+procedure TDM_PCP.OrdemProducaoAfterInsert(DataSet: TDataSet);
+begin
+     OrdemProducao.FieldByName('OP_COD').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ORDEM');
+end;
+
+procedure TDM_PCP.ProducaoAfterInsert(DataSet: TDataSet);
+begin
+    Producao.FieldByName('PROD_COD').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRODUCAO_ID');
+end;
 
 end.

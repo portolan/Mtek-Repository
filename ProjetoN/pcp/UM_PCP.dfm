@@ -41,7 +41,6 @@ inherited M_OP: TM_OP
   inherited gbInfos: TGroupBox
     Width = 775
     Height = 330
-    ExplicitTop = -8
     ExplicitWidth = 775
     ExplicitHeight = 330
     object pc_ordem: TPageControl
@@ -155,8 +154,6 @@ inherited M_OP: TM_OP
       object ts_producao: TTabSheet
         Caption = 'Em Producao'
         ImageIndex = 2
-        ExplicitLeft = 1
-        ExplicitTop = 28
         object DBGrid2: TDBGrid
           Left = 0
           Top = 3
@@ -265,13 +262,12 @@ inherited M_OP: TM_OP
     Align = alClient
     Caption = 'Dados'
     TabOrder = 3
-    ExplicitTop = -8
     object PageControl1: TPageControl
       Left = 0
       Top = 0
-      Width = 865
+      Width = 866
       Height = 450
-      ActivePage = TabSheet5
+      ActivePage = TabSheet3
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -286,7 +282,7 @@ inherited M_OP: TM_OP
         Caption = 'TabSheet1'
         DragMode = dmAutomatic
         TabVisible = False
-        ExplicitWidth = 854
+        ExplicitWidth = 857
         object DBGrid1: TDBGrid
           Left = 3
           Top = 3
@@ -305,7 +301,7 @@ inherited M_OP: TM_OP
         DoubleBuffered = False
         ImageIndex = 1
         ParentDoubleBuffered = False
-        ExplicitWidth = 854
+        ExplicitWidth = 857
         object db_aguardando: TDBGrid
           Left = 0
           Top = 0
@@ -322,12 +318,12 @@ inherited M_OP: TM_OP
             item
               Expanded = False
               FieldName = 'OP_COD'
+              Width = 89
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'OP_VENDAS'
-              Width = 92
               Visible = True
             end
             item
@@ -388,9 +384,9 @@ inherited M_OP: TM_OP
       object TabSheet4: TTabSheet
         Caption = 'Em Producao'
         ImageIndex = 2
-        ExplicitWidth = 854
+        ExplicitWidth = 857
         object db_producao: TDBGrid
-          Left = -12
+          Left = 0
           Top = 1
           Width = 773
           Height = 300
@@ -469,9 +465,9 @@ inherited M_OP: TM_OP
       object TabSheet5: TTabSheet
         Caption = 'Cancelada'
         ImageIndex = 3
-        ExplicitWidth = 854
+        ExplicitWidth = 857
         object DBGrid7: TDBGrid
-          Left = 3
+          Left = 0
           Top = 3
           Width = 767
           Height = 297
@@ -547,8 +543,7 @@ inherited M_OP: TM_OP
       object TabSheet6: TTabSheet
         Caption = 'Fechada'
         ImageIndex = 4
-        ExplicitLeft = 20
-        ExplicitWidth = 854
+        ExplicitWidth = 857
         object DBGrid8: TDBGrid
           Left = -3
           Top = 0
@@ -638,7 +633,7 @@ inherited M_OP: TM_OP
     Left = 576
     Top = 280
     object qLiberacaoOP_COD: TIntegerField
-      DisplayLabel = 'c'#243'digo da ordem'
+      DisplayLabel = 'C'#243'digo da ordem'
       FieldName = 'OP_COD'
       Origin = '"ORDEM_PRODUCAO"."OP_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -778,7 +773,7 @@ inherited M_OP: TM_OP
       Required = True
     end
     object IntegerField5: TIntegerField
-      DisplayLabel = 'c'#243'digo da ordem'
+      DisplayLabel = 'C'#243'digo da ordem'
       FieldName = 'OP_COD'
       Origin = '"ORDEM_PRODUCAO"."OP_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
