@@ -4488,14 +4488,6 @@ object TelaInicial: TTelaInicial
     ShowHint = False
     Stretch = True
   end
-  object GroupBox1: TGroupBox
-    Left = 8
-    Top = 0
-    Width = 884
-    Height = 105
-    Caption = 'Atalhos'
-    TabOrder = 0
-  end
   object MainMenu1: TMainMenu
     Left = 528
     Top = 296

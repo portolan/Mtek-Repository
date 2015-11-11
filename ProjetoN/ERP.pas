@@ -56,7 +56,6 @@ type
     Relatrios2: TMenuItem;
     ProdutosemEstoque1: TMenuItem;
     Relatrios1: TMenuItem;
-    GroupBox1: TGroupBox;
     ipodeErro1: TMenuItem;
     Sobre1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
