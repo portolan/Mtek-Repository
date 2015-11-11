@@ -56,11 +56,7 @@ type
     Relatrios2: TMenuItem;
     ProdutosemEstoque1: TMenuItem;
     Relatrios1: TMenuItem;
-    relogio: TLabel;
-    Timer1: TTimer;
     GroupBox1: TGroupBox;
-    GroupBox2: TGroupBox;
-    Image10: TImage;
     ipodeErro1: TMenuItem;
     Sobre1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
@@ -86,7 +82,6 @@ type
     procedure ContasaReceber1Click(Sender: TObject);
     procedure ProdutosemEstoque1Click(Sender: TObject);
     procedure Relatrios1Click(Sender: TObject);
-    procedure Timer1Timer(Sender: TObject);
     procedure FichaTcnica1Click(Sender: TObject);
     procedure ipodeErro1Click(Sender: TObject);
     procedure Sobre1Click(Sender: TObject);
@@ -319,9 +314,5 @@ begin
   TI_sobre.chamaTela(Self);
 end;
 
-procedure TTelaInicial.Timer1Timer(Sender: TObject);
-begin
-relogio.caption := timetostr(time);
-end;
 
 end.
