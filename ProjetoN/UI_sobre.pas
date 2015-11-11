@@ -9,7 +9,6 @@ uses
 
 type
   TI_sobre = class(TForm)
-    Image1: TImage;
     Label1: TLabel;
     GroupBox1: TGroupBox;
     Label2: TLabel;
