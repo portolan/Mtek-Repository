@@ -15,6 +15,10 @@ type
     FechamentoCaixa1: TMenuItem;
     AbrirCaixa1: TMenuItem;
     FecharCaixa1: TMenuItem;
+    lb_saldoanterior: TLabel;
+    lb_saldototal: TLabel;
+    edit_saldoant: TEdit;
+    edit_saldototal: TEdit;
     procedure FechamentoCaixa1Click(Sender: TObject);
     procedure AbrirCaixa1Click(Sender: TObject);
     procedure FecharCaixa1Click(Sender: TObject);

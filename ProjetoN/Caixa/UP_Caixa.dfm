@@ -1,19 +1,18 @@
 inherited P_caixa: TP_caixa
   Caption = 'Controle de Caixa'
-  ClientHeight = 362
+  ClientHeight = 342
   Menu = MainMenu1
-  ExplicitWidth = 880
-  ExplicitHeight = 421
+  ExplicitHeight = 401
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
-    Height = 267
-    ExplicitHeight = 267
+    Height = 247
+    ExplicitHeight = 247
     inherited gbDados: TGroupBox
-      Height = 261
-      ExplicitHeight = 261
+      Height = 241
+      ExplicitHeight = 241
       inherited DBGDados: TDBGrid
-        Height = 244
+        Height = 224
         DataSource = DM_Caixa.DS_Caixa
         Columns = <
           item
@@ -60,8 +59,53 @@ inherited P_caixa: TP_caixa
     end
   end
   inherited pnRodape: TPanel
-    Top = 320
-    ExplicitTop = 320
+    Top = 300
+    ExplicitTop = 300
+    inherited sbRemover: TSpeedButton
+      Visible = False
+    end
+    object lb_saldoanterior: TLabel
+      Left = 320
+      Top = 6
+      Width = 82
+      Height = 16
+      Caption = 'Saldo Anterior'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lb_saldototal: TLabel
+      Left = 551
+      Top = 6
+      Width = 65
+      Height = 16
+      Caption = 'Saldo Total'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object edit_saldoant: TEdit
+      Left = 408
+      Top = 6
+      Width = 97
+      Height = 21
+      Enabled = False
+      TabOrder = 0
+    end
+    object edit_saldototal: TEdit
+      Left = 622
+      Top = 6
+      Width = 97
+      Height = 21
+      Enabled = False
+      TabOrder = 1
+    end
   end
   object MainMenu1: TMainMenu
     Left = 769
