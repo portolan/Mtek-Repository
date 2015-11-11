@@ -247,6 +247,7 @@ begin
    Self.QryPadrao           := Query;
    Self.TelaManutencao      := TelaManutencao;
    Self.CTelaManutencao     := CTelaManutencao;
+   funcAtribuiFiltros;
 end;
 
 procedure TxPesqPadrao.procSelect;

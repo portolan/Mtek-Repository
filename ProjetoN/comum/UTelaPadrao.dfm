@@ -290,6 +290,7 @@ object xPesqPadrao: TxPesqPadrao
       Align = alRight
       Caption = 'Status'
       TabOrder = 0
+      Visible = False
     end
     object gbFiltro: TGroupBox
       Left = 0
