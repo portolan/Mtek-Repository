@@ -83,7 +83,7 @@ uses
   UManuPadrao in 'comum\UManuPadrao.pas' {xManuPadrao},
   UP_contabancaria in 'financeiro\UP_contabancaria.pas' {P_contasbancarias},
   UTelaPadrao in 'comum\UTelaPadrao.pas' {xPesqPadrao},
-  UDM_financeiro in 'datamodulo\UDM_financeiro.pas' {DataModule2: TDataModule};
+  UDM_financeiro in 'datamodulo\UDM_financeiro.pas' {DM_financeiro: TDataModule};
 
 {$R *.res}
 
@@ -101,7 +101,6 @@ begin
   Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(TDataModule2, DataModule2);
-  Application.CreateForm(TDataModule2, DataModule2);
+  Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.Run;
 end.

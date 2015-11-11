@@ -34,6 +34,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure editPesquisaChange(Sender: TObject);
     procedure DBGDadosDblClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
 
   public
@@ -72,7 +73,11 @@ var
 
 implementation
 
+
+
 {$R *.dfm}
+
+uses UDM_financeiro, UM_novacontabancaria;
 
 procedure TP_contasbancarias.DBGDadosDblClick(Sender: TObject);
 begin
@@ -91,6 +96,11 @@ procedure TP_contasbancarias.FormActivate(Sender: TObject);
 begin
     editPesquisa.SetFocus;
     cBoxFiltro.ItemIndex := 1;
+end;
+
+procedure TP_contasbancarias.FormCreate(Sender: TObject);
+begin
+procInicializar(DM_financeiro.contasbancarias,true,false,M_novaconta,TM_novaconta);
 end;
 
 procedure TP_contasbancarias.FormKeyDown(Sender: TObject; var Key: Word;

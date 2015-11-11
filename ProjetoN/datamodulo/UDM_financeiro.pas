@@ -3,10 +3,14 @@ unit UDM_financeiro;
 interface
 
 uses
-  System.SysUtils, System.Classes;
+  System.SysUtils, System.Classes, IBX.IBCustomDataSet, IBX.IBUpdateSQL,
+  Data.DB, IBX.IBQuery;
 
 type
-  TDataModule2 = class(TDataModule)
+  TDM_financeiro = class(TDataModule)
+    contasbancarias: TIBQuery;
+    D_contasbancarias: TDataSource;
+    U_contasbancarias: TIBUpdateSQL;
   private
     { Private declarations }
   public
@@ -14,7 +18,7 @@ type
   end;
 
 var
-  DataModule2: TDataModule2;
+  DM_financeiro: TDM_financeiro;
 
 implementation
 

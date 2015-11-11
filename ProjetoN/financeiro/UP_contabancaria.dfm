@@ -14,6 +14,7 @@ object P_contasbancarias: TP_contasbancarias
   OldCreateOrder = False
   Position = poMainFormCenter
   OnActivate = FormActivate
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   PixelsPerInch = 96

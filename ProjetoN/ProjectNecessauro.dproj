@@ -383,7 +383,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="datamodulo\UDM_financeiro.pas">
-            <Form>DataModule2</Form>
+            <Form>DM_financeiro</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>

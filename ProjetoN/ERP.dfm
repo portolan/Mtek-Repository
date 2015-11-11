@@ -4490,8 +4490,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object MainMenu1: TMainMenu
-    Left = 776
-    Top = 304
+    Left = 576
+    Top = 256
     object Estoque1: TMenuItem
       Caption = 'Estoque'
       object ProdutosemEstoque1: TMenuItem
