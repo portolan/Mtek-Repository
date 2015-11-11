@@ -1,18 +1,19 @@
 inherited P_caixa: TP_caixa
   Caption = 'Controle de Caixa'
-  ClientHeight = 342
+  ClientHeight = 322
   Menu = MainMenu1
-  ExplicitHeight = 401
+  ExplicitWidth = 880
+  ExplicitHeight = 381
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
-    Height = 247
-    ExplicitHeight = 247
+    Height = 227
+    ExplicitHeight = 227
     inherited gbDados: TGroupBox
-      Height = 241
-      ExplicitHeight = 241
+      Height = 221
+      ExplicitHeight = 221
       inherited DBGDados: TDBGrid
-        Height = 224
+        Height = 204
         DataSource = DM_Caixa.DS_Caixa
         Columns = <
           item
@@ -59,8 +60,8 @@ inherited P_caixa: TP_caixa
     end
   end
   inherited pnRodape: TPanel
-    Top = 300
-    ExplicitTop = 300
+    Top = 280
+    ExplicitTop = 280
     inherited sbRemover: TSpeedButton
       Visible = False
     end
@@ -126,6 +127,18 @@ inherited P_caixa: TP_caixa
       object FechamentoCaixa1: TMenuItem
         Caption = 'Fechamento Caixa'
         OnClick = FechamentoCaixa1Click
+      end
+      object BalanoPerodo1: TMenuItem
+        Caption = 'Balan'#231'o por Per'#237'odo'
+        OnClick = BalanoPerodo1Click
+      end
+      object PrevisodeContasReceberPagar1: TMenuItem
+        Caption = 'Previs'#227'o de Contas Receber/Pagar'
+        OnClick = PrevisodeContasReceberPagar1Click
+      end
+      object PrevisodeVendasCompras1: TMenuItem
+        Caption = 'Previs'#227'o de Vendas/Compras'
+        OnClick = PrevisodeVendasCompras1Click
       end
     end
   end

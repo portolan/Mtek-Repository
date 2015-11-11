@@ -13,6 +13,7 @@ type
     DateTimePicker1: TDateTimePicker;
     DateTimePicker2: TDateTimePicker;
     btn_relfechamcaixa: TButton;
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -25,5 +26,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TREL_fechamentocx.FormCreate(Sender: TObject);
+begin
+   Left := (GetSystemMetrics(SM_CXSCREEN) - Width) div 2;
+   Top := (GetSystemMetrics(SM_CYSCREEN) - Height) div 2;
+end;
 
 end.
