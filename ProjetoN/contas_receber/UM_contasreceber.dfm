@@ -450,8 +450,8 @@
         TabOrder = 23
       end
       object DBRadioGroup1: TDBRadioGroup
-        Left = 268
-        Top = 232
+        Left = 278
+        Top = 228
         Width = 250
         Height = 54
         Columns = 3
@@ -459,7 +459,7 @@
         DataSource = DM_contasreceber.D_contasreceber
         Items.Strings = (
           'ABERTO '
-          'PAGO '
+          'QUITADO '
           'CANCELADO')
         TabOrder = 24
       end
