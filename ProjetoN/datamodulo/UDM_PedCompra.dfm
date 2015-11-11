@@ -368,4 +368,245 @@ object dmPedCompra: TdmPedCompra
     Left = 392
     Top = 80
   end
+  object UPessoa: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select * '
+      'from pessoas '
+      'where'
+      '  PESS_CODIGO = :PESS_CODIGO')
+    ModifySQL.Strings = (
+      'update pessoas'
+      'set'
+      '  PESS_APELIDO = :PESS_APELIDO,'
+      '  PESS_BAIRRO = :PESS_BAIRRO,'
+      '  PESS_CIDADE = :PESS_CIDADE,'
+      '  PESS_CNPJ = :PESS_CNPJ,'
+      '  PESS_CODIGO = :PESS_CODIGO,'
+      '  PESS_COMPLEMENTO = :PESS_COMPLEMENTO,'
+      '  PESS_CONTATO = :PESS_CONTATO,'
+      '  PESS_CPF = :PESS_CPF,'
+      '  PESS_DTCADASTRO = :PESS_DTCADASTRO,'
+      '  PESS_EMAIL = :PESS_EMAIL,'
+      '  PESS_FAX = :PESS_FAX,'
+      '  PESS_INSCESTADUAL = :PESS_INSCESTADUAL,'
+      '  PESS_INSCMUNICIPAL = :PESS_INSCMUNICIPAL,'
+      '  PESS_LOGRADOURO = :PESS_LOGRADOURO,'
+      '  PESS_NOME = :PESS_NOME,'
+      '  PESS_NR = :PESS_NR,'
+      '  PESS_PAIS = :PESS_PAIS,'
+      '  PESS_RAMAL = :PESS_RAMAL,'
+      '  PESS_RG = :PESS_RG,'
+      '  PESS_TEL1 = :PESS_TEL1,'
+      '  PESS_TEL2 = :PESS_TEL2,'
+      '  PESS_TEL3 = :PESS_TEL3,'
+      '  PESS_TELCONTATO = :PESS_TELCONTATO,'
+      '  PESS_TIPO = :PESS_TIPO,'
+      '  PESS_UF = :PESS_UF'
+      'where'
+      '  PESS_CODIGO = :OLD_PESS_CODIGO')
+    InsertSQL.Strings = (
+      'insert into pessoas'
+      
+        '  (PESS_APELIDO, PESS_BAIRRO, PESS_CIDADE, PESS_CNPJ, PESS_CODIG' +
+        'O, PESS_COMPLEMENTO, '
+      
+        '   PESS_CONTATO, PESS_CPF, PESS_DTCADASTRO, PESS_EMAIL, PESS_FAX' +
+        ', PESS_INSCESTADUAL, '
+      
+        '   PESS_INSCMUNICIPAL, PESS_LOGRADOURO, PESS_NOME, PESS_NR, PESS' +
+        '_PAIS, '
+      
+        '   PESS_RAMAL, PESS_RG, PESS_TEL1, PESS_TEL2, PESS_TEL3, PESS_TE' +
+        'LCONTATO, '
+      '   PESS_TIPO, PESS_UF)'
+      'values'
+      
+        '  (:PESS_APELIDO, :PESS_BAIRRO, :PESS_CIDADE, :PESS_CNPJ, :PESS_' +
+        'CODIGO, '
+      
+        '   :PESS_COMPLEMENTO, :PESS_CONTATO, :PESS_CPF, :PESS_DTCADASTRO' +
+        ', :PESS_EMAIL, '
+      
+        '   :PESS_FAX, :PESS_INSCESTADUAL, :PESS_INSCMUNICIPAL, :PESS_LOG' +
+        'RADOURO, '
+      
+        '   :PESS_NOME, :PESS_NR, :PESS_PAIS, :PESS_RAMAL, :PESS_RG, :PES' +
+        'S_TEL1, '
+      
+        '   :PESS_TEL2, :PESS_TEL3, :PESS_TELCONTATO, :PESS_TIPO, :PESS_U' +
+        'F)')
+    DeleteSQL.Strings = (
+      'delete from pessoas'
+      'where'
+      '  PESS_CODIGO = :OLD_PESS_CODIGO')
+    Left = 480
+    Top = 88
+  end
+  object Pessoa: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from pessoas')
+    UpdateObject = UPessoa
+    Left = 480
+    Top = 40
+    object PessoaPESS_CODIGO: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'PESS_CODIGO'
+      Origin = '"PESSOAS"."PESS_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object PessoaPESS_NOME: TIBStringField
+      DisplayLabel = 'Nome'
+      FieldName = 'PESS_NOME'
+      Origin = '"PESSOAS"."PESS_NOME"'
+      Size = 100
+    end
+    object PessoaPESS_TIPO: TIBStringField
+      DisplayLabel = 'Tipo'
+      FieldName = 'PESS_TIPO'
+      Origin = '"PESSOAS"."PESS_TIPO"'
+      FixedChar = True
+      Size = 1
+    end
+    object PessoaPESS_APELIDO: TIBStringField
+      DisplayLabel = 'Apelido'
+      FieldName = 'PESS_APELIDO'
+      Origin = '"PESSOAS"."PESS_APELIDO"'
+      Size = 60
+    end
+    object PessoaPESS_CONTATO: TIBStringField
+      DisplayLabel = 'Contato'
+      FieldName = 'PESS_CONTATO'
+      Origin = '"PESSOAS"."PESS_CONTATO"'
+      Size = 60
+    end
+    object PessoaPESS_TELCONTATO: TIBStringField
+      DisplayLabel = 'Tel. Contato'
+      FieldName = 'PESS_TELCONTATO'
+      Origin = '"PESSOAS"."PESS_TELCONTATO"'
+      Size = 15
+    end
+    object PessoaPESS_TEL1: TIBStringField
+      DisplayLabel = 'Telefone 1'
+      FieldName = 'PESS_TEL1'
+      Origin = '"PESSOAS"."PESS_TEL1"'
+      Size = 15
+    end
+    object PessoaPESS_TEL2: TIBStringField
+      DisplayLabel = 'Telefone 2'
+      FieldName = 'PESS_TEL2'
+      Origin = '"PESSOAS"."PESS_TEL2"'
+      Size = 15
+    end
+    object PessoaPESS_TEL3: TIBStringField
+      DisplayLabel = 'Telefone 3'
+      FieldName = 'PESS_TEL3'
+      Origin = '"PESSOAS"."PESS_TEL3"'
+      Size = 15
+    end
+    object PessoaPESS_FAX: TIBStringField
+      DisplayLabel = 'Fax'
+      FieldName = 'PESS_FAX'
+      Origin = '"PESSOAS"."PESS_FAX"'
+      Size = 12
+    end
+    object PessoaPESS_RAMAL: TIntegerField
+      DisplayLabel = 'Ramal'
+      FieldName = 'PESS_RAMAL'
+      Origin = '"PESSOAS"."PESS_RAMAL"'
+    end
+    object PessoaPESS_CNPJ: TIBStringField
+      DisplayLabel = 'CNPJ'
+      FieldName = 'PESS_CNPJ'
+      Origin = '"PESSOAS"."PESS_CNPJ"'
+      Size = 14
+    end
+    object PessoaPESS_CPF: TIBStringField
+      DisplayLabel = 'CPF'
+      FieldName = 'PESS_CPF'
+      Origin = '"PESSOAS"."PESS_CPF"'
+      Size = 11
+    end
+    object PessoaPESS_RG: TIBStringField
+      DisplayLabel = 'RG'
+      FieldName = 'PESS_RG'
+      Origin = '"PESSOAS"."PESS_RG"'
+      Size = 10
+    end
+    object PessoaPESS_INSCESTADUAL: TIBStringField
+      DisplayLabel = 'Insc. Estadual'
+      FieldName = 'PESS_INSCESTADUAL'
+      Origin = '"PESSOAS"."PESS_INSCESTADUAL"'
+      Size = 9
+    end
+    object PessoaPESS_INSCMUNICIPAL: TIBStringField
+      DisplayLabel = 'Insc. Municipal'
+      FieldName = 'PESS_INSCMUNICIPAL'
+      Origin = '"PESSOAS"."PESS_INSCMUNICIPAL"'
+      Size = 15
+    end
+    object PessoaPESS_EMAIL: TIBStringField
+      DisplayLabel = 'E-Mail'
+      FieldName = 'PESS_EMAIL'
+      Origin = '"PESSOAS"."PESS_EMAIL"'
+      Size = 60
+    end
+    object PessoaPESS_DTCADASTRO: TDateTimeField
+      DisplayLabel = 'Dt. Cadastro'
+      FieldName = 'PESS_DTCADASTRO'
+      Origin = '"PESSOAS"."PESS_DTCADASTRO"'
+      Required = True
+    end
+    object PessoaPESS_LOGRADOURO: TIBStringField
+      DisplayLabel = 'Logradouro'
+      FieldName = 'PESS_LOGRADOURO'
+      Origin = '"PESSOAS"."PESS_LOGRADOURO"'
+      Size = 60
+    end
+    object PessoaPESS_BAIRRO: TIBStringField
+      DisplayLabel = 'Bairro'
+      FieldName = 'PESS_BAIRRO'
+      Origin = '"PESSOAS"."PESS_BAIRRO"'
+      Size = 30
+    end
+    object PessoaPESS_COMPLEMENTO: TIBStringField
+      DisplayLabel = 'Complemento'
+      FieldName = 'PESS_COMPLEMENTO'
+      Origin = '"PESSOAS"."PESS_COMPLEMENTO"'
+      Size = 30
+    end
+    object PessoaPESS_NR: TIBStringField
+      DisplayLabel = 'N'#186
+      FieldName = 'PESS_NR'
+      Origin = '"PESSOAS"."PESS_NR"'
+      Size = 5
+    end
+    object PessoaPESS_CIDADE: TIBStringField
+      DisplayLabel = 'Cidade'
+      FieldName = 'PESS_CIDADE'
+      Origin = '"PESSOAS"."PESS_CIDADE"'
+    end
+    object PessoaPESS_UF: TIBStringField
+      DisplayLabel = 'UF'
+      FieldName = 'PESS_UF'
+      Origin = '"PESSOAS"."PESS_UF"'
+      Size = 2
+    end
+    object PessoaPESS_PAIS: TIBStringField
+      DisplayLabel = 'Pa'#237's'
+      FieldName = 'PESS_PAIS'
+      Origin = '"PESSOAS"."PESS_PAIS"'
+    end
+  end
+  object DSPessoa: TDataSource
+    AutoEdit = False
+    DataSet = Pessoa
+    Left = 480
+    Top = 136
+  end
 end

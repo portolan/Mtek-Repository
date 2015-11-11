@@ -46,6 +46,34 @@ type
     CotacaoDEP_NOME: TIBStringField;
     CotacaoPRO_DESCRICAO: TIBStringField;
     SolicitacaoCompraEMP_RAZAO: TIBStringField;
+    UPessoa: TIBUpdateSQL;
+    Pessoa: TIBQuery;
+    DSPessoa: TDataSource;
+    PessoaPESS_CODIGO: TIntegerField;
+    PessoaPESS_NOME: TIBStringField;
+    PessoaPESS_TIPO: TIBStringField;
+    PessoaPESS_APELIDO: TIBStringField;
+    PessoaPESS_CONTATO: TIBStringField;
+    PessoaPESS_TELCONTATO: TIBStringField;
+    PessoaPESS_TEL1: TIBStringField;
+    PessoaPESS_TEL2: TIBStringField;
+    PessoaPESS_TEL3: TIBStringField;
+    PessoaPESS_FAX: TIBStringField;
+    PessoaPESS_RAMAL: TIntegerField;
+    PessoaPESS_CNPJ: TIBStringField;
+    PessoaPESS_CPF: TIBStringField;
+    PessoaPESS_RG: TIBStringField;
+    PessoaPESS_INSCESTADUAL: TIBStringField;
+    PessoaPESS_INSCMUNICIPAL: TIBStringField;
+    PessoaPESS_EMAIL: TIBStringField;
+    PessoaPESS_DTCADASTRO: TDateTimeField;
+    PessoaPESS_LOGRADOURO: TIBStringField;
+    PessoaPESS_BAIRRO: TIBStringField;
+    PessoaPESS_COMPLEMENTO: TIBStringField;
+    PessoaPESS_NR: TIBStringField;
+    PessoaPESS_CIDADE: TIBStringField;
+    PessoaPESS_UF: TIBStringField;
+    PessoaPESS_PAIS: TIBStringField;
   private
     { Private declarations }
   public
