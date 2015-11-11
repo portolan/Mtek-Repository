@@ -56,12 +56,11 @@ type
     Relatrios2: TMenuItem;
     ProdutosemEstoque1: TMenuItem;
     Relatrios1: TMenuItem;
-    relogio: TLabel;
-    Timer1: TTimer;
     GroupBox1: TGroupBox;
-    GroupBox2: TGroupBox;
     Image10: TImage;
     ipodeErro1: TMenuItem;
+    Panel1: TPanel;
+    Timer1: TTimer;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -313,8 +312,13 @@ begin
 end;
 
 procedure TTelaInicial.Timer1Timer(Sender: TObject);
+var
+DateTime : TDateTime;
+str : string;
 begin
-relogio.caption := timetostr(time);
+DateTime := Time;
+str := TimeToStr(DateTime);
+panel1.Caption := str;
 end;
 
 end.

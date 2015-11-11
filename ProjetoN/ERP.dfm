@@ -1018,15 +1018,12 @@ object TelaInicial: TTelaInicial
   Position = poScreenCenter
   WindowState = wsMaximized
   OnClose = FormClose
-  DesignSize = (
-    900
-    386)
   PixelsPerInch = 96
   TextHeight = 13
   object Image10: TImage
     Left = 0
     Top = 0
-    Width = 605
+    Width = 900
     Height = 386
     Align = alClient
     Picture.Data = {
@@ -6755,35 +6752,6 @@ object TelaInicial: TTelaInicial
     ShowHint = False
     Stretch = True
   end
-  object relogio: TLabel
-    AlignWithMargins = True
-    Left = 25
-    Top = 328
-    Width = 165
-    Height = 50
-    Anchors = [akLeft, akRight, akBottom]
-    Caption = '00:00:00'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = 50
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    Layout = tlCenter
-  end
-  object GroupBox2: TGroupBox
-    Left = 11
-    Top = 314
-    Width = 179
-    Height = 62
-    Margins.Bottom = 5
-    Align = alCustom
-    Anchors = [akLeft, akBottom]
-    Caption = 'Data e Hora'
-    Padding.Left = 3
-    Padding.Bottom = 3
-    TabOrder = 1
-  end
   object GroupBox1: TGroupBox
     Left = 8
     Top = 0
@@ -6791,6 +6759,15 @@ object TelaInicial: TTelaInicial
     Height = 105
     Caption = 'Atalhos'
     TabOrder = 0
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 344
+    Width = 185
+    Height = 41
+    Caption = 'Panel1'
+    Locked = True
+    TabOrder = 1
   end
   object MainMenu1: TMainMenu
     Left = 528
@@ -6944,7 +6921,7 @@ object TelaInicial: TTelaInicial
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 480
-    Top = 296
+    Left = 216
+    Top = 344
   end
 end
