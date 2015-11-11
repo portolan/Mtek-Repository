@@ -1,6 +1,8 @@
 inherited P_Servico: TP_Servico
   Caption = 'Servi'#231'o'
   OnCreate = FormCreate
+  ExplicitWidth = 880
+  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
@@ -35,32 +37,22 @@ inherited P_Servico: TP_Servico
           end
           item
             Expanded = False
-            FieldName = 'CHA_DESCRICAO'
-            Width = 64
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'CHA_DATA_ENTRADA'
-            Width = 64
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'CHA_DATA_SAIDA'
-            Width = 64
-            Visible = True
-          end
-          item
-            Expanded = False
             FieldName = 'CHA_PRIORIDADE'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CHA_STATUS'
-            Width = 64
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CHA_DATA_ENTRADA'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CHA_DATA_SAIDA'
             Visible = True
           end
           item
@@ -70,8 +62,8 @@ inherited P_Servico: TP_Servico
           end
           item
             Expanded = False
-            FieldName = 'CHA_PRODUTO_UTILIZADO'
-            Visible = False
+            FieldName = 'CHA_DESCRICAO'
+            Visible = True
           end>
       end
     end

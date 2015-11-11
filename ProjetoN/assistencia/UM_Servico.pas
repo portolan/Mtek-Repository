@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids;
+  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls;
 
 type
   TM_Servico = class(TxManuPadrao)
@@ -22,18 +22,19 @@ type
     Label6: TLabel;
     DBEdit6: TDBEdit;
     Label7: TLabel;
-    DBEdit7: TDBEdit;
     Label8: TLabel;
-    DBEdit8: TDBEdit;
     Label9: TLabel;
-    DBEdit9: TDBEdit;
     Label10: TLabel;
     Label11: TLabel;
     DBMemo1: TDBMemo;
-    DBLookupComboBox1: TDBLookupComboBox;
+    DBEdit10: TDBEdit;
+    DBComboBox1: TDBComboBox;
+    DBComboBox2: TDBComboBox;
+    DBEdit7: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure DBEdit2Click(Sender: TObject);
     procedure DBEdit3Click(Sender: TObject);
+    procedure DBEdit10Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -47,8 +48,20 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_Servico, UDM_contabil, UP_empresa, UP_departamento;
+uses UDM_Servico, UDM_contabil, UP_empresa, UP_departamento, UP_Tipo_Erro;
 
+
+procedure TM_Servico.DBEdit10Click(Sender: TObject);
+begin
+  inherited;
+  P_Tipo_Erro := TP_Tipo_Erro.Create(Self);
+  try
+    P_Tipo_Erro.procInicializar(DM_Servico.IB_Tipo_Erro,false,true,P_Tipo_Erro,TP_Tipo_Erro);
+    P_Tipo_Erro.ShowModal;
+  finally
+    DM_Servico.IB_ChamadoCHA_TIPO_ERRO.Value := DM_Servico.IB_Tipo_ErroTER_CODIGO.AsInteger;
+  end;
+end;
 
 procedure TM_Servico.DBEdit2Click(Sender: TObject);
 begin

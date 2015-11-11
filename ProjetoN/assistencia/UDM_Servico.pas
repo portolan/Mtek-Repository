@@ -11,17 +11,9 @@ type
     IB_Chamado: TIBQuery;
     UPS_Chamado: TIBUpdateSQL;
     DS_Chamado: TDataSource;
-    IB_Produto_Utilizado: TIBQuery;
-    UPS_Produto_Usado: TIBUpdateSQL;
-    DS_Produto_Utilizado: TDataSource;
     IB_Tipo_Erro: TIBQuery;
     UPS_Tipo_Erro: TIBUpdateSQL;
     DS_Tipo_Erro: TDataSource;
-    IB_Produto_UtilizadoPRU_CODIGO: TIntegerField;
-    IB_Produto_UtilizadoPRU_CHAMADO: TIntegerField;
-    IB_Produto_UtilizadoPRU_PRODUTO: TIBStringField;
-    IB_Tipo_ErroTER_CODIGO: TIBStringField;
-    IB_Tipo_ErroTER_DESCRICAO: TIBStringField;
     IB_ChamadoCHA_CODIGO: TIntegerField;
     IB_ChamadoCHA_EMPRESA: TIntegerField;
     IB_ChamadoCHA_DEPARTAMENTO: TIntegerField;
@@ -33,7 +25,10 @@ type
     IB_ChamadoCHA_DATA_ENTRADA: TDateField;
     IB_ChamadoCHA_TIPO_ERRO: TIntegerField;
     IB_ChamadoCHA_DATA_SAIDA: TDateField;
-    IB_ChamadoCHA_PRODUTO_UTILIZADO: TIntegerField;
+    IB_Tipo_ErroTER_CODIGO: TIntegerField;
+    IB_Tipo_ErroTER_DESCRICAO: TIBStringField;
+    procedure IB_ChamadoAfterInsert(DataSet: TDataSet);
+    procedure IB_Tipo_ErroAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -50,5 +45,15 @@ implementation
 uses dm000;
 
 {$R *.dfm}
+
+procedure TDM_Servico.IB_ChamadoAfterInsert(DataSet: TDataSet);
+begin
+  IB_Chamado.FieldByName('CHA_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_CHAMADO');
+end;
+
+procedure TDM_Servico.IB_Tipo_ErroAfterInsert(DataSet: TDataSet);
+begin
+  IB_Tipo_Erro.FieldByName('TER_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_TIPO_ERRO');
+end;
 
 end.

@@ -5,6 +5,7 @@ object DM_Servico: TDM_Servico
   object IB_Chamado: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = IB_ChamadoAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -12,7 +13,7 @@ object DM_Servico: TDM_Servico
       'Select * From CHAMADOS')
     UpdateObject = UPS_Chamado
     Left = 48
-    Top = 224
+    Top = 8
     object IB_ChamadoCHA_CODIGO: TIntegerField
       DisplayLabel = 'Codigo'
       FieldName = 'CHA_CODIGO'
@@ -66,9 +67,11 @@ object DM_Servico: TDM_Servico
       FieldName = 'CHA_DATA_ENTRADA'
       Origin = '"CHAMADOS"."CHA_DATA_ENTRADA"'
       Required = True
+      DisplayFormat = 'DD/MM/AAAA'
+      EditMask = '!99/99/00;1;_'
     end
     object IB_ChamadoCHA_TIPO_ERRO: TIntegerField
-      DisplayLabel = 'Tipo Erro'
+      DisplayLabel = 'Tipo de Erro'
       FieldName = 'CHA_TIPO_ERRO'
       Origin = '"CHAMADOS"."CHA_TIPO_ERRO"'
       Required = True
@@ -77,12 +80,8 @@ object DM_Servico: TDM_Servico
       DisplayLabel = 'Data de Saida'
       FieldName = 'CHA_DATA_SAIDA'
       Origin = '"CHAMADOS"."CHA_DATA_SAIDA"'
-    end
-    object IB_ChamadoCHA_PRODUTO_UTILIZADO: TIntegerField
-      DisplayLabel = 'Produto Utilizados'
-      FieldName = 'CHA_PRODUTO_UTILIZADO'
-      Origin = '"CHAMADOS"."CHA_PRODUTO_UTILIZADO"'
-      Visible = False
+      DisplayFormat = 'DD/MM/AAAA'
+      EditMask = '!99/99/00;1;_'
     end
   end
   object UPS_Chamado: TIBUpdateSQL
@@ -92,14 +91,13 @@ object DM_Servico: TDM_Servico
       '  CHA_EMPRESA,'
       '  CHA_DEPARTAMENTO,'
       '  CHA_FUNCIONARIO,'
-      '  CHA_DESCRICAO,'
-      '  CHA_DATA_ENTRADA,'
-      '  CHA_DATA_SAIDA,'
       '  CHA_PROPRIETARIO,'
+      '  CHA_DESCRICAO,'
       '  CHA_PRIORIDADE,'
       '  CHA_STATUS,'
-      '  CHA_PRODUTO_UTILIZADO,'
-      '  CHA_TIPO_ERRO'
+      '  CHA_DATA_ENTRADA,'
+      '  CHA_TIPO_ERRO,'
+      '  CHA_DATA_SAIDA'
       'from CHAMADOS '
       'where'
       '  CHA_CODIGO = :CHA_CODIGO')
@@ -114,7 +112,6 @@ object DM_Servico: TDM_Servico
       '  CHA_EMPRESA = :CHA_EMPRESA,'
       '  CHA_FUNCIONARIO = :CHA_FUNCIONARIO,'
       '  CHA_PRIORIDADE = :CHA_PRIORIDADE,'
-      '  CHA_PRODUTO_UTILIZADO = :CHA_PRODUTO_UTILIZADO,'
       '  CHA_PROPRIETARIO = :CHA_PROPRIETARIO,'
       '  CHA_STATUS = :CHA_STATUS,'
       '  CHA_TIPO_ERRO = :CHA_TIPO_ERRO'
@@ -126,116 +123,53 @@ object DM_Servico: TDM_Servico
         '  (CHA_CODIGO, CHA_DATA_ENTRADA, CHA_DATA_SAIDA, CHA_DEPARTAMENT' +
         'O, CHA_DESCRICAO, '
       
-        '   CHA_EMPRESA, CHA_FUNCIONARIO, CHA_PRIORIDADE, CHA_PRODUTO_UTI' +
-        'LIZADO, '
-      '   CHA_PROPRIETARIO, CHA_STATUS, CHA_TIPO_ERRO)'
+        '   CHA_EMPRESA, CHA_FUNCIONARIO, CHA_PRIORIDADE, CHA_PROPRIETARI' +
+        'O, CHA_STATUS, '
+      '   CHA_TIPO_ERRO)'
       'values'
       
         '  (:CHA_CODIGO, :CHA_DATA_ENTRADA, :CHA_DATA_SAIDA, :CHA_DEPARTA' +
         'MENTO, '
       
         '   :CHA_DESCRICAO, :CHA_EMPRESA, :CHA_FUNCIONARIO, :CHA_PRIORIDA' +
-        'DE, :CHA_PRODUTO_UTILIZADO, '
-      '   :CHA_PROPRIETARIO, :CHA_STATUS, :CHA_TIPO_ERRO)')
+        'DE, :CHA_PROPRIETARIO, '
+      '   :CHA_STATUS, :CHA_TIPO_ERRO)')
     DeleteSQL.Strings = (
       'delete from CHAMADOS'
       'where'
       '  CHA_CODIGO = :OLD_CHA_CODIGO')
-    Left = 248
-    Top = 224
+    Left = 48
+    Top = 88
   end
   object DS_Chamado: TDataSource
     DataSet = IB_Chamado
-    Left = 448
-    Top = 232
-  end
-  object IB_Produto_Utilizado: TIBQuery
-    Database = dmBanco.Banco
-    Transaction = dmBanco.TBanco
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
-    SQL.Strings = (
-      'select *  from PRODUTOS_UTILIZADO')
-    UpdateObject = UPS_Produto_Usado
     Left = 48
-    Top = 144
-    object IB_Produto_UtilizadoPRU_CODIGO: TIntegerField
-      DisplayLabel = 'Codigo'
-      FieldName = 'PRU_CODIGO'
-      Origin = '"PRODUTOS_UTILIZADO"."PRU_CODIGO"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object IB_Produto_UtilizadoPRU_CHAMADO: TIntegerField
-      DisplayLabel = 'Codigo Chamado'
-      FieldName = 'PRU_CHAMADO'
-      Origin = '"PRODUTOS_UTILIZADO"."PRU_CHAMADO"'
-      Required = True
-    end
-    object IB_Produto_UtilizadoPRU_PRODUTO: TIBStringField
-      DisplayLabel = 'Produto'
-      FieldName = 'PRU_PRODUTO'
-      Origin = '"PRODUTOS_UTILIZADO"."PRU_PRODUTO"'
-    end
-  end
-  object UPS_Produto_Usado: TIBUpdateSQL
-    RefreshSQL.Strings = (
-      'Select '
-      '  PRU_CODIGO,'
-      '  PRU_CHAMADO,'
-      '  PRU_PRODUTO'
-      'from PRODUTOS_UTILIZADO '
-      'where'
-      '  PRU_CODIGO = :PRU_CODIGO')
-    ModifySQL.Strings = (
-      'update PRODUTOS_UTILIZADO'
-      'set'
-      '  PRU_CHAMADO = :PRU_CHAMADO,'
-      '  PRU_CODIGO = :PRU_CODIGO,'
-      '  PRU_PRODUTO = :PRU_PRODUTO'
-      'where'
-      '  PRU_CODIGO = :OLD_PRU_CODIGO')
-    InsertSQL.Strings = (
-      'insert into PRODUTOS_UTILIZADO'
-      '  (PRU_CHAMADO, PRU_CODIGO, PRU_PRODUTO)'
-      'values'
-      '  (:PRU_CHAMADO, :PRU_CODIGO, :PRU_PRODUTO)')
-    DeleteSQL.Strings = (
-      'delete from PRODUTOS_UTILIZADO'
-      'where'
-      '  PRU_CODIGO = :OLD_PRU_CODIGO')
-    Left = 248
-    Top = 152
-  end
-  object DS_Produto_Utilizado: TDataSource
-    DataSet = IB_Produto_Utilizado
-    Left = 448
-    Top = 152
+    Top = 176
   end
   object IB_Tipo_Erro: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = IB_Tipo_ErroAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
       'select * from TIPOS_ERROS')
     UpdateObject = UPS_Tipo_Erro
-    Left = 48
-    Top = 80
-    object IB_Tipo_ErroTER_CODIGO: TIBStringField
+    Left = 192
+    Top = 8
+    object IB_Tipo_ErroTER_CODIGO: TIntegerField
       DisplayLabel = 'Codigo'
       FieldName = 'TER_CODIGO'
       Origin = '"TIPOS_ERROS"."TER_CODIGO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
-      Size = 1
     end
     object IB_Tipo_ErroTER_DESCRICAO: TIBStringField
       DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'TER_DESCRICAO'
       Origin = '"TIPOS_ERROS"."TER_DESCRICAO"'
+      Required = True
     end
   end
   object UPS_Tipo_Erro: TIBUpdateSQL
@@ -262,12 +196,12 @@ object DM_Servico: TDM_Servico
       'delete from TIPOS_ERROS'
       'where'
       '  TER_CODIGO = :OLD_TER_CODIGO')
-    Left = 240
-    Top = 80
+    Left = 192
+    Top = 96
   end
   object DS_Tipo_Erro: TDataSource
     DataSet = IB_Tipo_Erro
-    Left = 456
-    Top = 80
+    Left = 192
+    Top = 176
   end
 end

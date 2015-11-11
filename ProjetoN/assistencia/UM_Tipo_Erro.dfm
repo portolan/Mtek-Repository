@@ -7,7 +7,7 @@ inherited M_Tipo_Erro: TM_Tipo_Erro
   inherited gbInfos: TGroupBox
     object Label1: TLabel
       Left = 16
-      Top = 24
+      Top = 32
       Width = 33
       Height = 13
       Caption = 'Codigo'
@@ -15,7 +15,7 @@ inherited M_Tipo_Erro: TM_Tipo_Erro
     end
     object Label2: TLabel
       Left = 16
-      Top = 112
+      Top = 136
       Width = 46
       Height = 13
       Caption = 'Descri'#231#227'o'
@@ -23,17 +23,18 @@ inherited M_Tipo_Erro: TM_Tipo_Erro
     end
     object DBEdit1: TDBEdit
       Left = 16
-      Top = 40
+      Top = 51
       Width = 33
       Height = 21
       DataField = 'TER_CODIGO'
       DataSource = DM_Servico.DS_Tipo_Erro
+      Enabled = False
       TabOrder = 0
     end
     object DBEdit2: TDBEdit
       Left = 16
-      Top = 128
-      Width = 129
+      Top = 152
+      Width = 264
       Height = 21
       DataField = 'TER_DESCRICAO'
       DataSource = DM_Servico.DS_Tipo_Erro

@@ -75,7 +75,6 @@ inherited M_Servico: TM_Servico
       Width = 67
       Height = 13
       Caption = 'Data de Saida'
-      FocusControl = DBEdit7
     end
     object Label8: TLabel
       Left = 432
@@ -83,7 +82,6 @@ inherited M_Servico: TM_Servico
       Width = 48
       Height = 13
       Caption = 'Prioridade'
-      FocusControl = DBEdit8
     end
     object Label9: TLabel
       Left = 432
@@ -91,7 +89,6 @@ inherited M_Servico: TM_Servico
       Width = 31
       Height = 13
       Caption = 'Status'
-      FocusControl = DBEdit9
     end
     object Label10: TLabel
       Left = 432
@@ -146,7 +143,6 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_FUNCIONARIO'
       DataSource = DM_Servico.DS_Chamado
-      ReadOnly = True
       TabOrder = 3
     end
     object DBEdit5: TDBEdit
@@ -156,7 +152,6 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_PROPRIETARIO'
       DataSource = DM_Servico.DS_Chamado
-      ReadOnly = True
       TabOrder = 4
     end
     object DBEdit6: TDBEdit
@@ -169,33 +164,6 @@ inherited M_Servico: TM_Servico
       Enabled = False
       TabOrder = 5
     end
-    object DBEdit7: TDBEdit
-      Left = 216
-      Top = 200
-      Width = 134
-      Height = 21
-      DataField = 'CHA_DATA_SAIDA'
-      DataSource = DM_Servico.DS_Chamado
-      TabOrder = 6
-    end
-    object DBEdit8: TDBEdit
-      Left = 432
-      Top = 88
-      Width = 97
-      Height = 21
-      DataField = 'CHA_PRIORIDADE'
-      DataSource = DM_Servico.DS_Chamado
-      TabOrder = 7
-    end
-    object DBEdit9: TDBEdit
-      Left = 432
-      Top = 144
-      Width = 97
-      Height = 21
-      DataField = 'CHA_STATUS'
-      DataSource = DM_Servico.DS_Chamado
-      TabOrder = 8
-    end
     object DBMemo1: TDBMemo
       Left = 24
       Top = 250
@@ -203,18 +171,51 @@ inherited M_Servico: TM_Servico
       Height = 135
       DataField = 'CHA_DESCRICAO'
       DataSource = DM_Servico.DS_Chamado
-      TabOrder = 9
+      TabOrder = 6
     end
-    object DBLookupComboBox1: TDBLookupComboBox
+    object DBEdit10: TDBEdit
       Left = 432
       Top = 200
-      Width = 137
+      Width = 97
       Height = 21
       DataField = 'CHA_TIPO_ERRO'
       DataSource = DM_Servico.DS_Chamado
-      KeyField = 'TER_CODIGO'
-      ListField = 'TER_DESCRICAO'
-      ListSource = DM_Servico.DS_Tipo_Erro
+      TabOrder = 7
+      OnClick = DBEdit10Click
+    end
+    object DBComboBox1: TDBComboBox
+      Left = 432
+      Top = 88
+      Width = 145
+      Height = 21
+      DataField = 'CHA_PRIORIDADE'
+      DataSource = DM_Servico.DS_Chamado
+      Items.Strings = (
+        'Baixa'
+        'Normal'
+        'Alta')
+      TabOrder = 8
+    end
+    object DBComboBox2: TDBComboBox
+      Left = 432
+      Top = 144
+      Width = 145
+      Height = 21
+      DataField = 'CHA_STATUS'
+      DataSource = DM_Servico.DS_Chamado
+      Items.Strings = (
+        'Analise'
+        'Manunte'#231#227'o'
+        'Concluido')
+      TabOrder = 9
+    end
+    object DBEdit7: TDBEdit
+      Left = 216
+      Top = 200
+      Width = 134
+      Height = 21
+      DataField = 'CHA_DATA_SAIDA'
+      DataSource = DM_Servico.DS_Chamado
       TabOrder = 10
     end
   end

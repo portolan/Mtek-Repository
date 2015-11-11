@@ -13,12 +13,13 @@ inherited P_Tipo_Erro: TP_Tipo_Erro
           item
             Expanded = False
             FieldName = 'TER_CODIGO'
+            Width = 40
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TER_DESCRICAO'
-            Width = 64
+            Width = 719
             Visible = True
           end>
       end
