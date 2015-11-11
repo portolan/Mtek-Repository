@@ -50,16 +50,6 @@ type
     uproducao: TIBUpdateSQL;
     dsproducao: TDataSource;
     GroupBox1: TGroupBox;
-    PageControl1: TPageControl;
-    TabSheet2: TTabSheet;
-    DBGrid1: TDBGrid;
-    TabSheet3: TTabSheet;
-    db_aguardando: TDBGrid;
-    TabSheet4: TTabSheet;
-    db_producao: TDBGrid;
-    TabSheet5: TTabSheet;
-    DBGrid7: TDBGrid;
-    TabSheet6: TTabSheet;
     qcancelada: TIBQuery;
     IntegerField6: TIntegerField;
     IntegerField7: TIntegerField;
@@ -88,8 +78,19 @@ type
     IntegerField15: TIntegerField;
     ufechada: TIBUpdateSQL;
     dsfechada: TDataSource;
-    DBGrid8: TDBGrid;
     sb_abrirOP: TSpeedButton;
+    PageControl1: TPageControl;
+    TabSheet2: TTabSheet;
+    DBGrid1: TDBGrid;
+    TabSheet3: TTabSheet;
+    db_aguardando: TDBGrid;
+    TabSheet4: TTabSheet;
+    db_producao: TDBGrid;
+    TabSheet5: TTabSheet;
+    DBGrid7: TDBGrid;
+    TabSheet6: TTabSheet;
+    DBGrid8: TDBGrid;
+    TabSheet7: TTabSheet;
     procedure bt_abriropClick(Sender: TObject);
     procedure sb_abrirOPClick(Sender: TObject);
   private

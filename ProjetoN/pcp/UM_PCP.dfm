@@ -3,28 +3,37 @@ inherited M_OP: TM_OP
   Top = 329
   Caption = 'Ordem de Producao'
   ClientHeight = 371
-  ClientWidth = 775
+  ClientWidth = 792
   Position = poDesigned
-  ExplicitWidth = 791
+  ExplicitWidth = 808
   ExplicitHeight = 410
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnRodape: TPanel
-    Top = 330
-    Width = 775
-    ExplicitTop = 330
-    ExplicitWidth = 775
+    Top = 312
+    Width = 792
+    Height = 59
+    ExplicitTop = 312
+    ExplicitWidth = 792
+    ExplicitHeight = 59
+    inherited sbGravar: TSpeedButton
+      Height = 57
+      ExplicitHeight = 57
+    end
     inherited sbCancelar: TSpeedButton
-      Left = 678
+      Left = 689
+      Width = 102
+      Height = 57
       Transparent = False
-      ExplicitLeft = 582
-      ExplicitHeight = 39
+      ExplicitLeft = 672
+      ExplicitWidth = 102
+      ExplicitHeight = 57
     end
     object sb_abrirOP: TSpeedButton
-      Left = 1
+      Left = 0
       Top = 0
       Width = 97
-      Height = 41
+      Height = 59
       Caption = 'Abrir OP'
       Glyph.Data = {
         E6000000424DE60000000000000076000000280000000E0000000E0000000100
@@ -39,10 +48,10 @@ inherited M_OP: TM_OP
     end
   end
   inherited gbInfos: TGroupBox
-    Width = 775
-    Height = 330
-    ExplicitWidth = 775
-    ExplicitHeight = 330
+    Width = 792
+    Height = 312
+    ExplicitWidth = 792
+    ExplicitHeight = 312
     object pc_ordem: TPageControl
       Left = 0
       Top = 0
@@ -257,17 +266,18 @@ inherited M_OP: TM_OP
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 775
-    Height = 330
+    Width = 792
+    Height = 312
     Align = alClient
     Caption = 'Dados'
     TabOrder = 3
     object PageControl1: TPageControl
-      Left = 0
-      Top = 0
-      Width = 866
-      Height = 450
-      ActivePage = TabSheet3
+      Left = 2
+      Top = 15
+      Width = 788
+      Height = 295
+      ActivePage = TabSheet6
+      Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -278,11 +288,16 @@ inherited M_OP: TM_OP
       ShowHint = False
       TabOrder = 0
       TabStop = False
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 866
+      ExplicitHeight = 450
       object TabSheet2: TTabSheet
         Caption = 'TabSheet1'
         DragMode = dmAutomatic
         TabVisible = False
-        ExplicitWidth = 857
+        ExplicitWidth = 858
+        ExplicitHeight = 422
         object DBGrid1: TDBGrid
           Left = 3
           Top = 3
@@ -301,12 +316,14 @@ inherited M_OP: TM_OP
         DoubleBuffered = False
         ImageIndex = 1
         ParentDoubleBuffered = False
-        ExplicitWidth = 857
+        ExplicitWidth = 858
+        ExplicitHeight = 422
         object db_aguardando: TDBGrid
           Left = 0
           Top = 0
-          Width = 767
-          Height = 322
+          Width = 780
+          Height = 267
+          Align = alClient
           DataSource = dsLiberacao
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
@@ -318,7 +335,6 @@ inherited M_OP: TM_OP
             item
               Expanded = False
               FieldName = 'OP_COD'
-              Width = 89
               Visible = True
             end
             item
@@ -347,7 +363,7 @@ inherited M_OP: TM_OP
             item
               Expanded = False
               FieldName = 'OP_TIPO'
-              Width = 77
+              Width = 75
               Visible = True
             end
             item
@@ -365,7 +381,6 @@ inherited M_OP: TM_OP
             item
               Expanded = False
               FieldName = 'OP_DT_ENTREGA'
-              Width = 85
               Visible = True
             end
             item
@@ -384,12 +399,14 @@ inherited M_OP: TM_OP
       object TabSheet4: TTabSheet
         Caption = 'Em Producao'
         ImageIndex = 2
-        ExplicitWidth = 857
+        ExplicitWidth = 858
+        ExplicitHeight = 422
         object db_producao: TDBGrid
           Left = 0
-          Top = 1
-          Width = 773
-          Height = 300
+          Top = 0
+          Width = 780
+          Height = 267
+          Align = alClient
           DataSource = dsproducao
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
@@ -465,12 +482,14 @@ inherited M_OP: TM_OP
       object TabSheet5: TTabSheet
         Caption = 'Cancelada'
         ImageIndex = 3
-        ExplicitWidth = 857
+        ExplicitWidth = 858
+        ExplicitHeight = 422
         object DBGrid7: TDBGrid
           Left = 0
-          Top = 3
-          Width = 767
-          Height = 297
+          Top = 0
+          Width = 780
+          Height = 267
+          Align = alClient
           DataSource = dscancelada
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
@@ -481,12 +500,12 @@ inherited M_OP: TM_OP
           Columns = <
             item
               Expanded = False
-              FieldName = 'OP_VENDAS'
+              FieldName = 'OP_COD'
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'OP_COD'
+              FieldName = 'OP_VENDAS'
               Visible = True
             end
             item
@@ -543,12 +562,14 @@ inherited M_OP: TM_OP
       object TabSheet6: TTabSheet
         Caption = 'Fechada'
         ImageIndex = 4
-        ExplicitWidth = 857
+        ExplicitWidth = 858
+        ExplicitHeight = 422
         object DBGrid8: TDBGrid
-          Left = -3
+          Left = 0
           Top = 0
-          Width = 770
-          Height = 301
+          Width = 780
+          Height = 267
+          Align = alClient
           DataSource = dsfechada
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
@@ -559,13 +580,13 @@ inherited M_OP: TM_OP
           Columns = <
             item
               Expanded = False
-              FieldName = 'OP_VENDAS'
-              Width = 87
+              FieldName = 'OP_COD'
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'OP_COD'
+              FieldName = 'OP_VENDAS'
+              Width = 87
               Visible = True
             end
             item
@@ -619,6 +640,12 @@ inherited M_OP: TM_OP
             end>
         end
       end
+      object TabSheet7: TTabSheet
+        Caption = 'TabSheet7'
+        ImageIndex = 5
+        ExplicitWidth = 858
+        ExplicitHeight = 422
+      end
     end
   end
   object qLiberacao: TIBQuery
@@ -630,10 +657,10 @@ inherited M_OP: TM_OP
     ParamCheck = True
     SQL.Strings = (
       'select * from ordem_producao where op_status = '#39'A'#39)
-    Left = 576
-    Top = 280
+    Left = 600
+    Top = 208
     object qLiberacaoOP_COD: TIntegerField
-      DisplayLabel = 'C'#243'digo da ordem'
+      DisplayLabel = 'C'#243'digo da Ordem'
       FieldName = 'OP_COD'
       Origin = '"ORDEM_PRODUCAO"."OP_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -698,12 +725,12 @@ inherited M_OP: TM_OP
   end
   object dsLiberacao: TDataSource
     DataSet = qLiberacao
-    Left = 704
-    Top = 280
+    Left = 728
+    Top = 208
   end
   object uLiberacao: TIBUpdateSQL
-    Left = 632
-    Top = 280
+    Left = 664
+    Top = 208
   end
   object qproducao: TIBQuery
     Database = dmBanco.Banco
@@ -714,8 +741,8 @@ inherited M_OP: TM_OP
     SQL.Strings = (
       'select * from ordem_producao where op_status = '#39'E'#39)
     UpdateObject = uproducao
-    Left = 576
-    Top = 232
+    Left = 600
+    Top = 160
     object IntegerField1: TIntegerField
       DisplayLabel = 'C'#243'digo da Venda'
       FieldName = 'OP_VENDAS'
@@ -773,7 +800,7 @@ inherited M_OP: TM_OP
       Required = True
     end
     object IntegerField5: TIntegerField
-      DisplayLabel = 'C'#243'digo da ordem'
+      DisplayLabel = 'C'#243'digo da Ordem'
       FieldName = 'OP_COD'
       Origin = '"ORDEM_PRODUCAO"."OP_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -822,13 +849,13 @@ inherited M_OP: TM_OP
       'where'
       '  OP_COD = :OLD_OP_COD and'
       '  OP_EMPRESA = :OLD_OP_EMPRESA')
-    Left = 632
-    Top = 232
+    Left = 664
+    Top = 160
   end
   object dsproducao: TDataSource
     DataSet = qproducao
-    Left = 688
-    Top = 232
+    Left = 728
+    Top = 160
   end
   object qcancelada: TIBQuery
     Database = dmBanco.Banco
@@ -839,8 +866,8 @@ inherited M_OP: TM_OP
     SQL.Strings = (
       'select * from ordem_producao where op_status = '#39'C'#39)
     UpdateObject = uLiberacao
-    Left = 576
-    Top = 184
+    Left = 600
+    Top = 112
     object IntegerField10: TIntegerField
       DisplayLabel = 'C'#243'digo da Ordem'
       FieldName = 'OP_COD'
@@ -947,13 +974,13 @@ inherited M_OP: TM_OP
       'where'
       '  OP_COD = :OLD_OP_COD and'
       '  OP_EMPRESA = :OLD_OP_EMPRESA')
-    Left = 640
-    Top = 184
+    Left = 664
+    Top = 112
   end
   object dscancelada: TDataSource
     DataSet = qcancelada
-    Left = 704
-    Top = 184
+    Left = 728
+    Top = 112
   end
   object qfechada: TIBQuery
     Database = dmBanco.Banco
@@ -964,8 +991,15 @@ inherited M_OP: TM_OP
     SQL.Strings = (
       'select * from ordem_producao where op_status = '#39'F'#39)
     UpdateObject = ufechada
-    Left = 576
-    Top = 136
+    Left = 600
+    Top = 64
+    object IntegerField15: TIntegerField
+      DisplayLabel = 'C'#243'digo da Ordem'
+      FieldName = 'OP_COD'
+      Origin = '"ORDEM_PRODUCAO"."OP_COD"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
     object IntegerField11: TIntegerField
       DisplayLabel = 'C'#243'digo da Venda'
       FieldName = 'OP_VENDAS'
@@ -1022,13 +1056,6 @@ inherited M_OP: TM_OP
       Origin = '"ORDEM_PRODUCAO"."OP_COMPRAS"'
       Required = True
     end
-    object IntegerField15: TIntegerField
-      DisplayLabel = 'C'#243'digo da Ordem'
-      FieldName = 'OP_COD'
-      Origin = '"ORDEM_PRODUCAO"."OP_COD"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
   end
   object ufechada: TIBUpdateSQL
     RefreshSQL.Strings = (
@@ -1072,12 +1099,12 @@ inherited M_OP: TM_OP
       'where'
       '  OP_COD = :OLD_OP_COD and'
       '  OP_EMPRESA = :OLD_OP_EMPRESA')
-    Left = 640
-    Top = 136
+    Left = 664
+    Top = 64
   end
   object dsfechada: TDataSource
     DataSet = qfechada
-    Left = 704
-    Top = 136
+    Left = 728
+    Top = 64
   end
 end
