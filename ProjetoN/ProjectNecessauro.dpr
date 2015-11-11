@@ -9,11 +9,10 @@ program ProjectNecessauro;
 uses
   Vcl.Forms,
   ERP in 'ERP.pas' {TelaInicial},
-  UTelaPadrao in 'comum\UTelaPadrao.pas' {xPesqPadrao},
   UDM_Estoque in 'datamodulo\UDM_Estoque.pas' {DM_Estoque: TDataModule},
   dm000 in 'datamodulo\dm000.pas' {dmBanco: TDataModule},
   dm001 in 'datamodulo\dm001.pas' {dmPedido: TDataModule},
-  UManuPadrao in 'comum\UManuPadrao.pas' {xManuPadrao},
+  novacontabancaria in 'financeiro\novacontabancaria.pas' {novaconta},
   UDM_contabil in 'datamodulo\UDM_contabil.pas' {DM_contabil: TDataModule},
   login in 'login final\login.pas' {tela_login},
   UM_empresa in 'contabil\UM_empresa.pas' {M_empresa},
@@ -80,7 +79,10 @@ uses
   UP_fecharcx in 'Caixa\UP_fecharcx.pas' {UP_fecharcaixa},
   UR_balancocx in 'Caixa\UR_balancocx.pas' {REL_balancocx},
   UR_prevtitulos in 'Caixa\UR_prevtitulos.pas' {REL_prevtitulos},
-  UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda};
+  UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda},
+  UManuPadrao in 'comum\UManuPadrao.pas' {xManuPadrao},
+  contabancaria in 'financeiro\contabancaria.pas' {contasbancarias},
+  UTelaPadrao in 'comum\UTelaPadrao.pas' {xPesqPadrao};
 
 {$R *.res}
 
@@ -99,5 +101,8 @@ begin
   Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(TDM_Servico, DM_Servico);
+  Application.CreateForm(TxManuPadrao, xManuPadrao);
+  Application.CreateForm(Tcontasbancarias, contasbancarias);
+  Application.CreateForm(TxPesqPadrao, xPesqPadrao);
   Application.Run;
 end.

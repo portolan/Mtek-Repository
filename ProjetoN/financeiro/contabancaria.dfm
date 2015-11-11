@@ -1,7 +1,7 @@
-object xPesqPadrao: TxPesqPadrao
+object contasbancarias: Tcontasbancarias
   Left = 0
   Top = 0
-  Caption = 'xPesqPadrao'
+  Caption = 'Contas Bancarias'
   ClientHeight = 402
   ClientWidth = 864
   Color = clBtnFace

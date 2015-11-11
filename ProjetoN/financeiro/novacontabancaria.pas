@@ -8,7 +8,7 @@ uses
   IBX.IBCustomDataSet, IBX.IBQuery;
 
 type
-  TxManuPadrao = class(TForm)
+  Tnovaconta = class(TForm)
     pnRodape: TPanel;
     gbInfos: TGroupBox;
     sbGravar: TSpeedButton;
@@ -29,14 +29,14 @@ type
   end;
 
 var
-  xManuPadrao: TxManuPadrao;
+  novaconta: Tnovaconta;
 
 implementation
 
 {$R *.dfm}
 
 
-procedure TxManuPadrao.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure Tnovaconta.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
    if b_finalizaTransacao then
    begin
@@ -46,12 +46,12 @@ begin
    sbCancelar.Click;//Willian Colocou p nao dar pau ao clicar botao fechar
 end;
 
-procedure TxManuPadrao.FormCreate(Sender: TObject);
+procedure Tnovaconta.FormCreate(Sender: TObject);
 begin
    b_gravou := False;
 end;
 
-procedure TxManuPadrao.FormKeyDown(Sender: TObject; var Key: Word;
+procedure Tnovaconta.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
    case key of
@@ -61,7 +61,7 @@ begin
    end;
 end;
 
-procedure TxManuPadrao.procBotaoVisivelHabilitado(botao: TObject);
+procedure Tnovaconta.procBotaoVisivelHabilitado(botao: TObject);
 begin
    if not (botao is TSpeedButton) then
       Exit;
@@ -70,7 +70,7 @@ begin
       Abort;
 end;
 
-procedure TxManuPadrao.sbCancelarClick(Sender: TObject);
+procedure Tnovaconta.sbCancelarClick(Sender: TObject);
 begin
    procBotaoVisivelHabilitado(Sender);
 
@@ -80,7 +80,7 @@ begin
    Close;
 end;
 
-procedure TxManuPadrao.sbGravarClick(Sender: TObject);
+procedure Tnovaconta.sbGravarClick(Sender: TObject);
 begin
    procBotaoVisivelHabilitado(Sender);
 

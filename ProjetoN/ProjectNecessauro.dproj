@@ -90,9 +90,6 @@
         <DCCReference Include="ERP.pas">
             <Form>TelaInicial</Form>
         </DCCReference>
-        <DCCReference Include="comum\UTelaPadrao.pas">
-            <Form>xPesqPadrao</Form>
-        </DCCReference>
         <DCCReference Include="datamodulo\UDM_Estoque.pas">
             <Form>DM_Estoque</Form>
             <DesignClass>TDataModule</DesignClass>
@@ -107,8 +104,8 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="comum\UManuPadrao.pas">
-            <Form>xManuPadrao</Form>
+        <DCCReference Include="financeiro\novacontabancaria.pas">
+            <Form>novaconta</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="datamodulo\UDM_contabil.pas">
@@ -371,6 +368,18 @@
         </DCCReference>
         <DCCReference Include="Caixa\UR_prevcompravenda.pas">
             <Form>REL_prevcompravenda</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="comum\UManuPadrao.pas">
+            <Form>xManuPadrao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="financeiro\contabancaria.pas">
+            <Form>contasbancarias</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="comum\UTelaPadrao.pas">
+            <Form>xPesqPadrao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

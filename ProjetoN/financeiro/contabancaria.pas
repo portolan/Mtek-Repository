@@ -1,4 +1,4 @@
-unit UTelaPadrao;
+unit contabancaria;
 
 interface
 
@@ -8,7 +8,7 @@ uses
   Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery, UManuPadrao;
 
 type
-  TxPesqPadrao = class(TForm)
+  Tcontasbancarias = class(TForm)
     pnCorpo: TPanel;
     pnRodape: TPanel;
     gbDados: TGroupBox;
@@ -68,13 +68,13 @@ type
   end;
 
 var
-  xPesqPadrao: TxPesqPadrao;
+  contasbancarias: Tcontasbancarias;
 
 implementation
 
 {$R *.dfm}
 
-procedure TxPesqPadrao.DBGDadosDblClick(Sender: TObject);
+procedure Tcontasbancarias.DBGDadosDblClick(Sender: TObject);
 begin
     if b_somenteConsulta then
         sbSair.Click
@@ -82,18 +82,18 @@ begin
         sbAlterar.Click;
 end;
 
-procedure TxPesqPadrao.editPesquisaChange(Sender: TObject);
+procedure Tcontasbancarias.editPesquisaChange(Sender: TObject);
 begin
     procSelect;
 end;
 
-procedure TxPesqPadrao.FormActivate(Sender: TObject);
+procedure Tcontasbancarias.FormActivate(Sender: TObject);
 begin
     editPesquisa.SetFocus;
     cBoxFiltro.ItemIndex := 1;
 end;
 
-procedure TxPesqPadrao.FormKeyDown(Sender: TObject; var Key: Word;
+procedure Tcontasbancarias.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
    case key of
@@ -108,7 +108,7 @@ begin
 
 end;
 
-procedure TxPesqPadrao.FormShow(Sender: TObject);
+procedure Tcontasbancarias.FormShow(Sender: TObject);
 begin
    procSelect;
 
@@ -120,7 +120,7 @@ begin
    end;
 end;
 
-function TxPesqPadrao.funcAtribuiFiltros: TFieldList;
+function Tcontasbancarias.funcAtribuiFiltros: TFieldList;
 var
     I: integer;
 begin
@@ -130,7 +130,7 @@ begin
         cBoxFiltro.Items.Add(Filtros[I].DisplayLabel);
 end;
 
-function TxPesqPadrao.funcFiltroAtual: TField;
+function Tcontasbancarias.funcFiltroAtual: TField;
 var
     I: integer;
 begin
@@ -141,7 +141,7 @@ begin
             Result := Filtros[I];
 end;
 
-function TxPesqPadrao.funcFiltroIsString: boolean;
+function Tcontasbancarias.funcFiltroIsString: boolean;
 var
     I: integer;
 begin
@@ -155,7 +155,7 @@ begin
     end;
 end;
 
-procedure TxPesqPadrao.procMontaWhere;
+procedure Tcontasbancarias.procMontaWhere;
 var
     filtro: String;
 begin
@@ -179,27 +179,27 @@ begin
       c_where := funcFiltroAtual.FieldName + ' <> ' + editPesquisa.Text;
 end;
 
-procedure TxPesqPadrao.PesquisarClick(Sender: TObject);
+procedure Tcontasbancarias.PesquisarClick(Sender: TObject);
 begin
    procSelect;
 end;
 
-procedure TxPesqPadrao.procAntesAlterar;
+procedure Tcontasbancarias.procAntesAlterar;
 begin
 
 end;
 
-procedure TxPesqPadrao.procAntesIncluir;
+procedure Tcontasbancarias.procAntesIncluir;
 begin
 
 end;
 
-procedure TxPesqPadrao.procAntesRemover;
+procedure Tcontasbancarias.procAntesRemover;
 begin
 
 end;
 
-procedure TxPesqPadrao.procBotaoVisivelHabilitado(botao: TObject);
+procedure Tcontasbancarias.procBotaoVisivelHabilitado(botao: TObject);
 begin
    if not (botao is TSpeedButton) then
       Exit;
@@ -208,7 +208,7 @@ begin
       Abort;
 end;
 
-procedure TxPesqPadrao.procChamaTela;
+procedure Tcontasbancarias.procChamaTela;
 begin
    TelaManutencao := CTelaManutencao.Create(Self);
    try
@@ -224,22 +224,22 @@ begin
    end;
 end;
 
-procedure TxPesqPadrao.procDepoisAlterar;
+procedure Tcontasbancarias.procDepoisAlterar;
 begin
 
 end;
 
-procedure TxPesqPadrao.procDepoisIncluir;
+procedure Tcontasbancarias.procDepoisIncluir;
 begin
 
 end;
 
-procedure TxPesqPadrao.procDepoisRemover;
+procedure Tcontasbancarias.procDepoisRemover;
 begin
 
 end;
 
-procedure TxPesqPadrao.procInicializar(Query: TIBQuery; b_finalizaTransacao, b_somenteConsulta: Boolean;
+procedure Tcontasbancarias.procInicializar(Query: TIBQuery; b_finalizaTransacao, b_somenteConsulta: Boolean;
  TelaManutencao: TForm; CTelaManutencao: TFormClass);
 begin
    Self.b_finalizaTransacao := b_finalizaTransacao;
@@ -249,12 +249,12 @@ begin
    Self.CTelaManutencao     := CTelaManutencao;
 end;
 
-procedure TxPesqPadrao.procSelect;
+procedure Tcontasbancarias.procSelect;
 begin
 
 end;
 
-procedure TxPesqPadrao.sbAlterarClick(Sender: TObject);
+procedure Tcontasbancarias.sbAlterarClick(Sender: TObject);
 begin
    procBotaoVisivelHabilitado(Sender);
 
@@ -269,7 +269,7 @@ begin
    end;
 end;
 
-procedure TxPesqPadrao.sbNovoClick(Sender: TObject);
+procedure Tcontasbancarias.sbNovoClick(Sender: TObject);
 begin
    procBotaoVisivelHabilitado(Sender);
 
@@ -284,7 +284,7 @@ begin
    end;
 end;
 
-procedure TxPesqPadrao.sbRemoverClick(Sender: TObject);
+procedure Tcontasbancarias.sbRemoverClick(Sender: TObject);
 begin
    procBotaoVisivelHabilitado(Sender);
 
@@ -320,7 +320,7 @@ begin
    end;
 end;
 
-procedure TxPesqPadrao.sbSairClick(Sender: TObject);
+procedure Tcontasbancarias.sbSairClick(Sender: TObject);
 begin
    procBotaoVisivelHabilitado(Sender);
    Close;

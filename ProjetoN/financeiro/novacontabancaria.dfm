@@ -1,7 +1,7 @@
-object xManuPadrao: TxManuPadrao
+object novaconta: Tnovaconta
   Left = 0
   Top = 0
-  Caption = 'Contas Bancarias'
+  Caption = 'Adicionar conta bancaria'
   ClientHeight = 281
   ClientWidth = 581
   Color = clBtnFace
@@ -115,6 +115,5 @@ object xManuPadrao: TxManuPadrao
     Align = alClient
     Caption = 'Dados'
     TabOrder = 1
-    ExplicitTop = -5
   end
 end
