@@ -87,6 +87,7 @@ type
     procedure ipodeErro1Click(Sender: TObject);
     procedure Sobre1Click(Sender: TObject);
     procedure ContasBancarias1Click(Sender: TObject);
+    procedure Relatrios2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -108,7 +109,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UR_EstoqueRelatorios, UP_Caixa, UF_EstoqueRelatorios, UM_FichaTecnica, UM_PCP,
   UP_FichaTecnica, UP_Tipo_Erro, UI_sobre, UP_abrircx, UP_fecharcx,
   UR_balancocx, UR_fechamentocx, UR_prevtitulos, UR_prevcompravenda,
-  UP_contabancaria, UDM_Estoque;
+  UP_contabancaria, UDM_Estoque, R_contabil;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -317,6 +318,11 @@ begin
     end;
 end;
 
+
+procedure TTelaInicial.Relatrios2Click(Sender: TObject);
+begin
+  TREL_contabil.chamaTela(Self);
+end;
 
 procedure TTelaInicial.Sair1Click(Sender: TObject);
 begin

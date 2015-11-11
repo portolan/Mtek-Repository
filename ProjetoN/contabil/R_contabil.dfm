@@ -1,9 +1,9 @@
-object Form1: TForm1
+object REL_contabil: TREL_contabil
   Left = 0
   Top = 0
-  Caption = 'Form1'
-  ClientHeight = 201
-  ClientWidth = 447
+  Caption = 'Relat'#243'rios - Modulo Cont'#225'bil'
+  ClientHeight = 246
+  ClientWidth = 529
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -13,6 +13,47 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object Button1: TButton
+    AlignWithMargins = True
+    Left = 16
+    Top = 48
+    Width = 137
+    Height = 57
+    BiDiMode = bdLeftToRight
+    Caption = 'Relat'#243'rio de Lan'#231'amentos por Empresa'
+    DoubleBuffered = False
+    ParentBiDiMode = False
+    ParentDoubleBuffered = False
+    TabOrder = 0
+    WordWrap = True
+  end
+  object Button2: TButton
+    Left = 184
+    Top = 48
+    Width = 137
+    Height = 57
+    Caption = 'Relat'#243'rio de Lan'#231'amentos Centro de Custo'
+    TabOrder = 1
+    WordWrap = True
+  end
+  object Button3: TButton
+    Left = 352
+    Top = 48
+    Width = 137
+    Height = 57
+    Caption = 'Relat'#243'rio de D'#233'bitos'
+    TabOrder = 2
+    WordWrap = True
+  end
+  object Button4: TButton
+    Left = 16
+    Top = 144
+    Width = 137
+    Height = 57
+    Caption = 'Relat'#243'rio de Cr'#233'dito'
+    TabOrder = 3
+    WordWrap = True
+  end
   object frxReport1: TfrxReport
     Version = '5.3.16'
     DotMatrixReport = False
@@ -28,8 +69,6 @@ object Form1: TForm1
       'begin'
       ''
       'end.')
-    Left = 64
-    Top = 96
     Datasets = <
       item
         DataSet = frxDBDataset1
@@ -195,8 +234,7 @@ object Form1: TForm1
     CloseDataSource = False
     DataSet = IBQuery1
     BCDToCurrency = False
-    Left = 160
-    Top = 96
+    Left = 32
   end
   object IBQuery1: TIBQuery
     Database = dmBanco.Banco
@@ -206,7 +244,6 @@ object Form1: TForm1
     ParamCheck = True
     SQL.Strings = (
       'select * from empresa')
-    Left = 232
-    Top = 96
+    Left = 64
   end
 end

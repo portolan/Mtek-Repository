@@ -4628,6 +4628,7 @@ object TelaInicial: TTelaInicial
       end
       object Relatrios2: TMenuItem
         Caption = 'Relat'#243'rios'
+        OnClick = Relatrios2Click
       end
     end
     object Manuteno1: TMenuItem

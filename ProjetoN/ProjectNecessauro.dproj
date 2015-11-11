@@ -196,7 +196,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="contabil\R_contabil.pas">
-            <Form>Form1</Form>
+            <Form>REL_contabil</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Estoque\UEstoque.pas"/>

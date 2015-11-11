@@ -35,7 +35,7 @@ uses
   UP_departamento in 'contabil\UP_departamento.pas' {P_departamento},
   UP_empresa in 'contabil\UP_empresa.pas' {P_empresa},
   UP_historico in 'contabil\UP_historico.pas' {P_historico},
-  R_contabil in 'contabil\R_contabil.pas' {Form1},
+  R_contabil in 'contabil\R_contabil.pas' {REL_contabil},
   UEstoque in 'Estoque\UEstoque.pas',
   UM_Bloco in 'Estoque\UM_Bloco.pas' {MBloco},
   UM_Categoria in 'Estoque\UM_Categoria.pas' {MCategoria},
