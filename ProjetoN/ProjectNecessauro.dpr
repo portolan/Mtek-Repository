@@ -101,8 +101,5 @@ begin
   Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(TDM_Servico, DM_Servico);
-  Application.CreateForm(TxManuPadrao, xManuPadrao);
-  Application.CreateForm(Tcontasbancarias, contasbancarias);
-  Application.CreateForm(TxPesqPadrao, xPesqPadrao);
   Application.Run;
 end.
