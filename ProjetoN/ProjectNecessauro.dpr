@@ -99,8 +99,5 @@ begin
   Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(TDM_Servico, DM_Servico);
-  Application.CreateForm(TREL_balancocx, REL_balancocx);
-  Application.CreateForm(TREL_prevtitulos, REL_prevtitulos);
-  Application.CreateForm(TREL_prevcompravenda, REL_prevcompravenda);
   Application.Run;
 end.
