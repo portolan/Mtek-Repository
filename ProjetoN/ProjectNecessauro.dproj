@@ -285,7 +285,7 @@
             <Form>P_caixa</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="datamodulo\UDM_Caixa.pas">
+        <DCCReference Include="datamodulo\UDM_caixa.pas">
             <Form>DM_caixa</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
