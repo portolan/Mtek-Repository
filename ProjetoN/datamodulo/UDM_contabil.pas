@@ -29,8 +29,6 @@ type
     lancamentoLANC_NR_LOTE: TIntegerField;
     lancamentoLANC_NR_LANCAMENTO: TIntegerField;
     lancamentoLANC_DT_LANCAMENTO: TDateField;
-    lancamentoLANC_DEBITO: TIntegerField;
-    lancamentoLANC_CREDITO: TIntegerField;
     lancamentoLANC_VAR_HISTORICO: TIBStringField;
     lancamentoLANC_VALOR: TIntegerField;
     departamentoDEP_COD: TIntegerField;
@@ -38,7 +36,6 @@ type
     departamentoDEP_NOME: TIBStringField;
     departamentoDEP_DESC: TIBStringField;
     planodecontasPLN_COD_CONTA: TIntegerField;
-    planodecontasPLN_CONTA: TIntegerField;
     planodecontasPLN_DESC_CONTA: TIBStringField;
     planodecontasPLN_ANALITICA: TIBStringField;
     historicoHIST_COD: TIntegerField;
@@ -64,6 +61,9 @@ type
     lancamentoLANC_CENTRODECUSTO_CR: TIBStringField;
     lancamentoLANC_CENTRODECUSTO_DB: TIBStringField;
     lancamentoLANC_HISTORICO: TIBStringField;
+    lancamentoLANC_DEBITO: TIBStringField;
+    lancamentoLANC_CREDITO: TIBStringField;
+    planodecontasPLN_CONTA: TIBStringField;
     procedure planodecontasAfterInsert(DataSet: TDataSet);
     procedure centroAfterInsert(DataSet: TDataSet);
     procedure empresaBeforePost(DataSet: TDataSet);

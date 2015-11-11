@@ -3,6 +3,7 @@ inherited M_departamento: TM_departamento
   Caption = 'Manuten'#231#227'o Departamentos - ProjetoDesnecessauro'
   ClientHeight = 263
   ClientWidth = 396
+  OnShow = FormShow
   ExplicitWidth = 412
   ExplicitHeight = 302
   PixelsPerInch = 96
@@ -20,8 +21,6 @@ inherited M_departamento: TM_departamento
   inherited gbInfos: TGroupBox
     Width = 396
     Height = 222
-    ExplicitLeft = 1
-    ExplicitTop = -5
     ExplicitWidth = 396
     ExplicitHeight = 222
     object Label1: TLabel

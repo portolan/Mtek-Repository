@@ -1,7 +1,6 @@
 inherited P_lancamento: TP_lancamento
   Caption = 'Pesquisar Lan'#231'amentos - ProjetoDesnecessauro'
   OnCreate = FormCreate
-  ExplicitLeft = -107
   ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96
@@ -63,13 +62,11 @@ inherited P_lancamento: TP_lancamento
           item
             Expanded = False
             FieldName = 'LANC_EMP'
-            Width = 50
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'LANC_NR_LOTE'
-            Width = 54
             Visible = True
           end
           item
@@ -85,13 +82,11 @@ inherited P_lancamento: TP_lancamento
           item
             Expanded = False
             FieldName = 'LANC_DEBITO'
-            Width = 72
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'LANC_CENTRODECUSTO_DB'
-            Width = 65
             Visible = True
           end
           item
@@ -107,19 +102,16 @@ inherited P_lancamento: TP_lancamento
           item
             Expanded = False
             FieldName = 'LANC_HISTORICO'
-            Width = 118
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'LANC_VAR_HISTORICO'
-            Width = 219
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'LANC_VALOR'
-            Width = 85
             Visible = True
           end>
       end

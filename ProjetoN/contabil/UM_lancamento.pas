@@ -16,17 +16,14 @@ type
     Label3: TLabel;
     DBEdit3: TDBEdit;
     Label4: TLabel;
-    DBEdit4: TDBEdit;
     Label5: TLabel;
     Label6: TLabel;
-    DBEdit6: TDBEdit;
     Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
     DBEdit9: TDBEdit;
     Label10: TLabel;
     DBEdit10: TDBEdit;
-    Label11: TLabel;
     DBLookupComboBox4: TDBLookupComboBox;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
@@ -36,11 +33,15 @@ type
     DBEdit5: TDBEdit;
     DBEdit7: TDBEdit;
     DBEdit8: TDBEdit;
+    GroupBox2: TGroupBox;
+    DBEdit4: TDBEdit;
+    DBEdit6: TDBEdit;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,6 +57,14 @@ implementation
 
 uses UDM_contabil, UP_planodecontas, UP_centro, UP_historico;
 
+procedure TM_lancamento.FormShow(Sender: TObject);
+begin
+  inherited;
+  DM_contabil.empresa.Close;
+  DM_contabil.empresa.SQL.Text := 'select * from empresa' ;
+  DM_contabil.empresa.Open
+end;
+
 procedure TM_lancamento.SpeedButton1Click(Sender: TObject);
 begin
   inherited;
@@ -64,7 +73,7 @@ begin
       P_planodecontas.procInicializar(DM_contabil.planodecontas, false, true, P_planodecontas, TP_planodecontas);
       P_planodecontas.ShowModal;
 
-      DM_contabil.lancamentoLANC_DEBITO.Value := DM_contabil.planodecontasPLN_CONTA.AsInteger;
+      DM_contabil.lancamentoLANC_DEBITO.Value := DM_contabil.planodecontasPLN_CONTA.AsString;
     finally
       P_planodecontas.Free;
     end;
@@ -78,7 +87,7 @@ P_planodecontas := TP_planodecontas.Create(Self);
       P_planodecontas.procInicializar(DM_contabil.planodecontas, false, true, P_planodecontas, TP_planodecontas);
       P_planodecontas.ShowModal;
 
-      DM_contabil.lancamentoLANC_CREDITO.Value := DM_contabil.planodecontasPLN_CONTA.AsInteger;
+      DM_contabil.lancamentoLANC_CREDITO.Value := DM_contabil.planodecontasPLN_CONTA.AsString;
     finally
       P_planodecontas.Free;
     end;

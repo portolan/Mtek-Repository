@@ -3,6 +3,7 @@ inherited M_lancamento: TM_lancamento
   Caption = 'Inserindo Dados - Lan'#231'amentos - ProjetoDesnecessauro'
   ClientHeight = 505
   ClientWidth = 442
+  OnShow = FormShow
   ExplicitWidth = 458
   ExplicitHeight = 544
   PixelsPerInch = 96
@@ -11,7 +12,7 @@ inherited M_lancamento: TM_lancamento
     Top = 464
     Width = 442
     ExplicitTop = 464
-    ExplicitWidth = 508
+    ExplicitWidth = 442
     inherited sbCancelar: TSpeedButton
       Left = 345
       ExplicitLeft = 411
@@ -20,6 +21,7 @@ inherited M_lancamento: TM_lancamento
   inherited gbInfos: TGroupBox
     Width = 442
     Height = 464
+    ExplicitLeft = 1
     ExplicitTop = -5
     ExplicitWidth = 442
     ExplicitHeight = 464
@@ -53,7 +55,6 @@ inherited M_lancamento: TM_lancamento
       Width = 31
       Height = 13
       Caption = 'D'#233'bito'
-      FocusControl = DBEdit4
     end
     object Label5: TLabel
       Left = 248
@@ -64,15 +65,14 @@ inherited M_lancamento: TM_lancamento
     end
     object Label6: TLabel
       Left = 14
-      Top = 218
+      Top = 212
       Width = 35
       Height = 13
       Caption = 'Cr'#233'dito'
-      FocusControl = DBEdit6
     end
     object Label7: TLabel
       Left = 248
-      Top = 218
+      Top = 212
       Width = 56
       Height = 13
       Caption = 'C.C Cr'#233'dito'
@@ -85,7 +85,7 @@ inherited M_lancamento: TM_lancamento
       Caption = 'Hist'#243'rico'
     end
     object Label9: TLabel
-      Left = 13
+      Left = 14
       Top = 310
       Width = 82
       Height = 13
@@ -102,7 +102,7 @@ inherited M_lancamento: TM_lancamento
     end
     object SpeedButton1: TSpeedButton
       Left = 153
-      Top = 185
+      Top = 183
       Width = 32
       Height = 23
       Glyph.Data = {
@@ -135,7 +135,7 @@ inherited M_lancamento: TM_lancamento
     end
     object SpeedButton2: TSpeedButton
       Left = 153
-      Top = 237
+      Top = 229
       Width = 32
       Height = 23
       Glyph.Data = {
@@ -201,7 +201,7 @@ inherited M_lancamento: TM_lancamento
     end
     object SpeedButton4: TSpeedButton
       Left = 388
-      Top = 185
+      Top = 183
       Width = 32
       Height = 23
       Glyph.Data = {
@@ -234,7 +234,7 @@ inherited M_lancamento: TM_lancamento
     end
     object SpeedButton5: TSpeedButton
       Left = 388
-      Top = 235
+      Top = 229
       Width = 32
       Height = 23
       Glyph.Data = {
@@ -265,12 +265,13 @@ inherited M_lancamento: TM_lancamento
         EFEFEFEFEFEFEF000000}
       OnClick = SpeedButton5Click
     end
-    object Label11: TLabel
-      Left = 14
-      Top = 24
-      Width = 41
-      Height = 13
+    object GroupBox2: TGroupBox
+      Left = 3
+      Top = 16
+      Width = 436
+      Height = 65
       Caption = 'Empresa'
+      TabOrder = 11
     end
     object DBEdit1: TDBEdit
       Left = 13
@@ -299,33 +300,15 @@ inherited M_lancamento: TM_lancamento
       DataSource = DM_contabil.Dlancamento
       TabOrder = 3
     end
-    object DBEdit4: TDBEdit
-      Left = 13
-      Top = 185
-      Width = 134
-      Height = 21
-      DataField = 'LANC_DEBITO'
-      DataSource = DM_contabil.Dlancamento
-      TabOrder = 4
-    end
-    object DBEdit6: TDBEdit
-      Left = 13
-      Top = 237
-      Width = 134
-      Height = 21
-      DataField = 'LANC_CREDITO'
-      DataSource = DM_contabil.Dlancamento
-      TabOrder = 5
-    end
     object DBEdit9: TDBEdit
-      Left = 13
+      Left = 14
       Top = 329
-      Width = 345
+      Width = 406
       Height = 64
       AutoSize = False
       DataField = 'LANC_VAR_HISTORICO'
       DataSource = DM_contabil.Dlancamento
-      TabOrder = 6
+      TabOrder = 9
     end
     object DBEdit10: TDBEdit
       Left = 13
@@ -334,7 +317,7 @@ inherited M_lancamento: TM_lancamento
       Height = 21
       DataField = 'LANC_VALOR'
       DataSource = DM_contabil.Dlancamento
-      TabOrder = 7
+      TabOrder = 10
     end
     object DBLookupComboBox4: TDBLookupComboBox
       Left = 14
@@ -351,20 +334,20 @@ inherited M_lancamento: TM_lancamento
     object DBEdit5: TDBEdit
       Left = 248
       Top = 185
-      Width = 121
+      Width = 134
       Height = 21
       DataField = 'LANC_CENTRODECUSTO_DB'
       DataSource = DM_contabil.Dlancamento
-      TabOrder = 8
+      TabOrder = 5
     end
     object DBEdit7: TDBEdit
       Left = 248
-      Top = 237
-      Width = 121
+      Top = 231
+      Width = 134
       Height = 21
       DataField = 'LANC_CENTRODECUSTO_CR'
       DataSource = DM_contabil.Dlancamento
-      TabOrder = 9
+      TabOrder = 7
     end
     object DBEdit8: TDBEdit
       Left = 14
@@ -373,7 +356,25 @@ inherited M_lancamento: TM_lancamento
       Height = 21
       DataField = 'LANC_HISTORICO'
       DataSource = DM_contabil.Dlancamento
-      TabOrder = 10
+      TabOrder = 8
+    end
+    object DBEdit4: TDBEdit
+      Left = 13
+      Top = 185
+      Width = 134
+      Height = 21
+      DataField = 'LANC_DEBITO'
+      DataSource = DM_contabil.Dlancamento
+      TabOrder = 4
+    end
+    object DBEdit6: TDBEdit
+      Left = 13
+      Top = 231
+      Width = 134
+      Height = 21
+      DataField = 'LANC_CREDITO'
+      DataSource = DM_contabil.Dlancamento
+      TabOrder = 6
     end
   end
 end

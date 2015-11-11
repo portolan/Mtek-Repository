@@ -17,6 +17,7 @@ type
     Label4: TLabel;
     DBEdit4: TDBEdit;
     DBLookupComboBox4: TDBLookupComboBox;
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,5 +32,13 @@ implementation
 {$R *.dfm}
 
 uses UDM_contabil;
+
+procedure TM_departamento.FormShow(Sender: TObject);
+begin
+  inherited;
+  DM_contabil.empresa.Close;
+  DM_contabil.empresa.SQL.Text := 'select * from empresa' ;
+  DM_contabil.empresa.Open
+end;
 
 end.

@@ -11,12 +11,12 @@ type
   TM_planodecontas = class(TxManuPadrao)
     Label1: TLabel;
     DBEdit1: TDBEdit;
-    Label2: TLabel;
-    DBEdit2: TDBEdit;
     Label3: TLabel;
-    DBEdit3: TDBEdit;
     Label4: TLabel;
     DBCheckBox1: TDBCheckBox;
+    Label5: TLabel;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
   private
     { Private declarations }
   public

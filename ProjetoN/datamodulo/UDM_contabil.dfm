@@ -261,10 +261,13 @@ object DM_contabil: TDM_contabil
       DisplayFormat = 'DD/MM/YYYY'
       EditMask = '!99/99/0000;1;_'
     end
-    object lancamentoLANC_DEBITO: TIntegerField
-      DisplayLabel = 'Conta D'#233'bito'
+    object lancamentoLANC_DEBITO: TIBStringField
+      DisplayLabel = 'D'#233'bito'
       FieldName = 'LANC_DEBITO'
       Origin = '"LANCAMENTOS"."LANC_DEBITO"'
+      Required = True
+      EditMask = '0000\.0000;0;_'
+      Size = 8
     end
     object lancamentoLANC_CENTRODECUSTO_DB: TIBStringField
       DisplayLabel = 'C.C D'#233'bito'
@@ -273,10 +276,13 @@ object DM_contabil: TDM_contabil
       EditMask = '000\.000\.000;0;_'
       Size = 9
     end
-    object lancamentoLANC_CREDITO: TIntegerField
-      DisplayLabel = 'Conta Credito'
+    object lancamentoLANC_CREDITO: TIBStringField
+      DisplayLabel = 'Cr'#233'dito'
       FieldName = 'LANC_CREDITO'
       Origin = '"LANCAMENTOS"."LANC_CREDITO"'
+      Required = True
+      EditMask = '0000\.0000;0;_'
+      Size = 8
     end
     object lancamentoLANC_CENTRODECUSTO_CR: TIBStringField
       DisplayLabel = 'C.C Cr'#233'dito'
@@ -301,6 +307,8 @@ object DM_contabil: TDM_contabil
       DisplayLabel = 'Valor'
       FieldName = 'LANC_VALOR'
       Origin = '"LANCAMENTOS"."LANC_VALOR"'
+      DisplayFormat = 'R$.00'
+      EditFormat = '#.00'
     end
   end
   object Dlancamento: TDataSource
@@ -451,10 +459,13 @@ object DM_contabil: TDM_contabil
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object planodecontasPLN_CONTA: TIntegerField
+    object planodecontasPLN_CONTA: TIBStringField
       DisplayLabel = 'Conta'
       FieldName = 'PLN_CONTA'
       Origin = '"PLANODECONTAS"."PLN_CONTA"'
+      Required = True
+      EditMask = '0000\.0000;0;_'
+      Size = 8
     end
     object planodecontasPLN_DESC_CONTA: TIBStringField
       DisplayLabel = 'Nome da Conta'
