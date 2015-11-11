@@ -602,6 +602,14 @@ object dmPedCompra: TdmPedCompra
       FieldName = 'PESS_PAIS'
       Origin = '"PESSOAS"."PESS_PAIS"'
     end
+    object PessoaPESS_FISICOJURIDICO: TIBStringField
+      DisplayLabel = 'Fisico / Juridico'
+      FieldName = 'PESS_FISICOJURIDICO'
+      Origin = '"PESSOAS"."PESS_FISICOJURIDICO"'
+      Required = True
+      FixedChar = True
+      Size = 4
+    end
   end
   object DSPessoa: TDataSource
     AutoEdit = False

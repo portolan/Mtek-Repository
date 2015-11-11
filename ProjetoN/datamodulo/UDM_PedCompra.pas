@@ -74,6 +74,7 @@ type
     PessoaPESS_CIDADE: TIBStringField;
     PessoaPESS_UF: TIBStringField;
     PessoaPESS_PAIS: TIBStringField;
+    PessoaPESS_FISICOJURIDICO: TIBStringField;
   private
     { Private declarations }
   public
