@@ -58,6 +58,8 @@ type
     Relatrios1: TMenuItem;
     ipodeErro1: TMenuItem;
     Sobre1: TMenuItem;
+    ContasBancarias1: TMenuItem;
+    Condiesdepagamento1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);

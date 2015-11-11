@@ -4592,6 +4592,12 @@ object TelaInicial: TTelaInicial
         Caption = 'Controle Caixa'
         OnClick = FluxodeCaixa1Click
       end
+      object ContasBancarias1: TMenuItem
+        Caption = 'Contas Bancarias'
+      end
+      object Condiesdepagamento1: TMenuItem
+        Caption = 'Condi'#231#245'es de pagamento'
+      end
     end
     object Contbil1: TMenuItem
       Caption = 'Cont'#225'bil'
