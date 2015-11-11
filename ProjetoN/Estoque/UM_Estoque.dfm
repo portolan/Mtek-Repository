@@ -11,6 +11,11 @@ inherited MEstoque: TMEstoque
     Width = 726
     ExplicitTop = 322
     ExplicitWidth = 726
+    inherited sbGravar: TSpeedButton
+      ExplicitLeft = 152
+      ExplicitTop = 6
+      ExplicitHeight = 39
+    end
     inherited sbCancelar: TSpeedButton
       Left = 629
       ExplicitLeft = 629
@@ -401,9 +406,9 @@ inherited MEstoque: TMEstoque
       end
       object DBMemo1: TDBMemo
         Left = 16
-        Top = 210
-        Width = 696
-        Height = 81
+        Top = 208
+        Width = 698
+        Height = 85
         DataField = 'ESTOQ_OBS'
         DataSource = DM_Estoque.DSEstoque
         TabOrder = 13

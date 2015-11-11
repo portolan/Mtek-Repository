@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
   Vcl.ExtCtrls, Vcl.Menus, Vcl.ToolWin, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids,
-  Data.DB, IBX.IBCustomDataSet, IBX.IBUpdateSQL, IBX.IBQuery;
+  Data.DB, IBX.IBCustomDataSet, IBX.IBUpdateSQL, IBX.IBQuery, Vcl.DBCtrls,
+  Vcl.Mask;
 
 type
   TM_OP = class(TxManuPadrao)
@@ -81,18 +82,56 @@ type
     sb_abrirOP: TSpeedButton;
     PageControl1: TPageControl;
     TabSheet2: TTabSheet;
-    DBGrid1: TDBGrid;
     TabSheet3: TTabSheet;
-    db_aguardando: TDBGrid;
     TabSheet4: TTabSheet;
     db_producao: TDBGrid;
     TabSheet5: TTabSheet;
     DBGrid7: TDBGrid;
     TabSheet6: TTabSheet;
     DBGrid8: TDBGrid;
-    TabSheet7: TTabSheet;
+    DateTimePicker1: TDateTimePicker;
+    TabSheet8: TTabSheet;
+    Label1: TLabel;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    Label5: TLabel;
+    Label6: TLabel;
+    DBEdit7: TDBEdit;
+    Label7: TLabel;
+    DBEdit14: TDBEdit;
+    DBLookupComboBox1: TDBLookupComboBox;
+    DateTimePicker2: TDateTimePicker;
+    Label8: TLabel;
+    DBMemo2: TDBMemo;
+    Label16: TLabel;
+    Label15: TLabel;
+    DBEdit10: TDBEdit;
+    DBEdit1: TDBEdit;
+    Label14: TLabel;
+    Label13: TLabel;
+    DBEdit9: TDBEdit;
+    Label10: TLabel;
+    DBLookupComboBox2: TDBLookupComboBox;
+    DateTimePicker3: TDateTimePicker;
+    Label11: TLabel;
+    DBEdit8: TDBEdit;
+    Label12: TLabel;
+    Label17: TLabel;
+    DBEdit12: TDBEdit;
+    Label18: TLabel;
+    DBEdit13: TDBEdit;
+    DBEdit11: TDBEdit;
+    DBMemo1: TDBMemo;
+    DBGrid5: TDBGrid;
     procedure bt_abriropClick(Sender: TObject);
     procedure sb_abrirOPClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -124,6 +163,12 @@ begin
      qryDin.ExecSQL;
 
 
+end;
+
+procedure TM_OP.FormCreate(Sender: TObject);
+begin
+  inherited;
+DBEdit7.Text:=DateToStr(date);
 end;
 
 procedure TM_OP.sb_abrirOPClick(Sender: TObject);

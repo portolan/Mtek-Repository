@@ -939,8 +939,8 @@ object DM_Estoque: TDM_Estoque
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
-    Left = 648
-    Top = 184
+    Left = 632
+    Top = 192
   end
   object Bloco: TIBQuery
     Database = dmBanco.Banco

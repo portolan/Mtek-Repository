@@ -18,7 +18,8 @@ object DM_PCP: TDM_PCP
       '  OP_COD'
       'from ORDEM_PRODUCAO '
       'where'
-      '  OP_COD = :OP_COD')
+      '  OP_COD = :OP_COD and'
+      '  OP_EMPRESA = :OP_EMPRESA')
     ModifySQL.Strings = (
       'update ORDEM_PRODUCAO'
       'set'
@@ -33,7 +34,8 @@ object DM_PCP: TDM_PCP
       '  OP_TIPO = :OP_TIPO,'
       '  OP_VENDAS = :OP_VENDAS'
       'where'
-      '  OP_COD = :OLD_OP_COD')
+      '  OP_COD = :OLD_OP_COD and'
+      '  OP_EMPRESA = :OLD_OP_EMPRESA')
     InsertSQL.Strings = (
       'insert into ORDEM_PRODUCAO'
       
@@ -48,7 +50,8 @@ object DM_PCP: TDM_PCP
     DeleteSQL.Strings = (
       'delete from ORDEM_PRODUCAO'
       'where'
-      '  OP_COD = :OLD_OP_COD')
+      '  OP_COD = :OLD_OP_COD and'
+      '  OP_EMPRESA = :OLD_OP_EMPRESA')
     Left = 40
     Top = 136
   end
@@ -61,6 +64,7 @@ object DM_PCP: TDM_PCP
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = OrdemProducaoAfterInsert
+    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -70,49 +74,59 @@ object DM_PCP: TDM_PCP
     Left = 48
     Top = 8
     object OrdemProducaoOP_COD: TIntegerField
+      DisplayLabel = 'C'#243'digo da Ordem'
       FieldName = 'OP_COD'
       Origin = '"ORDEM_PRODUCAO"."OP_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object OrdemProducaoOP_VENDAS: TIntegerField
+      DisplayLabel = 'C'#243'digo da Venda'
       FieldName = 'OP_VENDAS'
       Origin = '"ORDEM_PRODUCAO"."OP_VENDAS"'
     end
     object OrdemProducaoOP_EMPRESA: TIntegerField
+      DisplayLabel = 'Empresa'
       FieldName = 'OP_EMPRESA'
       Origin = '"ORDEM_PRODUCAO"."OP_EMPRESA"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object OrdemProducaoOP_FICHATECNICA: TIBStringField
+      DisplayLabel = 'Ficha T'#233'cnica'
       FieldName = 'OP_FICHATECNICA'
       Origin = '"ORDEM_PRODUCAO"."OP_FICHATECNICA"'
       Size = 30
     end
     object OrdemProducaoOP_DESCRICAO: TIBStringField
+      DisplayLabel = 'Descricao'
       FieldName = 'OP_DESCRICAO'
       Origin = '"ORDEM_PRODUCAO"."OP_DESCRICAO"'
       Size = 50
     end
     object OrdemProducaoOP_TIPO: TIBStringField
+      DisplayLabel = 'Tipo da Ordem'
       FieldName = 'OP_TIPO'
       Origin = '"ORDEM_PRODUCAO"."OP_TIPO"'
       Size = 30
     end
     object OrdemProducaoOP_QTD: TIntegerField
+      DisplayLabel = 'Quantidade'
       FieldName = 'OP_QTD'
       Origin = '"ORDEM_PRODUCAO"."OP_QTD"'
     end
     object OrdemProducaoOP_DT_PEDIDO: TDateField
+      DisplayLabel = 'Data do Pedido'
       FieldName = 'OP_DT_PEDIDO'
       Origin = '"ORDEM_PRODUCAO"."OP_DT_PEDIDO"'
     end
     object OrdemProducaoOP_DT_ENTREGA: TDateField
+      DisplayLabel = 'Data prevista da Entrega'
       FieldName = 'OP_DT_ENTREGA'
       Origin = '"ORDEM_PRODUCAO"."OP_DT_ENTREGA"'
     end
     object OrdemProducaoOP_STATUS: TIBStringField
+      DisplayLabel = 'Status'
       FieldName = 'OP_STATUS'
       Origin = '"ORDEM_PRODUCAO"."OP_STATUS"'
       Size = 1
@@ -134,6 +148,7 @@ object DM_PCP: TDM_PCP
       'select * from PRODUCAO')
     UpdateObject = UPD_Producao
     Left = 136
+    Top = 8
     object ProducaoPROD_COD: TIntegerField
       FieldName = 'PROD_COD'
       Origin = '"PRODUCAO"."PROD_COD"'
@@ -244,6 +259,7 @@ object DM_PCP: TDM_PCP
       'select * from FICHA_TECNICA')
     UpdateObject = UPD_Ficha_Tecnica
     Left = 216
+    Top = 8
     object Ficha_TecnicaFT_COD: TIntegerField
       FieldName = 'FT_COD'
       Origin = '"FICHA_TECNICA"."FT_COD"'
@@ -365,7 +381,6 @@ object DM_PCP: TDM_PCP
       'select * from ITENS_FICHA')
     UpdateObject = UPD_Itens_Ficha
     Left = 312
-    Top = 8
     object Itens_FichaIFT_FICHA: TIntegerField
       FieldName = 'IFT_FICHA'
       Origin = '"ITENS_FICHA"."IFT_FICHA"'
@@ -450,8 +465,8 @@ object DM_PCP: TDM_PCP
       'delete from ITENS_FICHA'
       'where'
       '  IFT_EMPRESA = :OLD_IFT_EMPRESA')
-    Left = 320
-    Top = 144
+    Left = 312
+    Top = 136
   end
   object Entrega_Materia: TIBQuery
     Database = dmBanco.Banco
@@ -463,8 +478,7 @@ object DM_PCP: TDM_PCP
     SQL.Strings = (
       'select * from ENTREGA_MATERIA')
     UpdateObject = UPD_Entrega_Materia
-    Left = 424
-    Top = 16
+    Left = 392
     object Entrega_MateriaEM0_COD: TIntegerField
       FieldName = 'EM0_COD'
       Origin = '"ENTREGA_MATERIA"."EM0_COD"'
@@ -498,8 +512,8 @@ object DM_PCP: TDM_PCP
   end
   object DS_Entrega_Materia: TDataSource
     DataSet = Ficha_Tecnica
-    Left = 424
-    Top = 80
+    Left = 392
+    Top = 64
   end
   object UPD_Entrega_Materia: TIBUpdateSQL
     RefreshSQL.Strings = (
@@ -541,7 +555,7 @@ object DM_PCP: TDM_PCP
       'where'
       '  EM0_COD = :OLD_EM0_COD and'
       '  EM0_EMPRESA = :OLD_EM0_EMPRESA')
-    Left = 424
+    Left = 392
     Top = 136
   end
   object queryGenerica: TIBQuery

@@ -1,16 +1,24 @@
 inherited P_OP: TP_OP
   ActiveControl = DBGDados
   Caption = 'Ordem Producao'
+  ClientWidth = 872
   OnCreate = FormCreate
+  ExplicitTop = -44
+  ExplicitWidth = 888
+  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
+    Width = 872
     inherited gbDados: TGroupBox
+      Width = 866
+      ExplicitLeft = -2
+      ExplicitTop = -1
       inherited DBGDados: TDBGrid
         AlignWithMargins = True
         Left = 5
         Top = 18
-        Width = 848
+        Width = 856
         Height = 278
         DataSource = DM_PCP.DS_OrdemProducao
         ParentShowHint = False
@@ -89,11 +97,29 @@ inherited P_OP: TP_OP
     end
   end
   inherited pnRodape: TPanel
-    ExplicitTop = 363
+    Width = 872
     inherited sbNovo: TSpeedButton
       ParentShowHint = False
       ExplicitLeft = 25
       ExplicitTop = 33
+    end
+    inherited sbSair: TSpeedButton
+      Left = 775
+    end
+  end
+  inherited pnCabecalho: TPanel
+    Width = 872
+    inherited gbStatus: TGroupBox
+      Left = 711
+    end
+    inherited gbFiltro: TGroupBox
+      Width = 711
+      inherited editPesquisa: TEdit
+        Width = 317
+      end
+      inherited Pesquisar: TButton
+        Left = 630
+      end
     end
   end
 end
