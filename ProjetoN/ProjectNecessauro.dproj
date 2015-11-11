@@ -285,7 +285,7 @@
             <Form>P_caixa</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="datamodulo\UDM_caixa.pas">
+        <DCCReference Include="datamodulo\UDM_Caixa.pas">
             <Form>DM_caixa</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
@@ -347,6 +347,18 @@
         </DCCReference>
         <DCCReference Include="UI_sobre.pas">
             <Form>I_sobre</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_fechamentocx.pas">
+            <Form>REL_fechamentocx</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UP_abrircx.pas">
+            <Form>UP_abrircaixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UP_fecharcx.pas">
+            <Form>UP_fecharcaixa</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

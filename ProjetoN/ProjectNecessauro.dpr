@@ -74,7 +74,10 @@ uses
   UP_Servico in 'assistencia\UP_Servico.pas' {P_Servico},
   UP_Tipo_Erro in 'assistencia\UP_Tipo_Erro.pas' {P_Tipo_Erro},
   UR_Relatorio_Chamado in 'assistencia\UR_Relatorio_Chamado.pas' {UR_Relatorio},
-  UI_sobre in 'UI_sobre.pas' {I_sobre};
+  UI_sobre in 'UI_sobre.pas' {I_sobre},
+  UR_fechamentocx in 'Caixa\UR_fechamentocx.pas' {REL_fechamentocx},
+  UP_abrircx in 'Caixa\UP_abrircx.pas' {UP_abrircaixa},
+  UP_fecharcx in 'Caixa\UP_fecharcx.pas' {UP_fecharcaixa};
 
 {$R *.res}
 
@@ -99,5 +102,8 @@ begin
   Application.CreateForm(TP_Tipo_Erro, P_Tipo_Erro);
   Application.CreateForm(TUR_Relatorio, UR_Relatorio);
   Application.CreateForm(TI_sobre, I_sobre);
+  Application.CreateForm(TREL_fechamentocx, REL_fechamentocx);
+  Application.CreateForm(TUP_abrircaixa, UP_abrircaixa);
+  Application.CreateForm(TUP_fecharcaixa, UP_fecharcaixa);
   Application.Run;
 end.
