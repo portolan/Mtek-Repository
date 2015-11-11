@@ -3,8 +3,11 @@ object DM_financeiro: TDM_financeiro
   Height = 271
   Width = 415
   object contasbancarias: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
     BufferChunks = 1000
     CachedUpdates = False
+    DataSource = D_contasbancarias
     ParamCheck = True
     Left = 40
     Top = 16

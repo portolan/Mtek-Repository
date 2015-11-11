@@ -24,6 +24,8 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
+uses UDM_PCP, dm000;
+
 {$R *.dfm}
 
 end.

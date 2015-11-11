@@ -3,6 +3,7 @@ object dmBanco: TdmBanco
   Height = 181
   Width = 197
   object TBanco: TIBTransaction
+    Active = True
     DefaultDatabase = Banco
     Params.Strings = (
       'read_committed'
