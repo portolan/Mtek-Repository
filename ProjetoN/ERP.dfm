@@ -1,6 +1,7 @@
 object TelaInicial: TTelaInicial
   Left = 0
   Top = 0
+  Align = alCustom
   Caption = 'ERP'
   ClientHeight = 395
   ClientWidth = 900
@@ -1021,8 +1022,8 @@ object TelaInicial: TTelaInicial
   PixelsPerInch = 96
   TextHeight = 13
   object Image1: TImage
-    Left = 310
-    Top = 24
+    Left = 198
+    Top = 0
     Width = 60
     Height = 60
     AutoSize = True
@@ -1401,8 +1402,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image2: TImage
-    Left = 208
-    Top = 24
+    Left = 132
+    Top = 0
     Width = 60
     Height = 60
     AutoSize = True
@@ -1784,8 +1785,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image3: TImage
-    Left = 416
-    Top = 24
+    Left = 264
+    Top = 0
     Width = 60
     Height = 60
     AutoSize = True
@@ -2169,8 +2170,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image4: TImage
-    Left = 618
-    Top = 24
+    Left = 396
+    Top = 0
     Width = 60
     Height = 60
     AutoSize = True
@@ -2559,8 +2560,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image5: TImage
-    Left = 24
-    Top = 24
+    Left = 0
+    Top = 0
     Width = 60
     Height = 60
     AutoSize = True
@@ -2945,8 +2946,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image6: TImage
-    Left = 822
-    Top = 24
+    Left = 528
+    Top = 0
     Width = 60
     Height = 60
     AutoSize = True
@@ -3332,8 +3333,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image7: TImage
-    Left = 720
-    Top = 24
+    Left = 462
+    Top = 0
     Width = 60
     Height = 60
     AutoSize = True
@@ -3715,8 +3716,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image8: TImage
-    Left = 114
-    Top = 24
+    Left = 66
+    Top = 0
     Width = 60
     Height = 60
     AutoSize = True
@@ -4102,8 +4103,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object Image9: TImage
-    Left = 520
-    Top = 24
+    Left = 330
+    Top = 0
     Width = 60
     Height = 60
     AutoSize = True
@@ -4489,8 +4490,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object MainMenu1: TMainMenu
-    Left = 528
-    Top = 296
+    Left = 776
+    Top = 304
     object Estoque1: TMenuItem
       Caption = 'Estoque'
       object ProdutosemEstoque1: TMenuItem
