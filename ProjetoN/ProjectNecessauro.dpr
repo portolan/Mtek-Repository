@@ -58,7 +58,7 @@ uses
   UR_Relatorios in 'Estoque\UR_Relatorios.pas' {DataModule1: TDataModule},
   UM_caixa in 'Caixa\UM_caixa.pas' {M_caixa},
   UP_Caixa in 'Caixa\UP_Caixa.pas' {P_caixa},
-  UDM_caixa in 'datamodulo\UDM_caixa.pas' {DM_caixa: TDataModule},
+  UDM_Caixa in 'datamodulo\UDM_Caixa.pas' {DM_caixa: TDataModule},
   UM_contasreceber in 'contas_receber\UM_contasreceber.pas' {M_contasreceber},
   UP_contasreceber in 'contas_receber\UP_contasreceber.pas' {P_receber},
   UDM_contasreceber in 'datamodulo\UDM_contasreceber.pas' {DM_contasreceber: TDataModule},
@@ -77,7 +77,10 @@ uses
   UI_sobre in 'UI_sobre.pas' {I_sobre},
   UR_fechamentocx in 'Caixa\UR_fechamentocx.pas' {REL_fechamentocx},
   UP_abrircx in 'Caixa\UP_abrircx.pas' {UP_abrircaixa},
-  UP_fecharcx in 'Caixa\UP_fecharcx.pas' {UP_fecharcaixa};
+  UP_fecharcx in 'Caixa\UP_fecharcx.pas' {UP_fecharcaixa},
+  UR_balancocx in 'Caixa\UR_balancocx.pas' {REL_balancocx},
+  UR_prevtitulos in 'Caixa\UR_prevtitulos.pas' {REL_prevtitulos},
+  UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda};
 
 {$R *.res}
 
@@ -96,14 +99,8 @@ begin
   Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(TDM_Servico, DM_Servico);
-  Application.CreateForm(TM_Servico, M_Servico);
-  Application.CreateForm(TM_Tipo_Erro, M_Tipo_Erro);
-  Application.CreateForm(TP_Servico, P_Servico);
-  Application.CreateForm(TP_Tipo_Erro, P_Tipo_Erro);
-  Application.CreateForm(TUR_Relatorio, UR_Relatorio);
-  Application.CreateForm(TI_sobre, I_sobre);
-  Application.CreateForm(TREL_fechamentocx, REL_fechamentocx);
-  Application.CreateForm(TUP_abrircaixa, UP_abrircaixa);
-  Application.CreateForm(TUP_fecharcaixa, UP_fecharcaixa);
+  Application.CreateForm(TREL_balancocx, REL_balancocx);
+  Application.CreateForm(TREL_prevtitulos, REL_prevtitulos);
+  Application.CreateForm(TREL_prevcompravenda, REL_prevcompravenda);
   Application.Run;
 end.

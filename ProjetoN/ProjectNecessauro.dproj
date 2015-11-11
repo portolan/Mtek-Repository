@@ -72,7 +72,7 @@
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <Icon_MainIcon>ProjectNecessauro_Icon1.ico</Icon_MainIcon>
+        <Icon_MainIcon>ProjectNecessauro_Icon4.ico</Icon_MainIcon>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
@@ -285,7 +285,7 @@
             <Form>P_caixa</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="datamodulo\UDM_caixa.pas">
+        <DCCReference Include="datamodulo\UDM_Caixa.pas">
             <Form>DM_caixa</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
@@ -359,6 +359,18 @@
         </DCCReference>
         <DCCReference Include="Caixa\UP_fecharcx.pas">
             <Form>UP_fecharcaixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_balancocx.pas">
+            <Form>REL_balancocx</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_prevtitulos.pas">
+            <Form>REL_prevtitulos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_prevcompravenda.pas">
+            <Form>REL_prevcompravenda</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
