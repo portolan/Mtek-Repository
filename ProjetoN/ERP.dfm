@@ -2,7 +2,7 @@ object TelaInicial: TTelaInicial
   Left = 0
   Top = 0
   Caption = 'ERP'
-  ClientHeight = 386
+  ClientHeight = 395
   ClientWidth = 900
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -1018,13 +1018,16 @@ object TelaInicial: TTelaInicial
   Position = poScreenCenter
   WindowState = wsMaximized
   OnClose = FormClose
+  DesignSize = (
+    900
+    395)
   PixelsPerInch = 96
   TextHeight = 13
   object Image10: TImage
     Left = 0
     Top = 0
     Width = 900
-    Height = 386
+    Height = 395
     Align = alClient
     Picture.Data = {
       0A544A504547496D6167653E190100FFD8FFE000104A46494600010100000100
@@ -6752,6 +6755,35 @@ object TelaInicial: TTelaInicial
     ShowHint = False
     Stretch = True
   end
+  object relogio: TLabel
+    AlignWithMargins = True
+    Left = 24
+    Top = 329
+    Width = 162
+    Height = 50
+    Anchors = [akLeft, akRight, akBottom]
+    Caption = '00:00:00'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = 50
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlCenter
+  end
+  object GroupBox2: TGroupBox
+    Left = 8
+    Top = 313
+    Width = 193
+    Height = 72
+    Margins.Bottom = 5
+    Align = alCustom
+    Anchors = [akLeft, akBottom]
+    Caption = 'Data e Hora'
+    Padding.Left = 3
+    Padding.Bottom = 3
+    TabOrder = 1
+  end
   object GroupBox1: TGroupBox
     Left = 8
     Top = 0
@@ -6759,15 +6791,6 @@ object TelaInicial: TTelaInicial
     Height = 105
     Caption = 'Atalhos'
     TabOrder = 0
-  end
-  object Panel1: TPanel
-    Left = 0
-    Top = 344
-    Width = 185
-    Height = 41
-    Caption = 'Panel1'
-    Locked = True
-    TabOrder = 1
   end
   object MainMenu1: TMainMenu
     Left = 528
@@ -6914,6 +6937,10 @@ object TelaInicial: TTelaInicial
         OnClick = ipodeErro1Click
       end
     end
+    object Sobre1: TMenuItem
+      Caption = 'Sobre'
+      OnClick = Sobre1Click
+    end
     object Sair1: TMenuItem
       Caption = 'Sair'
       OnClick = Sair1Click
@@ -6921,7 +6948,7 @@ object TelaInicial: TTelaInicial
   end
   object Timer1: TTimer
     OnTimer = Timer1Timer
-    Left = 216
-    Top = 344
+    Left = 480
+    Top = 296
   end
 end

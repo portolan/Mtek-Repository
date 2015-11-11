@@ -73,7 +73,8 @@ uses
   UM_Tipo_Erro in 'assistencia\UM_Tipo_Erro.pas' {M_Tipo_Erro},
   UP_Servico in 'assistencia\UP_Servico.pas' {P_Servico},
   UP_Tipo_Erro in 'assistencia\UP_Tipo_Erro.pas' {P_Tipo_Erro},
-  UR_Relatorio_Chamado in 'assistencia\UR_Relatorio_Chamado.pas' {UR_Relatorio};
+  UR_Relatorio_Chamado in 'assistencia\UR_Relatorio_Chamado.pas' {UR_Relatorio},
+  UI_sobre in 'UI_sobre.pas' {I_sobre};
 
 {$R *.res}
 
@@ -97,5 +98,6 @@ begin
   Application.CreateForm(TP_Servico, P_Servico);
   Application.CreateForm(TP_Tipo_Erro, P_Tipo_Erro);
   Application.CreateForm(TUR_Relatorio, UR_Relatorio);
+  Application.CreateForm(TI_sobre, I_sobre);
   Application.Run;
 end.

@@ -56,11 +56,13 @@ type
     Relatrios2: TMenuItem;
     ProdutosemEstoque1: TMenuItem;
     Relatrios1: TMenuItem;
+    relogio: TLabel;
+    Timer1: TTimer;
     GroupBox1: TGroupBox;
+    GroupBox2: TGroupBox;
     Image10: TImage;
     ipodeErro1: TMenuItem;
-    Panel1: TPanel;
-    Timer1: TTimer;
+    Sobre1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -87,6 +89,7 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure FichaTcnica1Click(Sender: TObject);
     procedure ipodeErro1Click(Sender: TObject);
+    procedure Sobre1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -106,7 +109,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UP_Servico, UP_Bloco, UM_Prateleira, UP_Categoria, UP_Prateleira,
   UP_departamento, UM_departamento, UP_planodecontas, UP_historico, Up_titulospagar,
   UR_EstoqueRelatorios, UP_Caixa, UF_EstoqueRelatorios, UM_FichaTecnica, UM_PCP,
-  UP_FichaTecnica, UP_Tipo_Erro;
+  UP_FichaTecnica, UP_Tipo_Erro, UI_sobre;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -311,14 +314,14 @@ begin
     close;
 end;
 
-procedure TTelaInicial.Timer1Timer(Sender: TObject);
-var
-DateTime : TDateTime;
-str : string;
+procedure TTelaInicial.Sobre1Click(Sender: TObject);
 begin
-DateTime := Time;
-str := TimeToStr(DateTime);
-panel1.Caption := str;
+  TI_sobre.chamaTela(Self);
+end;
+
+procedure TTelaInicial.Timer1Timer(Sender: TObject);
+begin
+relogio.caption := timetostr(time);
 end;
 
 end.
