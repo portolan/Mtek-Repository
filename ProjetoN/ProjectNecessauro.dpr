@@ -99,8 +99,8 @@ begin
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
   Application.CreateForm(TDM_contasreceber, DM_contasreceber);
+  Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.Run;
 end.
