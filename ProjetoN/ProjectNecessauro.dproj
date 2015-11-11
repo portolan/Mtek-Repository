@@ -104,8 +104,8 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="financeiro\novacontabancaria.pas">
-            <Form>novaconta</Form>
+        <DCCReference Include="financeiro\UM_novacontabancaria.pas">
+            <Form>M_novaconta</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="datamodulo\UDM_contabil.pas">
@@ -374,13 +374,18 @@
             <Form>xManuPadrao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="financeiro\contabancaria.pas">
-            <Form>contasbancarias</Form>
+        <DCCReference Include="financeiro\UP_contabancaria.pas">
+            <Form>P_contasbancarias</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="comum\UTelaPadrao.pas">
             <Form>xPesqPadrao</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="datamodulo\UDM_financeiro.pas">
+            <Form>DataModule2</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

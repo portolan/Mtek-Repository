@@ -108,7 +108,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UR_EstoqueRelatorios, UP_Caixa, UF_EstoqueRelatorios, UM_FichaTecnica, UM_PCP,
   UP_FichaTecnica, UP_Tipo_Erro, UI_sobre, UP_abrircx, UP_fecharcx,
   UR_balancocx, UR_fechamentocx, UR_prevtitulos, UR_prevcompravenda,
-  contabancaria, novacontabancaria;
+  novacontabancaria, UP_contabancaria, UDM_Estoque;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -163,12 +163,12 @@ end;
 
 procedure TTelaInicial.ContasBancarias1Click(Sender: TObject);
 begin
-   contasbancarias := Tcontasbancarias.Create(Self);
-   try
-     contasbancarias.ShowModal;
-   finally
-     contasbancarias.Free;
-   end;
+    P_contasbancarias := TP_contasbancarias.Create(Self);
+    try
+        P_contasbancarias.ShowModal;
+    finally
+        FreeAndNil(P_contasbancarias);
+    end;
 end;
 
 procedure TTelaInicial.Departamentos1Click(Sender: TObject);

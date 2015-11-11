@@ -1,4 +1,4 @@
-object contasbancarias: Tcontasbancarias
+object P_contasbancarias: TP_contasbancarias
   Left = 0
   Top = 0
   Caption = 'Contas Bancarias'

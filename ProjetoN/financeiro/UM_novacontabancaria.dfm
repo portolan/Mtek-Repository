@@ -1,4 +1,4 @@
-object novaconta: Tnovaconta
+object M_novaconta: TM_novaconta
   Left = 0
   Top = 0
   Caption = 'Adicionar conta bancaria'
