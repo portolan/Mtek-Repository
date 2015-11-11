@@ -86,6 +86,7 @@ type
     procedure FichaTcnica1Click(Sender: TObject);
     procedure ipodeErro1Click(Sender: TObject);
     procedure Sobre1Click(Sender: TObject);
+    procedure ContasBancarias1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -106,7 +107,8 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UP_departamento, UM_departamento, UP_planodecontas, UP_historico, Up_titulospagar,
   UR_EstoqueRelatorios, UP_Caixa, UF_EstoqueRelatorios, UM_FichaTecnica, UM_PCP,
   UP_FichaTecnica, UP_Tipo_Erro, UI_sobre, UP_abrircx, UP_fecharcx,
-  UR_balancocx, UR_fechamentocx, UR_prevtitulos, UR_prevcompravenda;
+  UR_balancocx, UR_fechamentocx, UR_prevtitulos, UR_prevcompravenda,
+  contabancaria, novacontabancaria;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -157,6 +159,16 @@ begin
     finally
         FreeAndNil(P_contasreceber);
     end;
+end;
+
+procedure TTelaInicial.ContasBancarias1Click(Sender: TObject);
+begin
+   contasbancarias := Tcontasbancarias.Create(Self);
+   try
+     contasbancarias.ShowModal;
+   finally
+     contasbancarias.Free;
+   end;
 end;
 
 procedure TTelaInicial.Departamentos1Click(Sender: TObject);

@@ -4594,6 +4594,7 @@ object TelaInicial: TTelaInicial
       end
       object ContasBancarias1: TMenuItem
         Caption = 'Contas Bancarias'
+        OnClick = ContasBancarias1Click
       end
       object Condiesdepagamento1: TMenuItem
         Caption = 'Condi'#231#245'es de pagamento'
