@@ -100,6 +100,5 @@ begin
   Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(TDM_Servico, DM_Servico);
   Application.Run;
 end.
