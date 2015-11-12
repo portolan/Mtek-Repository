@@ -17,6 +17,10 @@ type
     Label4: TLabel;
     DBMemo1: TDBMemo;
     DBLookupComboBox4: TDBLookupComboBox;
+    DBEdit1: TDBEdit;
+    Label5: TLabel;
+    Label6: TLabel;
+    DBLookupComboBox1: TDBLookupComboBox;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -40,6 +44,12 @@ begin
     DM_contabil.empresa.SQL.Text := 'select * from empresa';
     DM_contabil.empresa.Open;
     DM_contabil.empresa.FetchAll;
+
+    DM_Estoque.Categoria.Close;
+    DM_Estoque.Categoria.SQL.Text := 'select * from categoria';
+    DM_Estoque.Categoria.Open;
+    DM_Estoque.Categoria.FetchAll;
+
 end;
 
 end.
