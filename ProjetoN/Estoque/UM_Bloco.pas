@@ -22,6 +22,7 @@ type
     Label6: TLabel;
     DBLookupComboBox1: TDBLookupComboBox;
     procedure FormCreate(Sender: TObject);
+    procedure DBLookupComboBox1Enter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,6 +38,19 @@ implementation
 
 uses UDM_Estoque, UDM_contabil;
 
+procedure TMBloco.DBLookupComboBox1Enter(Sender: TObject);
+begin
+  inherited;
+    try
+        DM_Estoque.Categoria.Close;
+        DM_Estoque.Categoria.SQL.Text := 'select * from categoria where cat_empresa = ' + DM_Estoque.BlocoBLOC_EMPRESA.AsString;
+        DM_Estoque.Categoria.Open;
+        DM_Estoque.Categoria.FetchAll;
+    except on E: Exception do
+        ShowMessage('Erro!! Verifique se campo Empresa está selecionado!');
+    end;
+end;
+
 procedure TMBloco.FormCreate(Sender: TObject);
 begin
   inherited;
@@ -44,12 +58,6 @@ begin
     DM_contabil.empresa.SQL.Text := 'select * from empresa';
     DM_contabil.empresa.Open;
     DM_contabil.empresa.FetchAll;
-
-    DM_Estoque.Categoria.Close;
-    DM_Estoque.Categoria.SQL.Text := 'select * from categoria';
-    DM_Estoque.Categoria.Open;
-    DM_Estoque.Categoria.FetchAll;
-
 end;
 
 end.

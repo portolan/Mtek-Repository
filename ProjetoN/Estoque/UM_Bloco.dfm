@@ -7,12 +7,15 @@ inherited MBloco: TMBloco
   TextHeight = 13
   inherited pnRodape: TPanel
     Width = 697
+    ExplicitWidth = 697
     inherited sbCancelar: TSpeedButton
       Left = 600
+      ExplicitLeft = 600
     end
   end
   inherited gbInfos: TGroupBox
     Width = 697
+    ExplicitWidth = 697
     object Label1: TLabel
       Left = 16
       Top = 16
@@ -70,7 +73,7 @@ inherited MBloco: TMBloco
       ParentColor = True
       ParentCtl3D = False
       ReadOnly = True
-      TabOrder = 0
+      TabOrder = 5
     end
     object DBEdit3: TDBEdit
       Left = 16
@@ -79,7 +82,7 @@ inherited MBloco: TMBloco
       Height = 21
       DataField = 'BLOC_DESCRICAO'
       DataSource = DM_Estoque.DSBloco
-      TabOrder = 1
+      TabOrder = 3
     end
     object DBMemo1: TDBMemo
       Left = 16
@@ -88,7 +91,7 @@ inherited MBloco: TMBloco
       Height = 117
       DataField = 'BLOC_OBS'
       DataSource = DM_Estoque.DSBloco
-      TabOrder = 2
+      TabOrder = 4
     end
     object DBLookupComboBox4: TDBLookupComboBox
       Left = 16
@@ -101,7 +104,7 @@ inherited MBloco: TMBloco
       ListField = 'EMP_RAZAO'
       ListFieldIndex = 1
       ListSource = DM_contabil.Dempresa
-      TabOrder = 3
+      TabOrder = 0
     end
     object DBEdit1: TDBEdit
       Left = 296
@@ -110,7 +113,7 @@ inherited MBloco: TMBloco
       Height = 21
       DataField = 'BLOC_QTDMAXIMA'
       DataSource = DM_Estoque.DSBloco
-      TabOrder = 4
+      TabOrder = 1
     end
     object DBLookupComboBox1: TDBLookupComboBox
       Left = 436
@@ -122,7 +125,8 @@ inherited MBloco: TMBloco
       KeyField = 'CAT_CODIGO'
       ListField = 'CAT_DESCRICAO'
       ListSource = DM_Estoque.DSCategoria
-      TabOrder = 5
+      TabOrder = 2
+      OnEnter = DBLookupComboBox1Enter
     end
   end
 end

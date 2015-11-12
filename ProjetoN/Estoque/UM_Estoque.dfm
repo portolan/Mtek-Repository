@@ -310,6 +310,7 @@ inherited MEstoque: TMEstoque
         ListField = 'PRAT_DESCRICAO'
         ListSource = DM_Estoque.DSPrateleira
         TabOrder = 4
+        OnEnter = DBLookupComboBox2Enter
       end
       object editProduto: TEdit
         Left = 16

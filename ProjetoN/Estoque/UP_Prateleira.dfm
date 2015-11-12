@@ -1,6 +1,8 @@
 inherited PPrateleira: TPPrateleira
   Caption = 'PPrateleira'
   OnCreate = FormCreate
+  ExplicitWidth = 880
+  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
@@ -26,7 +28,21 @@ inherited PPrateleira: TPPrateleira
           item
             Expanded = False
             FieldName = 'PRAT_OBS'
-            Width = 349
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRAT_QTDMAXIMA'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRAT_CATEGORIA'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRAT_BLOCO'
             Visible = True
           end>
       end

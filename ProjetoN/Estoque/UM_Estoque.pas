@@ -50,6 +50,7 @@ type
     procedure ComboBox1Exit(Sender: TObject);
     procedure editProdutoEnter(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure DBLookupComboBox2Enter(Sender: TObject);
   private
 
     { Private declarations }
@@ -77,6 +78,22 @@ begin
         DM_Estoque.EstoqueESTOQ_STATUS.Value := 'A'
     else
         DM_Estoque.EstoqueESTOQ_STATUS.Value := 'I';
+end;
+
+procedure TMEstoque.DBLookupComboBox2Enter(Sender: TObject);
+begin
+  inherited;
+    try
+        DM_Estoque.Prateleira.Close;
+        DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira where prat_empresa = ' +
+                                           DM_Estoque.EstoqueESTOQ_EMPRESA.AsString +
+                                           ' and prat_bloco = ' +
+                                           DM_Estoque.EstoqueESTOQ_BLOCO.AsString;
+        DM_Estoque.Prateleira.Open;
+        DM_Estoque.Prateleira.FetchAll;
+    except on E: Exception do
+        ShowMessage('Erro!! Verifique se está selecionado o bloco!');
+    end;
 end;
 
 procedure TMEstoque.editProdutoEnter(Sender: TObject);
@@ -130,11 +147,6 @@ begin
     DM_Estoque.Bloco.SQL.Text := 'select * from bloco where bloc_empresa = ' + DM_Estoque.EstoqueESTOQ_EMPRESA.AsString;
     DM_Estoque.Bloco.Open;
     DM_Estoque.Bloco.FetchAll;
-
-    DM_Estoque.Prateleira.Close;
-    DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira where prat_empresa = ' + DM_Estoque.EstoqueESTOQ_EMPRESA.AsString;
-    DM_Estoque.Prateleira.Open;
-    DM_Estoque.Prateleira.FetchAll;
 
     DM_Estoque.Categoria.Close;
     DM_Estoque.Categoria.SQL.Text := 'select * from categoria where cat_empresa = ' + DM_Estoque.EstoqueESTOQ_EMPRESA.AsString;

@@ -3,6 +3,7 @@ inherited MProduto: TMProduto
   ClientHeight = 656
   ClientWidth = 717
   OnActivate = FormActivate
+  ExplicitTop = -69
   ExplicitWidth = 733
   ExplicitHeight = 695
   PixelsPerInch = 96
@@ -273,7 +274,7 @@ inherited MProduto: TMProduto
         DataSource = DM_Estoque.DSProdutos
         Items.Strings = (
           'R$ (REAL)'
-          'US$ (D'#211'LAR EUA)')
+          'US$ (DOLAR EUA)')
         TabOrder = 4
       end
       object DBLookupComboBox2: TDBLookupComboBox

@@ -78,7 +78,7 @@ inherited MPrateleira: TMPrateleira
       DataSource = DM_Estoque.DSPrateleira
       ParentColor = True
       ReadOnly = True
-      TabOrder = 0
+      TabOrder = 6
     end
     object DBEdit3: TDBEdit
       Left = 3
@@ -87,7 +87,7 @@ inherited MPrateleira: TMPrateleira
       Height = 21
       DataField = 'PRAT_DESCRICAO'
       DataSource = DM_Estoque.DSPrateleira
-      TabOrder = 1
+      TabOrder = 4
     end
     object DBMemo1: TDBMemo
       Left = 9
@@ -96,7 +96,7 @@ inherited MPrateleira: TMPrateleira
       Height = 117
       DataField = 'PRAT_OBS'
       DataSource = DM_Estoque.DSPrateleira
-      TabOrder = 2
+      TabOrder = 5
     end
     object DBLookupComboBox4: TDBLookupComboBox
       Left = 9
@@ -109,7 +109,7 @@ inherited MPrateleira: TMPrateleira
       ListField = 'EMP_RAZAO'
       ListFieldIndex = 1
       ListSource = DM_contabil.Dempresa
-      TabOrder = 3
+      TabOrder = 0
     end
     object DBEdit1: TDBEdit
       Left = 456
@@ -118,7 +118,7 @@ inherited MPrateleira: TMPrateleira
       Height = 21
       DataField = 'PRAT_QTDMAXIMA'
       DataSource = DM_Estoque.DSPrateleira
-      TabOrder = 4
+      TabOrder = 2
     end
     object DBLookupComboBox1: TDBLookupComboBox
       Left = 596
@@ -130,7 +130,8 @@ inherited MPrateleira: TMPrateleira
       KeyField = 'CAT_CODIGO'
       ListField = 'CAT_DESCRICAO'
       ListSource = DM_Estoque.DSCategoria
-      TabOrder = 5
+      TabOrder = 3
+      OnEnter = DBLookupComboBox1Enter
     end
     object DBLookupComboBox2: TDBLookupComboBox
       Left = 149
@@ -142,7 +143,7 @@ inherited MPrateleira: TMPrateleira
       KeyField = 'BLOC_CODIGO'
       ListField = 'BLOC_DESCRICAO'
       ListSource = DM_Estoque.DSBloco
-      TabOrder = 6
+      TabOrder = 1
       OnEnter = DBLookupComboBox2Enter
     end
   end
