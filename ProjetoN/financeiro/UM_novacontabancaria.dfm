@@ -115,5 +115,91 @@ object M_novaconta: TM_novaconta
     Align = alClient
     Caption = 'Dados'
     TabOrder = 1
+    object Label2: TLabel
+      Left = 126
+      Top = 77
+      Width = 57
+      Height = 13
+      Caption = 'N'#186' CONTA :'
+      FocusControl = DBEdit2
+    end
+    object Label3: TLabel
+      Left = 22
+      Top = 77
+      Width = 49
+      Height = 13
+      Caption = 'AGENCIA:'
+      FocusControl = DBEdit3
+    end
+    object Label4: TLabel
+      Left = 22
+      Top = 24
+      Width = 104
+      Height = 13
+      Caption = 'TITULAR DA CONTA :'
+      FocusControl = DBEdit4
+    end
+    object Label5: TLabel
+      Left = 224
+      Top = 74
+      Width = 49
+      Height = 13
+      Caption = 'SALDO R$'
+      FocusControl = DBEdit5
+    end
+    object DBEdit2: TDBEdit
+      Left = 126
+      Top = 93
+      Width = 56
+      Height = 21
+      DataField = 'CTB_AGENCIACODIGO'
+      DataSource = DataSource1
+      TabOrder = 0
+    end
+    object DBEdit3: TDBEdit
+      Left = 22
+      Top = 93
+      Width = 56
+      Height = 21
+      DataField = 'CTB_AGENCIACODIGO'
+      DataSource = DataSource1
+      TabOrder = 1
+    end
+    object DBEdit4: TDBEdit
+      Left = 22
+      Top = 39
+      Width = 315
+      Height = 21
+      DataField = 'CTB_TITULAR'
+      DataSource = DataSource1
+      TabOrder = 2
+    end
+    object DBEdit5: TDBEdit
+      Left = 224
+      Top = 93
+      Width = 113
+      Height = 21
+      DataField = 'CTB_SALDO'
+      DataSource = DataSource1
+      TabOrder = 3
+    end
+    object DBRadioGroup1: TDBRadioGroup
+      Left = 375
+      Top = 24
+      Width = 130
+      Height = 63
+      Caption = 'CONTA ATIVA / INATIVA'
+      DataField = 'CTB_ATIVOINATIVO'
+      DataSource = DataSource1
+      Items.Strings = (
+        'ATIVA '
+        'INATIVA ')
+      TabOrder = 4
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = DM_financeiro.contasbancarias
+    Left = 544
+    Top = 8
   end
 end

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB, IBX.IBDatabase,
-  IBX.IBCustomDataSet, IBX.IBQuery;
+  IBX.IBCustomDataSet, IBX.IBQuery, Vcl.DBCtrls, Vcl.Mask;
 
 type
   TM_novaconta = class(TForm)
@@ -13,6 +13,16 @@ type
     gbInfos: TGroupBox;
     sbGravar: TSpeedButton;
     sbCancelar: TSpeedButton;
+    DataSource1: TDataSource;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
+    Label4: TLabel;
+    DBEdit4: TDBEdit;
+    Label5: TLabel;
+    DBEdit5: TDBEdit;
+    DBRadioGroup1: TDBRadioGroup;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure sbCancelarClick(Sender: TObject);
