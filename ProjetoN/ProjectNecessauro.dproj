@@ -374,12 +374,16 @@
             <Form>xManuPadrao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="financeiro\UP_contabancaria.pas">
-            <Form>P_contasbancarias</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="comum\UTelaPadrao.pas">
             <Form>xPesqPadrao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UP_SolicitacaoCompra.pas">
+            <Form>PSolicitacaoCompra</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="financeiro\UP_contabancaria.pas">
+            <Form>P_contasbancarias</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="datamodulo\UDM_financeiro.pas">
@@ -501,7 +505,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectOSXEntitlements">
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents</RemoteDir>
+                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -587,6 +591,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectiOSEntitlements">
                     <Platform Name="iOSDevice">
+                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>

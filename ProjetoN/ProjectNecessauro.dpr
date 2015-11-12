@@ -81,8 +81,9 @@ uses
   UR_prevtitulos in 'Caixa\UR_prevtitulos.pas' {REL_prevtitulos},
   UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda},
   UManuPadrao in 'comum\UManuPadrao.pas' {xManuPadrao},
-  UP_contabancaria in 'financeiro\UP_contabancaria.pas' {P_contasbancarias},
   UTelaPadrao in 'comum\UTelaPadrao.pas' {xPesqPadrao},
+  UP_SolicitacaoCompra in 'compra\UP_SolicitacaoCompra.pas' {PSolicitacaoCompra},
+  UP_contabancaria in 'financeiro\UP_contabancaria.pas' {P_contasbancarias},
   UDM_financeiro in 'datamodulo\UDM_financeiro.pas' {DM_financeiro: TDataModule};
 
 {$R *.res}
@@ -99,8 +100,8 @@ begin
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
   Application.CreateForm(TDM_contasreceber, DM_contasreceber);
-  Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.CreateForm(TdmPedCompra, dmPedCompra);
+  Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.Run;
 end.
