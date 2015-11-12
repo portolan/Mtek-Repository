@@ -67,7 +67,6 @@ object DM_financeiro: TDM_financeiro
     end
   end
   object D_contasbancarias: TDataSource
-    DataSet = DM_contasreceber.contasreceber
     Left = 40
     Top = 80
   end
