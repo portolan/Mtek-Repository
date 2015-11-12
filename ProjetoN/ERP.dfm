@@ -1017,6 +1017,7 @@ object TelaInicial: TTelaInicial
   Menu = MainMenu1
   OldCreateOrder = False
   Position = poScreenCenter
+  ShowHint = False
   WindowState = wsMaximized
   OnClose = FormClose
   PixelsPerInch = 96
@@ -4490,8 +4491,8 @@ object TelaInicial: TTelaInicial
     Stretch = True
   end
   object MainMenu1: TMainMenu
-    Left = 576
-    Top = 256
+    Left = 736
+    Top = 280
     object Estoque1: TMenuItem
       Caption = 'Estoque'
       object ProdutosemEstoque1: TMenuItem

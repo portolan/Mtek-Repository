@@ -11,17 +11,6 @@ uses
 
 type
   TM_OP = class(TxManuPadrao)
-    pc_ordem: TPageControl;
-    TabSheet1: TTabSheet;
-    ts_aguardandoliberacao: TTabSheet;
-    ts_producao: TTabSheet;
-    ts_cancelada: TTabSheet;
-    ts_concluida: TTabSheet;
-    Button1: TButton;
-    gridLibercao: TDBGrid;
-    DBGrid2: TDBGrid;
-    DBGrid3: TDBGrid;
-    DBGrid4: TDBGrid;
     qLiberacao: TIBQuery;
     dsLiberacao: TDataSource;
     uLiberacao: TIBUpdateSQL;
@@ -34,7 +23,6 @@ type
     qLiberacaoOP_DT_PEDIDO: TDateField;
     qLiberacaoOP_DT_ENTREGA: TDateField;
     qLiberacaoOP_STATUS: TIBStringField;
-    qLiberacaoOP_COMPRAS: TIntegerField;
     qLiberacaoOP_COD: TIntegerField;
     qproducao: TIBQuery;
     IntegerField1: TIntegerField;
@@ -50,7 +38,6 @@ type
     IntegerField5: TIntegerField;
     uproducao: TIBUpdateSQL;
     dsproducao: TDataSource;
-    GroupBox1: TGroupBox;
     qcancelada: TIBQuery;
     IntegerField6: TIntegerField;
     IntegerField7: TIntegerField;
@@ -78,59 +65,23 @@ type
     IntegerField14: TIntegerField;
     IntegerField15: TIntegerField;
     ufechada: TIBUpdateSQL;
-    dsfechada: TDataSource;
-    sb_abrirOP: TSpeedButton;
-    PageControl1: TPageControl;
-    TabSheet2: TTabSheet;
-    TabSheet3: TTabSheet;
-    TabSheet4: TTabSheet;
-    db_producao: TDBGrid;
-    TabSheet5: TTabSheet;
-    DBGrid7: TDBGrid;
-    TabSheet6: TTabSheet;
-    DBGrid8: TDBGrid;
-    DateTimePicker1: TDateTimePicker;
-    TabSheet8: TTabSheet;
-    Label1: TLabel;
-    DBEdit2: TDBEdit;
-    DBEdit3: TDBEdit;
-    DBEdit4: TDBEdit;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    DBEdit5: TDBEdit;
-    DBEdit6: TDBEdit;
-    Label5: TLabel;
-    Label6: TLabel;
-    DBEdit7: TDBEdit;
-    Label7: TLabel;
-    DBEdit14: TDBEdit;
-    DBLookupComboBox1: TDBLookupComboBox;
-    DateTimePicker2: TDateTimePicker;
-    Label8: TLabel;
-    DBMemo2: TDBMemo;
-    Label16: TLabel;
-    Label15: TLabel;
+    Label9: TLabel;
+    DBEdit11: TDBEdit;
     DBEdit10: TDBEdit;
-    DBEdit1: TDBEdit;
+    Label15: TLabel;
     Label14: TLabel;
-    Label13: TLabel;
-    DBEdit9: TDBEdit;
-    Label10: TLabel;
-    DBLookupComboBox2: TDBLookupComboBox;
-    DateTimePicker3: TDateTimePicker;
-    Label11: TLabel;
-    DBEdit8: TDBEdit;
+    DBEdit1: TDBEdit;
     Label12: TLabel;
-    Label17: TLabel;
+    DBEdit8: TDBEdit;
     DBEdit12: TDBEdit;
+    Label17: TLabel;
     Label18: TLabel;
     DBEdit13: TDBEdit;
-    DBEdit11: TDBEdit;
+    DateTimePicker3: TDateTimePicker;
+    Label11: TLabel;
+    DBEdit9: TDBEdit;
+    Label13: TLabel;
     DBMemo1: TDBMemo;
-    DBGrid5: TDBGrid;
-    procedure bt_abriropClick(Sender: TObject);
-    procedure sb_abrirOPClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -147,44 +98,11 @@ implementation
 
 uses UDM_PCP, dm000, UEstoque;
 
-procedure TM_OP.bt_abriropClick(Sender: TObject);
-var
-    codLib, empLib : integer;
-    qryDin : TIBQuery;
-begin
-  inherited;
-     codLib := qLiberacaoOP_COD.AsInteger;
-     empLib := qLiberacaoOP_EMPRESA.AsInteger;
-
-     qryDin := funcCriaQuery;
-     qryDin.Close;
-     qryDin.SQL.Text := 'UPDATE ORDEM_PRODUCAO SET op_status = ''E'' where op_empresa = ' +
-                        IntToStr(empLib) + ' and op_codigo = ' + IntToStr(codLib);
-     qryDin.ExecSQL;
-
-
-end;
-
 procedure TM_OP.FormCreate(Sender: TObject);
 begin
   inherited;
-DBEdit7.Text:=DateToStr(date);
+  DBEdit13.Text:=DateToStr(date);
 end;
 
-procedure TM_OP.sb_abrirOPClick(Sender: TObject);
-var
-    codLib, empLib : integer;
-    qryDin : TIBQuery;
-begin
-  inherited;
-     codLib := qLiberacaoOP_COD.AsInteger;
-     empLib := qLiberacaoOP_EMPRESA.AsInteger;
-
-     qryDin := funcCriaQuery;
-     qryDin.Close;
-     qryDin.SQL.Text := 'UPDATE ORDEM_PRODUCAO SET op_status = ''E'' where op_empresa = ' +
-                     IntToStr(empLib) + 'and op_codigo =' + IntToStr(codLib);
-     qryDin.ExecSQL;
-end;
 
 end.

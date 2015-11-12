@@ -9,6 +9,8 @@ uses
 
 type
   TP_OP = class(TxPesqPadrao)
+    RadioButton1: TRadioButton;
+    RadioButton2: TRadioButton;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -38,7 +40,7 @@ begin
   inherited;
       procMontaWhere;
       DM_PCP.OrdemProducao.Close;
-      DM_PCP.OrdemProducao.SQL.Text:= 'SELECT * FROM ORDEM_PRODUCAO WHERE '+c_where;
+      DM_PCP.OrdemProducao.SQL.Text:= 'select * from ORDEM_PRODUCAO where '+c_where;
       DM_PCP.OrdemProducao.Open;
 end;
 
