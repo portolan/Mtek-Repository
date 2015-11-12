@@ -14,7 +14,7 @@ object dmBanco: TdmBanco
   end
   object Banco: TIBDatabase
     Connected = True
-    DatabaseName = '\\localhost\C:\Users\Paulo\Desktop\projeto\ERP.FDB'
+    DatabaseName = '\\localhost\C:\VAO_SE_FODEREM\ALTERA_ESSA_PORRA_SEM_RECLAMAR\CARAIO\ERP.FDB'
     Params.Strings = (
       'user_name=sysdba'
       'password=masterkey'
