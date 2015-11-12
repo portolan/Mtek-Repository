@@ -6,6 +6,7 @@ object DM_Estoque: TDM_Estoque
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = ProdutosAfterInsert
+    AfterPost = ProdutosAfterPost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -627,149 +628,6 @@ object DM_Estoque: TDM_Estoque
       Size = 400
     end
   end
-  object DSRelProdForn: TDataSource
-    DataSet = RelProdForn
-    Left = 224
-    Top = 64
-  end
-  object URelProdForn: TIBUpdateSQL
-    RefreshSQL.Strings = (
-      'Select '
-      '  RPF_EMPRESA,'
-      '  RPF_PRODUTO,'
-      '  RPF_PESSOA,'
-      '  RPF_CODREF,'
-      '  RPF_VLRBRUTO,'
-      '  RPF_PERCDESC,'
-      '  RPF_VLRDESC,'
-      '  RPF_VLRLIQUIDO,'
-      '  RPF_DTCOMPRA,'
-      '  RPF_CONTATO'
-      'from RELPRODFORN '
-      'where'
-      '  RPF_EMPRESA = :RPF_EMPRESA and'
-      '  RPF_PESSOA = :RPF_PESSOA and'
-      '  RPF_PRODUTO = :RPF_PRODUTO')
-    ModifySQL.Strings = (
-      'update RELPRODFORN'
-      'set'
-      '  RPF_CODREF = :RPF_CODREF,'
-      '  RPF_CONTATO = :RPF_CONTATO,'
-      '  RPF_DTCOMPRA = :RPF_DTCOMPRA,'
-      '  RPF_EMPRESA = :RPF_EMPRESA,'
-      '  RPF_PERCDESC = :RPF_PERCDESC,'
-      '  RPF_PESSOA = :RPF_PESSOA,'
-      '  RPF_PRODUTO = :RPF_PRODUTO,'
-      '  RPF_VLRBRUTO = :RPF_VLRBRUTO,'
-      '  RPF_VLRDESC = :RPF_VLRDESC,'
-      '  RPF_VLRLIQUIDO = :RPF_VLRLIQUIDO'
-      'where'
-      '  RPF_EMPRESA = :OLD_RPF_EMPRESA and'
-      '  RPF_PESSOA = :OLD_RPF_PESSOA and'
-      '  RPF_PRODUTO = :OLD_RPF_PRODUTO')
-    InsertSQL.Strings = (
-      'insert into RELPRODFORN'
-      
-        '  (RPF_CODREF, RPF_CONTATO, RPF_DTCOMPRA, RPF_EMPRESA, RPF_PERCD' +
-        'ESC, RPF_PESSOA, '
-      '   RPF_PRODUTO, RPF_VLRBRUTO, RPF_VLRDESC, RPF_VLRLIQUIDO)'
-      'values'
-      
-        '  (:RPF_CODREF, :RPF_CONTATO, :RPF_DTCOMPRA, :RPF_EMPRESA, :RPF_' +
-        'PERCDESC, '
-      
-        '   :RPF_PESSOA, :RPF_PRODUTO, :RPF_VLRBRUTO, :RPF_VLRDESC, :RPF_' +
-        'VLRLIQUIDO)')
-    DeleteSQL.Strings = (
-      'delete from RELPRODFORN'
-      'where'
-      '  RPF_EMPRESA = :OLD_RPF_EMPRESA and'
-      '  RPF_PESSOA = :OLD_RPF_PESSOA and'
-      '  RPF_PRODUTO = :OLD_RPF_PRODUTO')
-    Left = 224
-    Top = 120
-  end
-  object RelProdForn: TIBQuery
-    Database = dmBanco.Banco
-    Transaction = dmBanco.TBanco
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
-    SQL.Strings = (
-      'select * from RELPRODFORN'
-      '')
-    UpdateObject = URelProdForn
-    Left = 224
-    Top = 8
-    object RelProdFornRPF_EMPRESA: TIntegerField
-      DisplayLabel = 'Empresa'
-      FieldName = 'RPF_EMPRESA'
-      Origin = '"RELPRODFORN"."RPF_EMPRESA"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object RelProdFornRPF_PRODUTO: TIBStringField
-      DisplayLabel = 'Produto'
-      FieldName = 'RPF_PRODUTO'
-      Origin = '"RELPRODFORN"."RPF_PRODUTO"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-      Size = 120
-    end
-    object RelProdFornRPF_PESSOA: TIBStringField
-      DisplayLabel = 'Fornecedor'
-      FieldName = 'RPF_PESSOA'
-      Origin = '"RELPRODFORN"."RPF_PESSOA"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-      Size = 240
-    end
-    object RelProdFornRPF_CODREF: TIBStringField
-      DisplayLabel = 'C'#243'd. Refer'#234'ncia'
-      FieldName = 'RPF_CODREF'
-      Origin = '"RELPRODFORN"."RPF_CODREF"'
-      Size = 120
-    end
-    object RelProdFornRPF_VLRBRUTO: TIBBCDField
-      DisplayLabel = 'Vlr Bruto'
-      FieldName = 'RPF_VLRBRUTO'
-      Origin = '"RELPRODFORN"."RPF_VLRBRUTO"'
-      Precision = 18
-      Size = 2
-    end
-    object RelProdFornRPF_PERCDESC: TIBBCDField
-      DisplayLabel = '% Desconto'
-      FieldName = 'RPF_PERCDESC'
-      Origin = '"RELPRODFORN"."RPF_PERCDESC"'
-      Precision = 18
-      Size = 2
-    end
-    object RelProdFornRPF_VLRDESC: TIBBCDField
-      DisplayLabel = 'Vlr Desconto'
-      FieldName = 'RPF_VLRDESC'
-      Origin = '"RELPRODFORN"."RPF_VLRDESC"'
-      Precision = 18
-      Size = 2
-    end
-    object RelProdFornRPF_VLRLIQUIDO: TIBBCDField
-      DisplayLabel = 'Vlr L'#237'quido'
-      FieldName = 'RPF_VLRLIQUIDO'
-      Origin = '"RELPRODFORN"."RPF_VLRLIQUIDO"'
-      Precision = 18
-      Size = 2
-    end
-    object RelProdFornRPF_DTCOMPRA: TDateField
-      DisplayLabel = 'Dt. Compra'
-      FieldName = 'RPF_DTCOMPRA'
-      Origin = '"RELPRODFORN"."RPF_DTCOMPRA"'
-    end
-    object RelProdFornRPF_CONTATO: TIBStringField
-      DisplayLabel = 'Contato'
-      FieldName = 'RPF_CONTATO'
-      Origin = '"RELPRODFORN"."RPF_CONTATO"'
-      Size = 80
-    end
-  end
   object DSMovimentoEstoque: TDataSource
     DataSet = MovimentoEstoque
     Left = 320
@@ -983,6 +841,16 @@ object DM_Estoque: TDM_Estoque
       Origin = '"BLOCO"."BLOC_OBS"'
       Size = 100
     end
+    object BlocoBLOC_QTDMAXIMA: TIntegerField
+      DisplayLabel = 'Qtd M'#225'xima'
+      FieldName = 'BLOC_QTDMAXIMA'
+      Origin = '"BLOCO"."BLOC_QTDMAXIMA"'
+    end
+    object BlocoBLOC_CATEGORIA: TIntegerField
+      DisplayLabel = 'Categoria'
+      FieldName = 'BLOC_CATEGORIA'
+      Origin = '"BLOCO"."BLOC_CATEGORIA"'
+    end
   end
   object DSBloco: TDataSource
     DataSet = Bloco
@@ -991,7 +859,7 @@ object DM_Estoque: TDM_Estoque
   end
   object UBloco: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select '
+      'Select * '
       'from bloco '
       'where'
       '  BLOC_CODIGO = :BLOC_CODIGO and'
@@ -999,18 +867,26 @@ object DM_Estoque: TDM_Estoque
     ModifySQL.Strings = (
       'update bloco'
       'set'
+      '  BLOC_CATEGORIA = :BLOC_CATEGORIA,'
       '  BLOC_CODIGO = :BLOC_CODIGO,'
       '  BLOC_DESCRICAO = :BLOC_DESCRICAO,'
       '  BLOC_EMPRESA = :BLOC_EMPRESA,'
-      '  BLOC_OBS = :BLOC_OBS'
+      '  BLOC_OBS = :BLOC_OBS,'
+      '  BLOC_QTDMAXIMA = :BLOC_QTDMAXIMA'
       'where'
       '  BLOC_CODIGO = :OLD_BLOC_CODIGO and'
       '  BLOC_EMPRESA = :OLD_BLOC_EMPRESA')
     InsertSQL.Strings = (
       'insert into bloco'
-      '  (BLOC_CODIGO, BLOC_DESCRICAO, BLOC_EMPRESA, BLOC_OBS)'
+      
+        '  (BLOC_CATEGORIA, BLOC_CODIGO, BLOC_DESCRICAO, BLOC_EMPRESA, BL' +
+        'OC_OBS, '
+      '   BLOC_QTDMAXIMA)'
       'values'
-      '  (:BLOC_CODIGO, :BLOC_DESCRICAO, :BLOC_EMPRESA, :BLOC_OBS)')
+      
+        '  (:BLOC_CATEGORIA, :BLOC_CODIGO, :BLOC_DESCRICAO, :BLOC_EMPRESA' +
+        ', :BLOC_OBS, '
+      '   :BLOC_QTDMAXIMA)')
     DeleteSQL.Strings = (
       'delete from bloco'
       'where'
@@ -1021,29 +897,41 @@ object DM_Estoque: TDM_Estoque
   end
   object UPrateleira: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select *'
+      'Select * '
       'from prateleira '
       'where'
+      '  PRAT_BLOCO = :PRAT_BLOCO and'
       '  PRAT_CODIGO = :PRAT_CODIGO and'
       '  PRAT_EMPRESA = :PRAT_EMPRESA')
     ModifySQL.Strings = (
       'update prateleira'
       'set'
+      '  PRAT_BLOCO = :PRAT_BLOCO,'
+      '  PRAT_CATEGORIA = :PRAT_CATEGORIA,'
       '  PRAT_CODIGO = :PRAT_CODIGO,'
       '  PRAT_DESCRICAO = :PRAT_DESCRICAO,'
       '  PRAT_EMPRESA = :PRAT_EMPRESA,'
-      '  PRAT_OBS = :PRAT_OBS'
+      '  PRAT_OBS = :PRAT_OBS,'
+      '  PRAT_QTDMAXIMA = :PRAT_QTDMAXIMA'
       'where'
+      '  PRAT_BLOCO = :OLD_PRAT_BLOCO and'
       '  PRAT_CODIGO = :OLD_PRAT_CODIGO and'
       '  PRAT_EMPRESA = :OLD_PRAT_EMPRESA')
     InsertSQL.Strings = (
       'insert into prateleira'
-      '  (PRAT_CODIGO, PRAT_DESCRICAO, PRAT_EMPRESA, PRAT_OBS)'
+      
+        '  (PRAT_BLOCO, PRAT_CATEGORIA, PRAT_CODIGO, PRAT_DESCRICAO, PRAT' +
+        '_EMPRESA, '
+      '   PRAT_OBS, PRAT_QTDMAXIMA)'
       'values'
-      '  (:PRAT_CODIGO, :PRAT_DESCRICAO, :PRAT_EMPRESA, :PRAT_OBS)')
+      
+        '  (:PRAT_BLOCO, :PRAT_CATEGORIA, :PRAT_CODIGO, :PRAT_DESCRICAO, ' +
+        ':PRAT_EMPRESA, '
+      '   :PRAT_OBS, :PRAT_QTDMAXIMA)')
     DeleteSQL.Strings = (
       'delete from prateleira'
       'where'
+      '  PRAT_BLOCO = :OLD_PRAT_BLOCO and'
       '  PRAT_CODIGO = :OLD_PRAT_CODIGO and'
       '  PRAT_EMPRESA = :OLD_PRAT_EMPRESA')
     Left = 568
@@ -1094,6 +982,24 @@ object DM_Estoque: TDM_Estoque
       FieldName = 'PRAT_OBS'
       Origin = '"PRATELEIRA"."PRAT_OBS"'
       Size = 100
+    end
+    object PrateleiraPRAT_QTDMAXIMA: TIntegerField
+      DisplayLabel = 'Qtd M'#225'xima'
+      FieldName = 'PRAT_QTDMAXIMA'
+      Origin = '"PRATELEIRA"."PRAT_QTDMAXIMA"'
+    end
+    object PrateleiraPRAT_CATEGORIA: TIntegerField
+      DisplayLabel = 'Categoria'
+      FieldName = 'PRAT_CATEGORIA'
+      Origin = '"PRATELEIRA"."PRAT_CATEGORIA"'
+      Required = True
+    end
+    object PrateleiraPRAT_BLOCO: TIntegerField
+      DisplayLabel = 'Bloco'
+      FieldName = 'PRAT_BLOCO'
+      Origin = '"PRATELEIRA"."PRAT_BLOCO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
   end
   object MovimentoEstoque: TIBQuery

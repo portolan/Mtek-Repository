@@ -20,19 +20,6 @@ type
     MarcasMARC_CODIGO: TIntegerField;
     MarcasMARC_DESCRICAO: TIBStringField;
     MarcasMARC_OBS: TIBStringField;
-    DSRelProdForn: TDataSource;
-    URelProdForn: TIBUpdateSQL;
-    RelProdForn: TIBQuery;
-    RelProdFornRPF_EMPRESA: TIntegerField;
-    RelProdFornRPF_PRODUTO: TIBStringField;
-    RelProdFornRPF_PESSOA: TIBStringField;
-    RelProdFornRPF_CODREF: TIBStringField;
-    RelProdFornRPF_VLRBRUTO: TIBBCDField;
-    RelProdFornRPF_PERCDESC: TIBBCDField;
-    RelProdFornRPF_VLRDESC: TIBBCDField;
-    RelProdFornRPF_VLRLIQUIDO: TIBBCDField;
-    RelProdFornRPF_DTCOMPRA: TDateField;
-    RelProdFornRPF_CONTATO: TIBStringField;
     DSMovimentoEstoque: TDataSource;
     UMovimentoEstoque: TIBUpdateSQL;
     Categoria: TIBQuery;
@@ -135,6 +122,11 @@ type
     EstoqueBLOC_DESCRICAO: TIBStringField;
     EstoquePRAT_DESCRICAO: TIBStringField;
     EstoqueCAT_DESCRICAO: TIBStringField;
+    PrateleiraPRAT_QTDMAXIMA: TIntegerField;
+    BlocoBLOC_QTDMAXIMA: TIntegerField;
+    PrateleiraPRAT_CATEGORIA: TIntegerField;
+    BlocoBLOC_CATEGORIA: TIntegerField;
+    PrateleiraPRAT_BLOCO: TIntegerField;
     procedure ProdutosAfterInsert(DataSet: TDataSet);
     procedure EstoqueAfterInsert(DataSet: TDataSet);
     procedure MarcasAfterInsert(DataSet: TDataSet);
@@ -143,6 +135,7 @@ type
     procedure BlocoAfterInsert(DataSet: TDataSet);
     procedure PrateleiraAfterInsert(DataSet: TDataSet);
     procedure UnidadeAfterInsert(DataSet: TDataSet);
+    procedure ProdutosAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -196,6 +189,18 @@ end;
 procedure TDM_Estoque.ProdutosAfterInsert(DataSet: TDataSet);
 begin
     Produtos.FieldByName('PRO_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRODUTOS');
+end;
+
+procedure TDM_Estoque.ProdutosAfterPost(DataSet: TDataSet);
+begin
+    if MovimentoEstoqueEM_TIPO.AsString = 'E' then
+    begin
+        funcCalcCustoMedio(MovimentoEstoqueEM_EMPRESA.value,
+                           MovimentoEstoqueEM_PRODUTO.value,
+                           MovimentoEstoqueEM_BLOCO.value,
+                           MovimentoEstoqueEM_PRATELEIRA.value,
+                           MovimentoEstoqueEM_ESTOQUE.value);
+    end;
 end;
 
 procedure TDM_Estoque.UnidadeAfterInsert(DataSet: TDataSet);
