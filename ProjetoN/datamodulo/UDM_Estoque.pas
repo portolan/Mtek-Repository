@@ -65,19 +65,6 @@ type
     CategoriaCAT_DESCRICAO: TIBStringField;
     CategoriaCAT_NCM: TIBStringField;
     CategoriaCAT_OBS: TIBStringField;
-    MovimentoEstoque: TIBQuery;
-    MovimentoEstoqueEM_EMPRESA: TIntegerField;
-    MovimentoEstoqueEM_PRODUTO: TIBStringField;
-    MovimentoEstoqueEM_BLOCO: TIntegerField;
-    MovimentoEstoqueEM_PRATELEIRA: TIntegerField;
-    MovimentoEstoqueEM_ESTOQUE: TIntegerField;
-    MovimentoEstoqueEM_CODIGO: TIntegerField;
-    MovimentoEstoqueEM_TIPO: TIBStringField;
-    MovimentoEstoqueEM_QTD: TIBBCDField;
-    MovimentoEstoqueEM_DATA: TDateTimeField;
-    MovimentoEstoqueEM_OBS: TIBStringField;
-    MovimentoEstoqueEM_VALOR_FINANCEIRO: TIBBCDField;
-    MovimentoEstoqueEM_PEDIDOCOMPRAORIGEM: TIntegerField;
     Unidade: TIBQuery;
     DSUnidade: TDataSource;
     UUnidade: TIBUpdateSQL;
@@ -114,10 +101,6 @@ type
     EstoquePRO_DESCRICAO: TIBStringField;
     ProdutosEMP_RAZAO: TIBStringField;
     ProdutosCAT_DESCRICAO: TIBStringField;
-    MovimentoEstoquePRO_DESCRICAO: TIBStringField;
-    MovimentoEstoqueEMP_RAZAO: TIBStringField;
-    MovimentoEstoqueBLOC_DESCRICAO: TIBStringField;
-    MovimentoEstoquePRAT_DESCRICAO: TIBStringField;
     EstoqueEMP_RAZAO: TIBStringField;
     EstoqueBLOC_DESCRICAO: TIBStringField;
     EstoquePRAT_DESCRICAO: TIBStringField;
@@ -127,6 +110,23 @@ type
     PrateleiraPRAT_CATEGORIA: TIntegerField;
     BlocoBLOC_CATEGORIA: TIntegerField;
     PrateleiraPRAT_BLOCO: TIntegerField;
+    MovimentoEstoque: TIBQuery;
+    MovimentoEstoqueEM_EMPRESA: TIntegerField;
+    MovimentoEstoqueEM_PRODUTO: TIBStringField;
+    MovimentoEstoqueEM_BLOCO: TIntegerField;
+    MovimentoEstoqueEM_PRATELEIRA: TIntegerField;
+    MovimentoEstoqueEM_ESTOQUE: TIntegerField;
+    MovimentoEstoqueEM_CODIGO: TIntegerField;
+    MovimentoEstoqueEM_TIPO: TIBStringField;
+    MovimentoEstoqueEM_QTD: TIBBCDField;
+    MovimentoEstoqueEM_DATA: TDateTimeField;
+    MovimentoEstoqueEM_OBS: TIBStringField;
+    MovimentoEstoqueEM_VALOR_FINANCEIRO: TIBBCDField;
+    MovimentoEstoqueEM_PEDIDOCOMPRAORIGEM: TIntegerField;
+    MovimentoEstoquePRO_DESCRICAO: TIBStringField;
+    MovimentoEstoqueEMP_RAZAO: TIBStringField;
+    MovimentoEstoqueBLOC_DESCRICAO: TIBStringField;
+    MovimentoEstoquePRAT_DESCRICAO: TIBStringField;
     procedure ProdutosAfterInsert(DataSet: TDataSet);
     procedure EstoqueAfterInsert(DataSet: TDataSet);
     procedure MarcasAfterInsert(DataSet: TDataSet);
@@ -136,6 +136,8 @@ type
     procedure PrateleiraAfterInsert(DataSet: TDataSet);
     procedure UnidadeAfterInsert(DataSet: TDataSet);
     procedure ProdutosAfterPost(DataSet: TDataSet);
+    procedure PrateleiraAfterPost(DataSet: TDataSet);
+    procedure EstoqueAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -171,6 +173,33 @@ begin
     Estoque.FieldByName('ESTOQ_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQUE');
 end;
 
+procedure TDM_Estoque.EstoqueAfterPost(DataSet: TDataSet);
+var
+    qryDin : TIBQuery;
+    i_qtdMaxPrateleira : integer;
+begin
+    if Prateleira.State in [dsInsert] then
+    begin
+        qryDin := funcCriaQuery;
+        qryDin.Close;
+        qryDin.SQL.Text := 'select prat_qtdmaxima as qtdmax from prateleira where '+
+                           'prat_empresa = ' + EstoqueESTOQ_EMPRESA.AsString +
+                           ' and prat_bloco  = ' + EstoqueESTOQ_BLOCO.AsString +
+                           ' and prat_codigo = ' + EstoqueESTOQ_PRATELEIRA.AsString;
+        qryDin.Open;
+        i_qtdMaxPrateleira := qryDin.FieldByName('qtdmax').AsInteger;
+
+        if (funcContaEstoquePorPrateleira(EstoqueESTOQ_EMPRESA.Value,
+                                          EstoqueESTOQ_BLOCO.Value,
+                                          EstoqueESTOQ_PRATELEIRA.Value) > i_qtdMaxPrateleira) then
+        begin
+            raise Exception.Create('Quantidade Máxima de Produtos para esta prateleira obtidas!');
+            Estoque.Cancel;
+            Estoque.Transaction.Rollback;
+        end;
+    end;
+end;
+
 procedure TDM_Estoque.MarcasAfterInsert(DataSet: TDataSet);
 begin
     Marcas.FieldByName('MARC_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_MARCAS');
@@ -184,6 +213,31 @@ end;
 procedure TDM_Estoque.PrateleiraAfterInsert(DataSet: TDataSet);
 begin
     Prateleira.FieldByName('PRAT_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRATELEIRA');
+end;
+
+procedure TDM_Estoque.PrateleiraAfterPost(DataSet: TDataSet);
+var
+    qryDin : TIBQuery;
+    i_qtdMaxBloco : integer;
+begin
+    if Prateleira.State in [dsInsert] then
+    begin
+        qryDin := funcCriaQuery;
+        qryDin.Close;
+        qryDin.SQL.Text := 'select bloc_qtdmaxima as qtdmax from bloco where '+
+                           'bloc_empresa = ' + PrateleiraPRAT_EMPRESA.AsString +
+                           ' and bloc_codigo  = ' + PrateleiraPRAT_BLOCO.AsString;
+        qryDin.Open;
+        i_qtdMaxBloco := qryDin.FieldByName('qtdmax').AsInteger;
+
+        if (funcContaPrateleiraPorBloco(PrateleiraPRAT_EMPRESA.Value,
+                                    PrateleiraPRAT_BLOCO.Value) > i_qtdMaxBloco) then
+        begin
+            raise Exception.Create('Quantidade Máxima de Prateleiras para este bloco obtida!');
+            Prateleira.Cancel;
+            prateleira.Transaction.Rollback;
+        end;
+    end;
 end;
 
 procedure TDM_Estoque.ProdutosAfterInsert(DataSet: TDataSet);

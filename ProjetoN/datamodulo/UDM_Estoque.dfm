@@ -341,6 +341,7 @@ object DM_Estoque: TDM_Estoque
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = EstoqueAfterInsert
+    AfterPost = EstoqueAfterPost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -629,7 +630,6 @@ object DM_Estoque: TDM_Estoque
     end
   end
   object DSMovimentoEstoque: TDataSource
-    DataSet = MovimentoEstoque
     Left = 320
     Top = 64
   end
@@ -725,14 +725,12 @@ object DM_Estoque: TDM_Estoque
       FieldName = 'CAT_EMPRESA'
       Origin = '"CATEGORIA"."CAT_EMPRESA"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
     end
     object CategoriaCAT_CODIGO: TIntegerField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'CAT_CODIGO'
       Origin = '"CATEGORIA"."CAT_CODIGO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
     end
     object CategoriaCAT_DESCRICAO: TIBStringField
       DisplayLabel = 'Descri'#231#227'o'
@@ -946,6 +944,7 @@ object DM_Estoque: TDM_Estoque
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = PrateleiraAfterInsert
+    AfterPost = PrateleiraAfterPost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -1001,6 +1000,72 @@ object DM_Estoque: TDM_Estoque
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
+  end
+  object Unidade: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    AfterInsert = UnidadeAfterInsert
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from unidade'
+      ''
+      '')
+    UpdateObject = UUnidade
+    Left = 632
+    Top = 8
+    object UnidadeUN_CODIGO: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'UN_CODIGO'
+      Origin = '"UNIDADE"."UN_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object UnidadeUN_DESCRICAO: TIBStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'UN_DESCRICAO'
+      Origin = '"UNIDADE"."UN_DESCRICAO"'
+      Required = True
+      Size = 240
+    end
+    object UnidadeUN_OBS: TIBStringField
+      DisplayLabel = 'Observa'#231#245'es'
+      FieldName = 'UN_OBS'
+      Origin = '"UNIDADE"."UN_OBS"'
+      Size = 400
+    end
+  end
+  object DSUnidade: TDataSource
+    DataSet = Unidade
+    Left = 632
+    Top = 64
+  end
+  object UUnidade: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select *'
+      'from unidade '
+      'where'
+      '  UN_CODIGO = :UN_CODIGO')
+    ModifySQL.Strings = (
+      'update unidade'
+      'set'
+      '  UN_CODIGO = :UN_CODIGO,'
+      '  UN_DESCRICAO = :UN_DESCRICAO,'
+      '  UN_OBS = :UN_OBS'
+      'where'
+      '  UN_CODIGO = :OLD_UN_CODIGO')
+    InsertSQL.Strings = (
+      'insert into unidade'
+      '  (UN_CODIGO, UN_DESCRICAO, UN_OBS)'
+      'values'
+      '  (:UN_CODIGO, :UN_DESCRICAO, :UN_OBS)')
+    DeleteSQL.Strings = (
+      'delete from unidade'
+      'where'
+      '  UN_CODIGO = :OLD_UN_CODIGO')
+    Left = 632
+    Top = 120
   end
   object MovimentoEstoque: TIBQuery
     Database = dmBanco.Banco
@@ -1132,71 +1197,5 @@ object DM_Estoque: TDM_Estoque
       Origin = '"PRATELEIRA"."PRAT_DESCRICAO"'
       Size = 60
     end
-  end
-  object Unidade: TIBQuery
-    Database = dmBanco.Banco
-    Transaction = dmBanco.TBanco
-    AfterInsert = UnidadeAfterInsert
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
-    SQL.Strings = (
-      'select * from unidade'
-      ''
-      '')
-    UpdateObject = UUnidade
-    Left = 632
-    Top = 8
-    object UnidadeUN_CODIGO: TIntegerField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'UN_CODIGO'
-      Origin = '"UNIDADE"."UN_CODIGO"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object UnidadeUN_DESCRICAO: TIBStringField
-      DisplayLabel = 'Descri'#231#227'o'
-      FieldName = 'UN_DESCRICAO'
-      Origin = '"UNIDADE"."UN_DESCRICAO"'
-      Required = True
-      Size = 240
-    end
-    object UnidadeUN_OBS: TIBStringField
-      DisplayLabel = 'Observa'#231#245'es'
-      FieldName = 'UN_OBS'
-      Origin = '"UNIDADE"."UN_OBS"'
-      Size = 400
-    end
-  end
-  object DSUnidade: TDataSource
-    DataSet = Unidade
-    Left = 632
-    Top = 64
-  end
-  object UUnidade: TIBUpdateSQL
-    RefreshSQL.Strings = (
-      'Select *'
-      'from unidade '
-      'where'
-      '  UN_CODIGO = :UN_CODIGO')
-    ModifySQL.Strings = (
-      'update unidade'
-      'set'
-      '  UN_CODIGO = :UN_CODIGO,'
-      '  UN_DESCRICAO = :UN_DESCRICAO,'
-      '  UN_OBS = :UN_OBS'
-      'where'
-      '  UN_CODIGO = :OLD_UN_CODIGO')
-    InsertSQL.Strings = (
-      'insert into unidade'
-      '  (UN_CODIGO, UN_DESCRICAO, UN_OBS)'
-      'values'
-      '  (:UN_CODIGO, :UN_DESCRICAO, :UN_OBS)')
-    DeleteSQL.Strings = (
-      'delete from unidade'
-      'where'
-      '  UN_CODIGO = :OLD_UN_CODIGO')
-    Left = 632
-    Top = 120
   end
 end
