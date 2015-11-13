@@ -36,25 +36,6 @@ uses
   UP_empresa in 'contabil\UP_empresa.pas' {P_empresa},
   UP_historico in 'contabil\UP_historico.pas' {P_historico},
   R_contabil in 'contabil\R_contabil.pas' {REL_contabil},
-  UEstoque in 'Estoque\UEstoque.pas',
-  UM_Bloco in 'Estoque\UM_Bloco.pas' {MBloco},
-  UM_Categoria in 'Estoque\UM_Categoria.pas' {MCategoria},
-  UM_Estoque in 'Estoque\UM_Estoque.pas' {MEstoque},
-  UM_Marcas in 'Estoque\UM_Marcas.pas' {MMarcas},
-  UM_MovimentoEstoque in 'Estoque\UM_MovimentoEstoque.pas' {MMovimentoEstoque},
-  UM_Prateleira in 'Estoque\UM_Prateleira.pas' {MPrateleira},
-  UM_Produto in 'Estoque\UM_Produto.pas' {MProduto},
-  UM_Unidade in 'Estoque\UM_Unidade.pas' {MUnidade},
-  UP_Bloco in 'Estoque\UP_Bloco.pas' {PBloco},
-  UP_Categoria in 'Estoque\UP_Categoria.pas' {PCategoria},
-  UP_Estoque in 'Estoque\UP_Estoque.pas' {PEstoque},
-  UP_Marcas in 'Estoque\UP_Marcas.pas' {PMarcas},
-  UP_MovimentoEstoque in 'Estoque\UP_MovimentoEstoque.pas' {PMovimentoEstoque},
-  UP_Prateleira in 'Estoque\UP_Prateleira.pas' {PPrateleira},
-  UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
-  UP_Unidade in 'Estoque\UP_Unidade.pas' {PUnidade},
-  UR_EstoqueRelatorios in 'Estoque\UR_EstoqueRelatorios.pas' {EstoqueRelatorios: TDataModule},
-  UR_Relatorios in 'Estoque\UR_Relatorios.pas' {DataModule1: TDataModule},
   UM_caixa in 'Caixa\UM_caixa.pas' {M_caixa},
   UP_Caixa in 'Caixa\UP_Caixa.pas' {P_caixa},
   UDM_Caixa in 'datamodulo\UDM_Caixa.pas' {DM_caixa: TDataModule},
@@ -63,7 +44,6 @@ uses
   UDM_contasreceber in 'datamodulo\UDM_contasreceber.pas' {DM_contasreceber: TDataModule},
   Vcl.Themes,
   Vcl.Styles,
-  UF_EstoqueRelatorios in 'Estoque\UF_EstoqueRelatorios.pas' {FEstoqueRelatorios},
   UP_FichaTecnica in 'pcp\UP_FichaTecnica.pas' {P_FichaTecnica},
   UM_FichaTecnica in 'pcp\UM_FichaTecnica.pas' {M_FichaTecnica},
   UDM_PedCompra in 'datamodulo\UDM_PedCompra.pas' {dmPedCompra: TDataModule},
@@ -83,7 +63,27 @@ uses
   UManuPadrao in 'comum\UManuPadrao.pas' {xManuPadrao},
   UTelaPadrao in 'comum\UTelaPadrao.pas' {xPesqPadrao},
   UP_contabancaria in 'financeiro\UP_contabancaria.pas' {P_contasbancarias},
-  UDM_financeiro in 'datamodulo\UDM_financeiro.pas' {DM_financeiro: TDataModule};
+  UDM_financeiro in 'datamodulo\UDM_financeiro.pas' {DM_financeiro: TDataModule},
+  UEstoque in 'Estoque\UEstoque.pas',
+  UF_EstoqueRelatorios in 'Estoque\UF_EstoqueRelatorios.pas' {FEstoqueRelatorios},
+  UM_Bloco in 'Estoque\UM_Bloco.pas' {MBloco},
+  UM_Categoria in 'Estoque\UM_Categoria.pas' {MCategoria},
+  UM_Estoque in 'Estoque\UM_Estoque.pas' {MEstoque},
+  UM_Marcas in 'Estoque\UM_Marcas.pas' {MMarcas},
+  UM_MovimentoEstoque in 'Estoque\UM_MovimentoEstoque.pas' {MMovimentoEstoque},
+  UM_Prateleira in 'Estoque\UM_Prateleira.pas' {MPrateleira},
+  UM_Produto in 'Estoque\UM_Produto.pas' {MProduto},
+  UM_Unidade in 'Estoque\UM_Unidade.pas' {MUnidade},
+  UP_Bloco in 'Estoque\UP_Bloco.pas' {PBloco},
+  UP_Categoria in 'Estoque\UP_Categoria.pas' {PCategoria},
+  UP_Estoque in 'Estoque\UP_Estoque.pas' {PEstoque},
+  UP_Marcas in 'Estoque\UP_Marcas.pas' {PMarcas},
+  UP_MovimentoEstoque in 'Estoque\UP_MovimentoEstoque.pas' {PMovimentoEstoque},
+  UP_Prateleira in 'Estoque\UP_Prateleira.pas' {PPrateleira},
+  UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
+  UP_Unidade in 'Estoque\UP_Unidade.pas' {PUnidade},
+  UR_EstoqueRelatorios in 'Estoque\UR_EstoqueRelatorios.pas' {EstoqueRelatorios: TDataModule},
+  UR_Relatorios in 'Estoque\UR_Relatorios.pas' {DataModule1: TDataModule};
 
 {$R *.res}
 
@@ -104,5 +104,24 @@ begin
   Application.CreateForm(TDM_caixa, DM_caixa);
   Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.CreateForm(TTelaInicial, TelaInicial);
+  Application.CreateForm(TFEstoqueRelatorios, FEstoqueRelatorios);
+  Application.CreateForm(TMBloco, MBloco);
+  Application.CreateForm(TMCategoria, MCategoria);
+  Application.CreateForm(TMEstoque, MEstoque);
+  Application.CreateForm(TMMarcas, MMarcas);
+  Application.CreateForm(TMMovimentoEstoque, MMovimentoEstoque);
+  Application.CreateForm(TMPrateleira, MPrateleira);
+  Application.CreateForm(TMProduto, MProduto);
+  Application.CreateForm(TMUnidade, MUnidade);
+  Application.CreateForm(TPBloco, PBloco);
+  Application.CreateForm(TPCategoria, PCategoria);
+  Application.CreateForm(TPEstoque, PEstoque);
+  Application.CreateForm(TPMarcas, PMarcas);
+  Application.CreateForm(TPMovimentoEstoque, PMovimentoEstoque);
+  Application.CreateForm(TPPrateleira, PPrateleira);
+  Application.CreateForm(TPProduto, PProduto);
+  Application.CreateForm(TPUnidade, PUnidade);
+  Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
+  Application.CreateForm(TDataModule1, DataModule1);
   Application.Run;
 end.

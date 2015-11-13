@@ -199,81 +199,6 @@
             <Form>REL_contabil</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Estoque\UEstoque.pas"/>
-        <DCCReference Include="Estoque\UM_Bloco.pas">
-            <Form>MBloco</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_Categoria.pas">
-            <Form>MCategoria</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_Estoque.pas">
-            <Form>MEstoque</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_Marcas.pas">
-            <Form>MMarcas</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_MovimentoEstoque.pas">
-            <Form>MMovimentoEstoque</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_Prateleira.pas">
-            <Form>MPrateleira</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_Produto.pas">
-            <Form>MProduto</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UM_Unidade.pas">
-            <Form>MUnidade</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Bloco.pas">
-            <Form>PBloco</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Categoria.pas">
-            <Form>PCategoria</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Estoque.pas">
-            <Form>PEstoque</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Marcas.pas">
-            <Form>PMarcas</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_MovimentoEstoque.pas">
-            <Form>PMovimentoEstoque</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Prateleira.pas">
-            <Form>PPrateleira</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Produto.pas">
-            <Form>PProduto</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UP_Unidade.pas">
-            <Form>PUnidade</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Estoque\UR_EstoqueRelatorios.pas">
-            <Form>EstoqueRelatorios</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Estoque\UR_Relatorios.pas">
-            <Form>DataModule1</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="Caixa\UM_caixa.pas">
             <Form>M_caixa</Form>
             <FormType>dfm</FormType>
@@ -299,10 +224,6 @@
             <Form>DM_contasreceber</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="Estoque\UF_EstoqueRelatorios.pas">
-            <Form>FEstoqueRelatorios</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="pcp\UP_FichaTecnica.pas">
             <Form>P_FichaTecnica</Form>
@@ -384,6 +305,85 @@
         </DCCReference>
         <DCCReference Include="datamodulo\UDM_financeiro.pas">
             <Form>DM_financeiro</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Estoque\UEstoque.pas"/>
+        <DCCReference Include="Estoque\UF_EstoqueRelatorios.pas">
+            <Form>FEstoqueRelatorios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Bloco.pas">
+            <Form>MBloco</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Categoria.pas">
+            <Form>MCategoria</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Estoque.pas">
+            <Form>MEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Marcas.pas">
+            <Form>MMarcas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_MovimentoEstoque.pas">
+            <Form>MMovimentoEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Prateleira.pas">
+            <Form>MPrateleira</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Produto.pas">
+            <Form>MProduto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UM_Unidade.pas">
+            <Form>MUnidade</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Bloco.pas">
+            <Form>PBloco</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Categoria.pas">
+            <Form>PCategoria</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Estoque.pas">
+            <Form>PEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Marcas.pas">
+            <Form>PMarcas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_MovimentoEstoque.pas">
+            <Form>PMovimentoEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Prateleira.pas">
+            <Form>PPrateleira</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Produto.pas">
+            <Form>PProduto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UP_Unidade.pas">
+            <Form>PUnidade</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Estoque\UR_EstoqueRelatorios.pas">
+            <Form>EstoqueRelatorios</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Estoque\UR_Relatorios.pas">
+            <Form>DataModule1</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
