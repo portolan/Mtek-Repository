@@ -1093,7 +1093,7 @@ object DM_Estoque: TDM_Estoque
         'inner join prateleira on prat_codigo = em_prateleira and prat_em' +
         'presa = em_empresa')
     UpdateObject = UMovimentoEstoque
-    Left = 320
+    Left = 328
     Top = 8
     object MovimentoEstoqueEM_EMPRESA: TIntegerField
       DisplayLabel = 'Empresa'

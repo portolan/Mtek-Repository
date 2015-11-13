@@ -184,6 +184,7 @@ end;
 
 procedure TDM_Estoque.EstoqueBeforePost(DataSet: TDataSet);
 begin
+    DM_Estoque.Estoque.FieldByName('ESTOQ_DTCADASTRO').Value := Date;
     DM_Estoque.Estoque.FieldByName('ESTOQ_QTD').Value := Abs(DM_Estoque.Estoque.FieldByName('ESTOQ_QTD').AsFloat);
     DM_Estoque.Estoque.FieldByName('ESTOQ_QTDMAX').Value := Abs(DM_Estoque.Estoque.FieldByName('ESTOQ_QTDMAX').AsFloat);
     DM_Estoque.Estoque.FieldByName('ESTOQ_QTDMIN').Value := Abs(DM_Estoque.Estoque.FieldByName('ESTOQ_QTDMIN').AsFloat);
@@ -202,6 +203,7 @@ end;
 procedure TDM_Estoque.MovimentoEstoqueBeforePost(DataSet: TDataSet);
 begin
     DM_Estoque.MovimentoEstoque.FieldByName('EM_QTD').Value := Abs(DM_Estoque.MovimentoEstoque.FieldByName('EM_QTD').AsFloat);
+    DM_Estoque.MovimentoEstoque.FieldByName('EM_DATA').Value := Now;
 end;
 
 procedure TDM_Estoque.PrateleiraAfterInsert(DataSet: TDataSet);
@@ -233,6 +235,7 @@ end;
 
 procedure TDM_Estoque.ProdutosBeforePost(DataSet: TDataSet);
 begin
+    DM_Estoque.Estoque.FieldByName('PRO_DTCADASTRO').Value := Date;
     DM_Estoque.Produtos.FieldByName('PRO_PESO').Value := Abs(DM_Estoque.Produtos.FieldByName('PRO_PESO').AsFloat);
     DM_Estoque.Produtos.FieldByName('PRO_VLRFRETE').Value := Abs(DM_Estoque.Produtos.FieldByName('PRO_VLRFRETE').AsFloat);
     DM_Estoque.Produtos.FieldByName('PRO_VLRVENDA').Value := Abs(DM_Estoque.Produtos.FieldByName('PRO_VLRVENDA').AsFloat);
