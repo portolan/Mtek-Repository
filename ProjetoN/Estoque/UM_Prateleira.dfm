@@ -2,7 +2,6 @@ inherited MPrateleira: TMPrateleira
   Caption = 'MPrateleira'
   ClientWidth = 747
   ExplicitWidth = 763
-  ExplicitHeight = 320
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnRodape: TPanel

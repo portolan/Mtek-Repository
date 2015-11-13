@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Mask;
+  Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Mask, Data.DB;
 
 type
   TMPrateleira = class(TxManuPadrao)
@@ -81,6 +81,22 @@ begin
     DM_contabil.empresa.SQL.Text := 'select * from empresa';
     DM_contabil.empresa.Open;
     DM_contabil.empresa.FetchAll;
+
+    if DM_Estoque.Prateleira.State in [dsEdit] then
+    begin
+        DM_Estoque.Bloco.Close;
+        DM_Estoque.Bloco.SQL.Text := 'select * from bloco where bloc_empresa = ' +
+                                      DM_Estoque.PrateleiraPRAT_EMPRESA.AsString;
+        DM_Estoque.Bloco.Open;
+        DM_Estoque.Bloco.FetchAll;
+
+        DM_Estoque.Categoria.Close;
+        DM_Estoque.Categoria.SQL.Text := 'select * from categoria where cat_empresa = ' +
+                                      DM_Estoque.PrateleiraPRAT_EMPRESA.AsString;
+        DM_Estoque.Categoria.Open;
+        DM_Estoque.Categoria.FetchAll;
+    end;
+
 
 end;
 

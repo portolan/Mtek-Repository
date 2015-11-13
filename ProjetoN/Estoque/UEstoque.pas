@@ -7,6 +7,9 @@ uses System.SysUtils, System.Variants, System.Classes, Data.DB, IBX.IBCustomData
 function funcBaixaEstoque(codEmpresa:integer; codProduto:String; codBloco, codPrateleira, codEstoque: integer; qtd:double; tipo: String): Boolean;
 function funcVerificaEstoque(codEmpresa : integer; codProduto : String; qtd : double; var codBloco, codPrateleira, codEstoque : integer):double;
 function funcCalcCustoMedio(codEmpresa:integer; codProduto:String; codBloco, codPrateleira, codEstoque: integer):double;
+function funcContaBloco(codEmpresa, codBloco : integer):integer;
+function funcContaPrateleiraPorBloco(codEmpresa, codBloco : integer):integer;
+function funcContaEstoquePorPrateleira(codEmpresa, codBloco, codPrateleira : integer):integer;
 function funcCriaQuery:TIBQuery;
 
 implementation
@@ -170,6 +173,50 @@ begin
     except on E: Exception do
         raise Exception.Create('Não foi possível Calcular Custo Médio!');
     end;
+end;
+
+function funcContaBloco(codEmpresa, codBloco : integer):integer;
+var
+    qryDin : TIBQuery;
+begin
+    qryDin := funcCriaQuery;
+    qryDin.Close;
+    qryDin.SQL.Text := 'select count(1) as qtd from estoque where '+
+                       'estoque_empresa = :codEmpresa and estoq_bloco = :codBloco';
+    qryDin.ParamByName('codEmpresa').Value := codEmpresa;
+    qryDin.ParamByName('codBloco').Value   := codBloco;
+    qryDin.Open;
+    Result := qryDin.FieldByName('qtd').AsInteger;
+end;
+
+function funcContaPrateleiraPorBloco(codEmpresa, codBloco : integer):integer;
+var
+    qryDin : TIBQuery;
+begin
+    qryDin := funcCriaQuery;
+    qryDin.Close;
+    qryDin.SQL.Text := 'select count(1) as qtd from prateleira where '+
+                       'prat_empresa = :codEmpresa and prat_bloco = :codBloco';
+    qryDin.ParamByName('codEmpresa').Value   := codEmpresa;
+    qryDin.ParamByName('codBloco').Value     := codBloco;
+    qryDin.Open;
+    Result := qryDin.FieldByName('qtd').AsInteger;
+end;
+
+function funcContaEstoquePorPrateleira(codEmpresa, codBloco, codPrateleira : integer):integer;
+var
+    qryDin : TIBQuery;
+begin
+    qryDin := funcCriaQuery;
+    qryDin.Close;
+    qryDin.SQL.Text := 'select count(1) as qtd from estoque where '+
+                       'estoq_empresa = :codEmpresa and estoq_bloco = :codBloco '+
+                       ' and estoq_prateleira = :codPrateleira';
+    qryDin.ParamByName('codEmpresa').Value    := codEmpresa;
+    qryDin.ParamByName('codBloco').Value      := codBloco;
+    qryDin.ParamByName('codPrateleira').Value := codPrateleira;
+    qryDin.Open;
+    Result := qryDin.FieldByName('qtd').AsInteger;
 end;
 
 function funcCriaQuery: TIBQuery;

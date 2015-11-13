@@ -16,7 +16,6 @@ type
     Label6: TLabel;
     Label7: TLabel;
     Label8: TLabel;
-    Label10: TLabel;
     Label12: TLabel;
     Label14: TLabel;
     SpeedButton1: TSpeedButton;
@@ -25,13 +24,13 @@ type
     Label3: TLabel;
     Label17: TLabel;
     Label1: TLabel;
+    Label16: TLabel;
+    Label15: TLabel;
+    SpeedButton2: TSpeedButton;
     DBEdit1: TDBEdit;
     DBEdit16: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
-    Label16: TLabel;
     DBLookupComboBox2: TDBLookupComboBox;
-    Label15: TLabel;
-    SpeedButton2: TSpeedButton;
     editProduto: TEdit;
     DBEdit5: TDBEdit;
     DBEdit6: TDBEdit;
@@ -39,9 +38,10 @@ type
     DBEdit8: TDBEdit;
     DBEdit12: TDBEdit;
     ComboBox1: TComboBox;
-    DBLookupComboBox3: TDBLookupComboBox;
     DBEdit2: TDBEdit;
     DBMemo1: TDBMemo;
+    Label9: TLabel;
+    editCategoria: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -51,6 +51,7 @@ type
     procedure editProdutoEnter(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure DBLookupComboBox2Enter(Sender: TObject);
+    procedure DBLookupComboBox1Enter(Sender: TObject);
   private
 
     { Private declarations }
@@ -80,6 +81,13 @@ begin
         DM_Estoque.EstoqueESTOQ_STATUS.Value := 'I';
 end;
 
+procedure TMEstoque.DBLookupComboBox1Enter(Sender: TObject);
+begin
+  inherited;
+    if DM_Estoque.Bloco.IsEmpty then
+        raise Exception.Create('Erro - Verifique se existe bloco para comportar este produto!');
+end;
+
 procedure TMEstoque.DBLookupComboBox2Enter(Sender: TObject);
 begin
   inherited;
@@ -88,12 +96,21 @@ begin
         DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira where prat_empresa = ' +
                                            DM_Estoque.EstoqueESTOQ_EMPRESA.AsString +
                                            ' and prat_bloco = ' +
-                                           DM_Estoque.EstoqueESTOQ_BLOCO.AsString;
+                                           DM_Estoque.EstoqueESTOQ_BLOCO.AsString +
+                                           ' and prat_categoria = ' +
+                                           DM_Estoque.ProdutosPRO_CATEGORIA.AsString;
         DM_Estoque.Prateleira.Open;
         DM_Estoque.Prateleira.FetchAll;
+
+
     except on E: Exception do
-        ShowMessage('Erro!! Verifique se está selecionado o bloco!');
+        raise Exception.Create('Erro - Soluções : ' + sLineBreak +
+                                   '1 - Verifique se a categoria deste produto se enquadra nesta Prateleira!' + sLineBreak +
+                                   '2 - Verifique se existem Prateleiras cadastradas' + sLineBreak +
+                                   '3 - Verifique se está selecionado o Bloco!');
     end;
+
+
 end;
 
 procedure TMEstoque.editProdutoEnter(Sender: TObject);
@@ -112,6 +129,7 @@ begin
         finally
             DM_Estoque.EstoqueESTOQ_PRODUTO.Value := DM_Estoque.Produtos.FieldByName('pro_codigo').AsString;
             DM_Estoque.EstoqueESTOQ_EMPRESA.value := DM_Estoque.Produtos.FieldByName('pro_empresa').AsInteger;
+            DM_Estoque.EstoqueESTOQ_CATEGORIA.Value := DM_Estoque.Produtos.FieldByName('pro_categoria').AsInteger;
             editProduto.Text := DM_Estoque.Produtos.FieldByName('PRO_DESCRICAO').AsString;
 
             if DM_Estoque.Estoque.State in [dsEdit, dsInsert] then
@@ -148,10 +166,13 @@ begin
     DM_Estoque.Bloco.Open;
     DM_Estoque.Bloco.FetchAll;
 
+    {pau}
     DM_Estoque.Categoria.Close;
-    DM_Estoque.Categoria.SQL.Text := 'select * from categoria where cat_empresa = ' + DM_Estoque.EstoqueESTOQ_EMPRESA.AsString;
+    DM_Estoque.Categoria.SQL.Text := 'select cat_descricao from categoria where ' +
+                                     ' cat_empresa = '    + DM_Estoque.ProdutosPRO_EMPRESA.AsString +
+                                     ' and cat_codigo = ' + DM_Estoque.ProdutosPRO_CATEGORIA.AsString;
     DM_Estoque.Categoria.Open;
-    DM_Estoque.Categoria.FetchAll;
+    editCategoria.Text := DM_Estoque.Produtos.FieldByName('cat_descricao').AsString;
 
     qryDin := funcCriaQuery;
     qryDin.Close;
