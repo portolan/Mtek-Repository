@@ -141,7 +141,8 @@ type
   private
     { Private declarations }
   public
-
+    procedure procEstoqueVerificaPrateleiras;
+    procedure procPrateleiraVerificaBlocos;
   end;
 
 var
@@ -174,6 +175,55 @@ begin
 end;
 
 procedure TDM_Estoque.EstoqueAfterPost(DataSet: TDataSet);
+begin
+    procEstoqueVerificaPrateleiras;
+
+
+end;
+
+procedure TDM_Estoque.MarcasAfterInsert(DataSet: TDataSet);
+begin
+    Marcas.FieldByName('MARC_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_MARCAS');
+end;
+
+procedure TDM_Estoque.MovimentoEstoqueAfterInsert(DataSet: TDataSet);
+begin
+    MovimentoEstoque.FieldByName('EM_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQ_MOVIMENTO');
+end;
+
+procedure TDM_Estoque.PrateleiraAfterInsert(DataSet: TDataSet);
+begin
+    Prateleira.FieldByName('PRAT_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRATELEIRA');
+end;
+
+procedure TDM_Estoque.PrateleiraAfterPost(DataSet: TDataSet);
+begin
+    procPrateleiraVerificaBlocos;
+end;
+
+procedure TDM_Estoque.ProdutosAfterInsert(DataSet: TDataSet);
+begin
+    Produtos.FieldByName('PRO_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRODUTOS');
+end;
+
+procedure TDM_Estoque.ProdutosAfterPost(DataSet: TDataSet);
+begin
+    if MovimentoEstoqueEM_TIPO.AsString = 'E' then
+    begin
+        funcCalcCustoMedio(MovimentoEstoqueEM_EMPRESA.value,
+                           MovimentoEstoqueEM_PRODUTO.value,
+                           MovimentoEstoqueEM_BLOCO.value,
+                           MovimentoEstoqueEM_PRATELEIRA.value,
+                           MovimentoEstoqueEM_ESTOQUE.value);
+    end;
+end;
+
+procedure TDM_Estoque.UnidadeAfterInsert(DataSet: TDataSet);
+begin
+    Unidade.FieldByName('UN_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_UNIDADE');
+end;
+
+procedure TDM_Estoque.procEstoqueVerificaPrateleiras;
 var
     qryDin : TIBQuery;
     i_qtdMaxPrateleira : integer;
@@ -200,22 +250,7 @@ begin
     end;
 end;
 
-procedure TDM_Estoque.MarcasAfterInsert(DataSet: TDataSet);
-begin
-    Marcas.FieldByName('MARC_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_MARCAS');
-end;
-
-procedure TDM_Estoque.MovimentoEstoqueAfterInsert(DataSet: TDataSet);
-begin
-    MovimentoEstoque.FieldByName('EM_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQ_MOVIMENTO');
-end;
-
-procedure TDM_Estoque.PrateleiraAfterInsert(DataSet: TDataSet);
-begin
-    Prateleira.FieldByName('PRAT_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRATELEIRA');
-end;
-
-procedure TDM_Estoque.PrateleiraAfterPost(DataSet: TDataSet);
+procedure TDM_Estoque.procPrateleiraVerificaBlocos;
 var
     qryDin : TIBQuery;
     i_qtdMaxBloco : integer;
@@ -240,26 +275,5 @@ begin
     end;
 end;
 
-procedure TDM_Estoque.ProdutosAfterInsert(DataSet: TDataSet);
-begin
-    Produtos.FieldByName('PRO_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRODUTOS');
-end;
-
-procedure TDM_Estoque.ProdutosAfterPost(DataSet: TDataSet);
-begin
-    if MovimentoEstoqueEM_TIPO.AsString = 'E' then
-    begin
-        funcCalcCustoMedio(MovimentoEstoqueEM_EMPRESA.value,
-                           MovimentoEstoqueEM_PRODUTO.value,
-                           MovimentoEstoqueEM_BLOCO.value,
-                           MovimentoEstoqueEM_PRATELEIRA.value,
-                           MovimentoEstoqueEM_ESTOQUE.value);
-    end;
-end;
-
-procedure TDM_Estoque.UnidadeAfterInsert(DataSet: TDataSet);
-begin
-    Unidade.FieldByName('UN_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_UNIDADE');
-end;
-
 end.
+

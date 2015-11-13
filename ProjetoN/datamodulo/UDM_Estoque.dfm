@@ -630,7 +630,8 @@ object DM_Estoque: TDM_Estoque
     end
   end
   object DSMovimentoEstoque: TDataSource
-    Left = 320
+    DataSet = MovimentoEstoque
+    Left = 328
     Top = 64
   end
   object UMovimentoEstoque: TIBUpdateSQL
