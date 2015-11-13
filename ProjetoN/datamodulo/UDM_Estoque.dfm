@@ -7,6 +7,7 @@ object DM_Estoque: TDM_Estoque
     Transaction = dmBanco.TBanco
     AfterInsert = ProdutosAfterInsert
     AfterPost = ProdutosAfterPost
+    BeforePost = ProdutosBeforePost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -342,6 +343,7 @@ object DM_Estoque: TDM_Estoque
     Transaction = dmBanco.TBanco
     AfterInsert = EstoqueAfterInsert
     AfterPost = EstoqueAfterPost
+    BeforePost = EstoqueBeforePost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -350,8 +352,8 @@ object DM_Estoque: TDM_Estoque
         'select a.*, pro_descricao, emp_razao, bloc_descricao, prat_descr' +
         'icao, cat_descricao from estoque a'
       
-        'inner join produtos on estoq_empresa = pro_empresa and estoq_pro' +
-        'duto = pro_codigo'
+        'left join produtos on estoq_empresa = pro_empresa and estoq_prod' +
+        'uto = pro_codigo'
       'inner join empresa on emp_cod = pro_empresa'
       
         'inner join bloco on estoq_bloco = bloc_codigo and estoq_empresa ' +
@@ -360,8 +362,8 @@ object DM_Estoque: TDM_Estoque
         'inner join prateleira on estoq_prateleira = prat_codigo and esto' +
         'q_empresa = prat_empresa'
       
-        'left join categoria on estoq_categoria = cat_codigo and estoq_em' +
-        'presa = cat_empresa')
+        'inner join categoria on estoq_categoria = cat_codigo and estoq_e' +
+        'mpresa = cat_empresa')
     UpdateObject = UuEstoque
     Left = 88
     Top = 8
@@ -1072,6 +1074,7 @@ object DM_Estoque: TDM_Estoque
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = MovimentoEstoqueAfterInsert
+    BeforePost = MovimentoEstoqueBeforePost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True

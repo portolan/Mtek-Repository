@@ -138,6 +138,9 @@ type
     procedure ProdutosAfterPost(DataSet: TDataSet);
     procedure PrateleiraAfterPost(DataSet: TDataSet);
     procedure EstoqueAfterPost(DataSet: TDataSet);
+    procedure MovimentoEstoqueBeforePost(DataSet: TDataSet);
+    procedure ProdutosBeforePost(DataSet: TDataSet);
+    procedure EstoqueBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -177,8 +180,13 @@ end;
 procedure TDM_Estoque.EstoqueAfterPost(DataSet: TDataSet);
 begin
     procEstoqueVerificaPrateleiras;
+end;
 
-
+procedure TDM_Estoque.EstoqueBeforePost(DataSet: TDataSet);
+begin
+    DM_Estoque.Estoque.FieldByName('ESTOQ_QTD').Value := Abs(DM_Estoque.Estoque.FieldByName('ESTOQ_QTD').AsFloat);
+    DM_Estoque.Estoque.FieldByName('ESTOQ_QTDMAX').Value := Abs(DM_Estoque.Estoque.FieldByName('ESTOQ_QTDMAX').AsFloat);
+    DM_Estoque.Estoque.FieldByName('ESTOQ_QTDMIN').Value := Abs(DM_Estoque.Estoque.FieldByName('ESTOQ_QTDMIN').AsFloat);
 end;
 
 procedure TDM_Estoque.MarcasAfterInsert(DataSet: TDataSet);
@@ -189,6 +197,11 @@ end;
 procedure TDM_Estoque.MovimentoEstoqueAfterInsert(DataSet: TDataSet);
 begin
     MovimentoEstoque.FieldByName('EM_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQ_MOVIMENTO');
+end;
+
+procedure TDM_Estoque.MovimentoEstoqueBeforePost(DataSet: TDataSet);
+begin
+    DM_Estoque.MovimentoEstoque.FieldByName('EM_QTD').Value := Abs(DM_Estoque.MovimentoEstoque.FieldByName('EM_QTD').AsFloat);
 end;
 
 procedure TDM_Estoque.PrateleiraAfterInsert(DataSet: TDataSet);
@@ -216,6 +229,13 @@ begin
                            MovimentoEstoqueEM_PRATELEIRA.value,
                            MovimentoEstoqueEM_ESTOQUE.value);
     end;
+end;
+
+procedure TDM_Estoque.ProdutosBeforePost(DataSet: TDataSet);
+begin
+    DM_Estoque.Produtos.FieldByName('PRO_PESO').Value := Abs(DM_Estoque.Produtos.FieldByName('PRO_PESO').AsFloat);
+    DM_Estoque.Produtos.FieldByName('PRO_VLRFRETE').Value := Abs(DM_Estoque.Produtos.FieldByName('PRO_VLRFRETE').AsFloat);
+    DM_Estoque.Produtos.FieldByName('PRO_VLRVENDA').Value := Abs(DM_Estoque.Produtos.FieldByName('PRO_VLRVENDA').AsFloat);
 end;
 
 procedure TDM_Estoque.UnidadeAfterInsert(DataSet: TDataSet);
