@@ -11,11 +11,11 @@ type
   TMMarcas = class(TxManuPadrao)
     GroupBox1: TGroupBox;
     Label1: TLabel;
-    DBEdit1: TDBEdit;
     Label2: TLabel;
-    DBEdit2: TDBEdit;
     Label3: TLabel;
+    DBEdit2: TDBEdit;
     DBMemo1: TDBMemo;
+    DBEdit1: TDBEdit;
   private
     { Private declarations }
   public

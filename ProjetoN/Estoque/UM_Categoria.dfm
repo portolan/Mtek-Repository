@@ -75,7 +75,7 @@ inherited MCategoria: TMCategoria
         DataSource = DM_Estoque.DSCategoria
         ParentColor = True
         ReadOnly = True
-        TabOrder = 0
+        TabOrder = 4
       end
       object DBEdit3: TDBEdit
         Left = 14
@@ -84,7 +84,7 @@ inherited MCategoria: TMCategoria
         Height = 21
         DataField = 'CAT_DESCRICAO'
         DataSource = DM_Estoque.DSCategoria
-        TabOrder = 1
+        TabOrder = 2
       end
       object DBEdit4: TDBEdit
         Left = 294
@@ -93,7 +93,7 @@ inherited MCategoria: TMCategoria
         Height = 21
         DataField = 'CAT_NCM'
         DataSource = DM_Estoque.DSCategoria
-        TabOrder = 2
+        TabOrder = 1
       end
       object DBLookupComboBox4: TDBLookupComboBox
         Left = 14
@@ -105,17 +105,17 @@ inherited MCategoria: TMCategoria
         KeyField = 'EMP_COD'
         ListField = 'EMP_RAZAO'
         ListSource = DM_contabil.Dempresa
+        TabOrder = 0
+      end
+      object DBMemo1: TDBMemo
+        Left = 14
+        Top = 112
+        Width = 528
+        Height = 119
+        DataField = 'CAT_OBS'
+        DataSource = DM_Estoque.DSCategoria
         TabOrder = 3
       end
     end
-  end
-  object DBMemo1: TDBMemo
-    Left = 17
-    Top = 130
-    Width = 528
-    Height = 119
-    DataField = 'CAT_OBS'
-    DataSource = DM_Estoque.DSCategoria
-    TabOrder = 2
   end
 end

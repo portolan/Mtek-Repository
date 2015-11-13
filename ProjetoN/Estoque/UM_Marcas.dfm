@@ -28,7 +28,6 @@ inherited MMarcas: TMMarcas
         Width = 33
         Height = 13
         Caption = 'C'#243'digo'
-        FocusControl = DBEdit1
       end
       object Label2: TLabel
         Left = 16
@@ -36,7 +35,6 @@ inherited MMarcas: TMMarcas
         Width = 46
         Height = 13
         Caption = 'Descri'#231#227'o'
-        FocusControl = DBEdit2
       end
       object Label3: TLabel
         Left = 16
@@ -45,9 +43,27 @@ inherited MMarcas: TMMarcas
         Height = 13
         Caption = 'Observa'#231#245'es'
       end
+      object DBEdit2: TDBEdit
+        Left = 16
+        Top = 64
+        Width = 521
+        Height = 21
+        DataField = 'MARC_DESCRICAO'
+        DataSource = DM_Estoque.DSMarcas
+        TabOrder = 0
+      end
+      object DBMemo1: TDBMemo
+        Left = 16
+        Top = 110
+        Width = 521
+        Height = 99
+        DataField = 'MARC_OBS'
+        DataSource = DM_Estoque.DSMarcas
+        TabOrder = 1
+      end
       object DBEdit1: TDBEdit
         Left = 16
-        Top = 24
+        Top = 21
         Width = 134
         Height = 21
         DataField = 'MARC_CODIGO'
@@ -56,26 +72,8 @@ inherited MMarcas: TMMarcas
         ParentShowHint = False
         ReadOnly = True
         ShowHint = False
-        TabOrder = 0
-      end
-      object DBEdit2: TDBEdit
-        Left = 16
-        Top = 64
-        Width = 521
-        Height = 21
-        DataField = 'MARC_DESCRICAO'
-        DataSource = DM_Estoque.DSMarcas
-        TabOrder = 1
+        TabOrder = 2
       end
     end
-  end
-  object DBMemo1: TDBMemo
-    Left = 19
-    Top = 126
-    Width = 521
-    Height = 99
-    DataField = 'MARC_OBS'
-    DataSource = DM_Estoque.DSMarcas
-    TabOrder = 2
   end
 end

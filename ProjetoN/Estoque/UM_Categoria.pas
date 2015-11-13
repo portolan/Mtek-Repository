@@ -18,8 +18,8 @@ type
     Label4: TLabel;
     DBEdit4: TDBEdit;
     Label5: TLabel;
-    DBMemo1: TDBMemo;
     DBLookupComboBox4: TDBLookupComboBox;
+    DBMemo1: TDBMemo;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }

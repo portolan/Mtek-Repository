@@ -36,7 +36,6 @@ procedure TPEstoque.FormCreate(Sender: TObject);
 begin
   inherited;
     procInicializar(DM_Estoque.Estoque, True, False, MEstoque, TMEstoque);
-    funcAtribuiFiltros;
 
 end;
 
@@ -47,11 +46,11 @@ begin
     procMontaWhere;
     DM_Estoque.Estoque.Close;
     DM_Estoque.Estoque.SQL.Text := 'select a.*, pro_descricao, emp_razao, bloc_descricao, prat_descricao, cat_descricao from estoque a '+
-                             'inner join produtos on estoq_empresa = pro_empresa and estoq_produto = pro_codigo         '+
+                             'left join produtos on estoq_empresa = pro_empresa and estoq_produto = pro_codigo         '+
                              'inner join empresa on emp_cod = pro_empresa                                               '+
                              'inner join bloco on estoq_bloco = bloc_codigo and estoq_empresa = bloc_empresa            '+
                              'inner join prateleira on estoq_prateleira = prat_codigo and estoq_empresa = prat_empresa  '+
-                             'left join categoria on estoq_categoria = cat_codigo and estoq_empresa = cat_empresa      '+
+                             'inner join categoria on estoq_categoria = cat_codigo and estoq_empresa = cat_empresa      '+
                              ' where '+c_where;
     DM_Estoque.Estoque.Open;
 end;

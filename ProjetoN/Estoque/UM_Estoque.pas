@@ -154,7 +154,11 @@ begin
   inherited;
 
     if DM_Estoque.Estoque.State in [dsEdit] then
-            procSelecionaItems;
+    begin
+        procSelecionaItems;
+        DBEdit5.ReadOnly := true;
+        DBEdit5.ParentColor := true;
+    end;
 end;
 
 procedure TMEstoque.procSelecionaItems;
@@ -166,14 +170,6 @@ begin
     DM_Estoque.Bloco.Open;
     DM_Estoque.Bloco.FetchAll;
 
-    {pau}
-    DM_Estoque.Categoria.Close;
-    DM_Estoque.Categoria.SQL.Text := 'select cat_descricao from categoria where ' +
-                                     ' cat_empresa = '    + DM_Estoque.ProdutosPRO_EMPRESA.AsString +
-                                     ' and cat_codigo = ' + DM_Estoque.ProdutosPRO_CATEGORIA.AsString;
-    DM_Estoque.Categoria.Open;
-    editCategoria.Text := DM_Estoque.Produtos.FieldByName('cat_descricao').AsString;
-
     qryDin := funcCriaQuery;
     qryDin.Close;
     qryDin.SQL.Text := 'select a.pro_descricao nomeProduto from produtos a where ' +
@@ -182,6 +178,16 @@ begin
     qryDin.Open;
 
     editProduto.Text := qryDin.FieldByName('nomeProduto').AsString;
+
+    {pau}
+    qryDin.Close;
+    qryDin.SQL.Text := 'select cat_descricao nomecat from categoria where ' +
+                                     ' cat_empresa = '    + DM_Estoque.EstoqueESTOQ_EMPRESA.AsString +
+                                     ' and cat_codigo = ' + DM_Estoque.EstoqueESTOQ_CATEGORIA.AsString;
+    qryDin.Open;
+    editCategoria.Text := qryDin.FieldByName('nomecat').AsString;
+
+
 end;
 
 procedure TMEstoque.SpeedButton1Click(Sender: TObject);

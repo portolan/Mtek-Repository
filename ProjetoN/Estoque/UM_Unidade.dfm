@@ -1,8 +1,11 @@
 inherited MUnidade: TMUnidade
   Caption = 'MUnidade'
+  ExplicitWidth = 597
+  ExplicitHeight = 320
   PixelsPerInch = 96
   TextHeight = 13
   inherited gbInfos: TGroupBox
+    ExplicitTop = -5
     object Label1: TLabel
       Left = 16
       Top = 16
@@ -36,7 +39,7 @@ inherited MUnidade: TMUnidade
       DataSource = DM_Estoque.DSUnidade
       ParentColor = True
       ReadOnly = True
-      TabOrder = 0
+      TabOrder = 2
     end
     object DBEdit2: TDBEdit
       Left = 16
@@ -45,7 +48,7 @@ inherited MUnidade: TMUnidade
       Height = 21
       DataField = 'UN_DESCRICAO'
       DataSource = DM_Estoque.DSUnidade
-      TabOrder = 1
+      TabOrder = 0
     end
     object DBMemo1: TDBMemo
       Left = 16
@@ -54,7 +57,7 @@ inherited MUnidade: TMUnidade
       Height = 89
       DataField = 'UN_OBS'
       DataSource = DM_Estoque.DSUnidade
-      TabOrder = 2
+      TabOrder = 1
     end
   end
 end
