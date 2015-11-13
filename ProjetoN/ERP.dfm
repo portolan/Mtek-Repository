@@ -4494,6 +4494,10 @@ object TelaInicial: TTelaInicial
     Top = 280
     object Estoque1: TMenuItem
       Caption = 'Estoque'
+      object Produtos1: TMenuItem
+        Caption = 'Produtos'
+        OnClick = Produtos1Click
+      end
       object ProdutosemEstoque1: TMenuItem
         Caption = 'Produtos em Estoque'
         OnClick = ProdutosemEstoque1Click
@@ -4506,9 +4510,9 @@ object TelaInicial: TTelaInicial
         Caption = 'Marca'
         OnClick = Marca1Click
       end
-      object Produtos1: TMenuItem
-        Caption = 'Produtos'
-        OnClick = Produtos1Click
+      object Categoria1: TMenuItem
+        Caption = 'Categoria'
+        OnClick = Categoria1Click
       end
       object Bloco1: TMenuItem
         Caption = 'Bloco'
@@ -4517,10 +4521,6 @@ object TelaInicial: TTelaInicial
       object Prateleira1: TMenuItem
         Caption = 'Prateleira'
         OnClick = Prateleira1Click
-      end
-      object Categoria1: TMenuItem
-        Caption = 'Categoria'
-        OnClick = Categoria1Click
       end
       object Relatrios1: TMenuItem
         Caption = 'Relat'#243'rios'
