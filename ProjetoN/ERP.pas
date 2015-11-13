@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg, UDM_contasreceber,
-  UM_contasreceber, UP_contasreceber, Vcl.ComCtrls;
+  UM_contasreceber, UP_contasreceber, Vcl.ComCtrls, IBX.IBQuery;
 
 type
   TTelaInicial = class(TForm)
@@ -88,10 +88,12 @@ type
     procedure Sobre1Click(Sender: TObject);
     procedure ContasBancarias1Click(Sender: TObject);
     procedure Relatrios2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    procedure fechaQuery(DataModule : TDataModule);
   end;
 
 var
@@ -109,7 +111,8 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UR_EstoqueRelatorios, UP_Caixa, UF_EstoqueRelatorios, UM_FichaTecnica, UM_PCP,
   UP_FichaTecnica, UP_Tipo_Erro, UI_sobre, UP_abrircx, UP_fecharcx,
   UR_balancocx, UR_fechamentocx, UR_prevtitulos, UR_prevcompravenda,
-  UP_contabancaria, UDM_Estoque, R_contabil;
+  UP_contabancaria, UDM_Estoque, R_contabil, UDM_Caixa, UDM_contabil,
+  Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -192,6 +195,15 @@ begin
     end;
 end;
 
+procedure TTelaInicial.fechaQuery(DataModule: TDataModule);
+var
+    I : Integer;
+begin
+    for I := 0 to DataModule.ComponentCount - 1 do
+        if DataModule.Components[I] is TIBQuery then
+            (DataModule.Components[I] as TIBQuery).Close;
+end;
+
 procedure TTelaInicial.FichaTcnica1Click(Sender: TObject);
 begin
 P_FichaTecnica := TP_FichaTecnica.Create(Self);
@@ -215,6 +227,20 @@ end;
 procedure TTelaInicial.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   application.Terminate;
+end;
+
+procedure TTelaInicial.FormCreate(Sender: TObject);
+begin
+
+    fechaQuery(DM_Servico);
+    fechaQuery(dmPedCompra);
+    fechaQuery(DM_PCP);
+    fechaQuery(DM_financeiro);
+    fechaQuery(dm_contaspagar);
+    fechaQuery(DM_contabil);
+    fechaQuery(DM_Caixa);
+    fechaQuery(DM_Estoque);
+    fechaQuery(DM_contasreceber);
 end;
 
 procedure TTelaInicial.Histricos1Click(Sender: TObject);

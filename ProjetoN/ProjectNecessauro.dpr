@@ -82,7 +82,6 @@ uses
   UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda},
   UManuPadrao in 'comum\UManuPadrao.pas' {xManuPadrao},
   UTelaPadrao in 'comum\UTelaPadrao.pas' {xPesqPadrao},
-  UP_SolicitacaoCompra in 'compra\UP_SolicitacaoCompra.pas' {PSolicitacaoCompra},
   UP_contabancaria in 'financeiro\UP_contabancaria.pas' {P_contasbancarias},
   UDM_financeiro in 'datamodulo\UDM_financeiro.pas' {DM_financeiro: TDataModule};
 
@@ -92,6 +91,7 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Aqua Light Slate');
+  Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TdmBanco, dmBanco);
   Application.CreateForm(TDM_Estoque, DM_Estoque);
   Application.CreateForm(TdmPedido, dmPedido);
@@ -101,6 +101,7 @@ begin
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
   Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.CreateForm(TdmPedCompra, dmPedCompra);
+  Application.CreateForm(TDM_caixa, DM_caixa);
   Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.Run;
