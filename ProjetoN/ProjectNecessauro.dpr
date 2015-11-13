@@ -104,24 +104,5 @@ begin
   Application.CreateForm(TDM_caixa, DM_caixa);
   Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(TFEstoqueRelatorios, FEstoqueRelatorios);
-  Application.CreateForm(TMBloco, MBloco);
-  Application.CreateForm(TMCategoria, MCategoria);
-  Application.CreateForm(TMEstoque, MEstoque);
-  Application.CreateForm(TMMarcas, MMarcas);
-  Application.CreateForm(TMMovimentoEstoque, MMovimentoEstoque);
-  Application.CreateForm(TMPrateleira, MPrateleira);
-  Application.CreateForm(TMProduto, MProduto);
-  Application.CreateForm(TMUnidade, MUnidade);
-  Application.CreateForm(TPBloco, PBloco);
-  Application.CreateForm(TPCategoria, PCategoria);
-  Application.CreateForm(TPEstoque, PEstoque);
-  Application.CreateForm(TPMarcas, PMarcas);
-  Application.CreateForm(TPMovimentoEstoque, PMovimentoEstoque);
-  Application.CreateForm(TPPrateleira, PPrateleira);
-  Application.CreateForm(TPProduto, PProduto);
-  Application.CreateForm(TPUnidade, PUnidade);
-  Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
-  Application.CreateForm(TDataModule1, DataModule1);
   Application.Run;
 end.
