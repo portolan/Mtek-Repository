@@ -10,6 +10,11 @@ function funcCalcCustoMedio(codEmpresa:integer; codProduto:String; codBloco, cod
 function funcContaBloco(codEmpresa, codBloco : integer):integer;
 function funcContaPrateleiraPorBloco(codEmpresa, codBloco : integer):integer;
 function funcContaEstoquePorPrateleira(codEmpresa, codBloco, codPrateleira : integer):integer;
+function funcGeraMovimentacaoEstoque(codEmpresa, codBloco, codPrateleira, codEstoque : integer; codProduto : String;
+                                     qtd : double; obs : String; vlrFinanceiro : double; pedCompraOrigem : integer; categoria : integer):boolean;
+function funcNovoProdutoEstoque(codEmpresa, codBloco, codPrateleira : integer; codProduto : String; status : String;
+                                     qtd, qtdmin, qtdmax, customedio : double; categoria : integer;  obs, chave : String; vlrFinanceiro : double; pedCompraOrigem : integer):boolean;
+function funcExisteProdutoNoEstoque(codEmpresa, codBloco, codPrateleira : integer; codProduto : String):boolean;
 function funcCriaQuery:TIBQuery;
 
 implementation
@@ -217,6 +222,111 @@ begin
     qryDin.ParamByName('codPrateleira').Value := codPrateleira;
     qryDin.Open;
     Result := qryDin.FieldByName('qtd').AsInteger;
+end;
+
+function funcExisteProdutoNoEstoque(codEmpresa, codBloco, codPrateleira : integer; codProduto : String):boolean;
+var
+    qryDin : TIBQuery;
+begin
+    qryDin := funcCriaQuery;
+    qryDin.Close;
+    qryDin.SQL.Text := 'select count(1) as qtd from estoque where '+
+                       'estoq_empresa = :codEmpresa and estoq_bloco = :codBloco '+
+                       ' and estoq_prateleira = :codPrateleira'+
+                       ' and estoq_produto = :codProduto';
+    qryDin.ParamByName('codEmpresa').Value    := codEmpresa;
+    qryDin.ParamByName('codBloco').Value      := codBloco;
+    qryDin.ParamByName('codPrateleira').Value := codPrateleira;
+    qryDin.ParamByName('codProduto').Value    := codProduto;
+    qryDin.Open;
+    Result := qryDin.FieldByName('qtd').AsInteger > 0;
+end;
+
+function funcNovoProdutoEstoque(codEmpresa, codBloco, codPrateleira : integer; codProduto : String; status : String;
+                                     qtd, qtdmin, qtdmax, customedio : double; categoria : integer;  obs, chave : String; vlrFinanceiro : double; pedCompraOrigem : integer):boolean;
+var
+    qryDin : TIBQuery;
+begin
+    try
+        qryDin := funcCriaQuery;
+        qryDin.Close;
+        qryDin.SQL.Text := 'insert into ESTOQUE (ESTOQ_EMPRESA, ESTOQ_PRODUTO, ESTOQ_BLOCO, ESTOQ_PRATELEIRA, ESTOQ_CODIGO, ESTOQ_STATUS, ESTOQ_QTD, '+
+                           ' ESTOQ_QTDMIN, ESTOQ_QTDMAX, ESTOQ_CUSTOMEDIO, ESTOQ_CATEGORIA, ESTOQ_TIPO, ESTOQ_DTCADASTRO, ESTOQ_OBS, ESTOQ_CHAVE)    '+
+                           ' values (:ESTOQ_EMPRESA, :ESTOQ_PRODUTO, :ESTOQ_BLOCO, :ESTOQ_PRATELEIRA, :ESTOQ_CODIGO, :ESTOQ_STATUS, :ESTOQ_QTD,      '+
+                           ':ESTOQ_QTDMIN, :ESTOQ_QTDMAX, :ESTOQ_CUSTOMEDIO, :ESTOQ_CATEGORIA, :ESTOQ_TIPO, :ESTOQ_DTCADASTRO, :ESTOQ_OBS, :ESTOQ_CHAVE)';
+        qryDin.ParamByName('ESTOQ_EMPRESA').Value := codEmpresa;
+        qryDin.ParamByName('ESTOQ_PRODUTO').Value := codProduto;
+        qryDin.ParamByName('ESTOQ_BLOCO').Value := codBloco;
+        qryDin.ParamByName('ESTOQ_PRATELEIRA').Value := codPrateleira;
+        qryDin.ParamByName('ESTOQ_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQUE');
+        qryDin.ParamByName('ESTOQ_STATUS').Value := 'A';
+        qryDin.ParamByName('ESTOQ_QTD').Value := qtd;
+        qryDin.ParamByName('ESTOQ_QTDMIN').Value := qtdmin;
+        qryDin.ParamByName('ESTOQ_QTDMAX').Value := qtdmax;
+        qryDin.ParamByName('ESTOQ_CUSTOMEDIO').Value := customedio;
+        qryDin.ParamByName('ESTOQ_CATEGORIA').Value := categoria;
+        qryDin.ParamByName('ESTOQ_DTCADASTRO').Value := Date;
+        qryDin.ParamByName('ESTOQ_OBS').Value := obs;
+        qryDin.ParamByName('ESTOQ_CHAVE').Value := chave;
+        qryDin.Open;    
+    except on E: Exception do
+        raise Exception.Create('Produto Não cadastrado no Estoque, Verifique se este produto existe!');
+    end;
+    
+    Result := true;
+end;
+
+function funcGeraMovimentacaoEstoque(codEmpresa, codBloco, codPrateleira, codEstoque : integer; codProduto : String;
+                                     qtd : double; obs : String; vlrFinanceiro : double; pedCompraOrigem : integer; categoria : integer):boolean;
+var
+    qryDin : TIBQuery;
+    b_existeProdutoEstoque : boolean;
+    customedio : double;
+begin
+    try
+        qryDin := funcCriaQuery;
+        try            
+            b_existeProdutoEstoque := funcExisteProdutoNoEstoque(codEmpresa, codBloco, codPrateleira, codProduto);
+
+            if not b_existeProdutoEstoque then
+            begin
+                customedio := funcCalcCustoMedio(codEmpresa, codProduto, codBloco, codPrateleira, codEstoque);
+                funcNovoProdutoEstoque(codEmpresa, codBloco, codPrateleira, codProduto, 'A', 
+                                        qtd, 0, qtd, customedio, categoria, obs, '0', 0, 0);
+            end;
+        Except on E:Exception do
+            raise Exception.Create('Produto Não encontrado! Verifique se este produto está cadastrado!');
+        end;
+
+        
+    
+        qryDin.Close;
+        qryDin.SQL.Text := 'insert into ESTOQ_MOVIMENTO (EM_EMPRESA, EM_PRODUTO, EM_BLOCO, EM_PRATELEIRA,'+
+                           ' EM_ESTOQUE, EM_CODIGO, EM_TIPO, EM_QTD,EM_DATA,                             '+
+                           ' EM_OBS, EM_VALOR_FINANCEIRO, EM_PEDIDOCOMPRAORIGEM)                         '+
+                           ' values (:EM_EMPRESA, :EM_PRODUTO, EM_BLOCO,                                 '+
+                           ' :EM_PRATELEIRA, :EM_ESTOQUE, :EM_CODIGO,                                    '+
+                           ' :EM_TIPO, :EM_QTD, :EM_DATA,:EM_OBS,                                        '+
+                           ' :EM_VALOR_FINANCEIRO, :EM_PEDIDOCOMPRAORIGEM)                               ';
+        qryDin.ParamByName('EM_EMPRESA').Value := codEmpresa;
+        qryDin.ParamByName('EM_PRODUTO').Value := codProduto;
+        qryDin.ParamByName('EM_BLOCO').Value := codBloco;
+        qryDin.ParamByName('EM_PRATELEIRA').Value := codPrateleira;
+        qryDin.ParamByName('EM_ESTOQUE').Value := codEstoque;
+        qryDin.ParamByName('EM_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQ_MOVIMENTO');
+        qryDin.ParamByName('EM_TIPO').Value := 'E';
+        qryDin.ParamByName('EM_QTD').Value := qtd;
+        qryDin.ParamByName('EM_DATA').Value := Now;
+        qryDin.ParamByName('EM_OBS').Value := obs;
+        qryDin.ParamByName('EM_VALOR_FINANCEIRO').Value := vlrFinanceiro;
+        qryDin.ParamByName('EM_PEDIDOCOMPRAORIGEM').Value := pedCompraOrigem;
+        qryDin.Open;
+    except on E: Exception do
+        raise Exception.Create('Erro ao Criar a Movimentação!');
+    end;
+    
+    
+
 end;
 
 function funcCriaQuery: TIBQuery;
