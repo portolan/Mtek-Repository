@@ -34,6 +34,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure editPesquisaChange(Sender: TObject);
     procedure DBGDadosDblClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
 
   public
@@ -44,6 +45,7 @@ type
     CTelaManutencao : TFormClass;
     Filtros : TFieldList;
     c_where : String;
+    c_where_tela : String;
 
 
     procedure procBotaoVisivelHabilitado(botao: TObject);
@@ -91,6 +93,11 @@ procedure TxPesqPadrao.FormActivate(Sender: TObject);
 begin
     editPesquisa.SetFocus;
     cBoxFiltro.ItemIndex := 1;
+end;
+
+procedure TxPesqPadrao.FormCreate(Sender: TObject);
+begin
+   c_where_tela := EmptyStr;
 end;
 
 procedure TxPesqPadrao.FormKeyDown(Sender: TObject; var Key: Word;
@@ -156,27 +163,30 @@ begin
 end;
 
 procedure TxPesqPadrao.procMontaWhere;
-var
-    filtro: String;
 begin
    c_where := ' (1 = 1) ';
 
-   if editPesquisa.Text = EmptyStr then
-      Exit;
+   try
+      if Trim(editPesquisa.Text) = EmptyStr then
+         Exit;
 
-   if funcFiltroIsString then
-   begin
-      if cbContent.Text = 'É igual' then
-         c_where := funcFiltroAtual.FieldName + ' = ' + QuotedStr(editPesquisa.Text)
+      if funcFiltroIsString then
+      begin
+         if cbContent.Text = 'É igual' then
+            c_where := funcFiltroAtual.FieldName + ' = ' + QuotedStr(editPesquisa.Text)
+         else if cbContent.Text = 'É diferente' then
+            c_where := funcFiltroAtual.FieldName + ' <> ' + QuotedStr(editPesquisa.Text)
+         else if cbContent.Text = 'Contém' then
+            c_where := funcFiltroAtual.FieldName + ' LIKE ' + QuotedStr('%'+editPesquisa.Text+'%');
+      end
+      else if cbContent.Text = 'É igual' then
+         c_where := funcFiltroAtual.FieldName + ' = ' + editPesquisa.Text
       else if cbContent.Text = 'É diferente' then
-         c_where := funcFiltroAtual.FieldName + ' <> ' + QuotedStr(editPesquisa.Text)
-      else if cbContent.Text = 'Contém' then
-         c_where := funcFiltroAtual.FieldName + ' LIKE ' + QuotedStr('%'+editPesquisa.Text+'%');
-   end
-   else if cbContent.Text = 'É igual' then
-      c_where := funcFiltroAtual.FieldName + ' = ' + editPesquisa.Text
-   else if cbContent.Text = 'É diferente' then
-      c_where := funcFiltroAtual.FieldName + ' <> ' + editPesquisa.Text;
+         c_where := funcFiltroAtual.FieldName + ' <> ' + editPesquisa.Text;
+   finally
+      if c_where_tela <> EmptyStr then
+         c_where := c_where + ' AND ' + c_where_tela;
+   end;
 end;
 
 procedure TxPesqPadrao.PesquisarClick(Sender: TObject);
@@ -259,6 +269,9 @@ procedure TxPesqPadrao.sbAlterarClick(Sender: TObject);
 begin
    procBotaoVisivelHabilitado(Sender);
 
+   if QryPadrao.IsEmpty then
+      Exit;
+
    try
       procAntesAlterar;
       QryPadrao.Edit;
@@ -288,6 +301,9 @@ end;
 procedure TxPesqPadrao.sbRemoverClick(Sender: TObject);
 begin
    procBotaoVisivelHabilitado(Sender);
+
+   if QryPadrao.IsEmpty then
+      Exit;
 
    try
       if Application.MessageBox('Confirma a exclusão do Registro selecionado?','Aviso ao Usuário',MB_YESNO+MB_ICONQUESTION) = IDNO then

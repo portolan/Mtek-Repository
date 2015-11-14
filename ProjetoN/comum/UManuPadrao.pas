@@ -38,12 +38,17 @@ implementation
 
 procedure TxManuPadrao.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-   if b_finalizaTransacao then
+   if not b_gravou then
    begin
-      if (not b_gravou) and (QryPadrao.Transaction.Intransaction) then
-         QryPadrao.Transaction.Rollback;
+      if QryPadrao.State in [dsInsert,dsEdit] then
+         QryPadrao.Cancel;
+
+      if b_finalizaTransacao then
+      begin
+         if QryPadrao.Transaction.Intransaction then
+            QryPadrao.Transaction.Rollback;
+      end;
    end;
-   sbCancelar.Click;//Willian Colocou p nao dar pau ao clicar botao fechar
 end;
 
 procedure TxManuPadrao.FormCreate(Sender: TObject);
@@ -73,9 +78,6 @@ end;
 procedure TxManuPadrao.sbCancelarClick(Sender: TObject);
 begin
    procBotaoVisivelHabilitado(Sender);
-
-   if QryPadrao.State in [dsInsert,dsEdit] then
-      QryPadrao.Cancel;
 
    Close;
 end;

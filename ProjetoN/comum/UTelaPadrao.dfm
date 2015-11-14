@@ -14,6 +14,7 @@ object xPesqPadrao: TxPesqPadrao
   OldCreateOrder = False
   Position = poMainFormCenter
   OnActivate = FormActivate
+  OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   PixelsPerInch = 96
@@ -283,9 +284,9 @@ object xPesqPadrao: TxPesqPadrao
     BevelOuter = bvNone
     TabOrder = 2
     object gbStatus: TGroupBox
-      Left = 703
+      Left = 848
       Top = 0
-      Width = 161
+      Width = 16
       Height = 53
       Align = alRight
       Caption = 'Status'
@@ -295,13 +296,14 @@ object xPesqPadrao: TxPesqPadrao
     object gbFiltro: TGroupBox
       Left = 0
       Top = 0
-      Width = 703
+      Width = 848
       Height = 53
       Align = alClient
       Caption = 'Filtros'
       TabOrder = 1
+      ExplicitWidth = 703
       DesignSize = (
-        703
+        848
         53)
       object cbContent: TComboBox
         Left = 156
@@ -328,14 +330,15 @@ object xPesqPadrao: TxPesqPadrao
       object editPesquisa: TEdit
         Left = 307
         Top = 17
-        Width = 309
+        Width = 454
         Height = 21
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 2
         OnChange = editPesquisaChange
+        ExplicitWidth = 309
       end
       object Pesquisar: TButton
-        Left = 622
+        Left = 767
         Top = 15
         Width = 75
         Height = 25
@@ -343,6 +346,7 @@ object xPesqPadrao: TxPesqPadrao
         Caption = 'Pesquisar'
         TabOrder = 3
         OnClick = PesquisarClick
+        ExplicitLeft = 622
       end
     end
   end

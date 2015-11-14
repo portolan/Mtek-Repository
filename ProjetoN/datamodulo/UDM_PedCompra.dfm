@@ -5,6 +5,7 @@ object dmPedCompra: TdmPedCompra
   object SolicitacaoCompra: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = SolicitacaoCompraAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -38,7 +39,7 @@ object dmPedCompra: TdmPedCompra
       Required = True
     end
     object SolicitacaoCompraSOL_DEPARTAMENTO: TIntegerField
-      DisplayLabel = 'C'#243'digo Departamento'
+      DisplayLabel = 'C'#243'd. Departamento'
       FieldName = 'SOL_DEPARTAMENTO'
       Origin = '"SOLICITACAO_COMPRA"."SOL_DEPARTAMENTO"'
       Required = True
@@ -165,6 +166,7 @@ object dmPedCompra: TdmPedCompra
   object Cotacao: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = CotacaoAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -334,9 +336,95 @@ object dmPedCompra: TdmPedCompra
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
+    SQL.Strings = (
+      'SELECT A.*,'
+      '       B.UN_DESCRICAO,'
+      '       C.PESS_NOME,'
+      '       C.PESS_TELCONTATO,'
+      '       C.PESS_EMAIL'
+      '  FROM FORNEC_COTACAO A'
+      ' INNER JOIN UNIDADE B ON A.FCT_UND_MEDIDA = B.UN_CODIGO'
+      ' INNER JOIN PESSOAS C ON A.FCT_FORNECEDOR = C.PESS_CODIGO'
+      ' WHERE A.FCT_EMPRESA = -1')
     UpdateObject = UFornecedorCotacao
     Left = 279
     Top = 32
+    object FornecedorCotacaoFCT_EMPRESA: TIntegerField
+      DisplayLabel = 'Empresa'
+      FieldName = 'FCT_EMPRESA'
+      Origin = '"FORNEC_COTACAO"."FCT_EMPRESA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object FornecedorCotacaoFCT_COTACAO: TIntegerField
+      DisplayLabel = 'Cod. Cota'#231#227'o'
+      FieldName = 'FCT_COTACAO'
+      Origin = '"FORNEC_COTACAO"."FCT_COTACAO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object FornecedorCotacaoFCT_FORNECEDOR: TIntegerField
+      DisplayLabel = 'Pessoa'
+      FieldName = 'FCT_FORNECEDOR'
+      Origin = '"FORNEC_COTACAO"."FCT_FORNECEDOR"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object FornecedorCotacaoFCT_VENCEDOR: TIBStringField
+      DisplayLabel = 'Vencedor?'
+      FieldName = 'FCT_VENCEDOR'
+      Origin = '"FORNEC_COTACAO"."FCT_VENCEDOR"'
+      Size = 1
+    end
+    object FornecedorCotacaoFCT_VLR_UNITARIO: TIBBCDField
+      DisplayLabel = 'Vlr. Unit'#225'rio'
+      FieldName = 'FCT_VLR_UNITARIO'
+      Origin = '"FORNEC_COTACAO"."FCT_VLR_UNITARIO"'
+      Precision = 18
+      Size = 4
+    end
+    object FornecedorCotacaoFCT_VLR_FRETE: TIBBCDField
+      DisplayLabel = 'Vlr. Frete'
+      FieldName = 'FCT_VLR_FRETE'
+      Origin = '"FORNEC_COTACAO"."FCT_VLR_FRETE"'
+      Precision = 18
+      Size = 4
+    end
+    object FornecedorCotacaoFCT_DT_ENTREGA: TDateField
+      DisplayLabel = 'Data de Entrega'
+      FieldName = 'FCT_DT_ENTREGA'
+      Origin = '"FORNEC_COTACAO"."FCT_DT_ENTREGA"'
+    end
+    object FornecedorCotacaoFCT_UND_MEDIDA: TIntegerField
+      DisplayLabel = 'Unidade de Medida'
+      FieldName = 'FCT_UND_MEDIDA'
+      Origin = '"FORNEC_COTACAO"."FCT_UND_MEDIDA"'
+    end
+    object FornecedorCotacaoUN_DESCRICAO: TIBStringField
+      DisplayLabel = 'Unidade Desc.'
+      FieldName = 'UN_DESCRICAO'
+      Origin = '"UNIDADE"."UN_DESCRICAO"'
+      Required = True
+      Size = 60
+    end
+    object FornecedorCotacaoPESS_NOME: TIBStringField
+      DisplayLabel = 'Nome'
+      FieldName = 'PESS_NOME'
+      Origin = '"PESSOAS"."PESS_NOME"'
+      Size = 100
+    end
+    object FornecedorCotacaoPESS_TELCONTATO: TIBStringField
+      DisplayLabel = 'Telefone'
+      FieldName = 'PESS_TELCONTATO'
+      Origin = '"PESSOAS"."PESS_TELCONTATO"'
+      Size = 15
+    end
+    object FornecedorCotacaoPESS_EMAIL: TIBStringField
+      DisplayLabel = 'E-mail'
+      FieldName = 'PESS_EMAIL'
+      Origin = '"PESSOAS"."PESS_EMAIL"'
+      Size = 60
+    end
   end
   object DFornecedorCotacao: TDataSource
     AutoEdit = False
@@ -345,6 +433,51 @@ object dmPedCompra: TdmPedCompra
     Top = 128
   end
   object UFornecedorCotacao: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'SELECT A.*,'
+      '       B.UN_DESCRICAO,'
+      '       C.PESS_NOME,'
+      '       C.PESS_TELCONTATO,'
+      '       C.PESS_EMAIL'
+      '  FROM FORNEC_COTACAO A'
+      ' INNER JOIN UNIDADE B ON A.FCT_UND_MEDIDA = B.UN_CODIGO'
+      ' INNER JOIN PESSOAS C ON A.FCT_FORNECEDOR = C.PESS_CODIGO'
+      'where'
+      '  FCT_COTACAO = :FCT_COTACAO and'
+      '  FCT_EMPRESA = :FCT_EMPRESA and'
+      '  FCT_FORNECEDOR = :FCT_FORNECEDOR')
+    ModifySQL.Strings = (
+      'update FORNEC_COTACAO'
+      'set'
+      '  FCT_COTACAO = :FCT_COTACAO,'
+      '  FCT_DT_ENTREGA = :FCT_DT_ENTREGA,'
+      '  FCT_EMPRESA = :FCT_EMPRESA,'
+      '  FCT_FORNECEDOR = :FCT_FORNECEDOR,'
+      '  FCT_UND_MEDIDA = :FCT_UND_MEDIDA,'
+      '  FCT_VENCEDOR = :FCT_VENCEDOR,'
+      '  FCT_VLR_FRETE = :FCT_VLR_FRETE,'
+      '  FCT_VLR_UNITARIO = :FCT_VLR_UNITARIO'
+      'where'
+      '  FCT_COTACAO = :OLD_FCT_COTACAO and'
+      '  FCT_EMPRESA = :OLD_FCT_EMPRESA and'
+      '  FCT_FORNECEDOR = :OLD_FCT_FORNECEDOR')
+    InsertSQL.Strings = (
+      'insert into FORNEC_COTACAO'
+      
+        '  (FCT_COTACAO, FCT_DT_ENTREGA, FCT_EMPRESA, FCT_FORNECEDOR, FCT' +
+        '_UND_MEDIDA, '
+      '   FCT_VENCEDOR, FCT_VLR_FRETE, FCT_VLR_UNITARIO)'
+      'values'
+      
+        '  (:FCT_COTACAO, :FCT_DT_ENTREGA, :FCT_EMPRESA, :FCT_FORNECEDOR,' +
+        ' :FCT_UND_MEDIDA, '
+      '   :FCT_VENCEDOR, :FCT_VLR_FRETE, :FCT_VLR_UNITARIO)')
+    DeleteSQL.Strings = (
+      'delete from FORNEC_COTACAO'
+      'where'
+      '  FCT_COTACAO = :OLD_FCT_COTACAO and'
+      '  FCT_EMPRESA = :OLD_FCT_EMPRESA and'
+      '  FCT_FORNECEDOR = :OLD_FCT_FORNECEDOR')
     Left = 279
     Top = 80
   end

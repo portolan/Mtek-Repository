@@ -60,6 +60,7 @@ type
     Sobre1: TMenuItem;
     ContasBancarias1: TMenuItem;
     Condiesdepagamento1: TMenuItem;
+    Image10: TImage;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -78,7 +79,6 @@ type
     procedure PlanodeContas1Click(Sender: TObject);
     procedure Histricos1Click(Sender: TObject);
     procedure ContasaPagar1Click(Sender: TObject);
-    procedure Blocos1Click(Sender: TObject);
     procedure FluxodeCaixa1Click(Sender: TObject);
     procedure ContasaReceber1Click(Sender: TObject);
     procedure ProdutosemEstoque1Click(Sender: TObject);
@@ -88,6 +88,8 @@ type
     procedure Sobre1Click(Sender: TObject);
     procedure ContasBancarias1Click(Sender: TObject);
     procedure Relatrios2Click(Sender: TObject);
+    procedure SolicitaodeRequisisio1Click(Sender: TObject);
+    procedure CotaoFornecedor1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -111,7 +113,8 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UP_FichaTecnica, UP_Tipo_Erro, UI_sobre, UP_abrircx, UP_fecharcx,
   UR_balancocx, UR_fechamentocx, UR_prevtitulos, UR_prevcompravenda,
   UP_contabancaria, UDM_Estoque, R_contabil, UDM_Caixa, UDM_contabil,
-  Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico;
+  Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico, UP_SolicitacaoCompra,
+  UP_Cotacao;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -122,12 +125,6 @@ begin
         FreeAndNil(PBloco);
     end;
 end;
-
-procedure TTelaInicial.Blocos1Click(Sender: TObject);
-begin
-    EstoqueRelatorios.frxReportBloco.ShowReport();
-end;
-
 
 procedure TTelaInicial.Categoria1Click(Sender: TObject);
 begin
@@ -172,6 +169,11 @@ begin
     finally
         FreeAndNil(P_contasbancarias);
     end;
+end;
+
+procedure TTelaInicial.CotaoFornecedor1Click(Sender: TObject);
+begin
+   TPCotacao.ChamaTela(Self);
 end;
 
 procedure TTelaInicial.Departamentos1Click(Sender: TObject);
@@ -345,5 +347,10 @@ begin
   TI_sobre.chamaTela(Self);
 end;
 
+
+procedure TTelaInicial.SolicitaodeRequisisio1Click(Sender: TObject);
+begin
+   TPSolicitacaoCompra.procChamaTela(Self);
+end;
 
 end.

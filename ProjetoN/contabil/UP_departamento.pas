@@ -39,9 +39,9 @@ end;
 
 procedure TP_departamento.FormCreate(Sender: TObject);
 begin
-  inherited;
-procInicializar(DM_contabil.departamento,true,false,M_departamento,TM_departamento);
-funcAtribuiFiltros;
+   inherited;
+   procInicializar(DM_contabil.departamento,true,false,M_departamento,TM_departamento);
+   funcAtribuiFiltros;
 end;
 
 procedure TP_departamento.procselect;

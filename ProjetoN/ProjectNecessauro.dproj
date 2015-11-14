@@ -299,6 +299,9 @@
             <Form>xPesqPadrao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="compra\UP_SolicitacaoCompra.pas">
+            <Form>PSolicitacaoCompra</Form>
+        </DCCReference>
         <DCCReference Include="financeiro\UP_contabancaria.pas">
             <Form>P_contasbancarias</Form>
             <FormType>dfm</FormType>
@@ -387,6 +390,36 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="comum\ufrm_Relacionamento.pas">
+            <Form>frmRelacionamento</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
+        </DCCReference>
+        <DCCReference Include="compra\UM_SolicitacaoCompra.pas"/>
+        <DCCReference Include="compra\UP_Cotacao.pas">
+            <Form>PCotacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UM_Cotacao.pas">
+            <Form>MCotacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UP_FornecedorCotacao.pas">
+            <Form>PFornecedorCotacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UM_FornecedorCotacao.pas">
+            <Form>MFornecedorCotacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="geral\UM_Pessoa.pas">
+            <Form>MPessoa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="geral\UP_Pessoa.pas">
+            <Form>PPessoa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -410,6 +443,7 @@
                 <Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcboffice2k210.bpl">Embarcadero C++Builder Office 2000 Servers Package</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\bcbofficexp210.bpl">Embarcadero C++Builder Office XP Servers Package</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k210.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
                     <Excluded_Packages Name="$(BDSBIN)\dclofficexp210.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>

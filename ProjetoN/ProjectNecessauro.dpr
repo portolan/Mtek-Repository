@@ -62,6 +62,7 @@ uses
   UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda},
   UManuPadrao in 'comum\UManuPadrao.pas' {xManuPadrao},
   UTelaPadrao in 'comum\UTelaPadrao.pas' {xPesqPadrao},
+  UP_SolicitacaoCompra in 'compra\UP_SolicitacaoCompra.pas' {PSolicitacaoCompra},
   UP_contabancaria in 'financeiro\UP_contabancaria.pas' {P_contasbancarias},
   UDM_financeiro in 'datamodulo\UDM_financeiro.pas' {DM_financeiro: TDataModule},
   UEstoque in 'Estoque\UEstoque.pas',
@@ -83,7 +84,15 @@ uses
   UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
   UP_Unidade in 'Estoque\UP_Unidade.pas' {PUnidade},
   UR_EstoqueRelatorios in 'Estoque\UR_EstoqueRelatorios.pas' {EstoqueRelatorios: TDataModule},
-  UR_Relatorios in 'Estoque\UR_Relatorios.pas' {DataModule1: TDataModule};
+  UR_Relatorios in 'Estoque\UR_Relatorios.pas' {DataModule1: TDataModule},
+  ufrm_Relacionamento in 'comum\ufrm_Relacionamento.pas' {frmRelacionamento: TFrame},
+  UM_SolicitacaoCompra in 'compra\UM_SolicitacaoCompra.pas',
+  UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao},
+  UM_Cotacao in 'compra\UM_Cotacao.pas' {MCotacao},
+  UP_FornecedorCotacao in 'compra\UP_FornecedorCotacao.pas' {PFornecedorCotacao},
+  UM_FornecedorCotacao in 'compra\UM_FornecedorCotacao.pas' {MFornecedorCotacao},
+  UM_Pessoa in 'geral\UM_Pessoa.pas' {MPessoa},
+  UP_Pessoa in 'geral\UP_Pessoa.pas' {PPessoa};
 
 {$R *.res}
 
@@ -91,18 +100,17 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   TStyleManager.TrySetStyle('Aqua Light Slate');
-  Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TdmBanco, dmBanco);
   Application.CreateForm(TDM_Estoque, DM_Estoque);
   Application.CreateForm(TdmPedido, dmPedido);
   Application.CreateForm(TDM_contabil, DM_contabil);
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDM_PCP, DM_PCP);
-  Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
-  Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TDM_caixa, DM_caixa);
-  Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.CreateForm(TTelaInicial, TelaInicial);
+  Application.CreateForm(TMFornecedorCotacao, MFornecedorCotacao);
+  Application.CreateForm(TMPessoa, MPessoa);
+  Application.CreateForm(TPPessoa, PPessoa);
   Application.Run;
 end.

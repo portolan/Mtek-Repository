@@ -36,10 +36,12 @@ end;
 
 procedure TPPessoa.procSelect;
 begin
-  inherited;
-    dmPedCompra.Pessoa.Close;
-    dmPedCompra.Pessoa.SQL.Text := 'select * from pessoas';
-    dmPedCompra.Pessoa.Open;
+   inherited;
+   procMontaWhere;
+
+   dmPedCompra.Pessoa.Close;
+   dmPedCompra.Pessoa.SQL.Text := 'select * from pessoas where '+c_where;
+   dmPedCompra.Pessoa.Open;
 end;
 
 end.

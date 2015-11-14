@@ -15,6 +15,7 @@ type
     { Public declarations }
     function funcRecuperaProximoIdGenerator(c_generator: String): Integer;
     function funcCriaQuery : TIBQuery;
+    function iif(b_expressao : Boolean; v_true : Variant; v_false: Variant): Variant;
   end;
 
 var
@@ -49,6 +50,14 @@ begin
     finally
        FreeAndNil(QryGen);
     end;
+end;
+
+function TdmBanco.iif(b_expressao: Boolean; v_true, v_false: Variant): Variant;
+begin
+   if b_expressao then
+      Result := v_true
+   else
+      Result := v_false;
 end;
 
 end.
