@@ -3,7 +3,7 @@ inherited MProduto: TMProduto
   ClientHeight = 656
   ClientWidth = 717
   OnActivate = FormActivate
-  ExplicitTop = -69
+  ExplicitTop = -8
   ExplicitWidth = 733
   ExplicitHeight = 695
   PixelsPerInch = 96
@@ -152,8 +152,8 @@ inherited MProduto: TMProduto
         OnClick = SpeedButton1Click
       end
       object SpeedButton2: TSpeedButton
-        Left = 515
-        Top = 67
+        Left = 516
+        Top = 66
         Width = 32
         Height = 23
         Glyph.Data = {

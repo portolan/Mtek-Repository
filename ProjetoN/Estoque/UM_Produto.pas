@@ -96,7 +96,7 @@ implementation
 {$R *.dfm}
 
 uses UDM_Estoque, UP_Categoria, UP_Produto, UP_Marcas, dm000, UP_Unidade,
-  UDM_contabil;
+  UDM_contabil, UM_Unidade, UM_Categoria;
 
 procedure TMProduto.cbStatusExit(Sender: TObject);
 begin
@@ -207,6 +207,7 @@ begin
   inherited;
     PCategoria := TPCategoria.Create(Self);
     try
+        PCategoria.procInicializar(DM_Estoque.Categoria, False, False, MCategoria, TMCategoria);
         PCategoria.ShowModal;
     finally
         FreeAndNil(PCategoria);
@@ -216,8 +217,10 @@ end;
 procedure TMProduto.SpeedButton2Click(Sender: TObject);
 begin
   inherited;
+
     Punidade := TPUnidade.Create(Self);
     try
+        PUnidade.procInicializar(DM_Estoque.Unidade, False, False, MUnidade, TMUnidade);
         Punidade.ShowModal;
     finally
         FreeAndNil(Punidade);
