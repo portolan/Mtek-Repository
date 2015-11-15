@@ -10,16 +10,18 @@ inherited MFornecedorCotacao: TMFornecedorCotacao
   inherited pnRodape: TPanel
     Top = 147
     Width = 496
+    ExplicitTop = 147
+    ExplicitWidth = 496
     inherited sbCancelar: TSpeedButton
       Left = 399
+      ExplicitLeft = 399
     end
   end
   inherited gbInfos: TGroupBox
     Width = 496
     Height = 147
-    ExplicitTop = -5
     ExplicitWidth = 496
-    ExplicitHeight = 157
+    ExplicitHeight = 147
     object Label1: TLabel
       Left = 237
       Top = 74
@@ -73,6 +75,7 @@ inherited MFornecedorCotacao: TMFornecedorCotacao
       ExplicitWidth = 473
       inherited pnlFrame: TPanel
         Width = 473
+        ExplicitWidth = 473
         inherited lbTitulo: TLabel
           Width = 34
           Caption = 'Pessoa'
@@ -83,8 +86,10 @@ inherited MFornecedorCotacao: TMFornecedorCotacao
         end
         inherited panelFundo: TPanel
           Width = 388
+          ExplicitWidth = 388
           inherited DBT_DESCRICAO: TDBText
             Width = 375
+            ExplicitWidth = 375
           end
         end
       end
@@ -100,6 +105,7 @@ inherited MFornecedorCotacao: TMFornecedorCotacao
       ExplicitWidth = 233
       inherited pnlFrame: TPanel
         Width = 233
+        ExplicitWidth = 233
         inherited lbTitulo: TLabel
           Width = 39
           Caption = 'Unidade'
@@ -107,8 +113,10 @@ inherited MFornecedorCotacao: TMFornecedorCotacao
         end
         inherited panelFundo: TPanel
           Width = 148
+          ExplicitWidth = 148
           inherited DBT_DESCRICAO: TDBText
             Width = 135
+            ExplicitWidth = 135
           end
         end
       end

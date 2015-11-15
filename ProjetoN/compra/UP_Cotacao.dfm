@@ -36,16 +36,19 @@ inherited PCotacao: TPCotacao
           item
             Expanded = False
             FieldName = 'COT_DEPARTAMENTO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DEP_NOME'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'COT_DESCRICAO'
+            Width = 64
             Visible = True
           end
           item
@@ -62,16 +65,19 @@ inherited PCotacao: TPCotacao
           item
             Expanded = False
             FieldName = 'COT_QTD'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'COT_SOLICITACAO_ORIGEM'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EMP_RAZAO'
+            Width = 64
             Visible = True
           end>
       end
@@ -203,17 +209,7 @@ inherited PCotacao: TPCotacao
         C4C2C2C2C2C2C2C2C2C2C2C4D14703BFBFBFBFBFBFBF0511A2CDC3C2C2C2C2C2
         C2C3CDA21105BFBFBFBFBFBFBFBFBFBF37248ED0C8CDCDC8D08E2337BFBFBFBF
         BFBFBFBFBFBFBFBFBFBF039D0D12120D9D03BFBFBFBFBFBFBFBF}
-    end
-  end
-  inherited pnCabecalho: TPanel
-    inherited gbFiltro: TGroupBox
-      ExplicitWidth = 848
-      inherited editPesquisa: TEdit
-        ExplicitWidth = 454
-      end
-      inherited Pesquisar: TButton
-        ExplicitLeft = 767
-      end
+      OnClick = sbFecharClick
     end
   end
 end

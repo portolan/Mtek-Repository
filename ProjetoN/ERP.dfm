@@ -6833,6 +6833,10 @@ object TelaInicial: TTelaInicial
       end
       object PedidodeCompra1: TMenuItem
         Caption = 'Pedido de Compra'
+        OnClick = PedidodeCompra1Click
+      end
+      object NotasdeEntrada1: TMenuItem
+        Caption = 'Notas de Entrada'
       end
     end
     object ControledeVendas1: TMenuItem

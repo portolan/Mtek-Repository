@@ -420,6 +420,14 @@
             <Form>PPessoa</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="compra\UP_PedCompra.pas">
+            <Form>PPedCompra</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UM_PedCompra.pas">
+            <Form>MPedCompra</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

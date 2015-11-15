@@ -33,7 +33,7 @@ implementation
 
 {$R *.dfm}
 
-uses dm000, UDM_PedCompra, UP_Pessoa;
+uses dm000, UDM_PedCompra, UP_Pessoa, UP_Unidade;
 
 procedure TMFornecedorCotacao.FormShow(Sender: TObject);
 begin
@@ -55,7 +55,7 @@ begin
                               '        A.UN_DESCRICAO '+
                               '   FROM UNIDADE A '+
                               '  WHERE A.UN_CODIGO = :COD ',
-                              PPessoa, TPPessoa, ['COD'], ['FCT_UND_MEDIDA'],
+                              PUnidade, TPUnidade, ['COD'], ['FCT_UND_MEDIDA'],
                               ['UN_CODIGO','UN_DESCRICAO']);
 
 

@@ -85,6 +85,7 @@ inherited PSolicitacaoCompra: TPSolicitacaoCompra
       Top = 1
       Width = 128
       Height = 40
+      Hint = 'Gera uma cota'#231#227'o da Solicita'#231#227'o de Compra selecionada'
       Align = alLeft
       Caption = 'Liberar Compra'
       Glyph.Data = {
@@ -117,6 +118,8 @@ inherited PSolicitacaoCompra: TPSolicitacaoCompra
         1C010000000000000000000F2B39302D2D2D2D2D30392B0F0000000000000000
         00000000000D1C2A343B342A1C0D000000000000000000000000000000000000
         0000000000000000000000000000}
+      ParentShowHint = False
+      ShowHint = True
       OnClick = sbLiberarCompraClick
     end
     object sbRecusarCompra: TSpeedButton

@@ -21,7 +21,7 @@ type
     Label3: TLabel;
     DBE_SOL_DATA_URGENCIA: TDBEdit;
     GroupBox1: TGroupBox;
-    DBMemo1: TDBMemo;
+    DBM_SOL_OBS: TDBMemo;
     procedure FormShow(Sender: TObject);
     procedure frmEmpresaDBE_CAMPOExit(Sender: TObject);
   private

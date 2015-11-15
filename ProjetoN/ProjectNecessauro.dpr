@@ -92,7 +92,9 @@ uses
   UP_FornecedorCotacao in 'compra\UP_FornecedorCotacao.pas' {PFornecedorCotacao},
   UM_FornecedorCotacao in 'compra\UM_FornecedorCotacao.pas' {MFornecedorCotacao},
   UM_Pessoa in 'geral\UM_Pessoa.pas' {MPessoa},
-  UP_Pessoa in 'geral\UP_Pessoa.pas' {PPessoa};
+  UP_Pessoa in 'geral\UP_Pessoa.pas' {PPessoa},
+  UP_PedCompra in 'compra\UP_PedCompra.pas' {PPedCompra},
+  UM_PedCompra in 'compra\UM_PedCompra.pas' {MPedCompra};
 
 {$R *.res}
 
@@ -109,8 +111,5 @@ begin
   Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TDM_caixa, DM_caixa);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(TMFornecedorCotacao, MFornecedorCotacao);
-  Application.CreateForm(TMPessoa, MPessoa);
-  Application.CreateForm(TPPessoa, PPessoa);
   Application.Run;
 end.

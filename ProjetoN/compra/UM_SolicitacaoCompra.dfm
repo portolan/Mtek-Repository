@@ -193,7 +193,7 @@ inherited MSolicitacaoCompra: TMSolicitacaoCompra
     Align = alClient
     Caption = 'Observa'#231#245'es'
     TabOrder = 2
-    object DBMemo1: TDBMemo
+    object DBM_SOL_OBS: TDBMemo
       Left = 2
       Top = 15
       Width = 791

@@ -61,6 +61,7 @@ type
     ContasBancarias1: TMenuItem;
     Condiesdepagamento1: TMenuItem;
     Image10: TImage;
+    NotasdeEntrada1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -90,6 +91,7 @@ type
     procedure Relatrios2Click(Sender: TObject);
     procedure SolicitaodeRequisisio1Click(Sender: TObject);
     procedure CotaoFornecedor1Click(Sender: TObject);
+    procedure PedidodeCompra1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -114,7 +116,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UR_balancocx, UR_fechamentocx, UR_prevtitulos, UR_prevcompravenda,
   UP_contabancaria, UDM_Estoque, R_contabil, UDM_Caixa, UDM_contabil,
   Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico, UP_SolicitacaoCompra,
-  UP_Cotacao;
+  UP_Cotacao, UP_PedCompra;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin
@@ -273,6 +275,11 @@ begin
     finally
         FreeAndNil(P_OP);
     end;
+end;
+
+procedure TTelaInicial.PedidodeCompra1Click(Sender: TObject);
+begin
+   TPPedCompra.ChamaTela(Self);
 end;
 
 procedure TTelaInicial.PlanodeContas1Click(Sender: TObject);

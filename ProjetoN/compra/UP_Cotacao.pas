@@ -13,6 +13,7 @@ type
     sbFechar: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure sbFornecedoresClick(Sender: TObject);
+    procedure sbFecharClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -63,6 +64,17 @@ begin
                                    '                      AND A.COT_PRODUTO = D.PRO_CODIGO '+
                                    ' where '+c_where;
    dmPedCompra.Cotacao.Open;
+end;
+
+procedure TPCotacao.sbFecharClick(Sender: TObject);
+begin
+   inherited;
+   procBotaoVisivelHabilitado(Sender);
+
+   if dmPedCompra.SolicitacaoCompra.IsEmpty then
+      Exit;
+
+   TPFornecedorCotacao.procChamaTela(Self, True);
 end;
 
 procedure TPCotacao.sbFornecedoresClick(Sender: TObject);

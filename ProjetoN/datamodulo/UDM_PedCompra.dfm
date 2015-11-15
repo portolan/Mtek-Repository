@@ -404,7 +404,6 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Unidade Desc.'
       FieldName = 'UN_DESCRICAO'
       Origin = '"UNIDADE"."UN_DESCRICAO"'
-      Required = True
       Size = 60
     end
     object FornecedorCotacaoPESS_NOME: TIBStringField
@@ -484,12 +483,209 @@ object dmPedCompra: TdmPedCompra
   object PedidoCompra: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = PedidoCompraAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
+    SQL.Strings = (
+      'SELECT A.*,'
+      '       B.EMP_RAZAO,'
+      '       C.DEP_NOME,'
+      '       D.PESS_NOME,'
+      '       E.UN_DESCRICAO,'
+      '       F.CDP_DESCRICAO,'
+      '      G.PRO_DESCRICAO'
+      '  FROM PEDIDO_COMPRA A'
+      ' INNER JOIN EMPRESA B ON A.PDC_EMPRESA = B.EMP_COD'
+      ' INNER JOIN DEPARTAMENTO C ON A.PDC_DEPARTAMENTO = C.DEP_COD'
+      ' INNER JOIN PESSOAS D ON A.PDC_FORNECEDOR = D.PESS_CODIGO'
+      ' INNER JOIN UNIDADE E ON A.PDC_UNMEDIDA = E.UN_CODIGO'
+      
+        ' INNER JOIN CONDICAOPAGAMENTO F ON A.PDC_CONDICAO_PGTO = F.CDP_C' +
+        'ODIGO'
+      ' INNER JOIN PRODUTOS G ON A.PDC_EMPRESA = G.PRO_EMPRESA'
+      '                      AND A.PDC_PRODUTO = G.PRO_CODIGO'
+      ' WHERE A.PDC_EMPRESA = -1'
+      ''
+      '   ')
     UpdateObject = UPedidoCompra
     Left = 392
     Top = 32
+    object PedidoCompraPDC_EMPRESA: TIntegerField
+      DisplayLabel = 'Empresa'
+      FieldName = 'PDC_EMPRESA'
+      Origin = '"PEDIDO_COMPRA"."PDC_EMPRESA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object PedidoCompraPDC_CODIGO: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'PDC_CODIGO'
+      Origin = '"PEDIDO_COMPRA"."PDC_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object PedidoCompraPDC_DEPARTAMENTO: TIntegerField
+      DisplayLabel = 'Departamento'
+      FieldName = 'PDC_DEPARTAMENTO'
+      Origin = '"PEDIDO_COMPRA"."PDC_DEPARTAMENTO"'
+      Required = True
+    end
+    object PedidoCompraPDC_PRODUTO: TIBStringField
+      DisplayLabel = 'Produto'
+      FieldName = 'PDC_PRODUTO'
+      Origin = '"PEDIDO_COMPRA"."PDC_PRODUTO"'
+      Required = True
+      Size = 30
+    end
+    object PedidoCompraPDC_FORNECEDOR: TIntegerField
+      DisplayLabel = 'Fornecedor'
+      FieldName = 'PDC_FORNECEDOR'
+      Origin = '"PEDIDO_COMPRA"."PDC_FORNECEDOR"'
+      Required = True
+    end
+    object PedidoCompraPDC_PREV_ENTREGA: TDateField
+      DisplayLabel = 'Prev. Entrega'
+      FieldName = 'PDC_PREV_ENTREGA'
+      Origin = '"PEDIDO_COMPRA"."PDC_PREV_ENTREGA"'
+    end
+    object PedidoCompraPDC_VLR_FRETE: TIBBCDField
+      DisplayLabel = 'Vlr. Frete'
+      FieldName = 'PDC_VLR_FRETE'
+      Origin = '"PEDIDO_COMPRA"."PDC_VLR_FRETE"'
+      OnValidate = PedidoCompraPDC_VLR_FRETEValidate
+      Precision = 18
+      Size = 4
+    end
+    object PedidoCompraPDC_VLR_UNITARIO: TIBBCDField
+      DisplayLabel = 'Vlr. Unit'#225'rio'
+      FieldName = 'PDC_VLR_UNITARIO'
+      Origin = '"PEDIDO_COMPRA"."PDC_VLR_UNITARIO"'
+      OnValidate = PedidoCompraPDC_VLR_UNITARIOValidate
+      Precision = 18
+      Size = 4
+    end
+    object PedidoCompraPDC_VLR_BRUTO: TIBBCDField
+      DisplayLabel = 'Vlr. Bruto'
+      FieldName = 'PDC_VLR_BRUTO'
+      Origin = '"PEDIDO_COMPRA"."PDC_VLR_BRUTO"'
+      Precision = 18
+      Size = 4
+    end
+    object PedidoCompraPDC_VLR_DESCONTO: TIBBCDField
+      DisplayLabel = 'Vlr. Desconto'
+      FieldName = 'PDC_VLR_DESCONTO'
+      Origin = '"PEDIDO_COMPRA"."PDC_VLR_DESCONTO"'
+      OnValidate = PedidoCompraPDC_VLR_DESCONTOValidate
+      Precision = 18
+      Size = 4
+    end
+    object PedidoCompraPDC_VLR_LIQUIDO: TIBBCDField
+      DisplayLabel = 'Vlr. L'#237'quido'
+      FieldName = 'PDC_VLR_LIQUIDO'
+      Origin = '"PEDIDO_COMPRA"."PDC_VLR_LIQUIDO"'
+      OnValidate = PedidoCompraPDC_VLR_LIQUIDOValidate
+      Precision = 18
+      Size = 4
+    end
+    object PedidoCompraPDC_VLR_TOTAL: TIBBCDField
+      DisplayLabel = 'Vlr. Total'
+      FieldName = 'PDC_VLR_TOTAL'
+      Origin = '"PEDIDO_COMPRA"."PDC_VLR_TOTAL"'
+      Precision = 18
+      Size = 4
+    end
+    object PedidoCompraPDC_STATUS: TIBStringField
+      DisplayLabel = 'Status'
+      FieldName = 'PDC_STATUS'
+      Origin = '"PEDIDO_COMPRA"."PDC_STATUS"'
+      Size = 1
+    end
+    object PedidoCompraPDC_DATA: TDateField
+      DisplayLabel = 'Data'
+      FieldName = 'PDC_DATA'
+      Origin = '"PEDIDO_COMPRA"."PDC_DATA"'
+      Required = True
+    end
+    object PedidoCompraPDC_QTD_TOTAL: TIBBCDField
+      DisplayLabel = 'Qtd.'
+      FieldName = 'PDC_QTD_TOTAL'
+      Origin = '"PEDIDO_COMPRA"."PDC_QTD_TOTAL"'
+      OnValidate = PedidoCompraPDC_QTD_TOTALValidate
+      Precision = 18
+      Size = 2
+    end
+    object PedidoCompraPDC_DATA_ENTREGA: TDateField
+      DisplayLabel = 'Data de Entrega Efetiva'
+      FieldName = 'PDC_DATA_ENTREGA'
+      Origin = '"PEDIDO_COMPRA"."PDC_DATA_ENTREGA"'
+    end
+    object PedidoCompraPDC_OBS: TWideMemoField
+      DisplayLabel = 'Observa'#231#245'es'
+      FieldName = 'PDC_OBS'
+      Origin = '"PEDIDO_COMPRA"."PDC_OBS"'
+      ProviderFlags = [pfInUpdate]
+      BlobType = ftWideMemo
+      Size = 8
+    end
+    object PedidoCompraPDC_UNMEDIDA: TIntegerField
+      DisplayLabel = 'Unidade de Medida'
+      FieldName = 'PDC_UNMEDIDA'
+      Origin = '"PEDIDO_COMPRA"."PDC_UNMEDIDA"'
+      Required = True
+    end
+    object PedidoCompraPDC_COTACAO_ORIGEM: TIntegerField
+      DisplayLabel = 'Cota'#231#227'o Origem'
+      FieldName = 'PDC_COTACAO_ORIGEM'
+      Origin = '"PEDIDO_COMPRA"."PDC_COTACAO_ORIGEM"'
+    end
+    object PedidoCompraPDC_SOLICITICAO_ORIGEM: TIntegerField
+      DisplayLabel = 'Solicita'#231#227'o Origem'
+      FieldName = 'PDC_SOLICITICAO_ORIGEM'
+      Origin = '"PEDIDO_COMPRA"."PDC_SOLICITICAO_ORIGEM"'
+    end
+    object PedidoCompraPDC_CONDICAO_PGTO: TIntegerField
+      DisplayLabel = 'Condi'#231#227'o de Pagamento'
+      FieldName = 'PDC_CONDICAO_PGTO'
+      Origin = '"PEDIDO_COMPRA"."PDC_CONDICAO_PGTO"'
+      Required = True
+    end
+    object PedidoCompraEMP_RAZAO: TIBStringField
+      DisplayLabel = 'Emp. Raz'#227'o'
+      FieldName = 'EMP_RAZAO'
+      Origin = '"EMPRESA"."EMP_RAZAO"'
+      Size = 60
+    end
+    object PedidoCompraDEP_NOME: TIBStringField
+      DisplayLabel = 'Departamento Nome'
+      FieldName = 'DEP_NOME'
+      Origin = '"DEPARTAMENTO"."DEP_NOME"'
+      Size = 40
+    end
+    object PedidoCompraPESS_NOME: TIBStringField
+      DisplayLabel = 'Nome Fornecedor'
+      FieldName = 'PESS_NOME'
+      Origin = '"PESSOAS"."PESS_NOME"'
+      Size = 100
+    end
+    object PedidoCompraUN_DESCRICAO: TIBStringField
+      DisplayLabel = 'Unidade Desc.'
+      FieldName = 'UN_DESCRICAO'
+      Origin = '"UNIDADE"."UN_DESCRICAO"'
+      Size = 60
+    end
+    object PedidoCompraCDP_DESCRICAO: TIBStringField
+      DisplayLabel = 'Condi'#231#227'o Desc.'
+      FieldName = 'CDP_DESCRICAO'
+      Origin = '"CONDICAOPAGAMENTO"."CDP_DESCRICAO"'
+      Size = 100
+    end
+    object PedidoCompraPRO_DESCRICAO: TIBStringField
+      DisplayLabel = 'Produto Desc.'
+      FieldName = 'PRO_DESCRICAO'
+      Origin = '"PRODUTOS"."PRO_DESCRICAO"'
+      Size = 60
+    end
   end
   object DPedidoCompra: TDataSource
     AutoEdit = False
@@ -498,6 +694,88 @@ object dmPedCompra: TdmPedCompra
     Top = 128
   end
   object UPedidoCompra: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'SELECT A.*,'
+      '       B.EMP_RAZAO,'
+      '       C.DEP_NOME,'
+      '       D.PESS_NOME,'
+      '       E.UN_DESCRICAO,'
+      '       F.CDP_DESCRICAO,'
+      '      G.PRO_DESCRICAO'
+      '  FROM PEDIDO_COMPRA A'
+      ' INNER JOIN EMPRESA B ON A.PDC_EMPRESA = B.EMP_COD'
+      ' INNER JOIN DEPARTAMENTO C ON A.PDC_DEPARTAMENTO = C.DEP_COD'
+      ' INNER JOIN PESSOAS D ON A.PDC_FORNECEDOR = D.PESS_CODIGO'
+      ' INNER JOIN UNIDADE E ON A.PDC_UNMEDIDA = E.UN_CODIGO'
+      
+        ' INNER JOIN CONDICAOPAGAMENTO F ON A.PDC_CONDICAO_PGTO = F.CDP_C' +
+        'ODIGO'
+      ' INNER JOIN PRODUTOS G ON A.PDC_EMPRESA = G.PRO_EMPRESA'
+      '                      AND A.PDC_PRODUTO = G.PRO_CODIGO'
+      'where'
+      '  PDC_CODIGO = :PDC_CODIGO and'
+      '  PDC_EMPRESA = :PDC_EMPRESA')
+    ModifySQL.Strings = (
+      'update PEDIDO_COMPRA'
+      'set'
+      '  PDC_CODIGO = :PDC_CODIGO,'
+      '  PDC_CONDICAO_PGTO = :PDC_CONDICAO_PGTO,'
+      '  PDC_COTACAO_ORIGEM = :PDC_COTACAO_ORIGEM,'
+      '  PDC_DATA = :PDC_DATA,'
+      '  PDC_DATA_ENTREGA = :PDC_DATA_ENTREGA,'
+      '  PDC_DEPARTAMENTO = :PDC_DEPARTAMENTO,'
+      '  PDC_EMPRESA = :PDC_EMPRESA,'
+      '  PDC_FORNECEDOR = :PDC_FORNECEDOR,'
+      '  PDC_OBS = :PDC_OBS,'
+      '  PDC_PREV_ENTREGA = :PDC_PREV_ENTREGA,'
+      '  PDC_PRODUTO = :PDC_PRODUTO,'
+      '  PDC_QTD_TOTAL = :PDC_QTD_TOTAL,'
+      '  PDC_SOLICITICAO_ORIGEM = :PDC_SOLICITICAO_ORIGEM,'
+      '  PDC_STATUS = :PDC_STATUS,'
+      '  PDC_UNMEDIDA = :PDC_UNMEDIDA,'
+      '  PDC_VLR_BRUTO = :PDC_VLR_BRUTO,'
+      '  PDC_VLR_DESCONTO = :PDC_VLR_DESCONTO,'
+      '  PDC_VLR_FRETE = :PDC_VLR_FRETE,'
+      '  PDC_VLR_LIQUIDO = :PDC_VLR_LIQUIDO,'
+      '  PDC_VLR_TOTAL = :PDC_VLR_TOTAL,'
+      '  PDC_VLR_UNITARIO = :PDC_VLR_UNITARIO'
+      'where'
+      '  PDC_CODIGO = :OLD_PDC_CODIGO and'
+      '  PDC_EMPRESA = :OLD_PDC_EMPRESA')
+    InsertSQL.Strings = (
+      'insert into PEDIDO_COMPRA'
+      
+        '  (PDC_CODIGO, PDC_CONDICAO_PGTO, PDC_COTACAO_ORIGEM, PDC_DATA, ' +
+        'PDC_DATA_ENTREGA, '
+      
+        '   PDC_DEPARTAMENTO, PDC_EMPRESA, PDC_FORNECEDOR, PDC_OBS, PDC_P' +
+        'REV_ENTREGA, '
+      
+        '   PDC_PRODUTO, PDC_QTD_TOTAL, PDC_SOLICITICAO_ORIGEM, PDC_STATU' +
+        'S, PDC_UNMEDIDA, '
+      
+        '   PDC_VLR_BRUTO, PDC_VLR_DESCONTO, PDC_VLR_FRETE, PDC_VLR_LIQUI' +
+        'DO, PDC_VLR_TOTAL, '
+      '   PDC_VLR_UNITARIO)'
+      'values'
+      
+        '  (:PDC_CODIGO, :PDC_CONDICAO_PGTO, :PDC_COTACAO_ORIGEM, :PDC_DA' +
+        'TA, :PDC_DATA_ENTREGA, '
+      
+        '   :PDC_DEPARTAMENTO, :PDC_EMPRESA, :PDC_FORNECEDOR, :PDC_OBS, :' +
+        'PDC_PREV_ENTREGA, '
+      
+        '   :PDC_PRODUTO, :PDC_QTD_TOTAL, :PDC_SOLICITICAO_ORIGEM, :PDC_S' +
+        'TATUS, '
+      
+        '   :PDC_UNMEDIDA, :PDC_VLR_BRUTO, :PDC_VLR_DESCONTO, :PDC_VLR_FR' +
+        'ETE, :PDC_VLR_LIQUIDO, '
+      '   :PDC_VLR_TOTAL, :PDC_VLR_UNITARIO)')
+    DeleteSQL.Strings = (
+      'delete from PEDIDO_COMPRA'
+      'where'
+      '  PDC_CODIGO = :OLD_PDC_CODIGO and'
+      '  PDC_EMPRESA = :OLD_PDC_EMPRESA')
     Left = 392
     Top = 80
   end
