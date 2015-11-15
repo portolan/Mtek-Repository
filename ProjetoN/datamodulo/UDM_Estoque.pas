@@ -235,7 +235,7 @@ end;
 
 procedure TDM_Estoque.ProdutosBeforePost(DataSet: TDataSet);
 begin
-    DM_Estoque.Estoque.FieldByName('PRO_DTCADASTRO').Value := Date;
+    DM_Estoque.Produtos.FieldByName('PRO_DTCADASTRO').Value := Date;
     DM_Estoque.Produtos.FieldByName('PRO_PESO').Value := Abs(DM_Estoque.Produtos.FieldByName('PRO_PESO').AsFloat);
     DM_Estoque.Produtos.FieldByName('PRO_VLRFRETE').Value := Abs(DM_Estoque.Produtos.FieldByName('PRO_VLRFRETE').AsFloat);
     DM_Estoque.Produtos.FieldByName('PRO_VLRVENDA').Value := Abs(DM_Estoque.Produtos.FieldByName('PRO_VLRVENDA').AsFloat);
