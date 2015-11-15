@@ -21,5 +21,6 @@ object FEstoqueRelatorios: TFEstoqueRelatorios
     Width = 257
     Height = 22
     Caption = 'Movimentos de Caixa por Data'
+    OnClick = SpeedButton1Click
   end
 end
