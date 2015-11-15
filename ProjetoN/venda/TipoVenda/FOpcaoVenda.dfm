@@ -33,10 +33,10 @@ object FrmOpcaoVenda: TFrmOpcaoVenda
       ExplicitWidth = 353
       ExplicitHeight = 33
       inherited LblBarraTitulo: TLabel
-        Width = 353
-        Height = 33
+        Width = 351
+        Height = 31
         Caption = 'Venda - Tipo de Opera'#231#227'o'
-        ExplicitWidth = 158
+        ExplicitWidth = 196
       end
     end
   end
