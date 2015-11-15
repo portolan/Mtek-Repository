@@ -64,7 +64,7 @@ implementation
 {$R *.dfm}
 
 uses UDM_Estoque, UM_Estoque, UP_Estoque, UP_Bloco, UP_Prateleira, UP_Produto,
-  UEstoque;
+  UEstoque, UM_Bloco, UM_Prateleira;
 
 procedure TMMovimentoEstoque.cbTipoChange(Sender: TObject);
 begin
@@ -201,6 +201,7 @@ begin
   inherited;
     PBloco := TPBloco.Create(Self);
     try
+        PBloco.procInicializar(DM_Estoque.Bloco, False, False, MBloco, TMBloco);
         PBloco.ShowModal;
     finally
         FreeAndNil(PBloco);
@@ -212,6 +213,7 @@ begin
   inherited;
     PPrateleira := TPPrateleira.Create(Self);
     try
+        PPrateleira.procInicializar(DM_Estoque.Prateleira, False, False, MPrateleira, TMPrateleira);
         PPrateleira.ShowModal;
     finally
         FreeAndNil(PPrateleira);

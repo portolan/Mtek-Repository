@@ -70,7 +70,8 @@ implementation
 {$R *.dfm}
 
 uses UDM_Estoque, UM_Produto, UP_Produto, UP_Marcas, UM_Bloco, UP_Prateleira,
-  UP_Bloco, UP_Categoria, UDM_contabil, dm000, UEstoque;
+  UP_Bloco, UP_Categoria, UDM_contabil, dm000, UEstoque, UM_Prateleira,
+  UM_Categoria;
 
 procedure TMEstoque.ComboBox1Exit(Sender: TObject);
 begin
@@ -195,6 +196,7 @@ begin
   inherited;
     PBloco := TPBloco.Create(Self);
     try
+        PBloco.procInicializar(DM_Estoque.Bloco, False, False, MBloco, TMBloco);
         PBloco.ShowModal;
     finally
         FreeAndNil(PBloco);
@@ -206,6 +208,7 @@ begin
   inherited;
     PPrateleira := TPPrateleira.Create(Self);
     try
+        PPrateleira.procInicializar(DM_Estoque.Prateleira, False, False, MPrateleira, TMPrateleira);
         PPrateleira.ShowModal;    
     finally
         FreeAndNil(PPrateleira);
@@ -228,6 +231,7 @@ begin
   inherited;
     PCategoria := TPCategoria.Create(Self);
     try
+        PCategoria.procInicializar(DM_Estoque.Categoria, False, False, MCategoria, TMCategoria);
         PCategoria.ShowModal;    
     finally
         FreeAndNil(PCategoria);
