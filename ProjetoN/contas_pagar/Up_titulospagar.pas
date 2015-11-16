@@ -5,13 +5,19 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UTelaPadrao, Vcl.Buttons, Vcl.Grids,
-  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls;
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Menus;
 
 type
   Tp_titulospagar = class(TxPesqPadrao)
     Label1: TLabel;
     Label2: TLabel;
+    MainMenu1: TMainMenu;
+    Relatrios1: TMenuItem;
+    titulosapagar1: TMenuItem;
+    itulosPagos1: TMenuItem;
     procedure FormCreate(Sender: TObject);
+    procedure titulosapagar1Click(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -27,7 +33,7 @@ implementation
 
 {$R *.dfm}
 
-uses Udm_contaspagar, Um_titulospagar;
+uses Udm_contaspagar, Um_titulospagar, relatorio;
 
 class procedure Tp_titulospagar.chamaTela(xPai: TComponent);
 
@@ -45,6 +51,17 @@ begin
   inherited;
    procInicializar(dm_contaspagar.titulospagar, true, false, m_titulospagar, Tm_titulospagar);
    funcAtribuiFiltros;
+end;
+
+procedure Tp_titulospagar.titulosapagar1Click(Sender: TObject);
+begin
+  inherited;
+  relcontasp:=Trelcontasp.Create(Owner);
+  try
+    relcontasp.ShowModal;
+  finally
+     FreeAndNil(relcontasp);
+  end;
 end;
 
 class procedure Tp_titulospagar.procChamaTela(Owner: TComponent);
@@ -91,5 +108,7 @@ begin
                                          'INNER JOIN PESSOAS ON PESS_CODIGO=TTP_PES_CODIGO where '+c_where;
    dm_contaspagar.titulospagar.open;
 end;
+
+
 
 end.

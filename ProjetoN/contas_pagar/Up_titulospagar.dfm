@@ -1,6 +1,8 @@
 inherited p_titulospagar: Tp_titulospagar
   Caption = 'TITULOS A PAGAR'
+  ClientHeight = 382
   ClientWidth = 809
+  Menu = MainMenu1
   OnCreate = FormCreate
   ExplicitWidth = 825
   ExplicitHeight = 441
@@ -8,10 +10,14 @@ inherited p_titulospagar: Tp_titulospagar
   TextHeight = 13
   inherited pnCorpo: TPanel
     Width = 809
+    Height = 287
     ExplicitWidth = 809
+    ExplicitHeight = 287
     inherited gbDados: TGroupBox
       Width = 803
+      Height = 281
       ExplicitWidth = 803
+      ExplicitHeight = 281
       object Label1: TLabel [0]
         Left = 112
         Top = 64
@@ -28,6 +34,7 @@ inherited p_titulospagar: Tp_titulospagar
       end
       inherited DBGDados: TDBGrid
         Width = 799
+        Height = 264
         DataSource = dm_contaspagar.Dtitulospagar
         Columns = <
           item
@@ -147,7 +154,9 @@ inherited p_titulospagar: Tp_titulospagar
     end
   end
   inherited pnRodape: TPanel
+    Top = 340
     Width = 809
+    ExplicitTop = 340
     ExplicitWidth = 809
     inherited sbSair: TSpeedButton
       Left = 712
@@ -160,6 +169,20 @@ inherited p_titulospagar: Tp_titulospagar
     inherited gbStatus: TGroupBox
       Width = 106
       ExplicitWidth = 106
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 716
+    Top = 248
+    object Relatrios1: TMenuItem
+      Caption = 'Relat'#243'rios'
+      object titulosapagar1: TMenuItem
+        Caption = 'Titulos a pagar'
+        OnClick = titulosapagar1Click
+      end
+      object itulosPagos1: TMenuItem
+        Caption = 'Titulos Pagos'
+      end
     end
   end
 end

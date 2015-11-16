@@ -5,6 +5,7 @@ object dm_contaspagar: Tdm_contaspagar
   object titulospagar: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = titulospagarAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -79,27 +80,36 @@ object dm_contaspagar: Tdm_contaspagar
       DisplayLabel = 'DATA EMISS'#195'O'
       FieldName = 'TTP_DT_EMISSAO'
       Origin = '"TITULOSP"."TTP_DT_EMISSAO"'
+      DisplayFormat = 'DD/MM/YYYY'
       EditMask = '!99/99/9999;1;_'
     end
     object titulospagarTTP_DT_VENCIMENTO: TDateField
       DisplayLabel = 'DATA VENCIMENTO'
       FieldName = 'TTP_DT_VENCIMENTO'
       Origin = '"TITULOSP"."TTP_DT_VENCIMENTO"'
+      DisplayFormat = 'DD/MM/YYYY'
+      EditMask = '!99/99/0000;1;_'
     end
     object titulospagarTTP_DT_PAGAMENTO: TDateField
       DisplayLabel = 'DATA PAGAMENTO'
       FieldName = 'TTP_DT_PAGAMENTO'
       Origin = '"TITULOSP"."TTP_DT_PAGAMENTO"'
+      DisplayFormat = 'DD/MM/YYYY'
+      EditMask = '!99/99/0000;1;'
     end
     object titulospagarTTP_DT_BAIXA: TDateField
       DisplayLabel = 'DATA BAIXA'
       FieldName = 'TTP_DT_BAIXA'
       Origin = '"TITULOSP"."TTP_DT_BAIXA"'
+      DisplayFormat = 'DD/MM/YYYY'
+      EditMask = '!99/99/0000;1;'
     end
     object titulospagarTTP_DT_CANCELAMENTO: TDateField
       DisplayLabel = 'DATA CANCELAMENTO'
       FieldName = 'TTP_DT_CANCELAMENTO'
       Origin = '"TITULOSP"."TTP_DT_CANCELAMENTO"'
+      DisplayFormat = 'DD/MM/YYYY'
+      EditMask = '!99/99/0000;1;'
     end
     object titulospagarTTP_TP_TITULO: TIBStringField
       DisplayLabel = 'TIPO TITULO'
@@ -111,6 +121,8 @@ object dm_contaspagar: Tdm_contaspagar
       DisplayLabel = 'DESCONTO'
       FieldName = 'TTP_DESCONTO'
       Origin = '"TITULOSP"."TTP_DESCONTO"'
+      DisplayFormat = '00.00'
+      EditFormat = '00.00'
       Precision = 18
       Size = 2
     end
@@ -125,6 +137,8 @@ object dm_contaspagar: Tdm_contaspagar
       DisplayLabel = 'VALOR ORIGINAL'
       FieldName = 'TTP_VL_ORIGINAL'
       Origin = '"TITULOSP"."TTP_VL_ORIGINAL"'
+      DisplayFormat = '00.00'
+      EditFormat = '00.00'
       Precision = 18
       Size = 2
     end
@@ -132,6 +146,8 @@ object dm_contaspagar: Tdm_contaspagar
       DisplayLabel = 'VALOR PAGO'
       FieldName = 'TTP_VL_PAGO'
       Origin = '"TITULOSP"."TTP_VL_PAGO"'
+      DisplayFormat = '00.00'
+      EditFormat = '00.00'
       Precision = 18
       Size = 2
     end
@@ -148,6 +164,8 @@ object dm_contaspagar: Tdm_contaspagar
       DisplayLabel = 'MORA DI'#193'RIA'
       FieldName = 'TTP_MR_DIARIA'
       Origin = '"TITULOSP"."TTP_MR_DIARIA"'
+      DisplayFormat = '00.00'
+      EditFormat = '00.00'
       Precision = 18
       Size = 2
     end
@@ -155,6 +173,8 @@ object dm_contaspagar: Tdm_contaspagar
       DisplayLabel = 'MULTA DE ATRASO'
       FieldName = 'TTP_MT_ATRASO'
       Origin = '"TITULOSP"."TTP_MT_ATRASO"'
+      DisplayFormat = '00.00'
+      EditFormat = '00.00'
       Precision = 18
       Size = 2
     end
@@ -184,40 +204,20 @@ object dm_contaspagar: Tdm_contaspagar
   object Dtitulospagar: TDataSource
     AutoEdit = False
     DataSet = titulospagar
-    Left = 80
+    Left = 88
     Top = 144
   end
   object Utitulospagar: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'select TTP_CODIGO, '
-      '          TTP_CON_CODIGO, '
-      '          TTP_CTB_CODIGO, '
-      '          TTP_DESCONTO, '
-      '          TTP_DESCRICAO,'
-      '          TTP_DT_BAIXA, '
-      '          TTP_DT_CANCELAMENTO, '
-      '          TTP_DT_EMISSAO,'
-      '          TTP_DT_PAGAMENTO,'
-      '          TTP_DT_VENCIMENTO, '
-      '          TTP_EMP_CODIGO, '
-      '          TTP_MR_DIARIA, '
-      '          TTP_MT_ATRASO, '
-      '          TTP_PARCELA, '
-      '          TTP_PES_CODIGO, '
-      '          TTP_SITUACAO, '
-      '          TTP_TP_MORA, '
-      '          TTP_TP_MULTA,'
-      '          TTP_TP_TITULO, '
-      '          TTP_VL_ORIGINAL,'
-      '          TTP_VL_PAGO, '
-      '          TTP_VL_TOTAL, '
+      'select a.*,'
       '          EMP_RAZAO, '
       '          PESS_DESCRICAO '
-      ' from TITULOSP'
+      ' from TITULOSP a'
       'inner join empresa on EMP_COD=TTP_EMP_CODIGO '
       'INNER JOIN PESSOAS ON PESS_CODIGO=TTP_PES_CODIGO'
       'where'
-      '  TTP_CODIGO = :TTP_CODIGO')
+      '  TTP_CODIGO = :TTP_CODIGO'
+      '')
     ModifySQL.Strings = (
       'update TITULOSP'
       'set'
@@ -236,6 +236,9 @@ object dm_contaspagar: Tdm_contaspagar
       '  TTP_MT_ATRASO = :TTP_MT_ATRASO,'
       '  TTP_PARCELA = :TTP_PARCELA,'
       '  TTP_PES_CODIGO = :TTP_PES_CODIGO,'
+      '  TTP_SITUACAO = :TTP_SITUACAO,'
+      '  TTP_TP_MORA = :TTP_TP_MORA,'
+      '  TTP_TP_MULTA = :TTP_TP_MULTA,'
       '  TTP_TP_TITULO = :TTP_TP_TITULO,'
       '  TTP_VL_ORIGINAL = :TTP_VL_ORIGINAL,'
       '  TTP_VL_PAGO = :TTP_VL_PAGO,'
@@ -254,8 +257,9 @@ object dm_contaspagar: Tdm_contaspagar
         '   TTP_DT_VENCIMENTO, TTP_EMP_CODIGO, TTP_MR_DIARIA, TTP_MT_ATRA' +
         'SO, TTP_PARCELA, '
       
-        '   TTP_PES_CODIGO, TTP_TP_TITULO, TTP_VL_ORIGINAL, TTP_VL_PAGO, ' +
-        'TTP_VL_TOTAL)'
+        '   TTP_PES_CODIGO, TTP_SITUACAO, TTP_TP_MORA, TTP_TP_MULTA, TTP_' +
+        'TP_TITULO, '
+      '   TTP_VL_ORIGINAL, TTP_VL_PAGO, TTP_VL_TOTAL)'
       'values'
       
         '  (:TTP_CODIGO, :TTP_CON_CODIGO, :TTP_CTB_CODIGO, :TTP_DESCONTO,' +
@@ -267,9 +271,11 @@ object dm_contaspagar: Tdm_contaspagar
         '   :TTP_DT_VENCIMENTO, :TTP_EMP_CODIGO, :TTP_MR_DIARIA, :TTP_MT_' +
         'ATRASO, '
       
-        '   :TTP_PARCELA, :TTP_PES_CODIGO, :TTP_TP_TITULO, :TTP_VL_ORIGIN' +
-        'AL, :TTP_VL_PAGO, '
-      '   :TTP_VL_TOTAL)')
+        '   :TTP_PARCELA, :TTP_PES_CODIGO, :TTP_SITUACAO, :TTP_TP_MORA, :' +
+        'TTP_TP_MULTA, '
+      
+        '   :TTP_TP_TITULO, :TTP_VL_ORIGINAL, :TTP_VL_PAGO, :TTP_VL_TOTAL' +
+        ')')
     DeleteSQL.Strings = (
       'delete from TITULOSP'
       'where'

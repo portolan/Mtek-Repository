@@ -104,7 +104,7 @@
     end
     object Label11: TLabel
       Left = 503
-      Top = 204
+      Top = 182
       Width = 111
       Height = 13
       Caption = 'DATA CANCELAMENTO'
@@ -198,8 +198,8 @@
       FocusControl = ttp_vl_pago
     end
     object Label24: TLabel
-      Left = 546
-      Top = 182
+      Left = 542
+      Top = 223
       Width = 68
       Height = 13
       Caption = 'VALOR TOTAL'
@@ -312,8 +312,8 @@
       TabOrder = 9
     end
     object ttp_dt_cancelamento: TDBEdit
-      Left = 617
-      Top = 201
+      Left = 616
+      Top = 179
       Width = 112
       Height = 21
       DataField = 'TTP_DT_CANCELAMENTO'
@@ -411,8 +411,8 @@
       TabOrder = 20
     end
     object ttp_vl_total: TDBEdit
-      Left = 617
-      Top = 179
+      Left = 616
+      Top = 220
       Width = 112
       Height = 21
       DataField = 'TTP_VL_TOTAL'
@@ -450,6 +450,10 @@
         'PAGO '
         'CANCELADO')
       TabOrder = 24
+      Values.Strings = (
+        ' A'
+        ' P'
+        ' C')
     end
     object DBRadioGroup2: TDBRadioGroup
       Left = 379
@@ -463,6 +467,9 @@
         'R$'
         '%')
       TabOrder = 25
+      Values.Strings = (
+        'R'
+        'P')
     end
     object DBRadioGroup3: TDBRadioGroup
       Left = 617
@@ -476,6 +483,9 @@
         'R$'
         '%')
       TabOrder = 26
+      Values.Strings = (
+        'R'
+        'P')
     end
     object emp_razao: TDBEdit
       Left = 176

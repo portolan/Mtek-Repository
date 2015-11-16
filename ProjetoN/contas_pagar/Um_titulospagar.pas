@@ -63,6 +63,9 @@ type
     DBRadioGroup3: TDBRadioGroup;
     emp_razao: TDBEdit;
     pess_descricao: TDBEdit;
+
+    procedure FormCreate(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -78,4 +81,13 @@ implementation
 
 uses Udm_contaspagar;
 
+procedure Tm_titulospagar.FormCreate(Sender: TObject);
+begin
+  inherited;
+  ttp_codigo.Enabled:=false;
+end;
+
+
+
 end.
+

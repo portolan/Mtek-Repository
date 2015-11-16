@@ -35,6 +35,7 @@ type
     titulospagarTTP_TP_MULTA: TIBStringField;
     titulospagarEMP_RAZAO: TIBStringField;
     titulospagarPESS_DESCRICAO: TIBStringField;
+    procedure titulospagarAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -51,5 +52,10 @@ implementation
 uses dm000;
 
 {$R *.dfm}
+
+procedure Tdm_contaspagar.titulospagarAfterInsert(DataSet: TDataSet);
+begin
+ titulospagar.FieldByName('ttp_codigo').Value:=dmBanco.funcRecuperaProximoIdGenerator('seqtitulosp');
+end;
 
 end.
