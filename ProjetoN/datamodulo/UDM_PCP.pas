@@ -59,7 +59,6 @@ type
     IBUpdateSQL1: TIBUpdateSQL;
     OrdemProducaoOP_VENDAS: TIntegerField;
     OrdemProducaoOP_EMPRESA: TIntegerField;
-    OrdemProducaoOP_FICHATECNICA: TIBStringField;
     OrdemProducaoOP_DESCRICAO: TIBStringField;
     OrdemProducaoOP_TIPO: TIBStringField;
     OrdemProducaoOP_QTD: TIntegerField;
@@ -67,6 +66,8 @@ type
     OrdemProducaoOP_DT_ENTREGA: TDateField;
     OrdemProducaoOP_STATUS: TIBStringField;
     OrdemProducaoOP_COD: TIntegerField;
+    OrdemProducaoOP_FICHATECNICA: TIntegerField;
+    OrdemProducaoEMP_RAZAO: TIBStringField;
     procedure OrdemProducaoAfterInsert(DataSet: TDataSet);
     procedure ProducaoAfterInsert(DataSet: TDataSet);
     procedure Ficha_TecnicaAfterInsert(DataSet: TDataSet);

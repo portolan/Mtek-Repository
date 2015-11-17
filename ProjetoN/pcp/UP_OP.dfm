@@ -2,7 +2,6 @@ inherited P_OP: TP_OP
   ActiveControl = DBGDados
   Caption = 'Ordem Producao'
   ClientWidth = 872
-  OnCreate = FormCreate
   ExplicitWidth = 888
   ExplicitHeight = 441
   PixelsPerInch = 96
@@ -12,8 +11,6 @@ inherited P_OP: TP_OP
     ExplicitWidth = 872
     inherited gbDados: TGroupBox
       Width = 866
-      ExplicitLeft = -207
-      ExplicitTop = 129
       ExplicitWidth = 866
       inherited DBGDados: TDBGrid
         AlignWithMargins = True
@@ -111,13 +108,12 @@ inherited P_OP: TP_OP
     Width = 872
     ExplicitWidth = 872
     inherited gbStatus: TGroupBox
-      Left = 711
-      ExplicitLeft = 717
-      ExplicitTop = 15
+      Left = 856
+      ExplicitLeft = 856
     end
     inherited gbFiltro: TGroupBox
-      Width = 711
-      ExplicitWidth = 711
+      Width = 856
+      ExplicitWidth = 856
       inherited editPesquisa: TEdit
         Width = 317
         ExplicitWidth = 317

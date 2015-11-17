@@ -101,8 +101,8 @@ inherited MSolicitacaoCompra: TMSolicitacaoCompra
           Width = 231
           ExplicitWidth = 231
           inherited DBT_DESCRICAO: TDBText
-            Width = 218
-            ExplicitWidth = 218
+            Width = 219
+            ExplicitWidth = 219
           end
         end
       end

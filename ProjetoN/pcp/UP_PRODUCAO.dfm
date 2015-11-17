@@ -1,7 +1,6 @@
 inherited P_PRODUCAO: TP_PRODUCAO
   Caption = 'Producao'
   Position = poDesigned
-  OnCreate = FormCreate
   ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96
@@ -61,6 +60,17 @@ inherited P_PRODUCAO: TP_PRODUCAO
             Width = 61
             Visible = True
           end>
+      end
+    end
+  end
+  inherited pnCabecalho: TPanel
+    inherited gbFiltro: TGroupBox
+      ExplicitWidth = 848
+      inherited editPesquisa: TEdit
+        ExplicitWidth = 454
+      end
+      inherited Pesquisar: TButton
+        ExplicitLeft = 767
       end
     end
   end
