@@ -121,10 +121,19 @@ object DM_PCP: TDM_PCP
       Required = True
     end
     object OrdemProducaoEMP_RAZAO: TIBStringField
+      DisplayLabel = 'Razao Social'
       FieldName = 'EMP_RAZAO'
       Origin = '"EMPRESA"."EMP_RAZAO"'
       Required = True
       Size = 60
+    end
+    object OrdemProducaoOP_PRODUTO: TIBStringField
+      DisplayLabel = 'Produto'
+      FieldName = 'OP_PRODUTO'
+      Origin = '"ORDEM_PRODUCAO"."OP_PRODUTO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
     end
   end
   object Producao: TIBQuery
