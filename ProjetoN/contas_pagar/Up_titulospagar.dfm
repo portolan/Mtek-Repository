@@ -3,7 +3,6 @@ inherited p_titulospagar: Tp_titulospagar
   ClientHeight = 382
   ClientWidth = 809
   Menu = MainMenu1
-  OnCreate = FormCreate
   ExplicitWidth = 825
   ExplicitHeight = 441
   PixelsPerInch = 96
@@ -167,8 +166,12 @@ inherited p_titulospagar: Tp_titulospagar
     Width = 809
     ExplicitWidth = 809
     inherited gbStatus: TGroupBox
+      Left = 703
       Width = 106
       ExplicitWidth = 106
+    end
+    inherited gbFiltro: TGroupBox
+      Width = 703
     end
   end
   object MainMenu1: TMainMenu
