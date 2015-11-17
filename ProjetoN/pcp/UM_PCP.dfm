@@ -34,7 +34,6 @@ inherited M_OP: TM_OP
   inherited gbInfos: TGroupBox
     Width = 792
     Height = 327
-    ExplicitLeft = -24
     ExplicitWidth = 792
     ExplicitHeight = 327
     object Label9: TLabel

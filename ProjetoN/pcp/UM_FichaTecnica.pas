@@ -5,26 +5,27 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.Tabs, Vcl.DockTabSet, Vcl.ComCtrls, Vcl.Mask, Vcl.DBCtrls;
+  Vcl.ExtCtrls, Vcl.Tabs, Vcl.DockTabSet, Vcl.ComCtrls, Vcl.Mask, Vcl.DBCtrls,
+  ufrm_Relacionamento;
 
 type
   TM_FichaTecnica = class(TxManuPadrao)
-    Label1: TLabel;
-    Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    db_produto: TDBEdit;
     db_codigo: TDBEdit;
     db_unidade: TDBEdit;
     db_custo_unitario: TDBEdit;
     db_mao_obra: TDBEdit;
     db_custototal: TDBEdit;
     db_tempoproducao: TDBEdit;
-    db_empresa: TDBEdit;
+    frm_empresa: TfrmRelacionamento;
+    Label1: TLabel;
+    db_produto: TDBEdit;
     procedure db_produtoEnter(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,7 +39,8 @@ implementation
 
 {$R *.dfm}
 
-uses dm000, UDM_PCP, UP_FichaTecnica, UDM_Estoque, UP_Produto;
+uses dm000, UDM_PCP, UP_FichaTecnica, UDM_Estoque, UP_Produto, UM_empresa,
+  UP_empresa;
 
 procedure TM_FichaTecnica.db_produtoEnter(Sender: TObject);
 begin
@@ -52,6 +54,20 @@ begin
     DM_PCP.Ficha_TecnicaFT_EMPRESA.Value := DM_Estoque.ProdutosPRO_EMPRESA.AsInteger;
     FreeAndNil(PProduto);
   end;
+end;
+
+procedure TM_FichaTecnica.FormShow(Sender: TObject);
+begin
+  inherited;
+             frm_empresa.procInicializar(DM_PCP.Ficha_TecnicaFT_EMPRESA,
+                              DM_PCP.Ficha_TecnicaEMP_RAZAO,
+                              DM_PCP.DS_Ficha_Tecnica,
+                              ' SELECT A.EMP_COD, '+
+                              '        A.EMP_RAZAO '+
+                              '   FROM EMPRESA A '+
+                              '  WHERE A.EMP_COD = :EMP ',
+                               P_empresa, TP_empresa,['EMP'], ['FT_EMPRESA'],
+                               ['EMP_COD','EMP_RAZAO']);
 end;
 
 end.

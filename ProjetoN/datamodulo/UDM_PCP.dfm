@@ -4,13 +4,13 @@ object DM_PCP: TDM_PCP
   Width = 690
   object UPD_OrdemProducao: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'select b.*, a.emp_razao from ordem_producao b'
-      'inner join empresa a on a.emp_cod= b.op_empresa'
+      'Select '
+      'from ordem_producao '
       'where'
       '  OP_COD = :OP_COD and'
       '  OP_EMPRESA = :OP_EMPRESA')
     ModifySQL.Strings = (
-      'update ORDEM_PRODUCAO'
+      'update ordem_producao'
       'set'
       '  OP_COD = :OP_COD,'
       '  OP_DESCRICAO = :OP_DESCRICAO,'
@@ -18,6 +18,7 @@ object DM_PCP: TDM_PCP
       '  OP_DT_PEDIDO = :OP_DT_PEDIDO,'
       '  OP_EMPRESA = :OP_EMPRESA,'
       '  OP_FICHATECNICA = :OP_FICHATECNICA,'
+      '  OP_PRODUTO = :OP_PRODUTO,'
       '  OP_QTD = :OP_QTD,'
       '  OP_STATUS = :OP_STATUS,'
       '  OP_TIPO = :OP_TIPO,'
@@ -26,18 +27,20 @@ object DM_PCP: TDM_PCP
       '  OP_COD = :OLD_OP_COD and'
       '  OP_EMPRESA = :OLD_OP_EMPRESA')
     InsertSQL.Strings = (
-      'insert into ORDEM_PRODUCAO'
+      'insert into ordem_producao'
       
         '  (OP_COD, OP_DESCRICAO, OP_DT_ENTREGA, OP_DT_PEDIDO, OP_EMPRESA' +
         ', OP_FICHATECNICA, '
-      '   OP_QTD, OP_STATUS, OP_TIPO, OP_VENDAS)'
+      '   OP_PRODUTO, OP_QTD, OP_STATUS, OP_TIPO, OP_VENDAS)'
       'values'
       
         '  (:OP_COD, :OP_DESCRICAO, :OP_DT_ENTREGA, :OP_DT_PEDIDO, :OP_EM' +
         'PRESA, '
-      '   :OP_FICHATECNICA, :OP_QTD, :OP_STATUS, :OP_TIPO, :OP_VENDAS)')
+      
+        '   :OP_FICHATECNICA, :OP_PRODUTO, :OP_QTD, :OP_STATUS, :OP_TIPO,' +
+        ' :OP_VENDAS)')
     DeleteSQL.Strings = (
-      'delete from ORDEM_PRODUCAO'
+      'delete from ordem_producao'
       'where'
       '  OP_COD = :OLD_OP_COD and'
       '  OP_EMPRESA = :OLD_OP_EMPRESA')
@@ -134,6 +137,11 @@ object DM_PCP: TDM_PCP
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
       Size = 30
+    end
+    object OrdemProducaoOP_COMPRAS: TIntegerField
+      FieldName = 'OP_COMPRAS'
+      Origin = '"ORDEM_PRODUCAO"."OP_COMPRAS"'
+      Required = True
     end
   end
   object Producao: TIBQuery
@@ -255,7 +263,8 @@ object DM_PCP: TDM_PCP
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select * from FICHA_TECNICA')
+      'select a.*, b.emp_razao  from ficha_tecnica a'
+      'inner join empresa b on b.emp_cod= a.ft_empresa')
     UpdateObject = UPD_Ficha_Tecnica
     Left = 208
     Top = 8
@@ -272,6 +281,7 @@ object DM_PCP: TDM_PCP
       Required = True
     end
     object Ficha_TecnicaFT_PRODUTO: TIBStringField
+      DisplayLabel = 'Produto'
       FieldName = 'FT_PRODUTO'
       Origin = '"FICHA_TECNICA"."FT_PRODUTO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -311,6 +321,12 @@ object DM_PCP: TDM_PCP
       Origin = '"FICHA_TECNICA"."FT_TEMPO_PRODUCAO"'
       EditMask = '!90:00;1;_'
     end
+    object Ficha_TecnicaEMP_RAZAO: TIBStringField
+      FieldName = 'EMP_RAZAO'
+      Origin = '"EMPRESA"."EMP_RAZAO"'
+      Required = True
+      Size = 60
+    end
   end
   object DS_Ficha_Tecnica: TDataSource
     DataSet = Ficha_Tecnica
@@ -319,24 +335,15 @@ object DM_PCP: TDM_PCP
   end
   object UPD_Ficha_Tecnica: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select '
-      '  FT_COD,'
-      '  FT_PRODUTO,'
-      '  FT_UNIDADE,'
-      '  FT_CUSTO_UNITARIO,'
-      '  FT_MAO_DE_OBRA,'
-      '  FT_QUANTIDADE,'
-      '  FT_CUSTO_TOTAL,'
-      '  FT_TEMPO_PRODUCAO,'
-      '  FT_EMPRESA'
-      'from FICHA_TECNICA '
+      'select a.*, b.emp_razao  from ficha_tecnica a'
+      'inner join empresa b on b.emp_cod= a.ft_empresa'
       'where'
       '  FT_COD = :FT_COD and'
-      '  FT_EMPRESA = :FT_EMPRESA and'
-      '  FT_PRODUTO = :FT_PRODUTO')
+      '  FT_EMPRESA = :FT_EMPRESA')
     ModifySQL.Strings = (
-      'update FICHA_TECNICA'
+      'update ficha_tecnica'
       'set'
+      '  EMP_RAZAO = :EMP_RAZAO,'
       '  FT_COD = :FT_COD,'
       '  FT_CUSTO_TOTAL = :FT_CUSTO_TOTAL,'
       '  FT_CUSTO_UNITARIO = :FT_CUSTO_UNITARIO,'
@@ -348,25 +355,25 @@ object DM_PCP: TDM_PCP
       '  FT_UNIDADE = :FT_UNIDADE'
       'where'
       '  FT_COD = :OLD_FT_COD and'
-      '  FT_EMPRESA = :OLD_FT_EMPRESA and'
-      '  FT_PRODUTO = :OLD_FT_PRODUTO')
+      '  FT_EMPRESA = :OLD_FT_EMPRESA')
     InsertSQL.Strings = (
-      'insert into FICHA_TECNICA'
+      'insert into ficha_tecnica'
       
-        '  (FT_COD, FT_CUSTO_TOTAL, FT_CUSTO_UNITARIO, FT_EMPRESA, FT_MAO' +
-        '_DE_OBRA, '
+        '  (EMP_RAZAO, FT_COD, FT_CUSTO_TOTAL, FT_CUSTO_UNITARIO, FT_EMPR' +
+        'ESA, FT_MAO_DE_OBRA, '
       '   FT_PRODUTO, FT_QUANTIDADE, FT_TEMPO_PRODUCAO, FT_UNIDADE)'
       'values'
       
-        '  (:FT_COD, :FT_CUSTO_TOTAL, :FT_CUSTO_UNITARIO, :FT_EMPRESA, :F' +
-        'T_MAO_DE_OBRA, '
-      '   :FT_PRODUTO, :FT_QUANTIDADE, :FT_TEMPO_PRODUCAO, :FT_UNIDADE)')
+        '  (:EMP_RAZAO, :FT_COD, :FT_CUSTO_TOTAL, :FT_CUSTO_UNITARIO, :FT' +
+        '_EMPRESA, '
+      
+        '   :FT_MAO_DE_OBRA, :FT_PRODUTO, :FT_QUANTIDADE, :FT_TEMPO_PRODU' +
+        'CAO, :FT_UNIDADE)')
     DeleteSQL.Strings = (
-      'delete from FICHA_TECNICA'
+      'delete from ficha_tecnica'
       'where'
       '  FT_COD = :OLD_FT_COD and'
-      '  FT_EMPRESA = :OLD_FT_EMPRESA and'
-      '  FT_PRODUTO = :OLD_FT_PRODUTO')
+      '  FT_EMPRESA = :OLD_FT_EMPRESA')
     Left = 216
     Top = 144
   end
@@ -383,6 +390,7 @@ object DM_PCP: TDM_PCP
     object Itens_FichaIFT_FICHA: TIntegerField
       FieldName = 'IFT_FICHA'
       Origin = '"ITENS_FICHA"."IFT_FICHA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
     object Itens_FichaIFT_PRODUTO: TIBStringField
       FieldName = 'IFT_PRODUTO'
@@ -556,7 +564,7 @@ object DM_PCP: TDM_PCP
       '  EM0_COD = :OLD_EM0_COD and'
       '  EM0_EMPRESA = :OLD_EM0_EMPRESA')
     Left = 416
-    Top = 144
+    Top = 136
   end
   object queryGenerica: TIBQuery
     Database = dmBanco.Banco

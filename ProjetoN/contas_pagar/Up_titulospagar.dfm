@@ -168,10 +168,17 @@ inherited p_titulospagar: Tp_titulospagar
     inherited gbStatus: TGroupBox
       Left = 703
       Width = 106
+      ExplicitLeft = 703
       ExplicitWidth = 106
     end
     inherited gbFiltro: TGroupBox
       Width = 703
+      inherited editPesquisa: TEdit
+        ExplicitWidth = 454
+      end
+      inherited Pesquisar: TButton
+        ExplicitLeft = 767
+      end
     end
   end
   object MainMenu1: TMainMenu
@@ -181,7 +188,6 @@ inherited p_titulospagar: Tp_titulospagar
       Caption = 'Relat'#243'rios'
       object titulosapagar1: TMenuItem
         Caption = 'Titulos a pagar'
-        OnClick = titulosapagar1Click
       end
       object itulosPagos1: TMenuItem
         Caption = 'Titulos Pagos'
