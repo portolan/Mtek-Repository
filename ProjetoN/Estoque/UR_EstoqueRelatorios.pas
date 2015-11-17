@@ -4,29 +4,35 @@ interface
 
 uses
   System.SysUtils, System.Classes, IBX.IBQuery, Data.DB, IBX.IBCustomDataSet,
-  frxClass, frxDBSet, IBX.IBUpdateSQL;
+  frxClass, frxDBSet, IBX.IBUpdateSQL, frxExportPDF, frxBarcode, frxCrypt,
+  frxOLE, frxRich, frxDMPExport;
 
 type
   TEstoqueRelatorios = class(TDataModule)
-    ibqMovimentoPorData: TIBQuery;
-    ibqMovimentoPorDataEM_EMPRESA: TIntegerField;
-    ibqMovimentoPorDataEM_PRODUTO: TIBStringField;
-    ibqMovimentoPorDataEM_BLOCO: TIntegerField;
-    ibqMovimentoPorDataEM_PRATELEIRA: TIntegerField;
-    ibqMovimentoPorDataEM_ESTOQUE: TIntegerField;
-    ibqMovimentoPorDataEM_CODIGO: TIntegerField;
-    ibqMovimentoPorDataEM_TIPO: TIBStringField;
-    ibqMovimentoPorDataEM_QTD: TIBBCDField;
-    ibqMovimentoPorDataEM_DATA: TDateTimeField;
-    ibqMovimentoPorDataEM_OBS: TIBStringField;
-    ibqMovimentoPorDataEM_VALOR_FINANCEIRO: TIBBCDField;
-    ibqMovimentoPorDataEM_PEDIDOCOMPRAORIGEM: TIntegerField;
-    frdbMovimentoPorData: TfrxDBDataset;
-    frxMovimentoPorData: TfrxReport;
-    ibqMovimentoPorDataPRO_DESCRICAO: TIBStringField;
-    ibqMovimentoPorDataEMP_RAZAO: TIBStringField;
-    ibqMovimentoPorDataBLOC_DESCRICAO: TIBStringField;
-    ibqMovimentoPorDataPRAT_DESCRICAO: TIBStringField;
+    query: TIBQuery;
+    queryEM_EMPRESA: TIntegerField;
+    queryEM_PRODUTO: TIBStringField;
+    queryEM_BLOCO: TIntegerField;
+    queryEM_PRATELEIRA: TIntegerField;
+    queryEM_ESTOQUE: TIntegerField;
+    queryEM_CODIGO: TIntegerField;
+    queryEM_TIPO: TIBStringField;
+    queryEM_QTD: TIBBCDField;
+    queryEM_DATA: TDateTimeField;
+    queryEM_OBS: TIBStringField;
+    queryEM_VALOR_FINANCEIRO: TIBBCDField;
+    queryEM_PEDIDOCOMPRAORIGEM: TIntegerField;
+    frxDB: TfrxDBDataset;
+    frxReport: TfrxReport;
+    queryPRO_DESCRICAO: TIBStringField;
+    queryEMP_RAZAO: TIBStringField;
+    queryBLOC_DESCRICAO: TIBStringField;
+    queryPRAT_DESCRICAO: TIBStringField;
+    frxPDFExport1: TfrxPDFExport;
+    frxBarCodeObject1: TfrxBarCodeObject;
+    frxRichObject1: TfrxRichObject;
+    frxOLEObject1: TfrxOLEObject;
+    frxCrypt1: TfrxCrypt;
   private
     { Private declarations }
   public

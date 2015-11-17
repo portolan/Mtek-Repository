@@ -5,11 +5,17 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.CategoryButtons, Vcl.ActnMan,
-  Vcl.ActnColorMaps, Vcl.Menus, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons;
+  Vcl.ActnColorMaps, Vcl.Menus, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons,
+  Vcl.Mask;
 
 type
   TFEstoqueRelatorios = class(TForm)
+    GroupBox1: TGroupBox;
     SpeedButton1: TSpeedButton;
+    Label1: TLabel;
+    Label2: TLabel;
+    editDtInicial: TMaskEdit;
+    editDtFinal: TMaskEdit;
     procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
@@ -26,28 +32,19 @@ implementation
 
 {$R *.dfm}
 
+uses UR_EstoqueRelatorios;
+
 procedure TFEstoqueRelatorios.SpeedButton1Click(Sender: TObject);
  var
     formMCD : TForm;
     button : TButton;
 begin
-    formMCD := criaForm(200,200);
-
-    button := criaButton(formMCD);
-    with button do
-    begin
-        Height := 100;
-        Width := 100;
-        Caption := 'www';
-        Left := 100;
-    end;
+    EstoqueRelatorios.frxReport.LoadFromFile(ExtractFilePath(Application.ExeName)+'EstoqueRelatorios\MovimentoPorData.fr3');
+    EstoqueRelatorios.frxReport.Variables['dtInicial'] := strToDate(editDtInicial.Text);
+    EstoqueRelatorios.frxReport.Variables['dtFinal'] := strToDate(editDtFinal.Text);
 
 
-    try
-        formMCD.ShowModal;
-    finally
-        FreeAndNil(formMCD);
-    end;
+    EstoqueRelatorios.frxReport.ShowReport();
 end;
 
 function TFEstoqueRelatorios.criaButton(form: TForm): TButton;
