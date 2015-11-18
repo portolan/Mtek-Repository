@@ -21,8 +21,6 @@ inherited M_lancamento: TM_lancamento
   inherited gbInfos: TGroupBox
     Width = 442
     Height = 464
-    ExplicitLeft = 1
-    ExplicitTop = -5
     ExplicitWidth = 442
     ExplicitHeight = 464
     object Label1: TLabel

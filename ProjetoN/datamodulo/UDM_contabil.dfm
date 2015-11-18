@@ -303,12 +303,14 @@ object DM_contabil: TDM_contabil
       Origin = '"LANCAMENTOS"."LANC_VAR_HISTORICO"'
       Size = 100
     end
-    object lancamentoLANC_VALOR: TIntegerField
+    object lancamentoLANC_VALOR: TIBBCDField
       DisplayLabel = 'Valor'
       FieldName = 'LANC_VALOR'
       Origin = '"LANCAMENTOS"."LANC_VALOR"'
-      DisplayFormat = 'R$.00'
-      EditFormat = '#.00'
+      Required = True
+      currency = True
+      Precision = 18
+      Size = 2
     end
   end
   object Dlancamento: TDataSource
