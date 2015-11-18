@@ -25,6 +25,8 @@ type
     frm_empresa: TfrmRelacionamento;
     Label1: TLabel;
     DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

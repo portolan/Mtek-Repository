@@ -10,8 +10,11 @@ inherited MPedCompra: TMPedCompra
   inherited pnRodape: TPanel
     Top = 333
     Width = 801
+    ExplicitTop = 333
+    ExplicitWidth = 801
     inherited sbCancelar: TSpeedButton
       Left = 704
+      ExplicitLeft = 704
     end
   end
   inherited gbInfos: TGroupBox
@@ -109,9 +112,12 @@ inherited MPedCompra: TMPedCompra
       ExplicitLeft = 75
       ExplicitTop = 14
       ExplicitWidth = 316
+      ExplicitHeight = 44
       inherited pnlFrame: TPanel
         Width = 316
+        Height = 44
         ExplicitWidth = 316
+        ExplicitHeight = 44
         inherited lbTitulo: TLabel
           Width = 41
           Caption = 'Empresa'
@@ -148,9 +154,12 @@ inherited MPedCompra: TMPedCompra
       ExplicitLeft = 389
       ExplicitTop = 13
       ExplicitWidth = 312
+      ExplicitHeight = 44
       inherited pnlFrame: TPanel
         Width = 312
+        Height = 44
         ExplicitWidth = 312
+        ExplicitHeight = 44
         inherited lbTitulo: TLabel
           Width = 27
           Caption = 'Dpto.'
@@ -202,6 +211,7 @@ inherited MPedCompra: TMPedCompra
         Width = 384
         Height = 46
         ExplicitWidth = 384
+        ExplicitHeight = 46
         inherited lbTitulo: TLabel
           Width = 38
           Caption = 'Produto'
@@ -295,9 +305,12 @@ inherited MPedCompra: TMPedCompra
       ExplicitLeft = 389
       ExplicitTop = 62
       ExplicitWidth = 312
+      ExplicitHeight = 44
       inherited pnlFrame: TPanel
         Width = 312
-        ExplicitWidth = 473
+        Height = 44
+        ExplicitWidth = 312
+        ExplicitHeight = 44
         inherited lbTitulo: TLabel
           Width = 55
           Caption = 'Fornecedor'
@@ -305,7 +318,7 @@ inherited MPedCompra: TMPedCompra
         end
         inherited panelFundo: TPanel
           Width = 227
-          ExplicitWidth = 388
+          ExplicitWidth = 227
           inherited DBT_DESCRICAO: TDBText
             Width = 214
             ExplicitWidth = 375
@@ -322,9 +335,13 @@ inherited MPedCompra: TMPedCompra
       ExplicitLeft = 2
       ExplicitTop = 109
       ExplicitWidth = 229
+      ExplicitHeight = 44
       inherited pnlFrame: TPanel
         Width = 229
-        ExplicitWidth = 233
+        Height = 44
+        ExplicitTop = 1
+        ExplicitWidth = 229
+        ExplicitHeight = 44
         inherited lbTitulo: TLabel
           Width = 39
           Caption = 'Unidade'
@@ -332,7 +349,7 @@ inherited MPedCompra: TMPedCompra
         end
         inherited panelFundo: TPanel
           Width = 144
-          ExplicitWidth = 148
+          ExplicitWidth = 144
           inherited DBT_DESCRICAO: TDBText
             Width = 131
             ExplicitWidth = 135
@@ -349,9 +366,6 @@ inherited MPedCompra: TMPedCompra
     Align = alClient
     Caption = 'Observa'#231#245'es'
     TabOrder = 2
-    ExplicitTop = 96
-    ExplicitWidth = 582
-    ExplicitHeight = 110
     object DBM_PDC_OBS: TDBMemo
       Left = 2
       Top = 15
@@ -361,8 +375,6 @@ inherited MPedCompra: TMPedCompra
       DataField = 'PDC_OBS'
       DataSource = dmPedCompra.DPedidoCompra
       TabOrder = 0
-      ExplicitWidth = 746
-      ExplicitHeight = 131
     end
   end
 end

@@ -1,16 +1,16 @@
 inherited P_FichaTecnica: TP_FichaTecnica
   Caption = 'Ficha T'#233'cnica'
   ClientHeight = 403
-  OnCreate = FormCreate
-  ExplicitTop = -40
   ExplicitWidth = 880
   ExplicitHeight = 442
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
     Height = 308
+    ExplicitHeight = 308
     inherited gbDados: TGroupBox
       Height = 302
+      ExplicitHeight = 302
       inherited DBGDados: TDBGrid
         Height = 285
         DataSource = DM_PCP.DS_Ficha_Tecnica
@@ -69,5 +69,6 @@ inherited P_FichaTecnica: TP_FichaTecnica
   end
   inherited pnRodape: TPanel
     Top = 361
+    ExplicitTop = 361
   end
 end

@@ -41,7 +41,7 @@ begin
       procMontaWhere;
       DM_PCP.OrdemProducao.Close;
       DM_PCP.OrdemProducao.SQL.Text:= 'select b.*, a.emp_razao from ordem_producao b '+
-' inner join empresa a on a.emp_cod= b.op_empresa where '+c_where;
+      ' inner join empresa a on a.emp_cod= b.op_empresa where '+c_where;
       DM_PCP.OrdemProducao.Open;
 end;
 

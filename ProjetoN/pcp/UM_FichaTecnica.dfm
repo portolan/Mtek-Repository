@@ -21,8 +21,6 @@ inherited M_FichaTecnica: TM_FichaTecnica
     Width = 731
     Height = 171
     Caption = ''
-    ExplicitLeft = -1
-    ExplicitTop = -5
     ExplicitWidth = 731
     ExplicitHeight = 171
     object TLabel
@@ -147,8 +145,6 @@ inherited M_FichaTecnica: TM_FichaTecnica
       ExplicitWidth = 235
       inherited pnlFrame: TPanel
         Width = 235
-        ExplicitLeft = -18
-        ExplicitTop = -3
         ExplicitWidth = 235
         DesignSize = (
           235
@@ -159,9 +155,7 @@ inherited M_FichaTecnica: TM_FichaTecnica
         end
         inherited DBE_CAMPO: TDBEdit
           Top = 19
-          Height = 22
           ExplicitTop = 19
-          ExplicitHeight = 22
         end
         inherited panelFundo: TPanel
           Top = 19
@@ -173,6 +167,7 @@ inherited M_FichaTecnica: TM_FichaTecnica
             21)
           inherited DBT_DESCRICAO: TDBText
             Width = 137
+            ExplicitWidth = 137
           end
         end
       end

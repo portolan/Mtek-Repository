@@ -34,6 +34,8 @@ inherited M_OP: TM_OP
   inherited gbInfos: TGroupBox
     Width = 792
     Height = 327
+    ExplicitLeft = 1
+    ExplicitTop = -5
     ExplicitWidth = 792
     ExplicitHeight = 327
     object Label9: TLabel
@@ -53,10 +55,10 @@ inherited M_OP: TM_OP
       FocusControl = DBEdit10
     end
     object Label17: TLabel
-      Left = 11
-      Top = 77
+      Left = 196
+      Top = 68
       Width = 70
-      Height = 13
+      Height = 15
       Caption = 'Tipo da Ordem'
       FocusControl = DBEdit12
     end
@@ -69,10 +71,10 @@ inherited M_OP: TM_OP
       FocusControl = DBEdit13
     end
     object Label13: TLabel
-      Left = 135
-      Top = 77
+      Left = 320
+      Top = 68
       Width = 56
-      Height = 13
+      Height = 12
       Caption = 'Quantidade'
       FocusControl = DBEdit9
     end
@@ -83,6 +85,14 @@ inherited M_OP: TM_OP
       Height = 13
       Caption = 'Data prevista de entrega'
       FocusControl = DBEdit1
+    end
+    object Label2: TLabel
+      Left = 11
+      Top = 70
+      Width = 41
+      Height = 13
+      Caption = 'Produto'
+      FocusControl = DBEdit2
     end
     object DBEdit11: TDBEdit
       Left = 11
@@ -103,8 +113,8 @@ inherited M_OP: TM_OP
       TabOrder = 1
     end
     object DBEdit12: TDBEdit
-      Left = 11
-      Top = 96
+      Left = 196
+      Top = 86
       Width = 118
       Height = 21
       DataField = 'OP_TIPO'
@@ -123,10 +133,10 @@ inherited M_OP: TM_OP
       OnEnter = FormCreate
     end
     object DBEdit9: TDBEdit
-      Left = 135
-      Top = 96
+      Left = 320
+      Top = 86
       Width = 134
-      Height = 21
+      Height = 20
       DataField = 'OP_QTD'
       DataSource = DM_PCP.DS_OrdemProducao
       TabOrder = 4
@@ -141,34 +151,45 @@ inherited M_OP: TM_OP
       TabOrder = 5
     end
     inline frm_empresa: TfrmRelacionamento
-      Left = 291
+      Left = 292
       Top = 21
-      Width = 446
+      Width = 365
       Height = 44
       TabOrder = 6
-      ExplicitLeft = 291
+      ExplicitLeft = 292
       ExplicitTop = 21
-      ExplicitWidth = 446
+      ExplicitWidth = 365
+      ExplicitHeight = 44
       inherited pnlFrame: TPanel
-        Width = 446
+        Width = 365
+        Height = 44
         ExplicitWidth = 446
+        ExplicitHeight = 44
         inherited lbTitulo: TLabel
           Left = 4
           Top = 3
+          Width = 35
+          Height = 14
           ExplicitLeft = 4
           ExplicitTop = 3
+          ExplicitWidth = 35
+          ExplicitHeight = 14
         end
         inherited DBE_CAMPO: TDBEdit
           Left = 4
-          Width = 63
+          Top = 22
+          Width = 62
+          Height = 19
           ExplicitLeft = 4
-          ExplicitWidth = 63
+          ExplicitTop = 22
+          ExplicitWidth = 62
+          ExplicitHeight = 19
         end
         inherited panelFundo: TPanel
-          Width = 361
+          Width = 280
           ExplicitWidth = 361
           inherited DBT_DESCRICAO: TDBText
-            Width = 348
+            Width = 267
             ExplicitWidth = 348
           end
         end
@@ -182,6 +203,15 @@ inherited M_OP: TM_OP
       DataField = 'OP_DT_ENTREGA'
       DataSource = DM_PCP.DS_OrdemProducao
       TabOrder = 7
+    end
+    object DBEdit2: TDBEdit
+      Left = 11
+      Top = 86
+      Width = 177
+      Height = 21
+      DataField = 'OP_PRODUTO'
+      DataSource = DM_PCP.DS_OrdemProducao
+      TabOrder = 8
     end
   end
 end

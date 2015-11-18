@@ -69,7 +69,6 @@ type
     OrdemProducaoOP_FICHATECNICA: TIntegerField;
     OrdemProducaoEMP_RAZAO: TIBStringField;
     OrdemProducaoOP_PRODUTO: TIBStringField;
-    OrdemProducaoOP_COMPRAS: TIntegerField;
     Ficha_TecnicaEMP_RAZAO: TIBStringField;
     procedure OrdemProducaoAfterInsert(DataSet: TDataSet);
     procedure ProducaoAfterInsert(DataSet: TDataSet);

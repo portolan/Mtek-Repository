@@ -30,6 +30,7 @@ inherited P_OP: TP_OP
           item
             Expanded = False
             FieldName = 'OP_VENDAS'
+            Width = 64
             Visible = True
           end
           item
@@ -40,16 +41,19 @@ inherited P_OP: TP_OP
           item
             Expanded = False
             FieldName = 'OP_FICHATECNICA'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'OP_DESCRICAO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'OP_TIPO'
+            Width = 64
             Visible = True
           end
           item
@@ -60,16 +64,19 @@ inherited P_OP: TP_OP
           item
             Expanded = False
             FieldName = 'OP_DT_PEDIDO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'OP_DT_ENTREGA'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'OP_STATUS'
+            Width = 64
             Visible = True
           end>
       end

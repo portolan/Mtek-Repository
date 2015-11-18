@@ -121,7 +121,6 @@ object DM_PCP: TDM_PCP
       DisplayLabel = 'C'#243'digo da Ficha'
       FieldName = 'OP_FICHATECNICA'
       Origin = '"ORDEM_PRODUCAO"."OP_FICHATECNICA"'
-      Required = True
     end
     object OrdemProducaoEMP_RAZAO: TIBStringField
       DisplayLabel = 'Razao Social'
@@ -137,11 +136,6 @@ object DM_PCP: TDM_PCP
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
       Size = 30
-    end
-    object OrdemProducaoOP_COMPRAS: TIntegerField
-      FieldName = 'OP_COMPRAS'
-      Origin = '"ORDEM_PRODUCAO"."OP_COMPRAS"'
-      Required = True
     end
   end
   object Producao: TIBQuery
@@ -335,15 +329,14 @@ object DM_PCP: TDM_PCP
   end
   object UPD_Ficha_Tecnica: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'select a.*, b.emp_razao  from ficha_tecnica a'
-      'inner join empresa b on b.emp_cod= a.ft_empresa'
+      'Select '
+      'from ficha_tecnica '
       'where'
       '  FT_COD = :FT_COD and'
       '  FT_EMPRESA = :FT_EMPRESA')
     ModifySQL.Strings = (
       'update ficha_tecnica'
       'set'
-      '  EMP_RAZAO = :EMP_RAZAO,'
       '  FT_COD = :FT_COD,'
       '  FT_CUSTO_TOTAL = :FT_CUSTO_TOTAL,'
       '  FT_CUSTO_UNITARIO = :FT_CUSTO_UNITARIO,'
@@ -359,23 +352,21 @@ object DM_PCP: TDM_PCP
     InsertSQL.Strings = (
       'insert into ficha_tecnica'
       
-        '  (EMP_RAZAO, FT_COD, FT_CUSTO_TOTAL, FT_CUSTO_UNITARIO, FT_EMPR' +
-        'ESA, FT_MAO_DE_OBRA, '
+        '  (FT_COD, FT_CUSTO_TOTAL, FT_CUSTO_UNITARIO, FT_EMPRESA, FT_MAO' +
+        '_DE_OBRA, '
       '   FT_PRODUTO, FT_QUANTIDADE, FT_TEMPO_PRODUCAO, FT_UNIDADE)'
       'values'
       
-        '  (:EMP_RAZAO, :FT_COD, :FT_CUSTO_TOTAL, :FT_CUSTO_UNITARIO, :FT' +
-        '_EMPRESA, '
-      
-        '   :FT_MAO_DE_OBRA, :FT_PRODUTO, :FT_QUANTIDADE, :FT_TEMPO_PRODU' +
-        'CAO, :FT_UNIDADE)')
+        '  (:FT_COD, :FT_CUSTO_TOTAL, :FT_CUSTO_UNITARIO, :FT_EMPRESA, :F' +
+        'T_MAO_DE_OBRA, '
+      '   :FT_PRODUTO, :FT_QUANTIDADE, :FT_TEMPO_PRODUCAO, :FT_UNIDADE)')
     DeleteSQL.Strings = (
       'delete from ficha_tecnica'
       'where'
       '  FT_COD = :OLD_FT_COD and'
       '  FT_EMPRESA = :OLD_FT_EMPRESA')
     Left = 216
-    Top = 144
+    Top = 136
   end
   object Itens_Ficha: TIBQuery
     Database = dmBanco.Banco
