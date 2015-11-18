@@ -2,6 +2,7 @@ inherited M_Servico: TM_Servico
   Caption = 'Abertura de Chamado'
   ClientHeight = 443
   ClientWidth = 709
+  OnShow = FormShow
   ExplicitWidth = 725
   ExplicitHeight = 482
   PixelsPerInch = 96
@@ -28,22 +29,6 @@ inherited M_Servico: TM_Servico
       Height = 13
       Caption = 'Codigo'
       FocusControl = DBEdit1
-    end
-    object Label2: TLabel
-      Left = 24
-      Top = 72
-      Width = 41
-      Height = 13
-      Caption = 'Empresa'
-      FocusControl = DBEdit2
-    end
-    object Label3: TLabel
-      Left = 216
-      Top = 72
-      Width = 69
-      Height = 13
-      Caption = 'Departamento'
-      FocusControl = DBEdit3
     end
     object Label4: TLabel
       Left = 24
@@ -114,28 +99,6 @@ inherited M_Servico: TM_Servico
       Enabled = False
       TabOrder = 0
     end
-    object DBEdit2: TDBEdit
-      Left = 24
-      Top = 88
-      Width = 134
-      Height = 21
-      DataField = 'CHA_EMPRESA'
-      DataSource = DM_Servico.DS_Chamado
-      ReadOnly = True
-      TabOrder = 1
-      OnClick = DBEdit2Click
-    end
-    object DBEdit3: TDBEdit
-      Left = 216
-      Top = 88
-      Width = 134
-      Height = 21
-      DataField = 'CHA_DEPARTAMENTO'
-      DataSource = DM_Servico.DS_Chamado
-      ReadOnly = True
-      TabOrder = 2
-      OnClick = DBEdit3Click
-    end
     object DBEdit4: TDBEdit
       Left = 24
       Top = 144
@@ -143,7 +106,7 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_FUNCIONARIO'
       DataSource = DM_Servico.DS_Chamado
-      TabOrder = 3
+      TabOrder = 1
     end
     object DBEdit5: TDBEdit
       Left = 216
@@ -152,7 +115,7 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_PROPRIETARIO'
       DataSource = DM_Servico.DS_Chamado
-      TabOrder = 4
+      TabOrder = 2
     end
     object DBEdit6: TDBEdit
       Left = 24
@@ -162,7 +125,8 @@ inherited M_Servico: TM_Servico
       DataField = 'CHA_DATA_ENTRADA'
       DataSource = DM_Servico.DS_Chamado
       Enabled = False
-      TabOrder = 5
+      MaxLength = 8
+      TabOrder = 3
     end
     object DBMemo1: TDBMemo
       Left = 24
@@ -171,16 +135,16 @@ inherited M_Servico: TM_Servico
       Height = 135
       DataField = 'CHA_DESCRICAO'
       DataSource = DM_Servico.DS_Chamado
-      TabOrder = 6
+      TabOrder = 4
     end
     object DBEdit10: TDBEdit
       Left = 432
       Top = 200
-      Width = 97
+      Width = 95
       Height = 21
       DataField = 'CHA_TIPO_ERRO'
       DataSource = DM_Servico.DS_Chamado
-      TabOrder = 7
+      TabOrder = 5
       OnClick = DBEdit10Click
     end
     object DBComboBox1: TDBComboBox
@@ -194,7 +158,7 @@ inherited M_Servico: TM_Servico
         'Baixa'
         'Normal'
         'Alta')
-      TabOrder = 8
+      TabOrder = 6
     end
     object DBComboBox2: TDBComboBox
       Left = 432
@@ -207,7 +171,7 @@ inherited M_Servico: TM_Servico
         'Analise'
         'Manunte'#231#227'o'
         'Concluido')
-      TabOrder = 9
+      TabOrder = 7
     end
     object DBEdit7: TDBEdit
       Left = 216
@@ -216,7 +180,49 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_DATA_SAIDA'
       DataSource = DM_Servico.DS_Chamado
-      TabOrder = 10
+      MaxLength = 8
+      TabOrder = 8
+    end
+    inline frmEmpresa: TfrmRelacionamento
+      Left = 19
+      Top = 66
+      Width = 315
+      Height = 44
+      TabOrder = 9
+      ExplicitLeft = 19
+      ExplicitTop = 66
+      ExplicitWidth = 315
+      ExplicitHeight = 44
+      inherited pnlFrame: TPanel
+        Width = 315
+        Height = 44
+        ExplicitWidth = 315
+        ExplicitHeight = 44
+        inherited lbTitulo: TLabel
+          Left = 5
+          ExplicitLeft = 5
+        end
+        inherited DBE_CAMPO: TDBEdit
+          Left = 5
+          DataField = 'CHA_EMPRESA'
+          DataSource = DM_Servico.DS_Chamado
+          ExplicitLeft = 5
+        end
+        inherited panelFundo: TPanel
+          Width = 108
+          ExplicitWidth = 230
+          inherited DBT_DESCRICAO: TDBText
+            Left = 0
+            Top = -2
+            Width = 95
+            DataField = 'EMP_RAZAO'
+            DataSource = DM_Servico.DS_Chamado
+            ExplicitLeft = 0
+            ExplicitTop = -2
+            ExplicitWidth = 217
+          end
+        end
+      end
     end
   end
 end

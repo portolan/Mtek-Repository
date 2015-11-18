@@ -23,7 +23,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_Servico, UM_Servico, dm000, ERP;
+uses UDM_Servico, UM_Servico, dm000, ERP, UDM_contabil;
 
 procedure TP_Servico.FormCreate(Sender: TObject);
 begin
@@ -37,7 +37,10 @@ begin
   inherited;
    procMontaWhere;
    DM_Servico.IB_Chamado.Close;
-   DM_Servico.IB_Chamado.SQL.Text := 'SELECT * FROM CHAMADOS WHERE '+ C_WHERE;
+   DM_Servico.IB_Chamado.SQL.Text := 'SELECT A.*, '+
+            ' B.emp_razao '+
+            ' FROM CHAMADOS A '+
+   ' INNER join EMPRESA B ON a.cha_empresa =  b.emp_cod WHERE '+ C_WHERE;
    DM_Servico.IB_Chamado.Open;
 end;
 

@@ -27,6 +27,7 @@ type
     IB_ChamadoCHA_DATA_SAIDA: TDateField;
     IB_Tipo_ErroTER_CODIGO: TIntegerField;
     IB_Tipo_ErroTER_DESCRICAO: TIBStringField;
+    IB_ChamadoEMP_RAZAO: TIBStringField;
     procedure IB_ChamadoAfterInsert(DataSet: TDataSet);
     procedure IB_Tipo_ErroAfterInsert(DataSet: TDataSet);
   private
@@ -42,7 +43,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses dm000;
+uses dm000, UDM_contabil;
 
 {$R *.dfm}
 

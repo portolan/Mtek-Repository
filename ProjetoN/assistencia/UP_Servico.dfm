@@ -1,6 +1,5 @@
 inherited P_Servico: TP_Servico
   Caption = 'Servi'#231'o'
-  OnCreate = FormCreate
   ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96

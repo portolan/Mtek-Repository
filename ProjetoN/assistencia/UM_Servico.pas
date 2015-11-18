@@ -5,16 +5,13 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls;
+  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls,
+  ufrm_Relacionamento;
 
 type
   TM_Servico = class(TxManuPadrao)
     Label1: TLabel;
     DBEdit1: TDBEdit;
-    Label2: TLabel;
-    DBEdit2: TDBEdit;
-    Label3: TLabel;
-    DBEdit3: TDBEdit;
     Label4: TLabel;
     DBEdit4: TDBEdit;
     Label5: TLabel;
@@ -31,10 +28,12 @@ type
     DBComboBox1: TDBComboBox;
     DBComboBox2: TDBComboBox;
     DBEdit7: TDBEdit;
+    frmEmpresa: TfrmRelacionamento;
     procedure FormCreate(Sender: TObject);
     procedure DBEdit2Click(Sender: TObject);
     procedure DBEdit3Click(Sender: TObject);
     procedure DBEdit10Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,7 +47,8 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_Servico, UDM_contabil, UP_empresa, UP_departamento, UP_Tipo_Erro;
+uses UDM_Servico, UDM_contabil, UP_empresa, UP_departamento, UP_Tipo_Erro,
+  UM_empresa;
 
 
 procedure TM_Servico.DBEdit10Click(Sender: TObject);
@@ -91,6 +91,20 @@ procedure TM_Servico.FormCreate(Sender: TObject);
 begin
   inherited;
   DBEdit6.Text := DateToStr(date);
+end;
+
+procedure TM_Servico.FormShow(Sender: TObject);
+begin
+  inherited;
+  frmEmpresa.procInicializar(DM_Servico.IB_ChamadoCHA_EMPRESA,
+                             DM_Servico.IB_ChamadoEMP_RAZAO,
+                             DM_Servico.DS_Chamado,
+                             ' SELECT A.EMP_COD, '+
+                             '        A.EMP_RAZAO '+
+                             ' FROM EMPRESA A ' +
+                             ' WHERE A.EMP_COD = :EMP',
+                             P_empresa, TP_empresa, ['EMP'], ['CHA_EMPRESA'],
+                             ['EMP_COD','EMP_RAZAO']);
 end;
 
 end.

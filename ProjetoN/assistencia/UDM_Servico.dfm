@@ -10,7 +10,8 @@ object DM_Servico: TDM_Servico
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'Select * From CHAMADOS')
+      'SELECT A.*, B.emp_razao FROM CHAMADOS A'
+      'INNER join EMPRESA B ON A.cha_empresa = B.emp_cod')
     UpdateObject = UPS_Chamado
     Left = 48
     Top = 8
@@ -56,6 +57,12 @@ object DM_Servico: TDM_Servico
       FieldName = 'CHA_PRIORIDADE'
       Origin = '"CHAMADOS"."CHA_PRIORIDADE"'
     end
+    object IB_ChamadoEMP_RAZAO: TIBStringField
+      DisplayLabel = 'Empresa'
+      FieldName = 'EMP_RAZAO'
+      Origin = '"EMPRESA"."EMP_RAZAO"'
+      Size = 60
+    end
     object IB_ChamadoCHA_STATUS: TIBStringField
       DisplayLabel = 'Status'
       FieldName = 'CHA_STATUS'
@@ -86,21 +93,13 @@ object DM_Servico: TDM_Servico
   end
   object UPS_Chamado: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select '
-      '  CHA_CODIGO,'
-      '  CHA_EMPRESA,'
-      '  CHA_DEPARTAMENTO,'
-      '  CHA_FUNCIONARIO,'
-      '  CHA_PROPRIETARIO,'
-      '  CHA_DESCRICAO,'
-      '  CHA_PRIORIDADE,'
-      '  CHA_STATUS,'
-      '  CHA_DATA_ENTRADA,'
-      '  CHA_TIPO_ERRO,'
-      '  CHA_DATA_SAIDA'
-      'from CHAMADOS '
+      'SELECT A.*,'
+      '             B.emp_razao '
+      'FROM CHAMADOS A'
+      'INNER join EMPRESA B ON a.cha_empresa =  b.emp_cod'
       'where'
-      '  CHA_CODIGO = :CHA_CODIGO')
+      '  CHA_CODIGO = :CHA_CODIGO AND'
+      '  CHA_EMPRESA = :CHA_EMPRESA')
     ModifySQL.Strings = (
       'update CHAMADOS'
       'set'
@@ -114,7 +113,8 @@ object DM_Servico: TDM_Servico
       '  CHA_PRIORIDADE = :CHA_PRIORIDADE,'
       '  CHA_PROPRIETARIO = :CHA_PROPRIETARIO,'
       '  CHA_STATUS = :CHA_STATUS,'
-      '  CHA_TIPO_ERRO = :CHA_TIPO_ERRO'
+      '  CHA_TIPO_ERRO = :CHA_TIPO_ERRO,'
+      '  EMP_RAZAO = :EMP_RAZAO'
       'where'
       '  CHA_CODIGO = :OLD_CHA_CODIGO')
     InsertSQL.Strings = (
@@ -125,7 +125,7 @@ object DM_Servico: TDM_Servico
       
         '   CHA_EMPRESA, CHA_FUNCIONARIO, CHA_PRIORIDADE, CHA_PROPRIETARI' +
         'O, CHA_STATUS, '
-      '   CHA_TIPO_ERRO)'
+      '   CHA_TIPO_ERRO, EMP_RAZAO)'
       'values'
       
         '  (:CHA_CODIGO, :CHA_DATA_ENTRADA, :CHA_DATA_SAIDA, :CHA_DEPARTA' +
@@ -133,7 +133,7 @@ object DM_Servico: TDM_Servico
       
         '   :CHA_DESCRICAO, :CHA_EMPRESA, :CHA_FUNCIONARIO, :CHA_PRIORIDA' +
         'DE, :CHA_PROPRIETARIO, '
-      '   :CHA_STATUS, :CHA_TIPO_ERRO)')
+      '   :CHA_STATUS, :CHA_TIPO_ERRO, :EMP_RAZAO)')
     DeleteSQL.Strings = (
       'delete from CHAMADOS'
       'where'
