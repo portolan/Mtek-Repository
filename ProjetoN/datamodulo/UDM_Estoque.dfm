@@ -342,7 +342,6 @@ object DM_Estoque: TDM_Estoque
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = EstoqueAfterInsert
-    AfterPost = EstoqueAfterPost
     BeforePost = EstoqueBeforePost
     BufferChunks = 1000
     CachedUpdates = False
@@ -947,7 +946,7 @@ object DM_Estoque: TDM_Estoque
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = PrateleiraAfterInsert
-    AfterPost = PrateleiraAfterPost
+    BeforePost = PrateleiraBeforePost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -989,6 +988,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Qtd M'#225'xima'
       FieldName = 'PRAT_QTDMAXIMA'
       Origin = '"PRATELEIRA"."PRAT_QTDMAXIMA"'
+      Required = True
     end
     object PrateleiraPRAT_CATEGORIA: TIntegerField
       DisplayLabel = 'Categoria'

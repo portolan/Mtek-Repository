@@ -136,16 +136,15 @@ type
     procedure PrateleiraAfterInsert(DataSet: TDataSet);
     procedure UnidadeAfterInsert(DataSet: TDataSet);
     procedure ProdutosAfterPost(DataSet: TDataSet);
-    procedure PrateleiraAfterPost(DataSet: TDataSet);
-    procedure EstoqueAfterPost(DataSet: TDataSet);
     procedure MovimentoEstoqueBeforePost(DataSet: TDataSet);
     procedure ProdutosBeforePost(DataSet: TDataSet);
     procedure EstoqueBeforePost(DataSet: TDataSet);
+    procedure PrateleiraBeforePost(DataSet: TDataSet);
   private
     { Private declarations }
   public
-    procedure procEstoqueVerificaPrateleiras;
-    procedure procPrateleiraVerificaBlocos;
+    function funcEstoqueVerificaPrateleiras:boolean;
+    function funcPrateleiraVerificaBlocos:boolean;
   end;
 
 var
@@ -177,17 +176,46 @@ begin
     Estoque.FieldByName('ESTOQ_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQUE');
 end;
 
-procedure TDM_Estoque.EstoqueAfterPost(DataSet: TDataSet);
-begin
-    procEstoqueVerificaPrateleiras;
-end;
-
 procedure TDM_Estoque.EstoqueBeforePost(DataSet: TDataSet);
+var
+    qryDin : TIBQuery;
+    i_qtdMaxPrateleira : integer;
+    i_qtd : integer;
 begin
     DM_Estoque.Estoque.FieldByName('ESTOQ_DTCADASTRO').Value := Date;
     DM_Estoque.Estoque.FieldByName('ESTOQ_QTD').Value := Abs(DM_Estoque.Estoque.FieldByName('ESTOQ_QTD').AsFloat);
     DM_Estoque.Estoque.FieldByName('ESTOQ_QTDMAX').Value := Abs(DM_Estoque.Estoque.FieldByName('ESTOQ_QTDMAX').AsFloat);
     DM_Estoque.Estoque.FieldByName('ESTOQ_QTDMIN').Value := Abs(DM_Estoque.Estoque.FieldByName('ESTOQ_QTDMIN').AsFloat);
+
+    if Estoque.State in [dsInsert] then
+    begin
+        qryDin := funcCriaQuery;
+        qryDin.Close;
+        qryDin.SQL.Text := 'select prat_qtdmaxima as qtdmax from prateleira where '+
+                           'prat_empresa = ' + EstoqueESTOQ_EMPRESA.AsString +
+                           ' and prat_bloco  = ' + EstoqueESTOQ_BLOCO.AsString +
+                           ' and prat_codigo = ' + EstoqueESTOQ_PRATELEIRA.AsString;
+        qryDin.Open;
+        i_qtdMaxPrateleira := qryDin.FieldByName('qtdmax').AsInteger;
+
+        qryDin.Close;
+        qryDin.SQL.Text := 'select count(1) as qtd from estoque where '+
+                           'estoq_empresa = :codEmpresa and estoq_bloco = :codBloco '+
+                           ' and estoq_prateleira = :codPrateleira';
+        qryDin.ParamByName('codEmpresa').Value    := EstoqueESTOQ_EMPRESA.AsString;
+        qryDin.ParamByName('codBloco').Value      := EstoqueESTOQ_BLOCO.AsString;
+        qryDin.ParamByName('codPrateleira').Value := EstoqueESTOQ_PRATELEIRA.AsString;
+        qryDin.Open;
+        i_qtd := qryDin.FieldByName('qtd').AsInteger;
+
+        if (i_qtd >= i_qtdMaxPrateleira) then
+        begin
+            ShowMessage('Quantidade Máxima de Produtos para esta prateleira obtidas!');
+            Estoque.Cancel;
+            Estoque.Edit;
+            //Estoque.Transaction.Rollback;
+        end;
+    end;
 end;
 
 procedure TDM_Estoque.MarcasAfterInsert(DataSet: TDataSet);
@@ -211,9 +239,39 @@ begin
     Prateleira.FieldByName('PRAT_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRATELEIRA');
 end;
 
-procedure TDM_Estoque.PrateleiraAfterPost(DataSet: TDataSet);
+procedure TDM_Estoque.PrateleiraBeforePost(DataSet: TDataSet);
+var
+    qryDin : TIBQuery;
+    i_qtdMaxBloco : integer;
+    i_qtd : integer;
 begin
-    procPrateleiraVerificaBlocos;
+    if Prateleira.State in [dsInsert] then
+    begin
+        qryDin := funcCriaQuery;
+        qryDin.Close;
+        qryDin.SQL.Text := 'select count(1) as qtd from prateleira where '+
+                           'prat_empresa = :codEmpresa and prat_bloco = :codBloco';
+        qryDin.ParamByName('codEmpresa').Value   := PrateleiraPRAT_EMPRESA.AsString;
+        qryDin.ParamByName('codBloco').Value     := PrateleiraPRAT_BLOCO.AsString;
+        qryDin.Open;
+
+        i_qtd := qryDin.FieldByName('qtd').AsInteger;
+
+        qryDin.Close;
+        qryDin.SQL.Text := 'select bloc_qtdmaxima as qtdmax from bloco where '+
+                           'bloc_empresa = ' + PrateleiraPRAT_EMPRESA.AsString +
+                           ' and bloc_codigo  = ' + PrateleiraPRAT_BLOCO.AsString;
+        qryDin.Open;
+        i_qtdMaxBloco := qryDin.FieldByName('qtdmax').AsInteger;
+
+        if (i_qtd >= i_qtdMaxBloco) then
+        begin
+            showMessage('Quantidade Máxima de Prateleiras para este bloco obtida!');
+            Prateleira.Cancel;
+            Prateleira.Edit;
+            //prateleira.Transaction.Rollback;
+        end;
+    end;
 end;
 
 procedure TDM_Estoque.ProdutosAfterInsert(DataSet: TDataSet);
@@ -246,10 +304,11 @@ begin
     Unidade.FieldByName('UN_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_UNIDADE');
 end;
 
-procedure TDM_Estoque.procEstoqueVerificaPrateleiras;
+function TDM_Estoque.funcEstoqueVerificaPrateleiras:boolean;
 var
     qryDin : TIBQuery;
     i_qtdMaxPrateleira : integer;
+    i_qtd : integer;
 begin
     if Prateleira.State in [dsInsert] then
     begin
@@ -262,18 +321,26 @@ begin
         qryDin.Open;
         i_qtdMaxPrateleira := qryDin.FieldByName('qtdmax').AsInteger;
 
-        if (funcContaEstoquePorPrateleira(EstoqueESTOQ_EMPRESA.Value,
-                                          EstoqueESTOQ_BLOCO.Value,
-                                          EstoqueESTOQ_PRATELEIRA.Value) > i_qtdMaxPrateleira) then
+        qryDin.Close;
+        qryDin.SQL.Text := 'select count(1) as qtd from estoque where '+
+                           'estoq_empresa = :codEmpresa and estoq_bloco = :codBloco '+
+                           ' and estoq_prateleira = :codPrateleira';
+        qryDin.ParamByName('codEmpresa').Value    := EstoqueESTOQ_EMPRESA.AsString;
+        qryDin.ParamByName('codBloco').Value      := EstoqueESTOQ_BLOCO.AsString;
+        qryDin.ParamByName('codPrateleira').Value := EstoqueESTOQ_PRATELEIRA.AsString;
+        qryDin.Open;
+        i_qtd := qryDin.FieldByName('qtd').AsInteger;
+
+        if (i_qtd > i_qtdMaxPrateleira) then
         begin
-            raise Exception.Create('Quantidade Máxima de Produtos para esta prateleira obtidas!');
+            ShowMessage('Quantidade Máxima de Produtos para esta prateleira obtidas!');
             Estoque.Cancel;
             Estoque.Transaction.Rollback;
         end;
     end;
 end;
 
-procedure TDM_Estoque.procPrateleiraVerificaBlocos;
+function TDM_Estoque.funcPrateleiraVerificaBlocos:boolean;
 var
     qryDin : TIBQuery;
     i_qtdMaxBloco : integer;
