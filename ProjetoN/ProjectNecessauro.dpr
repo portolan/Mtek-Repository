@@ -110,6 +110,8 @@ begin
   Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TDM_caixa, DM_caixa);
+  Application.CreateForm(TDM_contasreceber, DM_contasreceber);
+  Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.Run;
 end.

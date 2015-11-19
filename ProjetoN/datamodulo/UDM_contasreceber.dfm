@@ -45,22 +45,32 @@ object DM_contasreceber: TDM_contasreceber
     object contasreceberTTR_DT_EMISSAO: TDateField
       FieldName = 'TTR_DT_EMISSAO'
       Origin = '"TITULO_RECEBER"."TTR_DT_EMISSAO"'
+      DisplayFormat = '__/__/____'
+      EditMask = '!99/99/00;1;_'
     end
     object contasreceberTTR_DT_VENCIMENTO: TDateField
       FieldName = 'TTR_DT_VENCIMENTO'
       Origin = '"TITULO_RECEBER"."TTR_DT_VENCIMENTO"'
+      DisplayFormat = '__/__/____'
+      EditMask = '!99/99/00;1;_'
     end
     object contasreceberTTR_DT_PAGAMENTO: TDateField
       FieldName = 'TTR_DT_PAGAMENTO'
       Origin = '"TITULO_RECEBER"."TTR_DT_PAGAMENTO"'
+      DisplayFormat = '__/__/____'
+      EditMask = '!99/99/00;1;_'
     end
     object contasreceberTTR_DT_BAIXA: TDateField
       FieldName = 'TTR_DT_BAIXA'
       Origin = '"TITULO_RECEBER"."TTR_DT_BAIXA"'
+      DisplayFormat = '__/__/____'
+      EditMask = '!99/99/00;1;_'
     end
     object contasreceberTTR_DT_CANCELAMENTO: TDateField
       FieldName = 'TTR_DT_CANCELAMENTO'
       Origin = '"TITULO_RECEBER"."TTR_DT_CANCELAMENTO"'
+      DisplayFormat = '__/__/____'
+      EditMask = '!99/99/00;1;_'
     end
     object contasreceberTTR_TP_TITULO: TIBStringField
       FieldName = 'TTR_TP_TITULO'
@@ -157,7 +167,8 @@ object DM_contasreceber: TDM_contasreceber
       '  TTR_TP_MULTA'
       'from TITULO_RECEBER '
       'where'
-      '  TTR_CODIGO = :TTR_CODIGO')
+      '  TTR_CODIGO = :TTR_CODIGO and'
+      '  TTR_EMP_CODIGO = :TTR_EMP_CODIGO')
     ModifySQL.Strings = (
       'update TITULO_RECEBER'
       'set'
@@ -184,7 +195,8 @@ object DM_contasreceber: TDM_contasreceber
       '  TTR_VL_PAGO = :TTR_VL_PAGO,'
       '  TTR_VL_TOTAL = :TTR_VL_TOTAL'
       'where'
-      '  TTR_CODIGO = :OLD_TTR_CODIGO')
+      '  TTR_CODIGO = :OLD_TTR_CODIGO and'
+      '  TTR_EMP_CODIGO = :OLD_TTR_EMP_CODIGO')
     InsertSQL.Strings = (
       'insert into TITULO_RECEBER'
       
@@ -219,7 +231,8 @@ object DM_contasreceber: TDM_contasreceber
     DeleteSQL.Strings = (
       'delete from TITULO_RECEBER'
       'where'
-      '  TTR_CODIGO = :OLD_TTR_CODIGO')
+      '  TTR_CODIGO = :OLD_TTR_CODIGO and'
+      '  TTR_EMP_CODIGO = :OLD_TTR_EMP_CODIGO')
     Left = 32
     Top = 168
   end

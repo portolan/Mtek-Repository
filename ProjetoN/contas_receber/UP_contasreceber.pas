@@ -41,7 +41,7 @@ begin
   procMontaWhere;
 
   DM_contasreceber.contasreceber.Close;
-  DM_contasreceber.contasreceber.SQL.Text := 'select * from TITULO_RECEBER ';
+  DM_contasreceber.contasreceber.SQL.Text := 'select * from TITULO_RECEBER ';//+c_where;
   DM_contasreceber.contasreceber.Open;
 end;
 
