@@ -3,7 +3,7 @@ inherited MProduto: TMProduto
   ClientHeight = 656
   ClientWidth = 717
   OnActivate = FormActivate
-  ExplicitTop = -8
+  ExplicitTop = -214
   ExplicitWidth = 733
   ExplicitHeight = 695
   PixelsPerInch = 96
@@ -37,6 +37,8 @@ inherited MProduto: TMProduto
       Height = 193
       Align = alTop
       TabOrder = 0
+      ExplicitLeft = 90
+      ExplicitTop = 16
       object Label1: TLabel
         Left = 9
         Top = 6
@@ -189,6 +191,7 @@ inherited MProduto: TMProduto
         Top = 25
         Width = 172
         Height = 19
+        Cursor = crNo
         BevelInner = bvNone
         CharCase = ecUpperCase
         Ctl3D = False
@@ -221,6 +224,7 @@ inherited MProduto: TMProduto
         Top = 25
         Width = 134
         Height = 19
+        Cursor = crNo
         TabStop = False
         Ctl3D = False
         DataField = 'PRO_DTCADASTRO'
@@ -381,6 +385,7 @@ inherited MProduto: TMProduto
         Top = 32
         Width = 187
         Height = 19
+        Cursor = crNo
         TabStop = False
         Color = clGradientInactiveCaption
         Ctl3D = False
@@ -395,6 +400,7 @@ inherited MProduto: TMProduto
         Top = 32
         Width = 219
         Height = 19
+        Cursor = crNo
         TabStop = False
         Color = clGradientInactiveCaption
         Ctl3D = False
@@ -409,6 +415,7 @@ inherited MProduto: TMProduto
         Top = 32
         Width = 274
         Height = 19
+        Cursor = crNo
         TabStop = False
         Color = clGradientInactiveCaption
         Ctl3D = False
@@ -423,6 +430,7 @@ inherited MProduto: TMProduto
         Top = 75
         Width = 202
         Height = 19
+        Cursor = crNo
         TabStop = False
         Color = clGradientInactiveCaption
         Ctl3D = False
@@ -437,6 +445,7 @@ inherited MProduto: TMProduto
         Top = 75
         Width = 204
         Height = 19
+        Cursor = crNo
         TabStop = False
         Color = clGradientInactiveCaption
         Ctl3D = False
@@ -547,6 +556,7 @@ inherited MProduto: TMProduto
         Top = 37
         Width = 235
         Height = 19
+        Cursor = crNo
         TabStop = False
         Ctl3D = False
         DataField = 'PRO_CUSTOMEDIO'
@@ -621,6 +631,7 @@ inherited MProduto: TMProduto
         Top = 126
         Width = 182
         Height = 19
+        Cursor = crNo
         TabStop = False
         Ctl3D = False
         DataField = 'PRO_VALORIZACAO'

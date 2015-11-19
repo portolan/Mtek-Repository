@@ -5,7 +5,6 @@ object EstoqueRelatorios: TEstoqueRelatorios
   object query: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
-    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -141,8 +140,8 @@ object EstoqueRelatorios: TEstoqueRelatorios
       'begin'
       ''
       'end.')
-    Left = 144
-    Top = 136
+    Left = 224
+    Top = 56
     Datasets = <
       item
         DataSet = frxDB
@@ -177,7 +176,7 @@ object EstoqueRelatorios: TEstoqueRelatorios
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
         Height = 83.149660000000000000
-        Top = 18.897650000000000000
+        Top = 16.000000000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
           Left = 3.779530000000000000
@@ -295,7 +294,7 @@ object EstoqueRelatorios: TEstoqueRelatorios
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Height = 18.897650000000000000
-        Top = 162.519790000000000000
+        Top = 120.000000000000000000
         Width = 718.110700000000000000
         DataSet = frxDB
         DataSetName = 'frxDBDataset1'

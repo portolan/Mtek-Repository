@@ -132,6 +132,7 @@ end;
 procedure TMProduto.FormCreate(Sender: TObject);
 begin
   inherited;
+
     if DM_Estoque.Produtos.State in [dsEdit] then
         procSelecionaItems;
 
