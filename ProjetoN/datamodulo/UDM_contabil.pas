@@ -64,6 +64,7 @@ type
     lancamentoLANC_CREDITO: TIBStringField;
     planodecontasPLN_CONTA: TIBStringField;
     lancamentoLANC_VALOR: TIBBCDField;
+    lancamentoLANC_TIPO: TIBStringField;
     procedure planodecontasAfterInsert(DataSet: TDataSet);
     procedure centroAfterInsert(DataSet: TDataSet);
     procedure empresaBeforePost(DataSet: TDataSet);
@@ -227,31 +228,12 @@ end;
 
 procedure TDM_contabil.lancamentoAfterInsert(DataSet: TDataSet);
 begin
+  DM_contabil.lancamentoLANC_TIPO.AsString := 'C';
   lancamento.FieldByName('LANC_NR_LANCAMENTO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_LANCAMENTOS_ID');
 end;
 
 procedure TDM_contabil.lancamentoBeforePost(DataSet: TDataSet);
 begin
-  if DM_contabil.lancamentoLANC_DEBITO.AsString = '' then
-   begin
-      ShowMessage('Campo DÉBITO é de preenchimento obrigatório.');
-      abort;
-   end;
-  if DM_contabil.lancamentoLANC_CENTRODECUSTO_DB.AsString = '' then
-   begin
-      ShowMessage('Campo CENTRO DE CUSTO DEBITO é de preenchimento obrigatório.');
-      abort;
-   end;
-  if DM_contabil.lancamentoLANC_CREDITO.AsString = '' then
-   begin
-      ShowMessage('Campo CRÉDITO é de preenchimento obrigatório.');
-      abort;
-   end;
-  if DM_contabil.lancamentoLANC_CENTRODECUSTO_CR.AsString = '' then
-   begin
-      ShowMessage('Campo CENTRO DE CUISTO CRÉDITO é de preenchimento obrigatório.');
-      abort;
-   end;
   if DM_contabil.lancamentoLANC_HISTORICO.AsString = '' then
    begin
       ShowMessage('Campo HISTÓRICO é de preenchimento obrigatório.');

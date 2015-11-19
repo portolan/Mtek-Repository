@@ -1,15 +1,15 @@
 inherited M_lancamento: TM_lancamento
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Inserindo Dados - Lan'#231'amentos - ProjetoDesnecessauro'
-  ClientHeight = 505
+  ClientHeight = 535
   ClientWidth = 442
   OnShow = FormShow
   ExplicitWidth = 458
-  ExplicitHeight = 544
+  ExplicitHeight = 574
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnRodape: TPanel
-    Top = 464
+    Top = 494
     Width = 442
     ExplicitTop = 464
     ExplicitWidth = 442
@@ -20,11 +20,11 @@ inherited M_lancamento: TM_lancamento
   end
   inherited gbInfos: TGroupBox
     Width = 442
-    Height = 464
+    Height = 494
     ExplicitWidth = 442
     ExplicitHeight = 464
     object Label1: TLabel
-      Left = 13
+      Left = 14
       Top = 96
       Width = 36
       Height = 13
@@ -48,59 +48,59 @@ inherited M_lancamento: TM_lancamento
       FocusControl = DBEdit3
     end
     object Label4: TLabel
-      Left = 13
-      Top = 166
-      Width = 31
+      Left = 14
+      Top = 193
+      Width = 35
       Height = 13
-      Caption = 'D'#233'bito'
+      Caption = 'D'#233'bito:'
     end
     object Label5: TLabel
       Left = 248
-      Top = 166
-      Width = 52
+      Top = 193
+      Width = 56
       Height = 13
-      Caption = 'C.C D'#233'bito'
+      Caption = 'C.C D'#233'bito:'
     end
     object Label6: TLabel
       Left = 14
-      Top = 212
-      Width = 35
+      Top = 239
+      Width = 39
       Height = 13
-      Caption = 'Cr'#233'dito'
+      Caption = 'Cr'#233'dito:'
     end
     object Label7: TLabel
       Left = 248
-      Top = 212
-      Width = 56
+      Top = 239
+      Width = 60
       Height = 13
-      Caption = 'C.C Cr'#233'dito'
+      Caption = 'C.C Cr'#233'dito:'
     end
     object Label8: TLabel
-      Left = 13
-      Top = 264
-      Width = 41
+      Left = 14
+      Top = 291
+      Width = 45
       Height = 13
-      Caption = 'Hist'#243'rico'
+      Caption = 'Hist'#243'rico:'
     end
     object Label9: TLabel
       Left = 14
-      Top = 310
-      Width = 82
+      Top = 342
+      Width = 86
       Height = 13
-      Caption = 'Hist'#243'rico Variavel'
+      Caption = 'Hist'#243'rico Variavel:'
       FocusControl = DBEdit9
     end
     object Label10: TLabel
-      Left = 13
-      Top = 399
-      Width = 24
+      Left = 14
+      Top = 431
+      Width = 28
       Height = 13
-      Caption = 'Valor'
+      Caption = 'Valor:'
       FocusControl = DBEdit10
     end
     object SpeedButton1: TSpeedButton
       Left = 153
-      Top = 183
+      Top = 210
       Width = 32
       Height = 23
       Glyph.Data = {
@@ -132,8 +132,8 @@ inherited M_lancamento: TM_lancamento
       OnClick = SpeedButton1Click
     end
     object SpeedButton2: TSpeedButton
-      Left = 153
-      Top = 229
+      Left = 154
+      Top = 256
       Width = 32
       Height = 23
       Glyph.Data = {
@@ -166,7 +166,7 @@ inherited M_lancamento: TM_lancamento
     end
     object SpeedButton3: TSpeedButton
       Left = 153
-      Top = 281
+      Top = 308
       Width = 32
       Height = 23
       Glyph.Data = {
@@ -199,7 +199,7 @@ inherited M_lancamento: TM_lancamento
     end
     object SpeedButton4: TSpeedButton
       Left = 388
-      Top = 183
+      Top = 210
       Width = 32
       Height = 23
       Glyph.Data = {
@@ -232,7 +232,7 @@ inherited M_lancamento: TM_lancamento
     end
     object SpeedButton5: TSpeedButton
       Left = 388
-      Top = 229
+      Top = 256
       Width = 32
       Height = 23
       Glyph.Data = {
@@ -263,6 +263,13 @@ inherited M_lancamento: TM_lancamento
         EFEFEFEFEFEFEF000000}
       OnClick = SpeedButton5Click
     end
+    object Label11: TLabel
+      Left = 14
+      Top = 142
+      Width = 96
+      Height = 13
+      Caption = 'Tipo de Lan'#231'amento'
+    end
     object GroupBox2: TGroupBox
       Left = 3
       Top = 16
@@ -272,7 +279,7 @@ inherited M_lancamento: TM_lancamento
       TabOrder = 11
     end
     object DBEdit1: TDBEdit
-      Left = 13
+      Left = 14
       Top = 115
       Width = 69
       Height = 21
@@ -300,7 +307,7 @@ inherited M_lancamento: TM_lancamento
     end
     object DBEdit9: TDBEdit
       Left = 14
-      Top = 329
+      Top = 361
       Width = 406
       Height = 64
       AutoSize = False
@@ -309,8 +316,8 @@ inherited M_lancamento: TM_lancamento
       TabOrder = 9
     end
     object DBEdit10: TDBEdit
-      Left = 13
-      Top = 418
+      Left = 14
+      Top = 450
       Width = 84
       Height = 21
       DataField = 'LANC_VALOR'
@@ -331,7 +338,7 @@ inherited M_lancamento: TM_lancamento
     end
     object DBEdit5: TDBEdit
       Left = 248
-      Top = 185
+      Top = 212
       Width = 134
       Height = 21
       DataField = 'LANC_CENTRODECUSTO_DB'
@@ -340,7 +347,7 @@ inherited M_lancamento: TM_lancamento
     end
     object DBEdit7: TDBEdit
       Left = 248
-      Top = 231
+      Top = 258
       Width = 134
       Height = 21
       DataField = 'LANC_CENTRODECUSTO_CR'
@@ -349,7 +356,7 @@ inherited M_lancamento: TM_lancamento
     end
     object DBEdit8: TDBEdit
       Left = 14
-      Top = 283
+      Top = 310
       Width = 133
       Height = 21
       DataField = 'LANC_HISTORICO'
@@ -357,8 +364,8 @@ inherited M_lancamento: TM_lancamento
       TabOrder = 8
     end
     object DBEdit4: TDBEdit
-      Left = 13
-      Top = 185
+      Left = 14
+      Top = 212
       Width = 134
       Height = 21
       DataField = 'LANC_DEBITO'
@@ -366,13 +373,25 @@ inherited M_lancamento: TM_lancamento
       TabOrder = 4
     end
     object DBEdit6: TDBEdit
-      Left = 13
-      Top = 231
+      Left = 14
+      Top = 258
       Width = 134
       Height = 21
       DataField = 'LANC_CREDITO'
       DataSource = DM_contabil.Dlancamento
       TabOrder = 6
+    end
+    object ComboBox1: TComboBox
+      Left = 14
+      Top = 161
+      Width = 145
+      Height = 21
+      TabOrder = 12
+      Text = 'escolha...'
+      OnExit = ComboBox1Exit
+      Items.Strings = (
+        'CR'#201'DITO'
+        'D'#201'BITO')
     end
   end
 end

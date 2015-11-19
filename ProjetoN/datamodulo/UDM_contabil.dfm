@@ -265,7 +265,6 @@ object DM_contabil: TDM_contabil
       DisplayLabel = 'D'#233'bito'
       FieldName = 'LANC_DEBITO'
       Origin = '"LANCAMENTOS"."LANC_DEBITO"'
-      Required = True
       EditMask = '0000\.0000;0;_'
       Size = 8
     end
@@ -280,7 +279,6 @@ object DM_contabil: TDM_contabil
       DisplayLabel = 'Cr'#233'dito'
       FieldName = 'LANC_CREDITO'
       Origin = '"LANCAMENTOS"."LANC_CREDITO"'
-      Required = True
       EditMask = '0000\.0000;0;_'
       Size = 8
     end
@@ -312,6 +310,13 @@ object DM_contabil: TDM_contabil
       Precision = 18
       Size = 2
     end
+    object lancamentoLANC_TIPO: TIBStringField
+      DisplayLabel = 'Tipo de Lan'#231'amento'
+      FieldName = 'LANC_TIPO'
+      Origin = '"LANCAMENTOS"."LANC_TIPO"'
+      Required = True
+      Size = 1
+    end
   end
   object Dlancamento: TDataSource
     DataSet = lancamento
@@ -336,6 +341,7 @@ object DM_contabil: TDM_contabil
       '  LANC_HISTORICO = :LANC_HISTORICO,'
       '  LANC_NR_LANCAMENTO = :LANC_NR_LANCAMENTO,'
       '  LANC_NR_LOTE = :LANC_NR_LOTE,'
+      '  LANC_TIPO = :LANC_TIPO,'
       '  LANC_VALOR = :LANC_VALOR,'
       '  LANC_VAR_HISTORICO = :LANC_VAR_HISTORICO'
       'where'
@@ -348,7 +354,7 @@ object DM_contabil: TDM_contabil
       
         '   LANC_DT_LANCAMENTO, LANC_EMP, LANC_HISTORICO, LANC_NR_LANCAME' +
         'NTO, LANC_NR_LOTE, '
-      '   LANC_VALOR, LANC_VAR_HISTORICO)'
+      '   LANC_TIPO, LANC_VALOR, LANC_VAR_HISTORICO)'
       'values'
       
         '  (:LANC_CENTRODECUSTO_CR, :LANC_CENTRODECUSTO_DB, :LANC_CREDITO' +
@@ -356,7 +362,7 @@ object DM_contabil: TDM_contabil
       
         '   :LANC_DT_LANCAMENTO, :LANC_EMP, :LANC_HISTORICO, :LANC_NR_LAN' +
         'CAMENTO, '
-      '   :LANC_NR_LOTE, :LANC_VALOR, :LANC_VAR_HISTORICO)')
+      '   :LANC_NR_LOTE, :LANC_TIPO, :LANC_VALOR, :LANC_VAR_HISTORICO)')
     DeleteSQL.Strings = (
       'delete from lancamentos'
       'where'

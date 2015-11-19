@@ -36,12 +36,15 @@ type
     GroupBox2: TGroupBox;
     DBEdit4: TDBEdit;
     DBEdit6: TDBEdit;
+    Label11: TLabel;
+    ComboBox1: TComboBox;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton5Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure ComboBox1Exit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,6 +59,35 @@ implementation
 {$R *.dfm}
 
 uses UDM_contabil, UP_planodecontas, UP_centro, UP_historico;
+
+procedure TM_lancamento.ComboBox1Exit(Sender: TObject);
+begin
+  inherited;
+  if ComboBox1.ItemIndex = 0 then
+  begin
+    DM_contabil.lancamentoLANC_TIPO.Value := 'C';
+    DBEdit4.ReadOnly := true;
+    DBEdit5.ReadOnly := true;
+    SpeedButton1.Visible := false;
+    SpeedButton4.Visible := false;
+    DBEdit6.ReadOnly := false;
+    DBEdit7.ReadOnly := false;
+    SpeedButton2.Visible := true;
+    SpeedButton5.Visible := true;
+  end
+  else if ComboBox1.ItemIndex = 1 then
+  begin
+    DM_contabil.lancamentoLANC_TIPO.Value := 'D';
+    DBEdit4.ReadOnly := false;
+    DBEdit5.ReadOnly := false;
+    SpeedButton1.Visible := true;
+    SpeedButton4.Visible := true;
+    DBEdit6.ReadOnly := true;
+    DBEdit7.ReadOnly := true;
+    SpeedButton2.Visible := false;
+    SpeedButton5.Visible := false;
+  end;
+end;
 
 procedure TM_lancamento.FormShow(Sender: TObject);
 begin

@@ -14,6 +14,8 @@ type
     Ncredito: TLabel;
     Ndebito: TLabel;
     Rtotal: TLabel;
+    Rcredito: TLabel;
+    Rdebito: TLabel;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -56,11 +58,26 @@ begin
        Qry.open;
 
        soma := qry.FieldByName('soma').AsInteger;
+       Rtotal.Caption := IntToStr(soma);
+
+       Qry.Close;
+       Qry.SQL.Text := 'select sum(a.LANC_VALOR) soma from lancamentos a where a.lanc_tipo = ''C'' ';
+       Qry.open;
+
+       soma := qry.FieldByName('soma').AsInteger;
+       Rcredito.Caption := IntToStr(soma);
+
+       Qry.Close;
+       Qry.SQL.Text := 'select sum(a.LANC_VALOR) soma from lancamentos a where a.lanc_tipo = ''D'' ';
+       Qry.open;
+
+       soma := qry.FieldByName('soma').AsInteger;
+       Rdebito.Caption := IntToStr(soma);
+
     finally
        FreeAndNil(Qry);
     end;
 
-    Rtotal.Caption := IntToStr(soma);
     procInicializar(DM_contabil.lancamento,true,false,M_lancamento,TM_lancamento);
     funcAtribuiFiltros;
 end;
