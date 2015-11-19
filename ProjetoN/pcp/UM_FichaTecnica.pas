@@ -22,8 +22,7 @@ type
     db_custototal: TDBEdit;
     db_tempoproducao: TDBEdit;
     frm_empresa: TfrmRelacionamento;
-    Label1: TLabel;
-    db_produto: TDBEdit;
+    frm_produto: TfrmRelacionamento;
     procedure db_produtoEnter(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -40,7 +39,8 @@ implementation
 {$R *.dfm}
 
 uses dm000, UDM_PCP, UP_FichaTecnica, UDM_Estoque, UP_Produto, UM_empresa,
-  UP_empresa;
+  UP_empresa, UM_Estoque, UP_Estoque, UM_PCP, UDM_contabil, UDM_PedCompra,
+  UM_Produto;
 
 procedure TM_FichaTecnica.db_produtoEnter(Sender: TObject);
 begin
@@ -66,8 +66,22 @@ begin
                               '        A.EMP_RAZAO '+
                               '   FROM EMPRESA A '+
                               '  WHERE A.EMP_COD = :EMP ',
-                               P_empresa, TP_empresa,['EMP'], ['FT_EMPRESA'],
+                               P_empresa,TP_empresa,['EMP'],['FT_EMPRESA'],
                                ['EMP_COD','EMP_RAZAO']);
+
+
+
+            frm_produto.procInicializar(DM_PCP.Ficha_TecnicaFT_PRODUTO,
+                              DM_PCP.Ficha_TecnicaPRO_DESCRICAO,
+                              DM_PCP.DS_Ficha_Tecnica,
+                              ' SELECT A.PRO_CODIGO, '+
+                              '  A.PRO_DESCRICAO '+
+                              '   FROM PRODUTOS A '+
+                              '  WHERE A.PRO_EMPRESA = :EMP '+
+                              '    AND A.PRO_CODIGO = :PRO ',
+                              Pproduto, TPproduto, ['EMP', 'PRO'],
+                              ['FT_EMPRESA','FT_PRODUTO'],
+                              ['PRO_CODIGO','PRO_DESCRICAO']);
 end;
 
 end.

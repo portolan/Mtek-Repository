@@ -55,7 +55,7 @@ begin
                                         '        E.UN_DESCRICAO, '+
                                         '        F.CDP_DESCRICAO, '+
                                         '        G.PRO_DESCRICAO '+
-                                        '   FROM PEDIDO_COMPRA A '+
+                                        '  FROM PEDIDO_COMPRA A '+
                                         '  INNER JOIN EMPRESA B ON A.PDC_EMPRESA = B.EMP_COD '+
                                         '  INNER JOIN DEPARTAMENTO C ON A.PDC_DEPARTAMENTO = C.DEP_COD '+
                                         '  INNER JOIN PESSOAS D ON A.PDC_FORNECEDOR = D.PESS_CODIGO '+

@@ -6,6 +6,15 @@ uses
   System.SysUtils, System.Classes, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery,
   IBX.IBUpdateSQL;
 
+  type
+   TStatusOrdemProducao = (tssAguardando, tssemproducao, tsscancelada, tssFinalizado);
+   TStatusproducao     = (tspproduzindo, tspcancelada, tspconcluida);
+
+const
+   TNMStatusOp : Array [TStatusOrdemProducao] of String = ('A','P','C','F');
+   TDSStatusOp : Array [TStatusOrdemproducao] of String = ('AGUARDANDO','PRODUZINDO','CONCLUIDA', 'FINALIZADA');
+
+
 type
   TDM_PCP = class(TDataModule)
     DS_OrdemProducao: TDataSource;
@@ -70,6 +79,10 @@ type
     OrdemProducaoEMP_RAZAO: TIBStringField;
     OrdemProducaoOP_PRODUTO: TIBStringField;
     Ficha_TecnicaEMP_RAZAO: TIBStringField;
+    Ficha_TecnicaPRO_DESCRICAO: TIBStringField;
+    OrdemProducaoOP_COMPRAS: TIntegerField;
+    OrdemProducaoOP_DEPARTAMENTO: TIntegerField;
+    OrdemProducaoDEP_NOME: TIBStringField;
     procedure OrdemProducaoAfterInsert(DataSet: TDataSet);
     procedure ProducaoAfterInsert(DataSet: TDataSet);
     procedure Ficha_TecnicaAfterInsert(DataSet: TDataSet);
@@ -88,6 +101,8 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 uses dm000, UP_PRODUCAO;
+
+
 
 {$R *.dfm}
 

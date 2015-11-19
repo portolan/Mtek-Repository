@@ -1,5 +1,7 @@
 inherited PPedCompra: TPPedCompra
   Caption = 'Pesquisa - Pedido de Compra'
+  ExplicitWidth = 880
+  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
@@ -152,6 +154,17 @@ inherited PPedCompra: TPPedCompra
   inherited pnRodape: TPanel
     inherited sbNovo: TSpeedButton
       Visible = False
+    end
+  end
+  inherited pnCabecalho: TPanel
+    inherited gbFiltro: TGroupBox
+      ExplicitWidth = 848
+      inherited editPesquisa: TEdit
+        ExplicitWidth = 454
+      end
+      inherited Pesquisar: TButton
+        ExplicitLeft = 767
+      end
     end
   end
 end

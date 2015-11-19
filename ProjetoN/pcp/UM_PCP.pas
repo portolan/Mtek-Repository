@@ -27,6 +27,7 @@ type
     DBEdit1: TDBEdit;
     Label2: TLabel;
     DBEdit2: TDBEdit;
+    frm_departamento: TfrmRelacionamento;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -42,7 +43,8 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_PCP, dm000, UEstoque, UP_empresa;
+uses UDM_PCP, dm000, UEstoque, UP_empresa, UDM_contabil, UM_departamento,
+  UP_departamento;
 
 procedure TM_OP.FormCreate(Sender: TObject);
 begin
@@ -63,6 +65,18 @@ begin
                               '  WHERE A.EMP_COD = :EMP ',
                                P_empresa, TP_empresa, ['EMP'], ['OP_EMPRESA'],
                                ['EMP_COD','EMP_RAZAO']);
+
+         frm_departamento.procInicializar(DM_PCP.OrdemProducaoOP_DEPARTAMENTO,
+                                   DM_PCP.OrdemProducaoDEP_NOME,
+                                   DM_PCP.DS_OrdemProducao,
+                                   ' SELECT A.DEP_COD, '+
+                                   '        A.DEP_NOME '+
+                                   '   FROM DEPARTAMENTO A '+
+                                   '  WHERE A.DEP_EMPRESAR = :EMP '+
+                                   '    AND A.DEP_COD = :DPTO ',
+                                   P_departamento, TP_departamento, ['EMP', 'DPTO'],
+                                   ['OP_EMPRESA','OP_DEPARTAMENTO'],
+                                   ['DEP_COD','DEP_NOME']);
 
 
 end;

@@ -24,7 +24,8 @@ implementation
 
 {$R *.dfm}
 
-uses dm000, UDM_PCP, UM_FichaTecnica, ERP, UDM_contabil;
+uses dm000, UDM_PCP, UM_FichaTecnica, ERP, UDM_contabil, UDM_Estoque,
+  UM_Estoque, UP_Estoque, UM_PCP;
 
 procedure TP_FichaTecnica.FormCreate(Sender: TObject);
 begin
@@ -38,8 +39,14 @@ begin
   inherited;
       procMontaWhere;
       DM_PCP.Ficha_Tecnica.Close;
-      DM_PCP.Ficha_Tecnica.SQL.Text:= 'select a.*, b.emp_razao  from ficha_tecnica a'+
-         ' inner join empresa b on a.ft_empresa= b.emp_cod where '+c_where;
+      DM_PCP.Ficha_Tecnica.SQL.Text:= 'SELECT A.*, '+
+                                               ' B.EMP_RAZAO, '+
+                                               ' G.PRO_DESCRICAO '+
+                                         ' FROM ficha_tecnica A '+
+                                         ' INNER JOIN EMPRESA B ON A.ft_empresa = B.EMP_COD '+
+                                         ' INNER JOIN PRODUTOS G ON A.ft_empresa = G.PRO_EMPRESA '+
+                                           '   AND A.ft_produto = G.PRO_CODIGO '+
+                                           'WHERE '+c_where;
          DM_PCP.Ficha_Tecnica.Open;
 end;
 

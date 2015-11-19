@@ -60,8 +60,16 @@ object DM_PCP: TDM_PCP
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select b.*, a.emp_razao from ordem_producao b'
-      'inner join empresa a on a.emp_cod= b.op_empresa')
+      'select  O.*, D.dep_nome, E.emp_razao from ordem_producao o'
+      '   inner join departamento d ON O.op_departamento = D.dep_cod '
+      '      INNER join EMPRESA E ON O.op_empresa = E.emp_cod '
+      '      '
+      ''
+      ''
+      ''
+      ''
+      ''
+      '')
     UpdateObject = UPD_OrdemProducao
     Left = 48
     Top = 8
@@ -136,6 +144,24 @@ object DM_PCP: TDM_PCP
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
       Size = 30
+    end
+    object OrdemProducaoOP_COMPRAS: TIntegerField
+      DisplayLabel = 'N'#250'mero da Compra'
+      FieldName = 'OP_COMPRAS'
+      Origin = '"ORDEM_PRODUCAO"."OP_COMPRAS"'
+    end
+    object OrdemProducaoOP_DEPARTAMENTO: TIntegerField
+      DisplayLabel = 'Departamento'
+      FieldName = 'OP_DEPARTAMENTO'
+      Origin = '"ORDEM_PRODUCAO"."OP_DEPARTAMENTO"'
+      Required = True
+    end
+    object OrdemProducaoDEP_NOME: TIBStringField
+      DisplayLabel = 'Nome Departamento'
+      FieldName = 'DEP_NOME'
+      Origin = '"DEPARTAMENTO"."DEP_NOME"'
+      Required = True
+      Size = 40
     end
   end
   object Producao: TIBQuery
@@ -257,18 +283,31 @@ object DM_PCP: TDM_PCP
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select a.*, b.emp_razao  from ficha_tecnica a'
-      'inner join empresa b on b.emp_cod= a.ft_empresa')
+      'SELECT A.*,'
+      '                                                B.EMP_RAZAO,'
+      '                                                G.PRO_DESCRICAO'
+      '                                          FROM ficha_tecnica A'
+      
+        '                                          INNER JOIN EMPRESA B O' +
+        'N A.ft_empresa = B.EMP_COD'
+      
+        '                                          INNER JOIN PRODUTOS G ' +
+        'ON A.ft_empresa = G.PRO_EMPRESA'
+      
+        '                                              AND A.ft_produto =' +
+        ' G.PRO_CODIGO')
     UpdateObject = UPD_Ficha_Tecnica
     Left = 208
     Top = 8
     object Ficha_TecnicaFT_COD: TIntegerField
+      DisplayLabel = 'C'#243'digo do Produto'
       FieldName = 'FT_COD'
       Origin = '"FICHA_TECNICA"."FT_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object Ficha_TecnicaFT_EMPRESA: TIntegerField
+      DisplayLabel = 'Empresa'
       FieldName = 'FT_EMPRESA'
       Origin = '"FICHA_TECNICA"."FT_EMPRESA"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -283,10 +322,12 @@ object DM_PCP: TDM_PCP
       Size = 30
     end
     object Ficha_TecnicaFT_UNIDADE: TIntegerField
+      DisplayLabel = 'Unidade'
       FieldName = 'FT_UNIDADE'
       Origin = '"FICHA_TECNICA"."FT_UNIDADE"'
     end
     object Ficha_TecnicaFT_CUSTO_UNITARIO: TIBBCDField
+      DisplayLabel = 'Custo Unit'#225'rio'
       FieldName = 'FT_CUSTO_UNITARIO'
       Origin = '"FICHA_TECNICA"."FT_CUSTO_UNITARIO"'
       DisplayFormat = '0.00'
@@ -294,16 +335,19 @@ object DM_PCP: TDM_PCP
       Size = 4
     end
     object Ficha_TecnicaFT_MAO_DE_OBRA: TIBBCDField
+      DisplayLabel = 'M'#227'o de Obra'
       FieldName = 'FT_MAO_DE_OBRA'
       Origin = '"FICHA_TECNICA"."FT_MAO_DE_OBRA"'
       Precision = 18
       Size = 4
     end
     object Ficha_TecnicaFT_QUANTIDADE: TIntegerField
+      DisplayLabel = 'Quantidade'
       FieldName = 'FT_QUANTIDADE'
       Origin = '"FICHA_TECNICA"."FT_QUANTIDADE"'
     end
     object Ficha_TecnicaFT_CUSTO_TOTAL: TIBBCDField
+      DisplayLabel = 'Custo Total'
       FieldName = 'FT_CUSTO_TOTAL'
       Origin = '"FICHA_TECNICA"."FT_CUSTO_TOTAL"'
       DisplayFormat = '0.00'
@@ -311,13 +355,22 @@ object DM_PCP: TDM_PCP
       Size = 4
     end
     object Ficha_TecnicaFT_TEMPO_PRODUCAO: TDateTimeField
+      DisplayLabel = 'Tempo de Producao'
       FieldName = 'FT_TEMPO_PRODUCAO'
       Origin = '"FICHA_TECNICA"."FT_TEMPO_PRODUCAO"'
-      EditMask = '!90:00;1;_'
+      EditMask = '!90:00:00>LL;1;_'
     end
     object Ficha_TecnicaEMP_RAZAO: TIBStringField
+      DisplayLabel = 'Empresa'
       FieldName = 'EMP_RAZAO'
       Origin = '"EMPRESA"."EMP_RAZAO"'
+      Required = True
+      Size = 60
+    end
+    object Ficha_TecnicaPRO_DESCRICAO: TIBStringField
+      DisplayLabel = 'Nome do Produto'
+      FieldName = 'PRO_DESCRICAO'
+      Origin = '"PRODUTOS"."PRO_DESCRICAO"'
       Required = True
       Size = 60
     end

@@ -84,7 +84,7 @@ begin
                               ' SELECT A.PRO_CODIGO, '+
                               '        A.PRO_DESCRICAO '+
                               '   FROM PRODUTOS A '+
-                              '  WHERE A.PRO_EMPRESA = :EMP '+
+                             '  WHERE A.PRO_EMPRESA = :EMP '+
                               '    AND A.PRO_CODIGO = :PRO ',
                               Pproduto, TPproduto, ['EMP', 'PRO'],
                               ['PDC_EMPRESA','PDC_PRODUTO'],

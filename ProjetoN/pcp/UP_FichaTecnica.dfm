@@ -1,6 +1,7 @@
 inherited P_FichaTecnica: TP_FichaTecnica
   Caption = 'Ficha T'#233'cnica'
   ClientHeight = 403
+  ExplicitLeft = -56
   ExplicitWidth = 880
   ExplicitHeight = 442
   PixelsPerInch = 96
@@ -17,51 +18,64 @@ inherited P_FichaTecnica: TP_FichaTecnica
         Columns = <
           item
             Expanded = False
-            FieldName = 'C'#243'digo da Ficha'
-            Width = 84
+            FieldName = 'FT_COD'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'Produto'
+            FieldName = 'FT_EMPRESA'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'Empresa'
+            FieldName = 'EMP_RAZAO'
+            Width = 46
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'Unidade'
+            FieldName = 'FT_PRODUTO'
+            Width = 48
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'M'#227'o de Obra'
-            Width = 70
+            FieldName = 'PRO_DESCRICAO'
+            Width = 89
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'Quantidade'
+            FieldName = 'FT_UNIDADE'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'Custo Unit'#225'rio'
-            Width = 73
+            FieldName = 'FT_CUSTO_UNITARIO'
+            Width = 74
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'Custo Total'
+            FieldName = 'FT_MAO_DE_OBRA'
+            Width = 72
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'Tempo de Producao'
-            Width = 104
+            FieldName = 'FT_QUANTIDADE'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'FT_CUSTO_TOTAL'
+            Width = 64
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'FT_TEMPO_PRODUCAO'
+            Width = 101
             Visible = True
           end>
       end
@@ -70,5 +84,16 @@ inherited P_FichaTecnica: TP_FichaTecnica
   inherited pnRodape: TPanel
     Top = 361
     ExplicitTop = 361
+  end
+  inherited pnCabecalho: TPanel
+    inherited gbFiltro: TGroupBox
+      ExplicitWidth = 848
+      inherited editPesquisa: TEdit
+        ExplicitWidth = 454
+      end
+      inherited Pesquisar: TButton
+        ExplicitLeft = 767
+      end
+    end
   end
 end

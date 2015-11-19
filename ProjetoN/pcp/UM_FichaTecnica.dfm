@@ -33,32 +33,32 @@ inherited M_FichaTecnica: TM_FichaTecnica
       FocusControl = db_codigo
     end
     object Label3: TLabel
-      Left = 160
-      Top = 62
+      Left = 190
+      Top = 67
       Width = 39
       Height = 13
       Caption = 'Unidade'
       FocusControl = db_unidade
     end
     object Label4: TLabel
-      Left = 300
-      Top = 62
+      Left = 335
+      Top = 63
       Width = 68
       Height = 13
       Caption = 'Custo Unit'#225'rio'
       FocusControl = db_custo_unitario
     end
     object Label5: TLabel
-      Left = 435
-      Top = 62
+      Left = 483
+      Top = 63
       Width = 62
       Height = 13
       Caption = 'M'#227'o de Obra'
       FocusControl = db_mao_obra
     end
     object Label6: TLabel
-      Left = 570
-      Top = 62
+      Left = 135
+      Top = 117
       Width = 55
       Height = 13
       Caption = 'Custo Total'
@@ -66,32 +66,24 @@ inherited M_FichaTecnica: TM_FichaTecnica
     end
     object Label7: TLabel
       Left = 24
-      Top = 108
+      Top = 117
       Width = 95
       Height = 13
       Caption = 'Tempo de Producao'
       FocusControl = db_tempoproducao
     end
-    object Label1: TLabel
-      Left = 25
-      Top = 63
-      Width = 38
-      Height = 13
-      Caption = 'Produto'
-      FocusControl = db_produto
-    end
     object db_codigo: TDBEdit
       Left = 24
       Top = 35
-      Width = 38
+      Width = 56
       Height = 21
       DataField = 'FT_COD'
       DataSource = DM_PCP.DS_Ficha_Tecnica
       TabOrder = 0
     end
     object db_unidade: TDBEdit
-      Left = 160
-      Top = 81
+      Left = 182
+      Top = 83
       Width = 134
       Height = 21
       DataField = 'FT_UNIDADE'
@@ -99,26 +91,26 @@ inherited M_FichaTecnica: TM_FichaTecnica
       TabOrder = 1
     end
     object db_custo_unitario: TDBEdit
-      Left = 300
-      Top = 81
-      Width = 129
+      Left = 335
+      Top = 82
+      Width = 121
       Height = 21
       DataField = 'FT_CUSTO_UNITARIO'
       DataSource = DM_PCP.DS_Ficha_Tecnica
       TabOrder = 2
     end
     object db_mao_obra: TDBEdit
-      Left = 435
-      Top = 81
-      Width = 129
+      Left = 483
+      Top = 82
+      Width = 137
       Height = 21
       DataField = 'FT_MAO_DE_OBRA'
       DataSource = DM_PCP.DS_Ficha_Tecnica
       TabOrder = 3
     end
     object db_custototal: TDBEdit
-      Left = 570
-      Top = 81
+      Left = 135
+      Top = 133
       Width = 137
       Height = 21
       DataField = 'FT_CUSTO_TOTAL'
@@ -127,7 +119,7 @@ inherited M_FichaTecnica: TM_FichaTecnica
     end
     object db_tempoproducao: TDBEdit
       Left = 24
-      Top = 124
+      Top = 133
       Width = 105
       Height = 21
       DataField = 'FT_TEMPO_PRODUCAO'
@@ -135,20 +127,23 @@ inherited M_FichaTecnica: TM_FichaTecnica
       TabOrder = 5
     end
     inline frm_empresa: TfrmRelacionamento
-      Left = 73
+      Left = 76
       Top = 16
-      Width = 235
-      Height = 60
+      Width = 241
+      Height = 63
       TabOrder = 6
-      ExplicitLeft = 73
+      ExplicitLeft = 76
       ExplicitTop = 16
-      ExplicitWidth = 235
+      ExplicitWidth = 241
+      ExplicitHeight = 63
       inherited pnlFrame: TPanel
-        Width = 235
-        ExplicitWidth = 235
+        Width = 241
+        Height = 63
+        ExplicitWidth = 241
+        ExplicitHeight = 63
         DesignSize = (
-          235
-          60)
+          241
+          63)
         inherited lbTitulo: TLabel
           Top = 0
           ExplicitTop = 0
@@ -159,27 +154,57 @@ inherited M_FichaTecnica: TM_FichaTecnica
         end
         inherited panelFundo: TPanel
           Top = 19
-          Width = 150
+          Width = 156
           ExplicitTop = 19
-          ExplicitWidth = 150
+          ExplicitWidth = 156
           DesignSize = (
-            150
+            156
             21)
           inherited DBT_DESCRICAO: TDBText
-            Width = 137
-            ExplicitWidth = 137
+            Left = 22
+            Top = 4
+            Width = 148
+            ExplicitLeft = 22
+            ExplicitTop = 4
+            ExplicitWidth = 143
           end
         end
       end
     end
-    object db_produto: TDBEdit
-      Left = 24
-      Top = 81
-      Width = 82
-      Height = 21
-      DataField = 'FT_PRODUTO'
-      DataSource = DM_PCP.DS_Ficha_Tecnica
+    inline frm_produto: TfrmRelacionamento
+      Left = 9
+      Top = 62
+      Width = 166
+      Height = 56
       TabOrder = 7
+      ExplicitLeft = 9
+      ExplicitTop = 62
+      ExplicitWidth = 166
+      ExplicitHeight = 56
+      inherited pnlFrame: TPanel
+        Width = 166
+        Height = 56
+        ExplicitWidth = 168
+        ExplicitHeight = 56
+        inherited lbTitulo: TLabel
+          Left = 15
+          ExplicitLeft = 15
+        end
+        inherited DBE_CAMPO: TDBEdit
+          Left = 15
+          Width = 52
+          ExplicitLeft = 15
+          ExplicitWidth = 52
+        end
+        inherited panelFundo: TPanel
+          Width = 80
+          ExplicitWidth = 82
+          inherited DBT_DESCRICAO: TDBText
+            Width = 72
+            ExplicitWidth = 75
+          end
+        end
+      end
     end
   end
 end

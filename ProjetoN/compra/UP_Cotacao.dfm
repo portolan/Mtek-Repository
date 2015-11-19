@@ -36,19 +36,16 @@ inherited PCotacao: TPCotacao
           item
             Expanded = False
             FieldName = 'COT_DEPARTAMENTO'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DEP_NOME'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'COT_DESCRICAO'
-            Width = 64
             Visible = True
           end
           item
@@ -65,19 +62,16 @@ inherited PCotacao: TPCotacao
           item
             Expanded = False
             FieldName = 'COT_QTD'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'COT_SOLICITACAO_ORIGEM'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EMP_RAZAO'
-            Width = 64
             Visible = True
           end>
       end

@@ -339,7 +339,6 @@ inherited MPedCompra: TMPedCompra
       inherited pnlFrame: TPanel
         Width = 229
         Height = 44
-        ExplicitTop = 1
         ExplicitWidth = 229
         ExplicitHeight = 44
         inherited lbTitulo: TLabel

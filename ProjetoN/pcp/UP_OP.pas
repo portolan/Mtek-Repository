@@ -40,9 +40,12 @@ begin
   inherited;
       procMontaWhere;
       DM_PCP.OrdemProducao.Close;
-      DM_PCP.OrdemProducao.SQL.Text:= 'select b.*, a.emp_razao from ordem_producao b '+
-      ' inner join empresa a on a.emp_cod= b.op_empresa where '+c_where;
+      DM_PCP.OrdemProducao.SQL.Text:= 'select  O.*, D.dep_nome, E.emp_razao from ordem_producao o'+
+    '  inner join departamento d ON O.op_departamento = D.dep_cod '+
+    '  INNER join EMPRESA E ON O.op_empresa = E.emp_cod '+
+    ' where '+c_where;
       DM_PCP.OrdemProducao.Open;
+
 end;
 
 end.

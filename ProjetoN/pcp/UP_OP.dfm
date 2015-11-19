@@ -1,22 +1,22 @@
 inherited P_OP: TP_OP
   ActiveControl = DBGDados
   Caption = 'Ordem Producao'
-  ClientWidth = 872
-  ExplicitWidth = 888
+  ClientWidth = 800
+  ExplicitWidth = 816
   ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
-    Width = 872
-    ExplicitWidth = 872
+    Width = 800
+    ExplicitWidth = 880
     inherited gbDados: TGroupBox
-      Width = 866
-      ExplicitWidth = 866
+      Width = 794
+      ExplicitWidth = 874
       inherited DBGDados: TDBGrid
         AlignWithMargins = True
         Left = 5
         Top = 18
-        Width = 856
+        Width = 784
         Height = 278
         DataSource = DM_PCP.DS_OrdemProducao
         ParentShowHint = False
@@ -30,7 +30,6 @@ inherited P_OP: TP_OP
           item
             Expanded = False
             FieldName = 'OP_VENDAS'
-            Width = 64
             Visible = True
           end
           item
@@ -41,19 +40,16 @@ inherited P_OP: TP_OP
           item
             Expanded = False
             FieldName = 'OP_FICHATECNICA'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'OP_DESCRICAO'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'OP_TIPO'
-            Width = 64
             Visible = True
           end
           item
@@ -64,19 +60,16 @@ inherited P_OP: TP_OP
           item
             Expanded = False
             FieldName = 'OP_DT_PEDIDO'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'OP_DT_ENTREGA'
-            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'OP_STATUS'
-            Width = 64
             Visible = True
           end>
       end
@@ -99,35 +92,37 @@ inherited P_OP: TP_OP
     end
   end
   inherited pnRodape: TPanel
-    Width = 872
-    ExplicitWidth = 872
+    Width = 800
+    ExplicitWidth = 880
     inherited sbNovo: TSpeedButton
       ParentShowHint = False
       ExplicitLeft = 25
       ExplicitTop = 33
     end
     inherited sbSair: TSpeedButton
-      Left = 775
+      Left = 703
       ExplicitLeft = 775
     end
   end
   inherited pnCabecalho: TPanel
-    Width = 872
-    ExplicitWidth = 872
+    Width = 800
+    ExplicitWidth = 880
     inherited gbStatus: TGroupBox
-      Left = 856
-      ExplicitLeft = 856
+      Left = 784
+      ExplicitLeft = 546
+      ExplicitTop = 15
     end
     inherited gbFiltro: TGroupBox
-      Width = 856
-      ExplicitWidth = 856
+      Width = 784
+      ExplicitLeft = -48
+      ExplicitWidth = 794
       inherited editPesquisa: TEdit
-        Width = 317
-        ExplicitWidth = 317
+        Width = 245
+        ExplicitWidth = 325
       end
       inherited Pesquisar: TButton
-        Left = 630
-        ExplicitLeft = 630
+        Left = 558
+        ExplicitLeft = 638
       end
     end
   end
