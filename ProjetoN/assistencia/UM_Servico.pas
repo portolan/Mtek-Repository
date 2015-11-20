@@ -28,12 +28,24 @@ type
     DBEdit4: TDBEdit;
     Label5: TLabel;
     DBEdit5: TDBEdit;
+    DBEdit6: TDBEdit;
+    DBEdit7: TDBEdit;
+    DBEdit8: TDBEdit;
+    DBEdit9: TDBEdit;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure DBEdit2Click(Sender: TObject);
     procedure DBEdit3Click(Sender: TObject);
     procedure DBEdit4Click(Sender: TObject);
     procedure DBEdit5Click(Sender: TObject);
     procedure DBEdit10Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,7 +60,7 @@ implementation
 {$R *.dfm}
 
 uses UDM_Servico, UDM_contabil, UP_empresa, UP_departamento, UP_Tipo_Erro,
-  UM_empresa, UM_Tipo_Erro, UP_Pessoa;
+  UM_empresa, UM_Tipo_Erro, UP_Pessoa, UDM_PedCompra;
 
 procedure TM_Servico.DBEdit10Click(Sender: TObject);
 begin
@@ -72,6 +84,7 @@ begin
   finally
     DM_Servico.IB_ChamadoCHA_EMPRESA.Value := DM_contabil.empresaEMP_COD.AsInteger;
   end;
+  DBEdit6.Text := DM_contabil.empresaEMP_RAZAO.AsString;
 end;
 
 procedure TM_Servico.DBEdit3Click(Sender: TObject);
@@ -89,36 +102,87 @@ begin
       ShowMessage('Esse departamento não pertence a essa empresa!!!');
       DBEdit3.Text := EmptyStr;
     end;
+    DBEdit8.Text := DM_contabil.departamentoDEP_NOME.AsString;
 end;
 
 procedure TM_Servico.DBEdit4Click(Sender: TObject);
 begin
-  inherited;
+ // inherited;
  // PPessoa := TPPessoa.Create(self);
  // try
- //   PPessoa.procInicializar(DM_contabil.departamento,false,true,PPessoa,TPPessoa);
+ //   PPessoa.procInicializar(dmPedCompra.Pessoa,false,true,PPessoa,TPPessoa);
  //   PPessoa.ShowModal;
- // finally
- //   DM_Servico.IB_ChamadoCHA_FUNCIONARIO.Value := DM_contabil.departamentoDEP_COD.AsInteger;
- // end;
+//  finally
+ //   DM_Servico.IB_ChamadoCHA_FUNCIONARIO.Value := dmPedCompra.PessoaPESS_CODIGO.AsInteger;
+//  end;
+  //  DBEdit7.Text := dmPedCompra.PessoaPESS_NOME.AsString;
 end;
 
 procedure TM_Servico.DBEdit5Click(Sender: TObject);
 begin
-  inherited;
+ // inherited;
  // PPessoa := TPPessoa.Create(self);
  // try
- //   PPessoa.procInicializar(DM_contabil.departamento,false,true,PPessoa,TPPessoa);
- //   PPessoa.ShowModal;
- // finally
-  //  DM_Servico.IB_ChamadoCHA_PROPRIETARIO.Value := DM_contabil.departamentoDEP_COD.AsInteger;
- // end;
+  //  PPessoa.procInicializar(dmPedCompra.Pessoa,false,true,PPessoa,TPPessoa);
+  //  PPessoa.ShowModal;
+  //finally
+  //  DM_Servico.IB_ChamadoCHA_PROPRIETARIO.Value := dmPedCompra.PessoaPESS_CODIGO.AsInteger;
+//  end;
+  //  DBEdit9.Text := dmPedCompra.PessoaPESS_NOME.AsString;
 end;
 
 procedure TM_Servico.FormCreate(Sender: TObject);
 begin
   inherited;
   DM_Servico.IB_ChamadoCHA_DATA_ENTRADA.Text :=  DateToStr(date);
+end;
+
+procedure TM_Servico.SpeedButton1Click(Sender: TObject);
+begin
+  inherited;
+  P_empresa := TP_empresa.Create(Self);
+    try
+        P_empresa.procInicializar(DM_contabil.empresa, false, false, P_empresa, TP_empresa);
+        P_empresa.ShowModal;
+    finally
+        FreeAndNil(P_empresa);
+    end;
+end;
+
+procedure TM_Servico.SpeedButton2Click(Sender: TObject);
+begin
+  inherited;
+  P_departamento := TP_departamento.Create(self);
+  try
+    P_departamento.procInicializar(DM_contabil.departamento,false,false,P_departamento,TP_departamento);
+    P_departamento.ShowModal;
+  finally
+    FreeAndNil(P_departamento);
+  end;
+end;
+
+procedure TM_Servico.SpeedButton3Click(Sender: TObject);
+begin
+  inherited;
+  PPessoa := TPPessoa.Create(self);
+  try
+    PPessoa.procInicializar(dmPedCompra.Pessoa,false,true,PPessoa,TPPessoa);
+    PPessoa.ShowModal;
+  finally
+    FreeAndNil(PPessoa);
+  end;
+end;
+
+procedure TM_Servico.SpeedButton4Click(Sender: TObject);
+begin
+  inherited;
+  PPessoa := TPPessoa.Create(self);
+  try
+    PPessoa.procInicializar(dmPedCompra.Pessoa,false,true,PPessoa,TPPessoa);
+    PPessoa.ShowModal;
+  finally
+    FreeAndNil(PPessoa);
+  end;
 end;
 
 end.
