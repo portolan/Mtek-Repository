@@ -16,7 +16,14 @@ type
     Label2: TLabel;
     editDtInicial: TMaskEdit;
     editDtFinal: TMaskEdit;
+    GroupBox2: TGroupBox;
+    SpeedButton2: TSpeedButton;
+    editMask999: TLabel;
+    Label4: TLabel;
+    editMaiorque: TMaskEdit;
+    editMenorque: TMaskEdit;
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,16 +42,38 @@ implementation
 uses UR_EstoqueRelatorios;
 
 procedure TFEstoqueRelatorios.SpeedButton1Click(Sender: TObject);
- var
-    formMCD : TForm;
-    button : TButton;
 begin
-    EstoqueRelatorios.frxReport.LoadFromFile(ExtractFilePath(Application.ExeName)+'EstoqueRelatorios\MovimentoPorData.fr3');
-    EstoqueRelatorios.frxReport.Variables['dtInicial'] := strToDate(editDtInicial.Text);
-    EstoqueRelatorios.frxReport.Variables['dtFinal'] := strToDate(editDtFinal.Text);
+    EstoqueRelatorios.frxMovimentoPorData.Variables['dtInicial'] := strToDate(editDtInicial.Text);
+    EstoqueRelatorios.frxMovimentoPorData.Variables['dtFinal'] := strToDate(editDtFinal.Text);
 
+    EstoqueRelatorios.qMovimentoPorData.Close;
+    EstoqueRelatorios.qMovimentoPorData.SQL.Text := 'select c.*, pro_descricao, emp_razao, bloc_descricao,                    '+
+                                        'prat_descricao from ESTOQ_MOVIMENTO c                                                '+
+                                        'inner join produtos on em_produto = pro_codigo and em_empresa = pro_empresa          '+
+                                        'inner join empresa on em_empresa = emp_cod                                           '+
+                                        'inner join bloco on bloc_codigo = em_bloco and bloc_empresa = em_empresa             '+
+                                        'inner join prateleira on prat_codigo = em_prateleira and prat_empresa = em_empresa   '+
+                                        'where em_data between :dtinicial and :dtfinal ';
+    EstoqueRelatorios.qMovimentoPorData.ParamByName('dtinicial').Value := strToDate(editDtInicial.Text);
+    EstoqueRelatorios.qMovimentoPorData.ParamByName('dtfinal').Value   := strToDate(editDtFinal.Text);
+    EstoqueRelatorios.qMovimentoPorData.Open;
 
-    EstoqueRelatorios.frxReport.ShowReport();
+    EstoqueRelatorios.frxMovimentoPorData.ShowReport();
+end;
+
+procedure TFEstoqueRelatorios.SpeedButton2Click(Sender: TObject);
+begin
+    EstoqueRelatorios.frxProdutoPorPreco.Variables['maiorque'] := StrToFloat(editMaiorque.Text);
+    EstoqueRelatorios.frxProdutoPorPreco.Variables['menorque'] := StrToFloat(editMenorque.Text);
+
+    EstoqueRelatorios.qProdutoPorPreco.Close;
+    EstoqueRelatorios.qProdutoPorPreco.SQL.Text := 'select c.* from produtos c where '+
+                                                'c.pro_vlrvenda between :maiorque and :menorque';
+    EstoqueRelatorios.qProdutoPorPreco.ParamByName('maiorque').Value := StrToFloat(editMaiorque.Text);
+    EstoqueRelatorios.qProdutoPorPreco.ParamByName('menorque').Value   := StrToFloat(editMenorque.Text);
+    EstoqueRelatorios.qProdutoPorPreco.Open;
+
+    EstoqueRelatorios.frxProdutoPorPreco.ShowReport();
 end;
 
 function TFEstoqueRelatorios.criaButton(form: TForm): TButton;

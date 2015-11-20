@@ -65,4 +65,50 @@ object FEstoqueRelatorios: TFEstoqueRelatorios
       Text = '  /  /  '
     end
   end
+  object GroupBox2: TGroupBox
+    Left = 224
+    Top = 8
+    Width = 201
+    Height = 97
+    Caption = 'Produtos por faixa de pre'#231'o'
+    TabOrder = 1
+    object SpeedButton2: TSpeedButton
+      Left = 102
+      Top = 69
+      Width = 86
+      Height = 22
+      Caption = 'Listar'
+      OnClick = SpeedButton2Click
+    end
+    object editMask999: TLabel
+      Left = 16
+      Top = 19
+      Width = 47
+      Height = 13
+      Caption = 'Maior que'
+    end
+    object Label4: TLabel
+      Left = 15
+      Top = 45
+      Width = 51
+      Height = 13
+      Caption = 'Menor que'
+    end
+    object editMaiorque: TMaskEdit
+      Left = 73
+      Top = 15
+      Width = 107
+      Height = 21
+      TabOrder = 0
+      Text = ''
+    end
+    object editMenorque: TMaskEdit
+      Left = 73
+      Top = 42
+      Width = 110
+      Height = 21
+      TabOrder = 1
+      Text = ''
+    end
+  end
 end
