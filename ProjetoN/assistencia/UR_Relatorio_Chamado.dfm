@@ -348,6 +348,7 @@ object UR_Relatorio: TUR_Relatorio
   object frxDBChamado: TfrxDBDataset
     UserName = 'frxDBChamado'
     CloseDataSource = False
+    DataSource = DM_Servico.DS_Relatorio_Chamado
     BCDToCurrency = False
     Left = 104
     Top = 16

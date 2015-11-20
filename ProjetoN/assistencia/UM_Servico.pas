@@ -12,13 +12,6 @@ type
   TM_Servico = class(TxManuPadrao)
     Label1: TLabel;
     DBEdit1: TDBEdit;
-    Label4: TLabel;
-    DBEdit4: TDBEdit;
-    Label5: TLabel;
-    DBEdit5: TDBEdit;
-    Label6: TLabel;
-    DBEdit6: TDBEdit;
-    Label7: TLabel;
     Label8: TLabel;
     Label9: TLabel;
     Label10: TLabel;
@@ -27,13 +20,20 @@ type
     DBEdit10: TDBEdit;
     DBComboBox1: TDBComboBox;
     DBComboBox2: TDBComboBox;
-    DBEdit7: TDBEdit;
-    frmEmpresa: TfrmRelacionamento;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
+    Label4: TLabel;
+    DBEdit4: TDBEdit;
+    Label5: TLabel;
+    DBEdit5: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure DBEdit2Click(Sender: TObject);
     procedure DBEdit3Click(Sender: TObject);
+    procedure DBEdit4Click(Sender: TObject);
+    procedure DBEdit5Click(Sender: TObject);
     procedure DBEdit10Click(Sender: TObject);
-    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,13 +48,12 @@ implementation
 {$R *.dfm}
 
 uses UDM_Servico, UDM_contabil, UP_empresa, UP_departamento, UP_Tipo_Erro,
-  UM_empresa;
-
+  UM_empresa, UM_Tipo_Erro, UP_Pessoa;
 
 procedure TM_Servico.DBEdit10Click(Sender: TObject);
 begin
   inherited;
-  P_Tipo_Erro := TP_Tipo_Erro.Create(Self);
+  P_Tipo_Erro := TP_Tipo_Erro.Create(self);
   try
     P_Tipo_Erro.procInicializar(DM_Servico.IB_Tipo_Erro,false,true,P_Tipo_Erro,TP_Tipo_Erro);
     P_Tipo_Erro.ShowModal;
@@ -78,33 +77,48 @@ end;
 procedure TM_Servico.DBEdit3Click(Sender: TObject);
 begin
   inherited;
-  P_departamento := TP_departamento.Create(Self);
+  P_departamento := TP_departamento.Create(self);
   try
     P_departamento.procInicializar(DM_contabil.departamento,false,true,P_departamento,TP_departamento);
     P_departamento.ShowModal;
   finally
     DM_Servico.IB_ChamadoCHA_DEPARTAMENTO.Value := DM_contabil.departamentoDEP_COD.AsInteger;
   end;
+  if DM_Servico.IB_ChamadoCHA_EMPRESA.AsInteger <> DM_contabil.departamentoDEP_EMPRESAR.AsInteger then
+    begin
+      ShowMessage('Esse departamento não pertence a essa empresa!!!');
+      DBEdit3.Text := EmptyStr;
+    end;
+end;
+
+procedure TM_Servico.DBEdit4Click(Sender: TObject);
+begin
+  inherited;
+ // PPessoa := TPPessoa.Create(self);
+ // try
+ //   PPessoa.procInicializar(DM_contabil.departamento,false,true,PPessoa,TPPessoa);
+ //   PPessoa.ShowModal;
+ // finally
+ //   DM_Servico.IB_ChamadoCHA_FUNCIONARIO.Value := DM_contabil.departamentoDEP_COD.AsInteger;
+ // end;
+end;
+
+procedure TM_Servico.DBEdit5Click(Sender: TObject);
+begin
+  inherited;
+ // PPessoa := TPPessoa.Create(self);
+ // try
+ //   PPessoa.procInicializar(DM_contabil.departamento,false,true,PPessoa,TPPessoa);
+ //   PPessoa.ShowModal;
+ // finally
+  //  DM_Servico.IB_ChamadoCHA_PROPRIETARIO.Value := DM_contabil.departamentoDEP_COD.AsInteger;
+ // end;
 end;
 
 procedure TM_Servico.FormCreate(Sender: TObject);
 begin
   inherited;
-  DBEdit6.Text := DateToStr(date);
-end;
-
-procedure TM_Servico.FormShow(Sender: TObject);
-begin
-  inherited;
-  frmEmpresa.procInicializar(DM_Servico.IB_ChamadoCHA_EMPRESA,
-                             DM_Servico.IB_ChamadoEMP_RAZAO,
-                             DM_Servico.DS_Chamado,
-                             ' SELECT A.EMP_COD, '+
-                             '        A.EMP_RAZAO '+
-                             ' FROM EMPRESA A ' +
-                             ' WHERE A.EMP_COD = :EMP',
-                             P_empresa, TP_empresa, ['EMP'], ['CHA_EMPRESA'],
-                             ['EMP_COD','EMP_RAZAO']);
+  DM_Servico.IB_ChamadoCHA_DATA_ENTRADA.Text :=  DateToStr(date);
 end;
 
 end.

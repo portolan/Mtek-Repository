@@ -37,10 +37,17 @@ begin
   inherited;
    procMontaWhere;
    DM_Servico.IB_Chamado.Close;
-   DM_Servico.IB_Chamado.SQL.Text := 'SELECT A.*, '+
-            ' B.emp_razao '+
-            ' FROM CHAMADOS A '+
-   ' INNER join EMPRESA B ON a.cha_empresa =  b.emp_cod WHERE '+ C_WHERE;
+   DM_Servico.IB_Chamado.SQL.Text := ' SELECT A.*, '+
+                                     ' B.emp_razao, '+
+                                     ' c.dep_nome, '+
+                                     ' D.pess_nome, '+
+                                     ' e.pess_nome '+
+                                     ' FROM CHAMADOS A '+
+                                     ' INNER join EMPRESA B ON a.cha_empresa =  b.emp_cod '+
+                                     ' INNER JOIN DEPARTAMENTO C ON A.CHA_DEPARTAMENTO = C.DEP_COD '+
+                                     ' AND A.CHA_EMPRESA = C.DEP_EMPRESAR '+
+                                     ' INNER JOIN PESSOAS D ON A.CHA_FUNCIONARIO = D.pess_codigo '+
+                                     ' inner join pessoas E on a.cha_proprietario = e.pess_codigo WHERE '+ C_WHERE;
    DM_Servico.IB_Chamado.Open;
 end;
 

@@ -27,7 +27,15 @@ type
     IB_ChamadoCHA_DATA_SAIDA: TDateField;
     IB_Tipo_ErroTER_CODIGO: TIntegerField;
     IB_Tipo_ErroTER_DESCRICAO: TIBStringField;
+    DS_Relatorio_Chamado: TDataSource;
+    UPS_Relatorio_Chamado: TIBUpdateSQL;
+    IB_Relatorio_Chamado: TIBQuery;
+    IntegerField1: TIntegerField;
+    IBStringField1: TIBStringField;
     IB_ChamadoEMP_RAZAO: TIBStringField;
+    IB_ChamadoDEP_NOME: TIBStringField;
+    IB_ChamadoPESS_NOME: TIBStringField;
+    IB_ChamadoPESS_NOME1: TIBStringField;
     procedure IB_ChamadoAfterInsert(DataSet: TDataSet);
     procedure IB_Tipo_ErroAfterInsert(DataSet: TDataSet);
   private
