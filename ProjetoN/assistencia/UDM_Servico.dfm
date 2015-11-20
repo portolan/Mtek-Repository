@@ -42,7 +42,6 @@ object DM_Servico: TDM_Servico
       DisplayLabel = 'Departamento'
       FieldName = 'CHA_DEPARTAMENTO'
       Origin = '"CHAMADOS"."CHA_DEPARTAMENTO"'
-      Required = True
     end
     object IB_ChamadoCHA_FUNCIONARIO: TIntegerField
       DisplayLabel = 'Funcionario'
@@ -104,7 +103,6 @@ object DM_Servico: TDM_Servico
       DisplayLabel = 'Departamento'
       FieldName = 'DEP_NOME'
       Origin = '"DEPARTAMENTO"."DEP_NOME"'
-      Required = True
       Size = 40
     end
     object IB_ChamadoPESS_NOME: TIBStringField
@@ -122,23 +120,21 @@ object DM_Servico: TDM_Servico
   end
   object UPS_Chamado: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'SELECT A.*,'
-      '             B.emp_razao,'
-      '             c.dep_nome,'
-      '             D.pess_nome,'
-      '             e.pess_nome'
-      'FROM CHAMADOS A'
-      'INNER join EMPRESA B ON a.cha_empresa =  b.emp_cod'
-      'INNER JOIN DEPARTAMENTO C ON A.CHA_DEPARTAMENTO = C.DEP_COD'
-      '                          AND A.CHA_EMPRESA = C.DEP_EMPRESAR'
-      'INNER JOIN PESSOAS D ON A.CHA_FUNCIONARIO = D.pess_codigo'
-      'inner join pessoas E on a.cha_proprietario = e.pess_codigo'
+      'Select '
+      '  CHA_CODIGO,'
+      '  CHA_EMPRESA,'
+      '  CHA_DEPARTAMENTO,'
+      '  CHA_FUNCIONARIO,'
+      '  CHA_PROPRIETARIO,'
+      '  CHA_DESCRICAO,'
+      '  CHA_PRIORIDADE,'
+      '  CHA_STATUS,'
+      '  CHA_DATA_ENTRADA,'
+      '  CHA_TIPO_ERRO,'
+      '  CHA_DATA_SAIDA'
+      'from CHAMADOS '
       'where'
-      '  CHA_CODIGO = :CHA_CODIGO AND'
-      '  CHA_EMPRESA = :CHA_EMPRESA AND'
-      '  CHA_DEPARTAMENTO = :CHA_DEPARTAMENTO AND'
-      '  CHA_FUNCIONARIO = :CHA_FUNCIONARIO AND'
-      '  CHA_PROPRIETARIO = :CHA_PRORPIETARIO')
+      '  CHA_CODIGO = :CHA_CODIGO')
     ModifySQL.Strings = (
       'update CHAMADOS'
       'set'
