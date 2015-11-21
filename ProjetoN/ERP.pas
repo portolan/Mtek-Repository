@@ -62,6 +62,7 @@ type
     Condiesdepagamento1: TMenuItem;
     Image10: TImage;
     NotasdeEntrada1: TMenuItem;
+    AjudacomEstoque1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -93,6 +94,7 @@ type
     procedure CotaoFornecedor1Click(Sender: TObject);
     procedure PedidodeCompra1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure AjudacomEstoque1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -117,7 +119,17 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UR_balancocx, UR_fechamentocx, UR_prevtitulos, UR_prevcompravenda,
   UP_contabancaria, UDM_Estoque, R_contabil, UDM_Caixa, UDM_contabil,
   Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico, UP_SolicitacaoCompra,
-  UP_Cotacao, UP_PedCompra;
+  UP_Cotacao, UP_PedCompra, UF_EstoqueAjuda;
+
+procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
+begin
+    FEstoqueAjuda := TFEstoqueAjuda.Create(Self);
+    try
+        FEstoqueAjuda.ShowModal;
+    finally
+        FreeAndNil(FEstoqueAjuda);
+    end;
+end;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
 begin

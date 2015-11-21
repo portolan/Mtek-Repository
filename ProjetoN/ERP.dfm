@@ -6788,6 +6788,10 @@ object TelaInicial: TTelaInicial
         Caption = 'Relat'#243'rios'
         OnClick = Relatrios1Click
       end
+      object AjudacomEstoque1: TMenuItem
+        Caption = 'Ajuda com Estoque'
+        OnClick = AjudacomEstoque1Click
+      end
     end
     object PCP1: TMenuItem
       Caption = 'PCP/PRODUCAO'

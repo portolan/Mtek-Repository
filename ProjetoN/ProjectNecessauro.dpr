@@ -94,7 +94,8 @@ uses
   UM_Pessoa in 'geral\UM_Pessoa.pas' {MPessoa},
   UP_Pessoa in 'geral\UP_Pessoa.pas' {PPessoa},
   UP_PedCompra in 'compra\UP_PedCompra.pas' {PPedCompra},
-  UM_PedCompra in 'compra\UM_PedCompra.pas' {MPedCompra};
+  UM_PedCompra in 'compra\UM_PedCompra.pas' {MPedCompra},
+  UF_EstoqueAjuda in 'Estoque\UF_EstoqueAjuda.pas' {FEstoqueAjuda};
 
 {$R *.res}
 
@@ -115,5 +116,6 @@ begin
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TTelaInicial, TelaInicial);
+  Application.CreateForm(TFEstoqueAjuda, FEstoqueAjuda);
   Application.Run;
 end.
