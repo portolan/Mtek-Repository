@@ -1,6 +1,5 @@
 inherited PMovimentoEstoque: TPMovimentoEstoque
   Caption = 'PMovimentoEstoque'
-  OnCreate = FormCreate
   ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96
@@ -90,6 +89,22 @@ inherited PMovimentoEstoque: TPMovimentoEstoque
             FieldName = 'PRAT_DESCRICAO'
             Visible = True
           end>
+      end
+    end
+  end
+  inherited pnRodape: TPanel
+    inherited sbRemover: TSpeedButton
+      Caption = 'Estornar'
+    end
+  end
+  inherited pnCabecalho: TPanel
+    inherited gbFiltro: TGroupBox
+      ExplicitWidth = 848
+      inherited editPesquisa: TEdit
+        ExplicitWidth = 454
+      end
+      inherited Pesquisar: TButton
+        ExplicitLeft = 767
       end
     end
   end

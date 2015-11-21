@@ -69,6 +69,39 @@ type
     qProdutoPorPrecoPRO_OBS: TIBStringField;
     qProdutoPorPrecoPRO_IMG: TBlobField;
     qProdutoPorPrecoPRO_GRUPO: TIBStringField;
+    frxEstoqueAbaixo: TfrxReport;
+    frxDBEstoqueAbaixo: TfrxDBDataset;
+    qEstoqueAbaixo: TIBQuery;
+    qEstoqueAbaixoESTOQ_EMPRESA: TIntegerField;
+    qEstoqueAbaixoESTOQ_PRODUTO: TIBStringField;
+    qEstoqueAbaixoESTOQ_BLOCO: TIntegerField;
+    qEstoqueAbaixoESTOQ_PRATELEIRA: TIntegerField;
+    qEstoqueAbaixoESTOQ_CODIGO: TIntegerField;
+    qEstoqueAbaixoESTOQ_STATUS: TIBStringField;
+    qEstoqueAbaixoESTOQ_QTD: TIBBCDField;
+    qEstoqueAbaixoESTOQ_QTDMIN: TIBBCDField;
+    qEstoqueAbaixoESTOQ_QTDMAX: TIBBCDField;
+    qEstoqueAbaixoESTOQ_CUSTOMEDIO: TIBBCDField;
+    qEstoqueAbaixoESTOQ_CATEGORIA: TIntegerField;
+    qEstoqueAbaixoESTOQ_TIPO: TIntegerField;
+    qEstoqueAbaixoESTOQ_DTCADASTRO: TDateField;
+    qEstoqueAbaixoESTOQ_OBS: TIBStringField;
+    qEstoqueAbaixoESTOQ_CHAVE: TIBStringField;
+    qEstoqueAbaixoPRO_DESCRICAO: TIBStringField;
+    qEstoqueAbaixoBLOC_DESCRICAO: TIBStringField;
+    qEstoqueAbaixoPRAT_DESCRICAO: TIBStringField;
+    frxBloco: TfrxReport;
+    frxDBBloco: TfrxDBDataset;
+    frxDBPrateleira: TfrxDBDataset;
+    frxProduto: TfrxReport;
+    frxDBProdutos: TfrxDBDataset;
+    frxMovimento: TfrxReport;
+    frxDBMovimento: TfrxDBDataset;
+    frxMarca: TfrxReport;
+    frxDBMarcas: TfrxDBDataset;
+    frxPrateleira: TfrxReport;
+    frxEstoque: TfrxReport;
+    frxDBEstoque: TfrxDBDataset;
   private
     { Private declarations }
   public

@@ -3,7 +3,6 @@ inherited MProduto: TMProduto
   ClientHeight = 656
   ClientWidth = 717
   OnActivate = FormActivate
-  ExplicitTop = -214
   ExplicitWidth = 733
   ExplicitHeight = 695
   PixelsPerInch = 96
@@ -37,8 +36,6 @@ inherited MProduto: TMProduto
       Height = 193
       Align = alTop
       TabOrder = 0
-      ExplicitLeft = 90
-      ExplicitTop = 16
       object Label1: TLabel
         Left = 9
         Top = 6
@@ -278,7 +275,7 @@ inherited MProduto: TMProduto
         DataSource = DM_Estoque.DSProdutos
         Items.Strings = (
           'R$ (REAL)'
-          'US$ (DOLAR EUA)')
+          'US$ (DOLAR)')
         TabOrder = 4
       end
       object DBLookupComboBox2: TDBLookupComboBox
@@ -469,6 +466,7 @@ inherited MProduto: TMProduto
         Height = 178
         DataField = 'PRO_IMG'
         DataSource = DM_Estoque.DSProdutos
+        Stretch = True
         TabOrder = 0
         OnDblClick = DBImage1DblClick
       end
@@ -659,7 +657,8 @@ inherited MProduto: TMProduto
     end
   end
   object OpenPictureDialog: TOpenPictureDialog
-    DefaultExt = '*.jpg;*.png'
+    DefaultExt = '*.bmp'
+    Filter = 'Bitmaps (*.bmp)|*.bmp'
     Left = 656
     Top = 456
   end

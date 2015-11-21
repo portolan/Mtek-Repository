@@ -73,7 +73,7 @@ begin
             end
             else if UpperCase(tipo) = 'S' then
             begin
-                if (i_qtd_estoque - qtd) >= i_qtd_min then
+                if (i_qtd_estoque - qtd) >= 0 then
                 begin
                     QryDinamica.Close;
                     QryDinamica.SQL.Text := ' UPDATE ESTOQUE '+
@@ -92,7 +92,7 @@ begin
                     QryDinamica.ExecSQL;
                 end
                 else
-                    raise Exception.Create('Estoque não pode ser negativo e não pode ser inferior a quantidade mínima!');
+                    raise Exception.Create('Estoque não pode ser negativo!');
             end
             else
                 raise Exception.Create('Operação Inválida!');
