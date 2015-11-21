@@ -297,8 +297,6 @@ begin
         Except on E:Exception do
             raise Exception.Create('Produto Não encontrado! Verifique se este produto está cadastrado!');
         end;
-
-        
     
         qryDin.Close;
         qryDin.SQL.Text := 'insert into ESTOQ_MOVIMENTO (EM_EMPRESA, EM_PRODUTO, EM_BLOCO, EM_PRATELEIRA,'+
