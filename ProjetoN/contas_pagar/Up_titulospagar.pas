@@ -102,7 +102,7 @@ begin
                                          '          TTP_VL_PAGO,         '+
                                          '          TTP_VL_TOTAL,        '+
                                          '          EMP_RAZAO,           '+
-                                         '          PESS_DESCRICAO       '+
+                                         '          PESS_NOME            '+
                                          'from TITULOSP '+
                                          'inner join empresa on EMP_COD=TTP_EMP_CODIGO '+
                                          'INNER JOIN PESSOAS ON PESS_CODIGO=TTP_PES_CODIGO where '+c_where;

@@ -238,6 +238,7 @@
       DataField = 'TTP_EMP_CODIGO'
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 1
+      OnExit = ttp_empresaExit
     end
     object ttp_pessoa: TDBEdit
       Left = 439
@@ -247,6 +248,7 @@
       DataField = 'TTP_PES_CODIGO'
       DataSource = dm_contaspagar.Dtitulospagar
       TabOrder = 2
+      OnExit = ttp_pessoaExit
     end
     object ttp_conta: TDBEdit
       Left = 379
@@ -255,7 +257,7 @@
       Height = 21
       DataField = 'TTP_CTB_CODIGO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 3
+      TabOrder = 10
     end
     object ttp_condicao: TDBEdit
       Left = 617
@@ -264,7 +266,7 @@
       Height = 21
       DataField = 'TTP_CON_CODIGO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 4
+      TabOrder = 15
     end
     object ttp_descricao: TDBEdit
       Left = 123
@@ -273,7 +275,7 @@
       Height = 21
       DataField = 'TTP_DESCRICAO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 5
+      TabOrder = 3
     end
     object ttp_emissao: TDBEdit
       Left = 123
@@ -282,7 +284,7 @@
       Height = 21
       DataField = 'TTP_DT_EMISSAO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 6
+      TabOrder = 4
     end
     object ttp_vencimento: TDBEdit
       Left = 379
@@ -291,7 +293,7 @@
       Height = 21
       DataField = 'TTP_DT_VENCIMENTO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 7
+      TabOrder = 9
     end
     object ttp_dt_pagamento: TDBEdit
       Left = 617
@@ -300,7 +302,7 @@
       Height = 21
       DataField = 'TTP_DT_PAGAMENTO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 8
+      TabOrder = 14
     end
     object ttp_dt_baixa: TDBEdit
       Left = 379
@@ -309,7 +311,7 @@
       Height = 21
       DataField = 'TTP_DT_BAIXA'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 9
+      TabOrder = 13
     end
     object ttp_dt_cancelamento: TDBEdit
       Left = 616
@@ -318,7 +320,7 @@
       Height = 21
       DataField = 'TTP_DT_CANCELAMENTO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 10
+      TabOrder = 17
     end
     object ttp_tp_titulo: TDBEdit
       Left = 123
@@ -327,7 +329,7 @@
       Height = 21
       DataField = 'TTP_TP_TITULO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 11
+      TabOrder = 5
     end
     object DBEdit15: TDBEdit
       Left = 24
@@ -336,7 +338,7 @@
       Height = 21
       DataField = 'TTP_VL_ORIGINAL'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 12
+      TabOrder = 19
     end
     object DBEdit16: TDBEdit
       Left = 24
@@ -345,7 +347,7 @@
       Height = 21
       DataField = 'TTP_VL_PAGO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 13
+      TabOrder = 20
     end
     object DBEdit17: TDBEdit
       Left = 24
@@ -354,7 +356,7 @@
       Height = 21
       DataField = 'TTP_VL_TOTAL'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 14
+      TabOrder = 21
     end
     object DBEdit18: TDBEdit
       Left = 24
@@ -363,7 +365,7 @@
       Height = 21
       DataField = 'TTP_MR_DIARIA'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 15
+      TabOrder = 22
     end
     object DBEdit19: TDBEdit
       Left = 24
@@ -372,7 +374,7 @@
       Height = 21
       DataField = 'TTP_MT_ATRASO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 16
+      TabOrder = 23
     end
     object ttp_desconto: TDBEdit
       Left = 123
@@ -381,7 +383,7 @@
       Height = 21
       DataField = 'TTP_DESCONTO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 17
+      TabOrder = 6
     end
     object ttp_parcela: TDBEdit
       Left = 123
@@ -390,7 +392,7 @@
       Height = 21
       DataField = 'TTP_PARCELA'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 18
+      TabOrder = 7
     end
     object ttp_vl_original: TDBEdit
       Left = 123
@@ -399,7 +401,7 @@
       Height = 21
       DataField = 'TTP_VL_ORIGINAL'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 19
+      TabOrder = 8
     end
     object ttp_vl_pago: TDBEdit
       Left = 379
@@ -408,16 +410,18 @@
       Height = 21
       DataField = 'TTP_VL_PAGO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 20
+      TabOrder = 12
     end
     object ttp_vl_total: TDBEdit
       Left = 616
       Top = 220
       Width = 112
       Height = 21
+      TabStop = False
       DataField = 'TTP_VL_TOTAL'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 21
+      ReadOnly = True
+      TabOrder = 18
     end
     object ttp_mora: TDBEdit
       Left = 379
@@ -426,7 +430,7 @@
       Height = 21
       DataField = 'TTP_MR_DIARIA'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 22
+      TabOrder = 11
     end
     object ttp_multa: TDBEdit
       Left = 617
@@ -435,7 +439,7 @@
       Height = 21
       DataField = 'TTP_MT_ATRASO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 23
+      TabOrder = 16
     end
     object DBRadioGroup1: TDBRadioGroup
       Left = 242
@@ -492,17 +496,21 @@
       Top = 34
       Width = 218
       Height = 21
+      TabStop = False
       DataField = 'EMP_RAZAO'
       DataSource = dm_contaspagar.Dtitulospagar
+      ReadOnly = True
       TabOrder = 27
     end
-    object pess_descricao: TDBEdit
+    object pess_nome: TDBEdit
       Left = 492
       Top = 34
       Width = 236
       Height = 21
-      DataField = 'PESS_DESCRICAO'
+      TabStop = False
+      DataField = 'PESS_NOME'
       DataSource = dm_contaspagar.Dtitulospagar
+      ReadOnly = True
       TabOrder = 28
     end
   end

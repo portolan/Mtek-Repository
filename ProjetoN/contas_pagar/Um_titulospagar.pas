@@ -62,12 +62,16 @@ type
     DBRadioGroup2: TDBRadioGroup;
     DBRadioGroup3: TDBRadioGroup;
     emp_razao: TDBEdit;
-    pess_descricao: TDBEdit;
+    pess_nome: TDBEdit;
 
     procedure FormCreate(Sender: TObject);
+    procedure ttp_empresaExit(Sender: TObject);
+    procedure ttp_pessoaExit(Sender: TObject);
 
   private
     { Private declarations }
+     function funcBuscaEmpresa : boolean;
+     function funcBuscaPessoa  : boolean;
   public
     { Public declarations }
   end;
@@ -79,7 +83,7 @@ implementation
 
 {$R *.dfm}
 
-uses Udm_contaspagar;
+uses Udm_contaspagar, UDM_contabil, UP_empresa, UP_Pessoa;
 
 procedure Tm_titulospagar.FormCreate(Sender: TObject);
 begin
@@ -88,6 +92,91 @@ begin
 end;
 
 
+
+function Tm_titulospagar.funcBuscaEmpresa: boolean;
+begin
+   Result := False;
+
+   dm_contaspagar.QryAux.Close;
+   dm_contaspagar.QryAux.SQL.Clear;
+   dm_contaspagar.QryAux.SQL.Text := ' SELECT A.EMP_RAZAO             '+
+                                     '   FROM EMPRESA A               '+
+                                     '  WHERE A.EMP_COD = :CD_EMPRESA ';
+   dm_contaspagar.QryAux.ParamByName('CD_EMPRESA').AsInteger := dm_contaspagar.titulospagarTTP_EMP_CODIGO.AsInteger;
+   dm_contaspagar.QryAux.Open;
+
+   if not dm_contaspagar.QryAux.IsEmpty then
+   begin
+      dm_contaspagar.titulospagarEMP_RAZAO.AsString := dm_contaspagar.QryAux.FieldByName('EMP_RAZAO').AsString;
+      Result := True;
+   end
+   else
+   begin
+      dm_contaspagar.titulospagarTTP_PES_CODIGO.Clear;
+      dm_contaspagar.titulospagarPESS_NOME.Clear;
+   end;
+end;
+
+function Tm_titulospagar.funcBuscaPessoa: boolean;
+begin
+   Result := False;
+
+   dm_contaspagar.QryAux.Close;
+   dm_contaspagar.QryAux.SQL.Clear;
+   dm_contaspagar.QryAux.SQL.Text := ' SELECT A.PESS_NOME                 '+
+                                     '   FROM PESSOAS A                   '+
+                                     '  WHERE A.PESS_CODIGO = :CD_PESSOA  ';
+   dm_contaspagar.QryAux.ParamByName('CD_PESSOA').AsInteger := dm_contaspagar.titulospagarTTP_PES_CODIGO.AsInteger;
+   dm_contaspagar.QryAux.Open;
+
+   if not dm_contaspagar.QryAux.IsEmpty then
+   begin
+      dm_contaspagar.titulospagarPESS_NOME.AsString := dm_contaspagar.QryAux.FieldByName('PESS_NOME').AsString;
+      Result := True;
+   end
+   else
+   begin
+      dm_contaspagar.titulospagarTTP_PES_CODIGO.Clear;
+      dm_contaspagar.titulospagarPESS_NOME.Clear;
+   end;
+
+end;
+
+procedure Tm_titulospagar.ttp_empresaExit(Sender: TObject);
+
+    procedure procPesquisaEmpresa;
+    begin
+       TP_empresa.chamaTela(Self);
+       if not DM_contabil.empresa.IsEmpty then
+       begin
+          dm_contaspagar.titulospagarTTP_EMP_CODIGO.AsInteger := DM_contabil.empresaEMP_COD.AsInteger;
+          dm_contaspagar.titulospagarEMP_RAZAO.AsString       := DM_contabil.empresaEMP_RAZAO.AsString;
+       end
+       else
+       begin
+          dm_contaspagar.titulospagarTTP_EMP_CODIGO.Clear;
+          dm_contaspagar.titulospagarEMP_RAZAO.Clear;
+          if ttp_empresa.CanFocus then
+             ttp_empresa.SetFocus;
+       end;
+    end;
+begin
+   inherited;
+   if not funcBuscaEmpresa then
+      procPesquisaEmpresa;
+end;
+
+procedure Tm_titulospagar.ttp_pessoaExit(Sender: TObject);
+
+    procedure procPesquisaPessoa;
+    begin
+    end;
+
+begin
+   inherited;
+   if not funcBuscaPessoa then
+      procPesquisaPessoa;
+end;
 
 end.
 

@@ -6,6 +6,7 @@ object dm_contaspagar: Tdm_contaspagar
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = titulospagarAfterInsert
+    BeforePost = titulospagarBeforePost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -33,7 +34,7 @@ object dm_contaspagar: Tdm_contaspagar
       '          TTP_VL_PAGO, '
       '          TTP_VL_TOTAL, '
       '          EMP_RAZAO, '
-      '          PESS_DESCRICAO '
+      '          PESS_NOME'
       ' from TITULOSP a'
       'inner join empresa on EMP_COD=TTP_EMP_CODIGO '
       'INNER JOIN PESSOAS ON PESS_CODIGO=TTP_PES_CODIGO'
@@ -137,7 +138,7 @@ object dm_contaspagar: Tdm_contaspagar
       DisplayLabel = 'VALOR ORIGINAL'
       FieldName = 'TTP_VL_ORIGINAL'
       Origin = '"TITULOSP"."TTP_VL_ORIGINAL"'
-      DisplayFormat = '00.00'
+      DisplayFormat = '#,###,###,##0.00'
       EditFormat = '00.00'
       Precision = 18
       Size = 2
@@ -146,7 +147,7 @@ object dm_contaspagar: Tdm_contaspagar
       DisplayLabel = 'VALOR PAGO'
       FieldName = 'TTP_VL_PAGO'
       Origin = '"TITULOSP"."TTP_VL_PAGO"'
-      DisplayFormat = '00.00'
+      DisplayFormat = '#,###,###,##0.00'
       EditFormat = '00.00'
       Precision = 18
       Size = 2
@@ -155,7 +156,7 @@ object dm_contaspagar: Tdm_contaspagar
       DisplayLabel = 'VALOR TOTAL'
       FieldName = 'TTP_VL_TOTAL'
       Origin = '"TITULOSP"."TTP_VL_TOTAL"'
-      DisplayFormat = '00.00'
+      DisplayFormat = '#,###,###,##0.00'
       EditFormat = '00.00'
       Precision = 18
       Size = 2
@@ -195,9 +196,9 @@ object dm_contaspagar: Tdm_contaspagar
       Origin = '"EMPRESA"."EMP_RAZAO"'
       Size = 240
     end
-    object titulospagarPESS_DESCRICAO: TIBStringField
-      FieldName = 'PESS_DESCRICAO'
-      Origin = '"PESSOAS"."PESS_DESCRICAO"'
+    object titulospagarPESS_NOME: TIBStringField
+      FieldName = 'PESS_NOME'
+      Origin = '"PESSOAS"."PESS_NOME"'
       Size = 400
     end
   end
@@ -211,7 +212,7 @@ object dm_contaspagar: Tdm_contaspagar
     RefreshSQL.Strings = (
       'select a.*,'
       '          EMP_RAZAO, '
-      '          PESS_DESCRICAO '
+      '          PESS_NOME '
       ' from TITULOSP a'
       'inner join empresa on EMP_COD=TTP_EMP_CODIGO '
       'INNER JOIN PESSOAS ON PESS_CODIGO=TTP_PES_CODIGO'
@@ -282,5 +283,14 @@ object dm_contaspagar: Tdm_contaspagar
       '  TTP_CODIGO = :OLD_TTP_CODIGO')
     Left = 88
     Top = 88
+  end
+  object QryAux: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    Left = 192
+    Top = 32
   end
 end
