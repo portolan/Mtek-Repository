@@ -804,6 +804,7 @@ object DM_Estoque: TDM_Estoque
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = BlocoAfterInsert
+    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
