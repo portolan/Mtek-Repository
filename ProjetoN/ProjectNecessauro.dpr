@@ -112,6 +112,8 @@ begin
   Application.CreateForm(TDM_caixa, DM_caixa);
   Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.CreateForm(TDM_financeiro, DM_financeiro);
+  Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
+  Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.Run;
 end.

@@ -92,6 +92,7 @@ type
     procedure SolicitaodeRequisisio1Click(Sender: TObject);
     procedure CotaoFornecedor1Click(Sender: TObject);
     procedure PedidodeCompra1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -230,6 +231,20 @@ end;
 procedure TTelaInicial.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   application.Terminate;
+end;
+
+procedure TTelaInicial.FormCreate(Sender: TObject);
+begin
+    fechaQuery(DM_Servico);
+    fechaQuery(dmPedCompra);
+    fechaQuery(DM_PCP);
+    fechaQuery(DM_financeiro);
+    fechaQuery(dm_contaspagar);
+    fechaQuery(DM_contabil);
+    fechaQuery(DM_Caixa);
+    fechaQuery(DM_Estoque);
+    fechaQuery(DM_contasreceber);
+
 end;
 
 procedure TTelaInicial.Histricos1Click(Sender: TObject);

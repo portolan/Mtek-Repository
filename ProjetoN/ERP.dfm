@@ -1019,6 +1019,7 @@ object TelaInicial: TTelaInicial
   Position = poScreenCenter
   WindowState = wsMaximized
   OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Image10: TImage
