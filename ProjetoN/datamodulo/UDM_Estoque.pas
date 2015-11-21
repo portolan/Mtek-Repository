@@ -211,9 +211,9 @@ begin
         if (i_qtd >= i_qtdMaxPrateleira) then
         begin
             ShowMessage('Quantidade Máxima de Produtos para esta prateleira obtidas!');
+            funcVerificaPrateleiraDisponivel;
             Estoque.Cancel;
             Estoque.Edit;
-            //Estoque.Transaction.Rollback;
         end;
     end;
 end;
@@ -269,7 +269,6 @@ begin
             showMessage('Quantidade Máxima de Prateleiras para este bloco obtida!');
             Prateleira.Cancel;
             Prateleira.Edit;
-            //prateleira.Transaction.Rollback;
         end;
     end;
 end;
@@ -335,34 +334,37 @@ function TDM_Estoque.funcVerificaPrateleiraDisponivel: boolean;
 var
     qryDin : TIBQuery;
     i_qtdMaxPrateleira : integer;
-    i_qtd : integer;
+    i_codPrat : integer;
+    i_codBloc : integer;
+    s_descric : String;
 begin
-    if Prateleira.State in [dsInsert] then
     begin
         qryDin := funcCriaQuery;
-        qryDin.Close;
-        qryDin.SQL.Text := 'select prat_qtdmaxima as qtdmax from prateleira where '+
-                           'prat_empresa = ' + EstoqueESTOQ_EMPRESA.AsString +
-                           ' and prat_codigo = ' + EstoqueESTOQ_PRATELEIRA.AsString +
-                           ' and prat_qtdmaxima > ';
-        qryDin.Open;
-        i_qtdMaxPrateleira := qryDin.FieldByName('qtdmax').AsInteger;
+
 
         qryDin.Close;
-        qryDin.SQL.Text := 'select count(1) as qtd from estoque where '+
-                           'estoq_empresa = :codEmpresa and estoq_bloco = :codBloco '+
-                           ' and estoq_prateleira = :codPrateleira';
-        qryDin.ParamByName('codEmpresa').Value    := EstoqueESTOQ_EMPRESA.AsString;
-        qryDin.ParamByName('codBloco').Value      := EstoqueESTOQ_BLOCO.AsString;
-        qryDin.ParamByName('codPrateleira').Value := EstoqueESTOQ_PRATELEIRA.AsString;
+        qryDin.SQL.Text := 'select first 1 p.prat_descricao descric,'+
+                           'p.prat_bloco bloc, p.prat_codigo prat from prateleira p where  '+
+                           ' p.prat_categoria = :v_categoria and                     '+
+                           ' p.prat_qtdmaxima > (select count(1) from estoque q where q.estoq_empresa = p.prat_empresa and   '+
+                           ' q.estoq_bloco = p.prat_bloco and q.estoq_prateleira = p.prat_codigo)';
+        qryDin.ParamByName('v_categoria').Value    := EstoqueESTOQ_CATEGORIA.AsInteger;
         qryDin.Open;
-        i_qtd := qryDin.FieldByName('qtd').AsInteger;
+        i_codbloc := qryDin.FieldByName('bloc').AsInteger;
+        i_codPrat := qryDin.FieldByName('prat').AsInteger;
+        s_descric := qryDin.FieldByName('descric').AsString;
 
-        if (i_qtd > i_qtdMaxPrateleira) then
+        if (qryDin.IsEmpty) then
         begin
-            ShowMessage('Quantidade Máxima de Produtos para esta prateleira obtidas!');
-            Estoque.Cancel;
-            Estoque.Transaction.Rollback;
+            ShowMessage('Não há prateleiras disponíveis para este produto!');
+            Result := False;
+        end
+        else
+        begin
+            ShowMessage('Há uma prateleira disponível para este produto!'+ sLineBreak +
+            ' Bloco : ' + intToStr(i_codBloc) + ' Prateleira : ' + intToStr(i_codPrat) +
+            ' Descrição : ' + s_descric);
+            Result := True;
         end;
     end;
 end;
