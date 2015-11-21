@@ -147,7 +147,7 @@ object EstoqueRelatorios: TEstoqueRelatorios
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42321.724752534700000000
-    ReportOptions.LastChange = 42328.005463819440000000
+    ReportOptions.LastChange = 42328.920582997690000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -319,8 +319,15 @@ object EstoqueRelatorios: TEstoqueRelatorios
           DataField = 'EMP_RAZAO'
           DataSet = frxDBMovimentoPorData
           DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           Memo.UTF8W = (
             '[frxDBDataset1."EMP_RAZAO"]')
+          ParentFont = False
         end
         object frxDBDataset1BLOC_DESCRICAO: TfrxMemoView
           Left = 222.992270000000000000
@@ -329,8 +336,15 @@ object EstoqueRelatorios: TEstoqueRelatorios
           DataField = 'BLOC_DESCRICAO'
           DataSet = frxDBMovimentoPorData
           DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           Memo.UTF8W = (
             '[frxDBDataset1."BLOC_DESCRICAO"]')
+          ParentFont = False
         end
         object frxDBDataset1PRAT_DESCRICAO: TfrxMemoView
           Left = 325.039580000000000000
@@ -339,8 +353,15 @@ object EstoqueRelatorios: TEstoqueRelatorios
           DataField = 'PRAT_DESCRICAO'
           DataSet = frxDBMovimentoPorData
           DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           Memo.UTF8W = (
             '[frxDBDataset1."PRAT_DESCRICAO"]')
+          ParentFont = False
         end
         object frxDBDataset1PRO_DESCRICAO: TfrxMemoView
           Left = 411.968770000000000000
@@ -350,8 +371,15 @@ object EstoqueRelatorios: TEstoqueRelatorios
           DataField = 'PRO_DESCRICAO'
           DataSet = frxDBMovimentoPorData
           DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           Memo.UTF8W = (
             '[frxDBDataset1."PRO_DESCRICAO"]')
+          ParentFont = False
         end
         object frxDBDataset1EM_DATA: TfrxMemoView
           Left = -15.118120000000000000
@@ -360,18 +388,32 @@ object EstoqueRelatorios: TEstoqueRelatorios
           DataField = 'EM_DATA'
           DataSet = frxDBMovimentoPorData
           DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           Memo.UTF8W = (
             '[frxDBDataset1."EM_DATA"]')
+          ParentFont = False
         end
         object frxDBDataset1EM_QTD: TfrxMemoView
-          Left = 608.504330000000000000
+          Left = 612.283860000000000000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
           DataField = 'EM_QTD'
           DataSet = frxDBMovimentoPorData
           DataSetName = 'frxDBDataset1'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           Memo.UTF8W = (
             '[frxDBDataset1."EM_QTD"]')
+          ParentFont = False
         end
       end
     end
@@ -631,7 +673,6 @@ object EstoqueRelatorios: TEstoqueRelatorios
   object qProdutoPorPreco: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
-    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
