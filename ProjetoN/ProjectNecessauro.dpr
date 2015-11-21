@@ -84,7 +84,6 @@ uses
   UP_Produto in 'Estoque\UP_Produto.pas' {PProduto},
   UP_Unidade in 'Estoque\UP_Unidade.pas' {PUnidade},
   UR_EstoqueRelatorios in 'Estoque\UR_EstoqueRelatorios.pas' {EstoqueRelatorios: TDataModule},
-  UR_Relatorios in 'Estoque\UR_Relatorios.pas' {DataModule1: TDataModule},
   ufrm_Relacionamento in 'comum\ufrm_Relacionamento.pas' {frmRelacionamento: TFrame},
   UM_SolicitacaoCompra in 'compra\UM_SolicitacaoCompra.pas',
   UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao},
@@ -105,6 +104,7 @@ begin
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.CreateForm(TdmBanco, dmBanco);
   Application.CreateForm(TDM_Estoque, DM_Estoque);
+  Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
   Application.CreateForm(TdmPedido, dmPedido);
   Application.CreateForm(TDM_contabil, DM_contabil);
   Application.CreateForm(TDM_Servico, DM_Servico);
@@ -114,8 +114,6 @@ begin
   Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
-  Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(TFEstoqueAjuda, FEstoqueAjuda);
   Application.Run;
 end.

@@ -385,11 +385,6 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="Estoque\UR_Relatorios.pas">
-            <Form>DataModule1</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="comum\ufrm_Relacionamento.pas">
             <Form>frmRelacionamento</Form>
             <FormType>dfm</FormType>
