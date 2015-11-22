@@ -12,7 +12,6 @@ uses
   UDM_Estoque in 'datamodulo\UDM_Estoque.pas' {DM_Estoque: TDataModule},
   dm001 in 'datamodulo\dm001.pas' {dmPedido: TDataModule},
   UM_novacontabancaria in 'financeiro\UM_novacontabancaria.pas' {M_novaconta},
-  UDM_contabil in 'datamodulo\UDM_contabil.pas' {DM_contabil: TDataModule},
   login in 'login final\login.pas' {tela_login},
   UM_empresa in 'contabil\UM_empresa.pas' {M_empresa},
   UDM_PCP in 'datamodulo\UDM_PCP.pas' {DM_PCP: TDataModule},
@@ -63,7 +62,6 @@ uses
   UTelaPadrao in 'comum\UTelaPadrao.pas' {xPesqPadrao},
   UP_SolicitacaoCompra in 'compra\UP_SolicitacaoCompra.pas' {PSolicitacaoCompra},
   UP_contabancaria in 'financeiro\UP_contabancaria.pas' {P_contasbancarias},
-  UDM_financeiro in 'datamodulo\UDM_financeiro.pas' {DM_financeiro: TDataModule},
   UEstoque in 'Estoque\UEstoque.pas',
   UF_EstoqueRelatorios in 'Estoque\UF_EstoqueRelatorios.pas' {FEstoqueRelatorios},
   UM_Bloco in 'Estoque\UM_Bloco.pas' {MBloco},
@@ -99,7 +97,9 @@ uses
   dm000 in 'datamodulo\dm000.pas' {dmBanco: TDataModule},
   UDM_Venda in 'datamodulo\UDM_Venda.pas' {DM_VENDA: TDataModule},
   UDM_empresa in 'datamodulo\UDM_empresa.pas' {DataModule2: TDataModule},
-  Um_Condição_Pagamento in 'venda\Um_Condição_Pagamento.pas' {U_Condicao_Pg};
+  Um_Condição_Pagamento in 'venda\Um_Condição_Pagamento.pas' {U_Condicao_Pg},
+  UDM_contabil in 'datamodulo\UDM_contabil.pas' {DM_contabil: TDataModule},
+  UDM_financeiro in 'datamodulo\UDM_financeiro.pas' {DM_financeiro: TDataModule};
 
 {$R *.res}
 
@@ -122,5 +122,8 @@ begin
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(TdmBanco, dmBanco);
   Application.CreateForm(TDM_VENDA, DM_VENDA);
+  Application.CreateForm(TDM_contabil, DM_contabil);
+  Application.CreateForm(TDM_financeiro, DM_financeiro);
+  Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.Run;
 end.

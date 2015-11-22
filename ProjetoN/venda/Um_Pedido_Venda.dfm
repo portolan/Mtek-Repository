@@ -341,11 +341,9 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
           ExplicitTop = 16
         end
         inherited panelFundo: TPanel
-          Left = 73
           Top = 16
           Width = 297
           Height = 25
-          ExplicitLeft = 73
           ExplicitTop = 16
           ExplicitWidth = 297
           ExplicitHeight = 25
@@ -384,11 +382,9 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
           ExplicitTop = 15
         end
         inherited panelFundo: TPanel
-          Left = 73
           Top = 15
           Width = 295
           Height = 26
-          ExplicitLeft = 73
           ExplicitTop = 15
           ExplicitWidth = 295
           ExplicitHeight = 26

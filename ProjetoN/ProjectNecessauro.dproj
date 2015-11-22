@@ -103,10 +103,6 @@
             <Form>M_novaconta</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="datamodulo\UDM_contabil.pas">
-            <Form>DM_contabil</Form>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="login final\login.pas">
             <Form>tela_login</Form>
             <FormType>dfm</FormType>
@@ -301,11 +297,6 @@
             <Form>P_contasbancarias</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="datamodulo\UDM_financeiro.pas">
-            <Form>DM_financeiro</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="Estoque\UEstoque.pas"/>
         <DCCReference Include="Estoque\UF_EstoqueRelatorios.pas">
             <Form>FEstoqueRelatorios</Form>
@@ -448,6 +439,16 @@
         <DCCReference Include="venda\Um_Condição_Pagamento.pas">
             <Form>U_Condicao_Pg</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="datamodulo\UDM_contabil.pas">
+            <Form>DM_contabil</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="datamodulo\UDM_financeiro.pas">
+            <Form>DM_financeiro</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

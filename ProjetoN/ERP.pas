@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg, UDM_contasreceber,
-  UM_contasreceber, UP_contasreceber, Vcl.ComCtrls, IBX.IBQuery;
+  UM_contasreceber, UP_contasreceber, Vcl.ComCtrls, IBX.IBQuery, Up_Pedido_Venda;
 
 type
   TTelaInicial = class(TForm)
@@ -95,6 +95,7 @@ type
     procedure PedidodeCompra1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure AjudacomEstoque1Click(Sender: TObject);
+    procedure Oramento1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -292,6 +293,16 @@ begin
     finally
         FreeAndNil(PMarcas);
     end;
+end;
+
+procedure TTelaInicial.Oramento1Click(Sender: TObject);
+begin
+   UP_VENDA := TUP_VENDA.Create(self);
+   try
+      UP_VENDA.ShowModal;
+   finally
+      FreeAndNil(UP_VENDA);
+   end;
 end;
 
 procedure TTelaInicial.OrdemdeProduo1Click(Sender: TObject);

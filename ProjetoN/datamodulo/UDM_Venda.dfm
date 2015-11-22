@@ -267,6 +267,7 @@ object DM_VENDA: TDM_VENDA
     object IB_VendaPED_NUMERO: TIntegerField
       FieldName = 'PED_NUMERO'
       Origin = '"PEDIDOVENDA"."PED_NUMERO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object IB_VendaPED_PESSOA: TIBStringField
