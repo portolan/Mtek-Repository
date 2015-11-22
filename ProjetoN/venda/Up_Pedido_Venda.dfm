@@ -5,7 +5,6 @@ inherited UP_VENDA: TUP_VENDA
   inherited pnCorpo: TPanel
     inherited gbDados: TGroupBox
       inherited DBGDados: TDBGrid
-        DataSource = DM_VENDA.DS_Venda
         Columns = <
           item
             Expanded = False
