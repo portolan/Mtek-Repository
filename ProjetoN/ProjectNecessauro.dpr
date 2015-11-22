@@ -10,7 +10,6 @@ uses
   Vcl.Forms,
   ERP in 'ERP.pas' {TelaInicial},
   UDM_Estoque in 'datamodulo\UDM_Estoque.pas' {DM_Estoque: TDataModule},
-  dm000 in 'datamodulo\dm000.pas' {dmBanco: TDataModule},
   dm001 in 'datamodulo\dm001.pas' {dmPedido: TDataModule},
   UM_novacontabancaria in 'financeiro\UM_novacontabancaria.pas' {M_novaconta},
   UDM_contabil in 'datamodulo\UDM_contabil.pas' {DM_contabil: TDataModule},
@@ -94,7 +93,13 @@ uses
   UP_Pessoa in 'geral\UP_Pessoa.pas' {PPessoa},
   UP_PedCompra in 'compra\UP_PedCompra.pas' {PPedCompra},
   UM_PedCompra in 'compra\UM_PedCompra.pas' {MPedCompra},
-  UF_EstoqueAjuda in 'Estoque\UF_EstoqueAjuda.pas' {FEstoqueAjuda};
+  UF_EstoqueAjuda in 'Estoque\UF_EstoqueAjuda.pas' {FEstoqueAjuda},
+  Um_Pedido_Venda in 'venda\Um_Pedido_Venda.pas' {Frm_Pedido_Venda},
+  Up_Pedido_Venda in 'venda\Up_Pedido_Venda.pas' {UP_VENDA},
+  dm000 in 'datamodulo\dm000.pas' {dmBanco: TDataModule},
+  UDM_Venda in 'datamodulo\UDM_Venda.pas' {DM_VENDA: TDataModule},
+  UDM_empresa in 'datamodulo\UDM_empresa.pas' {DataModule2: TDataModule},
+  Um_Condição_Pagamento in 'venda\Um_Condição_Pagamento.pas' {U_Condicao_Pg};
 
 {$R *.res}
 
@@ -115,5 +120,7 @@ begin
   Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
   Application.CreateForm(TTelaInicial, TelaInicial);
+  Application.CreateForm(TdmBanco, dmBanco);
+  Application.CreateForm(TDM_VENDA, DM_VENDA);
   Application.Run;
 end.
