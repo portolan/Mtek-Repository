@@ -186,6 +186,7 @@ object dmPedCompra: TdmPedCompra
       ' INNER JOIN PRODUTOS D ON A.COT_EMPRESA = D.PRO_EMPRESA'
       '                      AND A.COT_PRODUTO = D.PRO_CODIGO'
       ' WHERE A.COT_CODIGO = -1   ')
+    UpdateObject = UCotacao
     Left = 191
     Top = 32
     object CotacaoCOT_EMPRESA: TIntegerField
@@ -349,6 +350,7 @@ object dmPedCompra: TdmPedCompra
       ' INNER JOIN UNIDADE B ON A.FCT_UND_MEDIDA = B.UN_CODIGO'
       ' INNER JOIN PESSOAS C ON A.FCT_FORNECEDOR = C.PESS_CODIGO'
       ' WHERE A.FCT_EMPRESA = -1')
+    UpdateObject = UFornecedorCotacao
     Left = 279
     Top = 32
     object FornecedorCotacaoFCT_EMPRESA: TIntegerField
@@ -1014,14 +1016,6 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Pa'#237's'
       FieldName = 'PESS_PAIS'
       Origin = '"PESSOAS"."PESS_PAIS"'
-    end
-    object PessoaPESS_FISICOJURIDICO: TIBStringField
-      DisplayLabel = 'Fisico / Juridico'
-      FieldName = 'PESS_FISICOJURIDICO'
-      Origin = '"PESSOAS"."PESS_FISICOJURIDICO"'
-      Required = True
-      FixedChar = True
-      Size = 4
     end
   end
   object DSPessoa: TDataSource

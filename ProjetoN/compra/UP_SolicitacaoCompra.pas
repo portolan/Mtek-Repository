@@ -88,9 +88,15 @@ begin
    if dmPedCompra.SolicitacaoCompraSOL_STATUS.AsString <> TNMStatusSolicitacao[tssAberto] then
       raise Exception.Create('Não é possível alterar o status da solicitação de compra Selecionada!');
 
-   dmPedCompra.funcGerarCotacao(Self,
-                                dmPedCompra.SolicitacaoCompraSOL_EMPRESA.AsInteger,
-                                dmPedCompra.SolicitacaoCompraSOL_CODIGO.AsInteger);
+   procMontarVLocate;
+   try
+      dmPedCompra.funcGerarCotacao(Self,
+                                   dmPedCompra.SolicitacaoCompraSOL_EMPRESA.AsInteger,
+                                   dmPedCompra.SolicitacaoCompraSOL_CODIGO.AsInteger);
+   finally
+      procSelect;
+      procLocate;
+   end;
 end;
 
 procedure TPSolicitacaoCompra.sbRecusarCompraClick(Sender: TObject);
@@ -104,9 +110,15 @@ begin
    if dmPedCompra.SolicitacaoCompraSOL_STATUS.AsString <> TNMStatusSolicitacao[tssAberto] then
       raise Exception.Create('Não é possível alterar o status da solicitação de compra Selecionada!');
 
-   dmPedCompra.procAlterarStatusSolicitacao(dmPedCompra.SolicitacaoCompraSOL_EMPRESA.AsInteger,
-                                            dmPedCompra.SolicitacaoCompraSOL_CODIGO.AsInteger,
-                                            tssRecusada);
+   procMontarVLocate;
+   try
+      dmPedCompra.procAlterarStatusSolicitacao(dmPedCompra.SolicitacaoCompraSOL_EMPRESA.AsInteger,
+                                               dmPedCompra.SolicitacaoCompraSOL_CODIGO.AsInteger,
+                                               tssRecusada);
+   finally
+      procSelect;
+      procLocate;
+   end;
 end;
 
 end.

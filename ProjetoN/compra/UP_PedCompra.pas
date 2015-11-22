@@ -76,7 +76,13 @@ begin
    if dmPedCompra.PedidoCompra.IsEmpty then
       Exit;
 
-   TMBaixaPedidoCompra.ChamaTela(Self, dmPedCompra.PedidoCompraPDC_FORNECEDOR.AsInteger);
+   procMontarVLocate;
+   try
+      TMBaixaPedidoCompra.ChamaTela(Self, dmPedCompra.PedidoCompraPDC_FORNECEDOR.AsInteger);
+   finally
+      procSelect;
+      procLocate;
+   end;
 end;
 
 end.

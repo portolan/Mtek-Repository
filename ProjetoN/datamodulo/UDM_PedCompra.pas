@@ -89,7 +89,6 @@ type
     PessoaPESS_CIDADE: TIBStringField;
     PessoaPESS_UF: TIBStringField;
     PessoaPESS_PAIS: TIBStringField;
-    PessoaPESS_FISICOJURIDICO: TIBStringField;
     FornecedorCotacaoFCT_EMPRESA: TIntegerField;
     FornecedorCotacaoFCT_COTACAO: TIntegerField;
     FornecedorCotacaoFCT_FORNECEDOR: TIntegerField;

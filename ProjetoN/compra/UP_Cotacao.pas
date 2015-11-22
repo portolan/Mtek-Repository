@@ -77,7 +77,13 @@ begin
    if dmPedCompra.CotacaoCOT_STATUS.AsString <> TNMStatusCotacao[tscAberto] then
       raise Exception.Create('Não é possível fechar cotação selecionada!');
 
-   TPFornecedorCotacao.procChamaTela(Self, True);
+   procMontarVLocate;
+   try
+      TPFornecedorCotacao.procChamaTela(Self, True);
+   finally
+      procSelect;
+      procLocate;
+   end;
 end;
 
 procedure TPCotacao.sbFornecedoresClick(Sender: TObject);
@@ -91,7 +97,13 @@ begin
    if dmPedCompra.CotacaoCOT_STATUS.AsString <> TNMStatusCotacao[tscAberto] then
       raise Exception.Create('Não é possível alterar os dados dos fornecedores da cotação selecionada!');
 
-   TPFornecedorCotacao.procChamaTela(Self);
+   procMontarVLocate;
+   try
+      TPFornecedorCotacao.procChamaTela(Self);
+   finally
+      procSelect;
+      procLocate;
+   end;
 end;
 
 end.

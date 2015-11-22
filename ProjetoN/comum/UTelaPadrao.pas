@@ -71,6 +71,8 @@ type
 
     procedure procMontarCLocate;
     procedure procMontarVLocate;
+
+    procedure procLocate;
   end;
 
 var
@@ -296,6 +298,11 @@ begin
    Self.TelaManutencao      := TelaManutencao;
    Self.CTelaManutencao     := CTelaManutencao;
    funcAtribuiFiltros;
+end;
+
+procedure TxPesqPadrao.procLocate;
+begin
+   QryPadrao.Locate(c_locate, VarArrayOf(v_locate), [loCaseInsensitive]);
 end;
 
 procedure TxPesqPadrao.procSelect;

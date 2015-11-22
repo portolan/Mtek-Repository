@@ -1,5 +1,7 @@
 inherited PPessoa: TPPessoa
-  Caption = 'PPessoa'
+  Caption = 'Pesquisa - Pessoas'
+  ExplicitWidth = 880
+  ExplicitHeight = 441
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
@@ -134,7 +136,7 @@ inherited PPessoa: TPPessoa
           end
           item
             Expanded = False
-            FieldName = 'F'#237'sico / Juridico'
+            FieldName = 'PESS_FISICOJURIDICO'
             Visible = True
           end>
       end
