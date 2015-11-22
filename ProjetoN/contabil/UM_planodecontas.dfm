@@ -1,6 +1,6 @@
 inherited M_planodecontas: TM_planodecontas
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = 'Manuten'#231#227'o Plano de Contas - ProjetoDesnecessauro'
+  Caption = 'Manuten'#231#227'o Plano de Contas - ProjetoNecessauro'
   ClientHeight = 150
   ClientWidth = 385
   ExplicitWidth = 401

@@ -1,6 +1,6 @@
 inherited M_centro: TM_centro
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = 'Cadastro de Centro de Custo'
+  Caption = 'Cadastro de Centro de Custo - ProjetoNecessauro'
   ClientHeight = 214
   ClientWidth = 506
   ExplicitWidth = 522
@@ -10,8 +10,8 @@ inherited M_centro: TM_centro
   inherited pnRodape: TPanel
     Top = 173
     Width = 506
-    ExplicitTop = 224
-    ExplicitWidth = 402
+    ExplicitTop = 173
+    ExplicitWidth = 506
     inherited sbCancelar: TSpeedButton
       Left = 409
       ExplicitLeft = 354
@@ -20,9 +20,8 @@ inherited M_centro: TM_centro
   inherited gbInfos: TGroupBox
     Width = 506
     Height = 173
-    ExplicitTop = -6
     ExplicitWidth = 506
-    ExplicitHeight = 201
+    ExplicitHeight = 173
     object Label1: TLabel
       Left = 16
       Top = 21

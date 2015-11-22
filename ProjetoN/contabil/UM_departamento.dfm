@@ -1,6 +1,6 @@
 inherited M_departamento: TM_departamento
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = 'Manuten'#231#227'o Departamentos - ProjetoDesnecessauro'
+  Caption = 'Manuten'#231#227'o Departamentos - ProjetoNecessauro'
   ClientHeight = 263
   ClientWidth = 396
   OnShow = FormShow

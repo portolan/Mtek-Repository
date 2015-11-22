@@ -1,6 +1,6 @@
 inherited M_lancamento: TM_lancamento
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = 'Inserindo Dados - Lan'#231'amentos - ProjetoDesnecessauro'
+  Caption = 'Inserindo Dados - Lan'#231'amentos - ProjetoNecessauro'
   ClientHeight = 535
   ClientWidth = 442
   OnShow = FormShow
@@ -11,7 +11,7 @@ inherited M_lancamento: TM_lancamento
   inherited pnRodape: TPanel
     Top = 494
     Width = 442
-    ExplicitTop = 464
+    ExplicitTop = 494
     ExplicitWidth = 442
     inherited sbCancelar: TSpeedButton
       Left = 345
@@ -22,7 +22,7 @@ inherited M_lancamento: TM_lancamento
     Width = 442
     Height = 494
     ExplicitWidth = 442
-    ExplicitHeight = 464
+    ExplicitHeight = 494
     object Label1: TLabel
       Left = 14
       Top = 96

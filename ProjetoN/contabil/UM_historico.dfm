@@ -1,6 +1,6 @@
 inherited M_historico: TM_historico
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = 'Manuten'#231#227'o Historico - ProjetoDesnecessauro'
+  Caption = 'Manuten'#231#227'o Historico - ProjetoNecessauro'
   ClientHeight = 134
   ClientWidth = 466
   ExplicitWidth = 482
