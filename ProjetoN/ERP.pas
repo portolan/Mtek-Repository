@@ -63,6 +63,9 @@ type
     Image10: TImage;
     NotasdeEntrada1: TMenuItem;
     AjudacomEstoque1: TMenuItem;
+    Faturamento1: TMenuItem;
+    N1: TMenuItem;
+    CondiesdePagamento2: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);

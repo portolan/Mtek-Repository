@@ -6848,7 +6848,16 @@ object TelaInicial: TTelaInicial
         OnClick = Oramento1Click
       end
       object PedidodeVenda1: TMenuItem
+        Caption = 'Emiss'#227'o de Nota Fiscal'
+      end
+      object Faturamento1: TMenuItem
         Caption = 'Faturamento'
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object CondiesdePagamento2: TMenuItem
+        Caption = 'Condi'#231#245'es de Pagamento'
       end
     end
     object Financeiro1: TMenuItem
