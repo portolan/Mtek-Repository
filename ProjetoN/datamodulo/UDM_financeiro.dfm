@@ -6,6 +6,7 @@ object DM_financeiro: TDM_financeiro
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     ObjectView = True
+    Active = True
     BufferChunks = 1000
     CachedUpdates = True
     DataSource = D_contasbancarias
