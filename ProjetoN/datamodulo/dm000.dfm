@@ -3,7 +3,6 @@ object dmBanco: TdmBanco
   Height = 181
   Width = 197
   object TBanco: TIBTransaction
-    Active = True
     DefaultDatabase = Banco
     Params.Strings = (
       'read_committed'
@@ -14,7 +13,7 @@ object dmBanco: TdmBanco
   end
   object Banco: TIBDatabase
     Connected = True
-    DatabaseName = '\\LOCALHOST\C:\Users\LUCAS\Desktop\BANCOERP.FDB'
+    DatabaseName = '\\localhost\C:\banco_dados\database.FDB'
     Params.Strings = (
       'user_name=sysdba'
       'password=masterkey'

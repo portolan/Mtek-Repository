@@ -11,59 +11,53 @@ object DM_financeiro: TDM_financeiro
     DataSource = D_contasbancarias
     ParamCheck = True
     SQL.Strings = (
-      'select  *  from CONTA_BANCARIA')
+      'select  *  from CONTABANCARIA')
     UpdateObject = U_contasbancarias
     Left = 40
     Top = 16
-    object contasbancariasCTB_BANCO: TIBStringField
-      FieldName = 'CTB_BANCO'
-      Origin = '"CONTA_BANCARIA"."CTB_BANCO"'
+    object contasbancariasCTB_CODIGO: TIntegerField
+      FieldName = 'CTB_CODIGO'
+      Origin = '"CONTABANCARIA"."CTB_CODIGO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
-      Size = 10
     end
-    object contasbancariasCTB_CONTA: TIBStringField
+    object contasbancariasCTB_EMP_CODIGO: TIntegerField
+      FieldName = 'CTB_EMP_CODIGO'
+      Origin = '"CONTABANCARIA"."CTB_EMP_CODIGO"'
+    end
+    object contasbancariasCTB_BAN_CODIGO: TIntegerField
+      FieldName = 'CTB_BAN_CODIGO'
+      Origin = '"CONTABANCARIA"."CTB_BAN_CODIGO"'
+    end
+    object contasbancariasCTB_CONTA: TIBBCDField
       FieldName = 'CTB_CONTA'
-      Origin = '"CONTA_BANCARIA"."CTB_CONTA"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-      Size = 10
-    end
-    object contasbancariasCTB_TITULAR: TIBStringField
-      FieldName = 'CTB_TITULAR'
-      Origin = '"CONTA_BANCARIA"."CTB_TITULAR"'
-      Required = True
-      Size = 40
-    end
-    object contasbancariasCTB_EMPRESA: TIntegerField
-      FieldName = 'CTB_EMPRESA'
-      Origin = '"CONTA_BANCARIA"."CTB_EMPRESA"'
-    end
-    object contasbancariasCTB_SALDO: TIBBCDField
-      FieldName = 'CTB_SALDO'
-      Origin = '"CONTA_BANCARIA"."CTB_SALDO"'
+      Origin = '"CONTABANCARIA"."CTB_CONTA"'
       Precision = 18
       Size = 2
     end
-    object contasbancariasCTB_BANCOCODIGO: TIBStringField
-      FieldName = 'CTB_BANCOCODIGO'
-      Origin = '"CONTA_BANCARIA"."CTB_BANCOCODIGO"'
-      Size = 3
+    object contasbancariasCTB_OPERACAO: TIBBCDField
+      FieldName = 'CTB_OPERACAO'
+      Origin = '"CONTABANCARIA"."CTB_OPERACAO"'
+      Precision = 18
+      Size = 2
     end
-    object contasbancariasCTB_AGENCIACODIGO: TIBStringField
-      FieldName = 'CTB_AGENCIACODIGO'
-      Origin = '"CONTA_BANCARIA"."CTB_AGENCIACODIGO"'
-      Size = 4
+    object contasbancariasCTB_AGENCIA: TIBBCDField
+      FieldName = 'CTB_AGENCIA'
+      Origin = '"CONTABANCARIA"."CTB_AGENCIA"'
+      Precision = 18
+      Size = 2
     end
-    object contasbancariasCTB_CONTANUMERO: TIBStringField
-      FieldName = 'CTB_CONTANUMERO'
-      Origin = '"CONTA_BANCARIA"."CTB_CONTANUMERO"'
-      Size = 15
+    object contasbancariasCTB_SALDOI: TIBBCDField
+      FieldName = 'CTB_SALDOI'
+      Origin = '"CONTABANCARIA"."CTB_SALDOI"'
+      Precision = 18
+      Size = 2
     end
-    object contasbancariasCTB_ATIVOINATIVO: TIBStringField
-      FieldName = 'CTB_ATIVOINATIVO'
-      Origin = '"CONTA_BANCARIA"."CTB_ATIVOINATIVO"'
-      Size = 1
+    object contasbancariasCTB_SALDOT: TIBBCDField
+      FieldName = 'CTB_SALDOT'
+      Origin = '"CONTABANCARIA"."CTB_SALDOT"'
+      Precision = 18
+      Size = 2
     end
   end
   object D_contasbancarias: TDataSource

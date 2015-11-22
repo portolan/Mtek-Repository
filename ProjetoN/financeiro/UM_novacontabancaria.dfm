@@ -152,7 +152,7 @@ object M_novaconta: TM_novaconta
       Top = 93
       Width = 56
       Height = 21
-      DataField = 'CTB_AGENCIACODIGO'
+      DataField = 'CTB_CONTA'
       DataSource = DataSource1
       TabOrder = 0
     end
@@ -161,7 +161,7 @@ object M_novaconta: TM_novaconta
       Top = 93
       Width = 56
       Height = 21
-      DataField = 'CTB_AGENCIACODIGO'
+      DataField = 'CTB_BAN_CODIGO'
       DataSource = DataSource1
       TabOrder = 1
     end
@@ -170,7 +170,7 @@ object M_novaconta: TM_novaconta
       Top = 39
       Width = 315
       Height = 21
-      DataField = 'CTB_TITULAR'
+      DataField = 'CTB_EMP_CODIGO'
       DataSource = DataSource1
       TabOrder = 2
     end
@@ -179,7 +179,7 @@ object M_novaconta: TM_novaconta
       Top = 93
       Width = 113
       Height = 21
-      DataField = 'CTB_SALDO'
+      DataField = 'CTB_SALDOI'
       DataSource = DataSource1
       TabOrder = 3
     end
@@ -189,7 +189,7 @@ object M_novaconta: TM_novaconta
       Width = 130
       Height = 63
       Caption = 'CONTA ATIVA / INATIVA'
-      DataField = 'CTB_ATIVOINATIVO'
+      DataField = 'CTB_OPERACAO'
       DataSource = DataSource1
       Items.Strings = (
         'ATIVA '

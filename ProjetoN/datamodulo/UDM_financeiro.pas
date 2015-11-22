@@ -11,15 +11,14 @@ type
     contasbancarias: TIBQuery;
     D_contasbancarias: TDataSource;
     U_contasbancarias: TIBUpdateSQL;
-    contasbancariasCTB_BANCO: TIBStringField;
-    contasbancariasCTB_CONTA: TIBStringField;
-    contasbancariasCTB_TITULAR: TIBStringField;
-    contasbancariasCTB_EMPRESA: TIntegerField;
-    contasbancariasCTB_SALDO: TIBBCDField;
-    contasbancariasCTB_BANCOCODIGO: TIBStringField;
-    contasbancariasCTB_AGENCIACODIGO: TIBStringField;
-    contasbancariasCTB_CONTANUMERO: TIBStringField;
-    contasbancariasCTB_ATIVOINATIVO: TIBStringField;
+    contasbancariasCTB_CODIGO: TIntegerField;
+    contasbancariasCTB_EMP_CODIGO: TIntegerField;
+    contasbancariasCTB_BAN_CODIGO: TIntegerField;
+    contasbancariasCTB_CONTA: TIBBCDField;
+    contasbancariasCTB_OPERACAO: TIBBCDField;
+    contasbancariasCTB_AGENCIA: TIBBCDField;
+    contasbancariasCTB_SALDOI: TIBBCDField;
+    contasbancariasCTB_SALDOT: TIBBCDField;
   private
     { Private declarations }
   public
