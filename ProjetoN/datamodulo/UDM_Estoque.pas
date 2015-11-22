@@ -135,11 +135,11 @@ type
     procedure BlocoAfterInsert(DataSet: TDataSet);
     procedure PrateleiraAfterInsert(DataSet: TDataSet);
     procedure UnidadeAfterInsert(DataSet: TDataSet);
-    procedure ProdutosAfterPost(DataSet: TDataSet);
     procedure MovimentoEstoqueBeforePost(DataSet: TDataSet);
     procedure ProdutosBeforePost(DataSet: TDataSet);
     procedure EstoqueBeforePost(DataSet: TDataSet);
     procedure PrateleiraBeforePost(DataSet: TDataSet);
+    procedure MovimentoEstoqueAfterPost(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -228,6 +228,18 @@ begin
     MovimentoEstoque.FieldByName('EM_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQ_MOVIMENTO');
 end;
 
+procedure TDM_Estoque.MovimentoEstoqueAfterPost(DataSet: TDataSet);
+begin
+    if MovimentoEstoqueEM_TIPO.AsString = 'E' then
+    begin
+        funcCalcCustoMedio(MovimentoEstoqueEM_EMPRESA.value,
+                           MovimentoEstoqueEM_PRODUTO.value,
+                           MovimentoEstoqueEM_BLOCO.value,
+                           MovimentoEstoqueEM_PRATELEIRA.value,
+                           MovimentoEstoqueEM_ESTOQUE.value);
+    end;
+end;
+
 procedure TDM_Estoque.MovimentoEstoqueBeforePost(DataSet: TDataSet);
 begin
     DM_Estoque.MovimentoEstoque.FieldByName('EM_QTD').Value := Abs(DM_Estoque.MovimentoEstoque.FieldByName('EM_QTD').AsFloat);
@@ -276,18 +288,6 @@ end;
 procedure TDM_Estoque.ProdutosAfterInsert(DataSet: TDataSet);
 begin
     Produtos.FieldByName('PRO_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRODUTOS');
-end;
-
-procedure TDM_Estoque.ProdutosAfterPost(DataSet: TDataSet);
-begin
-    if MovimentoEstoqueEM_TIPO.AsString = 'E' then
-    begin
-        funcCalcCustoMedio(MovimentoEstoqueEM_EMPRESA.value,
-                           MovimentoEstoqueEM_PRODUTO.value,
-                           MovimentoEstoqueEM_BLOCO.value,
-                           MovimentoEstoqueEM_PRATELEIRA.value,
-                           MovimentoEstoqueEM_ESTOQUE.value);
-    end;
 end;
 
 procedure TDM_Estoque.ProdutosBeforePost(DataSet: TDataSet);

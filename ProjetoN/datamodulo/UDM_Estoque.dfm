@@ -6,7 +6,6 @@ object DM_Estoque: TDM_Estoque
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = ProdutosAfterInsert
-    AfterPost = ProdutosAfterPost
     BeforePost = ProdutosBeforePost
     BufferChunks = 1000
     CachedUpdates = False
@@ -804,7 +803,6 @@ object DM_Estoque: TDM_Estoque
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = BlocoAfterInsert
-    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -1075,6 +1073,7 @@ object DM_Estoque: TDM_Estoque
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = MovimentoEstoqueAfterInsert
+    AfterPost = MovimentoEstoqueAfterPost
     BeforePost = MovimentoEstoqueBeforePost
     BufferChunks = 1000
     CachedUpdates = False
