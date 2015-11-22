@@ -1,6 +1,5 @@
 inherited PUnidade: TPUnidade
-  Caption = 'PUnidade'
-  OnCreate = FormCreate
+  Caption = 'Listagem de Unidades de Medida'
   ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96
@@ -25,6 +24,17 @@ inherited PUnidade: TPUnidade
             FieldName = 'UN_OBS'
             Visible = True
           end>
+      end
+    end
+  end
+  inherited pnCabecalho: TPanel
+    inherited gbFiltro: TGroupBox
+      ExplicitWidth = 848
+      inherited editPesquisa: TEdit
+        ExplicitWidth = 454
+      end
+      inherited Pesquisar: TButton
+        ExplicitLeft = 767
       end
     end
   end

@@ -1,7 +1,8 @@
 inherited MPrateleira: TMPrateleira
-  Caption = 'MPrateleira'
+  Caption = 'Manuten'#231#227'o de Prateleira'
   ClientWidth = 747
   ExplicitWidth = 763
+  ExplicitHeight = 320
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnRodape: TPanel

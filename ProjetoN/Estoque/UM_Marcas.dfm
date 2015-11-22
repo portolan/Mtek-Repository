@@ -1,5 +1,5 @@
 inherited MMarcas: TMMarcas
-  Caption = 'Gerenciamento de Marcas'
+  Caption = 'Manuten'#231#227'o de Marca'
   ClientWidth = 556
   ExplicitWidth = 572
   ExplicitHeight = 320

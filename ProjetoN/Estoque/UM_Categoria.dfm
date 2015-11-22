@@ -1,5 +1,5 @@
 inherited MCategoria: TMCategoria
-  Caption = 'MCategoria'
+  Caption = 'Manuten'#231#227'o de Categoria'
   ClientHeight = 294
   ClientWidth = 552
   ExplicitWidth = 568

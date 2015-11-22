@@ -1,5 +1,5 @@
 inherited MProduto: TMProduto
-  Caption = 'MProduto'
+  Caption = 'Manuten'#231#227'o de Produto'
   ClientHeight = 656
   ClientWidth = 717
   OnActivate = FormActivate

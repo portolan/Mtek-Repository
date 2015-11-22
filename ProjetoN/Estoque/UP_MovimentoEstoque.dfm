@@ -1,5 +1,5 @@
 inherited PMovimentoEstoque: TPMovimentoEstoque
-  Caption = 'PMovimentoEstoque'
+  Caption = 'Movimenta'#231#245'es de Estoque'
   ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96

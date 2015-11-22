@@ -1,5 +1,5 @@
 inherited MBloco: TMBloco
-  Caption = 'MBloco'
+  Caption = 'Manuten'#231#227'o de Bloco'
   ClientWidth = 697
   ExplicitWidth = 713
   ExplicitHeight = 320

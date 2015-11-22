@@ -2,7 +2,7 @@ object FEstoqueAjuda: TFEstoqueAjuda
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
-  Caption = 'FEstoqueAjuda'
+  Caption = 'Estoque - Ajuda'
   ClientHeight = 298
   ClientWidth = 586
   Color = clBtnFace

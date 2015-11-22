@@ -1,11 +1,10 @@
 inherited MUnidade: TMUnidade
-  Caption = 'MUnidade'
+  Caption = 'Manuten'#231#227'o de Unidade'
   ExplicitWidth = 597
   ExplicitHeight = 320
   PixelsPerInch = 96
   TextHeight = 13
   inherited gbInfos: TGroupBox
-    ExplicitTop = -5
     object Label1: TLabel
       Left = 16
       Top = 16
