@@ -15,6 +15,7 @@ type
   public
     { Public declarations }
     procedure procSelect; Override;
+    class procedure ChamaTela(AOwner: TComponent);
   end;
 
 var
@@ -27,6 +28,16 @@ implementation
 uses UDM_PedCompra, UM_Pessoa;
 
 { TPPessoa }
+
+class procedure TPPessoa.ChamaTela(AOwner: TComponent);
+begin
+   PPessoa := TPPessoa.Create(AOwner);
+   try
+      PPessoa.ShowModal;
+   finally
+      FreeAndNil(PPessoa);
+   end;
+end;
 
 procedure TPPessoa.FormCreate(Sender: TObject);
 begin

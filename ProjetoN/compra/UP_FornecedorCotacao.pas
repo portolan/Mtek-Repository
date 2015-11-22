@@ -146,7 +146,10 @@ procedure TPFornecedorCotacao.sbFecharClick(Sender: TObject);
 begin
    dmBanco.procBotaoVisivelHabilitado(Sender);
    if dmPedCompra.FornecedorCotacao.IsEmpty then
+   begin
+      Application.Messagebox(Pchar('Nenhum fornecedor selecionado!'),Pchar(caption),mb_iconerror+mb_ok);
       Exit;
+   end;
 
    if Application.MessageBox(pChar('Confirma o fechamento da cotação com o fornecedor selecionado?'),
                Pchar(self.caption),mb_yesno+mb_iconquestion) = idNo then

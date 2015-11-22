@@ -1,7 +1,7 @@
 object dmPedCompra: TdmPedCompra
   OldCreateOrder = False
   Height = 244
-  Width = 668
+  Width = 755
   object SolicitacaoCompra: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
@@ -55,6 +55,7 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Qtd.'
       FieldName = 'SOL_QTD'
       Origin = '"SOLICITACAO_COMPRA"."SOL_QTD"'
+      DisplayFormat = '###,###,##0.00'
       Precision = 18
       Size = 2
     end
@@ -63,11 +64,13 @@ object dmPedCompra: TdmPedCompra
       FieldName = 'SOL_DATA'
       Origin = '"SOLICITACAO_COMPRA"."SOL_DATA"'
       Required = True
+      EditMask = '!99/99/0000;1;_'
     end
     object SolicitacaoCompraSOL_DATA_URGENCIA: TDateField
       DisplayLabel = 'Data Limite Compra'
       FieldName = 'SOL_DATA_URGENCIA'
       Origin = '"SOLICITACAO_COMPRA"."SOL_DATA_URGENCIA"'
+      EditMask = '!99/99/0000;1;_'
     end
     object SolicitacaoCompraSOL_OBS: TWideMemoField
       DisplayLabel = 'Observa'#231#245'es'
@@ -81,6 +84,7 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Data de Libera'#231#227'o'
       FieldName = 'SOL_DATA_LIBERACAO'
       Origin = '"SOLICITACAO_COMPRA"."SOL_DATA_LIBERACAO"'
+      EditMask = '!99/99/0000;1;_'
     end
     object SolicitacaoCompraSOL_STATUS: TIBStringField
       DisplayLabel = 'Status'
@@ -182,7 +186,6 @@ object dmPedCompra: TdmPedCompra
       ' INNER JOIN PRODUTOS D ON A.COT_EMPRESA = D.PRO_EMPRESA'
       '                      AND A.COT_PRODUTO = D.PRO_CODIGO'
       ' WHERE A.COT_CODIGO = -1   ')
-    UpdateObject = UCotacao
     Left = 191
     Top = 32
     object CotacaoCOT_EMPRESA: TIntegerField
@@ -346,7 +349,6 @@ object dmPedCompra: TdmPedCompra
       ' INNER JOIN UNIDADE B ON A.FCT_UND_MEDIDA = B.UN_CODIGO'
       ' INNER JOIN PESSOAS C ON A.FCT_FORNECEDOR = C.PESS_CODIGO'
       ' WHERE A.FCT_EMPRESA = -1')
-    UpdateObject = UFornecedorCotacao
     Left = 279
     Top = 32
     object FornecedorCotacaoFCT_EMPRESA: TIntegerField
@@ -1027,5 +1029,318 @@ object dmPedCompra: TdmPedCompra
     DataSet = Pessoa
     Left = 480
     Top = 136
+  end
+  object NotaEntrada: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    AfterInsert = NotaEntradaAfterInsert
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'SELECT A.*,'
+      '       B.EMP_RAZAO,'
+      '       C.PESS_NOME'
+      '  FROM NOTA_ENTRADA A'
+      ' INNER JOIN EMPRESA B ON A.NTE_EMPRESA = B.EMP_COD'
+      ' INNER JOIN PESSOAS C ON A.NTE_PESSOA = C.PESS_CODIGO'
+      ' WHERE A.NTE_EMPRESA = -1   ')
+    UpdateObject = UNotaEntrada
+    Left = 568
+    Top = 40
+    object NotaEntradaNTE_EMPRESA: TIntegerField
+      DisplayLabel = 'Empresa'
+      FieldName = 'NTE_EMPRESA'
+      Origin = '"NOTA_ENTRADA"."NTE_EMPRESA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object NotaEntradaNTE_NR_NOTA: TIntegerField
+      DisplayLabel = 'Nr. Nota'
+      FieldName = 'NTE_NR_NOTA'
+      Origin = '"NOTA_ENTRADA"."NTE_NR_NOTA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object NotaEntradaNTE_PESSOA: TIntegerField
+      DisplayLabel = 'Pessoa'
+      FieldName = 'NTE_PESSOA'
+      Origin = '"NOTA_ENTRADA"."NTE_PESSOA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object NotaEntradaNTE_DATA: TDateField
+      DisplayLabel = 'Data da Nota'
+      FieldName = 'NTE_DATA'
+      Origin = '"NOTA_ENTRADA"."NTE_DATA"'
+      Required = True
+    end
+    object NotaEntradaNTE_VLR_FRETE: TIBBCDField
+      DisplayLabel = 'Valor Frete'
+      FieldName = 'NTE_VLR_FRETE'
+      Origin = '"NOTA_ENTRADA"."NTE_VLR_FRETE"'
+      Precision = 18
+      Size = 2
+    end
+    object NotaEntradaNTE_VLR_PIS: TIBBCDField
+      DisplayLabel = 'Valor Pis'
+      FieldName = 'NTE_VLR_PIS'
+      Origin = '"NOTA_ENTRADA"."NTE_VLR_PIS"'
+      Precision = 18
+      Size = 2
+    end
+    object NotaEntradaNTE_VLR_ICMS: TIBBCDField
+      DisplayLabel = 'Valor ICMS'
+      FieldName = 'NTE_VLR_ICMS'
+      Origin = '"NOTA_ENTRADA"."NTE_VLR_ICMS"'
+      Precision = 18
+      Size = 2
+    end
+    object NotaEntradaNTE_VLR_TOTAL: TIBBCDField
+      DisplayLabel = 'Valor Total'
+      FieldName = 'NTE_VLR_TOTAL'
+      Origin = '"NOTA_ENTRADA"."NTE_VLR_TOTAL"'
+      Precision = 18
+      Size = 2
+    end
+    object NotaEntradaEMP_RAZAO: TIBStringField
+      DisplayLabel = 'Emp. Raz'#227'o'
+      FieldName = 'EMP_RAZAO'
+      Origin = '"EMPRESA"."EMP_RAZAO"'
+      Required = True
+      Size = 60
+    end
+    object NotaEntradaPESS_NOME: TIBStringField
+      DisplayLabel = 'Nome da Pessoa'
+      FieldName = 'PESS_NOME'
+      Origin = '"PESSOAS"."PESS_NOME"'
+      Size = 100
+    end
+  end
+  object UNotaEntrada: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'SELECT A.*,'
+      '       B.EMP_RAZAO,'
+      '       C.PESS_NOME'
+      '  FROM NOTA_ENTRADA A'
+      ' INNER JOIN EMPRESA B ON A.NTE_EMPRESA = B.EMP_COD'
+      ' INNER JOIN PESSOAS C ON A.NTE_PESSOA = C.PESS_CODIGO'
+      'where'
+      '  NTE_EMPRESA = :NTE_EMPRESA and'
+      '  NTE_NR_NOTA = :NTE_NR_NOTA and'
+      '  NTE_PESSOA = :NTE_PESSOA')
+    ModifySQL.Strings = (
+      'update NOTA_ENTRADA'
+      'set'
+      '  NTE_DATA = :NTE_DATA,'
+      '  NTE_EMPRESA = :NTE_EMPRESA,'
+      '  NTE_NR_NOTA = :NTE_NR_NOTA,'
+      '  NTE_PESSOA = :NTE_PESSOA,'
+      '  NTE_VLR_FRETE = :NTE_VLR_FRETE,'
+      '  NTE_VLR_ICMS = :NTE_VLR_ICMS,'
+      '  NTE_VLR_PIS = :NTE_VLR_PIS,'
+      '  NTE_VLR_TOTAL = :NTE_VLR_TOTAL'
+      'where'
+      '  NTE_EMPRESA = :OLD_NTE_EMPRESA and'
+      '  NTE_NR_NOTA = :OLD_NTE_NR_NOTA and'
+      '  NTE_PESSOA = :OLD_NTE_PESSOA')
+    InsertSQL.Strings = (
+      'insert into NOTA_ENTRADA'
+      
+        '  (NTE_DATA, NTE_EMPRESA, NTE_NR_NOTA, NTE_PESSOA, NTE_VLR_FRETE' +
+        ', NTE_VLR_ICMS, '
+      '   NTE_VLR_PIS, NTE_VLR_TOTAL)'
+      'values'
+      
+        '  (:NTE_DATA, :NTE_EMPRESA, :NTE_NR_NOTA, :NTE_PESSOA, :NTE_VLR_' +
+        'FRETE, '
+      '   :NTE_VLR_ICMS, :NTE_VLR_PIS, :NTE_VLR_TOTAL)')
+    DeleteSQL.Strings = (
+      'delete from NOTA_ENTRADA'
+      'where'
+      '  NTE_EMPRESA = :OLD_NTE_EMPRESA and'
+      '  NTE_NR_NOTA = :OLD_NTE_NR_NOTA and'
+      '  NTE_PESSOA = :OLD_NTE_PESSOA')
+    Left = 568
+    Top = 96
+  end
+  object DNotaEntrada: TDataSource
+    AutoEdit = False
+    DataSet = NotaEntrada
+    Left = 568
+    Top = 144
+  end
+  object ItemNotaEntrada: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'SELECT A.*,'
+      '       B.PRO_DESCRICAO'
+      '  FROM ITEM_NOTA_ENTRADA A'
+      ' INNER JOIN PRODUTOS B ON A.INE_EMPRESA = B.PRO_EMPRESA'
+      '                      AND A.INE_PRODUTO = B.PRO_CODIGO'
+      ' WHERE A.INE_EMPRESA = -1   ')
+    UpdateObject = UItemNotaEntrada
+    Left = 664
+    Top = 40
+    object ItemNotaEntradaINE_EMPRESA: TIntegerField
+      DisplayLabel = 'Empresa'
+      FieldName = 'INE_EMPRESA'
+      Origin = '"ITEM_NOTA_ENTRADA"."INE_EMPRESA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object ItemNotaEntradaINE_NR_NOTA: TIntegerField
+      DisplayLabel = 'Nr. Nota'
+      FieldName = 'INE_NR_NOTA'
+      Origin = '"ITEM_NOTA_ENTRADA"."INE_NR_NOTA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object ItemNotaEntradaINE_PESSOA: TIntegerField
+      DisplayLabel = 'Pessoa'
+      FieldName = 'INE_PESSOA'
+      Origin = '"ITEM_NOTA_ENTRADA"."INE_PESSOA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object ItemNotaEntradaINE_PRODUTO: TIBStringField
+      DisplayLabel = 'Produto'
+      FieldName = 'INE_PRODUTO'
+      Origin = '"ITEM_NOTA_ENTRADA"."INE_PRODUTO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
+    end
+    object ItemNotaEntradaINE_VLR_BRUTO: TIBBCDField
+      DisplayLabel = 'Valor Bruto'
+      FieldName = 'INE_VLR_BRUTO'
+      Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_BRUTO"'
+      Precision = 18
+      Size = 2
+    end
+    object ItemNotaEntradaINE_VLR_DESC: TIBBCDField
+      DisplayLabel = 'Valor Desconto'
+      FieldName = 'INE_VLR_DESC'
+      Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_DESC"'
+      Precision = 18
+      Size = 2
+    end
+    object ItemNotaEntradaINE_VLR_LIQUIDO: TIBBCDField
+      DisplayLabel = 'Valor L'#237'quido'
+      FieldName = 'INE_VLR_LIQUIDO'
+      Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_LIQUIDO"'
+      Precision = 18
+      Size = 2
+    end
+    object ItemNotaEntradaINE_VLR_PIS: TIBBCDField
+      DisplayLabel = 'Valor PIS'
+      FieldName = 'INE_VLR_PIS'
+      Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_PIS"'
+      Precision = 18
+      Size = 2
+    end
+    object ItemNotaEntradaINE_VLR_ICMS: TIBBCDField
+      DisplayLabel = 'Valor ICMS'
+      FieldName = 'INE_VLR_ICMS'
+      Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_ICMS"'
+      Precision = 18
+      Size = 2
+    end
+    object ItemNotaEntradaINE_VLR_TOTAL: TIBBCDField
+      DisplayLabel = 'Valor Total'
+      FieldName = 'INE_VLR_TOTAL'
+      Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_TOTAL"'
+      Precision = 18
+      Size = 2
+    end
+    object ItemNotaEntradaINE_QTD: TIBBCDField
+      DisplayLabel = 'Quantidade'
+      FieldName = 'INE_QTD'
+      Origin = '"ITEM_NOTA_ENTRADA"."INE_QTD"'
+      Precision = 18
+      Size = 2
+    end
+    object ItemNotaEntradaPRO_DESCRICAO: TIBStringField
+      DisplayLabel = 'Desc. Produto'
+      FieldName = 'PRO_DESCRICAO'
+      Origin = '"PRODUTOS"."PRO_DESCRICAO"'
+      Required = True
+      Size = 60
+    end
+    object ItemNotaEntradaINE_VLR_UNITARIO: TIBBCDField
+      DisplayLabel = 'Vlr. Unit'#225'rio'
+      FieldName = 'INE_VLR_UNITARIO'
+      Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_UNITARIO"'
+      Required = True
+      Precision = 18
+      Size = 4
+    end
+  end
+  object UItemNotaEntrada: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'SELECT A.*,'
+      '       B.PRO_DESCRICAO'
+      '  FROM ITEM_NOTA_ENTRADA A'
+      ' INNER JOIN PRODUTOS B ON A.INE_EMPRESA = B.PRO_EMPRESA'
+      '                      AND A.INE_PRODUTO = B.PRO_CODIGO'
+      'where'
+      '  INE_EMPRESA = :INE_EMPRESA and'
+      '  INE_NR_NOTA = :INE_NR_NOTA and'
+      '  INE_PESSOA = :INE_PESSOA and'
+      '  INE_PRODUTO = :INE_PRODUTO')
+    ModifySQL.Strings = (
+      'update ITEM_NOTA_ENTRADA'
+      'set'
+      '  INE_EMPRESA = :INE_EMPRESA,'
+      '  INE_NR_NOTA = :INE_NR_NOTA,'
+      '  INE_PESSOA = :INE_PESSOA,'
+      '  INE_PRODUTO = :INE_PRODUTO,'
+      '  INE_QTD = :INE_QTD,'
+      '  INE_VLR_BRUTO = :INE_VLR_BRUTO,'
+      '  INE_VLR_DESC = :INE_VLR_DESC,'
+      '  INE_VLR_ICMS = :INE_VLR_ICMS,'
+      '  INE_VLR_LIQUIDO = :INE_VLR_LIQUIDO,'
+      '  INE_VLR_PIS = :INE_VLR_PIS,'
+      '  INE_VLR_TOTAL = :INE_VLR_TOTAL,'
+      '  INE_VLR_UNITARIO = :INE_VLR_UNITARIO'
+      'where'
+      '  INE_EMPRESA = :OLD_INE_EMPRESA and'
+      '  INE_NR_NOTA = :OLD_INE_NR_NOTA and'
+      '  INE_PESSOA = :OLD_INE_PESSOA and'
+      '  INE_PRODUTO = :OLD_INE_PRODUTO')
+    InsertSQL.Strings = (
+      'insert into ITEM_NOTA_ENTRADA'
+      
+        '  (INE_EMPRESA, INE_NR_NOTA, INE_PESSOA, INE_PRODUTO, INE_QTD, I' +
+        'NE_VLR_BRUTO, '
+      
+        '   INE_VLR_DESC, INE_VLR_ICMS, INE_VLR_LIQUIDO, INE_VLR_PIS, INE' +
+        '_VLR_TOTAL, INE_VLR_UNITARIO)'
+      'values'
+      
+        '  (:INE_EMPRESA, :INE_NR_NOTA, :INE_PESSOA, :INE_PRODUTO, :INE_Q' +
+        'TD, :INE_VLR_BRUTO,'
+      
+        '   :INE_VLR_DESC, :INE_VLR_ICMS, :INE_VLR_LIQUIDO, :INE_VLR_PIS,' +
+        ' :INE_VLR_TOTAL, :INE_VLR_UNITARIO)')
+    DeleteSQL.Strings = (
+      'delete from ITEM_NOTA_ENTRADA'
+      'where'
+      '  INE_EMPRESA = :OLD_INE_EMPRESA and'
+      '  INE_NR_NOTA = :OLD_INE_NR_NOTA and'
+      '  INE_PESSOA = :OLD_INE_PESSOA and'
+      '  INE_PRODUTO = :OLD_INE_PRODUTO')
+    Left = 664
+    Top = 96
+  end
+  object DItemNotaEntrada: TDataSource
+    AutoEdit = False
+    DataSet = ItemNotaEntrada
+    Left = 664
+    Top = 144
   end
 end

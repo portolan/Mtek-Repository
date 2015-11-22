@@ -85,6 +85,9 @@ begin
    if dmPedCompra.SolicitacaoCompra.IsEmpty then
       Exit;
 
+   if dmPedCompra.SolicitacaoCompraSOL_STATUS.AsString <> TNMStatusSolicitacao[tssAberto] then
+      raise Exception.Create('Não é possível alterar o status da solicitação de compra Selecionada!');
+
    dmPedCompra.funcGerarCotacao(Self,
                                 dmPedCompra.SolicitacaoCompraSOL_EMPRESA.AsInteger,
                                 dmPedCompra.SolicitacaoCompraSOL_CODIGO.AsInteger);

@@ -301,7 +301,6 @@ object xPesqPadrao: TxPesqPadrao
       Align = alClient
       Caption = 'Filtros'
       TabOrder = 1
-      ExplicitWidth = 703
       DesignSize = (
         848
         53)
@@ -335,7 +334,6 @@ object xPesqPadrao: TxPesqPadrao
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 2
         OnChange = editPesquisaChange
-        ExplicitWidth = 309
       end
       object Pesquisar: TButton
         Left = 767
@@ -346,7 +344,6 @@ object xPesqPadrao: TxPesqPadrao
         Caption = 'Pesquisar'
         TabOrder = 3
         OnClick = PesquisarClick
-        ExplicitLeft = 622
       end
     end
   end

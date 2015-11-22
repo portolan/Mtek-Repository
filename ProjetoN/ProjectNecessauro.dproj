@@ -413,6 +413,14 @@
             <Form>FEstoqueAjuda</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="compra\UM_BaixaPedidoCompra.pas">
+            <Form>MBaixaPedidoCompra</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UP_NotaEntrada.pas">
+            <Form>PNotaEntrada</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="venda\Um_Pedido_Venda.pas">
             <Form>Frm_Pedido_Venda</Form>
             <FormType>dfm</FormType>

@@ -91,6 +91,8 @@ uses
   UP_Pessoa in 'geral\UP_Pessoa.pas' {PPessoa},
   UP_PedCompra in 'compra\UP_PedCompra.pas' {PPedCompra},
   UM_PedCompra in 'compra\UM_PedCompra.pas' {MPedCompra},
+  UM_BaixaPedidoCompra in 'compra\UM_BaixaPedidoCompra.pas' {MBaixaPedidoCompra},
+  UP_NotaEntrada in 'compra\UP_NotaEntrada.pas' {PNotaEntrada},
   UF_EstoqueAjuda in 'Estoque\UF_EstoqueAjuda.pas' {FEstoqueAjuda},
   Um_Pedido_Venda in 'venda\Um_Pedido_Venda.pas' {Frm_Pedido_Venda},
   Up_Pedido_Venda in 'venda\Up_Pedido_Venda.pas' {UP_VENDA},
@@ -109,7 +111,6 @@ begin
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.CreateForm(TdmBanco, dmBanco);
   Application.CreateForm(TDM_Estoque, DM_Estoque);
-  Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
   Application.CreateForm(TdmPedido, dmPedido);
   Application.CreateForm(TDM_contabil, DM_contabil);
   Application.CreateForm(TDM_Servico, DM_Servico);
@@ -119,11 +120,10 @@ begin
   Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
-  Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(TdmBanco, dmBanco);
   Application.CreateForm(TDM_VENDA, DM_VENDA);
   Application.CreateForm(TDM_contabil, DM_contabil);
   Application.CreateForm(TDM_financeiro, DM_financeiro);
-  Application.CreateForm(TDM_financeiro, DM_financeiro);
+  Application.CreateForm(TTelaInicial, TelaInicial);
+
   Application.Run;
 end.

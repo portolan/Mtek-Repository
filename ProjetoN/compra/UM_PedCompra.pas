@@ -36,6 +36,7 @@ type
     DBE_PDC_VLR_TOTAL: TDBEdit;
     frmPessoa: TfrmRelacionamento;
     frmUnidade: TfrmRelacionamento;
+    frmCondicao: TfrmRelacionamento;
     procedure FormShow(Sender: TObject);
   private
     { Private declarations }
@@ -109,6 +110,17 @@ begin
                               '  WHERE A.UN_CODIGO = :COD ',
                               PUnidade, TPUnidade, ['COD'], ['PDC_UNMEDIDA'],
                               ['UN_CODIGO','UN_DESCRICAO']);
+
+   frmCondicao.procInicializar(dmPedCompra.PedidoCompraPDC_CONDICAO_PGTO,
+                              dmPedCompra.PedidoCompraCDP_DESCRICAO,
+                              dmPedCompra.DPedidoCompra,
+                              ' SELECT A.CDP_CODIGO, '+
+                              '        A.CDP_DESCRICAO '+
+                              '   FROM CONDICAOPAGAMENTO A '+
+                              '  WHERE A.CDP_CODIGO = :COD',
+                              nil, nil, ['COD'], ['PDC_CONDICAO_PGTO'],
+                              ['CDP_CODIGO','CDP_DESCRICAO']);
+   //trocar nil pela tela de condição de pagamento
 
 end;
 

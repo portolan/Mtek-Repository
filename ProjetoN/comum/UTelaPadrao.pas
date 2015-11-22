@@ -46,7 +46,8 @@ type
     Filtros : TFieldList;
     c_where : String;
     c_where_tela : String;
-
+    v_locate : Array of Variant;
+    c_locate : String;
 
     procedure procBotaoVisivelHabilitado(botao: TObject);
     procedure procInicializar(Query: TIBQuery; b_finalizaTransacao: Boolean; b_somenteConsulta: Boolean; TelaManutencao: TForm; CTelaManutencao: TFormClass);
@@ -67,6 +68,9 @@ type
     function funcFiltroAtual: TField;
     function funcFiltroIsString: boolean;
     procedure procMontaWhere;
+
+    procedure procMontarCLocate;
+    procedure procMontarVLocate;
   end;
 
 var
@@ -75,6 +79,8 @@ var
 implementation
 
 {$R *.dfm}
+
+uses dm000;
 
 procedure TxPesqPadrao.DBGDadosDblClick(Sender: TObject);
 begin
@@ -117,6 +123,7 @@ end;
 
 procedure TxPesqPadrao.FormShow(Sender: TObject);
 begin
+   procMontarCLocate;
    procSelect;
 
    if b_somenteConsulta then
@@ -160,6 +167,37 @@ begin
                 Result := true;
         end;
     end;
+end;
+
+procedure TxPesqPadrao.procMontarCLocate;
+var i_cont : Integer;
+begin
+   c_locate := EmptyStr;
+
+   for i_cont := 0 to QryPadrao.FieldList.Count - 1 do
+   begin
+      if pfInKey in QryPadrao.FieldList[i_cont].ProviderFlags then
+      begin
+         c_locate := c_locate + dmBanco.iif(c_locate <> '', ';'+QryPadrao.FieldList[i_cont].FieldName,
+                                 QryPadrao.FieldList[i_cont].FieldName);
+      end;
+   end;
+end;
+
+procedure TxPesqPadrao.procMontarVLocate;
+var i_cont, i_seq : Integer;
+begin
+   i_seq := 0;
+
+   for i_cont := 0 to QryPadrao.FieldList.Count - 1 do
+   begin
+      if pfInKey in QryPadrao.FieldList[i_cont].ProviderFlags then
+      begin
+         SetLength(v_locate, i_seq + 1);
+         v_locate[i_seq] := QryPadrao.FieldList[i_cont].Value;
+         i_seq := i_seq + 1;
+      end;
+   end;
 end;
 
 procedure TxPesqPadrao.procMontaWhere;
@@ -273,6 +311,7 @@ begin
       Exit;
 
    try
+      procMontarVLocate;
       procAntesAlterar;
       QryPadrao.Edit;
       procChamaTela;
@@ -280,6 +319,8 @@ begin
    finally
       if b_finalizaTransacao then
          procSelect;
+
+      QryPadrao.Locate(c_locate, VarArrayOf(v_locate), [loCaseInsensitive]);         
    end;
 end;
 

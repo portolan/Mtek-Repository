@@ -9,7 +9,9 @@ uses
 
 type
   TPPedCompra = class(TxPesqPadrao)
+    SpeedButton1: TSpeedButton;
     procedure FormCreate(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -24,7 +26,7 @@ implementation
 
 {$R *.dfm}
 
-uses dm000, UDM_PedCompra, UM_PedCompra;
+uses dm000, UDM_PedCompra, UM_PedCompra, UM_BaixaPedidoCompra;
 
 class procedure TPPedCompra.ChamaTela(AOwner: TComponent);
 begin
@@ -65,6 +67,16 @@ begin
                                         '                       AND A.PDC_PRODUTO = G.PRO_CODIGO '+
                                         '  WHERE '+c_where;
    dmPedCompra.PedidoCompra.Open;
+end;
+
+procedure TPPedCompra.SpeedButton1Click(Sender: TObject);
+begin
+   inherited;
+   procBotaoVisivelHabilitado(Sender);
+   if dmPedCompra.PedidoCompra.IsEmpty then
+      Exit;
+
+   TMBaixaPedidoCompra.ChamaTela(Self, dmPedCompra.PedidoCompraPDC_FORNECEDOR.AsInteger);
 end;
 
 end.

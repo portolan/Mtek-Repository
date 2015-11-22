@@ -19,10 +19,10 @@ inherited MPedCompra: TMPedCompra
   end
   inherited gbInfos: TGroupBox
     Width = 801
-    Height = 178
+    Height = 217
     Align = alTop
     ExplicitWidth = 801
-    ExplicitHeight = 178
+    ExplicitHeight = 217
     object Label2: TLabel
       Left = 14
       Top = 19
@@ -236,7 +236,6 @@ inherited MPedCompra: TMPedCompra
       Color = clBtnFace
       DataField = 'PDC_PREV_ENTREGA'
       DataSource = dmPedCompra.DPedidoCompra
-      ReadOnly = True
       TabOrder = 6
     end
     object DBE_PDC_VLR_UNITARIO: TDBEdit
@@ -356,24 +355,36 @@ inherited MPedCompra: TMPedCompra
         end
       end
     end
+    inline frmCondicao: TfrmRelacionamento
+      Left = 3
+      Top = 157
+      Width = 341
+      Height = 60
+      TabOrder = 15
+      ExplicitLeft = 3
+      ExplicitTop = 157
+    end
   end
   object gbObs: TGroupBox
     Left = 0
-    Top = 178
+    Top = 217
     Width = 801
-    Height = 155
+    Height = 116
     Align = alClient
     Caption = 'Observa'#231#245'es'
     TabOrder = 2
+    ExplicitTop = 178
+    ExplicitHeight = 155
     object DBM_PDC_OBS: TDBMemo
       Left = 2
       Top = 15
       Width = 797
-      Height = 138
+      Height = 99
       Align = alClient
       DataField = 'PDC_OBS'
       DataSource = dmPedCompra.DPedidoCompra
       TabOrder = 0
+      ExplicitHeight = 138
     end
   end
 end

@@ -71,8 +71,11 @@ begin
    inherited;
    procBotaoVisivelHabilitado(Sender);
 
-   if dmPedCompra.SolicitacaoCompra.IsEmpty then
+   if dmPedCompra.Cotacao.IsEmpty then
       Exit;
+
+   if dmPedCompra.CotacaoCOT_STATUS.AsString <> TNMStatusCotacao[tscAberto] then
+      raise Exception.Create('Não é possível fechar cotação selecionada!');
 
    TPFornecedorCotacao.procChamaTela(Self, True);
 end;
@@ -82,8 +85,11 @@ begin
    inherited;
    procBotaoVisivelHabilitado(Sender);
 
-   if dmPedCompra.SolicitacaoCompra.IsEmpty then
+   if dmPedCompra.Cotacao.IsEmpty then
       Exit;
+
+   if dmPedCompra.CotacaoCOT_STATUS.AsString <> TNMStatusCotacao[tscAberto] then
+      raise Exception.Create('Não é possível alterar os dados dos fornecedores da cotação selecionada!');
 
    TPFornecedorCotacao.procChamaTela(Self);
 end;

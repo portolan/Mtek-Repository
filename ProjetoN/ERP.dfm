@@ -6839,6 +6839,7 @@ object TelaInicial: TTelaInicial
       end
       object NotasdeEntrada1: TMenuItem
         Caption = 'Notas de Entrada'
+        OnClick = NotasdeEntrada1Click
       end
     end
     object ControledeVendas1: TMenuItem
@@ -6880,6 +6881,10 @@ object TelaInicial: TTelaInicial
       end
       object Condiesdepagamento1: TMenuItem
         Caption = 'Condi'#231#245'es de pagamento'
+      end
+      object Pessoa1: TMenuItem
+        Caption = 'Pessoa'
+        OnClick = Pessoa1Click
       end
     end
     object Contbil1: TMenuItem

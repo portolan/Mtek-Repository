@@ -62,6 +62,7 @@ type
     Condiesdepagamento1: TMenuItem;
     Image10: TImage;
     NotasdeEntrada1: TMenuItem;
+    Pessoa1: TMenuItem;
     AjudacomEstoque1: TMenuItem;
     Faturamento1: TMenuItem;
     N1: TMenuItem;
@@ -96,8 +97,10 @@ type
     procedure SolicitaodeRequisisio1Click(Sender: TObject);
     procedure CotaoFornecedor1Click(Sender: TObject);
     procedure PedidodeCompra1Click(Sender: TObject);
+    procedure Pessoa1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure AjudacomEstoque1Click(Sender: TObject);
+    procedure NotasdeEntrada1Click(Sender: TObject);
     procedure Oramento1Click(Sender: TObject);
   private
     { Private declarations }
@@ -123,7 +126,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UR_balancocx, UR_fechamentocx, UR_prevtitulos, UR_prevcompravenda,
   UP_contabancaria, UDM_Estoque, R_contabil, UDM_Caixa, UDM_contabil,
   Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico, UP_SolicitacaoCompra,
-  UP_Cotacao, UP_PedCompra, UF_EstoqueAjuda;
+  UP_Cotacao, UP_PedCompra, UP_Pessoa, UF_EstoqueAjuda, UP_NotaEntrada;
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
 begin
@@ -260,7 +263,6 @@ begin
     fechaQuery(DM_Caixa);
     fechaQuery(DM_Estoque);
     fechaQuery(DM_contasreceber);
-
 end;
 
 procedure TTelaInicial.Histricos1Click(Sender: TObject);
@@ -298,6 +300,11 @@ begin
     end;
 end;
 
+procedure TTelaInicial.NotasdeEntrada1Click(Sender: TObject);
+begin
+   TPNotaEntrada.procChamaTela(Self)
+end;
+
 procedure TTelaInicial.Oramento1Click(Sender: TObject);
 begin
    UP_VENDA := TUP_VENDA.Create(self);
@@ -321,6 +328,11 @@ end;
 procedure TTelaInicial.PedidodeCompra1Click(Sender: TObject);
 begin
    TPPedCompra.ChamaTela(Self);
+end;
+
+procedure TTelaInicial.Pessoa1Click(Sender: TObject);
+begin
+   TPPessoa.ChamaTela(Self);
 end;
 
 procedure TTelaInicial.PlanodeContas1Click(Sender: TObject);

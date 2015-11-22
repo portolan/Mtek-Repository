@@ -155,3 +155,9 @@ CREATE TABLE ITEM_NOTA_ENTRADA (
       CONSTRAINT FK_ITEM_NOTA FOREIGN KEY (INE_EMPRESA, INE_NR_NOTA, INE_PESSOA) REFERENCES NOTA_ENTRADA (NTE_EMPRESA, NTE_NR_NOTA, NTE_PESSOA),
       CONSTRAINT FK_ITEM_PRODUTO FOREIGN KEY (INE_EMPRESA, INE_PRODUTO) REFERENCES PRODUTOS (PRO_EMPRESA, PRO_CODIGO)
 );
+
+alter table item_nota_entrada add INE_QTD numeric(18,2) default 0.00 not null;
+alter table item_nota_entrada add INE_VLR_UNITARIO numeric(18,4) default 0.00 not null;
+
+alter table nota_entrada add constraint FK_NOTA_EMPRESA foreign key (NTE_EMPRESA) references empresa(emp_cod);
+alter table nota_entrada add constraint FK_NOTA_PESSOA foreign key (NTE_PESSOA) references pessoas (PESS_CODIGO);
