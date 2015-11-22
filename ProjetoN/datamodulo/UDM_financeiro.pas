@@ -14,11 +14,10 @@ type
     contasbancariasCTB_CODIGO: TIntegerField;
     contasbancariasCTB_EMP_CODIGO: TIntegerField;
     contasbancariasCTB_BAN_CODIGO: TIntegerField;
-    contasbancariasCTB_CONTA: TIBBCDField;
+    contasbancariasCTB_NUMERO_CONTA: TIBBCDField;
     contasbancariasCTB_OPERACAO: TIBBCDField;
     contasbancariasCTB_AGENCIA: TIBBCDField;
-    contasbancariasCTB_SALDOI: TIBBCDField;
-    contasbancariasCTB_SALDOT: TIBBCDField;
+    contasbancariasCTB_SALDO: TIBBCDField;
   private
     { Private declarations }
   public

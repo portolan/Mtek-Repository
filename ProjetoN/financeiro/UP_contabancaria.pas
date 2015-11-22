@@ -100,6 +100,7 @@ end;
 
 procedure TP_contasbancarias.FormCreate(Sender: TObject);
 begin
+inherited;
 procInicializar(DM_financeiro.contasbancarias,true,false,M_novaconta,TM_novaconta);
 end;
 
@@ -261,6 +262,11 @@ end;
 
 procedure TP_contasbancarias.procSelect;
 begin
+  inherited;
+  procMontaWhere;
+  DM_financeiro.contasbancarias.Close;
+  DM_financeiro.contasbancarias.SQL.Text := 'select * from CONTABANCARIA ';//+c_where;
+  DM_financeiro.contasbancarias.Open;
 
 end;
 
