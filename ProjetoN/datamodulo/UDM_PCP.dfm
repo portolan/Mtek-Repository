@@ -48,7 +48,7 @@ object DM_PCP: TDM_PCP
     Top = 136
   end
   object DS_OrdemProducao: TDataSource
-    DataSet = OrdemProducao
+    DataSet = Producao
     Left = 48
     Top = 72
   end

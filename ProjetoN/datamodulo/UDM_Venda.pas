@@ -4,11 +4,10 @@ interface
 
 uses
   System.SysUtils, System.Classes, Data.DB, IBX.IBCustomDataSet,
-  IBX.IBUpdateSQL, IBX.IBQuery, dm000;
+  IBX.IBUpdateSQL, IBX.IBQuery, dm000, Datasnap.DBClient;
 
 type
-  TUDM_Pedido_Venda = class(TDataModule)
-    IB_Venda: TIBQuery;
+  TDM_VENDA = class(TDataModule)
     U_Venda: TIBUpdateSQL;
     DS_Venda: TDataSource;
     IB_Faturamento: TIBQuery;
@@ -17,27 +16,6 @@ type
     DS_CondicaoPG: TDataSource;
     IB_CondicaoPG: TIBQuery;
     U_CondicaoPG: TIBUpdateSQL;
-    IB_VendaPED_NUMERO: TIntegerField;
-    IB_VendaPED_PESSOA: TIBStringField;
-    IB_VendaPED_SEQUENCIA: TIntegerField;
-    IB_VendaPED_SITUACAO: TIBStringField;
-    IB_VendaPED_EMPRESA: TIntegerField;
-    IB_VendaPED_DEPOSITO: TIntegerField;
-    IB_VendaPED_PRODUTO: TIntegerField;
-    IB_VendaPED_DESCRICAO: TIBStringField;
-    IB_VendaPED_TIPOMOVIMENTACAO: TIntegerField;
-    IB_VendaPED_UNIDADE: TIntegerField;
-    IB_VendaPED_QUANTIDADE: TIBBCDField;
-    IB_VendaPED_LISTA_PRECO: TIBBCDField;
-    IB_VendaPED_DESCONTO: TIBBCDField;
-    IB_VendaPED_QTD_DISPONIVEL: TIBBCDField;
-    IB_VendaPED_VLRUNITARIO: TIBBCDField;
-    IB_VendaPED_VLRTOTAL: TIBBCDField;
-    IB_VendaPED_REAJUSTE: TIBBCDField;
-    IB_VendaPED_DTPEDIDO: TDateField;
-    IB_VendaPED_DTENTRADA: TDateField;
-    IB_VendaPED_DTPRAZOENTREGA: TDateField;
-    IB_VendaPED_ORDEMVENDA: TIntegerField;
     IB_FaturamentoFAT_CODIGO_PEDIDO: TIntegerField;
     IB_FaturamentoFAT_DESCRICAO: TIBStringField;
     IB_FaturamentoFAT_EMPRESA: TIntegerField;
@@ -62,6 +40,31 @@ type
     IB_EmissaoNFEEMI_DTSAIDA: TDateField;
     IB_CondicaoPGCDP_CODIGO: TIntegerField;
     IB_CondicaoPGCDP_DESCRICAO: TIBStringField;
+    IB_Venda: TIBQuery;
+    IB_VendaPED_NUMERO: TIntegerField;
+    IB_VendaPED_PESSOA: TIBStringField;
+    IB_VendaPED_SEQUENCIA: TIntegerField;
+    IB_VendaPED_SITUACAO: TIBStringField;
+    IB_VendaPED_EMPRESA: TIntegerField;
+    IB_VendaPED_DEPOSITO: TIntegerField;
+    IB_VendaPED_PRODUTO: TIntegerField;
+    IB_VendaPED_DESCRICAO: TIBStringField;
+    IB_VendaPED_TIPOMOVIMENTACAO: TIBStringField;
+    IB_VendaPED_TIPODESCRICAO: TIBStringField;
+    IB_VendaPED_UNIDADE: TIntegerField;
+    IB_VendaPED_QUANTIDADE: TIBBCDField;
+    IB_VendaPED_LISTA_PRECO: TIntegerField;
+    IB_VendaPED_DESCONTO: TIBBCDField;
+    IB_VendaPED_QTD_DISPONIVEL: TIBBCDField;
+    IB_VendaPED_VLRUNITARIO: TIBBCDField;
+    IB_VendaPED_VLRTOTAL: TIBBCDField;
+    IB_VendaPED_REAJUSTE: TIBBCDField;
+    IB_VendaPED_DTPEDIDO: TDateField;
+    IB_VendaPED_DTENTRADA: TDateField;
+    IB_VendaPED_DTPRAZOENTREGA: TDateField;
+    IB_VendaPED_ORDEMVENDA: TIntegerField;
+    IB_VendaEMP_RAZAO: TIBStringField;
+    procedure IB_VendaAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -69,12 +72,18 @@ type
   end;
 
 var
-  UDM_Pedido_Venda: TUDM_Pedido_Venda;
+  DM_VENDA: TDM_VENDA;
 
 implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+procedure TDM_VENDA.IB_VendaAfterInsert(DataSet: TDataSet);
+begin
+   IB_VendaPED_NUMERO.Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_VENDA');
+   IB_VendaPED_SEQUENCIA.Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_SEQUENCIA');
+end;
 
 end.
