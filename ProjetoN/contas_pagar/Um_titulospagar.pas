@@ -89,6 +89,7 @@ procedure Tm_titulospagar.FormCreate(Sender: TObject);
 begin
   inherited;
   ttp_codigo.Enabled:=false;
+  ttp_vl_total.Enabled:=false;
 end;
 
 
