@@ -36,6 +36,8 @@ type
     SpeedButton3: TSpeedButton;
     editProduto: TEdit;
     cbTipo: TComboBox;
+    DBLookupComboBox1: TDBLookupComboBox;
+    Label12: TLabel;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
@@ -45,6 +47,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure cbTipoChange(Sender: TObject);
     procedure sbGravarClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -64,7 +67,7 @@ implementation
 {$R *.dfm}
 
 uses UDM_Estoque, UM_Estoque, UP_Estoque, UP_Bloco, UP_Prateleira, UP_Produto,
-  UEstoque, UM_Bloco, UM_Prateleira;
+  UEstoque, UM_Bloco, UM_Prateleira, UDM_contabil, R_contabil, UDM_PedCompra;
 
 procedure TMMovimentoEstoque.cbTipoChange(Sender: TObject);
 begin
@@ -139,6 +142,14 @@ begin
     end;
 end;
 
+procedure TMMovimentoEstoque.FormCreate(Sender: TObject);
+begin
+  inherited;
+    DM_contabil.departamento.Close;
+    DM_contabil.departamento.SQL.Text := 'select * from departamento';
+    DM_contabil.departamento.Open;
+end;
+
 procedure TMMovimentoEstoque.procDefineTipo;
 begin
     if cbTipo.ItemIndex = 0 then
@@ -152,6 +163,7 @@ end;
 procedure TMMovimentoEstoque.sbGravarClick(Sender: TObject);
 var
     baixou:boolean;
+    qtd, qtdmin : double;
 begin
     procBotaoVisivelHabilitado(Sender);
 
@@ -166,6 +178,23 @@ begin
                  DM_Estoque.MovimentoEstoque.FieldByName('EM_ESTOQUE').AsInteger,
                  DM_Estoque.MovimentoEstoque.FieldByName('EM_QTD').AsFloat,
                  DM_Estoque.MovimentoEstoque.FieldByName('EM_TIPO').AsString);
+
+        if DM_Estoque.MovimentoEstoqueEM_TIPO.AsString = 'S' then
+        begin
+            if funcEstoqueBaixo(DM_Estoque.MovimentoEstoqueEM_EMPRESA.value,
+                                   DM_Estoque.MovimentoEstoqueEM_BLOCO.value,
+                                   DM_Estoque.MovimentoEstoqueEM_PRATELEIRA.value,
+                                   DM_Estoque.MovimentoEstoqueEM_ESTOQUE.value,
+                                   DM_Estoque.MovimentoEstoqueEM_PRODUTO.value, qtd, qtdmin) then
+            begin
+                dmPedCompra.funcGerarSolicitacao(DM_Estoque.MovimentoEstoqueEM_EMPRESA.value,
+                                                 DM_Estoque.MovimentoEstoqueEM_DPTO.Value,
+                                                 DM_Estoque.MovimentoEstoqueEM_PRODUTO.Value,
+                                                 abs(qtd-qtdmin),
+                                                 0,false);
+            end;
+        end;
+
       end;
 
       if b_finalizaTransacao and (QryPadrao.Transaction.Intransaction) and (baixou) then

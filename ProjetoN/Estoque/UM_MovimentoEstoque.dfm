@@ -1,19 +1,19 @@
 inherited MMovimentoEstoque: TMMovimentoEstoque
   Caption = 'Movimenta'#231#227'o de estoque'
   ClientHeight = 330
-  ClientWidth = 713
+  ClientWidth = 721
   OnActivate = FormActivate
-  ExplicitWidth = 729
+  ExplicitWidth = 737
   ExplicitHeight = 369
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnRodape: TPanel
     Top = 289
-    Width = 713
+    Width = 721
     ExplicitTop = 289
-    ExplicitWidth = 713
+    ExplicitWidth = 721
     inherited sbCancelar: TSpeedButton
-      Left = 616
+      Left = 624
       ExplicitLeft = 602
     end
     object SpeedButton1: TSpeedButton
@@ -125,14 +125,14 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
     end
   end
   inherited gbInfos: TGroupBox
-    Width = 713
+    Width = 721
     Height = 289
-    ExplicitWidth = 713
+    ExplicitWidth = 721
     ExplicitHeight = 289
     object GroupBox1: TGroupBox
       Left = 2
       Top = 15
-      Width = 709
+      Width = 717
       Height = 272
       Align = alClient
       Caption = ' Entrada/Sa'#237'da '
@@ -321,6 +321,14 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
           EFEFEFEFEFEFEF000000}
         OnClick = SpeedButton3Click
       end
+      object Label12: TLabel
+        Left = 583
+        Top = 102
+        Width = 23
+        Height = 13
+        Caption = 'Dpto'
+        FocusControl = editEstoque
+      end
       object editEmpresa: TDBEdit
         Left = 16
         Top = 34
@@ -378,7 +386,7 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
       object DBEdit7: TDBEdit
         Left = 479
         Top = 118
-        Width = 138
+        Width = 98
         Height = 19
         TabStop = False
         Ctl3D = False
@@ -469,5 +477,17 @@ inherited MMovimentoEstoque: TMMovimentoEstoque
           'Saida')
       end
     end
+  end
+  object DBLookupComboBox1: TDBLookupComboBox
+    Left = 585
+    Top = 132
+    Width = 123
+    Height = 21
+    DataField = 'EM_DPTO'
+    DataSource = DM_Estoque.DSMovimentoEstoque
+    KeyField = 'DEP_COD'
+    ListField = 'DEP_NOME'
+    ListSource = DM_contabil.Ddepartamento
+    TabOrder = 2
   end
 end

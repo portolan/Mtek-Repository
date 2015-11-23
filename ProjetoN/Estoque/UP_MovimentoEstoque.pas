@@ -24,7 +24,7 @@ implementation
 
 {$R *.dfm}
 
-uses UM_MovimentoEstoque, UDM_Estoque, UEstoque;
+uses UM_MovimentoEstoque, UDM_Estoque, UEstoque, UDM_contabil;
 
 procedure TPMovimentoEstoque.FormCreate(Sender: TObject);
 begin

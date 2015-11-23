@@ -15,6 +15,7 @@ function funcGeraMovimentacaoEstoque(codEmpresa, codBloco, codPrateleira, codEst
 function funcNovoProdutoEstoque(codEmpresa, codBloco, codPrateleira : integer; codProduto : String; status : String;
                                      qtd, qtdmin, qtdmax, customedio : double; categoria : integer;  obs, chave : String; vlrFinanceiro : double; pedCompraOrigem : integer):boolean;
 function funcExisteProdutoNoEstoque(codEmpresa, codBloco, codPrateleira : integer; codProduto : String):boolean;
+function funcEstoqueBaixo(codEmpresa, codBloco, codPrateleira, codEstoque : integer; codProduto : String; var i_qtd, i_qtdmin : double):boolean;
 function funcCriaQuery:TIBQuery;
 
 implementation
@@ -329,11 +330,44 @@ begin
 
 end;
 
+function funcEstoqueBaixo(codEmpresa, codBloco, codPrateleira, codEstoque : integer; codProduto : String; var i_qtd, i_qtdmin : double):boolean;
+var
+    qry : TIBQuery;
+    qtd, qtdmin : double;
+begin
+    Result := false;
+
+    qry := funcCriaQuery;
+    qry.close;
+    qry.sql.text := 'select estoq_qtdmin, estoq_qtd from estoque where ' +
+                    ' estoq_empresa = ' + intToStr(codEmpresa) +
+                    ' and estoq_bloco   = ' + intToStr(codBloco) +
+                    ' and estoq_prateleira = ' + intToStr(codPrateleira) +
+                    ' and estoq_produto = ' + codProduto +
+                    ' and estoq_codigo  = ' + intToStr(codEstoque);
+    qry.open;
+    qtdmin := qry.FieldByName('estoq_qtdmin').AsFloat;
+    i_qtdmin := qtdmin;
+    qtd := qry.FieldByName('estoq_qtd').AsFloat;
+    i_qtd := qtd;
+
+    if qtd < qtdmin then
+        Result := true;
+end;
+
+
+
+
+
+
+
 function funcCriaQuery: TIBQuery;
 begin
    Result := TIBQuery.Create(nil);
    Result.Database    := dmBanco.Banco;
    Result.Transaction := dmBanco.TBanco;
 end;
+
+
 
 end.
