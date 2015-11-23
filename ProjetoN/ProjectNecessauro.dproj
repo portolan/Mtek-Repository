@@ -413,6 +413,47 @@
             <Form>FEstoqueAjuda</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="ControlePatrimonial\udmControlePatrimonial.pas">
+            <Form>DMControlePatrimonial</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UM_BensImobilizados.pas">
+            <Form>MBensImobilizados</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UM_EstadoConservacao.pas">
+            <Form>MEstadoConservacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UM_Localizacao.pas">
+            <Form>MLocalizacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UM_TipoBens.pas">
+            <Form>MTipoBens</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UP_BensImobilizados.pas">
+            <Form>P_BensImobilizados</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UP_EstadoConservacao.pas">
+            <Form>P_EstadoConservacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UP_Localizacao.pas">
+            <Form>PLocalizacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UP_NotaBemImobilizado.pas">
+            <Form>P_PesquisaNotaBemImobilizado</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UP_TipoBens.pas">
+            <Form>P_TipoBens</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="compra\UM_BaixaPedidoCompra.pas">
             <Form>MBaixaPedidoCompra</Form>
             <FormType>dfm</FormType>

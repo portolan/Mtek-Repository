@@ -91,6 +91,17 @@ uses
   UP_Pessoa in 'geral\UP_Pessoa.pas' {PPessoa},
   UP_PedCompra in 'compra\UP_PedCompra.pas' {PPedCompra},
   UM_PedCompra in 'compra\UM_PedCompra.pas' {MPedCompra},
+  UF_EstoqueAjuda in 'Estoque\UF_EstoqueAjuda.pas' {FEstoqueAjuda},
+  udmControlePatrimonial in 'ControlePatrimonial\udmControlePatrimonial.pas' {DMControlePatrimonial: TDataModule},
+  UM_BensImobilizados in 'ControlePatrimonial\UM_BensImobilizados.pas' {MBensImobilizados},
+  UM_EstadoConservacao in 'ControlePatrimonial\UM_EstadoConservacao.pas' {MEstadoConservacao},
+  UM_Localizacao in 'ControlePatrimonial\UM_Localizacao.pas' {MLocalizacao},
+  UM_TipoBens in 'ControlePatrimonial\UM_TipoBens.pas' {MTipoBens},
+  UP_BensImobilizados in 'ControlePatrimonial\UP_BensImobilizados.pas' {P_BensImobilizados},
+  UP_EstadoConservacao in 'ControlePatrimonial\UP_EstadoConservacao.pas' {P_EstadoConservacao},
+  UP_Localizacao in 'ControlePatrimonial\UP_Localizacao.pas' {PLocalizacao},
+  UP_NotaBemImobilizado in 'ControlePatrimonial\UP_NotaBemImobilizado.pas' {P_PesquisaNotaBemImobilizado},
+  UP_TipoBens in 'ControlePatrimonial\UP_TipoBens.pas' {P_TipoBens};
   UM_BaixaPedidoCompra in 'compra\UM_BaixaPedidoCompra.pas' {MBaixaPedidoCompra},
   UP_NotaEntrada in 'compra\UP_NotaEntrada.pas' {PNotaEntrada},
   UF_EstoqueAjuda in 'Estoque\UF_EstoqueAjuda.pas' {FEstoqueAjuda},
@@ -124,6 +135,16 @@ begin
   Application.CreateForm(TDM_contabil, DM_contabil);
   Application.CreateForm(TDM_financeiro, DM_financeiro);
   Application.CreateForm(TTelaInicial, TelaInicial);
+  Application.CreateForm(TDMControlePatrimonial, DMControlePatrimonial);
+  Application.CreateForm(TMBensImobilizados, MBensImobilizados);
+  Application.CreateForm(TMEstadoConservacao, MEstadoConservacao);
+  Application.CreateForm(TMLocalizacao, MLocalizacao);
+  Application.CreateForm(TMTipoBens, MTipoBens);
+  Application.CreateForm(TP_BensImobilizados, P_BensImobilizados);
+  Application.CreateForm(TP_EstadoConservacao, P_EstadoConservacao);
+  Application.CreateForm(TPLocalizacao, PLocalizacao);
+  Application.CreateForm(TP_PesquisaNotaBemImobilizado, P_PesquisaNotaBemImobilizado);
+  Application.CreateForm(TP_TipoBens, P_TipoBens);
 
   Application.Run;
 end.

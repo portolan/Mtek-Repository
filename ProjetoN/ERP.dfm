@@ -6918,6 +6918,25 @@ object TelaInicial: TTelaInicial
         OnClick = Relatrios2Click
       end
     end
+    object ControlePatrimonial1: TMenuItem
+      Caption = 'Controle Patrimonial'
+      object ipodeBemImobilizado1: TMenuItem
+        Caption = 'Tipo'
+        OnClick = ipodeBemImobilizado1Click
+      end
+      object Localizao1: TMenuItem
+        Caption = 'Localiza'#231#227'o'
+        OnClick = Localizao1Click
+      end
+      object EstadodeConservao1: TMenuItem
+        Caption = 'Estado de Conserva'#231#227'o'
+        OnClick = EstadodeConservao1Click
+      end
+      object BemImobilizado1: TMenuItem
+        Caption = 'Bem Imobilizado'
+        OnClick = BemImobilizado1Click
+      end
+    end
     object Manuteno1: TMenuItem
       Caption = 'Sistema'
       object Manuteno3: TMenuItem

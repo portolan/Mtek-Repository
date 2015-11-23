@@ -64,6 +64,11 @@ type
     NotasdeEntrada1: TMenuItem;
     Pessoa1: TMenuItem;
     AjudacomEstoque1: TMenuItem;
+    ControlePatrimonial1: TMenuItem;
+    ipodeBemImobilizado1: TMenuItem;
+    Localizao1: TMenuItem;
+    EstadodeConservao1: TMenuItem;
+    BemImobilizado1: TMenuItem;
     Faturamento1: TMenuItem;
     N1: TMenuItem;
     CondiesdePagamento2: TMenuItem;
@@ -100,6 +105,10 @@ type
     procedure Pessoa1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure AjudacomEstoque1Click(Sender: TObject);
+    procedure ipodeBemImobilizado1Click(Sender: TObject);
+    procedure Localizao1Click(Sender: TObject);
+    procedure EstadodeConservao1Click(Sender: TObject);
+    procedure BemImobilizado1Click(Sender: TObject);
     procedure NotasdeEntrada1Click(Sender: TObject);
     procedure Oramento1Click(Sender: TObject);
   private
@@ -126,6 +135,8 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UR_balancocx, UR_fechamentocx, UR_prevtitulos, UR_prevcompravenda,
   UP_contabancaria, UDM_Estoque, R_contabil, UDM_Caixa, UDM_contabil,
   Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico, UP_SolicitacaoCompra,
+  UP_Cotacao, UP_PedCompra, UF_EstoqueAjuda, UP_TipoBens, UP_Localizacao,
+  UP_EstadoConservacao, UP_NotaBemImobilizado;
   UP_Cotacao, UP_PedCompra, UP_Pessoa, UF_EstoqueAjuda, UP_NotaEntrada;
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
@@ -136,6 +147,16 @@ begin
     finally
         FreeAndNil(FEstoqueAjuda);
     end;
+end;
+
+procedure TTelaInicial.BemImobilizado1Click(Sender: TObject);
+begin
+   P_PesquisaNotaBemImobilizado := TP_PesquisaNotaBemImobilizado.Create(Self);
+   try
+      P_PesquisaNotaBemImobilizado.ShowModal;
+   finally
+     FreeAndNil(P_PesquisaNotaBemImobilizado);
+   end;
 end;
 
 procedure TTelaInicial.Bloco1Click(Sender: TObject);
@@ -218,6 +239,16 @@ begin
     end;
 end;
 
+procedure TTelaInicial.EstadodeConservao1Click(Sender: TObject);
+begin
+   P_EstadoConservacao := TP_EstadoConservacao.Create(Self);
+   try
+      P_EstadoConservacao.ShowModal;
+   finally
+     FreeAndNil(P_EstadoConservacao);
+   end;
+end;
+
 procedure TTelaInicial.fechaQuery(DataModule: TDataModule);
 var
     I : Integer;
@@ -270,6 +301,16 @@ begin
     TP_historico.chamaTela(Self);
 end;
 
+procedure TTelaInicial.ipodeBemImobilizado1Click(Sender: TObject);
+begin
+   P_TipoBens := TP_TipoBens.Create(Self);
+   try
+     P_TipoBens.ShowModal;
+   finally
+      FreeAndNil(P_TipoBens);
+   end;
+end;
+
 procedure TTelaInicial.ipodeErro1Click(Sender: TObject);
 begin
     P_Tipo_Erro := TP_Tipo_Erro.Create(Self);
@@ -278,6 +319,16 @@ begin
   finally
      FreeAndNil(P_Tipo_Erro);
   end;
+end;
+
+procedure TTelaInicial.Localizao1Click(Sender: TObject);
+begin
+ PLocalizacao := TPLocalizacao.Create(Self);
+   try
+     PLocalizacao.ShowModal;
+   finally
+      FreeAndNil(PLocalizacao);
+   end;
 end;
 
 procedure TTelaInicial.Manuteno3Click(Sender: TObject);
