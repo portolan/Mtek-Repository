@@ -33,6 +33,7 @@ type
     cdsProdutosCDS_NOTA: TIntegerField;
     cdsProdutosCDS_QTD_NOTA: TFloatField;
     cdsProdutosCDS_QTD_BEN: TFloatField;
+    cdsProdutosCDS_DATA_AQUISICAO: TDateField;
     procedure FormCreate(Sender: TObject);
     procedure DBEdit1Exit(Sender: TObject);
     procedure DBEdit2Exit(Sender: TObject);
@@ -385,13 +386,14 @@ begin
          cdsProdutos.CreateDataSet;
          cdsProdutos.EmptyDataSet;
 
-         cdsProdutos.Insert;
+         cdsProdutos.APPEND;
          cdsProdutosCDS_EMPRESA.AsInteger    := QrySelecionanota.FieldByName('NTE_EMPRESA').AsInteger;
          cdsProdutosCDS_FORNECEDOR.asinteger := QrySelecionanota.FieldByName('NTE_PESSOA').AsInteger;
          cdsProdutosCDS_FORN_DESC.AsString   := QrySelecionanota.FieldByName('PESS_NOME').asstring;
          cdsProdutosCDS_NOTA.AsInteger       := QrySelecionanota.FieldByName('NTE_NR_NOTA').asinteger;
          cdsProdutosCDS_QTD_NOTA.AsFloat     := QrySelecionanota.FieldByName('INE_QTD').AsFloat;
          cdsProdutosCDS_QTD_BEN.AsFloat      := QryVerificaSaldo.FieldByName('QUANTIDADE').AsFloat;
+
          cdsProdutos.post;
 
       end;

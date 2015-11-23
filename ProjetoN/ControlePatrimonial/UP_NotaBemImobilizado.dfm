@@ -308,6 +308,9 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
       DisplayLabel = 'Quantidade em Bens'
       FieldName = 'CDS_QTD_BEN'
     end
+    object cdsProdutosCDS_DATA_AQUISICAO: TDateField
+      FieldName = 'CDS_DATA_AQUISICAO'
+    end
   end
   object DProdutos: TDataSource
     DataSet = cdsProdutos
