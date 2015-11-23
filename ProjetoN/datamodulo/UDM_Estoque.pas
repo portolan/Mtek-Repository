@@ -127,6 +127,7 @@ type
     MovimentoEstoqueEMP_RAZAO: TIBStringField;
     MovimentoEstoqueBLOC_DESCRICAO: TIBStringField;
     MovimentoEstoquePRAT_DESCRICAO: TIBStringField;
+    MovimentoEstoqueEM_DPTO: TIntegerField;
     procedure ProdutosAfterInsert(DataSet: TDataSet);
     procedure EstoqueAfterInsert(DataSet: TDataSet);
     procedure MarcasAfterInsert(DataSet: TDataSet);
@@ -154,7 +155,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses dm000, UDM_contabil, UEstoque;
+uses dm000, UDM_contabil, UEstoque, UDM_PedCompra, UM_PedCompra;
 
 {$R *.dfm}
 
@@ -229,8 +230,11 @@ begin
 end;
 
 procedure TDM_Estoque.MovimentoEstoqueAfterPost(DataSet: TDataSet);
+var
+    qry : TIBQuery;
 begin
-    if MovimentoEstoqueEM_TIPO.AsString = 'E' then
+
+    if (MovimentoEstoqueEM_TIPO.AsString = 'E') and (not MovimentoEstoqueEM_PEDIDOCOMPRAORIGEM.IsNull) then
     begin
         funcCalcCustoMedio(MovimentoEstoqueEM_EMPRESA.value,
                            MovimentoEstoqueEM_PRODUTO.value,
@@ -238,6 +242,8 @@ begin
                            MovimentoEstoqueEM_PRATELEIRA.value,
                            MovimentoEstoqueEM_ESTOQUE.value);
     end;
+
+
 end;
 
 procedure TDM_Estoque.MovimentoEstoqueBeforePost(DataSet: TDataSet);

@@ -648,7 +648,8 @@ object DM_Estoque: TDM_Estoque
       '  EM_DATA,'
       '  EM_OBS,'
       '  EM_VALOR_FINANCEIRO,'
-      '  EM_PEDIDOCOMPRAORIGEM'
+      '  EM_PEDIDOCOMPRAORIGEM,'
+      '  EM_DPTO'
       'from ESTOQ_MOVIMENTO '
       'where'
       '  EM_BLOCO = :EM_BLOCO and'
@@ -663,6 +664,7 @@ object DM_Estoque: TDM_Estoque
       '  EM_BLOCO = :EM_BLOCO,'
       '  EM_CODIGO = :EM_CODIGO,'
       '  EM_DATA = :EM_DATA,'
+      '  EM_DPTO = :EM_DPTO,'
       '  EM_EMPRESA = :EM_EMPRESA,'
       '  EM_ESTOQUE = :EM_ESTOQUE,'
       '  EM_OBS = :EM_OBS,'
@@ -682,19 +684,19 @@ object DM_Estoque: TDM_Estoque
     InsertSQL.Strings = (
       'insert into ESTOQ_MOVIMENTO'
       
-        '  (EM_BLOCO, EM_CODIGO, EM_DATA, EM_EMPRESA, EM_ESTOQUE, EM_OBS,' +
-        ' EM_PEDIDOCOMPRAORIGEM, '
+        '  (EM_BLOCO, EM_CODIGO, EM_DATA, EM_DPTO, EM_EMPRESA, EM_ESTOQUE' +
+        ', EM_OBS, '
       
-        '   EM_PRATELEIRA, EM_PRODUTO, EM_QTD, EM_TIPO, EM_VALOR_FINANCEI' +
-        'RO)'
+        '   EM_PEDIDOCOMPRAORIGEM, EM_PRATELEIRA, EM_PRODUTO, EM_QTD, EM_' +
+        'TIPO, EM_VALOR_FINANCEIRO)'
       'values'
       
-        '  (:EM_BLOCO, :EM_CODIGO, :EM_DATA, :EM_EMPRESA, :EM_ESTOQUE, :E' +
-        'M_OBS, '
+        '  (:EM_BLOCO, :EM_CODIGO, :EM_DATA, :EM_DPTO, :EM_EMPRESA, :EM_E' +
+        'STOQUE, '
       
-        '   :EM_PEDIDOCOMPRAORIGEM, :EM_PRATELEIRA, :EM_PRODUTO, :EM_QTD,' +
-        ' :EM_TIPO, '
-      '   :EM_VALOR_FINANCEIRO)')
+        '   :EM_OBS, :EM_PEDIDOCOMPRAORIGEM, :EM_PRATELEIRA, :EM_PRODUTO,' +
+        ' :EM_QTD, '
+      '   :EM_TIPO, :EM_VALOR_FINANCEIRO)')
     DeleteSQL.Strings = (
       'delete from ESTOQ_MOVIMENTO'
       'where'
@@ -1200,6 +1202,11 @@ object DM_Estoque: TDM_Estoque
       FieldName = 'PRAT_DESCRICAO'
       Origin = '"PRATELEIRA"."PRAT_DESCRICAO"'
       Size = 60
+    end
+    object MovimentoEstoqueEM_DPTO: TIntegerField
+      DisplayLabel = 'Departamento'
+      FieldName = 'EM_DPTO'
+      Origin = '"ESTOQ_MOVIMENTO"."EM_DPTO"'
     end
   end
 end
