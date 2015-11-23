@@ -121,28 +121,28 @@ begin
                               ' WHERE A.EMP_COD = :EMP ',
                                P_empresa, TP_empresa, ['EMP'], ['PED_EMPRESA'],
                                ['EMP_COD', 'EMP_RAZAO']);
-//  frm_produto.procInicializar(DM_VENDA.IB_VendaPED_PRODUTO,
-//                              DM_VENDA.IB_VendaPRO_DESCRICAO,
-//                              DM_VENDA.DS_Venda,
-//                              ' SELECT A.PRO_CODIGO, '+
-//                              '        A.PRO_DESCRICAO '+
-//                              '   FROM PRODUTOS A '+
-//                              '  WHERE A.PRO_EMPRESA = :EMP '+
-//                              '    AND A.PRO_CODIGO = :PRO ',
-//                              Pproduto, TPproduto, ['EMP', 'PRO'],
-//                              ['PED_PRODUTO','PRO_DESCRICAO'],
-//                              ['PRO_CODIGO','PRO_DESCRICAO']);
-//  frm_departamento.procInicializar(DM_VENDA.IB_VendaPED_DEPOSITO,
-//                                   DM_VENDA.IB_VendaDEP_DESC,
-//                                   DM_VENDA.DS_Venda,
-//                                   ' SELECT A.DEP_COD, '+
-//                                   '        A.DEP_NOME '+
-//                                   '   FROM DEPARTAMENTO A '+
-//                                   '  WHERE A.DEP_EMPRESAR = :EMP '+
-//                                   '    AND A.DEP_COD = :DPTO ',
-//                                   P_departamento, TP_departamento, ['EMP', 'DPTO'],
-//                                   ['PDC_EMPRESA','PDC_DEPARTAMENTO'],
-//                                   ['DEP_COD','DEP_NOME']);
+  frm_produto.procInicializar(DM_VENDA.IB_VendaPED_PRODUTO,
+                              DM_VENDA.IB_VendaPRO_DESCRICAO,
+                              DM_VENDA.DS_Venda,
+                              ' SELECT A.PRO_CODIGO, '+
+                              '        A.PRO_DESCRICAO '+
+                              '   FROM PRODUTOS A '+
+                              '  WHERE A.PRO_EMPRESA = :EMP '+
+                              '    AND A.PRO_CODIGO = :PRO ',
+                              Pproduto, TPproduto, ['EMP', 'PRO'],
+                              ['PED_PRODUTO','PED_DESCRICAO'],
+                              ['PRO_CODIGO','PRO_DESCRICAO']);
+  frm_departamento.procInicializar(DM_VENDA.IB_VendaPED_DEPOSITO,
+                                   DM_VENDA.IB_VendaDEP_NOME,
+                                   DM_VENDA.DS_Venda,
+                                   ' SELECT A.DEP_COD, '+
+                                   '        A.DEP_NOME '+
+                                   '   FROM DEPARTAMENTO A '+
+                                   '  WHERE A.DEP_EMPRESAR = :EMP '+
+                                   '    AND A.DEP_COD = :DPTO ',
+                                   P_departamento, TP_departamento, ['EMP', 'DPTO'],
+                                   ['PED_EMPRESA','PED_DEPOSITO'],
+                                   ['DEP_COD','DEP_NOME']);
 
 end;
 

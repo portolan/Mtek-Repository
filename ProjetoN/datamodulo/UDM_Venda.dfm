@@ -5,12 +5,23 @@ object DM_VENDA: TDM_VENDA
   object U_Venda: TIBUpdateSQL
     RefreshSQL.Strings = (
       'SELECT A.*,'
-      '             B.emp_razao '
-      '     FROM PEDIDOVENDA A'
-      '   INNER join EMPRESA B ON a.ped_empresa =  b.emp_cod'
+      '             B.emp_razao,'
+      '             C.dep_nome,'
+      '             D.pro_descricao'
+      '      FROM PEDIDOVENDA A'
+      'INNER JOIN DEPARTAMENTO C ON A.ped_deposito = C.DEP_COD'
+      
+        '                                   AND A.PED_EMPRESA = C.DEP_EMP' +
+        'RESAR   '
+      'INNER JOIN PRODUTOS D ON A.PED_EMPRESA = D.PRO_EMPRESA'
+      '                      AND A.PED_PRODUTO = D.PRO_CODIGO'
+      'INNER join EMPRESA B ON A.ped_empresa = B.emp_cod'
+      
+        '                                   AND A.PED_EMPRESA = C.DEP_EMP' +
+        'RESAR'
       'where'
-      '  PED_NUMERO = :PED_NUMERO AND'
-      '  PED_EMPRESA = :PED_EMPRESA')
+      '  PED_NUMERO = :PED_NUMERO'
+      ' ')
     ModifySQL.Strings = (
       'update PEDIDOVENDA'
       'set'
@@ -257,10 +268,23 @@ object DM_VENDA: TDM_VENDA
     ParamCheck = True
     SQL.Strings = (
       'SELECT A.*,'
-      '             B.emp_razao '
+      '             B.emp_razao,'
+      '             C.dep_nome,'
+      '             D.pro_descricao'
       '      FROM PEDIDOVENDA A'
+      'INNER JOIN DEPARTAMENTO C ON A.ped_deposito = C.DEP_COD'
+      
+        '                                   AND A.PED_EMPRESA = C.DEP_EMP' +
+        'RESAR   '
+      'INNER JOIN PRODUTOS D ON A.PED_EMPRESA = D.PRO_EMPRESA'
+      '                      AND A.PED_PRODUTO = D.PRO_CODIGO'
       'INNER join EMPRESA B ON A.ped_empresa = B.emp_cod'
-      '    ')
+      
+        '                                   AND A.PED_EMPRESA = C.DEP_EMP' +
+        'RESAR'
+      'WHERE A.PED_CODIGO = -1'
+      '                                  '
+      '')
     UpdateObject = U_Venda
     Left = 24
     Top = 32
@@ -374,6 +398,18 @@ object DM_VENDA: TDM_VENDA
     object IB_VendaEMP_RAZAO: TIBStringField
       FieldName = 'EMP_RAZAO'
       Origin = '"EMPRESA"."EMP_RAZAO"'
+      Size = 60
+    end
+    object IB_VendaDEP_NOME: TIBStringField
+      FieldName = 'DEP_NOME'
+      Origin = '"DEPARTAMENTO"."DEP_NOME"'
+      Required = True
+      Size = 40
+    end
+    object IB_VendaPRO_DESCRICAO: TIBStringField
+      FieldName = 'PRO_DESCRICAO'
+      Origin = '"PRODUTOS"."PRO_DESCRICAO"'
+      Required = True
       Size = 60
     end
   end

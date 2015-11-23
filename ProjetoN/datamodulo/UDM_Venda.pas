@@ -64,6 +64,8 @@ type
     IB_VendaPED_DTPRAZOENTREGA: TDateField;
     IB_VendaPED_ORDEMVENDA: TIntegerField;
     IB_VendaEMP_RAZAO: TIBStringField;
+    IB_VendaDEP_NOME: TIBStringField;
+    IB_VendaPRO_DESCRICAO: TIBStringField;
     procedure IB_VendaAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
@@ -84,6 +86,7 @@ procedure TDM_VENDA.IB_VendaAfterInsert(DataSet: TDataSet);
 begin
    IB_VendaPED_NUMERO.Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_VENDA');
    IB_VendaPED_SEQUENCIA.Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_SEQUENCIA');
+   IB_VendaPED_ORDEMVENDA.Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ORDEMVENDA');
 end;
 
 end.

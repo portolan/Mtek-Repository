@@ -38,9 +38,15 @@ begin
       DM_VENDA.IB_Venda.Close;
       DM_VENDA.IB_Venda.SQL.Clear;
       DM_VENDA.IB_Venda.SQL.Text:= 'SELECT A.*,            '+
-                                   '       B.EMP_RAZAO     '+
-                                   '    FROM PEDIDOVENDA A '+
-                                   '    INNER JOIN EMPRESA B ON A.PED_EMPRESA = B.EMP_COD'+
+                                   '       B.EMP_RAZAO,     '+
+                                   '       C.DEP_NOME,      '+
+                                   '       D.PRO_DESCRICAO '+
+                                   ' FROM PEDIDOVENDA A '+
+                                   ' INNER JOIN EMPRESA B ON A.PED_EMPRESA = B.EMP_COD'+
+                                   ' INNER JOIN DEPARTAMENTO C ON A.PED_DEPOSITO = C.DEP_COD '+
+                                   ' AND A.PED_EMPRESA = C.DEP_EMPRESAR '+
+                                   ' INNER JOIN PRODUTOS D ON A.PED_EMPRESA = D.PRO_EMPRESA '+
+                                   ' AND A.PED_PRODUTO = D.PRO_CODIGO '+
                                    '    WHERE '+c_where;
       DM_VENDA.IB_Venda.Open;
 end;
