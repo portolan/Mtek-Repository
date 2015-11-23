@@ -454,48 +454,8 @@
             <Form>P_TipoBens</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="compra\UM_BaixaPedidoCompra.pas">
-            <Form>MBaixaPedidoCompra</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="compra\UP_NotaEntrada.pas">
-            <Form>PNotaEntrada</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="venda\Um_Pedido_Venda.pas">
-            <Form>Frm_Pedido_Venda</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="venda\Up_Pedido_Venda.pas">
-            <Form>UP_VENDA</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="datamodulo\dm000.pas">
             <Form>dmBanco</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="datamodulo\UDM_Venda.pas">
-            <Form>DM_VENDA</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="datamodulo\UDM_empresa.pas">
-            <Form>DataModule2</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="venda\Um_Condição_Pagamento.pas">
-            <Form>U_Condicao_Pg</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="datamodulo\UDM_contabil.pas">
-            <Form>DM_contabil</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="datamodulo\UDM_financeiro.pas">
-            <Form>DM_financeiro</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>

@@ -101,8 +101,10 @@ uses
   UP_EstadoConservacao in 'ControlePatrimonial\UP_EstadoConservacao.pas' {P_EstadoConservacao},
   UP_Localizacao in 'ControlePatrimonial\UP_Localizacao.pas' {PLocalizacao},
   UP_NotaBemImobilizado in 'ControlePatrimonial\UP_NotaBemImobilizado.pas' {P_PesquisaNotaBemImobilizado},
-  UP_TipoBens in 'ControlePatrimonial\UP_TipoBens.pas' {P_TipoBens};
-  UM_BaixaPedidoCompra in 'compra\UM_BaixaPedidoCompra.pas' {MBaixaPedidoCompra},
+  UP_TipoBens in 'ControlePatrimonial\UP_TipoBens.pas' {P_TipoBens},
+  dm000 in 'datamodulo\dm000.pas' {dmBanco: TDataModule};
+
+UM_BaixaPedidoCompra in 'compra\UM_BaixaPedidoCompra.pas' {MBaixaPedidoCompra},
   UP_NotaEntrada in 'compra\UP_NotaEntrada.pas' {PNotaEntrada},
   UF_EstoqueAjuda in 'Estoque\UF_EstoqueAjuda.pas' {FEstoqueAjuda},
   Um_Pedido_Venda in 'venda\Um_Pedido_Venda.pas' {Frm_Pedido_Venda},
@@ -145,6 +147,6 @@ begin
   Application.CreateForm(TPLocalizacao, PLocalizacao);
   Application.CreateForm(TP_PesquisaNotaBemImobilizado, P_PesquisaNotaBemImobilizado);
   Application.CreateForm(TP_TipoBens, P_TipoBens);
-
+  Application.CreateForm(TdmBanco, dmBanco);
   Application.Run;
 end.
