@@ -14,13 +14,15 @@ object DM_Servico: TDM_Servico
       '             B.emp_razao,'
       '             c.dep_nome,'
       '             D.pess_nome,'
-      '             e.pess_nome'
+      '             e.pess_nome,'
+      '             f.ter_descricao'
       'FROM CHAMADOS A'
       'INNER join EMPRESA B ON a.cha_empresa =  b.emp_cod'
       'INNER JOIN DEPARTAMENTO C ON A.CHA_DEPARTAMENTO = C.DEP_COD'
       '                          AND A.CHA_EMPRESA = C.DEP_EMPRESAR'
       'INNER JOIN PESSOAS D ON A.CHA_FUNCIONARIO = D.pess_codigo'
-      'inner join pessoas E on a.cha_proprietario = e.pess_codigo')
+      'inner join pessoas E on a.cha_proprietario = e.pess_codigo'
+      'inner join tipos_erros f on a.cha_tipo_erro = f.ter_codigo')
     UpdateObject = UPS_Chamado
     Left = 48
     Top = 8
@@ -117,6 +119,12 @@ object DM_Servico: TDM_Servico
       Origin = '"PESSOAS"."PESS_NOME"'
       Size = 100
     end
+    object IB_ChamadoTER_DESCRICAO: TIBStringField
+      DisplayLabel = 'Tipo de Erro'
+      FieldName = 'TER_DESCRICAO'
+      Origin = '"TIPOS_ERROS"."TER_DESCRICAO"'
+      Required = True
+    end
   end
   object UPS_Chamado: TIBUpdateSQL
     RefreshSQL.Strings = (
@@ -189,6 +197,7 @@ object DM_Servico: TDM_Servico
     ParamCheck = True
     SQL.Strings = (
       'select * from TIPOS_ERROS')
+    UpdateObject = UPS_Tipo_Erro
     Left = 192
     Top = 8
     object IB_Tipo_ErroTER_CODIGO: TIntegerField
@@ -236,96 +245,5 @@ object DM_Servico: TDM_Servico
     DataSet = IB_Tipo_Erro
     Left = 192
     Top = 176
-  end
-  object DS_Relatorio_Chamado: TDataSource
-    Left = 312
-    Top = 176
-  end
-  object UPS_Relatorio_Chamado: TIBUpdateSQL
-    RefreshSQL.Strings = (
-      'SELECT A.*,'
-      '             B.emp_razao,'
-      '             c.dep_nome,'
-      '             D.pess_nome'
-      'FROM CHAMADOS A'
-      'INNER join EMPRESA B ON a.cha_empresa =  b.emp_cod'
-      'INNER JOIN DEPARTAMENTO C ON A.CHA_DEPARTAMENTO = C.DEP_COD'
-      '                          AND A.CHA_EMPRESA = C.DEP_EMPRESAR'
-      'INNER JOIN PESSOAS D ON A.cha_codigo = D.pess_codigo')
-    ModifySQL.Strings = (
-      'update CHAMADOS'
-      'set'
-      '  CHA_CODIGO = :CHA_CODIGO,'
-      '  CHA_DATA_ENTRADA = :CHA_DATA_ENTRADA,'
-      '  CHA_DATA_SAIDA = :CHA_DATA_SAIDA,'
-      '  CHA_DEPARTAMENTO = :CHA_DEPARTAMENTO,'
-      '  CHA_DESCRICAO = :CHA_DESCRICAO,'
-      '  CHA_EMPRESA = :CHA_EMPRESA,'
-      '  CHA_FUNCIONARIO = :CHA_FUNCIONARIO,'
-      '  CHA_PRIORIDADE = :CHA_PRIORIDADE,'
-      '  CHA_PROPRIETARIO = :CHA_PROPRIETARIO,'
-      '  CHA_STATUS = :CHA_STATUS,'
-      '  CHA_TIPO_ERRO = :CHA_TIPO_ERRO,'
-      '  DEP_NOME = :DEP_NOME'
-      'where'
-      '  CHA_CODIGO = :OLD_CHA_CODIGO')
-    InsertSQL.Strings = (
-      'insert into CHAMADOS'
-      
-        '  (CHA_CODIGO, CHA_DATA_ENTRADA, CHA_DATA_SAIDA, CHA_DEPARTAMENT' +
-        'O, CHA_DESCRICAO, '
-      
-        '   CHA_EMPRESA, CHA_FUNCIONARIO, CHA_PRIORIDADE, CHA_PROPRIETARI' +
-        'O, CHA_STATUS, '
-      '   CHA_TIPO_ERRO, DEP_NOME)'
-      'values'
-      
-        '  (:CHA_CODIGO, :CHA_DATA_ENTRADA, :CHA_DATA_SAIDA, :CHA_DEPARTA' +
-        'MENTO, '
-      
-        '   :CHA_DESCRICAO, :CHA_EMPRESA, :CHA_FUNCIONARIO, :CHA_PRIORIDA' +
-        'DE, :CHA_PROPRIETARIO, '
-      '   :CHA_STATUS, :CHA_TIPO_ERRO, :DEP_NOME)')
-    DeleteSQL.Strings = (
-      'delete from CHAMADOS'
-      'where'
-      '  CHA_CODIGO = :OLD_CHA_CODIGO')
-    Left = 312
-    Top = 96
-  end
-  object IB_Relatorio_Chamado: TIBQuery
-    Database = dmBanco.Banco
-    Transaction = dmBanco.TBanco
-    AfterInsert = IB_Tipo_ErroAfterInsert
-    BufferChunks = 1000
-    CachedUpdates = False
-    DataSource = DS_Relatorio_Chamado
-    ParamCheck = True
-    SQL.Strings = (
-      'SELECT A.*,'
-      '             B.emp_razao,'
-      '             c.dep_nome,'
-      '             D.pess_nome'
-      'FROM CHAMADOS A'
-      'INNER join EMPRESA B ON a.cha_empresa =  b.emp_cod'
-      'INNER JOIN DEPARTAMENTO C ON A.CHA_DEPARTAMENTO = C.DEP_COD'
-      '                          AND A.CHA_EMPRESA = C.DEP_EMPRESAR'
-      'INNER JOIN PESSOAS D ON A.cha_codigo = D.pess_codigo')
-    UpdateObject = UPS_Relatorio_Chamado
-    Left = 312
-    Top = 16
-    object IntegerField1: TIntegerField
-      DisplayLabel = 'Codigo'
-      FieldName = 'TER_CODIGO'
-      Origin = '"TIPOS_ERROS"."TER_CODIGO"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object IBStringField1: TIBStringField
-      DisplayLabel = 'Descri'#231#227'o'
-      FieldName = 'TER_DESCRICAO'
-      Origin = '"TIPOS_ERROS"."TER_DESCRICAO"'
-      Required = True
-    end
   end
 end

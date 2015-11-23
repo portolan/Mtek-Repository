@@ -36,6 +36,8 @@ type
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     SpeedButton4: TSpeedButton;
+    DBEdit11: TDBEdit;
+    SpeedButton5: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure DBEdit2Click(Sender: TObject);
     procedure DBEdit3Click(Sender: TObject);
@@ -46,6 +48,7 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -72,6 +75,7 @@ begin
   finally
     DM_Servico.IB_ChamadoCHA_TIPO_ERRO.Value := DM_Servico.IB_Tipo_ErroTER_CODIGO.AsInteger;
   end;
+  DBEdit11.Text := DM_Servico.IB_Tipo_ErroTER_DESCRICAO.AsString;
 end;
 
 procedure TM_Servico.DBEdit2Click(Sender: TObject);
@@ -107,28 +111,28 @@ end;
 
 procedure TM_Servico.DBEdit4Click(Sender: TObject);
 begin
- // inherited;
- // PPessoa := TPPessoa.Create(self);
- // try
- //   PPessoa.procInicializar(dmPedCompra.Pessoa,false,true,PPessoa,TPPessoa);
- //   PPessoa.ShowModal;
-//  finally
- //   DM_Servico.IB_ChamadoCHA_FUNCIONARIO.Value := dmPedCompra.PessoaPESS_CODIGO.AsInteger;
-//  end;
-  //  DBEdit7.Text := dmPedCompra.PessoaPESS_NOME.AsString;
+  inherited;
+  PPessoa := TPPessoa.Create(self);
+  try
+    PPessoa.procInicializar(dmPedCompra.Pessoa,false,true,PPessoa,TPPessoa);
+    PPessoa.ShowModal;
+  finally
+    DM_Servico.IB_ChamadoCHA_FUNCIONARIO.Value := dmPedCompra.PessoaPESS_CODIGO.AsInteger;
+  end;
+    DBEdit7.Text := dmPedCompra.PessoaPESS_NOME.AsString;
 end;
 
 procedure TM_Servico.DBEdit5Click(Sender: TObject);
 begin
- // inherited;
- // PPessoa := TPPessoa.Create(self);
- // try
-  //  PPessoa.procInicializar(dmPedCompra.Pessoa,false,true,PPessoa,TPPessoa);
-  //  PPessoa.ShowModal;
-  //finally
-  //  DM_Servico.IB_ChamadoCHA_PROPRIETARIO.Value := dmPedCompra.PessoaPESS_CODIGO.AsInteger;
-//  end;
-  //  DBEdit9.Text := dmPedCompra.PessoaPESS_NOME.AsString;
+  inherited;
+  PPessoa := TPPessoa.Create(self);
+  try
+    PPessoa.procInicializar(dmPedCompra.Pessoa,false,true,PPessoa,TPPessoa);
+    PPessoa.ShowModal;
+  finally
+    DM_Servico.IB_ChamadoCHA_PROPRIETARIO.Value := dmPedCompra.PessoaPESS_CODIGO.AsInteger;
+  end;
+    DBEdit9.Text := dmPedCompra.PessoaPESS_NOME.AsString;
 end;
 
 procedure TM_Servico.FormCreate(Sender: TObject);
@@ -154,7 +158,7 @@ begin
   inherited;
   P_departamento := TP_departamento.Create(self);
   try
-    P_departamento.procInicializar(DM_contabil.departamento,false,false,P_departamento,TP_departamento);
+    P_departamento.procInicializar(DM_contabil.departamento,true,false,P_departamento,TP_departamento);
     P_departamento.ShowModal;
   finally
     FreeAndNil(P_departamento);
@@ -166,7 +170,7 @@ begin
   inherited;
   PPessoa := TPPessoa.Create(self);
   try
-    PPessoa.procInicializar(dmPedCompra.Pessoa,false,true,PPessoa,TPPessoa);
+    PPessoa.procInicializar(dmPedCompra.Pessoa,true,false,PPessoa,TPPessoa);
     PPessoa.ShowModal;
   finally
     FreeAndNil(PPessoa);
@@ -178,10 +182,22 @@ begin
   inherited;
   PPessoa := TPPessoa.Create(self);
   try
-    PPessoa.procInicializar(dmPedCompra.Pessoa,false,true,PPessoa,TPPessoa);
+    PPessoa.procInicializar(dmPedCompra.Pessoa,true,false,PPessoa,TPPessoa);
     PPessoa.ShowModal;
   finally
     FreeAndNil(PPessoa);
+  end;
+end;
+
+procedure TM_Servico.SpeedButton5Click(Sender: TObject);
+begin
+  inherited;
+  P_Tipo_Erro := TP_Tipo_Erro.Create(self);
+  try
+    P_Tipo_Erro.procInicializar(dmPedCompra.Pessoa,true,false,P_Tipo_Erro,TP_Tipo_Erro);
+    P_Tipo_Erro.ShowModal;
+  finally
+    FreeAndNil(P_Tipo_Erro);
   end;
 end;
 

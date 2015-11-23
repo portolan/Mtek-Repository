@@ -66,7 +66,7 @@ inherited M_Servico: TM_Servico
       FocusControl = DBEdit2
     end
     object Label3: TLabel
-      Left = 292
+      Left = 263
       Top = 67
       Width = 69
       Height = 13
@@ -82,7 +82,7 @@ inherited M_Servico: TM_Servico
       FocusControl = DBEdit4
     end
     object Label5: TLabel
-      Left = 292
+      Left = 263
       Top = 110
       Width = 56
       Height = 13
@@ -106,7 +106,7 @@ inherited M_Servico: TM_Servico
       OnClick = SpeedButton1Click
     end
     object SpeedButton2: TSpeedButton
-      Left = 347
+      Left = 318
       Top = 82
       Width = 23
       Height = 22
@@ -122,7 +122,7 @@ inherited M_Servico: TM_Servico
       OnClick = SpeedButton2Click
     end
     object SpeedButton3: TSpeedButton
-      Left = 347
+      Left = 318
       Top = 125
       Width = 23
       Height = 22
@@ -152,6 +152,22 @@ inherited M_Servico: TM_Servico
         3300333330F033333300333330F0333333003333300033333300333333333333
         33003333333333333300}
       OnClick = SpeedButton4Click
+    end
+    object SpeedButton5: TSpeedButton
+      Left = 481
+      Top = 173
+      Width = 23
+      Height = 22
+      Glyph.Data = {
+        E6000000424DE60000000000000076000000280000000E0000000E0000000100
+        0400000000007000000000000000000000001000000000000000000000000000
+        BF0000BF000000BFBF00BF000000BF00BF00BFBF0000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        3300333333333333330033333333333333003333300033333300333330F03333
+        3300333330F033333300330000F000033300330FFFFFFF033300330000F00003
+        3300333330F033333300333330F0333333003333300033333300333333333333
+        33003333333333333300}
+      OnClick = SpeedButton5Click
     end
     object DBEdit1: TDBEdit
       Left = 24
@@ -219,7 +235,7 @@ inherited M_Servico: TM_Servico
       OnClick = DBEdit2Click
     end
     object DBEdit3: TDBEdit
-      Left = 292
+      Left = 263
       Top = 83
       Width = 49
       Height = 21
@@ -239,7 +255,7 @@ inherited M_Servico: TM_Servico
       OnClick = DBEdit4Click
     end
     object DBEdit5: TDBEdit
-      Left = 292
+      Left = 263
       Top = 126
       Width = 49
       Height = 21
@@ -249,7 +265,7 @@ inherited M_Servico: TM_Servico
       OnClick = DBEdit5Click
     end
     object DBEdit6: TDBEdit
-      Left = 116
+      Left = 100
       Top = 83
       Width = 121
       Height = 21
@@ -257,7 +273,7 @@ inherited M_Servico: TM_Servico
       TabOrder = 9
     end
     object DBEdit7: TDBEdit
-      Left = 116
+      Left = 100
       Top = 126
       Width = 121
       Height = 21
@@ -265,7 +281,7 @@ inherited M_Servico: TM_Servico
       TabOrder = 10
     end
     object DBEdit8: TDBEdit
-      Left = 391
+      Left = 347
       Top = 83
       Width = 113
       Height = 21
@@ -273,12 +289,20 @@ inherited M_Servico: TM_Servico
       TabOrder = 11
     end
     object DBEdit9: TDBEdit
-      Left = 391
+      Left = 347
       Top = 126
       Width = 113
       Height = 21
       Enabled = False
       TabOrder = 12
+    end
+    object DBEdit11: TDBEdit
+      Left = 512
+      Top = 174
+      Width = 73
+      Height = 21
+      Enabled = False
+      TabOrder = 13
     end
   end
 end
