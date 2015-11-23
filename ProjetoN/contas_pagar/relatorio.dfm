@@ -78,7 +78,7 @@ object relcontasp: Trelcontasp
     Top = 16
   end
   object frxContasperiodo: TfrxReport
-    Version = '5.3.16'
+    Version = '5.1.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -114,7 +114,6 @@ object relcontasp: Trelcontasp
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       ColumnWidth = 31.666666666666700000
-      BackPictureStretched = False
       object RelatorioPeriodo: TfrxReportTitle
         FillType = ftBrush
         Height = 86.929190000000000000

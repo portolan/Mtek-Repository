@@ -69,7 +69,6 @@ type
     Localizao1: TMenuItem;
     EstadodeConservao1: TMenuItem;
     BemImobilizado1: TMenuItem;
-    Faturamento1: TMenuItem;
     N1: TMenuItem;
     CondiesdePagamento2: TMenuItem;
     procedure Sair1Click(Sender: TObject);
@@ -136,8 +135,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UP_contabancaria, UDM_Estoque, R_contabil, UDM_Caixa, UDM_contabil,
   Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico, UP_SolicitacaoCompra,
   UP_Cotacao, UP_PedCompra, UF_EstoqueAjuda, UP_TipoBens, UP_Localizacao,
-  UP_EstadoConservacao, UP_NotaBemImobilizado;
-  UP_Cotacao, UP_PedCompra, UP_Pessoa, UF_EstoqueAjuda, UP_NotaEntrada;
+  UP_EstadoConservacao, UP_NotaBemImobilizado, UP_Pessoa, UP_NotaEntrada;
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
 begin

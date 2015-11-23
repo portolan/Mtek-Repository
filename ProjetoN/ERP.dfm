@@ -1020,6 +1020,8 @@ object TelaInicial: TTelaInicial
   WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
+  ExplicitWidth = 320
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object Image10: TImage
@@ -6850,7 +6852,6 @@ object TelaInicial: TTelaInicial
       end
       object PedidodeVenda1: TMenuItem
         Caption = 'Faturamento'
-        OnClick = PedidodeVenda1Click
       end
       object N1: TMenuItem
         Caption = '-'

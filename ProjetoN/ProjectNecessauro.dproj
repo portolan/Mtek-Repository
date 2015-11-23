@@ -87,11 +87,22 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="ERP.pas">
-            <Form>TelaInicial</Form>
+        <DCCReference Include="comum\ufrm_Relacionamento.pas">
+            <Form>frmRelacionamento</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TFrame</DesignClass>
         </DCCReference>
-        <DCCReference Include="datamodulo\UDM_Estoque.pas">
-            <Form>DM_Estoque</Form>
+        <DCCReference Include="comum\UManuPadrao.pas">
+            <Form>xManuPadrao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="comum\UTelaPadrao.pas">
+            <Form>xPesqPadrao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="datamodulo\dm000.pas">
+            <Form>dmBanco</Form>
+            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="datamodulo\dm001.pas">
@@ -99,63 +110,130 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="financeiro\UM_novacontabancaria.pas">
-            <Form>M_novaconta</Form>
+        <DCCReference Include="datamodulo\UDM_Caixa.pas">
+            <Form>DM_Caixa</Form>
             <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="login final\login.pas">
-            <Form>tela_login</Form>
+        <DCCReference Include="datamodulo\UDM_contabil.pas">
+            <Form>DM_contabil</Form>
             <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="contabil\UM_empresa.pas">
-            <Form>M_empresa</Form>
+        <DCCReference Include="datamodulo\UDM_contasreceber.pas">
+            <Form>DM_contasreceber</Form>
             <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="datamodulo\UDM_empresa.pas">
+            <Form>DataModule2</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="datamodulo\UDM_Estoque.pas">
+            <Form>DM_Estoque</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="datamodulo\UDM_financeiro.pas">
+            <Form>DM_financeiro</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="datamodulo\UDM_PCP.pas">
             <Form>DM_PCP</Form>
+            <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="pcp\UM_PCP.pas">
-            <Form>M_OP</Form>
+        <DCCReference Include="datamodulo\UDM_PedCompra.pas">
+            <Form>dmPedCompra</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="pcp\UP_OP.pas">
-            <Form>P_OP</Form>
+        <DCCReference Include="datamodulo\UDM_Venda.pas">
+            <Form>DM_VENDA</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="assistencia\UDM_Servico.pas">
+            <Form>DM_Servico</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="assistencia\UF_ChamadosRelatorios.pas">
+            <Form>F_ChamadosRelatorios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="assistencia\UM_Servico.pas">
+            <Form>M_Servico</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="assistencia\UM_Tipo_Erro.pas">
+            <Form>M_Tipo_Erro</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="assistencia\UP_Servico.pas">
+            <Form>P_Servico</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="assistencia\UP_Tipo_Erro.pas">
+            <Form>P_Tipo_Erro</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="assistencia\UR_Relatorio_Chamado.pas">
+            <Form>UR_Relatorio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UM_BaixaPedidoCompra.pas">
+            <Form>MBaixaPedidoCompra</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UM_Cotacao.pas">
+            <Form>MCotacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UM_FornecedorCotacao.pas">
+            <Form>MFornecedorCotacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UM_PedCompra.pas">
+            <Form>MPedCompra</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UM_SolicitacaoCompra.pas">
+            <Form>MSolicitacaoCompra</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UP_FornecedorCotacao.pas">
+            <Form>PFornecedorCotacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UP_NotaEntrada.pas">
+            <Form>PNotaEntrada</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UP_PedCompra.pas">
+            <Form>PPedCompra</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UP_SolicitacaoCompra.pas">
+            <Form>PSolicitacaoCompra</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contabil\R_contabil.pas">
+            <Form>REL_contabil</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="contabil\UM_centro.pas">
             <Form>M_centro</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="pcp\UP_PRODUCAO.pas">
-            <Form>P_PRODUCAO</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="pcp\UM_PRODUCAO.pas">
-            <Form>M_PRODUCAO</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="contabil\UP_lancamento.pas">
-            <Form>P_lancamento</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="contabil\UM_departamento.pas">
             <Form>M_departamento</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="contabil\UP_planodecontas.pas">
-            <Form>P_planodecontas</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="contas_pagar\Udm_contaspagar.pas">
-            <Form>dm_contaspagar</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="contas_pagar\Um_titulospagar.pas">
-            <Form>m_titulospagar</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="contas_pagar\Up_titulospagar.pas">
-            <Form>p_titulospagar</Form>
+        <DCCReference Include="contabil\UM_empresa.pas">
+            <Form>M_empresa</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="contabil\UM_historico.pas">
@@ -186,118 +264,85 @@
             <Form>P_historico</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="contabil\R_contabil.pas">
-            <Form>REL_contabil</Form>
+        <DCCReference Include="contabil\UP_lancamento.pas">
+            <Form>P_lancamento</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Caixa\UM_caixa.pas">
-            <Form>M_caixa</Form>
+        <DCCReference Include="contabil\UP_planodecontas.pas">
+            <Form>P_planodecontas</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Caixa\UP_Caixa.pas">
-            <Form>P_caixa</Form>
+        <DCCReference Include="contas_pagar\relatorio.pas">
+            <Form>relcontasp</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="datamodulo\UDM_Caixa.pas">
-            <Form>DM_caixa</Form>
+        <DCCReference Include="contas_pagar\Udm_contaspagar.pas">
+            <Form>dm_contaspagar</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="contas_pagar\Um_titulospagar.pas">
+            <Form>m_titulospagar</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contas_pagar\Up_titulospagar.pas">
+            <Form>p_titulospagar</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="contas_receber\UM_contasreceber.pas">
             <Form>M_contasreceber</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="contas_receber\UP_contasreceber.pas">
-            <Form>P_receber</Form>
+            <Form>P_contasreceber</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="datamodulo\UDM_contasreceber.pas">
-            <Form>DM_contasreceber</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="pcp\UP_FichaTecnica.pas">
-            <Form>P_FichaTecnica</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="pcp\UM_FichaTecnica.pas">
-            <Form>M_FichaTecnica</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="datamodulo\UDM_PedCompra.pas">
-            <Form>dmPedCompra</Form>
+        <DCCReference Include="ControlePatrimonial\udmControlePatrimonial.pas">
+            <Form>DMControlePatrimonial</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="assistencia\UDM_Servico.pas">
-            <Form>DM_Servico</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="assistencia\UM_Servico.pas">
-            <Form>M_Servico</Form>
+        <DCCReference Include="ControlePatrimonial\UM_BensImobilizados.pas">
+            <Form>MBensImobilizados</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="assistencia\UM_Tipo_Erro.pas">
-            <Form>M_Tipo_Erro</Form>
+        <DCCReference Include="ControlePatrimonial\UM_EstadoConservacao.pas">
+            <Form>MEstadoConservacao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="assistencia\UP_Servico.pas">
-            <Form>P_Servico</Form>
+        <DCCReference Include="ControlePatrimonial\UM_Localizacao.pas">
+            <Form>MLocalizacao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="assistencia\UP_Tipo_Erro.pas">
-            <Form>P_Tipo_Erro</Form>
+        <DCCReference Include="ControlePatrimonial\UM_TipoBens.pas">
+            <Form>MTipoBens</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="assistencia\UR_Relatorio_Chamado.pas">
-            <Form>UR_Relatorio</Form>
+        <DCCReference Include="ControlePatrimonial\UP_BensImobilizados.pas">
+            <Form>P_BensImobilizados</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="UI_sobre.pas">
-            <Form>I_sobre</Form>
+        <DCCReference Include="ControlePatrimonial\UP_EstadoConservacao.pas">
+            <Form>P_EstadoConservacao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Caixa\UR_fechamentocx.pas">
-            <Form>REL_fechamentocx</Form>
+        <DCCReference Include="ControlePatrimonial\UP_Localizacao.pas">
+            <Form>PLocalizacao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Caixa\UP_abrircx.pas">
-            <Form>UP_abrircaixa</Form>
+        <DCCReference Include="ControlePatrimonial\UP_NotaBemImobilizado.pas">
+            <Form>P_PesquisaNotaBemImobilizado</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Caixa\UP_fecharcx.pas">
-            <Form>UP_fecharcaixa</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Caixa\UR_balancocx.pas">
-            <Form>REL_balancocx</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Caixa\UR_prevtitulos.pas">
-            <Form>REL_prevtitulos</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Caixa\UR_prevcompravenda.pas">
-            <Form>REL_prevcompravenda</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="comum\UManuPadrao.pas">
-            <Form>xManuPadrao</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="comum\UTelaPadrao.pas">
-            <Form>xPesqPadrao</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="compra\UP_SolicitacaoCompra.pas">
-            <Form>PSolicitacaoCompra</Form>
-        </DCCReference>
-        <DCCReference Include="financeiro\UP_contabancaria.pas">
-            <Form>P_contasbancarias</Form>
+        <DCCReference Include="ControlePatrimonial\UP_TipoBens.pas">
+            <Form>P_TipoBens</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Estoque\UEstoque.pas"/>
+        <DCCReference Include="Estoque\UF_EstoqueAjuda.pas">
+            <Form>FEstoqueAjuda</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="Estoque\UF_EstoqueRelatorios.pas">
             <Form>FEstoqueRelatorios</Form>
             <FormType>dfm</FormType>
@@ -371,26 +416,17 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="comum\ufrm_Relacionamento.pas">
-            <Form>frmRelacionamento</Form>
+        <DCCReference Include="Estoque\UR_Relatorios.pas">
+            <Form>DataModule1</Form>
             <FormType>dfm</FormType>
-            <DesignClass>TFrame</DesignClass>
+            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="compra\UM_SolicitacaoCompra.pas"/>
-        <DCCReference Include="compra\UP_Cotacao.pas">
-            <Form>PCotacao</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="compra\UM_Cotacao.pas">
-            <Form>MCotacao</Form>
+        <DCCReference Include="financeiro\UM_novacontabancaria.pas">
+            <Form>M_novaconta</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="compra\UP_FornecedorCotacao.pas">
-            <Form>PFornecedorCotacao</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="compra\UM_FornecedorCotacao.pas">
-            <Form>MFornecedorCotacao</Form>
+        <DCCReference Include="financeiro\UP_contabancaria.pas">
+            <Form>P_contasbancarias</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="geral\UM_Pessoa.pas">
@@ -401,70 +437,96 @@
             <Form>PPessoa</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="compra\UP_PedCompra.pas">
-            <Form>PPedCompra</Form>
+        <DCCReference Include="login final\login.pas">
+            <Form>tela_login</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="compra\UM_PedCompra.pas">
-            <Form>MPedCompra</Form>
+        <DCCReference Include="pcp\UM_FichaTecnica.pas">
+            <Form>M_FichaTecnica</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Estoque\UF_EstoqueAjuda.pas">
-            <Form>FEstoqueAjuda</Form>
+        <DCCReference Include="pcp\UM_PCP.pas">
+            <Form>M_OP</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ControlePatrimonial\udmControlePatrimonial.pas">
-            <Form>DMControlePatrimonial</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UM_BensImobilizados.pas">
-            <Form>MBensImobilizados</Form>
+        <DCCReference Include="pcp\UM_PRODUCAO.pas">
+            <Form>M_PRODUCAO</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UM_EstadoConservacao.pas">
-            <Form>MEstadoConservacao</Form>
+        <DCCReference Include="pcp\UP_FichaTecnica.pas">
+            <Form>P_FichaTecnica</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UM_Localizacao.pas">
-            <Form>MLocalizacao</Form>
+        <DCCReference Include="pcp\UP_OP.pas">
+            <Form>P_OP</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UM_TipoBens.pas">
-            <Form>MTipoBens</Form>
+        <DCCReference Include="pcp\UP_PRODUCAO.pas">
+            <Form>P_PRODUCAO</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UP_BensImobilizados.pas">
-            <Form>P_BensImobilizados</Form>
+        <DCCReference Include="venda\Um_Condição_Pagamento.pas">
+            <Form>U_Condicao_Pg</Form>
             <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UP_EstadoConservacao.pas">
-            <Form>P_EstadoConservacao</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UP_Localizacao.pas">
-            <Form>PLocalizacao</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UP_NotaBemImobilizado.pas">
-            <Form>P_PesquisaNotaBemImobilizado</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UP_TipoBens.pas">
-            <Form>P_TipoBens</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="datamodulo\dm000.pas">
-            <Form>dmBanco</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
         </DCCReference>
         <DCCReference Include="venda\Um_Emissão_NFE.pas">
             <Form>MEmissao_NFE</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="venda\Um_Pedido_Venda.pas">
+            <Form>Frm_Pedido_Venda</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <DCCReference Include="venda\Up_Emissao_NFE.pas">
             <Form>Up_NFE</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="venda\Up_Pedido_Venda.pas">
+            <Form>UP_VENDA</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ERP.pas">
+            <Form>TelaInicial</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="UI_sobre.pas">
+            <Form>I_sobre</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UM_caixa.pas">
+            <Form>M_caixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UP_abrircx.pas">
+            <Form>UP_abrircaixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UP_Caixa.pas">
+            <Form>P_caixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UP_fecharcx.pas">
+            <Form>UP_fecharcaixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_balancocx.pas">
+            <Form>REL_balancocx</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_fechamentocx.pas">
+            <Form>REL_fechamentocx</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_prevcompravenda.pas">
+            <Form>REL_prevcompravenda</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_prevtitulos.pas">
+            <Form>REL_prevtitulos</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="compra\UP_Cotacao.pas">
+            <Form>PCotacao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
