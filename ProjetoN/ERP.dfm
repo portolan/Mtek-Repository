@@ -6849,10 +6849,8 @@ object TelaInicial: TTelaInicial
         OnClick = Oramento1Click
       end
       object PedidodeVenda1: TMenuItem
-        Caption = 'Emiss'#227'o de Nota Fiscal'
-      end
-      object Faturamento1: TMenuItem
         Caption = 'Faturamento'
+        OnClick = PedidodeVenda1Click
       end
       object N1: TMenuItem
         Caption = '-'

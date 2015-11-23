@@ -459,6 +459,14 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="venda\Um_Emissão_NFE.pas">
+            <Form>MEmissao_NFE</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="venda\Up_Emissao_NFE.pas">
+            <Form>Up_NFE</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

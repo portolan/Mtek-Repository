@@ -114,7 +114,9 @@ UM_BaixaPedidoCompra in 'compra\UM_BaixaPedidoCompra.pas' {MBaixaPedidoCompra},
   UDM_empresa in 'datamodulo\UDM_empresa.pas' {DataModule2: TDataModule},
   Um_Condição_Pagamento in 'venda\Um_Condição_Pagamento.pas' {U_Condicao_Pg},
   UDM_contabil in 'datamodulo\UDM_contabil.pas' {DM_contabil: TDataModule},
-  UDM_financeiro in 'datamodulo\UDM_financeiro.pas' {DM_financeiro: TDataModule};
+  UDM_financeiro in 'datamodulo\UDM_financeiro.pas' {DM_financeiro: TDataModule},
+  Um_Emissão_NFE in 'venda\Um_Emissão_NFE.pas' {MEmissao_NFE},
+  Up_Emissao_NFE in 'venda\Up_Emissao_NFE.pas' {Up_NFE};
 
 {$R *.res}
 
@@ -148,5 +150,7 @@ begin
   Application.CreateForm(TP_PesquisaNotaBemImobilizado, P_PesquisaNotaBemImobilizado);
   Application.CreateForm(TP_TipoBens, P_TipoBens);
   Application.CreateForm(TdmBanco, dmBanco);
+  Application.CreateForm(TMEmissao_NFE, MEmissao_NFE);
+  Application.CreateForm(TUp_NFE, Up_NFE);
   Application.Run;
 end.
