@@ -192,6 +192,47 @@ object DM_VENDA: TDM_VENDA
     Top = 176
   end
   object U_EmissaoNFE: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'select A.*,'
+      '          B.emp_razao,'
+      '          C.pess_nome'
+      '  from EMISSAO_NFE A'
+      'INNER join EMPRESA B ON A.emi_empresa =  B.emp_cod'
+      'INNER JOIN PESSOAS C ON A.emi_pessoa = C.pess_codigo'
+      'from EMISSAO_NFE '
+      'where'
+      '  EMI_NUMERO = :EMI_NUMERO'
+      '  EMI_EMPRESA =:EMI_EMPRESA'
+      '  ')
+    ModifySQL.Strings = (
+      'update EMISSAO_NFE'
+      'set'
+      '  EMI_DESCRICAO = :EMI_DESCRICAO,'
+      '  EMI_DTEMISSAO = :EMI_DTEMISSAO,'
+      '  EMI_DTSAIDA = :EMI_DTSAIDA,'
+      '  EMI_EMPRESA = :EMI_EMPRESA,'
+      '  EMI_NOTAFISCAL = :EMI_NOTAFISCAL,'
+      '  EMI_NUMERO = :EMI_NUMERO,'
+      '  EMI_PESSOA = :EMI_PESSOA,'
+      '  EMI_SERIE = :EMI_SERIE,'
+      '  EMI_TIPOMOVIMENTACAO = :EMI_TIPOMOVIMENTACAO'
+      'where'
+      '  EMI_NUMERO = :OLD_EMI_NUMERO')
+    InsertSQL.Strings = (
+      'insert into EMISSAO_NFE'
+      
+        '  (EMI_DESCRICAO, EMI_DTEMISSAO, EMI_DTSAIDA, EMI_EMPRESA, EMI_N' +
+        'OTAFISCAL, '
+      '   EMI_NUMERO, EMI_PESSOA, EMI_SERIE, EMI_TIPOMOVIMENTACAO)'
+      'values'
+      
+        '  (:EMI_DESCRICAO, :EMI_DTEMISSAO, :EMI_DTSAIDA, :EMI_EMPRESA, :' +
+        'EMI_NOTAFISCAL, '
+      '   :EMI_NUMERO, :EMI_PESSOA, :EMI_SERIE, :EMI_TIPOMOVIMENTACAO)')
+    DeleteSQL.Strings = (
+      'delete from EMISSAO_NFE'
+      'where'
+      '  EMI_NUMERO = :OLD_EMI_NUMERO')
     Left = 136
     Top = 168
   end
@@ -207,7 +248,13 @@ object DM_VENDA: TDM_VENDA
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select *  from EMISSAO_NFE')
+      'select A.*,'
+      '          B.emp_razao,'
+      '          C.pess_nome'
+      '  from EMISSAO_NFE A'
+      'INNER join EMPRESA B ON a.emi_empresa =  B.emp_cod'
+      'INNER JOIN PESSOAS C ON A.emi_pessoa = C.pess_codigo'
+      '')
     UpdateObject = U_EmissaoNFE
     Left = 136
     Top = 24
@@ -257,6 +304,17 @@ object DM_VENDA: TDM_VENDA
     object IB_EmissaoNFEEMI_DTSAIDA: TDateField
       FieldName = 'EMI_DTSAIDA'
       Origin = '"EMISSAO_NFE"."EMI_DTSAIDA"'
+      EditMask = '!99/99/0000;1;_'
+    end
+    object IB_EmissaoNFEEMP_RAZAO: TIBStringField
+      FieldName = 'EMP_RAZAO'
+      Origin = '"EMPRESA"."EMP_RAZAO"'
+      Size = 60
+    end
+    object IB_EmissaoNFEPESS_NOME: TIBStringField
+      FieldName = 'PESS_NOME'
+      Origin = '"PESSOAS"."PESS_NOME"'
+      Size = 100
     end
   end
   object IB_Venda: TIBQuery
@@ -282,7 +340,7 @@ object DM_VENDA: TDM_VENDA
       
         '                                   AND A.PED_EMPRESA = C.DEP_EMP' +
         'RESAR'
-      'WHERE A.PED_CODIGO = -1'
+      ''
       '                                  '
       '')
     UpdateObject = U_Venda
@@ -382,14 +440,17 @@ object DM_VENDA: TDM_VENDA
     object IB_VendaPED_DTPEDIDO: TDateField
       FieldName = 'PED_DTPEDIDO'
       Origin = '"PEDIDOVENDA"."PED_DTPEDIDO"'
+      EditMask = '!99/99/0000;1;_'
     end
     object IB_VendaPED_DTENTRADA: TDateField
       FieldName = 'PED_DTENTRADA'
       Origin = '"PEDIDOVENDA"."PED_DTENTRADA"'
+      EditMask = '!99/99/0000;1;_'
     end
     object IB_VendaPED_DTPRAZOENTREGA: TDateField
       FieldName = 'PED_DTPRAZOENTREGA'
       Origin = '"PEDIDOVENDA"."PED_DTPRAZOENTREGA"'
+      EditMask = '!99/99/0000;1;_'
     end
     object IB_VendaPED_ORDEMVENDA: TIntegerField
       FieldName = 'PED_ORDEMVENDA'

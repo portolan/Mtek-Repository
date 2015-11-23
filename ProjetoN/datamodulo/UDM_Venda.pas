@@ -66,6 +66,8 @@ type
     IB_VendaEMP_RAZAO: TIBStringField;
     IB_VendaDEP_NOME: TIBStringField;
     IB_VendaPRO_DESCRICAO: TIBStringField;
+    IB_EmissaoNFEEMP_RAZAO: TIBStringField;
+    IB_EmissaoNFEPESS_NOME: TIBStringField;
     procedure IB_VendaAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
