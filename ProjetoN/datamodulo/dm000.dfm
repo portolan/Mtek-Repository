@@ -12,6 +12,8 @@ object dmBanco: TdmBanco
     Top = 88
   end
   object Banco: TIBDatabase
+    DatabaseName = 'C:\Users\Erick\Desktop\Banco erp\PCP2.FDB'
+    DatabaseName = '\\localhost\C:\banco_dados\ERP.FDB'
     Connected = True
     DatabaseName = '\\localhost\C:\banco_dados\database.FDB'
     Params.Strings = (
