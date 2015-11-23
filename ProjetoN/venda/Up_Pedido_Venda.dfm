@@ -1,8 +1,13 @@
 inherited UP_VENDA: TUP_VENDA
   Caption = 'Altera Pedido de Venda'
+  OnActivate = nil
+  OnKeyDown = nil
+  OnShow = nil
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
+    ExplicitLeft = -1
+    ExplicitTop = 48
     inherited gbDados: TGroupBox
       inherited DBGDados: TDBGrid
         DataSource = DM_VENDA.DS_Venda
@@ -132,6 +137,16 @@ inherited UP_VENDA: TUP_VENDA
             FieldName = 'PRO_DESCRICAO'
             Visible = True
           end>
+      end
+    end
+  end
+  inherited pnCabecalho: TPanel
+    inherited gbFiltro: TGroupBox
+      inherited editPesquisa: TEdit
+        ExplicitWidth = 454
+      end
+      inherited Pesquisar: TButton
+        ExplicitLeft = 767
       end
     end
   end

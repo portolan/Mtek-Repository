@@ -361,14 +361,16 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
     inline frm_produto: TfrmRelacionamento
       Left = 9
       Top = 143
-      Width = 445
-      Height = 60
+      Width = 374
+      Height = 61
       TabOrder = 16
       ExplicitLeft = 9
       ExplicitTop = 143
-      ExplicitWidth = 445
+      ExplicitWidth = 374
+      ExplicitHeight = 61
       inherited pnlFrame: TPanel
-        Width = 445
+        Width = 374
+        Height = 61
         ExplicitWidth = 445
         inherited lbTitulo: TLabel
           Top = -1
@@ -383,18 +385,18 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
         end
         inherited panelFundo: TPanel
           Top = 15
-          Width = 295
+          Width = 301
           Height = 26
           ExplicitTop = 15
-          ExplicitWidth = 295
+          ExplicitWidth = 291
           ExplicitHeight = 26
           inherited DBT_DESCRICAO: TDBText
             Left = 0
             Top = 1
-            Width = 288
+            Width = 297
             ExplicitLeft = 0
             ExplicitTop = 1
-            ExplicitWidth = 355
+            ExplicitWidth = 297
           end
         end
       end
