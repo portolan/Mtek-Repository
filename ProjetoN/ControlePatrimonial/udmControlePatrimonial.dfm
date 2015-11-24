@@ -140,78 +140,6 @@ object DMControlePatrimonial: TDMControlePatrimonial
     Left = 160
     Top = 136
   end
-  object NumeroSerie: TIBQuery
-    Database = dmBanco.Banco
-    Transaction = dmBanco.TBanco
-    BufferChunks = 1000
-    CachedUpdates = False
-    ParamCheck = True
-    SQL.Strings = (
-      'SELECT *'
-      '  FROM NUM_SERIE_BENS A'
-      ' WHERE A.NSB_EMPRESA = -1 AND'
-      '       A.NSB_CODIGO = -1   ')
-    UpdateObject = UNumeroSerie
-    Left = 272
-    Top = 40
-    object NumeroSerieNSB_EMPRESA: TIntegerField
-      DisplayLabel = 'Empresa'
-      FieldName = 'NSB_EMPRESA'
-      Origin = '"NUM_SERIE_BENS"."NSB_EMPRESA"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object NumeroSerieNSB_CODIGO: TIntegerField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'NSB_CODIGO'
-      Origin = '"NUM_SERIE_BENS"."NSB_CODIGO"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object NumeroSerieNSB_STATUS: TIBStringField
-      DisplayLabel = 'Status'
-      FieldName = 'NSB_STATUS'
-      Origin = '"NUM_SERIE_BENS"."NSB_STATUS"'
-      Size = 1
-    end
-  end
-  object UNumeroSerie: TIBUpdateSQL
-    RefreshSQL.Strings = (
-      'Select '
-      '  NSB_EMPRESA,'
-      '  NSB_CODIGO,'
-      '  NSB_STATUS'
-      'from NUM_SERIE_BENS '
-      'where'
-      '  NSB_CODIGO = :NSB_CODIGO and'
-      '  NSB_EMPRESA = :NSB_EMPRESA')
-    ModifySQL.Strings = (
-      'update NUM_SERIE_BENS'
-      'set'
-      '  NSB_CODIGO = :NSB_CODIGO,'
-      '  NSB_EMPRESA = :NSB_EMPRESA,'
-      '  NSB_STATUS = :NSB_STATUS'
-      'where'
-      '  NSB_CODIGO = :OLD_NSB_CODIGO and'
-      '  NSB_EMPRESA = :OLD_NSB_EMPRESA')
-    InsertSQL.Strings = (
-      'insert into NUM_SERIE_BENS'
-      '  (NSB_CODIGO, NSB_EMPRESA, NSB_STATUS)'
-      'values'
-      '  (:NSB_CODIGO, :NSB_EMPRESA, :NSB_STATUS)')
-    DeleteSQL.Strings = (
-      'delete from NUM_SERIE_BENS'
-      'where'
-      '  NSB_CODIGO = :OLD_NSB_CODIGO and'
-      '  NSB_EMPRESA = :OLD_NSB_EMPRESA')
-    Left = 272
-    Top = 88
-  end
-  object DNumeroSerie: TDataSource
-    DataSet = NumeroSerie
-    Left = 272
-    Top = 136
-  end
   object TipoBens: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
@@ -342,6 +270,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       DisplayLabel = 'Valor Componente'
       FieldName = 'COM_VLR_COMPONENTE'
       Origin = '"COMPONENTE"."COM_VLR_COMPONENTE"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -358,6 +288,7 @@ object DMControlePatrimonial: TDMControlePatrimonial
   object Manutencao: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = ManutencaoAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -410,6 +341,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       DisplayLabel = 'Valor Componente'
       FieldName = 'MAN_VLR_COMPONENTE'
       Origin = '"MANUTENCAO"."MAN_VLR_COMPONENTE"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -417,6 +350,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       DisplayLabel = 'Valor Manuten'#231#227'o'
       FieldName = 'MAN_VLR_MANUTENCAO'
       Origin = '"MANUTENCAO"."MAN_VLR_MANUTENCAO"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -424,6 +359,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       DisplayLabel = 'Valor Total'
       FieldName = 'MAN_VLR_TOTAL'
       Origin = '"MANUTENCAO"."MAN_VLR_TOTAL"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -505,32 +442,16 @@ object DMControlePatrimonial: TDMControlePatrimonial
   object BenImobilizado: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = BenImobilizadoAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'SELECT A.BNI_EMPRESA,'
-      '       A.BNI_CODIGO,'
-      '       A.BNI_NUM_SERIE,'
-      '       A.BNI_NR_NOTA,'
-      '       A.BNI_FORNECEDOR,'
-      '       A.BNI_DESCRICAO,'
-      '       A.BNI_TIPO,'
-      '       A.BNI_LOCALIZACAO,'
-      '       A.BNI_ESTADO_CONSERVACAO,'
-      '       A.BNI_MANUTENCAO,'
-      '       A.BNI_DATA_AQUISICAO,'
-      '       A.BNI_VLR_AQUISICAO,'
-      '       A.BNI_VLR_AGREGADO,'
-      '       A.BNI_VLR_ATUAL,'
-      '       A.BNI_DEPRECIACAO,'
-      '       A.BNI_OBSERVACAO,'
-      '       A.BNI_STATUS'
+      'SELECT*'
       '  FROM BENS_IMOBILIZADOS A'
       ' WHERE A.BNI_EMPRESA = -1 AND'
       '       A.BNI_CODIGO = -1 AND'
-      '       A.BNI_NUM_SERIE = -1  AND '
-      '       B.PESS_CODIGO = -1')
+      '       A.BNI_NUM_SERIE = -1 ')
     UpdateObject = UBenImobilizado
     Left = 584
     Top = 40
@@ -602,11 +523,14 @@ object DMControlePatrimonial: TDMControlePatrimonial
       FieldName = 'BNI_DATA_AQUISICAO'
       Origin = '"BENS_IMOBILIZADOS"."BNI_DATA_AQUISICAO"'
       Required = True
+      EditMask = '!99/99/0000;1;_'
     end
     object BenImobilizadoBNI_VLR_AQUISICAO: TIBBCDField
       DisplayLabel = 'Valor de Aquisi'#231#227'o'
       FieldName = 'BNI_VLR_AQUISICAO'
       Origin = '"BENS_IMOBILIZADOS"."BNI_VLR_AQUISICAO"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -614,6 +538,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       DisplayLabel = 'Valor Agregado'
       FieldName = 'BNI_VLR_AGREGADO'
       Origin = '"BENS_IMOBILIZADOS"."BNI_VLR_AGREGADO"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -621,6 +547,16 @@ object DMControlePatrimonial: TDMControlePatrimonial
       DisplayLabel = 'Valor Atual'
       FieldName = 'BNI_VLR_ATUAL'
       Origin = '"BENS_IMOBILIZADOS"."BNI_VLR_ATUAL"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
+      Precision = 18
+      Size = 2
+    end
+    object BenImobilizadoBNI_VLR_RESIDUAL: TIBBCDField
+      DisplayLabel = 'Valor Residual'
+      FieldName = 'BNI_VLR_RESIDUAL'
+      Origin = '"BENS_IMOBILIZADOS"."BNI_VLR_RESIDUAL"'
+      DisplayFormat = '###,###,##0.00'
       Precision = 18
       Size = 2
     end
@@ -628,6 +564,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       DisplayLabel = 'Perc. Deprecia'#231#227'o'
       FieldName = 'BNI_DEPRECIACAO'
       Origin = '"BENS_IMOBILIZADOS"."BNI_DEPRECIACAO"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -647,27 +585,30 @@ object DMControlePatrimonial: TDMControlePatrimonial
   end
   object UBenImobilizado: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'SELECT A.BNI_EMPRESA,'
-      '       A.BNI_CODIGO,'
-      '       A.BNI_NUM_SERIE,'
-      '       A.BNI_NR_NOTA,'
-      '       A.BNI_FORNECEDOR,'
-      '       A.BNI_DESCRICAO,'
-      '       A.BNI_TIPO,'
-      '       A.BNI_LOCALIZACAO,'
-      '       A.BNI_ESTADO_CONSERVACAO,'
-      '       A.BNI_MANUTENCAO,'
-      '       A.BNI_DATA_AQUISICAO,'
-      '       A.BNI_VLR_AQUISICAO,'
-      '       A.BNI_VLR_AGREGADO,'
-      '       A.BNI_VLR_ATUAL,'
-      '       A.BNI_DEPRECIACAO,'
-      '       A.BNI_OBSERVACAO,'
-      '       A.BNI_STATUS'
-      '  FROM BENS_IMOBILIZADOS A'
-      ' WHERE A.BNI_EMPRESA = -1 AND'
-      '       A.BNI_CODIGO = -1 AND'
-      '       A.BNI_NUM_SERIE = -1   ')
+      'Select '
+      '  BNI_EMPRESA,'
+      '  BNI_CODIGO,'
+      '  BNI_NUM_SERIE,'
+      '  BNI_NR_NOTA,'
+      '  BNI_FORNECEDOR,'
+      '  BNI_DESCRICAO,'
+      '  BNI_TIPO,'
+      '  BNI_LOCALIZACAO,'
+      '  BNI_ESTADO_CONSERVACAO,'
+      '  BNI_MANUTENCAO,'
+      '  BNI_DATA_AQUISICAO,'
+      '  BNI_VLR_AQUISICAO,'
+      '  BNI_VLR_RESIDUAL,'
+      '  BNI_VLR_AGREGADO,'
+      '  BNI_VLR_ATUAL,'
+      '  BNI_DEPRECIACAO,'
+      '  BNI_OBSERVACAO,'
+      '  BNI_STATUS'
+      'from BENS_IMOBILIZADOS '
+      'where'
+      '  BNI_CODIGO = :BNI_CODIGO and'
+      '  BNI_EMPRESA = :BNI_EMPRESA and'
+      '  BNI_NUM_SERIE = :BNI_NUM_SERIE')
     ModifySQL.Strings = (
       'update BENS_IMOBILIZADOS'
       'set'
@@ -687,7 +628,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '  BNI_TIPO = :BNI_TIPO,'
       '  BNI_VLR_AGREGADO = :BNI_VLR_AGREGADO,'
       '  BNI_VLR_AQUISICAO = :BNI_VLR_AQUISICAO,'
-      '  BNI_VLR_ATUAL = :BNI_VLR_ATUAL'
+      '  BNI_VLR_ATUAL = :BNI_VLR_ATUAL,'
+      '  BNI_VLR_RESIDUAL = :BNI_VLR_RESIDUAL'
       'where'
       '  BNI_CODIGO = :OLD_BNI_CODIGO and'
       '  BNI_EMPRESA = :OLD_BNI_EMPRESA and'
@@ -703,7 +645,7 @@ object DMControlePatrimonial: TDMControlePatrimonial
       
         '   BNI_NR_NOTA, BNI_NUM_SERIE, BNI_OBSERVACAO, BNI_STATUS, BNI_T' +
         'IPO, BNI_VLR_AGREGADO, '
-      '   BNI_VLR_AQUISICAO, BNI_VLR_ATUAL)'
+      '   BNI_VLR_AQUISICAO, BNI_VLR_ATUAL, BNI_VLR_RESIDUAL)'
       'values'
       
         '  (:BNI_CODIGO, :BNI_DATA_AQUISICAO, :BNI_DEPRECIACAO, :BNI_DESC' +
@@ -716,7 +658,7 @@ object DMControlePatrimonial: TDMControlePatrimonial
         'O, :BNI_STATUS, '
       
         '   :BNI_TIPO, :BNI_VLR_AGREGADO, :BNI_VLR_AQUISICAO, :BNI_VLR_AT' +
-        'UAL)')
+        'UAL, :BNI_VLR_RESIDUAL)')
     DeleteSQL.Strings = (
       'delete from BENS_IMOBILIZADOS'
       'where'

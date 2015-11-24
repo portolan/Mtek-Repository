@@ -3,8 +3,10 @@ unit udmControlePatrimonial;
 interface
 
 uses
-  System.SysUtils, System.Classes, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery,
-  IBX.IBUpdateSQL;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask, Vcl.DBCtrls, IBX.IBQuery, Vcl.Grids, Data.DB,
+  IBX.IBCustomDataSet,IBX.IBUpdateSQL;
 
 type
   TDMControlePatrimonial = class(TDataModule)
@@ -17,15 +19,9 @@ type
     EstadoConservacao: TIBQuery;
     UEstadoCOnservacao: TIBUpdateSQL;
     DEstadoCOnservacao: TDataSource;
-    NumeroSerie: TIBQuery;
-    UNumeroSerie: TIBUpdateSQL;
-    DNumeroSerie: TDataSource;
     EstadoConservacaoEDC_CODIGO: TIntegerField;
     EstadoConservacaoEDC_DESCRICAO: TIBStringField;
     EstadoConservacaoEDC_STATUS: TIBStringField;
-    NumeroSerieNSB_EMPRESA: TIntegerField;
-    NumeroSerieNSB_CODIGO: TIntegerField;
-    NumeroSerieNSB_STATUS: TIBStringField;
     TipoBens: TIBQuery;
     UTipoBens: TIBUpdateSQL;
     DTipoBens: TDataSource;
@@ -74,13 +70,19 @@ type
     BenImobilizadoBNI_DEPRECIACAO: TIBBCDField;
     BenImobilizadoBNI_OBSERVACAO: TBlobField;
     BenImobilizadoBNI_STATUS: TIBStringField;
+    BenImobilizadoBNI_VLR_RESIDUAL: TIBBCDField;
     procedure EstadoConservacaoAfterInsert(DataSet: TDataSet);
     procedure TipoBensAfterInsert(DataSet: TDataSet);
     procedure LocalizacaoAfterInsert(DataSet: TDataSet);
+    procedure ManutencaoAfterInsert(DataSet: TDataSet);
+    procedure BenImobilizadoAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
     { Public declarations }
+    Filtros : TFieldList;
+    QryPadrao : TIBQuery;
+    procedure VerificaCamposRequisidos (Query: TIBQuery);
   end;
 
 var
@@ -94,24 +96,68 @@ uses dm000;
 
 {$R *.dfm}
 
+procedure TDMControlePatrimonial.BenImobilizadoAfterInsert(DataSet: TDataSet);
+begin
+   DMControlePatrimonial.BenImobilizadoBNI_STATUS.AsString := 'S';
+end;
+
 procedure TDMControlePatrimonial.EstadoConservacaoAfterInsert(
   DataSet: TDataSet);
 begin
-   DMControlePatrimonial.EstadoConservacaoEDC_CODIGO.AsInteger := dmBanco.funcRecuperaProximoIdGenerator('SEQBENS_ESTADO_CONSERVACAO');
+   DMControlePatrimonial.EstadoConservacaoEDC_CODIGO.AsInteger := dmBanco.funcRecuperaProximoIdGenerator('GEN_EST_CONSERVACAO_BENS');
    DMControlePatrimonial.EstadoConservacaoEDC_STATUS.AsString := 'A';
 
 end;
 
 procedure TDMControlePatrimonial.LocalizacaoAfterInsert(DataSet: TDataSet);
 begin
-   DMControlePatrimonial.LocalizacaoLOC_CODIGO.AsInteger := DMBANCO.funcRecuperaProximoIdGenerator('SEQBENS_LOCALIZACAO');
+   DMControlePatrimonial.LocalizacaoLOC_CODIGO.AsInteger := DMBANCO.funcRecuperaProximoIdGenerator('GEN_LOCALIZACAO_BENS');
    DMControlePatrimonial.LocalizacaoLOC_STATUS.ASSTRING  := 'A';
+end;
+
+procedure TDMControlePatrimonial.ManutencaoAfterInsert(DataSet: TDataSet);
+begin
+   DMControlePatrimonial.ManutencaoMAN_CODIGO.ASINTEGER := dmBanco.funcRecuperaProximoIdGenerator('GEN_MANUTENCAO_BENS');
+   DMControlePatrimonial.ManutencaoMAN_AGREGA_CUSTO.AsString := 'S';
 end;
 
 procedure TDMControlePatrimonial.TipoBensAfterInsert(DataSet: TDataSet);
 begin
-   DMControlePatrimonial.TipoBensTPB_CODIGO.AsInteger := dmBanco.funcRecuperaProximoIdGenerator('SEQBENS_TIPO');
+   DMControlePatrimonial.TipoBensTPB_CODIGO.AsInteger := dmBanco.funcRecuperaProximoIdGenerator('GEN_TIPO_BENS');
    DMControlePatrimonial.TipoBensTPB_STATUS.AsString := 'A';
+end;
+
+procedure TDMControlePatrimonial.VerificaCamposRequisidos(Query: TIBQuery);
+var
+   i :integer;
+   sl_filtros : TStringList;
+
+begin
+   try
+      sl_filtros := TStringList.Create;
+
+      Self.QryPadrao := query;
+
+      Filtros := QryPadrao.FieldList;
+
+      for I := 0 to Filtros.Count - 1 do
+      begin
+         if Filtros.Fields[i].Required and not (Filtros.Fields[i].AsString <> emptystr) then
+         begin
+            sl_filtros.Add ('Campo requerido sem informação: ' + Filtros.Fields[i].FieldName + slinebreak);
+
+         end;
+      end;
+
+      if sl_filtros.Text <> EmptyStr then
+      begin
+         showmessage(sl_filtros.Text);
+         exit;
+      end;
+
+   finally
+      FreeAndNil(sl_filtros);
+   end;
 end;
 
 end.

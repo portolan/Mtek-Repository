@@ -2,6 +2,7 @@
   Caption = 'Manuten'#231#227'o de Bens Imobilizados'
   ClientHeight = 533
   ClientWidth = 974
+  OnShow = FormShow
   ExplicitWidth = 990
   ExplicitHeight = 571
   PixelsPerInch = 96
@@ -45,7 +46,7 @@
             Width = 41
             Height = 13
             Caption = 'Empresa'
-            FocusControl = DBEdit1
+            FocusControl = dbBNI_EMPRESA
           end
           object Label2: TLabel
             Left = 79
@@ -53,7 +54,7 @@
             Width = 33
             Height = 13
             Caption = 'C'#243'digo'
-            FocusControl = DBEdit2
+            FocusControl = dbBNI_CODIGO
           end
           object Label5: TLabel
             Left = 24
@@ -61,7 +62,7 @@
             Width = 55
             Height = 13
             Caption = 'Fornecedor'
-            FocusControl = DBEdit5
+            FocusControl = dbBNI_FORNECEDOR
           end
           object Label6: TLabel
             Left = 143
@@ -69,7 +70,7 @@
             Width = 46
             Height = 13
             Caption = 'Descri'#231#227'o'
-            FocusControl = DBEdit6
+            FocusControl = dbBNI_DESCRICAO
           end
           object Label9: TLabel
             Left = 527
@@ -77,7 +78,7 @@
             Width = 114
             Height = 13
             Caption = 'Estado de Conserva'#231#227'o'
-            FocusControl = DBEdit9
+            FocusControl = DBBNI_ESTADO_CONSERVACAO
           end
           object Label11: TLabel
             Left = 25
@@ -85,31 +86,31 @@
             Width = 87
             Height = 13
             Caption = 'Valor de Aquisi'#231#227'o'
-            FocusControl = DBEdit11
+            FocusControl = dbBNI_VLR_AQUISICAO
           end
           object Label12: TLabel
-            Left = 248
+            Left = 232
             Top = 168
             Width = 74
             Height = 13
             Caption = 'Valor Agregado'
-            FocusControl = DBEdit12
+            FocusControl = dbBNI_VLR_AGREGADO
           end
           object Label13: TLabel
-            Left = 352
+            Left = 444
             Top = 168
             Width = 52
             Height = 13
             Caption = 'Valor Atual'
-            FocusControl = DBEdit13
+            FocusControl = dbBNI_VLR_ATUAL
           end
           object Label14: TLabel
-            Left = 464
+            Left = 338
             Top = 168
             Width = 87
             Height = 13
             Caption = 'Perc. Deprecia'#231#227'o'
-            FocusControl = DBEdit14
+            FocusControl = dbBNI_DEPRECIACAO
           end
           object Label4: TLabel
             Left = 24
@@ -117,7 +118,7 @@
             Width = 82
             Height = 13
             Caption = 'Nr. Nota Entrada'
-            FocusControl = DBEdit4
+            FocusControl = dbBNI_NR_NOTA
           end
           object Label10: TLabel
             Left = 128
@@ -125,7 +126,7 @@
             Width = 86
             Height = 13
             Caption = 'Data de Aquisi'#231#227'o'
-            FocusControl = DBEdit10
+            FocusControl = dbBNI_DATA_AQUISICAO
           end
           object Label3: TLabel
             Left = 262
@@ -133,7 +134,7 @@
             Width = 79
             Height = 13
             Caption = 'Numero de Serie'
-            FocusControl = DBEdit3
+            FocusControl = dbBNI_NUM_SERIE
           end
           object Label7: TLabel
             Left = 402
@@ -141,7 +142,7 @@
             Width = 20
             Height = 13
             Caption = 'Tipo'
-            FocusControl = DBEdit7
+            FocusControl = dbBNI_TIPO
           end
           object Label8: TLabel
             Left = 640
@@ -149,53 +150,127 @@
             Width = 54
             Height = 13
             Caption = 'Localiza'#231#227'o'
-            FocusControl = DBEdit8
+            FocusControl = dbBNI_LOCALIZACAO
           end
-          object DBEdit1: TDBEdit
+          object Label15: TLabel
+            Left = 128
+            Top = 168
+            Width = 67
+            Height = 13
+            Caption = 'Valor Residual'
+            FocusControl = dbBNI_VLR_RESIDUAL
+          end
+          object SpeedButton1: TSpeedButton
+            Left = 541
+            Top = 180
+            Width = 25
+            Height = 25
+            Glyph.Data = {
+              AE060000424DAE06000000000000360000002800000017000000170000000100
+              18000000000078060000C40E0000C40E00000000000000000000FFFFFFFFFFFF
+              FFFFFFFFFFFFFEFEFEFEFEFEFDFDFDFBFBFBFCFCFCFDFDFDFEFEFEFDFDFDFEFE
+              FEFDFDFDFCFCFCFCFCFCFCFCFCFEFEFEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+              0000FFFFFFFDFDFDF6F6F6ECECECE2E2E2D7D7D7D0D0D0CACACAB6B6B69C9C9C
+              9494949191919494949C9C9CB7B7B7CBCBCBD0D0D0D8D8D8E1E1E1ECECECF6F6
+              F6FEFEFEFFFFFF000000FFFFFFF8F8F8F6F6F6F6F6F6F9F9F9FFFFFFF0F0F0AF
+              AFAF979797A3A3A4A9AAABA9A9AAA9A9AAA3A3A4969696AEAEAEEFEFEFFFFFFF
+              F9F9F9F5F5F5F7F7F7F9F9F9FFFFFF000000FEFEFEFFFFFFFFFFFFFFFFFFFFFF
+              FFBFBFBF929392AAADAEB1B3B77474745A5552514D48585752757475B2B4B7AD
+              ACAD949393BEBEBEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFF
+              FFFFFFFFFFFFAEAEAE9E9E9FB9BBBF4D4D420A0200231900302400382B002E25
+              00241700090300504D44B9BABE9E9E9FAEAEAEFFFFFFFFFFFFFFFFFFFFFFFF00
+              0000FFFFFFFFFFFFFFFFFFBBBBBBA4A4A4ADAFB1140C00221C003B2E053D2E00
+              3826003D2900392A004136033B2F05221B00160B00AEAEB0A3A4A4BBBBBBFFFF
+              FFFFFFFFFFFFFF000000FFFFFFFFFFFFE3E3E3A2A2A1BABABE130D00302A013E
+              32063F3500746634FFFFFFFFFFFFEEECE2432E004838063F3307332A00120C00
+              BBBCBDA2A2A1E3E3E3FFFFFFFFFFFF000000FFFFFFFFFFFFAEAEAEC2C3C43630
+              282D2604423207493B0C4C3A017B6E34FFFFFFFFFFFFEDEBE04B37004F3F0849
+              3C0B403405312804322D27C3C2C6ADADACFFFFFFFFFFFF000000FFFFFFEEEEEE
+              ADADAD96979A0D0300433704503C055342065E49037F6A26DFDFDCDAD8CDCBC5
+              AD5F4600614E09544405503E054234030E070095969AADADADEEEEEEFFFFFF00
+              0000FFFFFFD4D4D4BBBCBC4948482A24004E3F05594804644E086E5A0482670C
+              C9B46CCCB565B69E407B61006F59076251065B47074C3C082F2200484846BBBB
+              BCD5D5D5FFFFFF000000FFFFFFC7C7C7C5C5C71F1C133B3101554404624D0A6D
+              5C098066098B6F08FFFFFFFFFFFFFFFFFF8261007D64056C5D09624C06534307
+              463A0A1F1C12C5C5C7C7C7C7FFFFFF000000FFFFFFC5C5C5C9C9CA27231C5248
+              1F63551F5E500B694E027260068A6B0BEEEDCBFAFBFFF9FAFFEBE8DA67520065
+              4C00665513766A3A6A623A25231CC9C9CBC5C5C5FFFFFF000000FFFFFFCACACA
+              CBCCCD110E06473F1465581F78672E746724674E00765500967200F8F3D6FFFF
+              FFFFFFFFFDF9F36B6524877B43786C3B655B38140F07CBCCCDC9C9C9FFFFFF00
+              0000FFFFFFD6D6D6CDCECE2A26235348256D5F35776C36938869B9B292C4BF9D
+              928234866700D2CFCAFFFFFFFFFFFFC2BBA985774A7F744F6C6441262420CDCE
+              CFD5D5D5FFFFFF000000FFFFFFE9E9E9CBCBCB626263413A1F756B407C7243BC
+              B6A9FFFFFFFFFFFFE7E3DDB1A366D1CEBDFFFFFFFFFFFFD2CDC38D80578A805A
+              524F345F6060CBCBCBE9E9E9FFFFFF000000FFFFFFFEFEFEC3C3C3C2C3C4221D
+              0B827B5B887E568F8A64FFFFFFFEFDFEFDFDFFFFFFFFFFFFFFFCFCFCFFFFFFAC
+              A791958F6B949073282513C2C2C3C4C4C4FDFDFDFFFFFF000000FEFEFEFFFFFF
+              DEDEDED4D3D468686855503A9990769A936EB9B199FDFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFCAC9B9A69C7FAAA08A66604E656465D2D4D3DCDCDCFFFFFFFFFFFF00
+              0000FFFFFFFFFFFFFFFFFFCCCCCCE0E0E135322F756E5BA9A491AFA58DB3AD8E
+              CFCBB1D8D5C0D2CFB9BEB79EB6AE98B6B5A0827B6D34312DE0E0E1CCCCCCFFFF
+              FFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFF8F8F8CECECEE3E3E54846474C
+              473EBAB7AAC5C2B7CBC7BBD0CABFD3CCC0CDCBC2C9C6BC544F47464545E4E3E5
+              CDCDCDF8F8F8FFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFF7F7
+              F7D3D3D3E4E5E6ACAAAB3A39364A49447B75708F8B867B79724F4C493B3737AB
+              A9AAE5E5E6D2D2D2F9F9F9FFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFF8F8F8
+              F6F6F6F4F4F4F8F8F8FAFAFAE1E1E1D9D9D9E7E7E7D6D6D6B3B5B2A3A4A1B2B3
+              B0D4D4D5E7E7E7D9D9D9E1E1E1FBFBFBF8F8F8F3F3F3F6F6F6F8F8F8FFFFFF00
+              0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFBFBFBEAEAEAE0E0E0
+              DDDEDFDDDEDFDDDEDFE2E1E1EAEAEAFCFCFCFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+              FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000}
+            OnClick = SpeedButton1Click
+          end
+          object dbBNI_EMPRESA: TDBEdit
             Left = 24
             Top = 40
             Width = 49
             Height = 21
             DataField = 'BNI_EMPRESA'
             DataSource = DMControlePatrimonial.DBenImobilizado
+            Enabled = False
             TabOrder = 0
           end
-          object DBEdit2: TDBEdit
+          object dbBNI_CODIGO: TDBEdit
             Left = 79
             Top = 40
             Width = 58
             Height = 21
             DataField = 'BNI_CODIGO'
             DataSource = DMControlePatrimonial.DBenImobilizado
+            Enabled = False
             TabOrder = 1
           end
-          object DBEdit5: TDBEdit
+          object dbBNI_FORNECEDOR: TDBEdit
             Left = 24
             Top = 86
             Width = 88
             Height = 21
             DataField = 'BNI_FORNECEDOR'
             DataSource = DMControlePatrimonial.DBenImobilizado
+            Enabled = False
             TabOrder = 2
           end
-          object DBEdit6: TDBEdit
+          object dbBNI_DESCRICAO: TDBEdit
             Left = 143
             Top = 40
             Width = 671
             Height = 21
             DataField = 'BNI_DESCRICAO'
             DataSource = DMControlePatrimonial.DBenImobilizado
+            Enabled = False
             TabOrder = 3
           end
-          object Edit1: TEdit
+          object dbDESCRICAO_FORNECEDOR: TEdit
             Left = 118
             Top = 86
             Width = 403
             Height = 21
+            Enabled = False
             TabOrder = 4
-            Text = 'Edit1'
           end
-          object DBEdit9: TDBEdit
+          object DBBNI_ESTADO_CONSERVACAO: TDBEdit
             Left = 527
             Top = 86
             Width = 39
@@ -203,53 +278,58 @@
             DataField = 'BNI_ESTADO_CONSERVACAO'
             DataSource = DMControlePatrimonial.DBenImobilizado
             TabOrder = 5
+            OnExit = DBBNI_ESTADO_CONSERVACAOExit
           end
-          object Edit4: TEdit
+          object DBBNI_ESTADO_CONSERVACAO_DESCRICAO: TEdit
             Left = 572
             Top = 86
             Width = 178
             Height = 21
+            Enabled = False
             TabOrder = 6
-            Text = 'Edit2'
           end
-          object DBEdit11: TDBEdit
+          object dbBNI_VLR_AQUISICAO: TDBEdit
             Left = 25
             Top = 184
             Width = 87
             Height = 21
             DataField = 'BNI_VLR_AQUISICAO'
             DataSource = DMControlePatrimonial.DBenImobilizado
+            Enabled = False
             TabOrder = 7
           end
-          object DBEdit12: TDBEdit
-            Left = 248
+          object dbBNI_VLR_AGREGADO: TDBEdit
+            Left = 232
             Top = 184
             Width = 87
             Height = 21
             DataField = 'BNI_VLR_AGREGADO'
             DataSource = DMControlePatrimonial.DBenImobilizado
+            Enabled = False
             TabOrder = 8
           end
-          object DBEdit13: TDBEdit
-            Left = 352
+          object dbBNI_VLR_ATUAL: TDBEdit
+            Left = 444
             Top = 184
             Width = 87
             Height = 21
             DataField = 'BNI_VLR_ATUAL'
             DataSource = DMControlePatrimonial.DBenImobilizado
+            Enabled = False
             TabOrder = 9
           end
-          object DBEdit14: TDBEdit
-            Left = 464
+          object dbBNI_DEPRECIACAO: TDBEdit
+            Left = 338
             Top = 184
             Width = 87
             Height = 21
             DataField = 'BNI_DEPRECIACAO'
             DataSource = DMControlePatrimonial.DBenImobilizado
             TabOrder = 10
+            OnExit = dbBNI_DEPRECIACAOExit
           end
-          object DBRadioGroup1: TDBRadioGroup
-            Left = 829
+          object rdStatus: TDBRadioGroup
+            Left = 820
             Top = 24
             Width = 113
             Height = 37
@@ -275,25 +355,27 @@
             DataSource = DMControlePatrimonial.DBenImobilizado
             TabOrder = 12
           end
-          object DBEdit4: TDBEdit
+          object dbBNI_NR_NOTA: TDBEdit
             Left = 24
             Top = 129
             Width = 88
             Height = 21
             DataField = 'BNI_NR_NOTA'
             DataSource = DMControlePatrimonial.DBenImobilizado
+            Enabled = False
             TabOrder = 13
           end
-          object DBEdit10: TDBEdit
+          object dbBNI_DATA_AQUISICAO: TDBEdit
             Left = 128
             Top = 129
             Width = 113
             Height = 21
             DataField = 'BNI_DATA_AQUISICAO'
             DataSource = DMControlePatrimonial.DBenImobilizado
+            Enabled = False
             TabOrder = 14
           end
-          object DBEdit3: TDBEdit
+          object dbBNI_NUM_SERIE: TDBEdit
             Left = 262
             Top = 129
             Width = 134
@@ -301,8 +383,9 @@
             DataField = 'BNI_NUM_SERIE'
             DataSource = DMControlePatrimonial.DBenImobilizado
             TabOrder = 15
+            OnExit = dbBNI_NUM_SERIEExit
           end
-          object DBEdit7: TDBEdit
+          object dbBNI_TIPO: TDBEdit
             Left = 402
             Top = 129
             Width = 39
@@ -310,16 +393,17 @@
             DataField = 'BNI_TIPO'
             DataSource = DMControlePatrimonial.DBenImobilizado
             TabOrder = 16
+            OnExit = dbBNI_TIPOExit
           end
-          object Edit2: TEdit
+          object dbBNI_TIPO_DESCRICAO: TEdit
             Left = 447
             Top = 129
             Width = 178
             Height = 21
+            Enabled = False
             TabOrder = 17
-            Text = 'Edit2'
           end
-          object DBEdit8: TDBEdit
+          object dbBNI_LOCALIZACAO: TDBEdit
             Left = 639
             Top = 129
             Width = 39
@@ -327,14 +411,24 @@
             DataField = 'BNI_LOCALIZACAO'
             DataSource = DMControlePatrimonial.DBenImobilizado
             TabOrder = 18
+            OnExit = dbBNI_LOCALIZACAOExit
           end
-          object Edit3: TEdit
+          object dbBNI_LOCALIZACAO_DESCRICAO: TEdit
             Left = 684
             Top = 129
             Width = 178
             Height = 21
+            Enabled = False
             TabOrder = 19
-            Text = 'Edit2'
+          end
+          object dbBNI_VLR_RESIDUAL: TDBEdit
+            Left = 128
+            Top = 184
+            Width = 87
+            Height = 21
+            DataField = 'BNI_VLR_RESIDUAL'
+            DataSource = DMControlePatrimonial.DBenImobilizado
+            TabOrder = 20
           end
         end
       end
@@ -383,31 +477,26 @@
             item
               Expanded = False
               FieldName = 'MAN_VLR_COMPONENTE'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_VLR_MANUTENCAO'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_VLR_TOTAL'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_AGREGA_CUSTO'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_NUM_SERIE'
-              Width = 64
               Visible = True
             end>
         end
@@ -558,6 +647,7 @@
               3A3A3A3A3A3A3A3A3B3B3D4622010000000000000000000C36453D3A3A3A3A3A
               3D45360C000000000000000000000000000A223541474135220A000000000000
               0000}
+            OnClick = sbNovoClick
             ExplicitLeft = 9
             ExplicitTop = 2
           end

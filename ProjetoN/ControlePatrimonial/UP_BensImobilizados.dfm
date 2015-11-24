@@ -97,15 +97,10 @@ inherited P_BensImobilizados: TP_BensImobilizados
       end
     end
   end
-  inherited pnCabecalho: TPanel
-    inherited gbFiltro: TGroupBox
-      ExplicitWidth = 848
-      inherited editPesquisa: TEdit
-        ExplicitWidth = 454
-      end
-      inherited Pesquisar: TButton
-        ExplicitLeft = 767
-      end
+  inherited pnRodape: TPanel
+    inherited sbAlterar: TSpeedButton
+      ExplicitLeft = 91
+      ExplicitTop = 3
     end
   end
 end

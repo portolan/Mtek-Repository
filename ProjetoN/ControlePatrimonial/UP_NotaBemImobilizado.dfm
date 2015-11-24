@@ -27,7 +27,15 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnColExit = DBGrid1ColExit
+    OnDrawColumnCell = DBGrid1DrawColumnCell
+    OnKeyPress = DBGrid1KeyPress
     Columns = <
+      item
+        Expanded = False
+        FieldName = 'CDS_BO_SELECIONADO'
+        Visible = True
+      end
       item
         Expanded = False
         FieldName = 'CDS_EMPRESA'
@@ -36,11 +44,6 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
       item
         Expanded = False
         FieldName = 'CDS_FORNECEDOR'
-        Visible = True
-      end
-      item
-        Expanded = False
-        FieldName = 'CDS_FORN_DESC'
         Visible = True
       end
       item
@@ -73,7 +76,6 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
       Width = 41
       Height = 13
       Caption = 'Empresa'
-      FocusControl = DBEdit1
     end
     object Label5: TLabel
       Left = 24
@@ -81,7 +83,6 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
       Width = 55
       Height = 13
       Caption = 'Fornecedor'
-      FocusControl = DBEdit5
     end
     object Label2: TLabel
       Left = 303
@@ -89,7 +90,6 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
       Width = 33
       Height = 13
       Caption = 'C'#243'digo'
-      FocusControl = DBEdit2
     end
     object Label4: TLabel
       Left = 303
@@ -97,7 +97,6 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
       Width = 82
       Height = 13
       Caption = 'Nr. Nota Entrada'
-      FocusControl = DBEdit4
     end
     object lbEmpresa: TLabel
       Left = 88
@@ -161,7 +160,7 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
         0000000000000000000000000000}
       OnClick = sbPesquisarClick
     end
-    object SpeedButton1: TSpeedButton
+    object bt_GerarEntrada: TSpeedButton
       Left = 560
       Top = 56
       Width = 113
@@ -198,6 +197,7 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
         1C010000000000000000000F2B39302D2D2D2D2D30392B0F0000000000000000
         00000000000D1C2A343B342A1C0D000000000000000000000000000000000000
         0000000000000000000000000000}
+      OnClick = bt_GerarEntradaClick
     end
     object sbCancelar: TSpeedButton
       Left = 560
@@ -237,44 +237,48 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
         0000000000000000000000000000}
       OnClick = sbCancelarClick
     end
-    object DBEdit1: TDBEdit
+    object DBCheckBox1: TDBCheckBox
+      Left = 144
+      Top = 112
+      Width = 97
+      Height = 17
+      DataField = 'CDS_BO_SELECIONADO'
+      DataSource = DProdutos
+      TabOrder = 0
+      Visible = False
+      OnClick = DBCheckBox1Click
+    end
+    object DBEdit1: TEdit
       Left = 24
-      Top = 40
+      Top = 43
       Width = 58
       Height = 21
-      DataField = 'BNI_EMPRESA'
-      DataSource = DMControlePatrimonial.DBenImobilizado
-      TabOrder = 0
+      TabOrder = 1
       OnExit = DBEdit1Exit
     end
-    object DBEdit5: TDBEdit
-      Left = 24
-      Top = 86
-      Width = 58
-      Height = 21
-      DataField = 'BNI_FORNECEDOR'
-      DataSource = DMControlePatrimonial.DBenImobilizado
-      TabOrder = 1
-      OnExit = DBEdit5Exit
-    end
-    object DBEdit2: TDBEdit
+    object DBEdit2: TEdit
       Left = 303
       Top = 40
       Width = 58
       Height = 21
-      DataField = 'BNI_CODIGO'
-      DataSource = DMControlePatrimonial.DBenImobilizado
+      OEMConvert = True
       TabOrder = 2
       OnExit = DBEdit2Exit
     end
-    object DBEdit4: TDBEdit
+    object DBEdit5: TEdit
+      Left = 24
+      Top = 86
+      Width = 58
+      Height = 21
+      TabOrder = 3
+      OnExit = DBEdit5Exit
+    end
+    object DBEdit4: TEdit
       Left = 303
       Top = 86
       Width = 88
       Height = 21
-      DataField = 'BNI_NR_NOTA'
-      DataSource = DMControlePatrimonial.DBenImobilizado
-      TabOrder = 3
+      TabOrder = 4
       OnExit = DBEdit4Exit
     end
   end
@@ -283,6 +287,10 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
     Params = <>
     Left = 400
     Top = 192
+    object cdsProdutosCDS_BO_SELECIONADO: TBooleanField
+      DisplayLabel = 'Selecionado'
+      FieldName = 'CDS_BO_SELECIONADO'
+    end
     object cdsProdutosCDS_EMPRESA: TIntegerField
       DisplayLabel = 'Empresa'
       FieldName = 'CDS_EMPRESA'
@@ -290,11 +298,6 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
     object cdsProdutosCDS_FORNECEDOR: TIntegerField
       DisplayLabel = 'Cod. Fornecedor'
       FieldName = 'CDS_FORNECEDOR'
-    end
-    object cdsProdutosCDS_FORN_DESC: TStringField
-      DisplayLabel = 'Fornecedor'
-      FieldName = 'CDS_FORN_DESC'
-      Size = 100
     end
     object cdsProdutosCDS_NOTA: TIntegerField
       DisplayLabel = 'Nr. Nota'
@@ -307,9 +310,6 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
     object cdsProdutosCDS_QTD_BEN: TFloatField
       DisplayLabel = 'Quantidade em Bens'
       FieldName = 'CDS_QTD_BEN'
-    end
-    object cdsProdutosCDS_DATA_AQUISICAO: TDateField
-      FieldName = 'CDS_DATA_AQUISICAO'
     end
   end
   object DProdutos: TDataSource
