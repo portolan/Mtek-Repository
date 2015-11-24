@@ -116,13 +116,11 @@ uses
   UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda},
   UR_prevtitulos in 'Caixa\UR_prevtitulos.pas' {REL_prevtitulos},
   UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao},
-  UDM_PCP in 'datamodulo\UDM_PCP.pas' {DM_PCP: TDataModule};
-  UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao};
-  UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao},
-  Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag},
-  Um_condicaop in 'contas_pagar\Um_condicaop.pas' {m_condicaopag};
+  UDM_PCP in 'datamodulo\UDM_PCP.pas' {DM_PCP: TDataModule},
+  Um_condicaop in 'contas_pagar\Um_condicaop.pas' {m_condicaopag},
+  Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag};
 
-{$R *.res}
+  {$R *.res}
 
 begin
   Application.Initialize;
@@ -139,10 +137,11 @@ begin
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDMControlePatrimonial, DMControlePatrimonial);
   Application.CreateForm(TDM_PCP, DM_PCP);
-
   Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
   Application.CreateForm(TTelaInicial, TelaInicial);
+  Application.CreateForm(Tm_condicaopag, m_condicaopag);
+  Application.CreateForm(Tp_condicaopag, p_condicaopag);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
 end.
