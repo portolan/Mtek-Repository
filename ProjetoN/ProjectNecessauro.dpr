@@ -120,7 +120,7 @@ uses
   Um_condicaop in 'contas_pagar\Um_condicaop.pas' {m_condicaopag},
   Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag};
 
-  {$R *.res}
+{$R *.res}
 
 begin
   Application.Initialize;
@@ -140,8 +140,6 @@ begin
   Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
   Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(Tm_condicaopag, m_condicaopag);
-  Application.CreateForm(Tp_condicaopag, p_condicaopag);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
 end.
