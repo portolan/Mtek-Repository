@@ -23,6 +23,7 @@ type
     editDtFinal: TMaskEdit;
     SpeedButton5: TSpeedButton;
     procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,10 +39,19 @@ implementation
 
 uses UR_RELATORIOPCP, dm000, UDM_PCP;
 
+procedure TFRELATORIOPCP.SpeedButton1Click(Sender: TObject);
+begin
+      pcprelatorio.q_ordemproducao.Close;
+      pcprelatorio.q_ordemproducao.SQL.Text := 'select * from ordem_producao';
+      pcprelatorio.q_ordemproducao.Open;
+      pcprelatorio.frxOrdemproducao.ShowReport();
+
+end;
+
 procedure TFRELATORIOPCP.SpeedButton5Click(Sender: TObject);
 begin
-pcprelatorio.frxOrdempordata.Variables['dtInicial'] := strToDate(editDtInicial.Text);
-    pcprelatorio.frxOrdempordata.Variables['dtFinal'] := strToDate(editDtFinal.Text);
+    pcprelatorio.frxOrdempordata.Variables['dtinicial'] := strToDate(editDtInicial.Text);
+    pcprelatorio.frxOrdempordata.Variables['dtfinal'] := strToDate(editDtFinal.Text);
 
     pcprelatorio.q_ordemproducao.Close;
     pcprelatorio.q_ordemproducao.SQL.Text := ' SELECT O.*, '+
@@ -52,8 +62,8 @@ pcprelatorio.frxOrdempordata.Variables['dtInicial'] := strToDate(editDtInicial.T
              ' and o.op_empresa=f.ft_empresa  '+
              ' INNER JOIN DEPARTAMENTO D ON o.op_departamento = D.DEP_COD '+
              ' where o.op_dt_pedido between :dtinicial and :dtfinal';
-    pcprelatorio.q_ordemproducao.ParamByName('dtInicial').Value := strToDate(editDtInicial.Text);
-    pcprelatorio.q_ordemproducao.ParamByName('dtFinal').Value   := strToDate(editDtFinal.Text);
+    pcprelatorio.q_ordemproducao.ParamByName('dtinicial').Value := strToDate(editDtInicial.Text);
+    pcprelatorio.q_ordemproducao.ParamByName('dtfinal').Value   := strToDate(editDtFinal.Text);
     pcprelatorio.q_ordemproducao.Open;
 
     pcprelatorio.frxOrdempordata.ShowReport();

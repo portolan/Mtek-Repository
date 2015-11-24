@@ -294,8 +294,8 @@ object FEstoqueRelatorios: TFEstoqueRelatorios
       OnClick = sbPrateleiraClick
     end
     object Image1: TImage
-      Left = 162
-      Top = 32
+      Left = 154
+      Top = 40
       Width = 110
       Height = 64
       Picture.Data = {

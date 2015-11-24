@@ -119,6 +119,12 @@ uses
   UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao},
   Um_condicaop in 'contas_pagar\Um_condicaop.pas' {m_condicaopag},
   Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag},
+  UR_RELATORIOPCP in 'pcp\UR_RELATORIOPCP.pas' {pcprelatorio: TDataModule},
+  UF_RELATORIOPCP in 'pcp\UF_RELATORIOPCP.pas' {FRELATORIOPCP};
+
+  Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag};
+
+  Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag},
   HP_VALORDEPRECIACAO in 'ControlePatrimonial\HP_VALORDEPRECIACAO.pas' {H_FormaCalcDep},
   UM_ManutencaoBen in 'ControlePatrimonial\UM_ManutencaoBen.pas' {M_Manutencao},
   UM_Componente in 'ControlePatrimonial\UM_Componente.pas' {MComponente};
@@ -146,9 +152,15 @@ begin
   Application.CreateForm(Tm_condicaopag, m_condicaopag);
   Application.CreateForm(Tp_condicaopag, p_condicaopag);
   Application.CreateForm(TUR_Relatorio, UR_Relatorio);
+
+  Application.CreateForm(Tpcprelatorio, pcprelatorio);
+  Application.CreateForm(TFRELATORIOPCP, FRELATORIOPCP);
+
+
   Application.CreateForm(TH_FormaCalcDep, H_FormaCalcDep);
   Application.CreateForm(TM_Manutencao, M_Manutencao);
   Application.CreateForm(TMComponente, MComponente);
+
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
 end.

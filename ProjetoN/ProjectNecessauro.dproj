@@ -537,6 +537,17 @@
             <Form>p_condicaopag</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+
+        <DCCReference Include="pcp\UR_RELATORIOPCP.pas">
+            <Form>pcprelatorio</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="pcp\UF_RELATORIOPCP.pas">
+            <Form>FRELATORIOPCP</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+
         <DCCReference Include="ControlePatrimonial\HP_VALORDEPRECIACAO.pas">
             <Form>H_FormaCalcDep</Form>
             <FormType>dfm</FormType>
@@ -549,6 +560,7 @@
             <Form>MComponente</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

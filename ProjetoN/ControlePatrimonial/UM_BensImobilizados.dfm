@@ -33,6 +33,10 @@
       TabOrder = 0
       object C_BensImobilizados: TTabSheet
         Caption = 'Bens Imobilizados'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object GroupBox1: TGroupBox
           Left = 0
           Top = 0
@@ -435,6 +439,10 @@
       object Manutencão: TTabSheet
         Caption = 'Manutenc'#227'o'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object DBGrid1: TDBGrid
           Left = 0
           Top = 0
@@ -477,26 +485,31 @@
             item
               Expanded = False
               FieldName = 'MAN_VLR_COMPONENTE'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_VLR_MANUTENCAO'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_VLR_TOTAL'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_AGREGA_CUSTO'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_NUM_SERIE'
+              Width = 64
               Visible = True
             end>
         end

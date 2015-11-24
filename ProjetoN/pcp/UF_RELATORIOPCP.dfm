@@ -26,6 +26,7 @@ object FRELATORIOPCP: TFRELATORIOPCP
       Width = 89
       Height = 22
       Caption = 'Gerar '
+      OnClick = SpeedButton1Click
     end
   end
   object GroupBox2: TGroupBox

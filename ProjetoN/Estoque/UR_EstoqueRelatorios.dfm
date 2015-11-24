@@ -1,7 +1,7 @@
 object EstoqueRelatorios: TEstoqueRelatorios
   OldCreateOrder = False
-  Height = 351
-  Width = 597
+  Height = 373
+  Width = 624
   object qMovimentoPorData: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
@@ -1897,7 +1897,7 @@ object EstoqueRelatorios: TEstoqueRelatorios
       'begin'
       ''
       'end.')
-    Left = 280
+    Left = 288
     Top = 8
     Datasets = <
       item
@@ -2492,6 +2492,7 @@ object EstoqueRelatorios: TEstoqueRelatorios
           TransparentColor = clWhite
         end
         object Memo1: TfrxMemoView
+          Left = 3.779530000000000000
           Top = 71.811070000000000000
           Width = 60.472480000000000000
           Height = 22.677165350000000000
@@ -2785,8 +2786,8 @@ object EstoqueRelatorios: TEstoqueRelatorios
     CloseDataSource = False
     DataSet = qEstoqueAbaixo
     BCDToCurrency = False
-    Left = 280
-    Top = 56
+    Left = 288
+    Top = 72
   end
   object qEstoqueAbaixo: TIBQuery
     Database = dmBanco.Banco

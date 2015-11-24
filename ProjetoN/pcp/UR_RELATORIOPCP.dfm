@@ -10,10 +10,11 @@ object pcprelatorio: Tpcprelatorio
     PreviewOptions.Zoom = 1.000000000000000000
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
-    ReportOptions.CreateDate = 42332.540989375000000000
-    ReportOptions.LastChange = 42332.540989375000000000
+    ReportOptions.CreateDate = 42332.633317835700000000
+    ReportOptions.LastChange = 42332.633317835700000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
+      ''
       'begin'
       ''
       'end.')
@@ -22,7 +23,7 @@ object pcprelatorio: Tpcprelatorio
     Datasets = <
       item
         DataSet = frxDBOrdemproducao
-        DataSetName = 'frxDBDataset1'
+        DataSetName = 'frxDBOp'
       end>
     Variables = <>
     Style = <>
@@ -38,76 +39,137 @@ object pcprelatorio: Tpcprelatorio
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
-      object frxDBDataset1OP_EMPRESA: TfrxMemoView
-        Left = 7.559060000000000000
-        Top = 68.031540000000000000
-        Width = 79.370130000000000000
-        Height = 18.897650000000000000
-        DataField = 'OP_EMPRESA'
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Height = 52.913420000000000000
+        Top = 72.000000000000000000
+        Width = 718.110700000000000000
         DataSet = frxDBOrdemproducao
-        DataSetName = 'frxDBDataset1'
-        Memo.UTF8W = (
-          '[frxDBDataset1."OP_EMPRESA"]')
+        DataSetName = 'frxDBOp'
+        RowCount = 1
+        object frxDBOpOP_QTD: TfrxMemoView
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'OP_COD'
+          DataSet = frxDBOrdemproducao
+          DataSetName = 'frxDBOp'
+          Memo.UTF8W = (
+            '[frxDBOp."OP_COD"]')
+        end
+        object Memo2: TfrxMemoView
+          Left = 83.149660000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'OP_EMPRESA'
+          DataSet = frxDBOrdemproducao
+          DataSetName = 'frxDBOp'
+          Memo.UTF8W = (
+            '[frxDBOp."OP_EMPRESA"]')
+        end
+        object Memo3: TfrxMemoView
+          Left = 170.078850000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'OP_DEPARTAMENTO'
+          DataSet = frxDBOrdemproducao
+          DataSetName = 'frxDBOp'
+          Memo.UTF8W = (
+            '[frxDBOp."OP_DEPARTAMENTO"]')
+        end
+        object Memo4: TfrxMemoView
+          Left = 257.008040000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'OP_PRODUTO'
+          DataSet = frxDBOrdemproducao
+          DataSetName = 'frxDBOp'
+          Memo.UTF8W = (
+            '[frxDBOp."OP_PRODUTO"]')
+        end
+        object Memo5: TfrxMemoView
+          Left = 340.157700000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'OP_TIPO'
+          DataSet = frxDBOrdemproducao
+          DataSetName = 'frxDBOp'
+          Memo.UTF8W = (
+            '[frxDBOp."OP_TIPO"]')
+        end
+        object Memo6: TfrxMemoView
+          Left = 423.307360000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'OP_QTD'
+          DataSet = frxDBOrdemproducao
+          DataSetName = 'frxDBOp'
+          Memo.UTF8W = (
+            '[frxDBOp."OP_QTD"]')
+        end
+        object Memo7: TfrxMemoView
+          Left = 510.236550000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'OP_DT_PEDIDO'
+          DataSet = frxDBOrdemproducao
+          DataSetName = 'frxDBOp'
+          Memo.UTF8W = (
+            '[frxDBOp."OP_DT_PEDIDO"]')
+        end
+        object Memo8: TfrxMemoView
+          Left = 585.827150000000000000
+          Top = -0.000000000000000007
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'OP_DT_ENTREGA'
+          DataSet = frxDBOrdemproducao
+          DataSetName = 'frxDBOp'
+          Memo.UTF8W = (
+            '[frxDBOp."OP_DT_ENTREGA"]')
+        end
+        object Memo9: TfrxMemoView
+          Left = 672.756340000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          DataField = 'OP_STATUS'
+          DataSet = frxDBOrdemproducao
+          DataSetName = 'frxDBOp'
+          Memo.UTF8W = (
+            '[frxDBOp."OP_STATUS"]')
+        end
       end
-      object frxDBDataset1OP_COD: TfrxMemoView
-        Left = 207.874150000000000000
-        Top = 68.031540000000000000
-        Width = 79.370130000000000000
-        Height = 18.897650000000000000
-        DataField = 'OP_COD'
-        DataSet = frxDBOrdemproducao
-        DataSetName = 'frxDBDataset1'
-        Memo.UTF8W = (
-          '[frxDBDataset1."OP_COD"]')
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 144.000000000000000000
+        Width = 718.110700000000000000
+        object Memo1: TfrxMemoView
+          Left = 642.520100000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          HAlign = haRight
+          Memo.UTF8W = (
+            '[Page#]')
+        end
       end
-      object frxDBDataset1OP_DEPARTAMENTO: TfrxMemoView
-        Left = 105.826840000000000000
-        Top = 68.031540000000000000
-        Width = 79.370130000000000000
-        Height = 18.897650000000000000
-        DataField = 'OP_DEPARTAMENTO'
-        DataSet = frxDBOrdemproducao
-        DataSetName = 'frxDBDataset1'
-        Memo.UTF8W = (
-          '[frxDBDataset1."OP_DEPARTAMENTO"]')
-      end
-      object frxDBDataset1OP_PRODUTO: TfrxMemoView
-        Left = 306.141930000000000000
-        Top = 68.031540000000000000
-        Width = 86.929190000000000000
-        Height = 18.897650000000000000
-        DataField = 'OP_PRODUTO'
-        DataSet = frxDBOrdemproducao
-        DataSetName = 'frxDBDataset1'
-        Memo.UTF8W = (
-          '[frxDBDataset1."OP_PRODUTO"]')
-      end
-      object frxDBDataset1OP_TIPO: TfrxMemoView
-        Left = 495.118430000000000000
-        Top = 68.031540000000000000
-        Width = 94.488250000000000000
-        Height = 18.897650000000000000
-        DataField = 'OP_TIPO'
-        DataSet = frxDBOrdemproducao
-        DataSetName = 'frxDBDataset1'
-        Memo.UTF8W = (
-          '[frxDBDataset1."OP_TIPO"]')
-      end
-      object frxDBDataset1OP_QTD: TfrxMemoView
-        Left = 408.189240000000000000
-        Top = 68.031540000000000000
-        Width = 79.370130000000000000
-        Height = 18.897650000000000000
-        DataField = 'OP_QTD'
-        DataSet = frxDBOrdemproducao
-        DataSetName = 'frxDBDataset1'
-        Memo.UTF8W = (
-          '[frxDBDataset1."OP_QTD"]')
+      object ASDAS: TfrxReportTitle
+        FillType = ftBrush
+        Height = 37.795300000000000000
+        Top = 16.000000000000000000
+        Width = 718.110700000000000000
+        object Memo10: TfrxMemoView
+          Left = 200.315090000000000000
+          Top = 7.559060000000000000
+          Width = 332.598640000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            'Relat'#243'rio PCP-Ordens de producoes')
+        end
       end
     end
   end
   object frxDBOrdemproducao: TfrxDBDataset
-    UserName = 'frxDBDataset1'
+    UserName = 'frxDBOp'
     CloseDataSource = False
     FieldAliases.Strings = (
       'OP_VENDAS=OP_VENDAS'
@@ -136,7 +198,13 @@ object pcprelatorio: Tpcprelatorio
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select * from ordem_producao')
+      
+        'select A.OP_VENDAS, A.OP_EMPRESA, A.OP_FICHATECNICA, A.OP_DESCRI' +
+        'CAO, A.OP_TIPO, A.OP_QTD, A.OP_DT_PEDIDO,'
+      
+        '       A.OP_DT_ENTREGA, A.OP_STATUS, A.OP_COMPRAS, A.OP_COD, A.O' +
+        'P_PRODUTO, A.OP_DEPARTAMENTO '
+      'FROM  ORDEM_PRODUCAO A')
     Left = 48
     Top = 136
     object q_ordemproducaoOP_VENDAS: TIntegerField
@@ -144,38 +212,46 @@ object pcprelatorio: Tpcprelatorio
       Origin = '"ORDEM_PRODUCAO"."OP_VENDAS"'
     end
     object q_ordemproducaoOP_EMPRESA: TIntegerField
+      DisplayLabel = 'Empresa'
       FieldName = 'OP_EMPRESA'
       Origin = '"ORDEM_PRODUCAO"."OP_EMPRESA"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object q_ordemproducaoOP_FICHATECNICA: TIntegerField
+      DisplayLabel = 'Ficha_Tecnica'
       FieldName = 'OP_FICHATECNICA'
       Origin = '"ORDEM_PRODUCAO"."OP_FICHATECNICA"'
     end
     object q_ordemproducaoOP_DESCRICAO: TIBStringField
+      DisplayLabel = 'Descricao'
       FieldName = 'OP_DESCRICAO'
       Origin = '"ORDEM_PRODUCAO"."OP_DESCRICAO"'
       Size = 50
     end
     object q_ordemproducaoOP_TIPO: TIBStringField
+      DisplayLabel = 'Tipo'
       FieldName = 'OP_TIPO'
       Origin = '"ORDEM_PRODUCAO"."OP_TIPO"'
       Size = 30
     end
     object q_ordemproducaoOP_QTD: TIntegerField
+      DisplayLabel = 'Quantidade'
       FieldName = 'OP_QTD'
       Origin = '"ORDEM_PRODUCAO"."OP_QTD"'
     end
     object q_ordemproducaoOP_DT_PEDIDO: TDateField
+      DisplayLabel = 'dt_pedido'
       FieldName = 'OP_DT_PEDIDO'
       Origin = '"ORDEM_PRODUCAO"."OP_DT_PEDIDO"'
     end
     object q_ordemproducaoOP_DT_ENTREGA: TDateField
+      DisplayLabel = 'dt_entrega'
       FieldName = 'OP_DT_ENTREGA'
       Origin = '"ORDEM_PRODUCAO"."OP_DT_ENTREGA"'
     end
     object q_ordemproducaoOP_STATUS: TIBStringField
+      DisplayLabel = 'Status'
       FieldName = 'OP_STATUS'
       Origin = '"ORDEM_PRODUCAO"."OP_STATUS"'
       Size = 1
@@ -185,12 +261,14 @@ object pcprelatorio: Tpcprelatorio
       Origin = '"ORDEM_PRODUCAO"."OP_COMPRAS"'
     end
     object q_ordemproducaoOP_COD: TIntegerField
+      DisplayLabel = 'C'#243'digo da Ordem'
       FieldName = 'OP_COD'
       Origin = '"ORDEM_PRODUCAO"."OP_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object q_ordemproducaoOP_PRODUTO: TIBStringField
+      DisplayLabel = 'Produto'
       FieldName = 'OP_PRODUTO'
       Origin = '"ORDEM_PRODUCAO"."OP_PRODUTO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -198,6 +276,7 @@ object pcprelatorio: Tpcprelatorio
       Size = 30
     end
     object q_ordemproducaoOP_DEPARTAMENTO: TIntegerField
+      DisplayLabel = 'Departamento'
       FieldName = 'OP_DEPARTAMENTO'
       Origin = '"ORDEM_PRODUCAO"."OP_DEPARTAMENTO"'
       Required = True
@@ -348,7 +427,7 @@ object pcprelatorio: Tpcprelatorio
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42332.540989375000000000
-    ReportOptions.LastChange = 42332.612195787030000000
+    ReportOptions.LastChange = 42332.612195787000000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -407,17 +486,6 @@ object pcprelatorio: Tpcprelatorio
         DataSetName = 'frxDBOrdempordata'
         Memo.UTF8W = (
           '[frxDBOrdempordata."OP_DEPARTAMENTO"]')
-      end
-      object frxDBDataset1OP_PRODUTO: TfrxMemoView
-        Left = 272.126160000000000000
-        Top = 75.590600000000000000
-        Width = 86.929190000000000000
-        Height = 18.897650000000000000
-        DataField = 'OP_PRODUTO'
-        DataSet = frxDBOrdempordata
-        DataSetName = 'frxDBOrdempordata'
-        Memo.UTF8W = (
-          '[frxDBOrdempordata."OP_PRODUTO"]')
       end
       object frxDBDataset1OP_TIPO: TfrxMemoView
         Left = 453.543600000000000000
@@ -492,6 +560,17 @@ object pcprelatorio: Tpcprelatorio
         Font.Height = -12
         Font.Name = 'Arial'
         Font.Style = []
+      end
+      object frxDBOrdempordataOP_PRODUTO: TfrxMemoView
+        Left = 268.346630000000000000
+        Top = 75.811070000000000000
+        Width = 90.708720000000000000
+        Height = 18.897650000000000000
+        DataField = 'OP_PRODUTO'
+        DataSet = frxDBOrdempordata
+        DataSetName = 'frxDBOrdempordata'
+        Memo.UTF8W = (
+          '[frxDBOrdempordata."OP_PRODUTO"]')
       end
     end
   end
