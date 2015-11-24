@@ -6,72 +6,71 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg, UDM_contasreceber,
-  UM_contasreceber, UP_contasreceber, Vcl.ComCtrls, IBX.IBQuery, Up_Pedido_Venda,
-  Vcl.Imaging.pngimage;
+  UM_contasreceber, UP_contasreceber, Vcl.ComCtrls, IBX.IBQuery, Up_Pedido_Venda;
 
 type
   TTelaInicial = class(TForm)
-    Image2: TImage;
-    Image5: TImage;
-    Image8: TImage;
-    Image10: TImage;
-    Image6: TImage;
     MainMenu1: TMainMenu;
-    Cadastros1: TMenuItem;
-    Pessoas1: TMenuItem;
     Estoque1: TMenuItem;
-    Produtos1: TMenuItem;
-    ProdutosemEstoque1: TMenuItem;
+    PCP1: TMenuItem;
+    Compras1: TMenuItem;
+    ControledeVendas1: TMenuItem;
+    Financeiro1: TMenuItem;
+    Contbil1: TMenuItem;
+    Manuteno1: TMenuItem;
+    Sair1: TMenuItem;
     EnstradaSada1: TMenuItem;
     Marca1: TMenuItem;
-    Categoria1: TMenuItem;
-    Bloco1: TMenuItem;
-    Prateleira1: TMenuItem;
-    Relatrios1: TMenuItem;
-    AjudacomEstoque1: TMenuItem;
-    PCP1: TMenuItem;
+    Produtos1: TMenuItem;
     FichaTcnica1: TMenuItem;
     OrdemdeProduo1: TMenuItem;
-    Producao: TMenuItem;
-    E1: TMenuItem;
-    producao1: TMenuItem;
-    Fichatcnicasdeprodutos1: TMenuItem;
-    Ordemproducao1: TMenuItem;
-    Entregas1: TMenuItem;
-    Compras1: TMenuItem;
-    SolicitaodeRequisisio1: TMenuItem;
     CotaoFornecedor1: TMenuItem;
     PedidodeCompra1: TMenuItem;
-    NotasdeEntrada1: TMenuItem;
-    ControledeVendas1: TMenuItem;
+    SolicitaodeRequisisio1: TMenuItem;
     Oramento1: TMenuItem;
     PedidodeVenda1: TMenuItem;
-    N1: TMenuItem;
-    CondiesdePagamento2: TMenuItem;
-    Financeiro1: TMenuItem;
     ContasaPagar1: TMenuItem;
     ContasaReceber1: TMenuItem;
     FluxodeCaixa1: TMenuItem;
-    ContasBancarias1: TMenuItem;
-    Condiesdepagamento1: TMenuItem;
-    Contbil1: TMenuItem;
+    Manuteno3: TMenuItem;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Image4: TImage;
+    Image5: TImage;
+    Image6: TImage;
+    Image7: TImage;
+    Image8: TImage;
+    Image9: TImage;
     CentrodeCustos1: TMenuItem;
     CentrodeCustos2: TMenuItem;
     Empresas1: TMenuItem;
-    Departamentos1: TMenuItem;
     PlanodeContas1: TMenuItem;
+    Producao: TMenuItem;
+    Bloco1: TMenuItem;
+    Prateleira1: TMenuItem;
+    Categoria1: TMenuItem;
+    Departamentos1: TMenuItem;
+    E1: TMenuItem;
     Histricos1: TMenuItem;
     Relatrios2: TMenuItem;
+    ProdutosemEstoque1: TMenuItem;
+    Relatrios1: TMenuItem;
+    ipodeErro1: TMenuItem;
+    Sobre1: TMenuItem;
+    ContasBancarias1: TMenuItem;
+    Condiesdepagamento1: TMenuItem;
+    Image10: TImage;
+    NotasdeEntrada1: TMenuItem;
+    Pessoa1: TMenuItem;
+    AjudacomEstoque1: TMenuItem;
     ControlePatrimonial1: TMenuItem;
     ipodeBemImobilizado1: TMenuItem;
     Localizao1: TMenuItem;
     EstadodeConservao1: TMenuItem;
     BemImobilizado1: TMenuItem;
-    Manuteno1: TMenuItem;
-    Manuteno3: TMenuItem;
-    ipodeErro1: TMenuItem;
-    Sobre1: TMenuItem;
-    Sair1: TMenuItem;
+    N1: TMenuItem;
+    CondiesdePagamento2: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -111,8 +110,6 @@ type
     procedure BemImobilizado1Click(Sender: TObject);
     procedure NotasdeEntrada1Click(Sender: TObject);
     procedure Oramento1Click(Sender: TObject);
-    procedure Condiesdepagamento1Click(Sender: TObject);
-    procedure Pessoas1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -138,8 +135,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UP_contabancaria, UDM_Estoque, R_contabil, UDM_Caixa, UDM_contabil,
   Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico, UP_SolicitacaoCompra,
   UP_Cotacao, UP_PedCompra, UF_EstoqueAjuda, UP_TipoBens, UP_Localizacao,
-  UP_EstadoConservacao, UP_NotaBemImobilizado, UP_Pessoa, UP_NotaEntrada,
-  Up_condicaop;
+  UP_EstadoConservacao, UP_NotaBemImobilizado, UP_Pessoa, UP_NotaEntrada;
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
 begin
@@ -189,11 +185,6 @@ end;
 procedure TTelaInicial.CentrodeCustos2Click(Sender: TObject);
 begin
     TP_centro.chamaTela(self);
-end;
-
-procedure TTelaInicial.Condiesdepagamento1Click(Sender: TObject);
-begin
-   Tp_condicaopag.chamaTela(Self);
 end;
 
 procedure TTelaInicial.ContasaPagar1Click(Sender: TObject);
@@ -389,11 +380,6 @@ begin
 end;
 
 procedure TTelaInicial.Pessoa1Click(Sender: TObject);
-begin
-  // TPPessoa.ChamaTela(Self);
-end;
-
-procedure TTelaInicial.Pessoas1Click(Sender: TObject);
 begin
    TPPessoa.ChamaTela(Self);
 end;
