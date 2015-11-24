@@ -97,15 +97,4 @@ inherited PMovimentoEstoque: TPMovimentoEstoque
       Caption = 'Estornar'
     end
   end
-  inherited pnCabecalho: TPanel
-    inherited gbFiltro: TGroupBox
-      ExplicitWidth = 848
-      inherited editPesquisa: TEdit
-        ExplicitWidth = 454
-      end
-      inherited Pesquisar: TButton
-        ExplicitLeft = 767
-      end
-    end
-  end
 end

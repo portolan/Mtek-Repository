@@ -4,7 +4,7 @@ object DM_PCP: TDM_PCP
   Width = 690
   object UPD_OrdemProducao: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select '
+      'Select *'
       'from ordem_producao '
       'where'
       '  OP_COD = :OP_COD and'
@@ -21,24 +21,21 @@ object DM_PCP: TDM_PCP
       '  OP_PRODUTO = :OP_PRODUTO,'
       '  OP_QTD = :OP_QTD,'
       '  OP_STATUS = :OP_STATUS,'
-      '  OP_TIPO = :OP_TIPO,'
-      '  OP_VENDAS = :OP_VENDAS'
+      '  OP_TIPO = :OP_TIPO'
       'where'
       '  OP_COD = :OLD_OP_COD and'
       '  OP_EMPRESA = :OLD_OP_EMPRESA')
     InsertSQL.Strings = (
       'insert into ordem_producao'
       
-        '  (OP_COD, OP_DESCRICAO, OP_DT_ENTREGA, OP_DT_PEDIDO, OP_EMPRESA' +
-        ', OP_FICHATECNICA, '
-      '   OP_PRODUTO, OP_QTD, OP_STATUS, OP_TIPO, OP_VENDAS)'
+        '  (OP_COD,OP_DEPARTAMENTO, OP_DESCRICAO, OP_DT_ENTREGA, OP_DT_PE' +
+        'DIDO, OP_EMPRESA, OP_FICHATECNICA, '
+      '   OP_PRODUTO, OP_QTD, OP_STATUS, OP_TIPO)'
       'values'
       
-        '  (:OP_COD, :OP_DESCRICAO, :OP_DT_ENTREGA, :OP_DT_PEDIDO, :OP_EM' +
-        'PRESA, '
-      
-        '   :OP_FICHATECNICA, :OP_PRODUTO, :OP_QTD, :OP_STATUS, :OP_TIPO,' +
-        ' :OP_VENDAS)')
+        '  (:OP_COD,:OP_DEPARTAMENTO, :OP_DESCRICAO, :OP_DT_ENTREGA, :OP_' +
+        'DT_PEDIDO, :OP_EMPRESA, '
+      '   :OP_FICHATECNICA, :OP_PRODUTO, :OP_QTD, :OP_STATUS, :OP_TIPO)')
     DeleteSQL.Strings = (
       'delete from ordem_producao'
       'where'
@@ -48,7 +45,8 @@ object DM_PCP: TDM_PCP
     Top = 136
   end
   object DS_OrdemProducao: TDataSource
-    DataSet = Producao
+    AutoEdit = False
+    DataSet = OrdemProducao
     Left = 48
     Top = 72
   end
@@ -60,9 +58,7 @@ object DM_PCP: TDM_PCP
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select  O.*, D.dep_nome, E.emp_razao from ordem_producao o'
-      '   inner join departamento d ON O.op_departamento = D.dep_cod '
-      '      INNER join EMPRESA E ON O.op_empresa = E.emp_cod '
+      'select * from ORDEM_PRODUCAO'
       '      '
       ''
       ''
@@ -71,18 +67,13 @@ object DM_PCP: TDM_PCP
       ''
       '')
     UpdateObject = UPD_OrdemProducao
-    Left = 48
-    Top = 8
+    Left = 40
+    Top = 16
     object OrdemProducaoOP_COD: TIntegerField
       DisplayLabel = 'C'#243'digo da Ordem'
       FieldName = 'OP_COD'
       Origin = '"ORDEM_PRODUCAO"."OP_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-    end
-    object OrdemProducaoOP_VENDAS: TIntegerField
-      DisplayLabel = 'C'#243'digo da Venda'
-      FieldName = 'OP_VENDAS'
-      Origin = '"ORDEM_PRODUCAO"."OP_VENDAS"'
     end
     object OrdemProducaoOP_EMPRESA: TIntegerField
       DisplayLabel = 'Empresa'
@@ -98,7 +89,7 @@ object DM_PCP: TDM_PCP
       Size = 50
     end
     object OrdemProducaoOP_TIPO: TIBStringField
-      DisplayLabel = 'Tipo da Orem'
+      DisplayLabel = 'Tipo da Ordem'
       FieldName = 'OP_TIPO'
       Origin = '"ORDEM_PRODUCAO"."OP_TIPO"'
       Size = 30
@@ -130,38 +121,18 @@ object DM_PCP: TDM_PCP
       FieldName = 'OP_FICHATECNICA'
       Origin = '"ORDEM_PRODUCAO"."OP_FICHATECNICA"'
     end
-    object OrdemProducaoEMP_RAZAO: TIBStringField
-      DisplayLabel = 'Razao Social'
-      FieldName = 'EMP_RAZAO'
-      Origin = '"EMPRESA"."EMP_RAZAO"'
-      Required = True
-      Size = 60
-    end
     object OrdemProducaoOP_PRODUTO: TIBStringField
       DisplayLabel = 'Produto'
       FieldName = 'OP_PRODUTO'
       Origin = '"ORDEM_PRODUCAO"."OP_PRODUTO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
       Size = 30
-    end
-    object OrdemProducaoOP_COMPRAS: TIntegerField
-      DisplayLabel = 'N'#250'mero da Compra'
-      FieldName = 'OP_COMPRAS'
-      Origin = '"ORDEM_PRODUCAO"."OP_COMPRAS"'
     end
     object OrdemProducaoOP_DEPARTAMENTO: TIntegerField
       DisplayLabel = 'Departamento'
       FieldName = 'OP_DEPARTAMENTO'
       Origin = '"ORDEM_PRODUCAO"."OP_DEPARTAMENTO"'
       Required = True
-    end
-    object OrdemProducaoDEP_NOME: TIBStringField
-      DisplayLabel = 'Nome Departamento'
-      FieldName = 'DEP_NOME'
-      Origin = '"DEPARTAMENTO"."DEP_NOME"'
-      Required = True
-      Size = 40
     end
   end
   object Producao: TIBQuery
@@ -177,50 +148,67 @@ object DM_PCP: TDM_PCP
     Left = 136
     Top = 8
     object ProducaoPROD_COD: TIntegerField
+      DisplayLabel = 'C'#243'digo da Producao'
       FieldName = 'PROD_COD'
       Origin = '"PRODUCAO"."PROD_COD"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object ProducaoPROD_ORDEM: TIntegerField
+      DisplayLabel = 'C'#243'digo da Ordem'
       FieldName = 'PROD_ORDEM'
       Origin = '"PRODUCAO"."PROD_ORDEM"'
     end
     object ProducaoPROD_EMPRESA: TIntegerField
+      DisplayLabel = 'Empresa'
       FieldName = 'PROD_EMPRESA'
       Origin = '"PRODUCAO"."PROD_EMPRESA"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object ProducaoPROD_DESCRICAO: TIBStringField
+      DisplayLabel = 'Descricao'
       FieldName = 'PROD_DESCRICAO'
       Origin = '"PRODUCAO"."PROD_DESCRICAO"'
       Size = 30
     end
     object ProducaoPROD_TIPO: TIBStringField
+      DisplayLabel = 'Tipo Producao'
       FieldName = 'PROD_TIPO'
       Origin = '"PRODUCAO"."PROD_TIPO"'
       Size = 30
     end
     object ProducaoPROD_DT_INICIO: TDateField
+      DisplayLabel = 'Data inicio producao'
       FieldName = 'PROD_DT_INICIO'
       Origin = '"PRODUCAO"."PROD_DT_INICIO"'
     end
     object ProducaoPROD_DT_TERMINO: TDateField
+      DisplayLabel = 'Data termino producao'
       FieldName = 'PROD_DT_TERMINO'
       Origin = '"PRODUCAO"."PROD_DT_TERMINO"'
     end
     object ProducaoPROD_QTD_PRODUZIDA: TIntegerField
+      DisplayLabel = 'quantidade produzida'
       FieldName = 'PROD_QTD_PRODUZIDA'
       Origin = '"PRODUCAO"."PROD_QTD_PRODUZIDA"'
     end
     object ProducaoPROD_STATUS: TIBStringField
+      DisplayLabel = 'Status '
       FieldName = 'PROD_STATUS'
       Origin = '"PRODUCAO"."PROD_STATUS"'
       Size = 30
     end
+    object ProducaoPROD_PRODUTO: TIBStringField
+      DisplayLabel = 'Produto'
+      FieldName = 'PROD_PRODUTO'
+      Origin = '"PRODUCAO"."PROD_PRODUTO"'
+      Required = True
+      Size = 30
+    end
   end
   object DS_Producao: TDataSource
+    AutoEdit = False
     DataSet = Producao
     Left = 136
     Top = 72
@@ -230,6 +218,7 @@ object DM_PCP: TDM_PCP
       'Select '
       '  PROD_ORDEM,'
       '  PROD_DESCRICAO,'
+      '  PROD_PRODUTO,'
       '  PROD_TIPO,'
       '  PROD_DT_INICIO,'
       '  PROD_DT_TERMINO,'
@@ -244,7 +233,8 @@ object DM_PCP: TDM_PCP
     ModifySQL.Strings = (
       'update PRODUCAO'
       'set'
-      '  PROD_COD = :PROD_COD,'
+      '  PROD_COD = :PROD_COD, '
+      '  PROD_PRODUTO= :PROD_PRODUTO,'
       '  PROD_DESCRICAO = :PROD_DESCRICAO,'
       '  PROD_DT_INICIO = :PROD_DT_INICIO,'
       '  PROD_DT_TERMINO = :PROD_DT_TERMINO,'
@@ -259,13 +249,13 @@ object DM_PCP: TDM_PCP
     InsertSQL.Strings = (
       'insert into PRODUCAO'
       
-        '  (PROD_COD, PROD_DESCRICAO, PROD_DT_INICIO, PROD_DT_TERMINO, PR' +
-        'OD_EMPRESA, '
+        '  (PROD_COD,PROD_PRODUTO, PROD_DESCRICAO, PROD_DT_INICIO, PROD_D' +
+        'T_TERMINO, PROD_EMPRESA, '
       '   PROD_ORDEM, PROD_QTD_PRODUZIDA, PROD_STATUS, PROD_TIPO)'
       'values'
       
-        '  (:PROD_COD, :PROD_DESCRICAO, :PROD_DT_INICIO, :PROD_DT_TERMINO' +
-        ', :PROD_EMPRESA, '
+        '  (:PROD_COD,:PROD_PRODUTO, :PROD_DESCRICAO, :PROD_DT_INICIO, :P' +
+        'ROD_DT_TERMINO, :PROD_EMPRESA, '
       '   :PROD_ORDEM, :PROD_QTD_PRODUZIDA, :PROD_STATUS, :PROD_TIPO)')
     DeleteSQL.Strings = (
       'delete from PRODUCAO'
@@ -338,6 +328,7 @@ object DM_PCP: TDM_PCP
       DisplayLabel = 'M'#227'o de Obra'
       FieldName = 'FT_MAO_DE_OBRA'
       Origin = '"FICHA_TECNICA"."FT_MAO_DE_OBRA"'
+      DisplayFormat = '0,00'
       Precision = 18
       Size = 4
     end
@@ -358,7 +349,7 @@ object DM_PCP: TDM_PCP
       DisplayLabel = 'Tempo de Producao'
       FieldName = 'FT_TEMPO_PRODUCAO'
       Origin = '"FICHA_TECNICA"."FT_TEMPO_PRODUCAO"'
-      EditMask = '!90:00:00>LL;1;_'
+      EditMask = '!90:00;1;_'
     end
     object Ficha_TecnicaEMP_RAZAO: TIBStringField
       DisplayLabel = 'Empresa'
@@ -376,6 +367,7 @@ object DM_PCP: TDM_PCP
     end
   end
   object DS_Ficha_Tecnica: TDataSource
+    AutoEdit = False
     DataSet = Ficha_Tecnica
     Left = 216
     Top = 72
@@ -472,6 +464,7 @@ object DM_PCP: TDM_PCP
     end
   end
   object DS_Itens_Ficha: TDataSource
+    AutoEdit = False
     DataSet = Itens_Ficha
     Left = 312
     Top = 64
@@ -563,6 +556,7 @@ object DM_PCP: TDM_PCP
     end
   end
   object DS_Entrega_Materia: TDataSource
+    AutoEdit = False
     DataSet = Ficha_Tecnica
     Left = 416
     Top = 64
@@ -620,6 +614,7 @@ object DM_PCP: TDM_PCP
     Top = 24
   end
   object DataSource1: TDataSource
+    AutoEdit = False
     DataSet = queryGenerica
     Left = 592
     Top = 80

@@ -12,7 +12,7 @@ uses
 
 const
    TNMStatusOp : Array [TStatusOrdemProducao] of String = ('A','P','C','F');
-   TDSStatusOp : Array [TStatusOrdemproducao] of String = ('AGUARDANDO','PRODUZINDO','CONCLUIDA', 'FINALIZADA');
+   TDSStatusOp : Array [TStatusOrdemProducao] of String = ('AGUARDANDO','PRODUZINDO','CANCELADA', 'FINALIZADA');
 
 
 type
@@ -66,7 +66,6 @@ type
     queryGenerica: TIBQuery;
     DataSource1: TDataSource;
     IBUpdateSQL1: TIBUpdateSQL;
-    OrdemProducaoOP_VENDAS: TIntegerField;
     OrdemProducaoOP_EMPRESA: TIntegerField;
     OrdemProducaoOP_DESCRICAO: TIBStringField;
     OrdemProducaoOP_TIPO: TIBStringField;
@@ -76,13 +75,11 @@ type
     OrdemProducaoOP_STATUS: TIBStringField;
     OrdemProducaoOP_COD: TIntegerField;
     OrdemProducaoOP_FICHATECNICA: TIntegerField;
-    OrdemProducaoEMP_RAZAO: TIBStringField;
     OrdemProducaoOP_PRODUTO: TIBStringField;
     Ficha_TecnicaEMP_RAZAO: TIBStringField;
     Ficha_TecnicaPRO_DESCRICAO: TIBStringField;
-    OrdemProducaoOP_COMPRAS: TIntegerField;
     OrdemProducaoOP_DEPARTAMENTO: TIntegerField;
-    OrdemProducaoDEP_NOME: TIBStringField;
+    ProducaoPROD_PRODUTO: TIBStringField;
     procedure OrdemProducaoAfterInsert(DataSet: TDataSet);
     procedure ProducaoAfterInsert(DataSet: TDataSet);
     procedure Ficha_TecnicaAfterInsert(DataSet: TDataSet);
@@ -100,7 +97,7 @@ implementation
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
-uses dm000, UP_PRODUCAO;
+uses dm000;
 
 
 
@@ -125,5 +122,4 @@ procedure TDM_PCP.ProducaoAfterInsert(DataSet: TDataSet);
 begin
     Producao.FieldByName('PROD_COD').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_PRODUCAO_ID');
 end;
-
 end.

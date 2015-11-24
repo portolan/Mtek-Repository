@@ -140,11 +140,6 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="datamodulo\UDM_PCP.pas">
-            <Form>DM_PCP</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
         <DCCReference Include="datamodulo\UDM_PedCompra.pas">
             <Form>dmPedCompra</Form>
             <FormType>dfm</FormType>
@@ -529,6 +524,14 @@
             <Form>PCotacao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+<<<<<<< .mine
+        <DCCReference Include="datamodulo\UDM_PCP.pas">
+            <Form>DM_PCP</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+||||||| .r610
+=======
         <DCCReference Include="contas_pagar\Up_condicaop.pas">
             <Form>p_condicaopag</Form>
             <FormType>dfm</FormType>
@@ -537,6 +540,7 @@
             <Form>m_condicaopag</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+>>>>>>> .r611
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

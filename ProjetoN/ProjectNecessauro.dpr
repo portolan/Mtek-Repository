@@ -21,7 +21,6 @@ uses
   UDM_empresa in 'datamodulo\UDM_empresa.pas' {DataModule2: TDataModule},
   UDM_Estoque in 'datamodulo\UDM_Estoque.pas' {DM_Estoque: TDataModule},
   UDM_financeiro in 'datamodulo\UDM_financeiro.pas' {DM_financeiro: TDataModule},
-  UDM_PCP in 'datamodulo\UDM_PCP.pas' {DM_PCP: TDataModule},
   UDM_PedCompra in 'datamodulo\UDM_PedCompra.pas' {dmPedCompra: TDataModule},
   UDM_Venda in 'datamodulo\UDM_Venda.pas' {DM_VENDA: TDataModule},
   UDM_Servico in 'assistencia\UDM_Servico.pas' {DM_Servico: TDataModule},
@@ -117,6 +116,9 @@ uses
   UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda},
   UR_prevtitulos in 'Caixa\UR_prevtitulos.pas' {REL_prevtitulos},
   UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao},
+  UDM_PCP in 'datamodulo\UDM_PCP.pas' {DM_PCP: TDataModule};
+  UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao};
+  UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao},
   Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag},
   Um_condicaop in 'contas_pagar\Um_condicaop.pas' {m_condicaopag};
 
@@ -132,11 +134,12 @@ begin
   Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.CreateForm(TDM_Estoque, DM_Estoque);
   Application.CreateForm(TDM_financeiro, DM_financeiro);
-  Application.CreateForm(TDM_PCP, DM_PCP);
   Application.CreateForm(TdmPedCompra, dmPedCompra);
   Application.CreateForm(TDM_VENDA, DM_VENDA);
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDMControlePatrimonial, DMControlePatrimonial);
+  Application.CreateForm(TDM_PCP, DM_PCP);
+
   Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
   Application.CreateForm(TTelaInicial, TelaInicial);

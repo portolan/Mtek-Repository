@@ -184,7 +184,7 @@ inherited M_FichaTecnica: TM_FichaTecnica
       inherited pnlFrame: TPanel
         Width = 166
         Height = 56
-        ExplicitWidth = 168
+        ExplicitWidth = 166
         ExplicitHeight = 56
         inherited lbTitulo: TLabel
           Left = 15
@@ -198,7 +198,7 @@ inherited M_FichaTecnica: TM_FichaTecnica
         end
         inherited panelFundo: TPanel
           Width = 80
-          ExplicitWidth = 82
+          ExplicitWidth = 80
           inherited DBT_DESCRICAO: TDBText
             Width = 72
             ExplicitWidth = 75
