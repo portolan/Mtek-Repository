@@ -197,13 +197,12 @@ object DM_VENDA: TDM_VENDA
       '          B.emp_razao,'
       '          C.pess_nome'
       '  from EMISSAO_NFE A'
-      'INNER join EMPRESA B ON A.emi_empresa =  B.emp_cod'
+      'INNER join EMPRESA B ON a.emi_empresa =  B.emp_cod'
       'INNER JOIN PESSOAS C ON A.emi_pessoa = C.pess_codigo'
-      'from EMISSAO_NFE '
       'where'
       '  EMI_NUMERO = :EMI_NUMERO'
-      '  EMI_EMPRESA =:EMI_EMPRESA'
-      '  ')
+      '  EMI_PESSOA =:EMI_PESSOA'
+      '')
     ModifySQL.Strings = (
       'update EMISSAO_NFE'
       'set'
@@ -281,19 +280,11 @@ object DM_VENDA: TDM_VENDA
     object IB_EmissaoNFEEMI_TIPOMOVIMENTACAO: TIntegerField
       FieldName = 'EMI_TIPOMOVIMENTACAO'
       Origin = '"EMISSAO_NFE"."EMI_TIPOMOVIMENTACAO"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object IB_EmissaoNFEEMI_DESCRICAO: TIBStringField
       FieldName = 'EMI_DESCRICAO'
       Origin = '"EMISSAO_NFE"."EMI_DESCRICAO"'
-      Required = True
-      Size = 60
-    end
-    object IB_EmissaoNFEEMI_PESSOA: TIBStringField
-      FieldName = 'EMI_PESSOA'
-      Origin = '"EMISSAO_NFE"."EMI_PESSOA"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
       Size = 60
     end
@@ -304,7 +295,11 @@ object DM_VENDA: TDM_VENDA
     object IB_EmissaoNFEEMI_DTSAIDA: TDateField
       FieldName = 'EMI_DTSAIDA'
       Origin = '"EMISSAO_NFE"."EMI_DTSAIDA"'
-      EditMask = '!99/99/0000;1;_'
+    end
+    object IB_EmissaoNFEEMI_PESSOA: TIntegerField
+      FieldName = 'EMI_PESSOA'
+      Origin = '"EMISSAO_NFE"."EMI_PESSOA"'
+      Required = True
     end
     object IB_EmissaoNFEEMP_RAZAO: TIBStringField
       FieldName = 'EMP_RAZAO'
