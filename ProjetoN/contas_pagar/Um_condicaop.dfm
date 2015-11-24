@@ -1,5 +1,5 @@
 inherited m_condicaopag: Tm_condicaopag
-  Caption = 'm_condicaopag'
+  Caption = 'Condicao de pagamento'
   ClientHeight = 217
   ClientWidth = 360
   ExplicitWidth = 376
