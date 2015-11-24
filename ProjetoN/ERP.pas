@@ -33,10 +33,6 @@ type
     OrdemdeProduo1: TMenuItem;
     Producao: TMenuItem;
     E1: TMenuItem;
-    producao1: TMenuItem;
-    Fichatcnicasdeprodutos1: TMenuItem;
-    Ordemproducao1: TMenuItem;
-    Entregas1: TMenuItem;
     Compras1: TMenuItem;
     SolicitaodeRequisisio1: TMenuItem;
     CotaoFornecedor1: TMenuItem;
@@ -115,6 +111,7 @@ type
     procedure Oramento1Click(Sender: TObject);
     procedure Pessoas1Click(Sender: TObject);
     procedure Relatrios3Click(Sender: TObject);
+    procedure E1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -141,7 +138,13 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico, UP_SolicitacaoCompra,
   UP_Cotacao, UP_PedCompra, UF_EstoqueAjuda, UP_TipoBens, UP_Localizacao,
   UP_EstadoConservacao, UP_NotaBemImobilizado, UP_Pessoa, UP_NotaEntrada,
+
+  UF_ChamadosRelatorios, UF_RELATORIOPCP, UR_RELATORIOPCP;
+
+  UF_ChamadosRelatorios;
+
   UF_ChamadosRelatorios, Um_Condição_Pagamento, Um_condicaop;
+
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
 begin
@@ -226,6 +229,16 @@ end;
 procedure TTelaInicial.Departamentos1Click(Sender: TObject);
 begin
     TP_departamento.chamaTela(self);
+end;
+
+procedure TTelaInicial.E1Click(Sender: TObject);
+begin
+FRELATORIOPCP := TFRELATORIOPCP.Create(Self);
+    try
+        FRELATORIOPCP.ShowModal;
+    finally
+        FreeAndNil(FRELATORIOPCP);
+    end;
 end;
 
 procedure TTelaInicial.Empresas1Click(Sender: TObject);

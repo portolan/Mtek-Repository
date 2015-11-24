@@ -5526,18 +5526,7 @@ object TelaInicial: TTelaInicial
       end
       object E1: TMenuItem
         Caption = 'Relat'#243'rios'
-        object producao1: TMenuItem
-          Caption = 'Producao'
-        end
-        object Fichatcnicasdeprodutos1: TMenuItem
-          Caption = 'Fichas t'#233'cnicas de produtos'
-        end
-        object Ordemproducao1: TMenuItem
-          Caption = 'Ordens de producao'
-        end
-        object Entregas1: TMenuItem
-          Caption = 'Entregas de Mat'#233'rias'
-        end
+        OnClick = E1Click
       end
     end
     object Compras1: TMenuItem
