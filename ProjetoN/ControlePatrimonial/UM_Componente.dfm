@@ -7,12 +7,15 @@
   TextHeight = 13
   inherited pnRodape: TPanel
     Width = 486
+    ExplicitWidth = 486
     inherited sbCancelar: TSpeedButton
       Left = 389
+      ExplicitLeft = 389
     end
   end
   inherited gbInfos: TGroupBox
     Width = 486
+    ExplicitWidth = 486
     object Label1: TLabel
       Left = 40
       Top = 37
