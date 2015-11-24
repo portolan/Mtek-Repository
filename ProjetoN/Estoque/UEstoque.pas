@@ -167,11 +167,11 @@ begin
 
         qryDin.Close;
         qryDin.SQL.Text :=  'update estoque set estoq_customedio = '    + FloatToStr(d_customedio) +
-                            ' where em_empresa = '                       + IntToStr(codEmpresa) +
-                            ' and em_produto = '                       + codProduto +
-                            ' and em_bloco = '                         + IntToStr(codBloco) +
-                            ' and em_prateleira = '                    + IntToStr(codPrateleira) +
-                            ' and em_estoque = '                       + IntToStr(codEstoque);
+                            ' where estoq_empresa = '                       + IntToStr(codEmpresa) +
+                            ' and estoq_produto = '                       + codProduto +
+                            ' and estoq_bloco = '                         + IntToStr(codBloco) +
+                            ' and estoq_prateleira = '                    + IntToStr(codPrateleira) +
+                            ' and estoq_codigo = '                       + IntToStr(codEstoque);
         qryDin.Open;
 
         result := d_customedio;
@@ -303,7 +303,7 @@ begin
         qryDin.SQL.Text := 'insert into ESTOQ_MOVIMENTO (EM_EMPRESA, EM_PRODUTO, EM_BLOCO, EM_PRATELEIRA,'+
                            ' EM_ESTOQUE, EM_CODIGO, EM_TIPO, EM_QTD,EM_DATA,                             '+
                            ' EM_OBS, EM_VALOR_FINANCEIRO, EM_PEDIDOCOMPRAORIGEM)                         '+
-                           ' values (:EM_EMPRESA, :EM_PRODUTO, EM_BLOCO,                                 '+
+                           ' values (:EM_EMPRESA, :EM_PRODUTO, :EM_BLOCO,                                 '+
                            ' :EM_PRATELEIRA, :EM_ESTOQUE, :EM_CODIGO,                                    '+
                            ' :EM_TIPO, :EM_QTD, :EM_DATA,:EM_OBS,                                        '+
                            ' :EM_VALOR_FINANCEIRO, :EM_PEDIDOCOMPRAORIGEM)                               ';
