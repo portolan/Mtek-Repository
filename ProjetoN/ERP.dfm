@@ -1,7 +1,6 @@
 object TelaInicial: TTelaInicial
-  Left = 0
-  Top = 0
-  Align = alCustom
+  Left = 244
+  Top = 165
   Caption = 'ERP'
   ClientHeight = 395
   ClientWidth = 900
