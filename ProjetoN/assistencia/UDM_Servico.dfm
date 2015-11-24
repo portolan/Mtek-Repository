@@ -27,7 +27,7 @@ object DM_Servico: TDM_Servico
     Left = 48
     Top = 8
     object IB_ChamadoCHA_CODIGO: TIntegerField
-      DisplayLabel = 'Codigo'
+      DisplayLabel = 'C'#243'digo'
       FieldName = 'CHA_CODIGO'
       Origin = '"CHAMADOS"."CHA_CODIGO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -48,13 +48,13 @@ object DM_Servico: TDM_Servico
       Required = True
     end
     object IB_ChamadoCHA_FUNCIONARIO: TIntegerField
-      DisplayLabel = 'Cod. Funcionario'
+      DisplayLabel = 'C'#243'd. Funcion'#225'rio'
       FieldName = 'CHA_FUNCIONARIO'
       Origin = '"CHAMADOS"."CHA_FUNCIONARIO"'
       Required = True
     end
     object IB_ChamadoCHA_PROPRIETARIO: TIntegerField
-      DisplayLabel = 'Cod. Proprietario'
+      DisplayLabel = 'C'#243'd. Propriet'#225'rio'
       FieldName = 'CHA_PROPRIETARIO'
       Origin = '"CHAMADOS"."CHA_PROPRIETARIO"'
       Required = True
@@ -69,17 +69,20 @@ object DM_Servico: TDM_Servico
       DisplayLabel = 'Prioridade'
       FieldName = 'CHA_PRIORIDADE'
       Origin = '"CHAMADOS"."CHA_PRIORIDADE"'
+      Required = True
     end
     object IB_ChamadoCHA_STATUS: TIBStringField
       DisplayLabel = 'Status'
       FieldName = 'CHA_STATUS'
       Origin = '"CHAMADOS"."CHA_STATUS"'
+      Required = True
       Size = 15
     end
     object IB_ChamadoCHA_DATA_ENTRADA: TDateField
       DisplayLabel = 'Data de Entrada'
       FieldName = 'CHA_DATA_ENTRADA'
       Origin = '"CHAMADOS"."CHA_DATA_ENTRADA"'
+      Required = True
     end
     object IB_ChamadoCHA_TIPO_ERRO: TIntegerField
       DisplayLabel = 'Cod. Tipo de Erro'
@@ -105,13 +108,13 @@ object DM_Servico: TDM_Servico
       Size = 40
     end
     object IB_ChamadoPESS_NOME: TIBStringField
-      DisplayLabel = 'Funcionario'
+      DisplayLabel = 'Funcion'#225'rio'
       FieldName = 'PESS_NOME'
       Origin = '"PESSOAS"."PESS_NOME"'
       Size = 100
     end
     object IB_ChamadoPESS_NOME1: TIBStringField
-      DisplayLabel = 'Proprietario'
+      DisplayLabel = 'Propriet'#225'rio'
       FieldName = 'PESS_NOME1'
       Origin = '"PESSOAS"."PESS_NOME"'
       Size = 100

@@ -28,7 +28,6 @@ inherited P_Servico: TP_Servico
           item
             Expanded = False
             FieldName = 'EMP_RAZAO'
-            Width = 78
             Visible = True
           end
           item
@@ -39,7 +38,6 @@ inherited P_Servico: TP_Servico
           item
             Expanded = False
             FieldName = 'DEP_NOME'
-            Width = 128
             Visible = True
           end
           item
@@ -50,7 +48,6 @@ inherited P_Servico: TP_Servico
           item
             Expanded = False
             FieldName = 'PESS_NOME'
-            Width = 127
             Visible = True
           end
           item
@@ -61,7 +58,6 @@ inherited P_Servico: TP_Servico
           item
             Expanded = False
             FieldName = 'PESS_NOME1'
-            Width = 112
             Visible = True
           end
           item
@@ -86,20 +82,18 @@ inherited P_Servico: TP_Servico
           end
           item
             Expanded = False
-            FieldName = 'CHA_DATA_SAIDA'
-            Visible = True
-          end
-          item
-            Expanded = False
             FieldName = 'CHA_TIPO_ERRO'
-            Width = 98
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'TER_DESCRICAO'
-            Width = 79
             Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CHA_DATA_SAIDA'
+            Visible = False
           end>
       end
     end
