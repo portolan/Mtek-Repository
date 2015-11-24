@@ -140,6 +140,8 @@ begin
   Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
   Application.CreateForm(TTelaInicial, TelaInicial);
+  Application.CreateForm(Tm_condicaopag, m_condicaopag);
+  Application.CreateForm(Tp_condicaopag, p_condicaopag);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
 end.
