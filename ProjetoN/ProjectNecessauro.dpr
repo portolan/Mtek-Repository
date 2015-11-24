@@ -135,6 +135,7 @@ begin
   Application.CreateForm(TDM_VENDA, DM_VENDA);
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDMControlePatrimonial, DMControlePatrimonial);
+  Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
   Application.CreateForm(TTelaInicial, TelaInicial);
   TStyleManager.TrySetStyle('Aqua Light Slate');
