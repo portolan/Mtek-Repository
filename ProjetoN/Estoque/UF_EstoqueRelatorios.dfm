@@ -21,7 +21,7 @@ object FEstoqueRelatorios: TFEstoqueRelatorios
     Top = 136
     Width = 201
     Height = 50
-    Caption = 'Produtos em Estoque Negativo'
+    Caption = 'Produtos em Estoque Baixo'
     Glyph.Data = {
       F6000000424DF600000000000000760000002800000010000000100000000100
       04000000000080000000230B0000230B00001000000010000000000000000000

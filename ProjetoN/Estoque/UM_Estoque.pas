@@ -92,26 +92,35 @@ end;
 procedure TMEstoque.DBLookupComboBox2Enter(Sender: TObject);
 begin
   inherited;
-    try
+    if DM_Estoque.Estoque.State in [dsinsert] then
+    begin
+        try
+            DM_Estoque.Prateleira.Close;
+            DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira where prat_empresa = ' +
+                                               DM_Estoque.EstoqueESTOQ_EMPRESA.AsString +
+                                               ' and prat_bloco = ' +
+                                               DM_Estoque.EstoqueESTOQ_BLOCO.AsString +
+                                               ' and prat_categoria = ' +
+                                               DM_Estoque.ProdutosPRO_CATEGORIA.AsString;
+            DM_Estoque.Prateleira.Open;
+            DM_Estoque.Prateleira.FetchAll;
+
+
+        except on E: Exception do
+            raise Exception.Create('Erro - Soluções : ' + sLineBreak +
+                                       '1 - Verifique se a categoria deste produto se enquadra nesta Prateleira!' + sLineBreak +
+                                       '2 - Verifique se existem Prateleiras cadastradas' + sLineBreak +
+                                       '3 - Verifique se está selecionado o Bloco!');
+        end;
+
+    end
+    else
+    begin
         DM_Estoque.Prateleira.Close;
-        DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira where prat_empresa = ' +
-                                           DM_Estoque.EstoqueESTOQ_EMPRESA.AsString +
-                                           ' and prat_bloco = ' +
-                                           DM_Estoque.EstoqueESTOQ_BLOCO.AsString +
-                                           ' and prat_categoria = ' +
-                                           DM_Estoque.ProdutosPRO_CATEGORIA.AsString;
+        DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira';
         DM_Estoque.Prateleira.Open;
         DM_Estoque.Prateleira.FetchAll;
-
-
-    except on E: Exception do
-        raise Exception.Create('Erro - Soluções : ' + sLineBreak +
-                                   '1 - Verifique se a categoria deste produto se enquadra nesta Prateleira!' + sLineBreak +
-                                   '2 - Verifique se existem Prateleiras cadastradas' + sLineBreak +
-                                   '3 - Verifique se está selecionado o Bloco!');
     end;
-
-
 end;
 
 procedure TMEstoque.editProdutoEnter(Sender: TObject);
@@ -171,6 +180,12 @@ begin
     DM_Estoque.Bloco.Open;
     DM_Estoque.Bloco.FetchAll;
 
+    DM_Estoque.Prateleira.Close;
+    DM_Estoque.Prateleira.SQL.Text := 'select * from prateleira';
+    DM_Estoque.Prateleira.Open;
+    DM_Estoque.Prateleira.FetchAll;
+
+
     qryDin := funcCriaQuery;
     qryDin.Close;
     qryDin.SQL.Text := 'select a.pro_descricao nomeProduto from produtos a where ' +
@@ -180,7 +195,7 @@ begin
 
     editProduto.Text := qryDin.FieldByName('nomeProduto').AsString;
 
-    {pau}
+
     qryDin.Close;
     qryDin.SQL.Text := 'select cat_descricao nomecat from categoria where ' +
                                      ' cat_empresa = '    + DM_Estoque.EstoqueESTOQ_EMPRESA.AsString +

@@ -1891,7 +1891,7 @@ object EstoqueRelatorios: TEstoqueRelatorios
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42321.724752534700000000
-    ReportOptions.LastChange = 42329.651830682870000000
+    ReportOptions.LastChange = 42331.998342280090000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -2549,7 +2549,7 @@ object EstoqueRelatorios: TEstoqueRelatorios
           Font.Name = 'Arial'
           Font.Style = [fsBold]
           Memo.UTF8W = (
-            'Produtos em Estoque - Negativo')
+            'Produtos em Estoque Baixo')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
