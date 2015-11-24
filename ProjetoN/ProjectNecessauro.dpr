@@ -142,6 +142,7 @@ begin
   Application.CreateForm(TTelaInicial, TelaInicial);
   Application.CreateForm(Tm_condicaopag, m_condicaopag);
   Application.CreateForm(Tp_condicaopag, p_condicaopag);
+  Application.CreateForm(TUR_Relatorio, UR_Relatorio);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
 end.

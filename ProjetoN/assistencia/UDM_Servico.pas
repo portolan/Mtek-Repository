@@ -14,6 +14,8 @@ type
     IB_Tipo_Erro: TIBQuery;
     UPS_Tipo_Erro: TIBUpdateSQL;
     DS_Tipo_Erro: TDataSource;
+    IB_Tipo_ErroTER_CODIGO: TIntegerField;
+    IB_Tipo_ErroTER_DESCRICAO: TIBStringField;
     IB_ChamadoCHA_CODIGO: TIntegerField;
     IB_ChamadoCHA_EMPRESA: TIntegerField;
     IB_ChamadoCHA_DEPARTAMENTO: TIntegerField;
@@ -25,8 +27,6 @@ type
     IB_ChamadoCHA_DATA_ENTRADA: TDateField;
     IB_ChamadoCHA_TIPO_ERRO: TIntegerField;
     IB_ChamadoCHA_DATA_SAIDA: TDateField;
-    IB_Tipo_ErroTER_CODIGO: TIntegerField;
-    IB_Tipo_ErroTER_DESCRICAO: TIBStringField;
     IB_ChamadoEMP_RAZAO: TIBStringField;
     IB_ChamadoDEP_NOME: TIBStringField;
     IB_ChamadoPESS_NOME: TIBStringField;

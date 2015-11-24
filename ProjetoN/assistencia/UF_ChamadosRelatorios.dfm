@@ -16,7 +16,7 @@ object F_ChamadosRelatorios: TF_ChamadosRelatorios
   object GroupBox1: TGroupBox
     Left = 0
     Top = 0
-    Width = 249
+    Width = 233
     Height = 129
     Caption = 'Chamados por Data'
     TabOrder = 0
@@ -66,17 +66,48 @@ object F_ChamadosRelatorios: TF_ChamadosRelatorios
   object Chamados: TGroupBox
     Left = 0
     Top = 135
-    Width = 169
+    Width = 193
     Height = 126
-    Caption = 'Chamados'
+    Caption = 'Chamados  do Dia'
     TabOrder = 1
     object SpeedButton2: TSpeedButton
-      Left = 32
+      Left = 41
       Top = 56
       Width = 97
       Height = 22
       Caption = 'Chamados do Dia'
       OnClick = SpeedButton2Click
+    end
+  end
+  object GroupBox2: TGroupBox
+    Left = 239
+    Top = 0
+    Width = 226
+    Height = 129
+    Caption = 'Tipo de Erro'
+    TabOrder = 2
+    object SpeedButton3: TSpeedButton
+      Left = 136
+      Top = 96
+      Width = 65
+      Height = 22
+      Caption = 'Gerar'
+      OnClick = SpeedButton3Click
+    end
+    object Label3: TLabel
+      Left = 12
+      Top = 40
+      Width = 58
+      Height = 13
+      Caption = 'Tipo de Erro'
+    end
+    object Edit1: TEdit
+      Left = 76
+      Top = 37
+      Width = 61
+      Height = 21
+      TabOrder = 0
+      OnClick = Edit1Click
     end
   end
 end

@@ -50,7 +50,21 @@ type
     frxTipoErro: TfrxReport;
     frxDBTipoErro: TfrxDBDataset;
     IB_TipoErro: TIBQuery;
-    IB_TipoErroTER_CODIGO: TIntegerField;
+    IB_TipoErroCHA_CODIGO: TIntegerField;
+    IB_TipoErroCHA_EMPRESA: TIntegerField;
+    IB_TipoErroCHA_DEPARTAMENTO: TIntegerField;
+    IB_TipoErroCHA_FUNCIONARIO: TIntegerField;
+    IB_TipoErroCHA_PROPRIETARIO: TIntegerField;
+    IB_TipoErroCHA_DESCRICAO: TIBStringField;
+    IB_TipoErroCHA_PRIORIDADE: TIBStringField;
+    IB_TipoErroCHA_STATUS: TIBStringField;
+    IB_TipoErroCHA_DATA_ENTRADA: TDateField;
+    IB_TipoErroCHA_TIPO_ERRO: TIntegerField;
+    IB_TipoErroCHA_DATA_SAIDA: TDateField;
+    IB_TipoErroEMP_RAZAO: TIBStringField;
+    IB_TipoErroDEP_NOME: TIBStringField;
+    IB_TipoErroPESS_NOME: TIBStringField;
+    IB_TipoErroPESS_NOME1: TIBStringField;
     IB_TipoErroTER_DESCRICAO: TIBStringField;
   private
     { Private declarations }

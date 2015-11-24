@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
   Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls,
-  ufrm_Relacionamento;
+  ufrm_Relacionamento, DB;
 
 type
   TM_Servico = class(TxManuPadrao)
@@ -14,10 +14,8 @@ type
     DBEdit1: TDBEdit;
     Label8: TLabel;
     Label9: TLabel;
-    Label10: TLabel;
     Label11: TLabel;
     DBMemo1: TDBMemo;
-    DBEdit10: TDBEdit;
     DBComboBox1: TDBComboBox;
     DBComboBox2: TDBComboBox;
     Label2: TLabel;
@@ -28,16 +26,18 @@ type
     DBEdit4: TDBEdit;
     Label5: TLabel;
     DBEdit5: TDBEdit;
-    DBEdit6: TDBEdit;
-    DBEdit7: TDBEdit;
-    DBEdit8: TDBEdit;
-    DBEdit9: TDBEdit;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     SpeedButton4: TSpeedButton;
-    DBEdit11: TDBEdit;
     SpeedButton5: TSpeedButton;
+    DBEdit6: TEdit;
+    DBEdit8: TEdit;
+    DBEdit7: TEdit;
+    DBEdit9: TEdit;
+    DBEdit11: TEdit;
+    Label6: TLabel;
+    DBEdit10: TDBEdit;
     procedure FormCreate(Sender: TObject);
     procedure DBEdit2Click(Sender: TObject);
     procedure DBEdit3Click(Sender: TObject);
@@ -63,7 +63,8 @@ implementation
 {$R *.dfm}
 
 uses UDM_Servico, UDM_contabil, UP_empresa, UP_departamento, UP_Tipo_Erro,
-  UM_empresa, UM_Tipo_Erro, UP_Pessoa, UDM_PedCompra;
+  UM_empresa, UM_Tipo_Erro, UP_Pessoa, UDM_PedCompra, UM_departamento,
+  UM_Pessoa;
 
 procedure TM_Servico.DBEdit10Click(Sender: TObject);
 begin
@@ -89,6 +90,8 @@ begin
     DM_Servico.IB_ChamadoCHA_EMPRESA.Value := DM_contabil.empresaEMP_COD.AsInteger;
   end;
   DBEdit6.Text := DM_contabil.empresaEMP_RAZAO.AsString;
+  DBEdit3.Text := EmptyStr;
+  DBEdit8.Text := EmptyStr;
 end;
 
 procedure TM_Servico.DBEdit3Click(Sender: TObject);
@@ -105,6 +108,7 @@ begin
     begin
       ShowMessage('Esse departamento não pertence a essa empresa!!!');
       DBEdit3.Text := EmptyStr;
+      DBEdit8.Text := EmptyStr;
     end;
     DBEdit8.Text := DM_contabil.departamentoDEP_NOME.AsString;
 end;
@@ -138,6 +142,15 @@ end;
 procedure TM_Servico.FormCreate(Sender: TObject);
 begin
   inherited;
+
+  if DM_Servico.IB_Chamado.State in [dsEdit] then
+  begin
+    DBEdit6.Text := DM_Servico.IB_ChamadoEMP_RAZAO.Value;
+    DBEdit8.Text := DM_Servico.IB_ChamadoDEP_NOME.Value;
+    DBEdit7.Text := DM_Servico.IB_ChamadoPESS_NOME.Value;
+    DBEdit9.Text := DM_Servico.IB_ChamadoPESS_NOME1.Value;
+    DBEdit11.Text := DM_Servico.IB_ChamadoTER_DESCRICAO.Value;
+  end;
   DM_Servico.IB_ChamadoCHA_DATA_ENTRADA.Text :=  DateToStr(date);
 end;
 
@@ -146,7 +159,7 @@ begin
   inherited;
   P_empresa := TP_empresa.Create(Self);
     try
-        P_empresa.procInicializar(DM_contabil.empresa, false, false, P_empresa, TP_empresa);
+        P_empresa.procInicializar(DM_contabil.empresa, false, false, M_empresa, TM_empresa);
         P_empresa.ShowModal;
     finally
         FreeAndNil(P_empresa);
@@ -158,7 +171,7 @@ begin
   inherited;
   P_departamento := TP_departamento.Create(self);
   try
-    P_departamento.procInicializar(DM_contabil.departamento,true,false,P_departamento,TP_departamento);
+    P_departamento.procInicializar(DM_contabil.departamento,true,false,M_departamento,TM_departamento);
     P_departamento.ShowModal;
   finally
     FreeAndNil(P_departamento);
@@ -170,7 +183,7 @@ begin
   inherited;
   PPessoa := TPPessoa.Create(self);
   try
-    PPessoa.procInicializar(dmPedCompra.Pessoa,true,false,PPessoa,TPPessoa);
+    PPessoa.procInicializar(dmPedCompra.Pessoa,true,false,MPessoa,TMPessoa);
     PPessoa.ShowModal;
   finally
     FreeAndNil(PPessoa);
@@ -182,7 +195,7 @@ begin
   inherited;
   PPessoa := TPPessoa.Create(self);
   try
-    PPessoa.procInicializar(dmPedCompra.Pessoa,true,false,PPessoa,TPPessoa);
+    PPessoa.procInicializar(dmPedCompra.Pessoa,true,false,MPessoa,TMPessoa);
     PPessoa.ShowModal;
   finally
     FreeAndNil(PPessoa);
@@ -194,7 +207,7 @@ begin
   inherited;
   P_Tipo_Erro := TP_Tipo_Erro.Create(self);
   try
-    P_Tipo_Erro.procInicializar(dmPedCompra.Pessoa,true,false,P_Tipo_Erro,TP_Tipo_Erro);
+    P_Tipo_Erro.procInicializar(dmPedCompra.Pessoa,true,false,M_Tipo_Erro,TM_Tipo_Erro);
     P_Tipo_Erro.ShowModal;
   finally
     FreeAndNil(P_Tipo_Erro);

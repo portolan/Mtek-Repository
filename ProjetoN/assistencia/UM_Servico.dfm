@@ -43,13 +43,6 @@ inherited M_Servico: TM_Servico
       Height = 13
       Caption = 'Status'
     end
-    object Label10: TLabel
-      Left = 380
-      Top = 158
-      Width = 58
-      Height = 13
-      Caption = 'Tipo de Erro'
-    end
     object Label11: TLabel
       Left = 24
       Top = 209
@@ -154,7 +147,7 @@ inherited M_Servico: TM_Servico
       OnClick = SpeedButton4Click
     end
     object SpeedButton5: TSpeedButton
-      Left = 481
+      Left = 471
       Top = 173
       Width = 23
       Height = 22
@@ -168,6 +161,14 @@ inherited M_Servico: TM_Servico
         3300333330F033333300333330F0333333003333300033333300333333333333
         33003333333333333300}
       OnClick = SpeedButton5Click
+    end
+    object Label6: TLabel
+      Left = 382
+      Top = 158
+      Width = 58
+      Height = 13
+      Caption = 'Tipo de Erro'
+      FocusControl = DBEdit10
     end
     object DBEdit1: TDBEdit
       Left = 24
@@ -188,16 +189,6 @@ inherited M_Servico: TM_Servico
       DataSource = DM_Servico.DS_Chamado
       TabOrder = 1
     end
-    object DBEdit10: TDBEdit
-      Left = 380
-      Top = 174
-      Width = 95
-      Height = 21
-      DataField = 'CHA_TIPO_ERRO'
-      DataSource = DM_Servico.DS_Chamado
-      TabOrder = 2
-      OnClick = DBEdit10Click
-    end
     object DBComboBox1: TDBComboBox
       Left = 196
       Top = 174
@@ -209,7 +200,7 @@ inherited M_Servico: TM_Servico
         'Baixa'
         'Normal'
         'Alta')
-      TabOrder = 3
+      TabOrder = 2
     end
     object DBComboBox2: TDBComboBox
       Left = 23
@@ -222,7 +213,7 @@ inherited M_Servico: TM_Servico
         'Analise'
         'Manunte'#231#227'o'
         'Concluido')
-      TabOrder = 4
+      TabOrder = 3
     end
     object DBEdit2: TDBEdit
       Left = 24
@@ -231,7 +222,7 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_EMPRESA'
       DataSource = DM_Servico.DS_Chamado
-      TabOrder = 5
+      TabOrder = 4
       OnClick = DBEdit2Click
     end
     object DBEdit3: TDBEdit
@@ -241,7 +232,7 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_DEPARTAMENTO'
       DataSource = DM_Servico.DS_Chamado
-      TabOrder = 6
+      TabOrder = 5
       OnClick = DBEdit3Click
     end
     object DBEdit4: TDBEdit
@@ -251,7 +242,7 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_FUNCIONARIO'
       DataSource = DM_Servico.DS_Chamado
-      TabOrder = 7
+      TabOrder = 6
       OnClick = DBEdit4Click
     end
     object DBEdit5: TDBEdit
@@ -261,18 +252,26 @@ inherited M_Servico: TM_Servico
       Height = 21
       DataField = 'CHA_PROPRIETARIO'
       DataSource = DM_Servico.DS_Chamado
-      TabOrder = 8
+      TabOrder = 7
       OnClick = DBEdit5Click
     end
-    object DBEdit6: TDBEdit
+    object DBEdit6: TEdit
       Left = 100
+      Top = 83
+      Width = 121
+      Height = 21
+      Enabled = False
+      TabOrder = 8
+    end
+    object DBEdit8: TEdit
+      Left = 347
       Top = 83
       Width = 121
       Height = 21
       Enabled = False
       TabOrder = 9
     end
-    object DBEdit7: TDBEdit
+    object DBEdit7: TEdit
       Left = 100
       Top = 126
       Width = 121
@@ -280,29 +279,31 @@ inherited M_Servico: TM_Servico
       Enabled = False
       TabOrder = 10
     end
-    object DBEdit8: TDBEdit
+    object DBEdit9: TEdit
       Left = 347
-      Top = 83
-      Width = 113
+      Top = 126
+      Width = 121
       Height = 21
       Enabled = False
       TabOrder = 11
     end
-    object DBEdit9: TDBEdit
-      Left = 347
-      Top = 126
-      Width = 113
+    object DBEdit11: TEdit
+      Left = 506
+      Top = 174
+      Width = 121
       Height = 21
       Enabled = False
       TabOrder = 12
     end
-    object DBEdit11: TDBEdit
-      Left = 512
+    object DBEdit10: TDBEdit
+      Left = 382
       Top = 174
-      Width = 73
+      Width = 86
       Height = 21
-      Enabled = False
+      DataField = 'CHA_TIPO_ERRO'
+      DataSource = DM_Servico.DS_Chamado
       TabOrder = 13
+      OnClick = DBEdit10Click
     end
   end
 end

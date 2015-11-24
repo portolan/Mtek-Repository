@@ -307,7 +307,7 @@ object UR_Relatorio: TUR_Relatorio
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42313.806204733800000000
-    ReportOptions.LastChange = 42331.569733217590000000
+    ReportOptions.LastChange = 42332.053564143520000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -380,7 +380,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Chamados do Dia')
+            'Chamados por Data')
           ParentFont = False
         end
       end
@@ -705,7 +705,7 @@ object UR_Relatorio: TUR_Relatorio
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42313.806204733800000000
-    ReportOptions.LastChange = 42331.569430682900000000
+    ReportOptions.LastChange = 42332.053470972220000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -790,110 +790,61 @@ object UR_Relatorio: TUR_Relatorio
         DataSet = frxDBChamadoDia
         DataSetName = 'frxDBChamadoDia'
         RowCount = 0
-        object frxDBChamadoCHA_CODIGO: TfrxMemoView
+        object frxDBChamadoDiaCHA_CODIGO: TfrxMemoView
           Align = baLeft
           Width = 49.133890000000000000
           Height = 18.897650000000000000
           DataField = 'CHA_CODIGO'
-          DataSet = frxDBChamadoData
-          DataSetName = 'frxDBChamadoData'
+          DataSet = frxDBChamadoDia
+          DataSetName = 'frxDBChamadoDia'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Frame.Typ = [ftLeft, ftTop, ftBottom]
           Memo.UTF8W = (
-            '[frxDBChamadoData."CHA_CODIGO"]')
+            '[frxDBChamadoDia."CHA_CODIGO"]')
           ParentFont = False
         end
-        object frxDBChamadoCHA_DATA_ENTRADA: TfrxMemoView
-          Left = 291.023810000000000000
-          Width = 102.047310000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHA_DATA_ENTRADA'
-          DataSet = frxDBChamadoData
-          DataSetName = 'frxDBChamadoData'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Memo.UTF8W = (
-            '[frxDBChamadoData."CHA_DATA_ENTRADA"]')
-          ParentFont = False
-        end
-        object frxDBChamadoCHA_PRIORIDADE: TfrxMemoView
-          Left = 566.929500000000000000
-          Width = 68.031540000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHA_PRIORIDADE'
-          DataSet = frxDBChamadoData
-          DataSetName = 'frxDBChamadoData'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Memo.UTF8W = (
-            '[frxDBChamadoData."CHA_PRIORIDADE"]')
-          ParentFont = False
-        end
-        object frxDBChamadoCHA_STATUS: TfrxMemoView
-          Align = baRight
-          Left = 634.961040000000000000
-          Width = 83.149660000000000000
-          Height = 18.897650000000000000
-          DataField = 'CHA_STATUS'
-          DataSet = frxDBChamadoData
-          DataSetName = 'frxDBChamadoData'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -13
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
-          Memo.UTF8W = (
-            '[frxDBChamadoData."CHA_STATUS"]')
-          ParentFont = False
-        end
-        object frxDBChamadoPESS_NOME: TfrxMemoView
+        object frxDBChamadoDiaPESS_NOME: TfrxMemoView
+          Align = baWidth
           Left = 49.133890000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
           DataField = 'PESS_NOME'
-          DataSet = frxDBChamadoData
-          DataSetName = 'frxDBChamadoData'
+          DataSet = frxDBChamadoDia
+          DataSetName = 'frxDBChamadoDia'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Frame.Typ = [ftTop, ftBottom]
           Memo.UTF8W = (
-            '[frxDBChamadoData."PESS_NOME"]')
+            '[frxDBChamadoDia."PESS_NOME"]')
           ParentFont = False
         end
-        object frxDBChamadoPESS_NOME1: TfrxMemoView
+        object frxDBChamadoDiaPESS_NOME1: TfrxMemoView
+          Align = baWidth
           Left = 132.283550000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           DataField = 'PESS_NOME1'
-          DataSet = frxDBChamadoData
-          DataSetName = 'frxDBChamadoData'
+          DataSet = frxDBChamadoDia
+          DataSetName = 'frxDBChamadoDia'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Frame.Typ = [ftTop, ftBottom]
           Memo.UTF8W = (
-            '[frxDBChamadoData."PESS_NOME1"]')
+            '[frxDBChamadoDia."PESS_NOME1"]')
           ParentFont = False
         end
         object frxDBChamadoDiaEMP_RAZAO: TfrxMemoView
+          Align = baWidth
           Left = 207.874150000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -905,16 +856,17 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Frame.Typ = [ftTop, ftBottom]
           Memo.UTF8W = (
             '[frxDBChamadoDia."EMP_RAZAO"]')
           ParentFont = False
         end
-        object frxDBChamadoDiaTER_DESCRICAO: TfrxMemoView
-          Left = 483.779840000000000000
-          Width = 83.149660000000000000
+        object frxDBChamadoDiaCHA_DATA_ENTRADA: TfrxMemoView
+          Align = baWidth
+          Left = 291.023810000000000000
+          Width = 102.047310000000000000
           Height = 18.897650000000000000
-          DataField = 'TER_DESCRICAO'
+          DataField = 'CHA_DATA_ENTRADA'
           DataSet = frxDBChamadoDia
           DataSetName = 'frxDBChamadoDia'
           Font.Charset = DEFAULT_CHARSET
@@ -922,12 +874,13 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Frame.Typ = [ftTop, ftBottom]
           Memo.UTF8W = (
-            '[frxDBChamadoDia."TER_DESCRICAO"]')
+            '[frxDBChamadoDia."CHA_DATA_ENTRADA"]')
           ParentFont = False
         end
         object frxDBChamadoDiaCHA_DATA_SAIDA: TfrxMemoView
+          Align = baWidth
           Left = 393.071120000000000000
           Width = 90.708720000000000000
           Height = 18.897650000000000000
@@ -939,9 +892,63 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Frame.Typ = [ftTop, ftBottom]
           Memo.UTF8W = (
             '[frxDBChamadoDia."CHA_DATA_SAIDA"]')
+          ParentFont = False
+        end
+        object frxDBChamadoDiaTER_DESCRICAO: TfrxMemoView
+          Align = baWidth
+          Left = 483.779840000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DataField = 'TER_DESCRICAO'
+          DataSet = frxDBChamadoDia
+          DataSetName = 'frxDBChamadoDia'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxDBChamadoDia."TER_DESCRICAO"]')
+          ParentFont = False
+        end
+        object frxDBChamadoDiaCHA_PRIORIDADE: TfrxMemoView
+          Align = baWidth
+          Left = 566.929500000000000000
+          Width = 68.031540000000000000
+          Height = 18.897650000000000000
+          DataField = 'CHA_PRIORIDADE'
+          DataSet = frxDBChamadoDia
+          DataSetName = 'frxDBChamadoDia'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxDBChamadoDia."CHA_PRIORIDADE"]')
+          ParentFont = False
+        end
+        object frxDBChamadoDiaCHA_STATUS: TfrxMemoView
+          Align = baLeft
+          Left = 634.961040000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DataField = 'CHA_STATUS'
+          DataSet = frxDBChamadoDia
+          DataSetName = 'frxDBChamadoDia'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxDBChamadoDia."CHA_STATUS"]')
           ParentFont = False
         end
       end
@@ -951,6 +958,7 @@ object UR_Relatorio: TUR_Relatorio
         Top = 177.637910000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
+          Align = baLeft
           Width = 49.133890000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -958,7 +966,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftLeft, ftTop]
           Memo.UTF8W = (
             'Codigo')
           ParentFont = False
@@ -972,7 +980,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Funcionario')
           ParentFont = False
@@ -986,7 +994,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Proprietario')
           ParentFont = False
@@ -1001,7 +1009,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftRight, ftTop]
           Memo.UTF8W = (
             'Status')
           ParentFont = False
@@ -1015,7 +1023,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Prioridade')
           ParentFont = False
@@ -1029,7 +1037,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Data de Entrada')
           ParentFont = False
@@ -1043,7 +1051,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Tipo de Erro')
           ParentFont = False
@@ -1057,7 +1065,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Empresa')
           ParentFont = False
@@ -1071,7 +1079,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Data de Saida')
           ParentFont = False
@@ -1088,7 +1096,7 @@ object UR_Relatorio: TUR_Relatorio
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42313.806204733800000000
-    ReportOptions.LastChange = 42331.581546053240000000
+    ReportOptions.LastChange = 42332.056553472220000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -1132,7 +1140,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Relatorio de Chamado')
+            'Relatorio Tipos de Erro')
           ParentFont = False
         end
         object Date: TfrxMemoView
@@ -1161,7 +1169,24 @@ object UR_Relatorio: TUR_Relatorio
           Font.Style = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Chamados do Dia')
+            'Chamados pertecentes ao erro:')
+          ParentFont = False
+        end
+        object frxDBTipoErroTER_DESCRICAO1: TfrxMemoView
+          Left = 453.543600000000000000
+          Top = 75.590600000000000000
+          Width = 71.811070000000000000
+          Height = 18.897650000000000000
+          DataField = 'TER_DESCRICAO'
+          DataSet = frxDBTipoErro
+          DataSetName = 'frxDBTipoErro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTipoErro."TER_DESCRICAO"]')
           ParentFont = False
         end
       end
@@ -1171,6 +1196,7 @@ object UR_Relatorio: TUR_Relatorio
         Top = 177.637910000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
+          Align = baLeft
           Width = 49.133890000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1178,12 +1204,13 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftLeft, ftTop]
           Memo.UTF8W = (
             'Codigo')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          Align = baWidth
           Left = 49.133890000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -1192,12 +1219,13 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Funcionario')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          Align = baWidth
           Left = 132.283550000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
@@ -1206,7 +1234,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Proprietario')
           ParentFont = False
@@ -1221,12 +1249,13 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftRight, ftTop]
           Memo.UTF8W = (
             'Status')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          Align = baWidth
           Left = 566.929500000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
@@ -1235,12 +1264,13 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Prioridade')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          Align = baWidth
           Left = 291.023810000000000000
           Width = 102.047310000000000000
           Height = 18.897650000000000000
@@ -1249,12 +1279,13 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Data de Entrada')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          Align = baWidth
           Left = 483.779840000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -1263,12 +1294,13 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Tipo de Erro')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          Align = baWidth
           Left = 207.874150000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -1277,12 +1309,13 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Empresa')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          Align = baWidth
           Left = 393.071120000000000000
           Width = 90.708720000000000000
           Height = 18.897650000000000000
@@ -1291,7 +1324,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
-          Frame.Typ = [ftLeft, ftRight, ftTop]
+          Frame.Typ = [ftTop]
           Memo.UTF8W = (
             'Data de Saida')
           ParentFont = False
@@ -1299,12 +1332,173 @@ object UR_Relatorio: TUR_Relatorio
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
-        Height = 22.677180000000000000
+        Height = 18.897650000000000000
         Top = 219.212740000000000000
         Width = 718.110700000000000000
         DataSet = frxDBTipoErro
         DataSetName = 'frxDBTipoErro'
         RowCount = 0
+        object frxDBTipoErroCHA_CODIGO: TfrxMemoView
+          Align = baLeft
+          Width = 49.133890000000000000
+          Height = 18.897650000000000000
+          DataField = 'CHA_CODIGO'
+          DataSet = frxDBTipoErro
+          DataSetName = 'frxDBTipoErro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxDBTipoErro."CHA_CODIGO"]')
+          ParentFont = False
+        end
+        object frxDBTipoErroPESS_NOME: TfrxMemoView
+          Align = baWidth
+          Left = 49.133890000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DataField = 'PESS_NOME'
+          DataSet = frxDBTipoErro
+          DataSetName = 'frxDBTipoErro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxDBTipoErro."PESS_NOME"]')
+          ParentFont = False
+        end
+        object frxDBTipoErroPESS_NOME1: TfrxMemoView
+          Align = baWidth
+          Left = 132.283550000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          DataField = 'PESS_NOME1'
+          DataSet = frxDBTipoErro
+          DataSetName = 'frxDBTipoErro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxDBTipoErro."PESS_NOME1"]')
+          ParentFont = False
+        end
+        object frxDBTipoErroEMP_RAZAO: TfrxMemoView
+          Align = baWidth
+          Left = 207.874150000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DataField = 'EMP_RAZAO'
+          DataSet = frxDBTipoErro
+          DataSetName = 'frxDBTipoErro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxDBTipoErro."EMP_RAZAO"]')
+          ParentFont = False
+        end
+        object frxDBTipoErroCHA_DATA_ENTRADA: TfrxMemoView
+          Align = baWidth
+          Left = 291.023810000000000000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          DataField = 'CHA_DATA_ENTRADA'
+          DataSet = frxDBTipoErro
+          DataSetName = 'frxDBTipoErro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxDBTipoErro."CHA_DATA_ENTRADA"]')
+          ParentFont = False
+        end
+        object frxDBTipoErroCHA_DATA_SAIDA: TfrxMemoView
+          Align = baWidth
+          Left = 393.071120000000000000
+          Width = 90.708720000000000000
+          Height = 18.897650000000000000
+          DataField = 'CHA_DATA_SAIDA'
+          DataSet = frxDBTipoErro
+          DataSetName = 'frxDBTipoErro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxDBTipoErro."CHA_DATA_SAIDA"]')
+          ParentFont = False
+        end
+        object frxDBTipoErroTER_DESCRICAO: TfrxMemoView
+          Align = baWidth
+          Left = 483.779840000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DataField = 'TER_DESCRICAO'
+          DataSet = frxDBTipoErro
+          DataSetName = 'frxDBTipoErro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxDBTipoErro."TER_DESCRICAO"]')
+          ParentFont = False
+        end
+        object frxDBTipoErroCHA_PRIORIDADE: TfrxMemoView
+          Align = baWidth
+          Left = 566.929500000000000000
+          Width = 68.031540000000000000
+          Height = 18.897650000000000000
+          DataField = 'CHA_PRIORIDADE'
+          DataSet = frxDBTipoErro
+          DataSetName = 'frxDBTipoErro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxDBTipoErro."CHA_PRIORIDADE"]')
+          ParentFont = False
+        end
+        object frxDBTipoErroCHA_STATUS: TfrxMemoView
+          Align = baRight
+          Left = 634.961040000000000000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DataField = 'CHA_STATUS'
+          DataSet = frxDBTipoErro
+          DataSetName = 'frxDBTipoErro'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[frxDBTipoErro."CHA_STATUS"]')
+          ParentFont = False
+        end
       end
     end
   end
@@ -1312,7 +1506,21 @@ object UR_Relatorio: TUR_Relatorio
     UserName = 'frxDBTipoErro'
     CloseDataSource = False
     FieldAliases.Strings = (
-      'TER_CODIGO=TER_CODIGO'
+      'CHA_CODIGO=CHA_CODIGO'
+      'CHA_EMPRESA=CHA_EMPRESA'
+      'CHA_DEPARTAMENTO=CHA_DEPARTAMENTO'
+      'CHA_FUNCIONARIO=CHA_FUNCIONARIO'
+      'CHA_PROPRIETARIO=CHA_PROPRIETARIO'
+      'CHA_DESCRICAO=CHA_DESCRICAO'
+      'CHA_PRIORIDADE=CHA_PRIORIDADE'
+      'CHA_STATUS=CHA_STATUS'
+      'CHA_DATA_ENTRADA=CHA_DATA_ENTRADA'
+      'CHA_TIPO_ERRO=CHA_TIPO_ERRO'
+      'CHA_DATA_SAIDA=CHA_DATA_SAIDA'
+      'EMP_RAZAO=EMP_RAZAO'
+      'DEP_NOME=DEP_NOME'
+      'PESS_NOME=PESS_NOME'
+      'PESS_NOME1=PESS_NOME1'
       'TER_DESCRICAO=TER_DESCRICAO')
     DataSet = IB_TipoErro
     BCDToCurrency = False
@@ -1322,22 +1530,111 @@ object UR_Relatorio: TUR_Relatorio
   object IB_TipoErro: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select *  from TIPOS_ERROS')
+      'SELECT A.*,'
+      '      B.emp_razao,'
+      '      c.dep_nome,'
+      '      D.pess_nome,'
+      '      e.pess_nome,'
+      '      f.ter_descricao'
+      'FROM CHAMADOS A'
+      'INNER join EMPRESA B ON a.cha_empresa =  b.emp_cod'
+      'INNER JOIN DEPARTAMENTO C ON A.CHA_DEPARTAMENTO = C.DEP_COD'
+      '                          AND A.CHA_EMPRESA = C.DEP_EMPRESAR'
+      'INNER JOIN PESSOAS D ON A.CHA_FUNCIONARIO = D.pess_codigo'
+      'inner join pessoas E on a.cha_proprietario = e.pess_codigo'
+      'inner join tipos_erros f on a.cha_tipo_erro = f.ter_codigo'
+      'where f.ter_codigo = :erro')
     Left = 256
     Top = 176
-    object IB_TipoErroTER_CODIGO: TIntegerField
-      DisplayLabel = 'Codigo'
-      FieldName = 'TER_CODIGO'
-      Origin = '"TIPOS_ERROS"."TER_CODIGO"'
+    ParamData = <
+      item
+        DataType = ftUnknown
+        Name = 'erro'
+        ParamType = ptUnknown
+      end>
+    object IB_TipoErroCHA_CODIGO: TIntegerField
+      FieldName = 'CHA_CODIGO'
+      Origin = '"CHAMADOS"."CHA_CODIGO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
+    object IB_TipoErroCHA_EMPRESA: TIntegerField
+      FieldName = 'CHA_EMPRESA'
+      Origin = '"CHAMADOS"."CHA_EMPRESA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object IB_TipoErroCHA_DEPARTAMENTO: TIntegerField
+      FieldName = 'CHA_DEPARTAMENTO'
+      Origin = '"CHAMADOS"."CHA_DEPARTAMENTO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object IB_TipoErroCHA_FUNCIONARIO: TIntegerField
+      FieldName = 'CHA_FUNCIONARIO'
+      Origin = '"CHAMADOS"."CHA_FUNCIONARIO"'
+      Required = True
+    end
+    object IB_TipoErroCHA_PROPRIETARIO: TIntegerField
+      FieldName = 'CHA_PROPRIETARIO'
+      Origin = '"CHAMADOS"."CHA_PROPRIETARIO"'
+      Required = True
+    end
+    object IB_TipoErroCHA_DESCRICAO: TIBStringField
+      FieldName = 'CHA_DESCRICAO'
+      Origin = '"CHAMADOS"."CHA_DESCRICAO"'
+      Size = 100
+    end
+    object IB_TipoErroCHA_PRIORIDADE: TIBStringField
+      FieldName = 'CHA_PRIORIDADE'
+      Origin = '"CHAMADOS"."CHA_PRIORIDADE"'
+    end
+    object IB_TipoErroCHA_STATUS: TIBStringField
+      FieldName = 'CHA_STATUS'
+      Origin = '"CHAMADOS"."CHA_STATUS"'
+      Size = 15
+    end
+    object IB_TipoErroCHA_DATA_ENTRADA: TDateField
+      FieldName = 'CHA_DATA_ENTRADA'
+      Origin = '"CHAMADOS"."CHA_DATA_ENTRADA"'
+    end
+    object IB_TipoErroCHA_TIPO_ERRO: TIntegerField
+      FieldName = 'CHA_TIPO_ERRO'
+      Origin = '"CHAMADOS"."CHA_TIPO_ERRO"'
+      Required = True
+    end
+    object IB_TipoErroCHA_DATA_SAIDA: TDateField
+      FieldName = 'CHA_DATA_SAIDA'
+      Origin = '"CHAMADOS"."CHA_DATA_SAIDA"'
+    end
+    object IB_TipoErroEMP_RAZAO: TIBStringField
+      FieldName = 'EMP_RAZAO'
+      Origin = '"EMPRESA"."EMP_RAZAO"'
+      Required = True
+      Size = 60
+    end
+    object IB_TipoErroDEP_NOME: TIBStringField
+      FieldName = 'DEP_NOME'
+      Origin = '"DEPARTAMENTO"."DEP_NOME"'
+      Required = True
+      Size = 40
+    end
+    object IB_TipoErroPESS_NOME: TIBStringField
+      FieldName = 'PESS_NOME'
+      Origin = '"PESSOAS"."PESS_NOME"'
+      Size = 100
+    end
+    object IB_TipoErroPESS_NOME1: TIBStringField
+      FieldName = 'PESS_NOME1'
+      Origin = '"PESSOAS"."PESS_NOME"'
+      Size = 100
+    end
     object IB_TipoErroTER_DESCRICAO: TIBStringField
-      DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'TER_DESCRICAO'
       Origin = '"TIPOS_ERROS"."TER_DESCRICAO"'
       Required = True

@@ -5657,6 +5657,10 @@ object TelaInicial: TTelaInicial
         Caption = 'Tipo de Erro'
         OnClick = ipodeErro1Click
       end
+      object Relatrios3: TMenuItem
+        Caption = 'Relat'#243'rios'
+        OnClick = Relatrios3Click
+      end
     end
     object Sobre1: TMenuItem
       Caption = 'Sobre'

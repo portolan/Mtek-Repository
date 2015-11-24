@@ -73,6 +73,7 @@ type
     Sair1: TMenuItem;
     Image1: TImage;
     Image3: TImage;
+    Relatrios3: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -113,6 +114,7 @@ type
     procedure NotasdeEntrada1Click(Sender: TObject);
     procedure Oramento1Click(Sender: TObject);
     procedure Pessoas1Click(Sender: TObject);
+    procedure Relatrios3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -138,7 +140,8 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UP_contabancaria, UDM_Estoque, R_contabil, UDM_Caixa, UDM_contabil,
   Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico, UP_SolicitacaoCompra,
   UP_Cotacao, UP_PedCompra, UF_EstoqueAjuda, UP_TipoBens, UP_Localizacao,
-  UP_EstadoConservacao, UP_NotaBemImobilizado, UP_Pessoa, UP_NotaEntrada;
+  UP_EstadoConservacao, UP_NotaBemImobilizado, UP_Pessoa, UP_NotaEntrada,
+  UF_ChamadosRelatorios;
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
 begin
@@ -452,6 +455,16 @@ end;
 procedure TTelaInicial.Relatrios2Click(Sender: TObject);
 begin
   TREL_contabil.chamaTela(Self);
+end;
+
+procedure TTelaInicial.Relatrios3Click(Sender: TObject);
+begin
+    F_ChamadosRelatorios := TF_ChamadosRelatorios.Create(Self);
+    try
+      F_ChamadosRelatorios.ShowModal;
+    finally
+      FreeAndNil(F_ChamadosRelatorios);
+    end;
 end;
 
 procedure TTelaInicial.Sair1Click(Sender: TObject);

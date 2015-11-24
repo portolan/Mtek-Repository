@@ -34,25 +34,27 @@ object DM_Servico: TDM_Servico
       Required = True
     end
     object IB_ChamadoCHA_EMPRESA: TIntegerField
-      DisplayLabel = 'Empresa'
+      DisplayLabel = 'Cod. Empresa'
       FieldName = 'CHA_EMPRESA'
       Origin = '"CHAMADOS"."CHA_EMPRESA"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
     object IB_ChamadoCHA_DEPARTAMENTO: TIntegerField
-      DisplayLabel = 'Departamento'
+      DisplayLabel = 'Cod. Departamento'
       FieldName = 'CHA_DEPARTAMENTO'
       Origin = '"CHAMADOS"."CHA_DEPARTAMENTO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
     object IB_ChamadoCHA_FUNCIONARIO: TIntegerField
-      DisplayLabel = 'Funcionario'
+      DisplayLabel = 'Cod. Funcionario'
       FieldName = 'CHA_FUNCIONARIO'
       Origin = '"CHAMADOS"."CHA_FUNCIONARIO"'
       Required = True
     end
     object IB_ChamadoCHA_PROPRIETARIO: TIntegerField
-      DisplayLabel = 'Proprietario'
+      DisplayLabel = 'Cod. Proprietario'
       FieldName = 'CHA_PROPRIETARIO'
       Origin = '"CHAMADOS"."CHA_PROPRIETARIO"'
       Required = True
@@ -78,12 +80,9 @@ object DM_Servico: TDM_Servico
       DisplayLabel = 'Data de Entrada'
       FieldName = 'CHA_DATA_ENTRADA'
       Origin = '"CHAMADOS"."CHA_DATA_ENTRADA"'
-      Required = True
-      DisplayFormat = 'DD/MM/AAAA'
-      EditMask = '!99/99/00;1;_'
     end
     object IB_ChamadoCHA_TIPO_ERRO: TIntegerField
-      DisplayLabel = 'Tipo de Erro'
+      DisplayLabel = 'Cod. Tipo de Erro'
       FieldName = 'CHA_TIPO_ERRO'
       Origin = '"CHAMADOS"."CHA_TIPO_ERRO"'
       Required = True
@@ -92,8 +91,6 @@ object DM_Servico: TDM_Servico
       DisplayLabel = 'Data de Saida'
       FieldName = 'CHA_DATA_SAIDA'
       Origin = '"CHAMADOS"."CHA_DATA_SAIDA"'
-      DisplayFormat = 'DD/MM/AAAA'
-      EditMask = '!99/99/00;1;_'
     end
     object IB_ChamadoEMP_RAZAO: TIBStringField
       DisplayLabel = 'Empresa'
@@ -123,7 +120,6 @@ object DM_Servico: TDM_Servico
       DisplayLabel = 'Tipo de Erro'
       FieldName = 'TER_DESCRICAO'
       Origin = '"TIPOS_ERROS"."TER_DESCRICAO"'
-      Required = True
     end
   end
   object UPS_Chamado: TIBUpdateSQL

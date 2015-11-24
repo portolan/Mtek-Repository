@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.Buttons;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.Buttons,
+  Vcl.DBCtrls;
 
 type
   TF_ChamadosRelatorios = class(TForm)
@@ -16,8 +17,14 @@ type
     editDtInicial: TMaskEdit;
     Chamados: TGroupBox;
     SpeedButton2: TSpeedButton;
+    GroupBox2: TGroupBox;
+    SpeedButton3: TSpeedButton;
+    Label3: TLabel;
+    Edit1: TEdit;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure Edit1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -31,7 +38,18 @@ implementation
 
 {$R *.dfm}
 
-uses UR_Relatorio_Chamado, UDM_Servico;
+uses UR_Relatorio_Chamado, UDM_Servico, UP_Tipo_Erro;
+
+procedure TF_ChamadosRelatorios.Edit1Click(Sender: TObject);
+begin
+   P_Tipo_Erro := TP_Tipo_Erro.Create(self);
+  try
+    P_Tipo_Erro.procInicializar(DM_Servico.IB_Tipo_Erro,false,true,P_Tipo_Erro,TP_Tipo_Erro);
+    P_Tipo_Erro.ShowModal;
+  finally
+    Edit1.text := IntToStr(DM_Servico.IB_Tipo_ErroTER_CODIGO.AsInteger);
+  end;
+end;
 
 procedure TF_ChamadosRelatorios.SpeedButton1Click(Sender: TObject);
 begin
@@ -81,6 +99,31 @@ begin
     DM_Servico.IB_Chamado.Open;
 
     UR_Relatorio.frxChamadoDia.ShowReport();
+end;
+
+procedure TF_ChamadosRelatorios.SpeedButton3Click(Sender: TObject);
+begin
+    UR_Relatorio.frxTipoErro.Variables['erro'] := StrToInt(Edit1.Text);
+
+    UR_Relatorio.IB_TipoErro.Close;
+    UR_Relatorio.IB_TipoErro.SQL.Text := ' SELECT A.*, '+
+                                            ' B.emp_razao, '+
+                                            ' c.dep_nome, '+
+                                            ' D.pess_nome, '+
+                                            ' e.pess_nome, '+
+                                            ' f.ter_descricao '+
+                                            ' FROM CHAMADOS A '+
+             ' INNER join EMPRESA B ON a.cha_empresa =  b.emp_cod '+
+             ' INNER JOIN DEPARTAMENTO C ON A.CHA_DEPARTAMENTO = C.DEP_COD '+
+                                      ' AND A.CHA_EMPRESA = C.DEP_EMPRESAR '+
+             ' INNER JOIN PESSOAS D ON A.CHA_FUNCIONARIO = D.pess_codigo '+
+             ' inner join pessoas E on a.cha_proprietario = e.pess_codigo '+
+             ' inner join tipos_erros f on a.cha_tipo_erro = f.ter_codigo '+
+             ' where f.ter_codigo = :erro ';
+    UR_Relatorio.IB_TipoErro.ParamByName('erro').Value := StrToInt(Edit1.Text);
+    UR_Relatorio.IB_TipoErro.Open;
+
+    UR_Relatorio.frxTipoErro.ShowReport();
 end;
 
 end.
