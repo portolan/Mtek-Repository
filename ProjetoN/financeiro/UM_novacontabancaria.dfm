@@ -25,7 +25,6 @@ object M_novaconta: TM_novaconta
     Height = 41
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 240
     object sbGravar: TSpeedButton
       Left = 1
       Top = 1
@@ -116,9 +115,6 @@ object M_novaconta: TM_novaconta
     Align = alClient
     Caption = 'Dados'
     TabOrder = 1
-    ExplicitLeft = -1
-    ExplicitTop = -5
-    ExplicitHeight = 262
     object Label1: TLabel
       Left = 298
       Top = 99
