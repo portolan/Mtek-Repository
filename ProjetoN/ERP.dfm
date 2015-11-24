@@ -1,7 +1,6 @@
 object TelaInicial: TTelaInicial
   Left = 0
   Top = 0
-  Align = alCustom
   Caption = 'ERP'
   ClientHeight = 395
   ClientWidth = 900
@@ -1014,14 +1013,13 @@ object TelaInicial: TTelaInicial
     0000000000000000000000000000000000000000000000000000000000000000
     0000000000000000000000000000000000000000000000000000000000000000
     000000000000}
+  KeyPreview = True
   Menu = MainMenu1
   OldCreateOrder = False
-  Position = poScreenCenter
+  Position = poDesktopCenter
   WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
-  ExplicitWidth = 320
-  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 13
   object Image10: TImage

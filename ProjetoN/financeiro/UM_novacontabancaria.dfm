@@ -2,7 +2,7 @@ object M_novaconta: TM_novaconta
   Left = 0
   Top = 0
   Caption = 'Adicionar conta bancaria'
-  ClientHeight = 281
+  ClientHeight = 309
   ClientWidth = 581
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,11 +20,12 @@ object M_novaconta: TM_novaconta
   TextHeight = 13
   object pnRodape: TPanel
     Left = 0
-    Top = 240
+    Top = 268
     Width = 581
     Height = 41
     Align = alBottom
     TabOrder = 0
+    ExplicitTop = 240
     object sbGravar: TSpeedButton
       Left = 1
       Top = 1
@@ -111,90 +112,148 @@ object M_novaconta: TM_novaconta
     Left = 0
     Top = 0
     Width = 581
-    Height = 240
+    Height = 268
     Align = alClient
     Caption = 'Dados'
     TabOrder = 1
-    object Label2: TLabel
-      Left = 126
-      Top = 77
-      Width = 57
+    ExplicitLeft = -1
+    ExplicitTop = -5
+    ExplicitHeight = 262
+    object Label1: TLabel
+      Left = 298
+      Top = 99
+      Width = 67
       Height = 13
-      Caption = 'N'#186' CONTA :'
+      Caption = 'AGENCIA N'#186' :'
+      FocusControl = DBEdit1
+    end
+    object Label6: TLabel
+      Left = 16
+      Top = 99
+      Width = 107
+      Height = 13
+      Caption = 'CODIGO DO BANCO : '
       FocusControl = DBEdit2
     end
-    object Label3: TLabel
-      Left = 22
-      Top = 77
-      Width = 49
+    object Label7: TLabel
+      Left = 16
+      Top = 24
+      Width = 121
       Height = 13
-      Caption = 'AGENCIA:'
+      Caption = 'CODIGO DESTA CONTA :'
       FocusControl = DBEdit3
     end
-    object Label4: TLabel
-      Left = 22
-      Top = 24
-      Width = 104
+    object Label8: TLabel
+      Left = 160
+      Top = 99
+      Width = 105
       Height = 13
-      Caption = 'TITULAR DA CONTA :'
+      Caption = 'NUMERO DA CONTA :'
       FocusControl = DBEdit4
     end
-    object Label5: TLabel
-      Left = 224
-      Top = 74
-      Width = 49
+    object Label9: TLabel
+      Left = 296
+      Top = 19
+      Width = 65
       Height = 13
-      Caption = 'SALDO R$'
+      Caption = 'EMPRESA... :'
       FocusControl = DBEdit5
     end
-    object DBEdit2: TDBEdit
-      Left = 126
-      Top = 93
-      Width = 56
-      Height = 21
-      DataField = 'CTB_CONTA'
-      DataSource = DataSource1
-      TabOrder = 0
+    object Label10: TLabel
+      Left = 16
+      Top = 61
+      Width = 49
+      Height = 13
+      Caption = 'TITULAR :'
+      FocusControl = DBEdit6
     end
-    object DBEdit3: TDBEdit
-      Left = 22
-      Top = 93
-      Width = 56
+    object Label11: TLabel
+      Left = 440
+      Top = 99
+      Width = 65
+      Height = 13
+      Caption = 'SALDO :   R$ '
+      FocusControl = DBEdit7
+    end
+    object Label12: TLabel
+      Left = 298
+      Top = 56
+      Width = 100
+      Height = 13
+      Caption = 'STATUS DA CONTA :'
+      FocusControl = DBEdit8
+    end
+    object DBEdit1: TDBEdit
+      Left = 300
+      Top = 118
+      Width = 98
       Height = 21
       DataField = 'CTB_AGENCIA'
       DataSource = DataSource1
+      TabOrder = 0
+    end
+    object DBEdit2: TDBEdit
+      Left = 16
+      Top = 118
+      Width = 25
+      Height = 21
+      DataField = 'CTB_BAN_CODIGO'
+      DataSource = DataSource1
       TabOrder = 1
     end
-    object DBEdit4: TDBEdit
-      Left = 22
-      Top = 39
-      Width = 315
+    object DBEdit3: TDBEdit
+      Left = 143
+      Top = 16
+      Width = 82
       Height = 21
-      DataField = 'CTB_PESSOA'
+      DataField = 'CTB_CODIGO'
       DataSource = DataSource1
       TabOrder = 2
     end
-    object DBEdit5: TDBEdit
-      Left = 224
-      Top = 93
-      Width = 113
+    object DBEdit4: TDBEdit
+      Left = 160
+      Top = 118
+      Width = 98
       Height = 21
-      DataField = 'CTB_SALDO'
+      DataField = 'CTB_CONTA'
       DataSource = DataSource1
       TabOrder = 3
     end
-    object DBRadioGroup1: TDBRadioGroup
-      Left = 375
-      Top = 24
-      Width = 130
-      Height = 63
-      Caption = 'CONTA ATIVA / INATIVA'
-      DataField = 'CTB_OPERACAO'
+    object DBEdit5: TDBEdit
+      Left = 369
+      Top = 16
+      Width = 88
+      Height = 21
+      DataField = 'CTB_EMP_CODIGO'
       DataSource = DataSource1
-      Items.Strings = (
-        'ATIVA '
-        'INATIVA ')
       TabOrder = 4
+    end
+    object DBEdit6: TDBEdit
+      Left = 71
+      Top = 53
+      Width = 154
+      Height = 21
+      DataField = 'CTB_PESSOA'
+      DataSource = DataSource1
+      TabOrder = 5
+    end
+    object DBEdit7: TDBEdit
+      Left = 440
+      Top = 118
+      Width = 88
+      Height = 21
+      DataField = 'CTB_SALDO'
+      DataSource = DataSource1
+      TabOrder = 6
+    end
+    object DBEdit8: TDBEdit
+      Left = 404
+      Top = 53
+      Width = 53
+      Height = 21
+      DataField = 'CTB_STATUS'
+      DataSource = DataSource1
+      TabOrder = 7
     end
   end
   object DataSource1: TDataSource
