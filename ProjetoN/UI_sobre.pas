@@ -12,6 +12,8 @@ type
     Label1: TLabel;
     GroupBox1: TGroupBox;
     Label2: TLabel;
+    Image1: TImage;
+    Label3: TLabel;
   private
     { Private declarations }
   public
