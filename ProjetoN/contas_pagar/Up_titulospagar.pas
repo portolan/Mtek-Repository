@@ -14,9 +14,9 @@ type
     MainMenu1: TMainMenu;
     Relatrios1: TMenuItem;
     titulosapagar1: TMenuItem;
-    itulosPagos1: TMenuItem;
     procedure FormCreate(Sender: TObject);
-    //procedure titulosapagar1Click(Sender: TObject);
+    procedure titulosapagar1Click(Sender: TObject);
+
 
   private
     { Private declarations }
@@ -33,7 +33,7 @@ implementation
 
 {$R *.dfm}
 
-uses Udm_contaspagar, Um_titulospagar;
+uses Udm_contaspagar, Um_titulospagar, relatorio;
 
 class procedure Tp_titulospagar.chamaTela(xPai: TComponent);
 
@@ -53,7 +53,7 @@ begin
    funcAtribuiFiltros;
 end;
 
-{procedure Tp_titulospagar.titulosapagar1Click(Sender: TObject);
+procedure Tp_titulospagar.titulosapagar1Click(Sender: TObject);
 begin
   inherited;
   relcontasp:=Trelcontasp.Create(Owner);
@@ -62,7 +62,7 @@ begin
   finally
      FreeAndNil(relcontasp);
   end;
-end; }
+end;
 
 class procedure Tp_titulospagar.procChamaTela(Owner: TComponent);
 begin
@@ -108,6 +108,8 @@ begin
                                          'INNER JOIN PESSOAS ON PESS_CODIGO=TTP_PES_CODIGO where '+c_where;
    dm_contaspagar.titulospagar.open;
 end;
+
+
 
 
 

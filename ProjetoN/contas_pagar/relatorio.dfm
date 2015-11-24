@@ -3,8 +3,8 @@ object relcontasp: Trelcontasp
   Top = 0
   ActiveControl = Button1
   Caption = 'Relat'#243'rio'
-  ClientHeight = 201
-  ClientWidth = 447
+  ClientHeight = 130
+  ClientWidth = 177
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,68 +14,22 @@ object relcontasp: Trelcontasp
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
-    Left = 24
-    Top = 24
-    Width = 41
-    Height = 13
-    Caption = 'Empresa'
-  end
-  object Label2: TLabel
-    Left = 14
-    Top = 68
-    Width = 51
-    Height = 13
-    Caption = 'Data inicial'
-  end
-  object Label3: TLabel
-    Left = 19
-    Top = 109
-    Width = 46
-    Height = 13
-    Caption = 'Data final'
-  end
   object Button1: TButton
-    Left = 304
-    Top = 128
+    Left = 32
+    Top = 16
     Width = 115
     Height = 44
     Caption = 'Gerar Relat'#243'rio'
     TabOrder = 0
     OnClick = Button1Click
   end
-  object DateTimePicker1: TDateTimePicker
-    Left = 71
-    Top = 66
-    Width = 122
-    Height = 21
-    Date = 42319.885829166670000000
-    Time = 42319.885829166670000000
-    TabOrder = 1
-  end
-  object DateTimePicker2: TDateTimePicker
-    Left = 71
-    Top = 107
-    Width = 122
-    Height = 21
-    Date = 42319.885927951390000000
-    Time = 42319.885927951390000000
-    TabOrder = 2
-  end
-  object Edit1: TEdit
-    Left = 71
-    Top = 21
-    Width = 58
-    Height = 21
-    TabOrder = 3
-  end
   object frxDB: TfrxDBDataset
     UserName = 'frxDBDataset1'
     CloseDataSource = False
     DataSet = relatorio
     BCDToCurrency = False
-    Left = 360
-    Top = 16
+    Left = 136
+    Top = 80
   end
   object frxContasperiodo: TfrxReport
     Version = '5.3.16'
@@ -86,14 +40,14 @@ object relcontasp: Trelcontasp
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42318.562514340300000000
-    ReportOptions.LastChange = 42324.889102638900000000
+    ReportOptions.LastChange = 42332.005375925920000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
       ''
       'end.')
-    Left = 232
-    Top = 16
+    Left = 24
+    Top = 72
     Datasets = <
       item
         DataSet = frxDB
@@ -150,9 +104,8 @@ object relcontasp: Trelcontasp
         end
         object Date: TfrxMemoView
           Align = baRight
-          Left = 638.740570000000000000
-          Top = 3.779530000000000000
-          Width = 79.370130000000000000
+          Left = 574.488560000000000000
+          Width = 143.622140000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -167,67 +120,160 @@ object relcontasp: Trelcontasp
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 166.299320000000000000
+        Top = 211.653680000000000000
         Width = 718.110700000000000000
+        DataSet = frxDB
+        DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1CODIGO: TfrxMemoView
           Width = 56.692950000000000000
           Height = 18.897650000000000000
-          DataField = 'CODIGO'
+          DataField = 'TTP_CODIGO'
           DataSet = frxDB
           DataSetName = 'frxDBDataset1'
           Memo.UTF8W = (
-            '[frxDBDataset1."CODIGO"]')
+            '[frxDBDataset1."TTP_CODIGO"]')
         end
         object frxDBDataset1DESCRICAO: TfrxMemoView
-          Left = 60.472480000000000000
+          Left = 64.252010000000000000
           Width = 253.228510000000000000
           Height = 18.897650000000000000
-          DataField = 'DESCRICAO'
+          DataField = 'TTP_DESCRICAO'
           DataSet = frxDB
           DataSetName = 'frxDBDataset1'
           Memo.UTF8W = (
-            '[frxDBDataset1."DESCRICAO"]')
+            '[frxDBDataset1."TTP_DESCRICAO"]')
         end
         object frxDBDataset1STATUS: TfrxMemoView
           Left = 313.700990000000000000
           Width = 30.236240000000000000
           Height = 18.897650000000000000
-          DataField = 'STATUS'
+          DataField = 'TTP_SITUACAO'
           DataSet = frxDB
           DataSetName = 'frxDBDataset1'
           Memo.UTF8W = (
-            '[frxDBDataset1."STATUS"]')
+            '[frxDBDataset1."TTP_SITUACAO"]')
         end
         object frxDBDataset1PESSOA: TfrxMemoView
           Left = 343.937230000000000000
           Width = 215.433210000000000000
           Height = 18.897650000000000000
-          DataField = 'PESSOA'
+          DataField = 'PESS_NOME'
           DataSet = frxDB
           DataSetName = 'frxDBDataset1'
           Memo.UTF8W = (
-            '[frxDBDataset1."PESSOA"]')
+            '[frxDBDataset1."PESS_NOME"]')
         end
         object frxDBDataset1VALOR: TfrxMemoView
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          DataField = 'VALOR'
+          DataField = 'TTP_VL_TOTAL'
           DataSet = frxDB
           DataSetName = 'frxDBDataset1'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
           Memo.UTF8W = (
-            '[frxDBDataset1."VALOR"]')
+            '[frxDBDataset1."TTP_VL_TOTAL"]')
         end
         object frxDBDataset1VENCIMENTO: TfrxMemoView
           Left = 559.370440000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          DataField = 'VENCIMENTO'
+          DataField = 'TTP_DT_VENCIMENTO'
           DataSet = frxDB
           DataSetName = 'frxDBDataset1'
           Memo.UTF8W = (
-            '[frxDBDataset1."VENCIMENTO"]')
+            '[frxDBDataset1."TTP_DT_VENCIMENTO"]')
+        end
+      end
+      object PageHeader1: TfrxPageHeader
+        FillType = ftBrush
+        Height = 22.677180000000000000
+        Top = 128.504020000000000000
+        Width = 718.110700000000000000
+        object Rich1: TfrxRichView
+          Width = 49.133890000000000000
+          Height = 18.897650000000000000
+          GapX = 2.000000000000000000
+          GapY = 1.000000000000000000
+          RichEdit = {
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6E6F
+            7569636F6D7061745C6465666C616E67313034367B5C666F6E7474626C7B5C66
+            305C666E696C5C666368617273657430205461686F6D613B7D7D0D0A7B5C2A5C
+            67656E657261746F722052696368656432302031302E302E31303234307D5C76
+            6965776B696E64345C756331200D0A5C706172645C66305C6673313620435C27
+            64334449474F5C7061720D0A5C7061720D0A7D0D0A00}
+        end
+        object Rich2: TfrxRichView
+          Left = 49.133890000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          GapX = 2.000000000000000000
+          GapY = 1.000000000000000000
+          RichEdit = {
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6E6F
+            7569636F6D7061745C6465666C616E67313034367B5C666F6E7474626C7B5C66
+            305C666E696C5C666368617273657430205461686F6D613B7D7D0D0A7B5C2A5C
+            67656E657261746F722052696368656432302031302E302E31303234307D5C76
+            6965776B696E64345C756331200D0A5C706172645C66305C6673313620444553
+            4352495C2763375C2763334F5C7061720D0A5C7061720D0A7D0D0A00}
+        end
+        object Rich3: TfrxRichView
+          Left = 302.362400000000000000
+          Width = 45.354360000000000000
+          Height = 18.897650000000000000
+          GapX = 2.000000000000000000
+          GapY = 1.000000000000000000
+          RichEdit = {
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6E6F
+            7569636F6D7061745C6465666C616E67313034367B5C666F6E7474626C7B5C66
+            305C666E696C5C666368617273657430205461686F6D613B7D7D0D0A7B5C2A5C
+            67656E657261746F722052696368656432302031302E302E31303234307D5C76
+            6965776B696E64345C756331200D0A5C706172645C66305C6673313620535441
+            5455535C7061720D0A7D0D0A00}
+        end
+        object Rich4: TfrxRichView
+          Left = 351.496290000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          GapX = 2.000000000000000000
+          GapY = 1.000000000000000000
+          RichEdit = {
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6E6F
+            7569636F6D7061745C6465666C616E67313034367B5C666F6E7474626C7B5C66
+            305C666E696C5C666368617273657430205461686F6D613B7D7D0D0A7B5C2A5C
+            67656E657261746F722052696368656432302031302E302E31303234307D5C76
+            6965776B696E64345C756331200D0A5C706172645C66305C6673313620504553
+            534F415C7061720D0A5C7061720D0A7D0D0A00}
+        end
+        object Rich5: TfrxRichView
+          Left = 563.149970000000000000
+          Width = 75.590600000000000000
+          Height = 18.897650000000000000
+          GapX = 2.000000000000000000
+          GapY = 1.000000000000000000
+          RichEdit = {
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6E6F
+            7569636F6D7061745C6465666C616E67313034367B5C666F6E7474626C7B5C66
+            305C666E696C5C666368617273657430205461686F6D613B7D7D0D0A7B5C2A5C
+            67656E657261746F722052696368656432302031302E302E31303234307D5C76
+            6965776B696E64345C756331200D0A5C706172645C66305C667331362056454E
+            43494D454E544F5C7061720D0A5C7061720D0A7D0D0A00}
+        end
+        object Rich6: TfrxRichView
+          Left = 642.520100000000000000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          GapX = 2.000000000000000000
+          GapY = 1.000000000000000000
+          RichEdit = {
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6E6F
+            7569636F6D7061745C6465666C616E67313034367B5C666F6E7474626C7B5C66
+            305C666E696C5C666368617273657430205461686F6D613B7D7D0D0A7B5C2A5C
+            67656E657261746F722052696368656432302031302E302E31303234307D5C76
+            6965776B696E64345C756331200D0A5C706172645C66305C667331362056414C
+            4F525C7061720D0A7D0D0A00}
         end
       end
     end
@@ -235,65 +281,53 @@ object relcontasp: Trelcontasp
   object relatorio: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'select * from relcontasp (:emp, :dt_inicial, :dt_final)')
-    Left = 304
-    Top = 16
-    ParamData = <
-      item
-        DataType = ftInteger
-        Name = 'emp'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftDate
-        Name = 'dt_inicial'
-        ParamType = ptInput
-      end
-      item
-        DataType = ftDate
-        Name = 'dt_final'
-        ParamType = ptInput
-      end>
-    object relatorioVENCIMENTO: TDateField
-      FieldName = 'VENCIMENTO'
-      Origin = '"RELCONTASP"."VENCIMENTO"'
-      DisplayFormat = 'DD/MM/YYYY'
-      EditMask = '!99/99/0000;1;'
+      'select a.ttp_codigo,'
+      '       a.ttp_descricao,'
+      '       a.ttp_situacao,'
+      '       b.pess_nome,'
+      '       a.ttp_vl_total,'
+      '       a.ttp_dt_vencimento'
+      ''
+      'from titulosp a'
+      'inner join pessoas b on b.pess_codigo=a.ttp_pes_codigo'
+      'where a.ttp_situacao='#39'A'#39' ')
+    Left = 88
+    Top = 72
+    object relatorioTTP_CODIGO: TIntegerField
+      FieldName = 'TTP_CODIGO'
+      Origin = '"TITULOSP"."TTP_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
-    object relatorioVALOR: TIBBCDField
-      FieldName = 'VALOR'
-      Origin = '"RELCONTASP"."VALOR"'
-      Precision = 18
-      Size = 2
+    object relatorioTTP_DESCRICAO: TIBStringField
+      FieldName = 'TTP_DESCRICAO'
+      Origin = '"TITULOSP"."TTP_DESCRICAO"'
+      Size = 400
     end
-    object relatorioCODIGO: TIntegerField
-      FieldName = 'CODIGO'
-      Origin = '"RELCONTASP"."CODIGO"'
-    end
-    object relatorioDESCRICAO: TIBStringField
-      FieldName = 'DESCRICAO'
-      Origin = '"RELCONTASP"."DESCRICAO"'
-      Size = 320
-    end
-    object relatorioPESSOA: TIBStringField
-      FieldName = 'PESSOA'
-      Origin = '"RELCONTASP"."PESSOA"'
-      Size = 320
-    end
-    object relatorioSTATUS: TIBStringField
-      FieldName = 'STATUS'
-      Origin = '"RELCONTASP"."STATUS"'
+    object relatorioTTP_SITUACAO: TIBStringField
+      FieldName = 'TTP_SITUACAO'
+      Origin = '"TITULOSP"."TTP_SITUACAO"'
       Size = 4
     end
-    object relatorioTOTALREL: TIBBCDField
-      FieldName = 'TOTALREL'
-      Origin = '"RELCONTASP"."TOTALREL"'
+    object relatorioPESS_NOME: TIBStringField
+      FieldName = 'PESS_NOME'
+      Origin = '"PESSOAS"."PESS_NOME"'
+      Size = 400
+    end
+    object relatorioTTP_VL_TOTAL: TIBBCDField
+      FieldName = 'TTP_VL_TOTAL'
+      Origin = '"TITULOSP"."TTP_VL_TOTAL"'
       Precision = 18
       Size = 2
+    end
+    object relatorioTTP_DT_VENCIMENTO: TDateField
+      FieldName = 'TTP_DT_VENCIMENTO'
+      Origin = '"TITULOSP"."TTP_DT_VENCIMENTO"'
     end
   end
 end

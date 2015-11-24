@@ -13,20 +13,13 @@ type
     frxDB: TfrxDBDataset;
     frxContasperiodo: TfrxReport;
     relatorio: TIBQuery;
-    relatorioVENCIMENTO: TDateField;
-    relatorioVALOR: TIBBCDField;
-    relatorioCODIGO: TIntegerField;
-    relatorioDESCRICAO: TIBStringField;
-    relatorioPESSOA: TIBStringField;
-    relatorioSTATUS: TIBStringField;
-    relatorioTOTALREL: TIBBCDField;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
     Button1: TButton;
-    DateTimePicker1: TDateTimePicker;
-    DateTimePicker2: TDateTimePicker;
-    Edit1: TEdit;
+    relatorioTTP_CODIGO: TIntegerField;
+    relatorioTTP_DESCRICAO: TIBStringField;
+    relatorioTTP_SITUACAO: TIBStringField;
+    relatorioPESS_NOME: TIBStringField;
+    relatorioTTP_VL_TOTAL: TIBBCDField;
+    relatorioTTP_DT_VENCIMENTO: TDateField;
     procedure Button1Click(Sender: TObject);
 
 
@@ -51,9 +44,9 @@ begin
 Application.CreateForm(Trelcontasp, relcontasp);
 frxContasperiodo.LoadFromFile('C:\Users\blist_000\Desktop\porn\trunk\ProjetoN\contas_pagar\relatorio.fr3');
 relcontasp.relatorio.Close;
-relcontasp.relatorio.ParamByName('emp').Value:=Edit1.text;
-relcontasp.relatorio.ParamByName('dt_inicial').Value:=DateTimePicker1.Date;
-relcontasp.relatorio.ParamByName('dt_final').Value:=DateTimePicker2.Date;
+//relcontasp.relatorio.ParamByName('emp').Value:=Edit1.text;
+//relcontasp.relatorio.ParamByName('dt_inicial').Value:=DateTimePicker1.Date;
+//relcontasp.relatorio.ParamByName('dt_final').Value:=DateTimePicker2.Date;
 relcontasp.relatorio.Open;
 relcontasp.frxContasperiodo.ShowReport();
 end;
