@@ -145,21 +145,21 @@ begin
         qryDin := funcCriaQuery;
         qryDin.Close;
         qryDin.SQL.Text :=  'select sum(em_qtd) as qtd from estoq_movimento' +
-                            'where em_empresa = '       + IntToStr(codEmpresa) +
-                            'where em_produto = '       + codProduto +
-                            'where em_bloco = '         + IntToStr(codBloco) +
-                            'where em_prateleira = '    + IntToStr(codPrateleira) +
-                            'where em_estoque = '       + IntToStr(codEstoque);
+                            ' where em_empresa = '       + IntToStr(codEmpresa) +
+                            ' and em_produto = '       + codProduto +
+                            ' and em_bloco = '         + IntToStr(codBloco) +
+                            ' and em_prateleira = '    + IntToStr(codPrateleira) +
+                            ' and em_estoque = '       + IntToStr(codEstoque);
         qryDin.Open;
         d_qtd := qryDin.FieldByName('qtd').AsFloat;
 
         qryDin.Close;
         qryDin.SQL.Text :=  'select sum(em_valor_financeiro) as vf from estoq_movimento' +
-                            'where em_empresa = '       + IntToStr(codEmpresa) +
-                            'where em_produto = '       + codProduto +
-                            'where em_bloco = '         + IntToStr(codBloco) +
-                            'where em_prateleira = '    + IntToStr(codPrateleira) +
-                            'where em_estoque = '       + IntToStr(codEstoque);
+                            ' where em_empresa = '       + IntToStr(codEmpresa) +
+                            ' and em_produto = '       + codProduto +
+                            ' and em_bloco = '         + IntToStr(codBloco) +
+                            ' and em_prateleira = '    + IntToStr(codPrateleira) +
+                            ' and em_estoque = '       + IntToStr(codEstoque);
         qryDin.Open;
         d_vlrFinanceiro := qryDin.FieldByName('vf').AsFloat;
 
@@ -167,11 +167,11 @@ begin
 
         qryDin.Close;
         qryDin.SQL.Text :=  'update estoque set estoq_customedio = '    + FloatToStr(d_customedio) +
-                            'where em_empresa = '                       + IntToStr(codEmpresa) +
-                            'where em_produto = '                       + codProduto +
-                            'where em_bloco = '                         + IntToStr(codBloco) +
-                            'where em_prateleira = '                    + IntToStr(codPrateleira) +
-                            'where em_estoque = '                       + IntToStr(codEstoque);
+                            ' where em_empresa = '                       + IntToStr(codEmpresa) +
+                            ' and em_produto = '                       + codProduto +
+                            ' and em_bloco = '                         + IntToStr(codBloco) +
+                            ' and em_prateleira = '                    + IntToStr(codPrateleira) +
+                            ' and em_estoque = '                       + IntToStr(codEstoque);
         qryDin.Open;
 
         result := d_customedio;
