@@ -27,7 +27,7 @@ implementation
 procedure TUp_NFE.FormCreate(Sender: TObject);
 begin
   inherited;
-  procInicializar(DM_VENDA.IB_EmissaoNFE,TRUE,FALSE,Up_NFE, TUp_NFE);
+  procInicializar(DM_VENDA.IB_EmissaoNFE,TRUE,FALSE,MEmissao_NFE, TMEmissao_NFE);
 end;
 
 procedure TUp_NFE.procSelect;

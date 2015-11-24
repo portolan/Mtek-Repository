@@ -41,17 +41,17 @@ inherited Up_NFE: TUp_NFE
           end
           item
             Expanded = False
-            FieldName = 'EMI_PESSOA'
-            Visible = True
-          end
-          item
-            Expanded = False
             FieldName = 'EMI_DTEMISSAO'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EMI_DTSAIDA'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'EMI_PESSOA'
             Visible = True
           end
           item

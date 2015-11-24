@@ -2,17 +2,17 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
   ActiveControl = DBEdit2
   Caption = 'Pedido de Venda'
   ClientHeight = 492
-  ClientWidth = 712
+  ClientWidth = 662
   OnClose = nil
   OnKeyDown = nil
   OnShow = FormShow
-  ExplicitWidth = 728
+  ExplicitWidth = 678
   ExplicitHeight = 531
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnRodape: TPanel
     Top = 448
-    Width = 712
+    Width = 662
     Height = 44
     ExplicitTop = 448
     ExplicitWidth = 712
@@ -22,14 +22,14 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       ExplicitHeight = 42
     end
     inherited sbCancelar: TSpeedButton
-      Left = 615
+      Left = 565
       Height = 42
       ExplicitLeft = 506
       ExplicitHeight = 42
     end
   end
   inherited gbInfos: TGroupBox
-    Width = 712
+    Width = 662
     Height = 448
     ExplicitWidth = 712
     ExplicitHeight = 448
@@ -50,7 +50,7 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       FocusControl = DBEdit2
     end
     object Label3: TLabel
-      Left = 558
+      Left = 509
       Top = 9
       Width = 49
       Height = 13
@@ -58,7 +58,7 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       FocusControl = DBEdit3
     end
     object Label4: TLabel
-      Left = 558
+      Left = 509
       Top = 55
       Width = 41
       Height = 13
@@ -161,14 +161,14 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
     end
     object Label12: TLabel
       Left = 502
-      Top = 248
+      Top = 233
       Width = 116
       Height = 13
       Caption = 'Condi'#231#227'o de Pagamento'
     end
     object bt_condicaopg: TSpeedButton
       Left = 624
-      Top = 239
+      Top = 224
       Width = 23
       Height = 22
       OnClick = bt_condicaopgClick
@@ -193,7 +193,7 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       TabOrder = 1
     end
     object DBEdit3: TDBEdit
-      Left = 558
+      Left = 509
       Top = 28
       Width = 134
       Height = 21
@@ -362,16 +362,17 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       Left = 9
       Top = 143
       Width = 374
-      Height = 61
+      Height = 42
       TabOrder = 16
       ExplicitLeft = 9
       ExplicitTop = 143
       ExplicitWidth = 374
-      ExplicitHeight = 61
+      ExplicitHeight = 42
       inherited pnlFrame: TPanel
         Width = 374
-        Height = 61
-        ExplicitWidth = 445
+        Height = 42
+        ExplicitWidth = 374
+        ExplicitHeight = 61
         inherited lbTitulo: TLabel
           Top = -1
           Width = 38
@@ -385,24 +386,24 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
         end
         inherited panelFundo: TPanel
           Top = 15
-          Width = 301
+          Width = 296
           Height = 26
           ExplicitTop = 15
-          ExplicitWidth = 291
+          ExplicitWidth = 296
           ExplicitHeight = 26
           inherited DBT_DESCRICAO: TDBText
             Left = 0
             Top = 1
-            Width = 297
+            Width = 291
             ExplicitLeft = 0
             ExplicitTop = 1
-            ExplicitWidth = 297
+            ExplicitWidth = 291
           end
         end
       end
     end
     object ComboBox1: TComboBox
-      Left = 559
+      Left = 510
       Top = 74
       Width = 133
       Height = 21
@@ -414,12 +415,12 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
     end
     inline frm_departamento: TfrmRelacionamento
       Left = 379
-      Top = 135
+      Top = 137
       Width = 326
       Height = 67
       TabOrder = 18
       ExplicitLeft = 379
-      ExplicitTop = 135
+      ExplicitTop = 137
       ExplicitWidth = 326
       ExplicitHeight = 67
       inherited pnlFrame: TPanel
@@ -433,10 +434,10 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
           ExplicitWidth = 42
         end
         inherited panelFundo: TPanel
-          Width = 241
+          Width = 204
           ExplicitWidth = 241
           inherited DBT_DESCRICAO: TDBText
-            Width = 228
+            Width = 191
             ExplicitWidth = 228
           end
         end

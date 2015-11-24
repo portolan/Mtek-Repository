@@ -8,7 +8,7 @@ uses
   Vcl.ExtCtrls, Data.DB, Vcl.Mask, Vcl.DBCtrls, dm000, UDM_Venda,
   ufrm_Relacionamento, UP_empresa, UDM_empresa, Um_Condição_Pagamento,
   UDM_contabil, UM_empresa, UM_departamento, Datasnap.DBClient, UM_Pessoa,
-  UDM_Estoque, UM_Produto, UP_Produto, UP_departamento;
+  UDM_Estoque, UM_Produto, UP_Produto, UP_departamento, Up_Emissao_NFE;
 
 type
   TFrm_Pedido_Venda = class(TxManuPadrao)
@@ -149,8 +149,12 @@ end;
 procedure TFrm_Pedido_Venda.bt_condicaopgClick(Sender: TObject);
 begin
   inherited;
-  U_Condicao_Pg := TU_Condicao_Pg.Create(self);
-  U_Condicao_Pg.Show;
+  Up_NFE := TUp_NFE.Create(self);
+  try
+     Up_NFE.ShowModal;
+  finally
+     FreeAndNil(Up_NFE);
+  end;
 end;
 
 end.
