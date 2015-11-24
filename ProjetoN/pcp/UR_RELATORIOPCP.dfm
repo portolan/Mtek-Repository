@@ -42,12 +42,14 @@ object pcprelatorio: Tpcprelatorio
       object MasterData1: TfrxMasterData
         FillType = ftBrush
         Height = 52.913420000000000000
-        Top = 72.000000000000000000
+        Top = 117.165430000000000000
         Width = 718.110700000000000000
         DataSet = frxDBOrdemproducao
         DataSetName = 'frxDBOp'
-        RowCount = 1
+        Filter = '<frxDBOp."OP_COD">'
+        RowCount = 0
         object frxDBOpOP_QTD: TfrxMemoView
+          Top = 34.015770000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'OP_COD'
@@ -57,7 +59,8 @@ object pcprelatorio: Tpcprelatorio
             '[frxDBOp."OP_COD"]')
         end
         object Memo2: TfrxMemoView
-          Left = 83.149660000000000000
+          Left = 86.929190000000000000
+          Top = 34.015770000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'OP_EMPRESA'
@@ -68,6 +71,7 @@ object pcprelatorio: Tpcprelatorio
         end
         object Memo3: TfrxMemoView
           Left = 170.078850000000000000
+          Top = 34.015770000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'OP_DEPARTAMENTO'
@@ -77,7 +81,8 @@ object pcprelatorio: Tpcprelatorio
             '[frxDBOp."OP_DEPARTAMENTO"]')
         end
         object Memo4: TfrxMemoView
-          Left = 257.008040000000000000
+          Left = 253.228510000000000000
+          Top = 34.015770000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'OP_PRODUTO'
@@ -87,7 +92,8 @@ object pcprelatorio: Tpcprelatorio
             '[frxDBOp."OP_PRODUTO"]')
         end
         object Memo5: TfrxMemoView
-          Left = 340.157700000000000000
+          Left = 336.378170000000000000
+          Top = 34.015770000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'OP_TIPO'
@@ -97,7 +103,8 @@ object pcprelatorio: Tpcprelatorio
             '[frxDBOp."OP_TIPO"]')
         end
         object Memo6: TfrxMemoView
-          Left = 423.307360000000000000
+          Left = 419.527830000000000000
+          Top = 34.015770000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'OP_QTD'
@@ -107,7 +114,8 @@ object pcprelatorio: Tpcprelatorio
             '[frxDBOp."OP_QTD"]')
         end
         object Memo7: TfrxMemoView
-          Left = 510.236550000000000000
+          Left = 506.457020000000000000
+          Top = 34.015770000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'OP_DT_PEDIDO'
@@ -117,8 +125,8 @@ object pcprelatorio: Tpcprelatorio
             '[frxDBOp."OP_DT_PEDIDO"]')
         end
         object Memo8: TfrxMemoView
-          Left = 585.827150000000000000
-          Top = -0.000000000000000007
+          Left = 582.047620000000000000
+          Top = 34.015770000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'OP_DT_ENTREGA'
@@ -128,7 +136,8 @@ object pcprelatorio: Tpcprelatorio
             '[frxDBOp."OP_DT_ENTREGA"]')
         end
         object Memo9: TfrxMemoView
-          Left = 672.756340000000000000
+          Left = 668.976810000000000000
+          Top = 34.015770000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'OP_STATUS'
@@ -138,29 +147,15 @@ object pcprelatorio: Tpcprelatorio
             '[frxDBOp."OP_STATUS"]')
         end
       end
-      object PageFooter1: TfrxPageFooter
-        FillType = ftBrush
-        Height = 22.677180000000000000
-        Top = 144.000000000000000000
-        Width = 718.110700000000000000
-        object Memo1: TfrxMemoView
-          Left = 642.520100000000000000
-          Width = 75.590600000000000000
-          Height = 18.897650000000000000
-          HAlign = haRight
-          Memo.UTF8W = (
-            '[Page#]')
-        end
-      end
       object ASDAS: TfrxReportTitle
         FillType = ftBrush
         Height = 37.795300000000000000
-        Top = 16.000000000000000000
+        Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo10: TfrxMemoView
-          Left = 200.315090000000000000
-          Top = 7.559060000000000000
-          Width = 332.598640000000000000
+          Left = 222.992270000000000000
+          Top = 3.779530000000000000
+          Width = 238.110390000000000000
           Height = 18.897650000000000000
           Memo.UTF8W = (
             'Relat'#243'rio PCP-Ordens de producoes')
