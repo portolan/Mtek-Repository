@@ -1,6 +1,5 @@
 inherited P_centro: TP_centro
-  Caption = 'Pesquisar Centro de Custo - ProjetoDesnecessauro'
-  OnCreate = FormCreate
+  Caption = 'Pesquisar Centro de Custo - ProjetoNecessauro'
   ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96

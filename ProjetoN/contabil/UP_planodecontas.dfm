@@ -1,8 +1,7 @@
 inherited P_planodecontas: TP_planodecontas
-  Caption = 'Pesquisar Plano de Contas - ProjetoDesnecessauro'
+  Caption = 'Pesquisar Plano de Contas - ProjetoNecessauro'
   ClientHeight = 310
   ClientWidth = 560
-  OnCreate = FormCreate
   ExplicitWidth = 576
   ExplicitHeight = 349
   PixelsPerInch = 96
@@ -10,13 +9,13 @@ inherited P_planodecontas: TP_planodecontas
   inherited pnCorpo: TPanel
     Width = 560
     Height = 215
-    ExplicitWidth = 657
-    ExplicitHeight = 213
+    ExplicitWidth = 560
+    ExplicitHeight = 215
     inherited gbDados: TGroupBox
       Width = 554
       Height = 209
-      ExplicitWidth = 651
-      ExplicitHeight = 207
+      ExplicitWidth = 554
+      ExplicitHeight = 209
       inherited DBGDados: TDBGrid
         Width = 550
         Height = 192
@@ -25,7 +24,6 @@ inherited P_planodecontas: TP_planodecontas
           item
             Expanded = False
             FieldName = 'PLN_COD_CONTA'
-            Width = -1
             Visible = False
           end
           item
@@ -52,8 +50,8 @@ inherited P_planodecontas: TP_planodecontas
   inherited pnRodape: TPanel
     Top = 268
     Width = 560
-    ExplicitTop = 266
-    ExplicitWidth = 657
+    ExplicitTop = 268
+    ExplicitWidth = 560
     inherited sbSair: TSpeedButton
       Left = 463
       ExplicitLeft = 560
@@ -61,14 +59,14 @@ inherited P_planodecontas: TP_planodecontas
   end
   inherited pnCabecalho: TPanel
     Width = 560
-    ExplicitWidth = 657
+    ExplicitWidth = 560
     inherited gbStatus: TGroupBox
-      Left = 399
-      ExplicitLeft = 496
+      Left = 544
+      ExplicitLeft = 544
     end
     inherited gbFiltro: TGroupBox
-      Width = 399
-      ExplicitWidth = 496
+      Width = 544
+      ExplicitWidth = 544
       inherited cbContent: TComboBox
         Left = 103
         Width = 114

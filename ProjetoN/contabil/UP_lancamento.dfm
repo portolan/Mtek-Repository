@@ -1,5 +1,5 @@
 inherited P_lancamento: TP_lancamento
-  Caption = 'Pesquisar Lan'#231'amentos - ProjetoDesnecessauro'
+  Caption = 'Pesquisar Lan'#231'amentos - ProjetoNecessauro'
   ExplicitWidth = 880
   ExplicitHeight = 441
   PixelsPerInch = 96
@@ -53,13 +53,13 @@ inherited P_lancamento: TP_lancamento
     object Rcredito: TLabel [4]
       Left = 217
       Top = 272
-      Width = 39
+      Width = 3
       Height = 13
     end
     object Rdebito: TLabel [5]
       Left = 370
       Top = 272
-      Width = 70
+      Width = 3
       Height = 13
     end
     inherited gbDados: TGroupBox
@@ -104,7 +104,6 @@ inherited P_lancamento: TP_lancamento
           item
             Expanded = False
             FieldName = 'LANC_CENTRODECUSTO_DB'
-            Width = 64
             Visible = True
           end
           item
@@ -140,17 +139,6 @@ inherited P_lancamento: TP_lancamento
       Width = 852
       Height = 41
       TabOrder = 1
-    end
-  end
-  inherited pnCabecalho: TPanel
-    inherited gbFiltro: TGroupBox
-      ExplicitWidth = 848
-      inherited editPesquisa: TEdit
-        ExplicitWidth = 454
-      end
-      inherited Pesquisar: TButton
-        ExplicitLeft = 767
-      end
     end
   end
 end

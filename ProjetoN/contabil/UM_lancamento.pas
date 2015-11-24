@@ -120,10 +120,10 @@ P_planodecontas := TP_planodecontas.Create(Self);
     try
       P_planodecontas.procInicializar(DM_contabil.planodecontas, false, true, P_planodecontas, TP_planodecontas);
       P_planodecontas.ShowModal;
-      if DM_contabil.planodecontasPLN_ANALITICA.AsVariant = 'N' then
+      if DM_contabil.planodecontasPLN_ANALITICA.AsVariant = 'S' then
           DM_contabil.lancamentoLANC_CREDITO.Value := DM_contabil.planodecontasPLN_CONTA.AsString
       else
-      ShowMessage('A Contas inserida é ANALÍTICA, por favor, selecione uma conta NÃO ANALÍTICA');
+      ShowMessage('A Conta inserida NÃO é ANALÍTICA, por favor, selecione uma conta ANALÍTICA');
     finally
       P_planodecontas.Free;
     end;
