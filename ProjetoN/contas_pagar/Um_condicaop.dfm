@@ -61,6 +61,7 @@ inherited m_condicaopag: Tm_condicaopag
       Height = 21
       DataField = 'CDP_CODIGO'
       DataSource = DataSourceCondicao
+      ReadOnly = True
       TabOrder = 0
     end
     object desc: TDBEdit

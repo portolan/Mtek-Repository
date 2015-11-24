@@ -166,6 +166,8 @@ type
     procedure PedidoCompraPDC_VLR_DESCONTOValidate(Sender: TField);
     procedure PedidoCompraPDC_VLR_LIQUIDOValidate(Sender: TField);
     procedure NotaEntradaAfterInsert(DataSet: TDataSet);
+    procedure FornecedorCotacaoAfterInsert(DataSet: TDataSet);
+    procedure ItemNotaEntradaAfterInsert(DataSet: TDataSet);
   private
     procedure procCalcularTotalPedCompra;
 
@@ -176,7 +178,7 @@ type
     function funcFecharCotacao(i_emp, i_cotacao : Integer; i_fornecedor_vencedor : Integer): Integer;
     function funcRetornaCondicaoPagamentoPadrao : Integer;
     procedure procGerarTitulos(i_emp, i_pedido : Integer);
-    procedure procGerarCabecaNota(i_emp, i_pessoa, i_nrNota : Integer);
+    procedure procGerarCabecaNota(i_emp, i_pessoa, i_nrNota : Integer; f_vl_Total : Double);
     procedure procGerarItemNota(i_emp, i_pedido, i_nrNota: Integer);
     procedure procAlterarStatusPedCompra(i_emp, i_cod : Integer; Status: TStatusPedCompra; b_finalizarTransacao : Boolean = True);
 
@@ -200,6 +202,14 @@ begin
    CotacaoCOT_CODIGO.AsInteger := dmBanco.funcRecuperaProximoIdGenerator('SEQCOTACAO');
    CotacaoCOT_DATA.AsDateTime  := Now;
    CotacaoCOT_STATUS.AsString  := TNMStatusCotacao[tscAberto];
+   CotacaoCOT_QTD.AsFloat      := 0.00;
+end;
+
+procedure TdmPedCompra.FornecedorCotacaoAfterInsert(DataSet: TDataSet);
+begin
+   FornecedorCotacaoFCT_VLR_UNITARIO.AsFloat := 0.00;
+   FornecedorCotacaoFCT_VLR_FRETE.AsFloat    := 0.00;
+   FornecedorCotacaoFCT_VENCEDOR.AsString    := 'N';
 end;
 
 function TdmPedCompra.funcFecharCotacao(i_emp, i_cotacao, i_fornecedor_vencedor: Integer): Integer;
@@ -437,6 +447,7 @@ function TdmPedCompra.funcRetornaCondicaoPagamentoPadrao: Integer;
 var AuxQry : TIBQuery;
 begin
    Result := -1;
+   AuxQry := dmBanco.funcCriaQuery;
    try
       AuxQry.Close;
       AuxQry.SQL.Text := ' SELECT FIRST 1 A.CDP_CODIGO '+
@@ -450,16 +461,37 @@ begin
    end;
 end;
 
+procedure TdmPedCompra.ItemNotaEntradaAfterInsert(DataSet: TDataSet);
+begin
+   ItemNotaEntradaINE_VLR_BRUTO.AsFloat    := 0.00;
+   ItemNotaEntradaINE_VLR_DESC.AsFloat     := 0.00;
+   ItemNotaEntradaINE_VLR_LIQUIDO.AsFloat  := 0.00;
+   ItemNotaEntradaINE_VLR_PIS.AsFloat      := 0.00;
+   ItemNotaEntradaINE_VLR_ICMS.AsFloat     := 0.00;
+   ItemNotaEntradaINE_VLR_TOTAL.AsFloat    := 0.00;
+   ItemNotaEntradaINE_VLR_UNITARIO.AsFloat := 0.00;
+end;
+
 procedure TdmPedCompra.NotaEntradaAfterInsert(DataSet: TDataSet);
 begin
-   NotaEntradaNTE_DATA.AsDateTime := Now;
+   NotaEntradaNTE_DATA.AsDateTime   := Now;
+   NotaEntradaNTE_VLR_FRETE.AsFloat := 0.00;
+   NotaEntradaNTE_VLR_PIS.AsFloat   := 0.00;
+   NotaEntradaNTE_VLR_ICMS.AsFloat  := 0.00;
+   NotaEntradaNTE_VLR_TOTAL.AsFloat := 0.00;
 end;
 
 procedure TdmPedCompra.PedidoCompraAfterInsert(DataSet: TDataSet);
 begin
-   PedidoCompraPDC_CODIGO.AsInteger := dmBanco.funcRecuperaProximoIdGenerator('SEQPEDCOMPRA');
-   PedidoCompraPDC_DATA.AsDateTime  := Now;
-   PedidoCompraPDC_STATUS.AsString  := TNMStatusPedCompra[tspAberto];
+   PedidoCompraPDC_CODIGO.AsInteger     := dmBanco.funcRecuperaProximoIdGenerator('SEQPEDCOMPRA');
+   PedidoCompraPDC_DATA.AsDateTime      := Now;
+   PedidoCompraPDC_STATUS.AsString      := TNMStatusPedCompra[tspAberto];
+   PedidoCompraPDC_VLR_FRETE.AsFloat    := 0.00;
+   PedidoCompraPDC_VLR_UNITARIO.AsFloat := 0.00;
+   PedidoCompraPDC_VLR_BRUTO.AsFloat    := 0.00;
+   PedidoCompraPDC_VLR_DESCONTO.AsFloat := 0.00;
+   PedidoCompraPDC_VLR_LIQUIDO.AsFloat  := 0.00;
+   PedidoCompraPDC_VLR_TOTAL.AsFloat    := 0.00;
 end;
 
 procedure TdmPedCompra.PedidoCompraPDC_QTD_TOTALValidate(Sender: TField);
@@ -559,13 +591,17 @@ begin
    PedidoCompraPDC_VLR_TOTAL.AsFloat   := PedidoCompraPDC_VLR_LIQUIDO.AsFloat + PedidoCompraPDC_VLR_FRETE.AsFloat;
 end;
 
-procedure TdmPedCompra.procGerarCabecaNota(i_emp, i_pessoa, i_nrNota : Integer);
+procedure TdmPedCompra.procGerarCabecaNota(i_emp, i_pessoa, i_nrNota : Integer; f_vl_Total : Double);
 begin
+   if not NotaEntrada.Active then
+      NotaEntrada.Open;
+
    try
       NotaEntrada.Append;
       NotaEntradaNTE_EMPRESA.AsInteger := i_emp;
-      NotaEntradaNTE_NR_NOTA.AsInteger := i_pessoa;
-      NotaEntradaNTE_PESSOA.AsInteger  := i_nrNota;
+      NotaEntradaNTE_NR_NOTA.AsInteger := i_nrNota;
+      NotaEntradaNTE_PESSOA.AsInteger  := i_pessoa;
+      NotaEntradaNTE_VLR_TOTAL.AsFloat := f_vl_Total;
       NotaEntrada.Post;
    except
       on E: Exception do
@@ -579,6 +615,9 @@ end;
 procedure TdmPedCompra.procGerarItemNota(i_emp, i_pedido,i_nrNota: Integer);
 var AuxQry : TIBQuery;
 begin
+   if not ItemNotaEntrada.Active then
+      ItemNotaEntrada.Open;
+
    AuxQry := dmBanco.funcCriaQuery;
    try
       AuxQry.Close;
@@ -631,6 +670,9 @@ begin
    f_valor_parcela := 0.00;
    i_seq           := 1;
 
+   if not dm_contaspagar.titulospagar.Active then
+      dm_contaspagar.titulospagar.Open;
+
    AuxQry := dmbanco.funcCriaQuery;
    try
       AuxQry.Close;
@@ -642,8 +684,8 @@ begin
                          '  INNER JOIN CONDICAOPAGAMENTO B ON A.PDC_CONDICAO_PGTO = B.CDP_CODIGO '+
                          '  WHERE A.PDC_EMPRESA = :EMP '+
                          '    AND A.PDC_CODIGO = :COD ';
-      AuxQry.FieldByName('EMP').AsInteger := i_emp;
-      AuxQry.FieldByName('COD').AsInteger := i_pedido;
+      AuxQry.ParamByName('EMP').AsInteger := i_emp;
+      AuxQry.ParamByName('COD').AsInteger := i_pedido;
       AuxQry.Open;
 
       if AuxQry.IsEmpty then
@@ -654,7 +696,7 @@ begin
 
       f_valor_parcela := AuxQry.FieldByName('PDC_VLR_TOTAL').AsFloat / i_qtd_parcelas;
 
-      for i_cont := 0 to i_qtd_parcelas do
+      for i_cont := 0 to i_qtd_parcelas - 1 do
       begin
          dt_vencimento := dt_vencimento + AuxQry.FieldByName('CDP_DIAS_VENCIMENTO').AsInteger;
 
@@ -685,6 +727,7 @@ begin
    SolicitacaoCompraSOL_CODIGO.AsInteger := dmBanco.funcRecuperaProximoIdGenerator('SEQSOLCOMPRA');
    SolicitacaoCompraSOL_STATUS.AsString  := TNMStatusSolicitacao[tssAberto];
    SolicitacaoCompraSOL_DATA.AsDateTime  := Now;
+   SolicitacaoCompraSOL_QTD.AsFloat      := 0.00;
 end;
 
 end.

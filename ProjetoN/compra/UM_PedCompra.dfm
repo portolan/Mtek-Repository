@@ -373,8 +373,6 @@ inherited MPedCompra: TMPedCompra
     Align = alClient
     Caption = 'Observa'#231#245'es'
     TabOrder = 2
-    ExplicitTop = 178
-    ExplicitHeight = 155
     object DBM_PDC_OBS: TDBMemo
       Left = 2
       Top = 15
@@ -384,7 +382,6 @@ inherited MPedCompra: TMPedCompra
       DataField = 'PDC_OBS'
       DataSource = dmPedCompra.DPedidoCompra
       TabOrder = 0
-      ExplicitHeight = 138
     end
   end
 end

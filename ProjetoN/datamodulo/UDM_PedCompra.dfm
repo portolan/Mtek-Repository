@@ -56,6 +56,7 @@ object dmPedCompra: TdmPedCompra
       FieldName = 'SOL_QTD'
       Origin = '"SOLICITACAO_COMPRA"."SOL_QTD"'
       DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -228,6 +229,7 @@ object dmPedCompra: TdmPedCompra
       FieldName = 'COT_DATA'
       Origin = '"COTACAO"."COT_DATA"'
       Required = True
+      EditMask = '!99/99/0000;1;_'
     end
     object CotacaoCOT_OBS: TWideMemoField
       DisplayLabel = 'Observa'#231#245'es'
@@ -247,6 +249,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Qtd.'
       FieldName = 'COT_QTD'
       Origin = '"COTACAO"."COT_QTD"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -337,6 +341,7 @@ object dmPedCompra: TdmPedCompra
   object FornecedorCotacao: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = FornecedorCotacaoAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -384,6 +389,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Vlr. Unit'#225'rio'
       FieldName = 'FCT_VLR_UNITARIO'
       Origin = '"FORNEC_COTACAO"."FCT_VLR_UNITARIO"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 4
     end
@@ -391,6 +398,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Vlr. Frete'
       FieldName = 'FCT_VLR_FRETE'
       Origin = '"FORNEC_COTACAO"."FCT_VLR_FRETE"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 4
     end
@@ -398,6 +407,7 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Data de Entrega'
       FieldName = 'FCT_DT_ENTREGA'
       Origin = '"FORNEC_COTACAO"."FCT_DT_ENTREGA"'
+      EditMask = '!99/99/0000;1;_'
     end
     object FornecedorCotacaoFCT_UND_MEDIDA: TIntegerField
       DisplayLabel = 'Unidade de Medida'
@@ -552,12 +562,15 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Prev. Entrega'
       FieldName = 'PDC_PREV_ENTREGA'
       Origin = '"PEDIDO_COMPRA"."PDC_PREV_ENTREGA"'
+      EditMask = '!99/99/0000;1;_'
     end
     object PedidoCompraPDC_VLR_FRETE: TIBBCDField
       DisplayLabel = 'Vlr. Frete'
       FieldName = 'PDC_VLR_FRETE'
       Origin = '"PEDIDO_COMPRA"."PDC_VLR_FRETE"'
       OnValidate = PedidoCompraPDC_VLR_FRETEValidate
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 4
     end
@@ -566,6 +579,8 @@ object dmPedCompra: TdmPedCompra
       FieldName = 'PDC_VLR_UNITARIO'
       Origin = '"PEDIDO_COMPRA"."PDC_VLR_UNITARIO"'
       OnValidate = PedidoCompraPDC_VLR_UNITARIOValidate
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 4
     end
@@ -573,6 +588,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Vlr. Bruto'
       FieldName = 'PDC_VLR_BRUTO'
       Origin = '"PEDIDO_COMPRA"."PDC_VLR_BRUTO"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 4
     end
@@ -581,6 +598,8 @@ object dmPedCompra: TdmPedCompra
       FieldName = 'PDC_VLR_DESCONTO'
       Origin = '"PEDIDO_COMPRA"."PDC_VLR_DESCONTO"'
       OnValidate = PedidoCompraPDC_VLR_DESCONTOValidate
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 4
     end
@@ -589,6 +608,8 @@ object dmPedCompra: TdmPedCompra
       FieldName = 'PDC_VLR_LIQUIDO'
       Origin = '"PEDIDO_COMPRA"."PDC_VLR_LIQUIDO"'
       OnValidate = PedidoCompraPDC_VLR_LIQUIDOValidate
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 4
     end
@@ -596,6 +617,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Vlr. Total'
       FieldName = 'PDC_VLR_TOTAL'
       Origin = '"PEDIDO_COMPRA"."PDC_VLR_TOTAL"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 4
     end
@@ -610,12 +633,15 @@ object dmPedCompra: TdmPedCompra
       FieldName = 'PDC_DATA'
       Origin = '"PEDIDO_COMPRA"."PDC_DATA"'
       Required = True
+      EditMask = '!99/99/0000;1;_'
     end
     object PedidoCompraPDC_QTD_TOTAL: TIBBCDField
       DisplayLabel = 'Qtd.'
       FieldName = 'PDC_QTD_TOTAL'
       Origin = '"PEDIDO_COMPRA"."PDC_QTD_TOTAL"'
       OnValidate = PedidoCompraPDC_QTD_TOTALValidate
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -623,6 +649,7 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Data de Entrega Efetiva'
       FieldName = 'PDC_DATA_ENTREGA'
       Origin = '"PEDIDO_COMPRA"."PDC_DATA_ENTREGA"'
+      EditMask = '!99/99/0000;1;_'
     end
     object PedidoCompraPDC_OBS: TWideMemoField
       DisplayLabel = 'Observa'#231#245'es'
@@ -1068,11 +1095,14 @@ object dmPedCompra: TdmPedCompra
       FieldName = 'NTE_DATA'
       Origin = '"NOTA_ENTRADA"."NTE_DATA"'
       Required = True
+      EditMask = '!99/99/0000;1;_'
     end
     object NotaEntradaNTE_VLR_FRETE: TIBBCDField
       DisplayLabel = 'Valor Frete'
       FieldName = 'NTE_VLR_FRETE'
       Origin = '"NOTA_ENTRADA"."NTE_VLR_FRETE"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -1080,6 +1110,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Valor Pis'
       FieldName = 'NTE_VLR_PIS'
       Origin = '"NOTA_ENTRADA"."NTE_VLR_PIS"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -1087,6 +1119,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Valor ICMS'
       FieldName = 'NTE_VLR_ICMS'
       Origin = '"NOTA_ENTRADA"."NTE_VLR_ICMS"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -1094,6 +1128,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Valor Total'
       FieldName = 'NTE_VLR_TOTAL'
       Origin = '"NOTA_ENTRADA"."NTE_VLR_TOTAL"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -1101,7 +1137,6 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Emp. Raz'#227'o'
       FieldName = 'EMP_RAZAO'
       Origin = '"EMPRESA"."EMP_RAZAO"'
-      Required = True
       Size = 60
     end
     object NotaEntradaPESS_NOME: TIBStringField
@@ -1167,6 +1202,7 @@ object dmPedCompra: TdmPedCompra
   object ItemNotaEntrada: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = ItemNotaEntradaAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -1213,6 +1249,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Valor Bruto'
       FieldName = 'INE_VLR_BRUTO'
       Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_BRUTO"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -1220,6 +1258,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Valor Desconto'
       FieldName = 'INE_VLR_DESC'
       Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_DESC"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -1227,6 +1267,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Valor L'#237'quido'
       FieldName = 'INE_VLR_LIQUIDO'
       Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_LIQUIDO"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -1234,6 +1276,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Valor PIS'
       FieldName = 'INE_VLR_PIS'
       Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_PIS"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -1241,6 +1285,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Valor ICMS'
       FieldName = 'INE_VLR_ICMS'
       Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_ICMS"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -1248,6 +1294,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Valor Total'
       FieldName = 'INE_VLR_TOTAL'
       Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_TOTAL"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -1255,6 +1303,8 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Quantidade'
       FieldName = 'INE_QTD'
       Origin = '"ITEM_NOTA_ENTRADA"."INE_QTD"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -1262,7 +1312,6 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Desc. Produto'
       FieldName = 'PRO_DESCRICAO'
       Origin = '"PRODUTOS"."PRO_DESCRICAO"'
-      Required = True
       Size = 60
     end
     object ItemNotaEntradaINE_VLR_UNITARIO: TIBBCDField
@@ -1270,6 +1319,8 @@ object dmPedCompra: TdmPedCompra
       FieldName = 'INE_VLR_UNITARIO'
       Origin = '"ITEM_NOTA_ENTRADA"."INE_VLR_UNITARIO"'
       Required = True
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 4
     end

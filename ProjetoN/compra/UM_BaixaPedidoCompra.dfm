@@ -11,6 +11,7 @@ object MBaixaPedidoCompra: TMBaixaPedidoCompra
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
@@ -333,7 +334,9 @@ object MBaixaPedidoCompra: TMBaixaPedidoCompra
           Top = 9
           Width = 121
           Height = 21
+          TabStop = False
           Alignment = taRightJustify
+          Enabled = False
           TabOrder = 0
         end
         object edQtdTotal: TEdit
@@ -341,7 +344,9 @@ object MBaixaPedidoCompra: TMBaixaPedidoCompra
           Top = 9
           Width = 121
           Height = 21
+          TabStop = False
           Alignment = taRightJustify
+          Enabled = False
           TabOrder = 1
         end
         object edNrNota: TEdit
@@ -384,10 +389,12 @@ object MBaixaPedidoCompra: TMBaixaPedidoCompra
     object cdsPedidosCDS_QTD: TFloatField
       DisplayLabel = 'Qtd.'
       FieldName = 'CDS_QTD'
+      DisplayFormat = '###,###,##0.00'
     end
     object cdsPedidosCDS_VLR_TOTAL: TFloatField
       DisplayLabel = 'Valor Total'
       FieldName = 'CDS_VLR_TOTAL'
+      DisplayFormat = '###,###,##0.00'
     end
     object cdsPedidosBO_SELECIONADO: TBooleanField
       FieldName = 'BO_SELECIONADO'
@@ -419,10 +426,12 @@ object MBaixaPedidoCompra: TMBaixaPedidoCompra
     object cdsPedidosSelecionadosCDS_QTD: TFloatField
       DisplayLabel = 'Qtd.'
       FieldName = 'CDS_QTD'
+      DisplayFormat = '###,###,##0.00'
     end
     object cdsPedidosSelecionadosCDS_VLR_TOTAL: TFloatField
       DisplayLabel = 'Valor Total'
       FieldName = 'CDS_VLR_TOTAL'
+      DisplayFormat = '###,###,##0.00'
     end
   end
   object dsPedidos: TDataSource

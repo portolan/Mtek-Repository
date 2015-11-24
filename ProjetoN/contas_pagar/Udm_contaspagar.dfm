@@ -296,6 +296,7 @@ object dm_contaspagar: Tdm_contaspagar
   object condicaoPag: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = condicaoPagAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -304,14 +305,61 @@ object dm_contaspagar: Tdm_contaspagar
     UpdateObject = Ucondicaopag
     Left = 320
     Top = 32
+    object condicaoPagCDP_CODIGO: TIntegerField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'CDP_CODIGO'
+      Origin = '"CONDICAOPAGAMENTO"."CDP_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object condicaoPagCDP_DESCRICAO: TIBStringField
+      DisplayLabel = 'Descri'#231#227'o'
+      FieldName = 'CDP_DESCRICAO'
+      Origin = '"CONDICAOPAGAMENTO"."CDP_DESCRICAO"'
+      Size = 100
+    end
+    object condicaoPagCDP_PARCELAS: TIntegerField
+      DisplayLabel = 'Nr. parcelas'
+      FieldName = 'CDP_PARCELAS'
+      Origin = '"CONDICAOPAGAMENTO"."CDP_PARCELAS"'
+    end
+    object condicaoPagCDP_DIAS_VENCIMENTO: TIntegerField
+      DisplayLabel = 'Dias de Vencimento'
+      FieldName = 'CDP_DIAS_VENCIMENTO'
+      Origin = '"CONDICAOPAGAMENTO"."CDP_DIAS_VENCIMENTO"'
+    end
   end
   object Ucondicaopag: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'select * from condicaopagamento')
+      'Select *'
+      'from CONDICAOPAGAMENTO '
+      'where'
+      '  CDP_CODIGO = :CDP_CODIGO')
+    ModifySQL.Strings = (
+      'update CONDICAOPAGAMENTO'
+      'set'
+      '  CDP_CODIGO = :CDP_CODIGO,'
+      '  CDP_DESCRICAO = :CDP_DESCRICAO,'
+      '  CDP_DIAS_VENCIMENTO = :CDP_DIAS_VENCIMENTO,'
+      '  CDP_PARCELAS = :CDP_PARCELAS'
+      'where'
+      '  CDP_CODIGO = :OLD_CDP_CODIGO')
+    InsertSQL.Strings = (
+      'insert into CONDICAOPAGAMENTO'
+      '  (CDP_CODIGO, CDP_DESCRICAO, CDP_DIAS_VENCIMENTO, CDP_PARCELAS)'
+      'values'
+      
+        '  (:CDP_CODIGO, :CDP_DESCRICAO, :CDP_DIAS_VENCIMENTO, :CDP_PARCE' +
+        'LAS)')
+    DeleteSQL.Strings = (
+      'delete from CONDICAOPAGAMENTO'
+      'where'
+      '  CDP_CODIGO = :OLD_CDP_CODIGO')
     Left = 312
     Top = 96
   end
   object Dcondicao: TDataSource
+    AutoEdit = False
     DataSet = condicaoPag
     Left = 304
     Top = 160

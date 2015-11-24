@@ -6878,6 +6878,7 @@ object TelaInicial: TTelaInicial
       end
       object Condiesdepagamento1: TMenuItem
         Caption = 'Condi'#231#245'es de pagamento'
+        OnClick = Condiesdepagamento1Click
       end
       object Pessoa1: TMenuItem
         Caption = 'Pessoa'

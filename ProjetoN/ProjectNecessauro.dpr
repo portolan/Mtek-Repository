@@ -116,7 +116,9 @@ uses
   UR_fechamentocx in 'Caixa\UR_fechamentocx.pas' {REL_fechamentocx},
   UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda},
   UR_prevtitulos in 'Caixa\UR_prevtitulos.pas' {REL_prevtitulos},
-  UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao};
+  UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao},
+  Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag},
+  Um_condicaop in 'contas_pagar\Um_condicaop.pas' {m_condicaopag};
 
 {$R *.res}
 

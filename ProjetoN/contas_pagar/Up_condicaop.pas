@@ -9,6 +9,7 @@ uses
 
 type
   Tp_condicaopag = class(TxPesqPadrao)
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,6 +35,12 @@ try
 finally
   Freeandnil(p_condicaopag);
 end;
+end;
+
+procedure Tp_condicaopag.FormCreate(Sender: TObject);
+begin
+   inherited;
+   procInicializar(dm_contaspagar.condicaoPag, True, False, m_condicaopag, Tm_condicaopag);
 end;
 
 procedure Tp_condicaopag.procSelect;

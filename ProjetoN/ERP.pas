@@ -110,6 +110,7 @@ type
     procedure BemImobilizado1Click(Sender: TObject);
     procedure NotasdeEntrada1Click(Sender: TObject);
     procedure Oramento1Click(Sender: TObject);
+    procedure Condiesdepagamento1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -135,7 +136,8 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UP_contabancaria, UDM_Estoque, R_contabil, UDM_Caixa, UDM_contabil,
   Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico, UP_SolicitacaoCompra,
   UP_Cotacao, UP_PedCompra, UF_EstoqueAjuda, UP_TipoBens, UP_Localizacao,
-  UP_EstadoConservacao, UP_NotaBemImobilizado, UP_Pessoa, UP_NotaEntrada;
+  UP_EstadoConservacao, UP_NotaBemImobilizado, UP_Pessoa, UP_NotaEntrada,
+  Up_condicaop;
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
 begin
@@ -185,6 +187,11 @@ end;
 procedure TTelaInicial.CentrodeCustos2Click(Sender: TObject);
 begin
     TP_centro.chamaTela(self);
+end;
+
+procedure TTelaInicial.Condiesdepagamento1Click(Sender: TObject);
+begin
+   Tp_condicaopag.chamaTela(Self);
 end;
 
 procedure TTelaInicial.ContasaPagar1Click(Sender: TObject);

@@ -39,8 +39,13 @@ type
     condicaoPag: TIBQuery;
     Ucondicaopag: TIBUpdateSQL;
     Dcondicao: TDataSource;
+    condicaoPagCDP_CODIGO: TIntegerField;
+    condicaoPagCDP_DESCRICAO: TIBStringField;
+    condicaoPagCDP_PARCELAS: TIntegerField;
+    condicaoPagCDP_DIAS_VENCIMENTO: TIntegerField;
     procedure titulospagarAfterInsert(DataSet: TDataSet);
     procedure titulospagarBeforePost(DataSet: TDataSet);
+    procedure condicaoPagAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -58,9 +63,14 @@ uses dm000;
 
 {$R *.dfm}
 
+procedure Tdm_contaspagar.condicaoPagAfterInsert(DataSet: TDataSet);
+begin
+   condicaoPagCDP_CODIGO.AsInteger := dmBanco.funcRecuperaProximoIdGenerator('GEN_CONDICAOPAGAMENTO_ID');
+end;
+
 procedure Tdm_contaspagar.titulospagarAfterInsert(DataSet: TDataSet);
 begin
- titulospagar.FieldByName('ttp_codigo').Value:=dmBanco.funcRecuperaProximoIdGenerator('seqtitulosp');
+ titulospagar.FieldByName('ttp_codigo').Value:=dmBanco.funcRecuperaProximoIdGenerator('GEN_TITULOSP_ID');
 end;
 
 procedure Tdm_contaspagar.titulospagarBeforePost(DataSet: TDataSet);

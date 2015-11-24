@@ -7,36 +7,34 @@ inherited p_condicaopag: Tp_condicaopag
   TextHeight = 13
   inherited pnCorpo: TPanel
     Width = 739
+    ExplicitWidth = 739
     inherited gbDados: TGroupBox
       Width = 733
       Caption = ''
-      ExplicitLeft = 3
-      ExplicitTop = 4
       ExplicitWidth = 733
       inherited DBGDados: TDBGrid
         Width = 729
+        DataSource = dm_contaspagar.Dcondicao
         Columns = <
           item
             Expanded = False
-            FieldName = 'CODIGO'
+            FieldName = 'CDP_CODIGO'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'DESCRI'#199#195'O'
-            Width = 414
+            FieldName = 'CDP_DESCRICAO'
+            Width = 400
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'PARCELAS'
-            Width = 79
+            FieldName = 'CDP_PARCELAS'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'VENCIMENTO EM DIAS'
-            Width = 123
+            FieldName = 'CDP_DIAS_VENCIMENTO'
             Visible = True
           end>
       end
@@ -44,17 +42,22 @@ inherited p_condicaopag: Tp_condicaopag
   end
   inherited pnRodape: TPanel
     Width = 739
+    ExplicitWidth = 739
     inherited sbSair: TSpeedButton
       Left = 642
+      ExplicitLeft = 642
     end
   end
   inherited pnCabecalho: TPanel
     Width = 739
+    ExplicitWidth = 739
     inherited gbStatus: TGroupBox
       Left = 723
+      ExplicitLeft = 723
     end
     inherited gbFiltro: TGroupBox
       Width = 723
+      ExplicitWidth = 723
       inherited cbContent: TComboBox
         Left = 135
         Width = 114
@@ -69,10 +72,11 @@ inherited p_condicaopag: Tp_condicaopag
         Left = 255
         Width = 381
         ExplicitLeft = 255
-        ExplicitWidth = 327
+        ExplicitWidth = 381
       end
       inherited Pesquisar: TButton
         Left = 642
+        ExplicitLeft = 642
       end
     end
   end

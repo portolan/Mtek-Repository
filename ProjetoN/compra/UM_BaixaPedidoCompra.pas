@@ -243,7 +243,8 @@ begin
 
          dmPedCompra.procGerarCabecaNota(cdsPedidosSelecionadosCDS_EMPRESA.AsInteger,
                                          StrToInt(edFornecedor.Text),
-                                         StrToInt(edNrNota.Text));
+                                         StrToInt(edNrNota.Text),
+                                         ValorNota);
 
          cdsPedidosSelecionados.First;
          while not cdsPedidosSelecionados.Eof do

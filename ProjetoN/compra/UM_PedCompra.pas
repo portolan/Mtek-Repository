@@ -52,7 +52,7 @@ implementation
 {$R *.dfm}
 
 uses dm000, UDM_PedCompra, UP_empresa, UP_departamento, UP_Produto,
-  UP_Pessoa, UP_Unidade;
+  UP_Pessoa, UP_Unidade, Up_condicaop;
 
 procedure TMPedCompra.FormShow(Sender: TObject);
 begin
@@ -118,9 +118,8 @@ begin
                               '        A.CDP_DESCRICAO '+
                               '   FROM CONDICAOPAGAMENTO A '+
                               '  WHERE A.CDP_CODIGO = :COD',
-                              nil, nil, ['COD'], ['PDC_CONDICAO_PGTO'],
+                              p_condicaopag, Tp_condicaopag, ['COD'], ['PDC_CONDICAO_PGTO'],
                               ['CDP_CODIGO','CDP_DESCRICAO']);
-   //trocar nil pela tela de condição de pagamento
 
 end;
 
