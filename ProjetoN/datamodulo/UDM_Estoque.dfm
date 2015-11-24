@@ -1207,6 +1207,7 @@ object DM_Estoque: TDM_Estoque
       DisplayLabel = 'Departamento'
       FieldName = 'EM_DPTO'
       Origin = '"ESTOQ_MOVIMENTO"."EM_DPTO"'
+      Required = True
     end
   end
 end
