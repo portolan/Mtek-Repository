@@ -141,7 +141,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   Udm_contaspagar, UDM_financeiro, UDM_PCP, UDM_PedCompra, UDM_Servico, UP_SolicitacaoCompra,
   UP_Cotacao, UP_PedCompra, UF_EstoqueAjuda, UP_TipoBens, UP_Localizacao,
   UP_EstadoConservacao, UP_NotaBemImobilizado, UP_Pessoa, UP_NotaEntrada,
-  UF_ChamadosRelatorios;
+  UF_ChamadosRelatorios, Um_Condição_Pagamento, Um_condicaop;
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
 begin
