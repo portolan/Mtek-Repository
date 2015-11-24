@@ -42,6 +42,31 @@ type
     q_ordempordataFT_COD: TIntegerField;
     q_ordempordataOP_VENDAS: TIntegerField;
     q_ordempordataFT_EMPRESA: TIntegerField;
+    q_fichatecnica: TIBQuery;
+    frxDBFichatecnica: TfrxDBDataset;
+    frxFichatecnica: TfrxReport;
+    q_fichatecnicaFT_PRODUTO2: TIBStringField;
+    q_fichatecnicaFT_UNIDADE2: TIntegerField;
+    q_fichatecnicaFT_CUSTO_UNITARIO2: TIBBCDField;
+    q_fichatecnicaFT_MAO_DE_OBRA2: TIBBCDField;
+    q_fichatecnicaFT_QUANTIDADE2: TIntegerField;
+    q_fichatecnicaFT_CUSTO_TOTAL2: TIBBCDField;
+    q_fichatecnicaFT_TEMPO_PRODUCAO2: TDateTimeField;
+    q_fichatecnicaFT_EMPRESA2: TIntegerField;
+    q_fichatecnicaFT_COD: TIntegerField;
+    frxDBprodandamento: TfrxDBDataset;
+    frxproducaoandamento: TfrxReport;
+    q_prodandamento: TIBQuery;
+    q_prodandamentoPROD_ORDEM: TIntegerField;
+    q_prodandamentoPROD_DESCRICAO: TIBStringField;
+    q_prodandamentoPROD_TIPO: TIBStringField;
+    q_prodandamentoPROD_DT_INICIO: TDateField;
+    q_prodandamentoPROD_DT_TERMINO: TDateField;
+    q_prodandamentoPROD_QTD_PRODUZIDA: TIntegerField;
+    q_prodandamentoPROD_STATUS: TIBStringField;
+    q_prodandamentoPROD_EMPRESA: TIntegerField;
+    q_prodandamentoPROD_COD: TIntegerField;
+    q_prodandamentoPROD_PRODUTO: TIBStringField;
   private
     { Private declarations }
   public

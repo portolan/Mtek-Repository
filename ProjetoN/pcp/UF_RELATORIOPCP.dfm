@@ -42,6 +42,7 @@ object FRELATORIOPCP: TFRELATORIOPCP
       Width = 73
       Height = 22
       Caption = 'Gerar'
+      OnClick = SpeedButton2Click
     end
   end
   object GroupBox3: TGroupBox
@@ -57,21 +58,7 @@ object FRELATORIOPCP: TFRELATORIOPCP
       Width = 65
       Height = 22
       Caption = 'Gerar'
-    end
-  end
-  object GroupBox4: TGroupBox
-    Left = 320
-    Top = 97
-    Width = 169
-    Height = 97
-    Caption = 'Producoes Canceladas'
-    TabOrder = 3
-    object SpeedButton4: TSpeedButton
-      Left = 48
-      Top = 48
-      Width = 73
-      Height = 22
-      Caption = 'Gerar'
+      OnClick = SpeedButton3Click
     end
   end
   object GroupBox5: TGroupBox
@@ -80,7 +67,7 @@ object FRELATORIOPCP: TFRELATORIOPCP
     Width = 161
     Height = 128
     Caption = 'Ordens de producao por Data'
-    TabOrder = 4
+    TabOrder = 3
     object Label1: TLabel
       Left = 15
       Top = 28
