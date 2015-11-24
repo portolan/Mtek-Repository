@@ -160,10 +160,6 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="assistencia\UF_ChamadosRelatorios.pas">
-            <Form>F_ChamadosRelatorios</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="assistencia\UM_Servico.pas">
             <Form>M_Servico</Form>
             <FormType>dfm</FormType>
@@ -178,10 +174,6 @@
         </DCCReference>
         <DCCReference Include="assistencia\UP_Tipo_Erro.pas">
             <Form>P_Tipo_Erro</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="assistencia\UR_Relatorio_Chamado.pas">
-            <Form>UR_Relatorio</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="compra\UM_BaixaPedidoCompra.pas">
@@ -295,47 +287,6 @@
         </DCCReference>
         <DCCReference Include="contas_receber\UP_contasreceber.pas">
             <Form>P_contasreceber</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\udmControlePatrimonial.pas">
-            <Form>DMControlePatrimonial</Form>
-            <FormType>dfm</FormType>
-            <DesignClass>TDataModule</DesignClass>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UM_BensImobilizados.pas">
-            <Form>MBensImobilizados</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UM_EstadoConservacao.pas">
-            <Form>MEstadoConservacao</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UM_Localizacao.pas">
-            <Form>MLocalizacao</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UM_TipoBens.pas">
-            <Form>MTipoBens</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UP_BensImobilizados.pas">
-            <Form>P_BensImobilizados</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UP_EstadoConservacao.pas">
-            <Form>P_EstadoConservacao</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UP_Localizacao.pas">
-            <Form>PLocalizacao</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UP_NotaBemImobilizado.pas">
-            <Form>P_PesquisaNotaBemImobilizado</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UP_TipoBens.pas">
-            <Form>P_TipoBens</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="Estoque\UEstoque.pas"/>
@@ -465,10 +416,6 @@
             <Form>P_PRODUCAO</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="venda\Um_Condição_Pagamento.pas">
-            <Form>U_Condicao_Pg</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="venda\Um_Emissão_NFE.pas">
             <Form>MEmissao_NFE</Form>
             <FormType>dfm</FormType>
@@ -533,11 +480,6 @@
             <Form>m_condicaopag</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="contas_pagar\Up_condicaop.pas">
-            <Form>p_condicaopag</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-
         <DCCReference Include="pcp\UR_RELATORIOPCP.pas">
             <Form>pcprelatorio</Form>
             <FormType>dfm</FormType>
@@ -547,20 +489,75 @@
             <Form>FRELATORIOPCP</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-
         <DCCReference Include="ControlePatrimonial\HP_VALORDEPRECIACAO.pas">
             <Form>H_FormaCalcDep</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UM_ManutencaoBen.pas">
-            <Form>M_Manutencao</Form>
+        <DCCReference Include="ControlePatrimonial\udmControlePatrimonial.pas">
+            <Form>DMControlePatrimonial</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UM_BensImobilizados.pas">
+            <Form>MBensImobilizados</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="ControlePatrimonial\UM_Componente.pas">
             <Form>MComponente</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-
+        <DCCReference Include="ControlePatrimonial\UM_EstadoConservacao.pas">
+            <Form>MEstadoConservacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UM_Localizacao.pas">
+            <Form>MLocalizacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UM_ManutencaoBen.pas">
+            <Form>M_Manutencao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UM_TipoBens.pas">
+            <Form>MTipoBens</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UP_BensImobilizados.pas">
+            <Form>P_BensImobilizados</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UP_EstadoConservacao.pas">
+            <Form>P_EstadoConservacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UP_Localizacao.pas">
+            <Form>PLocalizacao</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UP_NotaBemImobilizado.pas">
+            <Form>P_PesquisaNotaBemImobilizado</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UP_TipoBens.pas">
+            <Form>P_TipoBens</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="venda\Um_Condição_Pagamento.pas">
+            <Form>U_Condicao_Pg</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="assistencia\UF_ChamadosRelatorios.pas">
+            <Form>F_ChamadosRelatorios</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="assistencia\UR_Relatorio_Chamado.pas">
+            <Form>UR_Relatorio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contas_pagar\Up_condicaop.pas">
+            <Form>p_condicaopag</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -675,7 +672,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectOSXEntitlements">
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents</RemoteDir>
+                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -761,6 +758,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectiOSEntitlements">
                     <Platform Name="iOSDevice">
+                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>

@@ -25,12 +25,10 @@ uses
   UDM_PedCompra in 'datamodulo\UDM_PedCompra.pas' {dmPedCompra: TDataModule},
   UDM_Venda in 'datamodulo\UDM_Venda.pas' {DM_VENDA: TDataModule},
   UDM_Servico in 'assistencia\UDM_Servico.pas' {DM_Servico: TDataModule},
-  UF_ChamadosRelatorios in 'assistencia\UF_ChamadosRelatorios.pas' {F_ChamadosRelatorios},
   UM_Servico in 'assistencia\UM_Servico.pas' {M_Servico},
   UM_Tipo_Erro in 'assistencia\UM_Tipo_Erro.pas' {M_Tipo_Erro},
   UP_Servico in 'assistencia\UP_Servico.pas' {P_Servico},
   UP_Tipo_Erro in 'assistencia\UP_Tipo_Erro.pas' {P_Tipo_Erro},
-  UR_Relatorio_Chamado in 'assistencia\UR_Relatorio_Chamado.pas' {UR_Relatorio},
   UM_BaixaPedidoCompra in 'compra\UM_BaixaPedidoCompra.pas' {MBaixaPedidoCompra},
   UM_Cotacao in 'compra\UM_Cotacao.pas' {MCotacao},
   UM_FornecedorCotacao in 'compra\UM_FornecedorCotacao.pas' {MFornecedorCotacao},
@@ -59,16 +57,6 @@ uses
   Up_titulospagar in 'contas_pagar\Up_titulospagar.pas' {p_titulospagar},
   UM_contasreceber in 'contas_receber\UM_contasreceber.pas' {M_contasreceber},
   UP_contasreceber in 'contas_receber\UP_contasreceber.pas' {P_contasreceber},
-  udmControlePatrimonial in 'ControlePatrimonial\udmControlePatrimonial.pas' {DMControlePatrimonial: TDataModule},
-  UM_BensImobilizados in 'ControlePatrimonial\UM_BensImobilizados.pas' {MBensImobilizados},
-  UM_EstadoConservacao in 'ControlePatrimonial\UM_EstadoConservacao.pas' {MEstadoConservacao},
-  UM_Localizacao in 'ControlePatrimonial\UM_Localizacao.pas' {MLocalizacao},
-  UM_TipoBens in 'ControlePatrimonial\UM_TipoBens.pas' {MTipoBens},
-  UP_BensImobilizados in 'ControlePatrimonial\UP_BensImobilizados.pas' {P_BensImobilizados},
-  UP_EstadoConservacao in 'ControlePatrimonial\UP_EstadoConservacao.pas' {P_EstadoConservacao},
-  UP_Localizacao in 'ControlePatrimonial\UP_Localizacao.pas' {PLocalizacao},
-  UP_NotaBemImobilizado in 'ControlePatrimonial\UP_NotaBemImobilizado.pas' {P_PesquisaNotaBemImobilizado},
-  UP_TipoBens in 'ControlePatrimonial\UP_TipoBens.pas' {P_TipoBens},
   UEstoque in 'Estoque\UEstoque.pas',
   UF_EstoqueAjuda in 'Estoque\UF_EstoqueAjuda.pas' {FEstoqueAjuda},
   UF_EstoqueRelatorios in 'Estoque\UF_EstoqueRelatorios.pas' {FEstoqueRelatorios},
@@ -101,7 +89,6 @@ uses
   UP_FichaTecnica in 'pcp\UP_FichaTecnica.pas' {P_FichaTecnica},
   UP_OP in 'pcp\UP_OP.pas' {P_OP},
   UP_PRODUCAO in 'pcp\UP_PRODUCAO.pas' {P_PRODUCAO},
-  Um_Condição_Pagamento in 'venda\Um_Condição_Pagamento.pas' {U_Condicao_Pg},
   Um_Emissão_NFE in 'venda\Um_Emissão_NFE.pas' {MEmissao_NFE},
   Um_Pedido_Venda in 'venda\Um_Pedido_Venda.pas' {Frm_Pedido_Venda},
   Up_Emissao_NFE in 'venda\Up_Emissao_NFE.pas' {Up_NFE},
@@ -118,16 +105,25 @@ uses
   UR_prevtitulos in 'Caixa\UR_prevtitulos.pas' {REL_prevtitulos},
   UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao},
   Um_condicaop in 'contas_pagar\Um_condicaop.pas' {m_condicaopag},
-  Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag},
   UR_RELATORIOPCP in 'pcp\UR_RELATORIOPCP.pas' {pcprelatorio: TDataModule},
-  UF_RELATORIOPCP in 'pcp\UF_RELATORIOPCP.pas' {FRELATORIOPCP};
-
-  Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag};
-
-  Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag},
+  UF_RELATORIOPCP in 'pcp\UF_RELATORIOPCP.pas' {FRELATORIOPCP},
   HP_VALORDEPRECIACAO in 'ControlePatrimonial\HP_VALORDEPRECIACAO.pas' {H_FormaCalcDep},
+  udmControlePatrimonial in 'ControlePatrimonial\udmControlePatrimonial.pas' {DMControlePatrimonial: TDataModule},
+  UM_BensImobilizados in 'ControlePatrimonial\UM_BensImobilizados.pas' {MBensImobilizados},
+  UM_Componente in 'ControlePatrimonial\UM_Componente.pas' {MComponente},
+  UM_EstadoConservacao in 'ControlePatrimonial\UM_EstadoConservacao.pas' {MEstadoConservacao},
+  UM_Localizacao in 'ControlePatrimonial\UM_Localizacao.pas' {MLocalizacao},
   UM_ManutencaoBen in 'ControlePatrimonial\UM_ManutencaoBen.pas' {M_Manutencao},
-  UM_Componente in 'ControlePatrimonial\UM_Componente.pas' {MComponente};
+  UM_TipoBens in 'ControlePatrimonial\UM_TipoBens.pas' {MTipoBens},
+  UP_BensImobilizados in 'ControlePatrimonial\UP_BensImobilizados.pas' {P_BensImobilizados},
+  UP_EstadoConservacao in 'ControlePatrimonial\UP_EstadoConservacao.pas' {P_EstadoConservacao},
+  UP_Localizacao in 'ControlePatrimonial\UP_Localizacao.pas' {PLocalizacao},
+  UP_NotaBemImobilizado in 'ControlePatrimonial\UP_NotaBemImobilizado.pas' {P_PesquisaNotaBemImobilizado},
+  UP_TipoBens in 'ControlePatrimonial\UP_TipoBens.pas' {P_TipoBens},
+  Um_Condição_Pagamento in 'venda\Um_Condição_Pagamento.pas' {U_Condicao_Pg},
+  UF_ChamadosRelatorios in 'assistencia\UF_ChamadosRelatorios.pas' {F_ChamadosRelatorios},
+  UR_Relatorio_Chamado in 'assistencia\UR_Relatorio_Chamado.pas' {UR_Relatorio},
+  Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag};
 
 {$R *.res}
 
@@ -152,15 +148,28 @@ begin
   Application.CreateForm(Tm_condicaopag, m_condicaopag);
   Application.CreateForm(Tp_condicaopag, p_condicaopag);
   Application.CreateForm(TUR_Relatorio, UR_Relatorio);
-
   Application.CreateForm(Tpcprelatorio, pcprelatorio);
   Application.CreateForm(TFRELATORIOPCP, FRELATORIOPCP);
-
-
   Application.CreateForm(TH_FormaCalcDep, H_FormaCalcDep);
   Application.CreateForm(TM_Manutencao, M_Manutencao);
   Application.CreateForm(TMComponente, MComponente);
-
+  Application.CreateForm(TH_FormaCalcDep, H_FormaCalcDep);
+  Application.CreateForm(TDMControlePatrimonial, DMControlePatrimonial);
+  Application.CreateForm(TMBensImobilizados, MBensImobilizados);
+  Application.CreateForm(TMComponente, MComponente);
+  Application.CreateForm(TMEstadoConservacao, MEstadoConservacao);
+  Application.CreateForm(TMLocalizacao, MLocalizacao);
+  Application.CreateForm(TM_Manutencao, M_Manutencao);
+  Application.CreateForm(TMTipoBens, MTipoBens);
+  Application.CreateForm(TP_BensImobilizados, P_BensImobilizados);
+  Application.CreateForm(TP_EstadoConservacao, P_EstadoConservacao);
+  Application.CreateForm(TPLocalizacao, PLocalizacao);
+  Application.CreateForm(TP_PesquisaNotaBemImobilizado, P_PesquisaNotaBemImobilizado);
+  Application.CreateForm(TP_TipoBens, P_TipoBens);
+  Application.CreateForm(TU_Condicao_Pg, U_Condicao_Pg);
+  Application.CreateForm(TF_ChamadosRelatorios, F_ChamadosRelatorios);
+  Application.CreateForm(TUR_Relatorio, UR_Relatorio);
+  Application.CreateForm(Tp_condicaopag, p_condicaopag);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
 end.

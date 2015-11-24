@@ -12,7 +12,9 @@ object dmBanco: TdmBanco
     Top = 88
   end
   object Banco: TIBDatabase
-    DatabaseName = 'C:\Users\Erick\Desktop\Banco erp\PCP2.FDB'
+    DatabaseName = 
+      'C:\Users\Erick\Desktop\PROJETO ERP\trunk\ProjetoN\BD\ERP_FINAL.F' +
+      'DB'
     Params.Strings = (
       'user_name=sysdba'
       'password=masterkey'

@@ -139,11 +139,10 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UP_Cotacao, UP_PedCompra, UF_EstoqueAjuda, UP_TipoBens, UP_Localizacao,
   UP_EstadoConservacao, UP_NotaBemImobilizado, UP_Pessoa, UP_NotaEntrada,
 
-  UF_ChamadosRelatorios, UF_RELATORIOPCP, UR_RELATORIOPCP;
-
-  UF_ChamadosRelatorios;
-
-  UF_ChamadosRelatorios, Um_Condição_Pagamento, Um_condicaop;
+  UF_ChamadosRelatorios, UF_RELATORIOPCP, UR_RELATORIOPCP, relatorio,
+  UM_BensImobilizados, UM_ManutencaoBen, UM_TipoBens, UP_BensImobilizados,
+  Um_Condição_Pagamento, Up_condicaop, UR_Relatorio_Chamado, dm000,
+  UR_Relatorios, Um_condicaop;
 
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);

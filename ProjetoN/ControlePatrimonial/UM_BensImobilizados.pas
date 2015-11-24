@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
   Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask, Vcl.DBCtrls, IBX.IBQuery, Vcl.Grids,
   Vcl.DBGrids, UP_EstadoConservacao, UP_Localizacao, HP_VALORDEPRECIACAO,
-  UM_ManutencaoBen, UP_TipoBens;
+  UM_ManutencaoBen, UP_TipoBens,DB;
 
 type
   TMBensImobilizados = class(TxManuPadrao)
