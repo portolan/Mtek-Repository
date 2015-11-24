@@ -60,9 +60,7 @@ type
     Sobre1: TMenuItem;
     ContasBancarias1: TMenuItem;
     Condiesdepagamento1: TMenuItem;
-    Image10: TImage;
     NotasdeEntrada1: TMenuItem;
-    Pessoa1: TMenuItem;
     AjudacomEstoque1: TMenuItem;
     ControlePatrimonial1: TMenuItem;
     ipodeBemImobilizado1: TMenuItem;
@@ -71,6 +69,8 @@ type
     BemImobilizado1: TMenuItem;
     N1: TMenuItem;
     CondiesdePagamento2: TMenuItem;
+    Cadastros1: TMenuItem;
+    Pessoas1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -111,6 +111,7 @@ type
     procedure NotasdeEntrada1Click(Sender: TObject);
     procedure Oramento1Click(Sender: TObject);
     procedure Condiesdepagamento1Click(Sender: TObject);
+    procedure Pessoas1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -387,6 +388,11 @@ begin
 end;
 
 procedure TTelaInicial.Pessoa1Click(Sender: TObject);
+begin
+  // TPPessoa.ChamaTela(Self);
+end;
+
+procedure TTelaInicial.Pessoas1Click(Sender: TObject);
 begin
    TPPessoa.ChamaTela(Self);
 end;
