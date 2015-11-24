@@ -161,7 +161,7 @@ object M_novaconta: TM_novaconta
       Top = 93
       Width = 56
       Height = 21
-      DataField = 'CTB_BAN_CODIGO'
+      DataField = 'CTB_AGENCIA'
       DataSource = DataSource1
       TabOrder = 1
     end
@@ -170,7 +170,7 @@ object M_novaconta: TM_novaconta
       Top = 39
       Width = 315
       Height = 21
-      DataField = 'CTB_EMP_CODIGO'
+      DataField = 'CTB_PESSOA'
       DataSource = DataSource1
       TabOrder = 2
     end
@@ -179,7 +179,7 @@ object M_novaconta: TM_novaconta
       Top = 93
       Width = 113
       Height = 21
-      DataField = 'CTB_SALDOI'
+      DataField = 'CTB_SALDO'
       DataSource = DataSource1
       TabOrder = 3
     end
