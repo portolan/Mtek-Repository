@@ -1,0 +1,128 @@
+-- relatório balanço por período mensal
+
+create procedure rel_balancomensal(codigoemp integer, datainicial date, datafinal date)
+returns (  mes varchar(100),
+           entradas numeric(18,2),
+           saidas numeric(18,2),
+           saldoanterior numeric(18,2),
+           saldofinal  numeric(18,2)
+)
+as
+    -- variaveis para o saldo anterior
+    declare variable saldoant numeric(18,2);
+    declare variable antentradas numeric(18,2);
+    declare variable antsaidas numeric(18,2);
+    -- variaveis para o saldo atual
+    declare variable atualentradas numeric(18,2);
+    declare variable atualsaidas numeric(18,2);
+    declare variable mensal varchar(100);
+    -- variaveis para o saldo do periodo
+    declare variable Tentrada numeric(18,2);
+    declare variable Tsaida numeric(18,2);
+    declare variable Tmes numeric(18,2);
+
+begin
+    -- obter o total de saldo entrada/saida
+    select  sum(COALESCE(a.ttr_vl_pago,0)),
+    (select sum(COALESCE(b.ttp_vl_pago,0)) from TITULOSP B
+    where  b.ttp_situacao = 'F' and b.ttp_emp_codigo = :codigoemp)
+     from titulo_receber A
+     where
+     a.ttr_dt_pagamento >= :datainicial and
+     a.ttr_dt_pagamento <= :datafinal
+     and a.ttr_situacao = 'F' and a.ttr_emp_codigo = :codigoemp
+     into :Tentrada, :Tsaida;
+
+     if (:Tentrada is null) then
+        Tentrada  = 0.00;
+     if (:tsaida is null) then
+        Tsaida = 0.00;
+
+      Tmes = :Tentrada - :Tsaida;
+
+    -- recuperar saldo anterior
+    select
+       sum(COALESCE(a.ttr_vl_pago,0)),
+       (select sum(COALESCE(b.ttp_vl_pago,0)) from TITULOSP B
+        where extract(month from b.ttp_dt_pagamento) < extract(month from :datainicial)
+        and b.ttp_situacao = 'F' and b.ttp_emp_codigo = :codigoemp)
+        from titulo_receber A
+        where
+          extract(month from a.ttr_dt_pagamento) < extract(month from :datainicial)
+          and a.ttr_situacao = 'F' and a.ttr_emp_codigo = :codigoemp
+          into :antentradas, :antsaidas;
+
+        if (:antentradas is null) then antentradas = 0.00;
+        if (:antsaidas is null) then antsaidas = 0.00; 
+
+
+       saldoant = :antentradas - :antsaidas;
+       saldoanterior = :saldoant;
+       saldofinal  = :saldoant;
+
+     -- pegar o total de entrada e saida de cada mes somar com o saldo anterior para retornar o saldo final
+     for
+    select case extract(month from  ttr_dt_pagamento)
+         when 1 then '     JANEIRO'
+         when 2 then '     FEVEREIRO'
+         when 3 then '     MARCO'
+         when 4 then '     ABRIL'
+         when 5 then '     MAIO'
+         when 6 then '     JUNHO'
+         when 7 then '     JULHO'
+         when 8 then '     AGOSTO'
+         when 9 then '     SETEMBRO'
+         when 10 then '     OUTUBRO'
+         when 11 then '     NOVEMBRO'
+         when 12 then '     DEZEMBRO'
+       end,
+       sum(vl) entrada, sum(vl2) saida  from (
+       select  a.ttr_dt_pagamento, sum(coalesce(a.ttr_vl_pago,0)) vl, 0.00 vl2 from titulo_receber a
+       where  a.ttr_dt_pagamento >= :datainicial and
+         a.ttr_dt_pagamento <= :datafinal and
+         a.ttr_situacao = 'F' and a.ttr_emp_codigo = :codigoemp
+         group by 1
+       union
+       select b.ttp_dt_pagamento, 0.00 vl, sum(coalesce(b.ttp_vl_pago,0)) vl2 from titulosp b
+       where  b.ttp_dt_pagamento >= :datainicial and
+         b.ttp_dt_pagamento <= :datafinal and
+         b.ttp_situacao  = 'F' and b.ttp_emp_codigo = :codigoemp
+       group by 1 )
+       group by 1
+       into :mensal, :atualentradas, :atualsaidas
+       do
+       begin
+          mes = :mensal;
+          saldoanterior = :saldofinal ;
+          if (:atualentradas is null) then
+          atualentradas = 0.00;
+          if (:atualsaidas is null) then
+          atualsaidas = 0.00;
+          entradas = :atualentradas;
+          saidas = :atualsaidas;
+          saldofinal  =  saldofinal  + :atualentradas - :atualsaidas;
+          suspend;
+        end
+
+        mes = null;
+        entradas = null;
+        saidas = null;
+        saldoanterior = null;
+        saldofinal = null;
+        suspend;
+        
+        if (:antentradas is null) then antentradas = 0.00;
+        if (:antsaidas is null) then antsaidas = 0.00; 
+
+        mes = 'TOTAL: ';
+        entradas = :Tentrada;
+        saidas = :Tsaida;
+        saldoanterior = :saldoant;
+        saldofinal = :Tmes;
+        suspend;
+end
+
+
+/*
+
+select * from rel_balancomensal(2,'06.01.2015','20.12.2015');

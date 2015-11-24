@@ -1,0 +1,133 @@
+-- relatório de fechamento caixa
+
+CREATE PROCEDURE REL_FECHAMENTOCAIXA (CODIGOEMP INTEGER, DATAINICIAL DATE)
+RETURNS (
+    DESCRICAO VARCHAR(100),
+    DATA DATE,
+    VALOR NUMERIC(18,2))
+AS
+    declare variable antentradas numeric(18,2);
+    declare variable antsaidas numeric(18,2);
+    declare variable saldoant numeric(18,2);
+    declare variable saldofinal numeric(18,2);
+    declare variable entradas numeric(18,2);
+    declare variable saidas numeric(18,2);
+    declare variable totalentrada numeric(18,2);
+    declare variable totalsaida numeric(18,2);
+    declare variable codconta integer;
+    declare variable desc varchar(100);
+    declare variable dtpag date;
+    declare variable vlpago numeric(18,2);
+    declare variable datamov date;
+
+
+begin
+    -- recuperando o saldo anterior do dia digitado
+    select sum(COALESCE(a.ttr_vl_pago,0))
+    from titulo_receber A
+    where
+        a.ttr_dt_pagamento <  :datainicial
+        and a.ttr_situacao = 'F' and a.ttr_emp_codigo = :codigoemp
+        into :antentradas;
+
+     select sum(COALESCE(b.ttp_vl_pago,0))
+    from titulosp b
+    where
+        b.ttp_dt_pagamento <  :datainicial
+        and b.ttp_situacao = 'F' and b.ttp_emp_codigo = :codigoemp
+        into :antsaidas;
+
+
+        if (:antentradas is null) then antentradas = 0.00;
+        if (:antsaidas is null) then antsaidas = 0.00; 
+
+
+        saldoant = :antentradas - :antsaidas;
+        saldoant = :saldoant;
+        saldofinal = :saldoant;
+    -- mostrando o saldo anterior
+        descricao = '    RELATORIO DE POSICAO DO DIA   ';
+        suspend;
+
+    -- recuperando o total de entrada, saida e o saldo do dia
+      select  a.ttr_dt_pagamento, sum(COALESCE(a.ttr_vl_pago,0)),
+     (select sum(COALESCE(b.ttp_vl_pago,0)) from TITULOSP B
+     where
+        extract(day from b.ttp_dt_pagamento) = extract(day from a.ttr_dt_pagamento)
+        and b.ttp_situacao = 'F' and b.ttp_emp_codigo = :codigoemp)
+     from titulo_receber A
+     where
+     a.ttr_dt_pagamento = :datainicial
+     and  a.ttr_situacao = 'F' and a.ttr_emp_codigo = :codigoemp
+     group by 1
+     into :datamov, :totalentrada, :totalsaida;
+
+     if (:totalentrada is null) then totalentrada = 0.00;
+     if (:totalsaida is null) then totalsaida = 0.00;
+
+     saldofinal = saldofinal + :totalentrada - :totalsaida;
+     -- recuperando por conta de entrada
+     descricao = '                    ENTRADAS';
+     data = null;
+     valor = null;
+     suspend;
+     for
+     select a.ttr_codigo, a.ttr_descricao, a.ttr_dt_pagamento,  a.ttr_vl_pago from titulo_receber a
+     where a.ttr_dt_pagamento = :datainicial and a.ttr_situacao = 'F' and a.ttr_emp_codigo = :codigoemp
+     into :codconta, :desc, :dtpag, :vlpago
+     do
+     begin
+        descricao = :codconta || '    '|| :desc;
+        data = :dtpag;
+        valor = :vlpago;
+        suspend;
+     end
+     descricao = '                           ';
+     data = null;
+     valor = null;
+     suspend;
+     -- recuperando por conta de saida
+     descricao = '                       SAIDAS';
+     data = null;
+     valor = null;
+     suspend;
+     for
+     select b.ttp_codigo, b.ttp_descricao, b.ttp_dt_pagamento, b.ttp_vl_pago from titulosp b
+     where  b.ttp_dt_pagamento = :datainicial and b.ttp_situacao = 'F' and b.ttp_emp_codigo = :codigoemp
+     into :codconta, :desc, :dtpag, :vlpago
+     do
+     begin
+        descricao = :codconta || '    '|| :desc;
+        data = :dtpag;
+        valor = :vlpago;
+        suspend;
+     end
+     descricao = '                           ';
+     data = null;
+     valor = null;
+     suspend;
+
+     -- mostrando a posicao do dia com os totais
+
+     descricao = '                POSICAO DO DIA';
+     data = null;
+     valor = null;
+     suspend;
+
+     descricao = 'SALDO ANTERIOR :'||:saldoant;
+     suspend;
+
+     descricao = 'TOTAL ENTRADAS :'||:totalentrada;
+     suspend;
+
+     descricao = 'TOTAL SAIDAS       :'||:totalsaida;
+     suspend;
+
+     descricao = 'SALDO FINAL         :'||:saldofinal;
+     suspend;
+end
+
+
+/*
+
+select * from REL_FECHAMENTOCAIXA(2,'25.11.2015')

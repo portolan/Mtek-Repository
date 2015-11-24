@@ -1,0 +1,186 @@
+-- relatorio previsão fluxo caixa
+
+create procedure rel_prevfluxo(codigoemp integer, datahoje date, dataprevista date)
+returns( dados varchar(100),
+         Data date,
+         receber numeric(18,2),
+         vendas numeric(18,2),
+         pagar numeric(18,2),
+         compras numeric(18,2),
+         PrevisaoSaldoDia numeric(18,2))
+as
+
+   -- variaveis para obter o saldo anterior da data de hoje
+    declare variable antentradas numeric(18,2);
+    declare variable antsaidas  numeric(18,2);
+    declare variable saldoant  numeric(18,2);
+   -- variaveis para obter o saldo total de entrada/saida/soma da previsao
+    declare variable Treceber numeric(18,2);
+    declare variable Tpagar numeric(18,2);
+    declare variable Tvendas numeric(18,2);
+    declare variable Tcompras numeric(18,2);
+    declare variable Tprevisao numeric(18,2);
+  -- variaveis para mostrar os dados das contas
+    declare variable datamov date;
+    declare variable previsaototal numeric(18,2);
+    declare variable atualreceber numeric(18,2);
+    declare variable atualpagar  numeric(18,2);
+    declare variable atualcompras numeric(18,2);
+    declare variable atualvendas numeric(18,2);
+      -- variaveis para mostrar os pedidos
+    declare variable codconta integer;
+    declare variable desconta varchar(100);
+    declare variable dtvenc date;
+    declare variable vlpagar numeric(18,3);
+
+begin
+    -- recuperar o saldo atual
+     select
+       sum(COALESCE(a.ttr_vl_pago,0)),
+       (select sum(COALESCE(b.ttp_vl_pago,0)) from TITULOSP B
+        where b.ttp_dt_pagamento <= :datahoje and b.ttp_situacao = 'F' and b.ttp_emp_codigo = :codigoemp)
+        from titulo_receber A
+        where
+          a.ttr_dt_pagamento <= :datahoje
+          and a.ttr_situacao = 'F' and a.ttr_emp_codigo = :codigoemp
+          into :antentradas, :antsaidas;
+
+        if (:antentradas is null) then antentradas = 0.00;
+        if (:antsaidas is null) then antsaidas = 0.00; 
+
+
+       saldoant = :antentradas - :antsaidas;
+
+       previsaototal = :saldoant;
+
+       PrevisaoSaldoDia = :saldoant;
+
+     -- mostrando o saldo atual na tela
+      data = null;
+     dados = 'SALDO ATUAL    :   '|| :saldoant;
+     receber = null;
+     vendas = null;
+     pagar = null;
+     compras = null;
+     PrevisaoSaldoDia =null;
+     suspend;
+
+     -- recuperar as entradas e saidas de previsao
+     for
+     select ttr_dt_vencimento, sum(vl) receber, sum(vl2) pagar, sum(vl3) vendas, sum(vl4) compras  from (
+     select a.ttr_dt_vencimento, sum(coalesce(a.ttr_vl_original,0)) vl, 0.00 vl2, 0.00 vl3, 0.00 vl4 from titulo_receber a
+     where  a.ttr_dt_vencimento >= :datahoje and
+       a.ttr_dt_vencimento <= :dataprevista and
+       a.ttr_situacao = 'A' and a.ttr_emp_codigo = :codigoemp
+     group by 1
+     union
+
+     select b.ttp_dt_vencimento, 0.00 vl, sum(coalesce(b.ttp_vl_original,0)) vl2, 0.00 vl3, 0.00 vl4 from titulosp b
+     where  b.ttp_dt_vencimento >= :datahoje and
+       b.ttp_dt_vencimento <= :dataprevista and
+       b.ttp_situacao = 'A' and b.ttp_emp_codigo = :codigoemp
+     group by 1
+     union
+
+     select v.ped_dtprazoentrega, 0.00 vl, 0.00 vl2, sum(coalesce(v.ped_vlrtotal,0)) vl3, 0.00 vl4 from pedidovenda v
+     where v.ped_dtprazoentrega >= :datahoje and
+       v.ped_dtprazoentrega <= :dataprevista and
+       v.ped_situacao = 'A' and v.ped_empresa = :codigoemp
+     group by 1
+     union
+
+     select c.pdc_prev_entrega, 0.00 vl, 0.00 vl2, 0.00 vl3, sum(coalesce(c.pdc_vlr_liquido,0)) vl4 from pedido_compra c
+     where  c.pdc_prev_entrega >= :datahoje and
+       c.pdc_prev_entrega<= :dataprevista and
+       c.pdc_status = 'A' and c.pdc_empresa = :codigoemp
+
+     group by 1)
+     group by 1
+     into :datamov, :atualreceber, :atualpagar, :atualvendas, :atualcompras
+     do
+     begin
+
+         dados = null;
+         data =:datamov;
+
+         if (:atualreceber is null) then
+            atualreceber = 0.00;
+         if (:atualpagar is null) then
+            atualpagar = 0.00;
+         if (:atualvendas is null) then
+            atualvendas = 0.00;
+         if (:atualcompras is null) then
+            atualcompras = 0.00;
+
+         receber =  :atualreceber;
+         pagar = :atualpagar;
+         vendas = :atualvendas;
+         compras = :atualcompras;
+         PrevisaoSaldoDia  = PrevisaoSaldoDia  + (:atualreceber + :atualvendas) - (:atualpagar + :atualcompras);
+         suspend;
+     end
+
+     -- obter o saldo total de entrada/saida/soma da previsao
+
+    select  sum(coalesce(a.ttr_vl_original,0)) from titulo_receber a
+    where  a.ttr_dt_vencimento >= :datahoje and
+       a.ttr_dt_vencimento <= :dataprevista and
+       a.ttr_situacao = 'A' and a.ttr_emp_codigo = :codigoemp
+    into :treceber;
+
+    select sum(coalesce(b.ttp_vl_original,0)) from titulosp b
+    where  b.ttp_dt_vencimento >= :datahoje and
+       b.ttp_dt_vencimento <= :dataprevista and
+       b.ttp_situacao  = 'A' and b.ttp_emp_codigo = :codigoemp
+    into :tpagar;
+
+    select sum(coalesce(v.ped_vlrtotal,0))  from pedidovenda v
+     where v.ped_dtprazoentrega >= :datahoje and
+       v.ped_dtprazoentrega <= :dataprevista and
+       v.ped_situacao = 'A' and v.ped_empresa = :codigoemp
+    into :tvendas;
+
+     select sum(coalesce(c.pdc_vlr_liquido,0)) from pedido_compra c
+     where  c.pdc_prev_entrega >= :datahoje and
+       c.pdc_prev_entrega<= :dataprevista and
+       c.pdc_status = 'A' and c.pdc_empresa = :codigoemp
+    into :tcompras;
+
+     if (:treceber is null) then
+        treceber = 0.00;
+     if (:tpagar is null) then
+        tpagar = 0.00;
+     if (:tvendas is null) then
+        tvendas = 0.00;
+     if (:tcompras is null) then
+        tcompras = 0.00;
+
+     Tprevisao = :saldoant + (:Treceber + :Tvendas) - (:Tpagar + :Tcompras);
+     -- mostrando o saldo previsto na tela
+     dados = null;
+     data = null;
+     dados = null;
+     receber = null;
+     pagar = null;
+     vendas = null;
+     compras = null;
+     PrevisaoSaldoDia = null;
+     suspend;
+     dados = 'TOTAL PREVISTO:';
+     receber = :Treceber;
+     pagar = :Tpagar;
+     vendas = :Tvendas;
+     compras = :Tcompras;
+     PrevisaoSaldoDia = :Tprevisao;
+     suspend;
+end
+
+
+
+
+--    select * from rel_prevfluxo(1,'06.11.2015','10.11.2015')
+
+
+
+
+

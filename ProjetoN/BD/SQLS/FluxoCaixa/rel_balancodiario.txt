@@ -1,0 +1,122 @@
+-- relatório balanço por período diário
+
+create procedure rel_balancodiario(codigoemp integer, datainicial date, datafinal date)
+returns (
+           data date,
+           entradas numeric(18,2),
+           saidas numeric(18,2),
+           saldoanterior numeric(18,2),
+           saldofinal  numeric(18,2)
+)
+as
+    -- variaveis para o total anterior
+    declare variable saldoant numeric(18,2);
+    declare variable antentradas numeric(18,2);
+    declare variable antsaidas numeric(18,2);
+    -- variaveis para o total atual
+    declare variable atualentradas numeric(18,2);
+    declare variable atualsaidas numeric(18,2);
+    declare variable datamovimento date;
+    -- variaveis para o total do periodo
+    declare variable totalentrada numeric(18,2);
+    declare variable totalsaida numeric(18,2);
+    declare variable totaldia numeric(18,2);
+
+begin
+    -- recuperar saldo anterior
+    select
+       sum(COALESCE(a.ttr_vl_pago,0)),
+       (select sum(COALESCE(b.ttp_vl_pago,0)) from TITULOSP B
+        where b.ttp_dt_pagamento < :datainicial and b.ttp_situacao = 'F' and b.ttp_emp_codigo = :codigoemp)
+        from titulo_receber A
+        where
+          a.ttr_dt_pagamento < :datainicial
+          and a.ttr_situacao = 'F'and a.ttr_emp_codigo = :codigoemp
+          into :antentradas, :antsaidas;
+
+        if (:antentradas is null) then antentradas = 0.00;
+        if (:antsaidas is null) then antsaidas = 0.00; 
+
+
+       saldoant = :antentradas - :antsaidas;
+       saldoanterior = :saldoant;
+
+       saldofinal  = :saldoant;
+
+   -- selecionando total de entrada/saida a partir do saldo atual
+
+   for
+    select ttr_dt_pagamento, sum(vl) entrada, sum(vl2) saida  from (
+    select  a.ttr_dt_pagamento, sum(coalesce(a.ttr_vl_pago,0)) vl, 0.00 vl2 from titulo_receber a
+    where  a.ttr_dt_pagamento >= :datainicial and
+       a.ttr_dt_pagamento <= :datafinal and
+       a.ttr_situacao = 'F' and a.ttr_emp_codigo = :codigoemp
+    group by 1
+    union
+    select b.ttp_dt_pagamento, 0.00 vl, sum(coalesce(b.ttp_vl_pago,0)) vl2 from titulosp b
+    where  b.ttp_dt_pagamento >= :datainicial and
+       b.ttp_dt_pagamento <= :datafinal and
+       b.ttp_situacao  = 'F' and b.ttp_emp_codigo = :codigoemp
+    group by 1)
+    group by 1
+    into :datamovimento, :atualentradas, :atualsaidas
+    do
+    begin
+        data = :datamovimento;
+        saldoanterior = :saldofinal ;
+        if (:atualentradas is null) then
+        atualentradas = 0.00;
+        if (:atualsaidas is null) then
+        atualsaidas = 0.00;
+        entradas = :atualentradas;
+        saidas = :atualsaidas;
+
+        saldofinal  =  saldofinal  + :atualentradas - :atualsaidas;
+       suspend;
+    end
+
+
+
+
+     -- somar os totais do periodo
+    select sum(COALESCE(a.ttr_vl_pago,0)),
+       (select sum(COALESCE(b.ttp_vl_pago,0)) from TITULOSP B
+        where b.ttp_dt_pagamento >= :datainicial and
+              b.ttp_dt_pagamento <= :datafinal
+              and b.ttp_situacao = 'F' and b.ttp_emp_codigo = :codigoemp)
+        from titulo_receber A
+        where
+          a.ttr_dt_pagamento >= :datainicial and
+          a.ttr_dt_pagamento <= :datafinal
+          and a.ttr_situacao = 'F' and a.ttr_emp_codigo = :codigoemp
+          into :totalentrada, :totalsaida;
+
+
+          if (:totalentrada is null) then
+            totalentrada = 0.00;
+          if (:totalsaida is null) then
+            totalsaida = 0.00;
+
+        Totaldia = :Totalentrada - :Totalsaida;
+
+
+      -- mostrando os totais do periodo
+        data = null;
+        saldoanterior = null;
+        entradas = null;
+        saidas = null;
+        saldofinal  = null;
+        suspend;
+        if (:totalentrada is null) then
+        totalentrada = 0.00;
+        if (:totalentrada is null) then
+        totalentrada = 0.00;
+        entradas = :totalentrada;
+        saidas = :totalsaida;
+        saldofinal  = :totaldia;
+        suspend;
+end
+
+
+/*
+select * from rel_balancodiario(2,'01.01.2015','20.12.2015');

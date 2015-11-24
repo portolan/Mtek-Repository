@@ -1,0 +1,151 @@
+-- relatório de previsão de contas a Receber/ Pagar
+
+create procedure rel_previsaoContas (codigoemp integer, datahoje date, dataprevista date)
+returns( dados varchar(100),
+         Data date,
+         Descricao varchar(100),
+         valor numeric(18,2))
+as
+
+   -- variaveis para obter o saldo anterior da data de hoje
+    declare variable antentradas numeric(18,2);
+    declare variable antsaidas  numeric(18,2);
+    declare variable saldoant  numeric(18,2);
+   -- variaveis para obter o saldo total de entrada/saida/soma da previsao
+    declare variable Tentradas numeric(18,2);
+    declare variable Tsaidas numeric(18,2);
+    declare variable Tprevisao numeric(18,2);
+  -- variaveis para obter ???
+    declare variable datamov date;
+    declare variable previsaototal numeric(18,2);
+    declare variable atualentradas  numeric(18,2);
+    declare variable atualsaidas  numeric(18,2);
+  -- variaveis para mostrar as contas
+    declare variable codconta integer;
+    declare variable desconta varchar(100);
+    declare variable dtvenc date;
+    declare variable vlpagar numeric(18,2);
+
+
+begin   
+    -- recuperar o saldo atual
+     select
+       sum(COALESCE(a.ttr_vl_pago,0)),
+       (select sum(COALESCE(b.ttp_vl_pago,0)) from TITULOSP B
+        where b.ttp_dt_pagamento <= :datahoje and b.ttp_situacao = 'F' and b.ttp_emp_codigo = :codigoemp)
+        from titulo_receber A
+        where
+          a.ttr_dt_pagamento <= :datahoje
+          and a.ttr_situacao = 'F' and a.ttr_emp_codigo = :codigoemp
+          into :antentradas, :antsaidas;
+
+        if (:antentradas is null) then antentradas = 0.00;
+        if (:antsaidas is null) then antsaidas = 0.00; 
+
+
+       saldoant = :antentradas - :antsaidas;
+       previsaototal = :saldoant;
+
+
+     dados = null;
+     Data = null;
+     descricao = '                 ENTRADAS';
+     Data = null;
+     valor = null;
+     suspend;
+
+     for
+     select a.ttr_codigo, a.ttr_descricao, a.ttr_dt_vencimento,  a.ttr_vl_original from titulo_receber a
+     where
+     a.ttr_dt_vencimento >= :datahoje and
+     a.ttr_dt_vencimento <= :dataprevista
+     and a.ttr_situacao = 'A' and a.ttr_emp_codigo = :codigoemp
+     order by a.ttr_dt_vencimento
+
+     into :codconta, :desconta, :dtvenc, :vlpagar
+     do
+     begin
+        dados = null;
+        Data = :dtvenc;
+        descricao = :codconta || '    '|| :desconta;
+        valor = :vlpagar;
+        suspend;
+     end
+
+     descricao = '                           ';
+     Data = null;
+     valor = null;
+     suspend;
+
+     -- recuperando por conta de saida
+     descricao = '                  SAIDAS';
+     Data = null;
+     valor = null;
+     suspend;
+
+     for
+     select b.ttp_codigo, b.ttp_descricao, b.ttp_dt_vencimento,  b.ttp_vl_original from titulosp b
+     where
+     b.ttp_dt_vencimento >= :datahoje and
+     b.ttp_dt_vencimento <= :dataprevista
+     and b.ttp_situacao = 'A' and b.ttp_emp_codigo = :codigoemp
+     order by  b.ttp_dt_vencimento
+
+     into :codconta, :desconta, :dtvenc, :vlpagar
+     do
+     begin
+        dados = null;
+        Data = :dtvenc;
+        descricao = :codconta || '    '|| :desconta;
+        valor = :vlpagar;
+        suspend;
+     end
+
+     descricao = '                           ';
+     Data = null;
+     valor = null;
+     suspend;
+
+      -- obter o saldo total de entrada/saida/soma da previsao
+    select  sum(COALESCE(a.ttr_vl_original,0)),
+    (select sum(COALESCE(b.ttp_vl_original,0)) from TITULOSP B
+     where  b.ttp_situacao = 'A' and b.ttp_emp_codigo = :codigoemp)
+     from titulo_receber A
+     where
+     a.ttr_dt_vencimento >= :datahoje and
+     a.ttr_dt_vencimento <= :dataprevista
+     and a.ttr_situacao = 'A' and a.ttr_emp_codigo = :codigoemp
+     into :Tentradas, :Tsaidas;
+
+     -- mostrando o saldo atual na tela
+     Data = null;
+     dados = 'SALDO ATUAL: '|| :saldoant;
+     suspend;
+
+     dados = 'TOTAL PREVISTO ENTRADA: '||:Tentradas;
+     Data = null;
+     descricao = null;
+     valor = null;
+     suspend;
+     dados = 'TOTAL PREVISTO SAIDA: '|| :Tsaidas;
+     Data = null;
+     descricao = null;
+     valor = null;
+     suspend;
+
+     Tprevisao = :saldoant + :Tentradas - :Tsaidas;
+
+     -- mostrando o saldo previsto na tela
+     dados = 'TOTAL PREVISTO SALDO: '|| :Tprevisao;
+     Data = null;
+     descricao = null;
+     valor = null;
+     suspend;
+end
+
+
+/*
+
+    select * from rel_previsaoContas(1,'06.11.2015','20.12.2015')
+
+*/
