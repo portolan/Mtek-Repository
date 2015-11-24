@@ -36,6 +36,9 @@ type
     titulospagarEMP_RAZAO: TIBStringField;
     titulospagarPESS_NOME: TIBStringField;
     QryAux: TIBQuery;
+    condicaoPag: TIBQuery;
+    Ucondicaopag: TIBUpdateSQL;
+    Dcondicao: TDataSource;
     procedure titulospagarAfterInsert(DataSet: TDataSet);
     procedure titulospagarBeforePost(DataSet: TDataSet);
   private

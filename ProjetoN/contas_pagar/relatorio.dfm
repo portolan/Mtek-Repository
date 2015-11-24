@@ -78,7 +78,7 @@ object relcontasp: Trelcontasp
     Top = 16
   end
   object frxContasperiodo: TfrxReport
-    Version = '5.1.5'
+    Version = '5.3.16'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -86,7 +86,7 @@ object relcontasp: Trelcontasp
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42318.562514340300000000
-    ReportOptions.LastChange = 42324.889102638890000000
+    ReportOptions.LastChange = 42324.889102638900000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'

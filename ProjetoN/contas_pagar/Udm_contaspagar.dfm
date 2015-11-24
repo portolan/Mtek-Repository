@@ -293,4 +293,27 @@ object dm_contaspagar: Tdm_contaspagar
     Left = 192
     Top = 32
   end
+  object condicaoPag: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from CONDICAOPAGAMENTO')
+    UpdateObject = Ucondicaopag
+    Left = 320
+    Top = 32
+  end
+  object Ucondicaopag: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'select * from condicaopagamento')
+    Left = 312
+    Top = 96
+  end
+  object Dcondicao: TDataSource
+    DataSet = condicaoPag
+    Left = 304
+    Top = 160
+  end
 end
