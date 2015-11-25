@@ -19,6 +19,8 @@ type
     DBEdit2: TDBEdit;
     DBEdit3: TDBEdit;
     DBCheckBox1: TDBCheckBox;
+    procedure FormCreate(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
   public
@@ -33,5 +35,22 @@ implementation
 {$R *.dfm}
 
 uses UDM_contabil;
+
+procedure TM_centro.FormCreate(Sender: TObject);
+begin
+  inherited;
+    DM_contabil.empresa.Close;
+    DM_contabil.empresa.SQL.Text := 'select * from empresa';
+    DM_contabil.empresa.Open;
+end;
+
+procedure TM_centro.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+    case Key of
+        VK_F1 : ShowMessage('Danilo, você deve uma coca pra mim e pro erich =D');
+    end;
+end;
 
 end.
