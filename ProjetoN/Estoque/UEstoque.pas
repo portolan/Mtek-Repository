@@ -120,7 +120,7 @@ begin
         qryDin.SQL.Text := 'select first 1 estoq_bloco, estoq_prateleira, estoq_codigo, estoq_qtd from estoque ' +
                            ' where estoq_empresa = :codEmpresa and ' +
                            ' estoq_produto = :codProduto and ' +
-                           ' estoq_qtd    >= :qtd';
+                           ' abs(estoq_qtdmax - estoq_qtd) >= :qtd';
         qryDin.ParamByName('codEmpresa').AsInteger := codEmpresa;
         qryDin.ParamByName('codProduto').AsString  := codProduto;
         qryDin.ParamByName('qtd').AsFloat          := qtd;
