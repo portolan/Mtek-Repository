@@ -163,7 +163,10 @@ begin
         qryDin.Open;
         d_vlrFinanceiro := qryDin.FieldByName('vf').AsFloat;
 
-        d_customedio := d_vlrFinanceiro / d_qtd;
+        if (d_qtd <> 0) and (d_vlrFinanceiro <> 0) then 
+            d_customedio := d_vlrFinanceiro / d_qtd
+        else
+            d_customedio := 0;
 
         qryDin.Close;
         qryDin.SQL.Text :=  'update estoque set estoq_customedio = '    + FloatToStr(d_customedio) +
@@ -173,6 +176,7 @@ begin
                             ' and estoq_prateleira = '                    + IntToStr(codPrateleira) +
                             ' and estoq_codigo = '                       + IntToStr(codEstoque);
         qryDin.Open;
+
 
         result := d_customedio;
 
