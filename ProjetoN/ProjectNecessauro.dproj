@@ -212,10 +212,6 @@
             <Form>PSolicitacaoCompra</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="contabil\R_contabil.pas">
-            <Form>REL_contabil</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="contabil\UM_centro.pas">
             <Form>M_centro</Form>
             <FormType>dfm</FormType>
@@ -564,6 +560,18 @@
         </DCCReference>
         <DCCReference Include="financeiro\UP_banco.pas">
             <Form>P_banco</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contabil\UR_RelatorioContabil.pas">
+            <Form>R_RelatorioContabil</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contabil\R_contabil.pas">
+            <Form>REL_contabil</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="contabil\UF_RelatorioContabil.pas">
+            <Form>F_RelatorioContabil</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

@@ -38,7 +38,6 @@ uses
   UP_NotaEntrada in 'compra\UP_NotaEntrada.pas' {PNotaEntrada},
   UP_PedCompra in 'compra\UP_PedCompra.pas' {PPedCompra},
   UP_SolicitacaoCompra in 'compra\UP_SolicitacaoCompra.pas' {PSolicitacaoCompra},
-  R_contabil in 'contabil\R_contabil.pas' {REL_contabil},
   UM_centro in 'contabil\UM_centro.pas' {M_centro},
   UM_departamento in 'contabil\UM_departamento.pas' {M_departamento},
   UM_empresa in 'contabil\UM_empresa.pas' {M_empresa},
@@ -125,7 +124,10 @@ uses
   UP_contabancaria in 'financeiro\UP_contabancaria.pas' {P_contasbancarias},
   UM_novacontabancaria in 'financeiro\UM_novacontabancaria.pas' {m_novacontabancaria},
   UM_novobanco in 'financeiro\UM_novobanco.pas' {M_novobanco},
-  UP_banco in 'financeiro\UP_banco.pas' {P_banco};
+  UP_banco in 'financeiro\UP_banco.pas' {P_banco},
+  UR_RelatorioContabil in 'contabil\UR_RelatorioContabil.pas' {R_RelatorioContabil},
+  R_contabil in 'contabil\R_contabil.pas' {REL_contabil},
+  UF_RelatorioContabil in 'contabil\UF_RelatorioContabil.pas' {F_RelatorioContabil};
 
 {$R *.res}
 
@@ -176,6 +178,9 @@ begin
   Application.CreateForm(Tm_novacontabancaria, m_novacontabancaria);
   Application.CreateForm(TM_novobanco, M_novobanco);
   Application.CreateForm(TP_banco, P_banco);
+  Application.CreateForm(TR_RelatorioContabil, R_RelatorioContabil);
+  Application.CreateForm(TREL_contabil, REL_contabil);
+  Application.CreateForm(TF_RelatorioContabil, F_RelatorioContabil);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
 end.

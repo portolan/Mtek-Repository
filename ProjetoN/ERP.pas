@@ -142,7 +142,8 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UF_ChamadosRelatorios, UF_RELATORIOPCP, UR_RELATORIOPCP, relatorio,
   UM_BensImobilizados, UM_ManutencaoBen, UM_TipoBens, UP_BensImobilizados,
   Um_Condição_Pagamento, Up_condicaop, UR_Relatorio_Chamado, dm000,
-  UR_Relatorios, Um_condicaop, Up_Emissao_NFE, UP_banco, UM_novobanco;
+  UR_Relatorios, Um_condicaop, Up_Emissao_NFE, UP_banco, UM_novobanco,
+  UF_RelatorioContabil;
 
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
@@ -481,7 +482,12 @@ end;
 
 procedure TTelaInicial.Relatrios2Click(Sender: TObject);
 begin
-  TREL_contabil.chamaTela(Self);
+  F_RelatorioContabil := TF_RelatorioContabil.Create(Self);
+  try
+    F_RelatorioContabil.ShowModal;
+  finally
+    FreeAndNil(F_RelatorioContabil);
+  end;
 end;
 
 procedure TTelaInicial.Relatrios3Click(Sender: TObject);
