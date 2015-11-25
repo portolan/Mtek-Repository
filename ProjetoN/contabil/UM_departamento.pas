@@ -38,7 +38,8 @@ begin
   inherited;
   DM_contabil.empresa.Close;
   DM_contabil.empresa.SQL.Text := 'select * from empresa' ;
-  DM_contabil.empresa.Open
+  DM_contabil.empresa.Open;
+  DM_contabil.empresa.FetchAll;
 end;
 
 end.
