@@ -5556,12 +5556,7 @@ object TelaInicial: TTelaInicial
       end
       object PedidodeVenda1: TMenuItem
         Caption = 'Faturamento'
-      end
-      object N1: TMenuItem
-        Caption = '-'
-      end
-      object CondiesdePagamento2: TMenuItem
-        Caption = 'Condi'#231#245'es de Pagamento'
+        OnClick = PedidodeVenda1Click
       end
     end
     object Financeiro1: TMenuItem
@@ -5574,16 +5569,13 @@ object TelaInicial: TTelaInicial
         Caption = 'Contas a Receber'
         OnClick = ContasaReceber1Click
       end
-      object FluxodeCaixa1: TMenuItem
-        Caption = 'Controle Caixa'
-        OnClick = FluxodeCaixa1Click
-      end
       object ContasBancarias1: TMenuItem
         Caption = 'Contas Bancarias'
         OnClick = ContasBancarias1Click
       end
       object Condiesdepagamento1: TMenuItem
         Caption = 'Condi'#231#245'es de pagamento'
+        OnClick = Condiesdepagamento1Click
       end
     end
     object Contbil1: TMenuItem

@@ -372,14 +372,6 @@
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
-        <DCCReference Include="financeiro\UM_novacontabancaria.pas">
-            <Form>M_novaconta</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="financeiro\UP_contabancaria.pas">
-            <Form>P_contasbancarias</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="geral\UM_Pessoa.pas">
             <Form>MPessoa</Form>
             <FormType>dfm</FormType>
@@ -556,6 +548,14 @@
         </DCCReference>
         <DCCReference Include="contas_pagar\Up_condicaop.pas">
             <Form>p_condicaopag</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="financeiro\UP_contabancaria.pas">
+            <Form>P_contasbancarias</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="financeiro\UM_novacontabancaria.pas">
+            <Form>m_novacontabancaria</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

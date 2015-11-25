@@ -78,8 +78,6 @@ uses
   UP_Unidade in 'Estoque\UP_Unidade.pas' {PUnidade},
   UR_EstoqueRelatorios in 'Estoque\UR_EstoqueRelatorios.pas' {EstoqueRelatorios: TDataModule},
   UR_Relatorios in 'Estoque\UR_Relatorios.pas' {DataModule1: TDataModule},
-  UM_novacontabancaria in 'financeiro\UM_novacontabancaria.pas' {M_novaconta},
-  UP_contabancaria in 'financeiro\UP_contabancaria.pas' {P_contasbancarias},
   UM_Pessoa in 'geral\UM_Pessoa.pas' {MPessoa},
   UP_Pessoa in 'geral\UP_Pessoa.pas' {PPessoa},
   login in 'login final\login.pas' {tela_login},
@@ -123,7 +121,9 @@ uses
   Um_Condição_Pagamento in 'venda\Um_Condição_Pagamento.pas' {U_Condicao_Pg},
   UF_ChamadosRelatorios in 'assistencia\UF_ChamadosRelatorios.pas' {F_ChamadosRelatorios},
   UR_Relatorio_Chamado in 'assistencia\UR_Relatorio_Chamado.pas' {UR_Relatorio},
-  Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag};
+  Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag},
+  UP_contabancaria in 'financeiro\UP_contabancaria.pas' {P_contasbancarias},
+  UM_novacontabancaria in 'financeiro\UM_novacontabancaria.pas' {m_novacontabancaria};
 
 {$R *.res}
 
@@ -170,6 +170,8 @@ begin
   Application.CreateForm(TF_ChamadosRelatorios, F_ChamadosRelatorios);
   Application.CreateForm(TUR_Relatorio, UR_Relatorio);
   Application.CreateForm(Tp_condicaopag, p_condicaopag);
+  Application.CreateForm(TP_contasbancarias, P_contasbancarias);
+  Application.CreateForm(Tm_novacontabancaria, m_novacontabancaria);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
 end.

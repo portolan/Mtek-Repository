@@ -41,12 +41,9 @@ type
     ControledeVendas1: TMenuItem;
     Oramento1: TMenuItem;
     PedidodeVenda1: TMenuItem;
-    N1: TMenuItem;
-    CondiesdePagamento2: TMenuItem;
     Financeiro1: TMenuItem;
     ContasaPagar1: TMenuItem;
     ContasaReceber1: TMenuItem;
-    FluxodeCaixa1: TMenuItem;
     ContasBancarias1: TMenuItem;
     Condiesdepagamento1: TMenuItem;
     Contbil1: TMenuItem;
@@ -88,7 +85,6 @@ type
     procedure PlanodeContas1Click(Sender: TObject);
     procedure Histricos1Click(Sender: TObject);
     procedure ContasaPagar1Click(Sender: TObject);
-    procedure FluxodeCaixa1Click(Sender: TObject);
     procedure ContasaReceber1Click(Sender: TObject);
     procedure ProdutosemEstoque1Click(Sender: TObject);
     procedure Relatrios1Click(Sender: TObject);
@@ -112,6 +108,8 @@ type
     procedure Pessoas1Click(Sender: TObject);
     procedure Relatrios3Click(Sender: TObject);
     procedure E1Click(Sender: TObject);
+    procedure Condiesdepagamento1Click(Sender: TObject);
+    procedure PedidodeVenda1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -142,7 +140,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UF_ChamadosRelatorios, UF_RELATORIOPCP, UR_RELATORIOPCP, relatorio,
   UM_BensImobilizados, UM_ManutencaoBen, UM_TipoBens, UP_BensImobilizados,
   Um_Condição_Pagamento, Up_condicaop, UR_Relatorio_Chamado, dm000,
-  UR_Relatorios, Um_condicaop;
+  UR_Relatorios, Um_condicaop, Up_Emissao_NFE;
 
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
@@ -193,6 +191,11 @@ end;
 procedure TTelaInicial.CentrodeCustos2Click(Sender: TObject);
 begin
     TP_centro.chamaTela(self);
+end;
+
+procedure TTelaInicial.Condiesdepagamento1Click(Sender: TObject);
+begin
+    Tp_condicaopag.chamaTela(self);
 end;
 
 procedure TTelaInicial.ContasaPagar1Click(Sender: TObject);
@@ -282,16 +285,6 @@ try
 finally
   FreeAndNil(P_FichaTecnica);
 end;
-end;
-
-procedure TTelaInicial.FluxodeCaixa1Click(Sender: TObject);
-begin
-    P_caixa := TP_caixa.Create(Self);
-    try
-        P_caixa.ShowModal;
-    finally
-        FreeAndNil(P_caixa);
-    end;
 end;
 
 procedure TTelaInicial.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -395,6 +388,16 @@ end;
 procedure TTelaInicial.PedidodeCompra1Click(Sender: TObject);
 begin
    TPPedCompra.ChamaTela(Self);
+end;
+
+procedure TTelaInicial.PedidodeVenda1Click(Sender: TObject);
+begin
+    Up_NFE := TUp_NFE.Create(Self);
+    try
+        Up_NFE.ShowModal;
+    finally
+        FreeAndNil(Up_NFE);
+    end;
 end;
 
 procedure TTelaInicial.Pessoa1Click(Sender: TObject);
