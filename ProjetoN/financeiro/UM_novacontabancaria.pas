@@ -44,9 +44,9 @@ uses UDM_financeiro;
 procedure Tm_novacontabancaria.FormCreate(Sender: TObject);
 begin
   inherited;
-    DM_financeiro.IBQuery1.Close;
-     DM_financeiro.IBQuery1.SQL.Text := 'select * from banco';
-      DM_financeiro.IBQuery1.open;
+    DM_financeiro.banco.Close;
+     DM_financeiro.banco.SQL.Text := 'select * from banco';
+      DM_financeiro.banco.open;
 end;
 
 end.
