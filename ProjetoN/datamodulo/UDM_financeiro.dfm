@@ -120,4 +120,61 @@ object DM_financeiro: TDM_financeiro
     Left = 40
     Top = 144
   end
+  object IBQuery1: TIBQuery
+    Database = dmBanco.Banco
+    Transaction = dmBanco.TBanco
+    BufferChunks = 1000
+    CachedUpdates = False
+    Constraints = <
+      item
+        FromDictionary = False
+      end>
+    ParamCheck = True
+    SQL.Strings = (
+      'select * from banco')
+    UpdateObject = IBUpdateSQL1
+    Left = 208
+    Top = 16
+    object IBQuery1BAN_CODIGO: TIntegerField
+      FieldName = 'BAN_CODIGO'
+      Origin = '"BANCO"."BAN_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object IBQuery1BAN_DESCRICAO: TIBStringField
+      FieldName = 'BAN_DESCRICAO'
+      Origin = '"BANCO"."BAN_DESCRICAO"'
+      Size = 100
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = IBQuery1
+    Left = 208
+    Top = 88
+  end
+  object IBUpdateSQL1: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select * '
+      'from banco '
+      'where'
+      '  BAN_CODIGO = :BAN_CODIGO')
+    ModifySQL.Strings = (
+      'update banco'
+      'set'
+      '  BAN_CODIGO = :BAN_CODIGO,'
+      '  BAN_DESCRICAO = :BAN_DESCRICAO'
+      'where'
+      '  BAN_CODIGO = :OLD_BAN_CODIGO')
+    InsertSQL.Strings = (
+      'insert into banco'
+      '  (BAN_CODIGO, BAN_DESCRICAO)'
+      'values'
+      '  (:BAN_CODIGO, :BAN_DESCRICAO)')
+    DeleteSQL.Strings = (
+      'delete from banco'
+      'where'
+      '  BAN_CODIGO = :OLD_BAN_CODIGO')
+    Left = 208
+    Top = 144
+  end
 end

@@ -566,14 +566,15 @@ object DM_contabil: TDM_contabil
     ModifySQL.Strings = (
       'update HISTORICO'
       'set'
+      '  HIST_COD = :HIST_COD,'
       '  HIST_NOME = :HIST_NOME'
       'where'
       '  HIST_COD = :OLD_HIST_COD')
     InsertSQL.Strings = (
       'insert into HISTORICO'
-      '  (HIST_NOME)'
+      '  (HIST_COD, HIST_NOME)'
       'values'
-      '  (:HIST_NOME)')
+      '  (:HIST_COD, :HIST_NOME)')
     DeleteSQL.Strings = (
       'delete from HISTORICO'
       'where'

@@ -350,7 +350,9 @@ object DM_VENDA: TDM_VENDA
     object IB_VendaPED_PESSOA: TIBStringField
       FieldName = 'PED_PESSOA'
       Origin = '"PEDIDOVENDA"."PED_PESSOA"'
-      Size = 100
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 240
     end
     object IB_VendaPED_SEQUENCIA: TIntegerField
       FieldName = 'PED_SEQUENCIA'
@@ -359,34 +361,40 @@ object DM_VENDA: TDM_VENDA
     object IB_VendaPED_SITUACAO: TIBStringField
       FieldName = 'PED_SITUACAO'
       Origin = '"PEDIDOVENDA"."PED_SITUACAO"'
-      Size = 5
     end
     object IB_VendaPED_EMPRESA: TIntegerField
       FieldName = 'PED_EMPRESA'
       Origin = '"PEDIDOVENDA"."PED_EMPRESA"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
     object IB_VendaPED_DEPOSITO: TIntegerField
       FieldName = 'PED_DEPOSITO'
       Origin = '"PEDIDOVENDA"."PED_DEPOSITO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
     object IB_VendaPED_PRODUTO: TIntegerField
       FieldName = 'PED_PRODUTO'
       Origin = '"PEDIDOVENDA"."PED_PRODUTO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
     object IB_VendaPED_DESCRICAO: TIBStringField
       FieldName = 'PED_DESCRICAO'
       Origin = '"PEDIDOVENDA"."PED_DESCRICAO"'
-      Size = 60
+      Size = 240
     end
-    object IB_VendaPED_TIPOMOVIMENTACAO: TIBStringField
+    object IB_VendaPED_TIPOMOVIMENTACAO: TIntegerField
       FieldName = 'PED_TIPOMOVIMENTACAO'
       Origin = '"PEDIDOVENDA"."PED_TIPOMOVIMENTACAO"'
-      Size = 5
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
     end
     object IB_VendaPED_TIPODESCRICAO: TIBStringField
       FieldName = 'PED_TIPODESCRICAO'
       Origin = '"PEDIDOVENDA"."PED_TIPODESCRICAO"'
-      Size = 30
+      Size = 120
     end
     object IB_VendaPED_UNIDADE: TIntegerField
       FieldName = 'PED_UNIDADE'
@@ -398,9 +406,11 @@ object DM_VENDA: TDM_VENDA
       Precision = 18
       Size = 2
     end
-    object IB_VendaPED_LISTA_PRECO: TIntegerField
+    object IB_VendaPED_LISTA_PRECO: TIBBCDField
       FieldName = 'PED_LISTA_PRECO'
       Origin = '"PEDIDOVENDA"."PED_LISTA_PRECO"'
+      Precision = 18
+      Size = 2
     end
     object IB_VendaPED_DESCONTO: TIBBCDField
       FieldName = 'PED_DESCONTO'
@@ -435,38 +445,37 @@ object DM_VENDA: TDM_VENDA
     object IB_VendaPED_DTPEDIDO: TDateField
       FieldName = 'PED_DTPEDIDO'
       Origin = '"PEDIDOVENDA"."PED_DTPEDIDO"'
-      EditMask = '!99/99/0000;1;_'
     end
     object IB_VendaPED_DTENTRADA: TDateField
       FieldName = 'PED_DTENTRADA'
       Origin = '"PEDIDOVENDA"."PED_DTENTRADA"'
-      EditMask = '!99/99/0000;1;_'
     end
     object IB_VendaPED_DTPRAZOENTREGA: TDateField
       FieldName = 'PED_DTPRAZOENTREGA'
       Origin = '"PEDIDOVENDA"."PED_DTPRAZOENTREGA"'
-      EditMask = '!99/99/0000;1;_'
     end
     object IB_VendaPED_ORDEMVENDA: TIntegerField
       FieldName = 'PED_ORDEMVENDA'
       Origin = '"PEDIDOVENDA"."PED_ORDEMVENDA"'
+      Required = True
     end
     object IB_VendaEMP_RAZAO: TIBStringField
       FieldName = 'EMP_RAZAO'
       Origin = '"EMPRESA"."EMP_RAZAO"'
-      Size = 60
+      Required = True
+      Size = 240
     end
     object IB_VendaDEP_NOME: TIBStringField
       FieldName = 'DEP_NOME'
       Origin = '"DEPARTAMENTO"."DEP_NOME"'
       Required = True
-      Size = 40
+      Size = 160
     end
     object IB_VendaPRO_DESCRICAO: TIBStringField
       FieldName = 'PRO_DESCRICAO'
       Origin = '"PRODUTOS"."PRO_DESCRICAO"'
       Required = True
-      Size = 60
+      Size = 240
     end
   end
 end

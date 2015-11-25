@@ -908,13 +908,6 @@ object dmPedCompra: TdmPedCompra
       Origin = '"PESSOAS"."PESS_NOME"'
       Size = 100
     end
-    object PessoaPESS_TIPO: TIBStringField
-      DisplayLabel = 'Tipo'
-      FieldName = 'PESS_TIPO'
-      Origin = '"PESSOAS"."PESS_TIPO"'
-      FixedChar = True
-      Size = 1
-    end
     object PessoaPESS_APELIDO: TIBStringField
       DisplayLabel = 'Apelido'
       FieldName = 'PESS_APELIDO'
@@ -1043,6 +1036,12 @@ object dmPedCompra: TdmPedCompra
       DisplayLabel = 'Pa'#237's'
       FieldName = 'PESS_PAIS'
       Origin = '"PESSOAS"."PESS_PAIS"'
+    end
+    object PessoaPESS_TIPO: TIBStringField
+      DisplayLabel = 'Tipo'
+      FieldName = 'PESS_TIPO'
+      Origin = '"PESSOAS"."PESS_TIPO"'
+      Size = 4
     end
   end
   object DSPessoa: TDataSource

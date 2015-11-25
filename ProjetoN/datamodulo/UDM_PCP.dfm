@@ -108,7 +108,7 @@ object DM_PCP: TDM_PCP
       DisplayLabel = 'Data prevista de entrega'
       FieldName = 'OP_DT_ENTREGA'
       Origin = '"ORDEM_PRODUCAO"."OP_DT_ENTREGA"'
-      DisplayFormat = '__/__/____'
+      EditMask = '!00/00/0000;1;_'
     end
     object OrdemProducaoOP_STATUS: TIBStringField
       DisplayLabel = 'Status'

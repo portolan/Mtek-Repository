@@ -32,6 +32,17 @@ type
     IB_CondicaoPGCDP_CODIGO: TIntegerField;
     IB_CondicaoPGCDP_DESCRICAO: TIBStringField;
     IB_Venda: TIBQuery;
+    IB_EmissaoNFEEMI_NUMERO: TIntegerField;
+    IB_EmissaoNFEEMI_NOTAFISCAL: TIntegerField;
+    IB_EmissaoNFEEMI_EMPRESA: TIntegerField;
+    IB_EmissaoNFEEMI_SERIE: TIntegerField;
+    IB_EmissaoNFEEMI_TIPOMOVIMENTACAO: TIntegerField;
+    IB_EmissaoNFEEMI_DESCRICAO: TIBStringField;
+    IB_EmissaoNFEEMI_DTEMISSAO: TDateField;
+    IB_EmissaoNFEEMI_DTSAIDA: TDateField;
+    IB_EmissaoNFEEMI_PESSOA: TIntegerField;
+    IB_EmissaoNFEEMP_RAZAO: TIBStringField;
+    IB_EmissaoNFEPESS_NOME: TIBStringField;
     IB_VendaPED_NUMERO: TIntegerField;
     IB_VendaPED_PESSOA: TIBStringField;
     IB_VendaPED_SEQUENCIA: TIntegerField;
@@ -40,11 +51,11 @@ type
     IB_VendaPED_DEPOSITO: TIntegerField;
     IB_VendaPED_PRODUTO: TIntegerField;
     IB_VendaPED_DESCRICAO: TIBStringField;
-    IB_VendaPED_TIPOMOVIMENTACAO: TIBStringField;
+    IB_VendaPED_TIPOMOVIMENTACAO: TIntegerField;
     IB_VendaPED_TIPODESCRICAO: TIBStringField;
     IB_VendaPED_UNIDADE: TIntegerField;
     IB_VendaPED_QUANTIDADE: TIBBCDField;
-    IB_VendaPED_LISTA_PRECO: TIntegerField;
+    IB_VendaPED_LISTA_PRECO: TIBBCDField;
     IB_VendaPED_DESCONTO: TIBBCDField;
     IB_VendaPED_QTD_DISPONIVEL: TIBBCDField;
     IB_VendaPED_VLRUNITARIO: TIBBCDField;
@@ -57,17 +68,6 @@ type
     IB_VendaEMP_RAZAO: TIBStringField;
     IB_VendaDEP_NOME: TIBStringField;
     IB_VendaPRO_DESCRICAO: TIBStringField;
-    IB_EmissaoNFEEMI_NUMERO: TIntegerField;
-    IB_EmissaoNFEEMI_NOTAFISCAL: TIntegerField;
-    IB_EmissaoNFEEMI_EMPRESA: TIntegerField;
-    IB_EmissaoNFEEMI_SERIE: TIntegerField;
-    IB_EmissaoNFEEMI_TIPOMOVIMENTACAO: TIntegerField;
-    IB_EmissaoNFEEMI_DESCRICAO: TIBStringField;
-    IB_EmissaoNFEEMI_DTEMISSAO: TDateField;
-    IB_EmissaoNFEEMI_DTSAIDA: TDateField;
-    IB_EmissaoNFEEMI_PESSOA: TIntegerField;
-    IB_EmissaoNFEEMP_RAZAO: TIBStringField;
-    IB_EmissaoNFEPESS_NOME: TIBStringField;
     procedure IB_VendaAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }

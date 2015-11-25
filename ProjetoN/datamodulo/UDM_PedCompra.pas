@@ -66,7 +66,6 @@ type
     DSPessoa: TDataSource;
     PessoaPESS_CODIGO: TIntegerField;
     PessoaPESS_NOME: TIBStringField;
-    PessoaPESS_TIPO: TIBStringField;
     PessoaPESS_APELIDO: TIBStringField;
     PessoaPESS_CONTATO: TIBStringField;
     PessoaPESS_TELCONTATO: TIBStringField;
@@ -157,6 +156,7 @@ type
     ItemNotaEntradaINE_QTD: TIBBCDField;
     ItemNotaEntradaPRO_DESCRICAO: TIBStringField;
     ItemNotaEntradaINE_VLR_UNITARIO: TIBBCDField;
+    PessoaPESS_TIPO: TIBStringField;
     procedure SolicitacaoCompraAfterInsert(DataSet: TDataSet);
     procedure CotacaoAfterInsert(DataSet: TDataSet);
     procedure PedidoCompraAfterInsert(DataSet: TDataSet);
