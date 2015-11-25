@@ -9,7 +9,6 @@ uses
 
 type
   TM_novobanco = class(TxManuPadrao)
-    DataSource1: TDataSource;
     Label1: TLabel;
     DBEdit1: TDBEdit;
     Label2: TLabel;

@@ -9,17 +9,18 @@ inherited M_novobanco: TM_novobanco
   inherited pnRodape: TPanel
     Top = 183
     Width = 537
+    ExplicitTop = 183
+    ExplicitWidth = 537
     inherited sbCancelar: TSpeedButton
       Left = 440
+      ExplicitLeft = 440
     end
   end
   inherited gbInfos: TGroupBox
     Width = 537
     Height = 183
-    ExplicitLeft = -1
-    ExplicitTop = -5
     ExplicitWidth = 537
-    ExplicitHeight = 150
+    ExplicitHeight = 183
     object Label1: TLabel
       Left = 16
       Top = 23
@@ -54,10 +55,5 @@ inherited M_novobanco: TM_novobanco
       DataSource = DM_financeiro.D_banco
       TabOrder = 1
     end
-  end
-  object DataSource1: TDataSource
-    DataSet = DM_financeiro.banco
-    Left = 496
-    Top = 160
   end
 end
