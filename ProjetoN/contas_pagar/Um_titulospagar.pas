@@ -147,6 +147,7 @@ procedure Tm_titulospagar.ttp_empresaExit(Sender: TObject);
 
     procedure procPesquisaEmpresa;
     begin
+
        TP_empresa.chamaTela(Self);
        if not DM_contabil.empresa.IsEmpty then
        begin
