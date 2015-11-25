@@ -153,13 +153,12 @@ inherited M_Manutencao: TM_Manutencao
       TabOrder = 5
     end
     object DBEdit5: TDBEdit
-      Left = 151
+      Left = 153
       Top = 112
       Width = 105
       Height = 21
       DataField = 'MAN_VLR_COMPONENTE'
       DataSource = DMControlePatrimonial.DManutencao
-      Enabled = False
       TabOrder = 6
     end
     object DBEdit6: TDBEdit
@@ -304,6 +303,7 @@ inherited M_Manutencao: TM_Manutencao
             C4C2C2C2C2C2C2C2C2C2C2C4D14703BFBFBFBFBFBFBF0511A2CDC3C2C2C2C2C2
             C2C3CDA21105BFBFBFBFBFBFBFBFBFBF37248ED0C8CDCDC8D08E2337BFBFBFBF
             BFBFBFBFBFBFBFBFBFBF039D0D12120D9D03BFBFBFBFBFBFBFBF}
+          OnClick = sbAlterarClick
           ExplicitLeft = 73
           ExplicitHeight = 40
         end
@@ -366,17 +366,22 @@ inherited M_Manutencao: TM_Manutencao
         Columns = <
           item
             Expanded = False
+            FieldName = 'COM_EMPRESA'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'COM_MANUTENCAO'
+            Visible = True
+          end
+          item
+            Expanded = False
             FieldName = 'COM_CODIGO'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'PRO_DESCRICAO'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'COM_VLR_COMPONENTE'
+            FieldName = 'Valor do Componente'
             Visible = True
           end>
       end

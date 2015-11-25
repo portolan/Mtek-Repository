@@ -47,6 +47,7 @@ end;
 
 procedure TP_BensImobilizados.sbAlterarClick(Sender: TObject);
 begin
+   procMontarVLocate;
 
    MBensImobilizados := TMBensImobilizados.Create(Self);
    try
@@ -60,6 +61,8 @@ begin
       MBensImobilizados.ShowModal;
    finally
       FreeAndNil(MBensImobilizados);
+      procSelect;
+      procLocate;
    end;
 
 end;

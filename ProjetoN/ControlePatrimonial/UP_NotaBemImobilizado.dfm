@@ -3,7 +3,7 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
   Top = 0
   Caption = 'Pesquisa de Entrada de Itens Imobilizados'
   ClientHeight = 309
-  ClientWidth = 747
+  ClientWidth = 688
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -11,13 +11,12 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object DBGrid1: TDBGrid
     Left = 0
     Top = 152
-    Width = 747
+    Width = 688
     Height = 157
     Align = alBottom
     DataSource = DProdutos
@@ -27,15 +26,7 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
-    OnColExit = DBGrid1ColExit
-    OnDrawColumnCell = DBGrid1DrawColumnCell
-    OnKeyPress = DBGrid1KeyPress
     Columns = <
-      item
-        Expanded = False
-        FieldName = 'CDS_BO_SELECIONADO'
-        Visible = True
-      end
       item
         Expanded = False
         FieldName = 'CDS_EMPRESA'
@@ -65,11 +56,12 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
   object gbPesquisa: TGroupBox
     Left = 0
     Top = 0
-    Width = 747
+    Width = 688
     Height = 152
     Align = alClient
     Caption = 'Dados'
     TabOrder = 1
+    ExplicitWidth = 747
     object Label1: TLabel
       Left = 24
       Top = 24
@@ -237,23 +229,12 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
         0000000000000000000000000000}
       OnClick = sbCancelarClick
     end
-    object DBCheckBox1: TDBCheckBox
-      Left = 144
-      Top = 112
-      Width = 97
-      Height = 17
-      DataField = 'CDS_BO_SELECIONADO'
-      DataSource = DProdutos
-      TabOrder = 0
-      Visible = False
-      OnClick = DBCheckBox1Click
-    end
     object DBEdit1: TEdit
       Left = 24
       Top = 43
       Width = 58
       Height = 21
-      TabOrder = 1
+      TabOrder = 0
       OnExit = DBEdit1Exit
     end
     object DBEdit2: TEdit
@@ -262,7 +243,7 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
       Width = 58
       Height = 21
       OEMConvert = True
-      TabOrder = 2
+      TabOrder = 1
       OnExit = DBEdit2Exit
     end
     object DBEdit5: TEdit
@@ -270,7 +251,7 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
       Top = 86
       Width = 58
       Height = 21
-      TabOrder = 3
+      TabOrder = 2
       OnExit = DBEdit5Exit
     end
     object DBEdit4: TEdit
@@ -278,7 +259,7 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
       Top = 86
       Width = 88
       Height = 21
-      TabOrder = 4
+      TabOrder = 3
       OnExit = DBEdit4Exit
     end
   end
@@ -287,10 +268,6 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
     Params = <>
     Left = 400
     Top = 192
-    object cdsProdutosCDS_BO_SELECIONADO: TBooleanField
-      DisplayLabel = 'Selecionado'
-      FieldName = 'CDS_BO_SELECIONADO'
-    end
     object cdsProdutosCDS_EMPRESA: TIntegerField
       DisplayLabel = 'Empresa'
       FieldName = 'CDS_EMPRESA'

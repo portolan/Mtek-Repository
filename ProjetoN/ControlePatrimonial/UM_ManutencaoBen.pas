@@ -38,12 +38,14 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure sbGravarClick(Sender: TObject);
+    procedure sbAlterarClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     procedure procTotalizaManutencao;
     procedure procTotaliza;
+    procedure procSelect;
   end;
 
 var
@@ -63,7 +65,23 @@ procedure TM_Manutencao.FormShow(Sender: TObject);
 begin
   procTotalizaManutencao;
   procTotaliza;
+  procSelect;
+  DBEdit5.Enabled := true;
   inherited;
+end;
+
+procedure TM_Manutencao.procSelect;
+begin
+   inherited;
+   DMControlePatrimonial.Componente.Close;
+   DMControlePatrimonial.Componente.SQL.Text := 'SELECT *                              ' +
+                                                '  FROM COMPONENTE A                   ' +
+                                                ' WHERE A.COM_EMPRESA = :EMPRESA AND   ' +
+                                                '       A.COM_MANUTENCAO = :MANUTENCAO ' ;
+   DMControlePatrimonial.Componente.ParamByName('empresa').AsInteger := DMControlePatrimonial.ManutencaoMAN_EMPRESA.AsInteger;
+   DMControlePatrimonial.Componente.ParamByName('MANUTENCAO').asinteger := DMControlePatrimonial.ManutencaoMAN_CODIGO.asinteger;
+   DMControlePatrimonial.Componente.Open;
+
 end;
 
 procedure TM_Manutencao.procTotaliza;
@@ -146,6 +164,29 @@ begin
    end;
 end;
 
+procedure TM_Manutencao.sbAlterarClick(Sender: TObject);
+begin
+ if DMControlePatrimonial.Manutencao.State in [dsEdit, dsInsert]  then
+   begin
+      DMControlePatrimonial.Manutencao.Post;
+      DMControlePatrimonial.BenImobilizado.Edit;
+   end;
+
+   if not (DMControlePatrimonial.Componente.Active) then
+         DMControlePatrimonial.Componente.Open;
+
+   DMControlePatrimonial.Componente.edit;
+
+   MComponente := TMComponente.Create(Self);
+   try
+      MComponente.QryPadrao := DMControlePatrimonial.Componente;
+      MComponente.b_finalizaTransacao := false;
+      MComponente.ShowModal;
+   finally
+      FreeAndNil(MComponente);
+   end;
+end;
+
 procedure TM_Manutencao.sbGravarClick(Sender: TObject);
 begin
   procTotalizaManutencao;
@@ -156,6 +197,7 @@ end;
 
 procedure TM_Manutencao.sbNovoClick(Sender: TObject);
 begin
+
    DMControlePatrimonial.VerificaCamposRequisidos(DMControlePatrimonial.Manutencao);
    if DMControlePatrimonial.Manutencao.State in [dsEdit, dsInsert]  then
    begin
@@ -163,11 +205,20 @@ begin
       DMControlePatrimonial.Manutencao.Edit;
    end;
 
+   if not (DMControlePatrimonial.Componente.Active) then
+         DMControlePatrimonial.Componente.Open;
+
+   DMControlePatrimonial.Componente.Edit;
+
    MComponente := TMComponente.Create(Self);
    try
-      MComponente.ShowModal;
+      MComponente.QryPadrao := DMControlePatrimonial.Componente;
+      MComponente.b_finalizaTransacao := false;
+
       DMControlePatrimonial.ComponenteCOM_EMPRESA.AsInteger := DMControlePatrimonial.ManutencaoMAN_EMPRESA.AsInteger;
       DMControlePatrimonial.ComponenteCOM_MANUTENCAO.AsInteger := DMControlePatrimonial.ManutencaoMAN_CODIGO.AsInteger;
+      DMControlePatrimonial.ComponenteCOM_VLR_COMPONENTE.AsFloat := 0;
+      MComponente.ShowModal;
    finally
       FreeAndNil(MComponente);
    end;

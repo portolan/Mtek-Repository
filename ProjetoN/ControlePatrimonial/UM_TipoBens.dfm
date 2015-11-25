@@ -9,8 +9,8 @@ inherited MTipoBens: TMTipoBens
   inherited pnRodape: TPanel
     Top = 73
     Width = 534
-    ExplicitTop = 88
-    ExplicitWidth = 566
+    ExplicitTop = 73
+    ExplicitWidth = 534
     inherited sbCancelar: TSpeedButton
       Left = 437
       ExplicitLeft = 469
@@ -19,8 +19,8 @@ inherited MTipoBens: TMTipoBens
   inherited gbInfos: TGroupBox
     Width = 534
     Height = 73
-    ExplicitWidth = 566
-    ExplicitHeight = 88
+    ExplicitWidth = 534
+    ExplicitHeight = 73
     object Label1: TLabel
       Left = 24
       Top = 24

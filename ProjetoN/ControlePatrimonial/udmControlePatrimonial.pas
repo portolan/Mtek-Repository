@@ -34,9 +34,7 @@ type
     ComponenteCOM_EMPRESA: TIntegerField;
     ComponenteCOM_MANUTENCAO: TIntegerField;
     ComponenteCOM_CODIGO: TIBStringField;
-    ComponentePRO_DESCRICAO: TIBStringField;
     ComponenteCOM_OBSERVACAO: TBlobField;
-    ComponenteCOM_VLR_COMPONENTE: TIBBCDField;
     Manutencao: TIBQuery;
     UManutencao: TIBUpdateSQL;
     DManutencao: TDataSource;
@@ -71,6 +69,7 @@ type
     BenImobilizadoBNI_OBSERVACAO: TBlobField;
     BenImobilizadoBNI_STATUS: TIBStringField;
     BenImobilizadoBNI_VLR_RESIDUAL: TIBBCDField;
+    ComponenteCOM_VLR_COMPONENTE: TFloatField;
     procedure EstadoConservacaoAfterInsert(DataSet: TDataSet);
     procedure TipoBensAfterInsert(DataSet: TDataSet);
     procedure LocalizacaoAfterInsert(DataSet: TDataSet);
@@ -99,6 +98,9 @@ uses dm000;
 procedure TDMControlePatrimonial.BenImobilizadoAfterInsert(DataSet: TDataSet);
 begin
    DMControlePatrimonial.BenImobilizadoBNI_STATUS.AsString := 'S';
+   DMControlePatrimonial.BenImobilizadoBNI_VLR_AGREGADO.AsFloat := 0;
+   DMControlePatrimonial.BenImobilizadoBNI_VLR_ATUAL.AsFloat := 0;
+   DMControlePatrimonial.BenImobilizadoBNI_DEPRECIACAO.AsFloat := 100;
 end;
 
 procedure TDMControlePatrimonial.EstadoConservacaoAfterInsert(

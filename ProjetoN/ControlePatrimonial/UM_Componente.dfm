@@ -1,4 +1,4 @@
-﻿inherited MComponente: TMComponente
+inherited MComponente: TMComponente
   Caption = 'Manuten'#231#227'o do Componente'
   ClientWidth = 486
   ExplicitWidth = 502
@@ -40,7 +40,7 @@
       Caption = 'C'#243'digo'
       FocusControl = DBEdit3
     end
-    object Descrição: TLabel
+    object Label5: TLabel
       Left = 103
       Top = 83
       Width = 46
@@ -48,7 +48,7 @@
       Caption = 'Descri'#231#227'o'
     end
     object Label4: TLabel
-      Left = 367
+      Left = 351
       Top = 83
       Width = 88
       Height = 13
@@ -85,29 +85,28 @@
       TabOrder = 2
       OnExit = DBEdit3Exit
     end
-    object Edit1: TEdit
-      Left = 103
-      Top = 99
-      Width = 258
-      Height = 21
-      TabOrder = 3
-      Text = 'Edit1'
-    end
-    object DBEdit4: TDBEdit
-      Left = 367
-      Top = 99
-      Width = 93
-      Height = 21
-      DataField = 'COM_VLR_COMPONENTE'
-      DataSource = DMControlePatrimonial.DComponente
-      TabOrder = 4
-    end
     object DBMemo1: TDBMemo
       Left = 40
       Top = 126
       Width = 420
       Height = 89
       DataField = 'COM_OBSERVACAO'
+      DataSource = DMControlePatrimonial.DComponente
+      TabOrder = 3
+    end
+    object eddescricao: TEdit
+      Left = 103
+      Top = 99
+      Width = 242
+      Height = 21
+      TabOrder = 4
+    end
+    object DBEdit4: TDBEdit
+      Left = 351
+      Top = 99
+      Width = 109
+      Height = 21
+      DataField = 'COM_VLR_COMPONENTE'
       DataSource = DMControlePatrimonial.DComponente
       TabOrder = 5
     end

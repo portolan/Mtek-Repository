@@ -216,17 +216,10 @@ object DMControlePatrimonial: TDMControlePatrimonial
     CachedUpdates = False
     ParamCheck = True
     SQL.Strings = (
-      'SELECT A.COM_EMPRESA,'
-      '       A.COM_MANUTENCAO,'
-      '       A.COM_CODIGO,'
-      '       B.PRO_DESCRICAO,'
-      '       A.COM_OBSERVACAO,'
-      '       A.COM_VLR_COMPONENTE'
+      'SELECT *'
       '  FROM COMPONENTE A'
-      
-        ' INNER JOIN PRODUTOS B ON A.COM_EMPRESA = B.PRO_EMPRESA AND A.CO' +
-        'M_CODIGO = B.PRO_CODIGO'
       ' WHERE A.COM_EMPRESA = -1 AND'
+      '       A.COM_MANUTENCAO = -1 AND'
       '       A.COM_CODIGO = -1')
     UpdateObject = UComponente
     Left = 424
@@ -252,13 +245,6 @@ object DMControlePatrimonial: TDMControlePatrimonial
       Required = True
       Size = 30
     end
-    object ComponentePRO_DESCRICAO: TIBStringField
-      DisplayLabel = 'Descri'#231#227'o'
-      FieldName = 'PRO_DESCRICAO'
-      Origin = '"PRODUTOS"."PRO_DESCRICAO"'
-      Required = True
-      Size = 60
-    end
     object ComponenteCOM_OBSERVACAO: TBlobField
       DisplayLabel = 'Observa'#231#227'o'
       FieldName = 'COM_OBSERVACAO'
@@ -266,17 +252,48 @@ object DMControlePatrimonial: TDMControlePatrimonial
       ProviderFlags = [pfInUpdate]
       Size = 8
     end
-    object ComponenteCOM_VLR_COMPONENTE: TIBBCDField
-      DisplayLabel = 'Valor Componente'
+    object ComponenteCOM_VLR_COMPONENTE: TFloatField
       FieldName = 'COM_VLR_COMPONENTE'
       Origin = '"COMPONENTE"."COM_VLR_COMPONENTE"'
-      DisplayFormat = '###,###,##0.00'
-      EditFormat = '0.00'
-      Precision = 18
-      Size = 2
     end
   end
   object UComponente: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      '  COM_EMPRESA,'
+      '  COM_MANUTENCAO,'
+      '  COM_CODIGO,'
+      '  COM_OBSERVACAO,'
+      '  COM_VLR_COMPONENTE'
+      'from COMPONENTE '
+      'where'
+      '  COM_CODIGO = :COM_CODIGO and'
+      '  COM_EMPRESA = :COM_EMPRESA')
+    ModifySQL.Strings = (
+      'update COMPONENTE'
+      'set'
+      '  COM_CODIGO = :COM_CODIGO,'
+      '  COM_EMPRESA = :COM_EMPRESA,'
+      '  COM_MANUTENCAO = :COM_MANUTENCAO,'
+      '  COM_OBSERVACAO = :COM_OBSERVACAO,'
+      '  COM_VLR_COMPONENTE = :COM_VLR_COMPONENTE'
+      'where'
+      '  COM_CODIGO = :OLD_COM_CODIGO and'
+      '  COM_EMPRESA = :OLD_COM_EMPRESA')
+    InsertSQL.Strings = (
+      'insert into COMPONENTE'
+      
+        '  (COM_CODIGO, COM_EMPRESA, COM_MANUTENCAO, COM_OBSERVACAO, COM_' +
+        'VLR_COMPONENTE)'
+      'values'
+      
+        '  (:COM_CODIGO, :COM_EMPRESA, :COM_MANUTENCAO, :COM_OBSERVACAO, ' +
+        ':COM_VLR_COMPONENTE)')
+    DeleteSQL.Strings = (
+      'delete from COMPONENTE'
+      'where'
+      '  COM_CODIGO = :OLD_COM_CODIGO and'
+      '  COM_EMPRESA = :OLD_COM_EMPRESA')
     Left = 424
     Top = 88
   end

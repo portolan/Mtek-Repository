@@ -29,24 +29,16 @@ type
     cdsProdutosCDS_NOTA: TIntegerField;
     cdsProdutosCDS_QTD_NOTA: TFloatField;
     cdsProdutosCDS_QTD_BEN: TFloatField;
-    cdsProdutosCDS_BO_SELECIONADO: TBooleanField;
-    DBCheckBox1: TDBCheckBox;
     DBEdit1: TEdit;
     DBEdit2: TEdit;
     DBEdit5: TEdit;
     DBEdit4: TEdit;
-    procedure FormCreate(Sender: TObject);
     procedure sdfExit(Sender: TObject);
     procedure DBEdit2Exit(Sender: TObject);
     procedure DBEdit5Exit(Sender: TObject);
     procedure sbPesquisarClick(Sender: TObject);
     procedure DBEdit4Exit(Sender: TObject);
     procedure sbCancelarClick(Sender: TObject);
-    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
-      DataCol: Integer; Column: TColumn; State: TGridDrawState);
-    procedure DBGrid1ColExit(Sender: TObject);
-    procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
-    procedure DBCheckBox1Click(Sender: TObject);
     procedure bt_GerarEntradaClick(Sender: TObject);
     procedure DBEdit1Exit(Sender: TObject);
     procedure Edit1Exit(Sender: TObject);
@@ -66,14 +58,6 @@ implementation
 
 uses dm000, udmControlePatrimonial, UP_empresa, UDM_contabil, UP_Produto,
   UDM_Estoque, UP_Pessoa, UDM_PedCompra;
-
-procedure TP_PesquisaNotaBemImobilizado.DBCheckBox1Click(Sender: TObject);
-begin
-   if DBCheckBox1.Checked then
-      DBCheckBox1.Caption := DBCheckBox1.ValueChecked
-   else
-      DBCheckBox1.Caption := DBCheckBox1.ValueChecked;
-end;
 
 procedure TP_PesquisaNotaBemImobilizado.sdfExit(Sender: TObject);
 var
@@ -247,59 +231,6 @@ begin
   end;
 end;
 
-procedure TP_PesquisaNotaBemImobilizado.DBGrid1ColExit(Sender: TObject);
-begin
-   if DBGrid1.SelectedField.FieldName = DBCheckBox1.DataField then
-      DBCheckBox1.Visible := false;
-end;
-
-procedure TP_PesquisaNotaBemImobilizado.DBGrid1DrawColumnCell(Sender: TObject;
-  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
-  const IsChecked : array [boolean] of integer = (DFCS_BUTTONCHECK, DFCS_buttoncheck or dfcs_checked);
-var
-   drawstate : integer;
-   drawrect  : trect;
-begin
-
-   if (gdFocused in state) then
-   begin
-      if (Column.Field.FieldName = DBCheckBox1.DataField) then
-      begin
-         DBCheckBox1.Left := Rect.Left + DBGrid1.Left + 2;
-         DBCheckBox1.Top := Rect.Top + DBGrid1.Top + 2;
-         DBCheckBox1.Width := Rect.Right - Rect.Left;
-         DBCheckBox1.Height := Rect.Bottom - Rect.Top;
-         DBCheckBox1.Visible := true;
-      end;
-   end
-   else
-   begin
-      if (Column.Field.FieldName = DBCheckBox1.DataField) then
-      begin
-         drawrect := Rect;
-         InflateRect(drawrect, -1, -1);
-         drawstate := ischecked [Column.Field.AsBoolean];
-         DBGrid1.Canvas.FillRect(rect);
-         DrawFrameControl(DBGrid1.Canvas.Handle, drawrect, DFC_BUTTON, drawstate)
-      end;
-   end;
-
-end;
-
-procedure TP_PesquisaNotaBemImobilizado.DBGrid1KeyPress(Sender: TObject;
-  var Key: Char);
-begin
-   if (key = Chr(9)) then
-      exit;
-
-   if (DBGrid1.SelectedField.FieldName = DBCheckBox1.DataField) then
-   begin
-      DBCheckBox1.SetFocus;
-      SendMessage(DBCheckBox1.Handle, WM_CHAR, word(key), 0);
-   end;
-
-end;
-
 procedure TP_PesquisaNotaBemImobilizado.Edit1Exit(Sender: TObject);
 var
    QryVerificaFornecedor : TIBQuery;
@@ -384,12 +315,6 @@ begin
   finally
      FreeAndNil(QryVerificaEmpresa);
   end;
-end;
-
-procedure TP_PesquisaNotaBemImobilizado.FormCreate(Sender: TObject);
-begin
-   DBCheckBox1.Color := DBGrid1.Color;
-
 end;
 
 procedure TP_PesquisaNotaBemImobilizado.PesquisaDados(i_empresa, i_nota,

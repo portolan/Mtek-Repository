@@ -1,3 +1,4 @@
+
 unit UM_Componente;
 
 interface
@@ -16,11 +17,11 @@ type
     DBEdit2: TDBEdit;
     Label3: TLabel;
     DBEdit3: TDBEdit;
-    Edit1: TEdit;
-    Descrição: TLabel;
+    DBMemo1: TDBMemo;
+    eddescricao: TEdit;
+    Label5: TLabel;
     Label4: TLabel;
     DBEdit4: TDBEdit;
-    DBMemo1: TDBMemo;
     procedure DBEdit3Exit(Sender: TObject);
     procedure sbGravarClick(Sender: TObject);
   private
@@ -40,40 +41,49 @@ implementation
 procedure TMComponente.DBEdit3Exit(Sender: TObject);
 var
    QryVerificaProduto : TIBQuery;
+   B_ACHOU            : BOOLEAN;
 begin
   inherited;
+
+  B_ACHOU := false;
+
+  if DBEdit3.Text <> EmptyStr then
+  begin
   try
-     if DBEdit3.Text <> EmptyStr then
-     begin
-        QryVerificaProduto := dmBanco.funcCriaQuery;
+     QryVerificaProduto := dmBanco.funcCriaQuery;
 
-        QryVerificaProduto.Close;
-        QryVerificaProduto.SQL.Clear;
-        QryVerificaProduto.SQL.Text := 'SELECT * FROM PRODUTOS A WHERE A.PRO_EMPRESA = :EMPRESA AND A.PRO_CODIGO = :PRODUTO';
-        QryVerificaProduto.ParamByName('empresa').AsInteger := DMControlePatrimonial.ComponenteCOM_EMPRESA.AsInteger;
-        QryVerificaProduto.ParamByName('PRODUTO').AsString := DBEdit3.Text;
-        QryVerificaProduto.Open;
+     QryVerificaProduto.Close;
+     QryVerificaProduto.SQL.Clear;
+     QryVerificaProduto.SQL.Text := 'SELECT * FROM PRODUTOS A WHERE A.PRO_EMPRESA = :EMPRESA AND A.PRO_CODIGO = :PRODUTO';
+     QryVerificaProduto.ParamByName('empresa').AsInteger := DMControlePatrimonial.ComponenteCOM_EMPRESA.AsInteger;
+     QryVerificaProduto.ParamByName('PRODUTO').AsString := DBEdit3.Text;
+     QryVerificaProduto.Open;
 
-        if NOT(QryVerificaProduto.IsEmpty) then
-        BEGIN
-           Edit1.Text := QryVerificaProduto.FieldByName('pro_descricao').AsString;
-           DMControlePatrimonial.ComponenteCOM_VLR_COMPONENTE.AsFloat := QryVerificaProduto.FieldByName('pro_customedio').ASFLOAT;
-        END;
+     if NOT(QryVerificaProduto.IsEmpty) then
+     BEGIN
+        eddescricao.Text := QryVerificaProduto.FieldByName('pro_descricao').AsString;
+        DMControlePatrimonial.ComponenteCOM_VLR_COMPONENTE.AsFloat := QryVerificaProduto.FieldByName('pro_customedio').ASFLOAT;
+        B_ACHOU := true;
+     END;
+  finally
+     FreeAndNil(QryVerificaProduto);
+  end;
 
-     end;
+  end;
 
+  if (B_ACHOU = false) then
+  begin
      PProduto := TPProduto.Create(Self);
      try
         PProduto.ShowModal;
      finally
         DMControlePatrimonial.ComponenteCOM_CODIGO.AsInteger := DM_Estoque.ProdutosPRO_CODIGO.AsInteger;
-        DMControlePatrimonial.ComponentePRO_DESCRICAO.asstring := DM_Estoque.ProdutosPRO_DESCRICAO.AsString;
         DMControlePatrimonial.ComponenteCOM_VLR_COMPONENTE.AsFloat := DM_Estoque.ProdutosPRO_CUSTOMEDIO.AsFloat;
-        FreeAndNil(MComponente);
+        eddescricao.Text := DM_Estoque.ProdutosPRO_DESCRICAO.asstring;
+        FreeAndNil(PProduto);
      end;
-  finally
-     FreeAndNil(QryVerificaProduto);
   end;
+
 end;
 
 
