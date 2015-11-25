@@ -93,6 +93,7 @@ inherited P_lancamento: TP_lancamento
           item
             Expanded = False
             FieldName = 'LANC_TIPO'
+            Width = 64
             Visible = True
           end
           item
@@ -104,31 +105,37 @@ inherited P_lancamento: TP_lancamento
           item
             Expanded = False
             FieldName = 'LANC_CENTRODECUSTO_DB'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'LANC_CREDITO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'LANC_CENTRODECUSTO_CR'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'LANC_HISTORICO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'LANC_VAR_HISTORICO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'LANC_VALOR'
+            Width = 64
             Visible = True
           end>
       end

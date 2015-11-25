@@ -48,31 +48,31 @@ end;
 
 procedure TP_lancamento.FormCreate(Sender: TObject);
 var Qry:TIBQuery;
-    soma : integer;
+    soma, cred, deb : integer;
 begin
   inherited;
     Qry := dmBanco.funcCriaQuery;
     try
        Qry.Close;
-       Qry.SQL.Text := 'select sum(a.LANC_VALOR) soma from lancamentos a ';
-       Qry.open;
-
-       soma := qry.FieldByName('soma').AsInteger;
-       Rtotal.Caption := IntToStr(soma);
-
-       Qry.Close;
        Qry.SQL.Text := 'select sum(a.LANC_VALOR) soma from lancamentos a where a.lanc_tipo = ''C'' ';
        Qry.open;
 
-       soma := qry.FieldByName('soma').AsInteger;
-       Rcredito.Caption := IntToStr(soma);
+       cred := qry.FieldByName('soma').AsInteger;
+       Rcredito.Caption := IntToStr(cred);
 
        Qry.Close;
        Qry.SQL.Text := 'select sum(a.LANC_VALOR) soma from lancamentos a where a.lanc_tipo = ''D'' ';
        Qry.open;
 
-       soma := qry.FieldByName('soma').AsInteger;
-       Rdebito.Caption := IntToStr(soma);
+       deb := qry.FieldByName('soma').AsInteger;
+       Rdebito.Caption := IntToStr(deb);
+
+
+
+       Rtotal.Caption := IntToStr(cred-deb);
+
+
+
 
     finally
        FreeAndNil(Qry);
