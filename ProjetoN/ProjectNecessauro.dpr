@@ -123,7 +123,9 @@ uses
   UR_Relatorio_Chamado in 'assistencia\UR_Relatorio_Chamado.pas' {UR_Relatorio},
   Up_condicaop in 'contas_pagar\Up_condicaop.pas' {p_condicaopag},
   UP_contabancaria in 'financeiro\UP_contabancaria.pas' {P_contasbancarias},
-  UM_novacontabancaria in 'financeiro\UM_novacontabancaria.pas' {m_novacontabancaria};
+  UM_novacontabancaria in 'financeiro\UM_novacontabancaria.pas' {m_novacontabancaria},
+  UM_novobanco in 'financeiro\UM_novobanco.pas' {M_novobanco},
+  UP_banco in 'financeiro\UP_banco.pas' {P_banco};
 
 {$R *.res}
 
@@ -172,6 +174,8 @@ begin
   Application.CreateForm(Tp_condicaopag, p_condicaopag);
   Application.CreateForm(TP_contasbancarias, P_contasbancarias);
   Application.CreateForm(Tm_novacontabancaria, m_novacontabancaria);
+  Application.CreateForm(TM_novobanco, M_novobanco);
+  Application.CreateForm(TP_banco, P_banco);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
 end.

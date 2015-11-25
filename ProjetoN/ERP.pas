@@ -67,6 +67,7 @@ type
     Image1: TImage;
     Image3: TImage;
     Relatrios3: TMenuItem;
+    Bancos1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -110,6 +111,7 @@ type
     procedure E1Click(Sender: TObject);
     procedure Condiesdepagamento1Click(Sender: TObject);
     procedure PedidodeVenda1Click(Sender: TObject);
+    procedure Bancos1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -140,7 +142,7 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UF_ChamadosRelatorios, UF_RELATORIOPCP, UR_RELATORIOPCP, relatorio,
   UM_BensImobilizados, UM_ManutencaoBen, UM_TipoBens, UP_BensImobilizados,
   Um_Condição_Pagamento, Up_condicaop, UR_Relatorio_Chamado, dm000,
-  UR_Relatorios, Um_condicaop, Up_Emissao_NFE;
+  UR_Relatorios, Um_condicaop, Up_Emissao_NFE, UP_banco, UM_novobanco;
 
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
@@ -151,6 +153,16 @@ begin
     finally
         FreeAndNil(FEstoqueAjuda);
     end;
+end;
+
+procedure TTelaInicial.Bancos1Click(Sender: TObject);
+begin
+   P_banco := TP_banco.Create(Self);
+   try
+      P_banco.ShowModal;
+   finally
+      FreeAndNil(P_banco);
+   end;
 end;
 
 procedure TTelaInicial.BemImobilizado1Click(Sender: TObject);
