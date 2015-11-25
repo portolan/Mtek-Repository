@@ -211,7 +211,7 @@ inherited M_Servico: TM_Servico
       DataSource = DM_Servico.DS_Chamado
       Items.Strings = (
         'Analise'
-        'Manunte'#231#227'o'
+        'Manutencao'
         'Concluido')
       TabOrder = 3
     end
