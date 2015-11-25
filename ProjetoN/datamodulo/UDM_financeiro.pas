@@ -19,11 +19,11 @@ type
     contasbancariasCTB_PESSOA: TIntegerField;
     contasbancariasCTB_SALDO: TIBBCDField;
     contasbancariasCTB_STATUS: TIBStringField;
-    IBQuery1: TIBQuery;
-    DataSource1: TDataSource;
-    IBUpdateSQL1: TIBUpdateSQL;
-    IBQuery1BAN_CODIGO: TIntegerField;
-    IBQuery1BAN_DESCRICAO: TIBStringField;
+    banco: TIBQuery;
+    D_banco: TDataSource;
+    U_banco: TIBUpdateSQL;
+    bancoBAN_CODIGO: TIntegerField;
+    bancoBAN_DESCRICAO: TIBStringField;
   private
     { Private declarations }
   public

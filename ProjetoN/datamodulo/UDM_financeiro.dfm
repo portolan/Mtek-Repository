@@ -120,7 +120,7 @@ object DM_financeiro: TDM_financeiro
     Left = 40
     Top = 144
   end
-  object IBQuery1: TIBQuery
+  object banco: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     BufferChunks = 1000
@@ -132,29 +132,29 @@ object DM_financeiro: TDM_financeiro
     ParamCheck = True
     SQL.Strings = (
       'select * from banco')
-    UpdateObject = IBUpdateSQL1
+    UpdateObject = U_banco
     Left = 208
     Top = 16
-    object IBQuery1BAN_CODIGO: TIntegerField
+    object bancoBAN_CODIGO: TIntegerField
       FieldName = 'BAN_CODIGO'
       Origin = '"BANCO"."BAN_CODIGO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object IBQuery1BAN_DESCRICAO: TIBStringField
+    object bancoBAN_DESCRICAO: TIBStringField
       FieldName = 'BAN_DESCRICAO'
       Origin = '"BANCO"."BAN_DESCRICAO"'
       Size = 100
     end
   end
-  object DataSource1: TDataSource
-    DataSet = IBQuery1
+  object D_banco: TDataSource
+    DataSet = banco
     Left = 208
     Top = 88
   end
-  object IBUpdateSQL1: TIBUpdateSQL
+  object U_banco: TIBUpdateSQL
     RefreshSQL.Strings = (
-      'Select * '
+      'Select '
       'from banco '
       'where'
       '  BAN_CODIGO = :BAN_CODIGO')
