@@ -171,7 +171,7 @@ begin
   inherited;
   P_departamento := TP_departamento.Create(self);
   try
-    P_departamento.procInicializar(DM_contabil.departamento,true,false,M_departamento,TM_departamento);
+    P_departamento.procInicializar(DM_contabil.departamento,false,false,M_departamento,TM_departamento);
     P_departamento.ShowModal;
   finally
     FreeAndNil(P_departamento);
@@ -183,7 +183,7 @@ begin
   inherited;
   PPessoa := TPPessoa.Create(self);
   try
-    PPessoa.procInicializar(dmPedCompra.Pessoa,true,false,MPessoa,TMPessoa);
+    PPessoa.procInicializar(dmPedCompra.Pessoa,false,false,MPessoa,TMPessoa);
     PPessoa.ShowModal;
   finally
     FreeAndNil(PPessoa);
@@ -195,7 +195,7 @@ begin
   inherited;
   PPessoa := TPPessoa.Create(self);
   try
-    PPessoa.procInicializar(dmPedCompra.Pessoa,true,false,MPessoa,TMPessoa);
+    PPessoa.procInicializar(dmPedCompra.Pessoa,false,false,MPessoa,TMPessoa);
     PPessoa.ShowModal;
   finally
     FreeAndNil(PPessoa);
@@ -207,7 +207,7 @@ begin
   inherited;
   P_Tipo_Erro := TP_Tipo_Erro.Create(self);
   try
-    P_Tipo_Erro.procInicializar(dmPedCompra.Pessoa,true,false,M_Tipo_Erro,TM_Tipo_Erro);
+    P_Tipo_Erro.procInicializar(dmPedCompra.Pessoa,false,false,M_Tipo_Erro,TM_Tipo_Erro);
     P_Tipo_Erro.ShowModal;
   finally
     FreeAndNil(P_Tipo_Erro);

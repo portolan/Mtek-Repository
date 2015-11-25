@@ -41,7 +41,6 @@ object UR_Relatorio: TUR_Relatorio
   object IB_ChamadoDia: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
-    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
@@ -306,7 +305,7 @@ object UR_Relatorio: TUR_Relatorio
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42313.806204733800000000
-    ReportOptions.LastChange = 42332.554883159720000000
+    ReportOptions.LastChange = 42333.867145798610000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
@@ -661,7 +660,7 @@ object UR_Relatorio: TUR_Relatorio
           Left = 49.133890000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
-          DataField = 'PESS_NOME1'
+          DataField = 'PESS_NOME'
           DataSet = frxDBChamadoData
           DataSetName = 'frxDBChamadoData'
           Font.Charset = DEFAULT_CHARSET
@@ -671,7 +670,7 @@ object UR_Relatorio: TUR_Relatorio
           Font.Style = []
           Frame.Typ = [ftTop, ftBottom]
           Memo.UTF8W = (
-            '[frxDBChamadoData."PESS_NOME1"]')
+            '[frxDBChamadoData."PESS_NOME"]')
           ParentFont = False
         end
         object frxDBChamadoDataDEP_NOME: TfrxMemoView
