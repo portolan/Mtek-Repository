@@ -15,39 +15,38 @@ type
     C_BensImobilizados: TTabSheet;
     GroupBox1: TGroupBox;
     Label1: TLabel;
-    dbBNI_EMPRESA: TDBEdit;
+    DBBNI_EMPRESA: TDBEdit;
     Label2: TLabel;
-    dbBNI_CODIGO: TDBEdit;
+    DBBNI_CODIGO: TDBEdit;
     Label5: TLabel;
-    dbBNI_FORNECEDOR: TDBEdit;
+    DBBNI_FORNECEDOR: TDBEdit;
     Label6: TLabel;
-    dbBNI_DESCRICAO: TDBEdit;
-    dbDESCRICAO_FORNECEDOR: TEdit;
+    DBBNI_DESCRICAO: TDBEdit;
+    DBDESCRICAO_FORNECEDOR: TEdit;
     Label9: TLabel;
     DBBNI_ESTADO_CONSERVACAO: TDBEdit;
     DBBNI_ESTADO_CONSERVACAO_DESCRICAO: TEdit;
     Label11: TLabel;
-    dbBNI_VLR_AQUISICAO: TDBEdit;
+    DBBNI_VLR_AQUISICAO: TDBEdit;
     Label12: TLabel;
-    dbBNI_VLR_AGREGADO: TDBEdit;
+    DBBNI_VLR_AGREGADO: TDBEdit;
     Label13: TLabel;
-    dbBNI_VLR_ATUAL: TDBEdit;
+    DBBNI_VLR_ATUAL: TDBEdit;
     Label14: TLabel;
-    dbBNI_DEPRECIACAO: TDBEdit;
+    DBBNI_DEPRECIACAO: TDBEdit;
     rdStatus: TDBRadioGroup;
-    DBMemo1: TDBMemo;
     Label4: TLabel;
-    dbBNI_NR_NOTA: TDBEdit;
+    DBBNI_NR_NOTA: TDBEdit;
     Label10: TLabel;
-    dbBNI_DATA_AQUISICAO: TDBEdit;
+    DBBNI_DATA_AQUISICAO: TDBEdit;
     Label3: TLabel;
-    dbBNI_NUM_SERIE: TDBEdit;
+    DBBNI_NUM_SERIE: TDBEdit;
     Label7: TLabel;
-    dbBNI_TIPO: TDBEdit;
-    dbBNI_TIPO_DESCRICAO: TEdit;
+    DBBNI_TIPO: TDBEdit;
+    DBBNI_TIPO_DESCRICAO: TEdit;
     Label8: TLabel;
-    dbBNI_LOCALIZACAO: TDBEdit;
-    dbBNI_LOCALIZACAO_DESCRICAO: TEdit;
+    DBBNI_LOCALIZACAO: TDBEdit;
+    DBBNI_LOCALIZACAO_DESCRICAO: TEdit;
     Manutencão: TTabSheet;
     DBGrid1: TDBGrid;
     Panel1: TPanel;
@@ -55,19 +54,23 @@ type
     sbAlterar: TSpeedButton;
     sbNovo: TSpeedButton;
     Label15: TLabel;
-    dbBNI_VLR_RESIDUAL: TDBEdit;
+    DBBNI_VLR_RESIDUAL: TDBEdit;
     SpeedButton1: TSpeedButton;
+    GroupBox2: TGroupBox;
+    DBMemo1: TDBMemo;
+    LBPERCENTUAL: TLabel;
     procedure sbNovoClick(Sender: TObject);
-    procedure dbBNI_NUM_SERIEExit(Sender: TObject);
-    procedure dbBNI_DEPRECIACAOExit(Sender: TObject);
+    procedure DBBNI_NUM_SERIEExit(Sender: TObject);
+    procedure DBBNI_DEPRECIACAOExit(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure sbGravarClick(Sender: TObject);
-    procedure dbBNI_FORNECEDORExit(Sender: TObject);
+    procedure DBBNI_FORNECEDORExit(Sender: TObject);
     procedure sbAlterarClick(Sender: TObject);
     procedure DBBNI_ESTADO_CONSERVACAOExit(Sender: TObject);
-    procedure dbBNI_TIPOExit(Sender: TObject);
-    procedure dbBNI_LOCALIZACAOExit(Sender: TObject);
+    procedure DBBNI_TIPOExit(Sender: TObject);
+    procedure DBBNI_LOCALIZACAOExit(Sender: TObject);
+    procedure DBBNI_VLR_RESIDUALExit(Sender: TObject);
+    procedure sbGravarClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -76,7 +79,6 @@ type
     procedure ProcExitTipo;
     Procedure ProcAlimentaDescricoes;
 
-    procedure ProcTotalizaAgregado;
     procedure ProcTotalizaBen;
     procedure procselect;
 
@@ -94,7 +96,7 @@ implementation
 uses udmControlePatrimonial, dm000, UP_empresa, UDM_contabil, UP_Pessoa,
   UDM_PedCompra, UP_NotaBemImobilizado;
 
-procedure TMBensImobilizados.dbBNI_DEPRECIACAOExit(Sender: TObject);
+procedure TMBensImobilizados.DBBNI_DEPRECIACAOExit(Sender: TObject);
 var
    f_percentual : double;
 begin
@@ -118,6 +120,8 @@ begin
          dbBNI_DEPRECIACAO.SetFocus
    end;
 
+   ProcTotalizaBen;
+
 end;
 
 procedure TMBensImobilizados.DBBNI_ESTADO_CONSERVACAOExit(Sender: TObject);
@@ -126,7 +130,7 @@ begin
    ProcExitEstadoConservacao;
 end;
 
-procedure TMBensImobilizados.dbBNI_FORNECEDORExit(Sender: TObject);
+procedure TMBensImobilizados.DBBNI_FORNECEDORExit(Sender: TObject);
 var
    QrySelecionaEstado : TIBQuery;
    b_achou            : boolean;
@@ -171,13 +175,13 @@ begin
   end;
 end;
 
-procedure TMBensImobilizados.dbBNI_LOCALIZACAOExit(Sender: TObject);
+procedure TMBensImobilizados.DBBNI_LOCALIZACAOExit(Sender: TObject);
 begin
   inherited;
    ProcExitLocalizacao;
 end;
 
-procedure TMBensImobilizados.dbBNI_NUM_SERIEExit(Sender: TObject);
+procedure TMBensImobilizados.DBBNI_NUM_SERIEExit(Sender: TObject);
 var
    QryVerificaNumeroDeSerie : TIBQuery;
 begin
@@ -218,10 +222,16 @@ begin
 
 end;
 
-procedure TMBensImobilizados.dbBNI_TIPOExit(Sender: TObject);
+procedure TMBensImobilizados.DBBNI_TIPOExit(Sender: TObject);
 begin
   inherited;
    ProcExitTipo;
+end;
+
+procedure TMBensImobilizados.DBBNI_VLR_RESIDUALExit(Sender: TObject);
+begin
+  inherited;
+   ProcTotalizaBen;
 end;
 
 procedure TMBensImobilizados.FormShow(Sender: TObject);
@@ -229,8 +239,6 @@ begin
   inherited;
   if DMControlePatrimonial.BenImobilizado.State in [dsEdit] then
       ProcAlimentaDescricoes;
-
-   ProcTotalizaAgregado;
    ProcTotalizaBen;
    procselect;
 
@@ -478,45 +486,42 @@ begin
 
 end;
 
-procedure TMBensImobilizados.ProcTotalizaAgregado;
-var
-   QryTotalizaAgregado : TIBQuery;
-   f_valor             : double;
-begin
-   try
-      QryTotalizaAgregado := dmBanco.funcCriaQuery;
-
-      QryTotalizaAgregado.Close;
-      QryTotalizaAgregado.SQL.Clear;
-      QryTotalizaAgregado.SQL.Text :=  'SELECT SUM(A.MAN_VLR_TOTAL) as valor  ' +
-                                       '  FROM MANUTENCAO A                   ' +
-                                       ' WHERE A.MAN_EMPRESA = :EMPRESA AND   ' +
-                                       '       A.MAN_BEN = :BENS AND          ' +
-                                       '       A.MAN_AGREGA_CUSTO = ''S''     ' ;
-      QryTotalizaAgregado.ParamByName('empresa').AsInteger := DMControlePatrimonial.BenImobilizadoBNI_EMPRESA.AsInteger;
-      QryTotalizaAgregado.ParamByName('BENS').AsInteger := DMControlePatrimonial.BenImobilizadoBNI_CODIGO.AsInteger;
-      QryTotalizaAgregado.open;
-
-      if QryTotalizaAgregado.IsEmpty then
-         f_valor := 0
-      else
-         f_valor := QryTotalizaAgregado.FieldByName('valor').AsFloat;
-
-      DMControlePatrimonial.BenImobilizadoBNI_VLR_AGREGADO.AsFloat := f_valor;
-
-   finally
-    FreeAndNil(QryTotalizaAgregado);
-   end;
-
-end;
-
 procedure TMBensImobilizados.ProcTotalizaBen;
 var
-   f_valor : double;
-begin
-   f_valor := DMControlePatrimonial.BenImobilizadoBNI_VLR_AQUISICAO.AsFloat - DMControlePatrimonial.BenImobilizadoBNI_VLR_RESIDUAL.asfloat + DMControlePatrimonial.BenImobilizadoBNI_VLR_AGREGADO.asfloat;
+   QryVerificaAgregado  : TIBQuery;
+   F_VLR_AGREGADO       : double;
+   F_VLR_ATUAL          : double;
+   F_VLR_RESIDUAL       : double;
 
-   DMControlePatrimonial.BenImobilizadoBNI_VLR_ATUAL.AsFloat := f_valor;
+begin
+   try
+      QryVerificaAgregado := dmBanco.funcCriaQuery;
+
+      QryVerificaAgregado.Close;
+      QryVerificaAgregado.SQL.Clear;
+      QryVerificaAgregado.SQL.Text :=  'SELECT SUM(A.MAN_VLR_TOTAL) AS VALOR   ' +
+                                       '  FROM MANUTENCAO A                    ' +
+                                       ' WHERE A.MAN_EMPRESA = :EMPRESA AND    ' +
+                                       '       A.MAN_BEN = :BEN AND            ' +
+                                       '       A.MAN_NUM_SERIE = :NUMSERIE AND ' +
+                                       '       A.MAN_AGREGA_CUSTO = ''S''      ' ;
+      QryVerificaAgregado.ParamByName('EMPRESA').AsInteger := DMControlePatrimonial.BenImobilizadoBNI_EMPRESA.AsInteger;
+      QryVerificaAgregado.ParamByName('BEN').AsInteger := DMControlePatrimonial.BenImobilizadoBNI_CODIGO.AsInteger;
+      QryVerificaAgregado.ParamByName('NUMSERIE').AsInteger := DMControlePatrimonial.BenImobilizadoBNI_NUM_SERIE.AsInteger;
+      QryVerificaAgregado.Open;
+
+      if QryVerificaAgregado.IsEmpty then
+         F_VLR_AGREGADO := 0
+      else
+         F_VLR_AGREGADO := QryVerificaAgregado.FieldByName('VALOR').AsFloat;
+
+      F_VLR_ATUAL     := strtofloat(DBBNI_VLR_AQUISICAO.Text);
+      F_VLR_RESIDUAL  := strtofloat(DBBNI_VLR_RESIDUAL.Text);
+
+   finally
+      FreeAndNil(QryVerificaAgregado);
+   end;
+
 end;
 
 procedure TMBensImobilizados.sbAlterarClick(Sender: TObject);
@@ -545,9 +550,8 @@ end;
 
 procedure TMBensImobilizados.sbGravarClick(Sender: TObject);
 begin
-  ProcTotalizaAgregado;
-  ProcTotalizaBen;
-  inherited;
+   ProcTotalizaBen;
+   inherited;
 end;
 
 procedure TMBensImobilizados.sbNovoClick(Sender: TObject);

@@ -28,7 +28,7 @@ inherited M_Manutencao: TM_Manutencao
       Width = 41
       Height = 13
       Caption = 'Empresa'
-      FocusControl = DBEdit1
+      FocusControl = DBMAN_EMPRESA
     end
     object Label2: TLabel
       Left = 96
@@ -36,7 +36,7 @@ inherited M_Manutencao: TM_Manutencao
       Width = 33
       Height = 13
       Caption = 'C'#243'digo'
-      FocusControl = DBEdit2
+      FocusControl = DBCODIGO
     end
     object Label3: TLabel
       Left = 205
@@ -44,7 +44,7 @@ inherited M_Manutencao: TM_Manutencao
       Width = 18
       Height = 13
       Caption = 'Ben'
-      FocusControl = DBEdit3
+      FocusControl = DBMAN_BEN
     end
     object Label4: TLabel
       Left = 287
@@ -52,7 +52,7 @@ inherited M_Manutencao: TM_Manutencao
       Width = 46
       Height = 13
       Caption = 'Descri'#231#227'o'
-      FocusControl = DBEdit4
+      FocusControl = DBMAN_DESCRICAO
     end
     object Label5: TLabel
       Left = 151
@@ -60,7 +60,7 @@ inherited M_Manutencao: TM_Manutencao
       Width = 88
       Height = 13
       Caption = 'Valor Componente'
-      FocusControl = DBEdit5
+      FocusControl = DBMAN_VLR_COMPONENTE
     end
     object Label6: TLabel
       Left = 32
@@ -68,7 +68,7 @@ inherited M_Manutencao: TM_Manutencao
       Width = 86
       Height = 13
       Caption = 'Valor Manuten'#231#227'o'
-      FocusControl = DBEdit6
+      FocusControl = DBMAN_VLR_MANUTENCAO
     end
     object Label7: TLabel
       Left = 264
@@ -76,7 +76,7 @@ inherited M_Manutencao: TM_Manutencao
       Width = 51
       Height = 13
       Caption = 'Valor Total'
-      FocusControl = DBEdit7
+      FocusControl = DBMAN_VLR_TOTAL
     end
     object Label8: TLabel
       Left = 621
@@ -84,9 +84,9 @@ inherited M_Manutencao: TM_Manutencao
       Width = 79
       Height = 13
       Caption = 'Numero de Serie'
-      FocusControl = DBEdit8
+      FocusControl = DBMAN_NUM_SERIE
     end
-    object DBEdit1: TDBEdit
+    object DBMAN_EMPRESA: TDBEdit
       Left = 32
       Top = 56
       Width = 49
@@ -96,7 +96,7 @@ inherited M_Manutencao: TM_Manutencao
       Enabled = False
       TabOrder = 0
     end
-    object DBEdit2: TDBEdit
+    object DBCODIGO: TDBEdit
       Left = 96
       Top = 56
       Width = 89
@@ -106,7 +106,7 @@ inherited M_Manutencao: TM_Manutencao
       Enabled = False
       TabOrder = 1
     end
-    object DBEdit3: TDBEdit
+    object DBMAN_BEN: TDBEdit
       Left = 205
       Top = 56
       Width = 76
@@ -116,7 +116,7 @@ inherited M_Manutencao: TM_Manutencao
       Enabled = False
       TabOrder = 2
     end
-    object DBEdit4: TDBEdit
+    object DBMAN_DESCRICAO: TDBEdit
       Left = 287
       Top = 56
       Width = 328
@@ -138,39 +138,32 @@ inherited M_Manutencao: TM_Manutencao
       Items.Strings = (
         'Sim'
         'N'#227'o')
-      TabOrder = 4
+      TabOrder = 8
       Values.Strings = (
         'S'
         'N')
     end
-    object DBMemo1: TDBMemo
-      Left = 400
-      Top = 87
-      Width = 521
-      Height = 265
-      DataField = 'MAN_OBSERVACAO'
-      DataSource = DMControlePatrimonial.DManutencao
-      TabOrder = 5
-    end
-    object DBEdit5: TDBEdit
+    object DBMAN_VLR_COMPONENTE: TDBEdit
       Left = 153
       Top = 112
       Width = 105
       Height = 21
       DataField = 'MAN_VLR_COMPONENTE'
       DataSource = DMControlePatrimonial.DManutencao
+      Enabled = False
       TabOrder = 6
     end
-    object DBEdit6: TDBEdit
+    object DBMAN_VLR_MANUTENCAO: TDBEdit
       Left = 32
       Top = 112
       Width = 105
       Height = 21
       DataField = 'MAN_VLR_MANUTENCAO'
       DataSource = DMControlePatrimonial.DManutencao
-      TabOrder = 7
+      TabOrder = 5
+      OnExit = DBMAN_VLR_MANUTENCAOExit
     end
-    object DBEdit7: TDBEdit
+    object DBMAN_VLR_TOTAL: TDBEdit
       Left = 264
       Top = 112
       Width = 105
@@ -178,9 +171,9 @@ inherited M_Manutencao: TM_Manutencao
       DataField = 'MAN_VLR_TOTAL'
       DataSource = DMControlePatrimonial.DManutencao
       Enabled = False
-      TabOrder = 8
+      TabOrder = 7
     end
-    object DBEdit8: TDBEdit
+    object DBMAN_NUM_SERIE: TDBEdit
       Left = 621
       Top = 56
       Width = 134
@@ -188,7 +181,7 @@ inherited M_Manutencao: TM_Manutencao
       DataField = 'MAN_NUM_SERIE'
       DataSource = DMControlePatrimonial.DManutencao
       Enabled = False
-      TabOrder = 9
+      TabOrder = 4
     end
     object GroupBox1: TGroupBox
       Left = 16
@@ -196,7 +189,7 @@ inherited M_Manutencao: TM_Manutencao
       Width = 378
       Height = 216
       Caption = 'Componentes'
-      TabOrder = 10
+      TabOrder = 9
       object Panel1: TPanel
         Left = 2
         Top = 173
@@ -384,6 +377,24 @@ inherited M_Manutencao: TM_Manutencao
             FieldName = 'Valor do Componente'
             Visible = True
           end>
+      end
+    end
+    object GroupBox2: TGroupBox
+      Left = 408
+      Top = 96
+      Width = 513
+      Height = 259
+      Caption = 'Observa'#231#227'o'
+      TabOrder = 10
+      object DBMemo1: TDBMemo
+        Left = 2
+        Top = 15
+        Width = 509
+        Height = 242
+        Align = alClient
+        DataField = 'MAN_OBSERVACAO'
+        DataSource = DMControlePatrimonial.DManutencao
+        TabOrder = 0
       end
     end
   end

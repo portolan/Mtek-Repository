@@ -1,7 +1,7 @@
 object DMControlePatrimonial: TDMControlePatrimonial
   OldCreateOrder = False
-  Height = 393
-  Width = 686
+  Height = 206
+  Width = 571
   object Localizacao: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
@@ -14,8 +14,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '  FROM LOCALIZACAO A'
       ' WHERE A.LOC_CODIGO = -1   ')
     UpdateObject = ULocalizacao
-    Left = 48
-    Top = 40
+    Left = 40
+    Top = 24
     object LocalizacaoLOC_CODIGO: TIntegerField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'LOC_CODIGO'
@@ -39,8 +39,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
   end
   object DLocalizacao: TDataSource
     DataSet = Localizacao
-    Left = 48
-    Top = 136
+    Left = 40
+    Top = 120
   end
   object ULocalizacao: TIBUpdateSQL
     RefreshSQL.Strings = (
@@ -68,8 +68,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       'delete from LOCALIZACAO'
       'where'
       '  LOC_CODIGO = :OLD_LOC_CODIGO')
-    Left = 48
-    Top = 88
+    Left = 40
+    Top = 72
   end
   object EstadoConservacao: TIBQuery
     Database = dmBanco.Banco
@@ -83,8 +83,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '  FROM ESTADO_DE_CONSERVACAO A'
       ' WHERE A.EDC_CODIGO = -1   ')
     UpdateObject = UEstadoCOnservacao
-    Left = 160
-    Top = 40
+    Left = 136
+    Top = 24
     object EstadoConservacaoEDC_CODIGO: TIntegerField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'EDC_CODIGO'
@@ -132,13 +132,13 @@ object DMControlePatrimonial: TDMControlePatrimonial
       'delete from ESTADO_DE_CONSERVACAO'
       'where'
       '  EDC_CODIGO = :OLD_EDC_CODIGO')
-    Left = 160
-    Top = 88
+    Left = 136
+    Top = 72
   end
   object DEstadoCOnservacao: TDataSource
     DataSet = EstadoConservacao
-    Left = 160
-    Top = 136
+    Left = 136
+    Top = 120
   end
   object TipoBens: TIBQuery
     Database = dmBanco.Banco
@@ -152,8 +152,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '  FROM TIPO_DE_BENS A'
       ' WHERE A.TPB_CODIGO = -1   ')
     UpdateObject = UTipoBens
-    Left = 352
-    Top = 40
+    Left = 232
+    Top = 24
     object TipoBensTPB_CODIGO: TIntegerField
       DisplayLabel = 'C'#243'digo'
       FieldName = 'TPB_CODIGO'
@@ -201,13 +201,13 @@ object DMControlePatrimonial: TDMControlePatrimonial
       'delete from TIPO_DE_BENS'
       'where'
       '  TPB_CODIGO = :OLD_TPB_CODIGO')
-    Left = 352
-    Top = 88
+    Left = 232
+    Top = 72
   end
   object DTipoBens: TDataSource
     DataSet = TipoBens
-    Left = 352
-    Top = 136
+    Left = 232
+    Top = 120
   end
   object Componente: TIBQuery
     Database = dmBanco.Banco
@@ -222,8 +222,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '       A.COM_MANUTENCAO = -1 AND'
       '       A.COM_CODIGO = -1')
     UpdateObject = UComponente
-    Left = 424
-    Top = 40
+    Left = 296
+    Top = 24
     object ComponenteCOM_EMPRESA: TIntegerField
       DisplayLabel = 'Empresa'
       FieldName = 'COM_EMPRESA'
@@ -255,6 +255,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
     object ComponenteCOM_VLR_COMPONENTE: TFloatField
       FieldName = 'COM_VLR_COMPONENTE'
       Origin = '"COMPONENTE"."COM_VLR_COMPONENTE"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
     end
   end
   object UComponente: TIBUpdateSQL
@@ -294,13 +296,13 @@ object DMControlePatrimonial: TDMControlePatrimonial
       'where'
       '  COM_CODIGO = :OLD_COM_CODIGO and'
       '  COM_EMPRESA = :OLD_COM_EMPRESA')
-    Left = 424
-    Top = 88
+    Left = 296
+    Top = 72
   end
   object DComponente: TDataSource
     DataSet = Componente
-    Left = 424
-    Top = 136
+    Left = 296
+    Top = 120
   end
   object Manutencao: TIBQuery
     Database = dmBanco.Banco
@@ -318,8 +320,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '   '
       '   ')
     UpdateObject = UManutencao
-    Left = 496
-    Top = 40
+    Left = 376
+    Top = 24
     object ManutencaoMAN_EMPRESA: TIntegerField
       DisplayLabel = 'Empresa'
       FieldName = 'MAN_EMPRESA'
@@ -448,13 +450,13 @@ object DMControlePatrimonial: TDMControlePatrimonial
       'where'
       '  MAN_CODIGO = :OLD_MAN_CODIGO and'
       '  MAN_EMPRESA = :OLD_MAN_EMPRESA')
-    Left = 496
-    Top = 88
+    Left = 376
+    Top = 72
   end
   object DManutencao: TDataSource
     DataSet = Manutencao
-    Left = 496
-    Top = 136
+    Left = 376
+    Top = 120
   end
   object BenImobilizado: TIBQuery
     Database = dmBanco.Banco
@@ -470,8 +472,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '       A.BNI_CODIGO = -1 AND'
       '       A.BNI_NUM_SERIE = -1 ')
     UpdateObject = UBenImobilizado
-    Left = 584
-    Top = 40
+    Left = 456
+    Top = 24
     object BenImobilizadoBNI_EMPRESA: TIntegerField
       DisplayLabel = 'Empresa'
       FieldName = 'BNI_EMPRESA'
@@ -574,6 +576,7 @@ object DMControlePatrimonial: TDMControlePatrimonial
       FieldName = 'BNI_VLR_RESIDUAL'
       Origin = '"BENS_IMOBILIZADOS"."BNI_VLR_RESIDUAL"'
       DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
       Precision = 18
       Size = 2
     end
@@ -682,12 +685,12 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '  BNI_CODIGO = :OLD_BNI_CODIGO and'
       '  BNI_EMPRESA = :OLD_BNI_EMPRESA and'
       '  BNI_NUM_SERIE = :OLD_BNI_NUM_SERIE')
-    Left = 584
-    Top = 88
+    Left = 456
+    Top = 72
   end
   object DBenImobilizado: TDataSource
     DataSet = BenImobilizado
-    Left = 584
-    Top = 136
+    Left = 456
+    Top = 120
   end
 end

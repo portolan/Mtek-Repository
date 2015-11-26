@@ -11,40 +11,40 @@ uses
 type
   TM_Manutencao = class(TxManuPadrao)
     Label1: TLabel;
-    DBEdit1: TDBEdit;
+    DBMAN_EMPRESA: TDBEdit;
     Label2: TLabel;
-    DBEdit2: TDBEdit;
+    DBCODIGO: TDBEdit;
     Label3: TLabel;
-    DBEdit3: TDBEdit;
+    DBMAN_BEN: TDBEdit;
     Label4: TLabel;
-    DBEdit4: TDBEdit;
+    DBMAN_DESCRICAO: TDBEdit;
     DBRadioGroup1: TDBRadioGroup;
-    DBMemo1: TDBMemo;
     Label5: TLabel;
-    DBEdit5: TDBEdit;
+    DBMAN_VLR_COMPONENTE: TDBEdit;
     Label6: TLabel;
-    DBEdit6: TDBEdit;
+    DBMAN_VLR_MANUTENCAO: TDBEdit;
     Label7: TLabel;
-    DBEdit7: TDBEdit;
+    DBMAN_VLR_TOTAL: TDBEdit;
     Label8: TLabel;
-    DBEdit8: TDBEdit;
+    DBMAN_NUM_SERIE: TDBEdit;
     GroupBox1: TGroupBox;
     Panel1: TPanel;
     sbRemover: TSpeedButton;
     sbAlterar: TSpeedButton;
     sbNovo: TSpeedButton;
     DBGrid1: TDBGrid;
+    GroupBox2: TGroupBox;
+    DBMemo1: TDBMemo;
     procedure sbNovoClick(Sender: TObject);
-    procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure sbGravarClick(Sender: TObject);
     procedure sbAlterarClick(Sender: TObject);
+    procedure DBMAN_VLR_MANUTENCAOExit(Sender: TObject);
+    procedure sbGravarClick(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     procedure procTotalizaManutencao;
-    procedure procTotaliza;
     procedure procSelect;
   end;
 
@@ -55,7 +55,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TM_Manutencao.FormCreate(Sender: TObject);
+procedure TM_Manutencao.DBMAN_VLR_MANUTENCAOExit(Sender: TObject);
 begin
   inherited;
    procTotalizaManutencao;
@@ -64,9 +64,7 @@ end;
 procedure TM_Manutencao.FormShow(Sender: TObject);
 begin
   procTotalizaManutencao;
-  procTotaliza;
   procSelect;
-  DBEdit5.Enabled := true;
   inherited;
 end;
 
@@ -84,49 +82,13 @@ begin
 
 end;
 
-procedure TM_Manutencao.procTotaliza;
-var
-   QrySelecionaValores : TIBQuery;
-   QryAtualizaValor    : TIBQuery;
-begin
-   try
-      QrySelecionaValores := dmBanco.funcCriaQuery;
-      QryAtualizaValor    := dmBanco.funcCriaQuery;
-
-      QrySelecionaValores.Close;
-      QrySelecionaValores.SQL.Clear;
-      QrySelecionaValores.SQL.text :=  'SELECT A.MAN_VLR_COMPONENTE,                                           ' +
-                                       '       A.MAN_VLR_MANUTENCAO,                                           ' +
-                                       '       (A.MAN_VLR_COMPONENTE + A.MAN_VLR_MANUTENCAO) AS MAN_VLR_TOTAL  ' +
-                                       '  FROM MANUTENCAO A                                                    ' +
-                                       ' WHERE A.MAN_EMPRESA = :EMPRESA AND                                    ' +
-                                       '       A.MAN_CODIGO = :CODIGO                                          ' ;
-      QrySelecionaValores.ParamByName('empresa').AsInteger := DMControlePatrimonial.ManutencaoMAN_EMPRESA.AsInteger;
-      QrySelecionaValores.ParamByName('codigo').AsInteger := DMControlePatrimonial.ManutencaoMAN_CODIGO.AsInteger;
-      QrySelecionaValores.Open;
-
-      QryAtualizaValor.Close;
-      QryAtualizaValor.SQL.Clear;
-      QryAtualizaValor.sql.Text :=  'UPDATE MANUTENCAO A SET             '+
-                                    '    A.MAN_VLR_TOTAL = :VALOR        '+
-                                    'WHERE A.MAN_EMPRESA = :EMPRESA AND  '+
-                                    '      A.MAN_CODIGO = :CODIGO        ';
-      QryAtualizaValor.ParamByName('valor').AsFloat := QrySelecionaValores.FieldByName('MAN_VLR_TOTAL').AsFloat;
-      QryAtualizaValor.ParamByName('empresa').AsInteger := DMControlePatrimonial.ManutencaoMAN_EMPRESA.AsInteger;
-      QryAtualizaValor.ParamByName('CODIGO').AsInteger := DMControlePatrimonial.ManutencaoMAN_CODIGO.AsInteger;
-      QryAtualizaValor.ExecSQL;
-
-   finally
-      FreeAndNil(QrySelecionaValores);
-      FreeAndNil(QryAtualizaValor);
-   end;
-end;
-
 procedure TM_Manutencao.procTotalizaManutencao;
 var
    QryLocalizaComponentes     : tibquery;
    QryAtualizaValorComponente : tibquery;
-   f_valor                    : double;
+   F_VLR_MANUTENCAO           : double;
+   F_VLR_COMPONENTE           : double;
+   F_MAN_VLR_TOTAL            : double;
 begin
    try
       QryLocalizaComponentes := dmBanco.funcCriaQuery;
@@ -134,33 +96,32 @@ begin
 
       QryLocalizaComponentes.Close;
       QryLocalizaComponentes.SQL.Clear;
-      QryLocalizaComponentes.SQL.Text :=  'SELECT SUM(A.COM_VLR_COMPONENTE) as valor  ' +
-                                          '  FROM COMPONENTE A                        ' +
-                                          ' WHERE A.COM_EMPRESA = :EMPRESA AND        ' +
-                                          '       A.COM_MANUTENCAO = :MANUTENCAO      ' ;
+      QryLocalizaComponentes.SQL.Text :=  'SELECT SUM(A.COM_VLR_COMPONENTE) AS VALOR ' +
+                                          '  FROM COMPONENTE A                       ' +
+                                          ' WHERE A.COM_EMPRESA = :EMPRESA AND       ' +
+                                          '       A.COM_MANUTENCAO = :MANUTENCAO     ' ;
       QryLocalizaComponentes.ParamByName('empresa').AsInteger := DMControlePatrimonial.ManutencaoMAN_EMPRESA.AsInteger;
       QryLocalizaComponentes.ParamByName('manutencao').AsInteger := DMControlePatrimonial.ManutencaoMAN_CODIGO.AsInteger;
       QryLocalizaComponentes.Open;
 
       if QryLocalizaComponentes.IsEmpty then
-         f_valor := 0
+         F_VLR_COMPONENTE := 0
       else
-         f_valor := QryLocalizaComponentes.FieldByName('valor').AsFloat;
+         F_VLR_COMPONENTE := QryLocalizaComponentes.FieldByName('VALOR').asfloat;
 
 
-      QryAtualizaValorComponente.Close;
-      QryAtualizaValorComponente.SQL.Clear;
-      QryAtualizaValorComponente.SQL.Text := 'UPDATE MANUTENCAO A SET             ' +
-                                             '    A.MAN_VLR_COMPONENTE = :VALOR   ' +
-                                             'WHERE A.MAN_EMPRESA = :EMPRESA AND  ' +
-                                             '      A.MAN_CODIGO = :CODIGO        ' ;
-      QryAtualizaValorComponente.ParamByName('valor').AsFloat := f_valor;
-      QryAtualizaValorComponente.ExecSQL;
+      if DBMAN_VLR_MANUTENCAO.Text = EmptyStr then
+         F_VLR_MANUTENCAO := 0
+      else
+         F_VLR_MANUTENCAO := strtofloat(DBMAN_VLR_MANUTENCAO.Text);
 
+      F_MAN_VLR_TOTAL := F_VLR_MANUTENCAO + F_VLR_COMPONENTE;
+
+      DBMAN_VLR_COMPONENTE.Text := floattostr(F_VLR_COMPONENTE);
+      DBMAN_VLR_TOTAL.Text := floattostr(F_MAN_VLR_TOTAL);
 
    finally
       FreeAndNil(QryLocalizaComponentes);
-      FreeAndNil(QryAtualizaValorComponente);
    end;
 end;
 
@@ -189,9 +150,8 @@ end;
 
 procedure TM_Manutencao.sbGravarClick(Sender: TObject);
 begin
-  procTotalizaManutencao;
-  procTotaliza;
-  inherited;
+   procTotalizaManutencao;
+   inherited;
 
 end;
 

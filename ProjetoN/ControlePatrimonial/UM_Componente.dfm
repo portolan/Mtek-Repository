@@ -22,7 +22,7 @@ inherited MComponente: TMComponente
       Width = 41
       Height = 13
       Caption = 'Empresa'
-      FocusControl = DBEdit1
+      FocusControl = DBCOM_EMPRESA
     end
     object Label2: TLabel
       Left = 103
@@ -30,7 +30,7 @@ inherited MComponente: TMComponente
       Width = 59
       Height = 13
       Caption = 'Manuten'#231#227'o'
-      FocusControl = DBEdit2
+      FocusControl = DBCOM_MANUTENCAO
     end
     object Label3: TLabel
       Left = 40
@@ -38,7 +38,7 @@ inherited MComponente: TMComponente
       Width = 33
       Height = 13
       Caption = 'C'#243'digo'
-      FocusControl = DBEdit3
+      FocusControl = DBCOM_CODIGO
     end
     object Label5: TLabel
       Left = 103
@@ -53,9 +53,9 @@ inherited MComponente: TMComponente
       Width = 88
       Height = 13
       Caption = 'Valor Componente'
-      FocusControl = DBEdit4
+      FocusControl = DBCOM_VLR_COMPONENTE
     end
-    object DBEdit1: TDBEdit
+    object DBCOM_EMPRESA: TDBEdit
       Left = 40
       Top = 56
       Width = 57
@@ -65,7 +65,7 @@ inherited MComponente: TMComponente
       Enabled = False
       TabOrder = 0
     end
-    object DBEdit2: TDBEdit
+    object DBCOM_MANUTENCAO: TDBEdit
       Left = 103
       Top = 56
       Width = 134
@@ -75,7 +75,7 @@ inherited MComponente: TMComponente
       Enabled = False
       TabOrder = 1
     end
-    object DBEdit3: TDBEdit
+    object DBCOM_CODIGO: TDBEdit
       Left = 40
       Top = 99
       Width = 57
@@ -83,32 +83,41 @@ inherited MComponente: TMComponente
       DataField = 'COM_CODIGO'
       DataSource = DMControlePatrimonial.DComponente
       TabOrder = 2
-      OnExit = DBEdit3Exit
+      OnExit = DBCOM_CODIGOExit
     end
-    object DBMemo1: TDBMemo
-      Left = 40
-      Top = 126
-      Width = 420
-      Height = 89
-      DataField = 'COM_OBSERVACAO'
-      DataSource = DMControlePatrimonial.DComponente
-      TabOrder = 3
-    end
-    object eddescricao: TEdit
+    object DBCOMDESCRICAO: TEdit
       Left = 103
       Top = 99
       Width = 242
       Height = 21
-      TabOrder = 4
+      TabOrder = 3
     end
-    object DBEdit4: TDBEdit
+    object DBCOM_VLR_COMPONENTE: TDBEdit
       Left = 351
       Top = 99
       Width = 109
       Height = 21
       DataField = 'COM_VLR_COMPONENTE'
       DataSource = DMControlePatrimonial.DComponente
+      TabOrder = 4
+    end
+    object GroupBox1: TGroupBox
+      Left = 40
+      Top = 129
+      Width = 420
+      Height = 105
+      Caption = 'Observa'#231#227'o'
       TabOrder = 5
+      object DBMemo1: TDBMemo
+        Left = 2
+        Top = 15
+        Width = 416
+        Height = 88
+        Align = alClient
+        DataField = 'COM_OBSERVACAO'
+        DataSource = DMControlePatrimonial.DComponente
+        TabOrder = 0
+      end
     end
   end
 end

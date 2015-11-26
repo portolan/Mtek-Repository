@@ -12,17 +12,18 @@ uses
 type
   TMComponente = class(TxManuPadrao)
     Label1: TLabel;
-    DBEdit1: TDBEdit;
+    DBCOM_EMPRESA: TDBEdit;
     Label2: TLabel;
-    DBEdit2: TDBEdit;
+    DBCOM_MANUTENCAO: TDBEdit;
     Label3: TLabel;
-    DBEdit3: TDBEdit;
-    DBMemo1: TDBMemo;
-    eddescricao: TEdit;
+    DBCOM_CODIGO: TDBEdit;
+    DBCOMDESCRICAO: TEdit;
     Label5: TLabel;
     Label4: TLabel;
-    DBEdit4: TDBEdit;
-    procedure DBEdit3Exit(Sender: TObject);
+    DBCOM_VLR_COMPONENTE: TDBEdit;
+    GroupBox1: TGroupBox;
+    DBMemo1: TDBMemo;
+    procedure DBCOM_CODIGOExit(Sender: TObject);
     procedure sbGravarClick(Sender: TObject);
   private
     { Private declarations }
@@ -38,7 +39,7 @@ implementation
 
 {$R *.dfm}
 
-procedure TMComponente.DBEdit3Exit(Sender: TObject);
+procedure TMComponente.DBCOM_CODIGOExit(Sender: TObject);
 var
    QryVerificaProduto : TIBQuery;
    B_ACHOU            : BOOLEAN;
@@ -47,7 +48,7 @@ begin
 
   B_ACHOU := false;
 
-  if DBEdit3.Text <> EmptyStr then
+  if DBCOM_CODIGO.Text <> EmptyStr then
   begin
   try
      QryVerificaProduto := dmBanco.funcCriaQuery;
@@ -56,12 +57,12 @@ begin
      QryVerificaProduto.SQL.Clear;
      QryVerificaProduto.SQL.Text := 'SELECT * FROM PRODUTOS A WHERE A.PRO_EMPRESA = :EMPRESA AND A.PRO_CODIGO = :PRODUTO';
      QryVerificaProduto.ParamByName('empresa').AsInteger := DMControlePatrimonial.ComponenteCOM_EMPRESA.AsInteger;
-     QryVerificaProduto.ParamByName('PRODUTO').AsString := DBEdit3.Text;
+     QryVerificaProduto.ParamByName('PRODUTO').AsString := DBCOM_CODIGO.Text;
      QryVerificaProduto.Open;
 
      if NOT(QryVerificaProduto.IsEmpty) then
      BEGIN
-        eddescricao.Text := QryVerificaProduto.FieldByName('pro_descricao').AsString;
+        DBCOMDESCRICAO.Text := QryVerificaProduto.FieldByName('pro_descricao').AsString;
         DMControlePatrimonial.ComponenteCOM_VLR_COMPONENTE.AsFloat := QryVerificaProduto.FieldByName('pro_customedio').ASFLOAT;
         B_ACHOU := true;
      END;
@@ -79,11 +80,10 @@ begin
      finally
         DMControlePatrimonial.ComponenteCOM_CODIGO.AsInteger := DM_Estoque.ProdutosPRO_CODIGO.AsInteger;
         DMControlePatrimonial.ComponenteCOM_VLR_COMPONENTE.AsFloat := DM_Estoque.ProdutosPRO_CUSTOMEDIO.AsFloat;
-        eddescricao.Text := DM_Estoque.ProdutosPRO_DESCRICAO.asstring;
+        DBCOMDESCRICAO.Text := DM_Estoque.ProdutosPRO_DESCRICAO.asstring;
         FreeAndNil(PProduto);
      end;
   end;
-
 end;
 
 

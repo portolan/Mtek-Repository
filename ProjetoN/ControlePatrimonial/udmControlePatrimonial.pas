@@ -100,7 +100,9 @@ begin
    DMControlePatrimonial.BenImobilizadoBNI_STATUS.AsString := 'S';
    DMControlePatrimonial.BenImobilizadoBNI_VLR_AGREGADO.AsFloat := 0;
    DMControlePatrimonial.BenImobilizadoBNI_VLR_ATUAL.AsFloat := 0;
-   DMControlePatrimonial.BenImobilizadoBNI_DEPRECIACAO.AsFloat := 100;
+   DMControlePatrimonial.BenImobilizadoBNI_DEPRECIACAO.AsFloat := 0;
+   DMControlePatrimonial.BenImobilizadoBNI_VLR_RESIDUAL.AsFloat := 0;
+
 end;
 
 procedure TDMControlePatrimonial.EstadoConservacaoAfterInsert(

@@ -36,10 +36,6 @@ object H_FormaCalcDep: TH_FormaCalcDep
         '10.000,00 / 12 = '
       '833,33)')
     TabOrder = 0
-    ExplicitLeft = 88
-    ExplicitTop = 8
-    ExplicitWidth = 185
-    ExplicitHeight = 89
   end
   object Panel1: TPanel
     Left = 0
@@ -48,9 +44,6 @@ object H_FormaCalcDep: TH_FormaCalcDep
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = 120
-    ExplicitTop = 136
-    ExplicitWidth = 185
     object sbSair: TSpeedButton
       Left = 331
       Top = 1
