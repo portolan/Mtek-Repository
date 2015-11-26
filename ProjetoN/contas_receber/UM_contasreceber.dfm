@@ -48,15 +48,13 @@
         Width = 46
         Height = 13
         Caption = 'EMPRESA'
-        FocusControl = ttr_empresa
       end
       object Label3: TLabel
         Left = 395
-        Top = 43
+        Top = 38
         Width = 39
         Height = 13
         Caption = 'PESSOA'
-        FocusControl = ttr_pessoa
       end
       object Label4: TLabel
         Left = 283
@@ -64,7 +62,6 @@
         Width = 90
         Height = 13
         Caption = 'CONTA BANC'#193'RIA'
-        FocusControl = ttr_conta
       end
       object Label5: TLabel
         Left = 494
@@ -72,7 +69,6 @@
         Width = 120
         Height = 13
         Caption = 'CONDI'#199#195'O PAGAMENTO'
-        FocusControl = ttp_condicao
       end
       object Label6: TLabel
         Left = 19
@@ -235,48 +231,12 @@
       end
       object ttr_codigo: TDBEdit
         Left = 123
-        Top = 12
+        Top = 11
         Width = 52
         Height = 21
         DataField = 'TTR_CODIGO'
         DataSource = DM_contasreceber.D_contasreceber
         TabOrder = 0
-      end
-      object ttr_empresa: TDBEdit
-        Left = 123
-        Top = 33
-        Width = 52
-        Height = 21
-        DataField = 'TTR_EMP_CODIGO'
-        DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 1
-      end
-      object ttr_pessoa: TDBEdit
-        Left = 439
-        Top = 35
-        Width = 52
-        Height = 21
-        DataField = 'TTR_PES_CODIGO'
-        DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 2
-      end
-      object ttr_conta: TDBEdit
-        Left = 379
-        Top = 103
-        Width = 112
-        Height = 21
-        DataField = 'TTR_CTB_CODIGO'
-        DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 7
-      end
-      object ttp_condicao: TDBEdit
-        Left = 617
-        Top = 103
-        Width = 112
-        Height = 21
-        DataField = 'TTR_CON_CODIGO'
-        DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 8
       end
       object ttr_descricao: TDBEdit
         Left = 123
@@ -285,7 +245,7 @@
         Height = 21
         DataField = 'TTR_DESCRICAO'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 3
+        TabOrder = 1
       end
       object ttr_emissao: TDBEdit
         Left = 123
@@ -294,7 +254,7 @@
         Height = 21
         DataField = 'TTR_DT_EMISSAO'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 4
+        TabOrder = 2
       end
       object ttr_vencimento: TDBEdit
         Left = 379
@@ -303,7 +263,7 @@
         Height = 21
         DataField = 'TTR_DT_VENCIMENTO'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 5
+        TabOrder = 3
       end
       object ttp_dt_pagamento: TDBEdit
         Left = 617
@@ -312,7 +272,7 @@
         Height = 21
         DataField = 'TTR_DT_PAGAMENTO'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 17
+        TabOrder = 13
       end
       object ttr_dt_baixa: TDBEdit
         Left = 379
@@ -321,7 +281,7 @@
         Height = 21
         DataField = 'TTR_DT_BAIXA'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 16
+        TabOrder = 12
       end
       object ttr_dt_cancelamento: TDBEdit
         Left = 617
@@ -330,7 +290,7 @@
         Height = 21
         DataField = 'TTR_DT_EMISSAO'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 18
+        TabOrder = 14
       end
       object ttr_tp_titulo: TDBEdit
         Left = 123
@@ -339,7 +299,7 @@
         Height = 21
         DataField = 'TTR_TP_TITULO'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 6
+        TabOrder = 4
       end
       object DBEdit15: TDBEdit
         Left = 24
@@ -348,7 +308,7 @@
         Height = 21
         DataField = 'TTP_VL_ORIGINAL'
         DataSource = dm_contaspagar.Dtitulospagar
-        TabOrder = 19
+        TabOrder = 15
       end
       object DBEdit16: TDBEdit
         Left = 24
@@ -357,7 +317,7 @@
         Height = 21
         DataField = 'TTP_VL_PAGO'
         DataSource = dm_contaspagar.Dtitulospagar
-        TabOrder = 20
+        TabOrder = 16
       end
       object DBEdit17: TDBEdit
         Left = 24
@@ -366,7 +326,7 @@
         Height = 21
         DataField = 'TTP_VL_TOTAL'
         DataSource = dm_contaspagar.Dtitulospagar
-        TabOrder = 21
+        TabOrder = 17
       end
       object DBEdit18: TDBEdit
         Left = 24
@@ -375,7 +335,7 @@
         Height = 21
         DataField = 'TTP_MR_DIARIA'
         DataSource = dm_contaspagar.Dtitulospagar
-        TabOrder = 22
+        TabOrder = 18
       end
       object DBEdit19: TDBEdit
         Left = 24
@@ -384,7 +344,7 @@
         Height = 21
         DataField = 'TTP_MT_ATRASO'
         DataSource = dm_contaspagar.Dtitulospagar
-        TabOrder = 23
+        TabOrder = 19
       end
       object ttr_desconto: TDBEdit
         Left = 123
@@ -393,7 +353,7 @@
         Height = 21
         DataField = 'TTR_DESCONTO'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 9
+        TabOrder = 5
       end
       object ttr_parcela: TDBEdit
         Left = 123
@@ -402,7 +362,7 @@
         Height = 21
         DataField = 'TTR_PARCELA'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 12
+        TabOrder = 8
       end
       object ttr_vl_original: TDBEdit
         Left = 123
@@ -411,7 +371,7 @@
         Height = 21
         DataField = 'TTR_VL_ORIGINAL'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 13
+        TabOrder = 9
       end
       object ttr_vl_pago: TDBEdit
         Left = 379
@@ -420,7 +380,7 @@
         Height = 21
         DataField = 'TTR_VL_PAGO'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 14
+        TabOrder = 10
       end
       object ttr_vl_total: TDBEdit
         Left = 617
@@ -429,7 +389,7 @@
         Height = 21
         DataField = 'TTR_VL_TOTAL'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 15
+        TabOrder = 11
       end
       object ttr_mora: TDBEdit
         Left = 379
@@ -438,7 +398,7 @@
         Height = 21
         DataField = 'TTR_MR_DIARIA'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 10
+        TabOrder = 6
       end
       object ttp_multa: TDBEdit
         Left = 617
@@ -447,7 +407,7 @@
         Height = 21
         DataField = 'TTR_MT_ATRASO'
         DataSource = DM_contasreceber.D_contasreceber
-        TabOrder = 11
+        TabOrder = 7
       end
       object DBRadioGroup1: TDBRadioGroup
         Left = 278
@@ -461,7 +421,7 @@
           'ABERTO '
           'QUITADO '
           'CANCELADO')
-        TabOrder = 24
+        TabOrder = 20
       end
       object DBRadioGroup2: TDBRadioGroup
         Left = 379
@@ -474,7 +434,7 @@
         Items.Strings = (
           'R$'
           '%')
-        TabOrder = 25
+        TabOrder = 21
       end
       object DBRadioGroup3: TDBRadioGroup
         Left = 617
@@ -487,8 +447,56 @@
         Items.Strings = (
           'R$'
           '%')
-        TabOrder = 26
+        TabOrder = 22
       end
     end
+  end
+  object DBLookupComboBox1: TDBLookupComboBox
+    Left = 376
+    Top = 103
+    Width = 114
+    Height = 21
+    DataField = 'TTR_CTB_CODIGO'
+    DataSource = DM_contasreceber.D_contasreceber
+    KeyField = 'CTB_CODIGO'
+    ListField = 'CTB_CONTA'
+    ListSource = DM_financeiro.D_contasbancarias
+    TabOrder = 2
+  end
+  object DBLookupComboBox2: TDBLookupComboBox
+    Left = 120
+    Top = 33
+    Width = 145
+    Height = 21
+    DataField = 'TTR_EMP_CODIGO'
+    DataSource = DM_contasreceber.D_contasreceber
+    KeyField = 'EMP_COD'
+    ListField = 'EMP_RAZAO'
+    ListSource = DM_contabil.Dempresa
+    TabOrder = 3
+  end
+  object DBLookupComboBox3: TDBLookupComboBox
+    Left = 437
+    Top = 33
+    Width = 145
+    Height = 21
+    DataField = 'TTR_PES_CODIGO'
+    DataSource = DM_contasreceber.D_contasreceber
+    KeyField = 'PESS_CODIGO'
+    ListField = 'PESS_NOME'
+    ListSource = dmPedCompra.DSPessoa
+    TabOrder = 4
+  end
+  object DBLookupComboBox4: TDBLookupComboBox
+    Left = 614
+    Top = 103
+    Width = 111
+    Height = 21
+    DataField = 'TTR_CON_CODIGO'
+    DataSource = DM_contasreceber.D_contasreceber
+    KeyField = 'CDP_CODIGO'
+    ListField = 'CDP_DESCRICAO'
+    ListSource = dm_contaspagar.Dcondicao
+    TabOrder = 5
   end
 end

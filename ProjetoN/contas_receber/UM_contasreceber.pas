@@ -36,9 +36,6 @@ type
     Label25: TLabel;
     Label26: TLabel;
     ttr_codigo: TDBEdit;
-    ttr_pessoa: TDBEdit;
-    ttr_conta: TDBEdit;
-    ttp_condicao: TDBEdit;
     ttr_descricao: TDBEdit;
     ttr_emissao: TDBEdit;
     ttr_vencimento: TDBEdit;
@@ -61,7 +58,11 @@ type
     DBRadioGroup1: TDBRadioGroup;
     DBRadioGroup2: TDBRadioGroup;
     DBRadioGroup3: TDBRadioGroup;
-    ttr_empresa: TDBEdit;
+    DBLookupComboBox1: TDBLookupComboBox;
+    DBLookupComboBox2: TDBLookupComboBox;
+    DBLookupComboBox3: TDBLookupComboBox;
+    DBLookupComboBox4: TDBLookupComboBox;
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,8 +76,33 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_contasreceber;
+uses UDM_contasreceber, UDM_financeiro, UDM_contabil, UDM_PedCompra,
+  Udm_contaspagar;
 
 
+
+procedure TM_contasreceber.FormCreate(Sender: TObject);
+begin
+  inherited;
+    dmPedCompra.Pessoa.Close;
+    dmPedCompra.Pessoa.sql.Text := 'select * from pessoas';
+    dmPedCompra.Pessoa.Open;
+    dmPedCompra.Pessoa.FetchAll;
+
+    DM_contabil.empresa.Close;
+    DM_contabil.empresa.sql.Text := 'select * from empresa';
+    DM_contabil.empresa.Open;
+    DM_contabil.empresa.FetchAll;
+
+    DM_financeiro.contasbancarias.Close;
+    DM_financeiro.contasbancarias.sql.Text := 'select * from contabancaria';
+    DM_financeiro.contasbancarias.Open;
+    DM_financeiro.contasbancarias.FetchAll;
+
+    dm_contaspagar.condicaoPag.Close;
+    dm_contaspagar.condicaoPag.sql.Text := 'select * from condicaopagamento';
+    dm_contaspagar.condicaoPag.Open;
+    dm_contaspagar.condicaoPag.FetchAll;
+end;
 
 end.
