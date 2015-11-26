@@ -30,9 +30,9 @@ type
     contasreceberTTR_VL_TOTAL: TIBBCDField;
     contasreceberTTR_MR_DIARIA: TIBBCDField;
     contasreceberTTR_MT_ATRASO: TIBBCDField;
-    contasreceberTTR_SITUACAO: TIBStringField;
     contasreceberTTR_TP_MORA: TIBStringField;
     contasreceberTTR_TP_MULTA: TIBStringField;
+    contasreceberTTR_SITUACAO: TIBStringField;
   private
     { Private declarations }
   public

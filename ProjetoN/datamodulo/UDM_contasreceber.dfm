@@ -119,11 +119,6 @@ object DM_contasreceber: TDM_contasreceber
       Precision = 18
       Size = 2
     end
-    object contasreceberTTR_SITUACAO: TIBStringField
-      FieldName = 'TTR_SITUACAO'
-      Origin = '"TITULO_RECEBER"."TTR_SITUACAO"'
-      Size = 1
-    end
     object contasreceberTTR_TP_MORA: TIBStringField
       FieldName = 'TTR_TP_MORA'
       Origin = '"TITULO_RECEBER"."TTR_TP_MORA"'
@@ -133,6 +128,11 @@ object DM_contasreceber: TDM_contasreceber
       FieldName = 'TTR_TP_MULTA'
       Origin = '"TITULO_RECEBER"."TTR_TP_MULTA"'
       Size = 1
+    end
+    object contasreceberTTR_SITUACAO: TIBStringField
+      FieldName = 'TTR_SITUACAO'
+      Origin = '"TITULO_RECEBER"."TTR_SITUACAO"'
+      Size = 50
     end
   end
   object D_contasreceber: TDataSource
