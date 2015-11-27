@@ -455,9 +455,9 @@
         'CANCELADO')
       TabOrder = 24
       Values.Strings = (
-        ' A'
-        ' P'
-        ' C')
+        'A'
+        'P'
+        'C')
     end
     object DBRadioGroup2: TDBRadioGroup
       Left = 379
