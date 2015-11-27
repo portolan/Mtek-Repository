@@ -15,7 +15,11 @@ type
     Label1: TLabel;
     LANC_DIAS: TButton;
     Label2: TLabel;
+    Label3: TLabel;
+    Rsoma: TEdit;
+    SALDO_EMPRESA: TButton;
     procedure LANC_DIASClick(Sender: TObject);
+    procedure SALDO_EMPRESAClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -51,6 +55,23 @@ begin
   R_RelatorioContabil.IB_LANC_DIAS.Open;
 
   R_RelatorioContabil.frxLANC_DIAS.ShowReport();
+
+end;
+
+procedure TF_RelatorioContabil.SALDO_EMPRESAClick(Sender: TObject);
+begin
+   R_RelatorioContabil.frxRazaoS.Variables['CODEMPRESA'] := StrToInt(Rsoma.Text);
+   R_RelatorioContabil.IB_RazaoS.Close;
+   R_RelatorioContabil.IB_RazaoS.SQL.Text := ' select sum(a.LANC_VALOR), '+
+                                             ' b.emp_cnpj, '+
+                                             ' b.emp_razao '+
+                                             ' from lancamentos a '+
+' inner join empresa b on a.lanc_emp  = b.emp_cod '+
+' where a.lanc_emp = :CODEMPRESA '+
+' group by 2,3';
+R_RelatorioContabil.IB_RazaoS.ParamByName('CODEMPRESA').Value := StrToInt(Rsoma.Text);
+R_RelatorioContabil.IB_RazaoS.Open;
+R_RelatorioContabil.frxRazaoS.ShowReport();
 
 end;
 

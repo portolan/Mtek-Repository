@@ -2,7 +2,7 @@ object F_RelatorioContabil: TF_RelatorioContabil
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio - Contabilidade - ProjetoNecessauro'
-  ClientHeight = 364
+  ClientHeight = 362
   ClientWidth = 688
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -14,15 +14,38 @@ object F_RelatorioContabil: TF_RelatorioContabil
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
-    Left = 8
+    Left = 344
     Top = 0
-    Width = 329
+    Width = 345
     Height = 185
     Caption = 'Raz'#227'o'
     TabOrder = 0
+    object Label3: TLabel
+      Left = 24
+      Top = 35
+      Width = 92
+      Height = 13
+      Caption = 'Saldo da Empresa: '
+    end
+    object Rsoma: TEdit
+      Left = 114
+      Top = 32
+      Width = 39
+      Height = 21
+      TabOrder = 0
+    end
+    object SALDO_EMPRESA: TButton
+      Left = 175
+      Top = 30
+      Width = 75
+      Height = 25
+      Caption = 'Gerar'
+      TabOrder = 1
+      OnClick = SALDO_EMPRESAClick
+    end
   end
   object GroupBox2: TGroupBox
-    Left = 336
+    Left = 0
     Top = 0
     Width = 344
     Height = 185
@@ -31,8 +54,8 @@ object F_RelatorioContabil: TF_RelatorioContabil
     object Label1: TLabel
       Left = 115
       Top = 40
-      Width = 33
-      Height = 25
+      Width = 6
+      Height = 13
       Caption = #225
     end
     object Label2: TLabel
@@ -43,7 +66,7 @@ object F_RelatorioContabil: TF_RelatorioContabil
       Caption = 'Relat'#243'rio por dias'
     end
     object LANC_DIAS: TButton
-      Left = 232
+      Left = 216
       Top = 35
       Width = 75
       Height = 25
@@ -53,7 +76,7 @@ object F_RelatorioContabil: TF_RelatorioContabil
     end
   end
   object editDtInicial: TMaskEdit
-    Left = 376
+    Left = 40
     Top = 37
     Width = 69
     Height = 21
@@ -63,7 +86,7 @@ object F_RelatorioContabil: TF_RelatorioContabil
     Text = '  /  /    '
   end
   object editDtFinal: TMaskEdit
-    Left = 466
+    Left = 130
     Top = 37
     Width = 69
     Height = 21
