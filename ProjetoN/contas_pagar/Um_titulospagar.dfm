@@ -52,7 +52,6 @@
       Width = 90
       Height = 13
       Caption = 'CONTA BANC'#193'RIA'
-      FocusControl = ttp_conta
     end
     object Label5: TLabel
       Left = 494
@@ -250,15 +249,6 @@
       TabOrder = 2
       OnExit = ttp_pessoaExit
     end
-    object ttp_conta: TDBEdit
-      Left = 379
-      Top = 103
-      Width = 112
-      Height = 21
-      DataField = 'TTP_CTB_CODIGO'
-      DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 10
-    end
     object ttp_condicao: TDBEdit
       Left = 617
       Top = 103
@@ -266,7 +256,7 @@
       Height = 21
       DataField = 'TTP_CON_CODIGO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 15
+      TabOrder = 14
     end
     object ttp_descricao: TDBEdit
       Left = 123
@@ -302,7 +292,7 @@
       Height = 21
       DataField = 'TTP_DT_PAGAMENTO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 14
+      TabOrder = 13
     end
     object ttp_dt_baixa: TDBEdit
       Left = 379
@@ -311,7 +301,7 @@
       Height = 21
       DataField = 'TTP_DT_BAIXA'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 13
+      TabOrder = 12
     end
     object ttp_dt_cancelamento: TDBEdit
       Left = 616
@@ -320,7 +310,7 @@
       Height = 21
       DataField = 'TTP_DT_CANCELAMENTO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 17
+      TabOrder = 16
     end
     object ttp_tp_titulo: TDBEdit
       Left = 123
@@ -338,7 +328,7 @@
       Height = 21
       DataField = 'TTP_VL_ORIGINAL'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 19
+      TabOrder = 18
     end
     object DBEdit16: TDBEdit
       Left = 24
@@ -347,7 +337,7 @@
       Height = 21
       DataField = 'TTP_VL_PAGO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 20
+      TabOrder = 19
     end
     object DBEdit17: TDBEdit
       Left = 24
@@ -356,7 +346,7 @@
       Height = 21
       DataField = 'TTP_VL_TOTAL'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 21
+      TabOrder = 20
     end
     object DBEdit18: TDBEdit
       Left = 24
@@ -365,7 +355,7 @@
       Height = 21
       DataField = 'TTP_MR_DIARIA'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 22
+      TabOrder = 21
     end
     object DBEdit19: TDBEdit
       Left = 24
@@ -374,7 +364,7 @@
       Height = 21
       DataField = 'TTP_MT_ATRASO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 23
+      TabOrder = 22
     end
     object ttp_desconto: TDBEdit
       Left = 123
@@ -410,7 +400,7 @@
       Height = 21
       DataField = 'TTP_VL_PAGO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 12
+      TabOrder = 11
     end
     object ttp_vl_total: TDBEdit
       Left = 616
@@ -421,7 +411,7 @@
       DataField = 'TTP_VL_TOTAL'
       DataSource = dm_contaspagar.Dtitulospagar
       ReadOnly = True
-      TabOrder = 18
+      TabOrder = 17
     end
     object ttp_mora: TDBEdit
       Left = 379
@@ -430,7 +420,7 @@
       Height = 21
       DataField = 'TTP_MR_DIARIA'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 11
+      TabOrder = 10
     end
     object ttp_multa: TDBEdit
       Left = 617
@@ -439,7 +429,7 @@
       Height = 21
       DataField = 'TTP_MT_ATRASO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 16
+      TabOrder = 15
     end
     object DBRadioGroup1: TDBRadioGroup
       Left = 242
@@ -453,7 +443,7 @@
         'ABERTO '
         'PAGO '
         'CANCELADO')
-      TabOrder = 24
+      TabOrder = 23
       Values.Strings = (
         'A'
         'P'
@@ -470,7 +460,7 @@
       Items.Strings = (
         'R$'
         '%')
-      TabOrder = 25
+      TabOrder = 24
       Values.Strings = (
         'R'
         'P')
@@ -486,7 +476,7 @@
       Items.Strings = (
         'R$'
         '%')
-      TabOrder = 26
+      TabOrder = 25
       Values.Strings = (
         'R'
         'P')
@@ -500,7 +490,7 @@
       DataField = 'EMP_RAZAO'
       DataSource = dm_contaspagar.Dtitulospagar
       ReadOnly = True
-      TabOrder = 27
+      TabOrder = 26
     end
     object pess_nome: TDBEdit
       Left = 492
@@ -511,6 +501,18 @@
       DataField = 'PESS_NOME'
       DataSource = dm_contaspagar.Dtitulospagar
       ReadOnly = True
+      TabOrder = 27
+    end
+    object DBLookupComboBox1: TDBLookupComboBox
+      Left = 379
+      Top = 103
+      Width = 112
+      Height = 21
+      DataField = 'TTP_CTB_CODIGO'
+      DataSource = dm_contaspagar.Dtitulospagar
+      KeyField = 'CTB_CODIGO'
+      ListField = 'CTB_CONTA'
+      ListSource = DM_financeiro.D_contasbancarias
       TabOrder = 28
     end
   end

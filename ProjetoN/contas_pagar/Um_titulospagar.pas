@@ -16,7 +16,6 @@ type
     Label3: TLabel;
     ttp_pessoa: TDBEdit;
     Label4: TLabel;
-    ttp_conta: TDBEdit;
     ttp_condicao: TDBEdit;
     Label6: TLabel;
     ttp_descricao: TDBEdit;
@@ -63,6 +62,7 @@ type
     DBRadioGroup3: TDBRadioGroup;
     emp_razao: TDBEdit;
     pess_nome: TDBEdit;
+    DBLookupComboBox1: TDBLookupComboBox;
 
     procedure FormCreate(Sender: TObject);
     procedure ttp_empresaExit(Sender: TObject);
@@ -83,13 +83,18 @@ implementation
 
 {$R *.dfm}
 
-uses Udm_contaspagar, UDM_contabil, UP_empresa, UP_Pessoa;
+uses Udm_contaspagar, UDM_contabil, UP_empresa, UP_Pessoa, UDM_financeiro;
 
 procedure Tm_titulospagar.FormCreate(Sender: TObject);
 begin
   inherited;
-  ttp_codigo.Enabled:=false;
-  ttp_vl_total.Enabled:=false;
+    ttp_codigo.Enabled:=false;
+    ttp_vl_total.Enabled:=false;
+
+    DM_financeiro.contasbancarias.Close;
+    DM_financeiro.contasbancarias.SQL.Text := 'select * from contabancaria';
+    DM_financeiro.contasbancarias.Open;
+    DM_financeiro.contasbancarias.FetchAll;
 end;
 
 
