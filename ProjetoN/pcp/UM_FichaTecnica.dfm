@@ -79,16 +79,16 @@ inherited M_FichaTecnica: TM_FichaTecnica
       Height = 21
       DataField = 'FT_COD'
       DataSource = DM_PCP.DS_Ficha_Tecnica
-      TabOrder = 0
+      TabOrder = 7
     end
     object db_unidade: TDBEdit
-      Left = 182
-      Top = 83
+      Left = 181
+      Top = 85
       Width = 134
       Height = 21
       DataField = 'FT_UNIDADE'
       DataSource = DM_PCP.DS_Ficha_Tecnica
-      TabOrder = 1
+      TabOrder = 0
     end
     object db_custo_unitario: TDBEdit
       Left = 335
@@ -97,7 +97,7 @@ inherited M_FichaTecnica: TM_FichaTecnica
       Height = 21
       DataField = 'FT_CUSTO_UNITARIO'
       DataSource = DM_PCP.DS_Ficha_Tecnica
-      TabOrder = 2
+      TabOrder = 1
     end
     object db_mao_obra: TDBEdit
       Left = 483
@@ -106,7 +106,7 @@ inherited M_FichaTecnica: TM_FichaTecnica
       Height = 21
       DataField = 'FT_MAO_DE_OBRA'
       DataSource = DM_PCP.DS_Ficha_Tecnica
-      TabOrder = 3
+      TabOrder = 2
     end
     object db_custototal: TDBEdit
       Left = 135
@@ -115,7 +115,7 @@ inherited M_FichaTecnica: TM_FichaTecnica
       Height = 21
       DataField = 'FT_CUSTO_TOTAL'
       DataSource = DM_PCP.DS_Ficha_Tecnica
-      TabOrder = 4
+      TabOrder = 5
     end
     object db_tempoproducao: TDBEdit
       Left = 24
@@ -124,14 +124,14 @@ inherited M_FichaTecnica: TM_FichaTecnica
       Height = 21
       DataField = 'FT_TEMPO_PRODUCAO'
       DataSource = DM_PCP.DS_Ficha_Tecnica
-      TabOrder = 5
+      TabOrder = 4
     end
     inline frm_empresa: TfrmRelacionamento
       Left = 76
       Top = 16
       Width = 241
       Height = 63
-      TabOrder = 6
+      TabOrder = 3
       ExplicitLeft = 76
       ExplicitTop = 16
       ExplicitWidth = 241
@@ -150,11 +150,13 @@ inherited M_FichaTecnica: TM_FichaTecnica
         end
         inherited DBE_CAMPO: TDBEdit
           Top = 19
+          TabOrder = 1
           ExplicitTop = 19
         end
         inherited panelFundo: TPanel
           Top = 19
           Width = 156
+          TabOrder = 0
           ExplicitTop = 19
           ExplicitWidth = 156
           DesignSize = (
@@ -176,7 +178,7 @@ inherited M_FichaTecnica: TM_FichaTecnica
       Top = 62
       Width = 166
       Height = 56
-      TabOrder = 7
+      TabOrder = 6
       ExplicitLeft = 9
       ExplicitTop = 62
       ExplicitWidth = 166
@@ -192,8 +194,10 @@ inherited M_FichaTecnica: TM_FichaTecnica
         end
         inherited DBE_CAMPO: TDBEdit
           Left = 15
+          Top = 23
           Width = 52
           ExplicitLeft = 15
+          ExplicitTop = 23
           ExplicitWidth = 52
         end
         inherited panelFundo: TPanel
