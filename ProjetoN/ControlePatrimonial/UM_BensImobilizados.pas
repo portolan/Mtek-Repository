@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UManuPadrao, Vcl.StdCtrls, Vcl.Buttons,
   Vcl.ExtCtrls, Vcl.ComCtrls, Vcl.Mask, Vcl.DBCtrls, IBX.IBQuery, Vcl.Grids,
   Vcl.DBGrids, UP_EstadoConservacao, UP_Localizacao, HP_VALORDEPRECIACAO, DB,
-  UM_ManutencaoBen, UP_TipoBens;
+  UM_ManutencaoBen, UP_TipoBens, dateutils;
 
 type
   TMBensImobilizados = class(TxManuPadrao)
@@ -52,17 +52,17 @@ type
     Panel1: TPanel;
     sbRemover: TSpeedButton;
     sbAlterar: TSpeedButton;
-    sbNovo: TSpeedButton;
+    p: TSpeedButton;
     Label15: TLabel;
     DBBNI_VLR_RESIDUAL: TDBEdit;
-    SpeedButton1: TSpeedButton;
+    SB_Help: TSpeedButton;
     GroupBox2: TGroupBox;
     DBMemo1: TDBMemo;
     LBPERCENTUAL: TLabel;
-    procedure sbNovoClick(Sender: TObject);
+    SBAtualizaDepreciacao: TSpeedButton;
+    procedure pClick(Sender: TObject);
     procedure DBBNI_NUM_SERIEExit(Sender: TObject);
     procedure DBBNI_DEPRECIACAOExit(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure DBBNI_FORNECEDORExit(Sender: TObject);
     procedure sbAlterarClick(Sender: TObject);
@@ -71,6 +71,7 @@ type
     procedure DBBNI_LOCALIZACAOExit(Sender: TObject);
     procedure DBBNI_VLR_RESIDUALExit(Sender: TObject);
     procedure sbGravarClick(Sender: TObject);
+    procedure SBAtualizaDepreciacaoClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -82,7 +83,10 @@ type
     procedure ProcTotalizaBen;
     procedure procselect;
 
+    Function FuncExtrairDatas: integer;
+    Procedure ProcAtualizaDepreciacao;
   public
+
     { Public declarations }
   end;
 
@@ -244,6 +248,20 @@ begin
 
 end;
 
+function TMBensImobilizados.FuncExtrairDatas: integer;
+var
+   D_DtaAquisicao :TDateTime;
+   D_DtaAtual     :TDateTime;
+   D_Meses        : integer;
+begin
+
+   D_DtaAquisicao := StrToDate(DBBNI_DATA_AQUISICAO.Text);
+   D_DtaAtual     := Now;
+   D_Meses        := MonthsBetween(D_DtaAtual, D_DtaAquisicao );
+
+   result := D_Meses;
+end;
+
 procedure TMBensImobilizados.ProcAlimentaDescricoes;
 var
    QryLocProduto           : TibQuery;
@@ -336,6 +354,34 @@ begin
    finally
       FreeAndNil(QrylocLocalizacao);
    end;
+end;
+
+procedure TMBensImobilizados.ProcAtualizaDepreciacao;
+var
+   F_VlrAquisicao, F_VlrResidual, F_VlrAgregado, F_PercDepreciacao, F_DepreciacaoMensal, F_BaseDepreciar: double;
+   F_VlrAnual, F_VlrMensal :double;
+   I_DiferencaMeses : integer;
+begin
+
+   F_VlrAquisicao := strtofloat(DBBNI_VLR_AQUISICAO.text);
+   F_VlrResidual := strtofloat(DBBNI_VLR_RESIDUAL.Text);
+   F_VlrAgregado := strtofloat(DBBNI_VLR_AGREGADO.Text);
+   F_PercDepreciacao := strtofloat(DBBNI_DEPRECIACAO.text);
+
+    // recupera o valor a ser considerado na depreciação
+  F_BaseDepreciar := (F_VlrAquisicao + F_VlrAgregado) - F_VlrResidual;
+  // valor de perda anual do item
+  F_VlrAnual := (F_BaseDepreciar * F_PercDepreciacao) / 100;
+  // Valor mensal de depreciacao
+  F_VlrMensal := F_VlrAnual / 12;
+
+  I_DiferencaMeses := FuncExtrairDatas;
+
+  if I_DiferencaMeses = 0 then
+     DBBNI_VLR_ATUAL.text := floattostr(F_BaseDepreciar)
+  else
+     DBBNI_VLR_ATUAL.text := floattostr((I_DiferencaMeses * F_DepreciacaoMensal) - F_BaseDepreciar );
+
 end;
 
 procedure TMBensImobilizados.ProcExitEstadoConservacao;
@@ -472,6 +518,8 @@ begin
 end;
 
 
+
+
 procedure TMBensImobilizados.procselect;
 begin
    inherited;
@@ -554,7 +602,12 @@ begin
    inherited;
 end;
 
-procedure TMBensImobilizados.sbNovoClick(Sender: TObject);
+procedure TMBensImobilizados.SBAtualizaDepreciacaoClick(Sender: TObject);
+begin
+   ProcAtualizaDepreciacao;
+end;
+
+procedure TMBensImobilizados.pClick(Sender: TObject);
 begin
 
    if DMControlePatrimonial.BenImobilizado.State in [dsEdit, dsInsert]  then
@@ -585,17 +638,6 @@ begin
       FreeAndNil(M_Manutencao);
    end;
 
-end;
-
-procedure TMBensImobilizados.SpeedButton1Click(Sender: TObject);
-begin
-  inherited;
-   H_FormaCalcDep := TH_FormaCalcDep.Create(Self);
-   try
-     H_FormaCalcDep.ShowModal;
-   finally
-      FreeAndNil(H_FormaCalcDep);
-   end;
 end;
 
 end.

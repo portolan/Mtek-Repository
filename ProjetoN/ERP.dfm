@@ -5631,6 +5631,10 @@ object TelaInicial: TTelaInicial
         Caption = 'Bem Imobilizado'
         OnClick = BemImobilizado1Click
       end
+      object Relatorios1: TMenuItem
+        Caption = 'Relatorios'
+        OnClick = Relatorios1Click
+      end
     end
     object Manuteno1: TMenuItem
       Caption = 'Sistema'

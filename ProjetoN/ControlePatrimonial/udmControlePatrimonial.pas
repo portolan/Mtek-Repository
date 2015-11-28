@@ -82,6 +82,7 @@ type
     Filtros : TFieldList;
     QryPadrao : TIBQuery;
     procedure VerificaCamposRequisidos (Query: TIBQuery);
+
   end;
 
 var

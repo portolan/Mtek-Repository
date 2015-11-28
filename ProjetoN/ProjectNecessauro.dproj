@@ -574,6 +574,14 @@
             <Form>F_RelatorioContabil</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UF_RelatorioControlePatrimonial.pas">
+            <Form>F_RelControlePAtrimonial</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UR_RelControlePatrimonial.pas">
+            <Form>R_RelatorioControlePatrimonial</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -688,7 +696,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectOSXEntitlements">
                     <Platform Name="OSX32">
-                        <RemoteDir>Contents</RemoteDir>
+                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -774,6 +782,7 @@
                 </DeployClass>
                 <DeployClass Name="ProjectiOSEntitlements">
                     <Platform Name="iOSDevice">
+                        <RemoteDir>../</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>

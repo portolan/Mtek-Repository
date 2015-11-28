@@ -127,7 +127,9 @@ uses
   UP_banco in 'financeiro\UP_banco.pas' {P_banco},
   UR_RelatorioContabil in 'contabil\UR_RelatorioContabil.pas' {R_RelatorioContabil},
   R_contabil in 'contabil\R_contabil.pas' {REL_contabil},
-  UF_RelatorioContabil in 'contabil\UF_RelatorioContabil.pas' {F_RelatorioContabil};
+  UF_RelatorioContabil in 'contabil\UF_RelatorioContabil.pas' {F_RelatorioContabil},
+  UF_RelatorioControlePatrimonial in 'ControlePatrimonial\UF_RelatorioControlePatrimonial.pas' {F_RelControlePAtrimonial},
+  UR_RelControlePatrimonial in 'ControlePatrimonial\UR_RelControlePatrimonial.pas' {R_RelatorioControlePatrimonial};
 
 {$R *.res}
 
@@ -181,6 +183,9 @@ begin
   Application.CreateForm(TR_RelatorioContabil, R_RelatorioContabil);
   Application.CreateForm(TREL_contabil, REL_contabil);
   Application.CreateForm(TF_RelatorioContabil, F_RelatorioContabil);
+  Application.CreateForm(TF_RelControlePAtrimonial, F_RelControlePAtrimonial);
+  Application.CreateForm(TF_RelControlePAtrimonial, F_RelControlePAtrimonial);
+  Application.CreateForm(TR_RelatorioControlePatrimonial, R_RelatorioControlePatrimonial);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
 end.

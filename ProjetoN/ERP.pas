@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.Grids,
   Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg, UDM_contasreceber,
   UM_contasreceber, UP_contasreceber, Vcl.ComCtrls, IBX.IBQuery, Up_Pedido_Venda,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, UF_RelatorioControlePatrimonial;
 
 type
   TTelaInicial = class(TForm)
@@ -68,6 +68,7 @@ type
     Image3: TImage;
     Relatrios3: TMenuItem;
     Bancos1: TMenuItem;
+    Relatorios1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -112,6 +113,7 @@ type
     procedure Condiesdepagamento1Click(Sender: TObject);
     procedure PedidodeVenda1Click(Sender: TObject);
     procedure Bancos1Click(Sender: TObject);
+    procedure Relatorios1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -466,6 +468,16 @@ begin
         PEstoque.ShowModal;
     finally
         FreeAndNil(PEstoque);
+    end;
+end;
+
+procedure TTelaInicial.Relatorios1Click(Sender: TObject);
+begin
+    F_RelControlePAtrimonial := TF_RelControlePAtrimonial.Create(Self);
+    try
+        F_RelControlePAtrimonial.ShowModal;
+    finally
+        FreeAndNil(F_RelControlePAtrimonial);
     end;
 end;
 
