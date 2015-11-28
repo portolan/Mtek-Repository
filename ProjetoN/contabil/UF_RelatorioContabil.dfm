@@ -2,8 +2,8 @@ object F_RelatorioContabil: TF_RelatorioContabil
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio - Contabilidade - ProjetoNecessauro'
-  ClientHeight = 362
-  ClientWidth = 688
+  ClientHeight = 211
+  ClientWidth = 612
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,21 +14,21 @@ object F_RelatorioContabil: TF_RelatorioContabil
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
-    Left = 344
+    Left = 327
     Top = 0
-    Width = 345
-    Height = 185
+    Width = 362
+    Height = 123
     Caption = 'Raz'#227'o'
     TabOrder = 0
     object Label3: TLabel
       Left = 24
       Top = 35
-      Width = 92
+      Width = 96
       Height = 13
-      Caption = 'Saldo da Empresa: '
+      Caption = 'Saldo por Empresa: '
     end
     object Rsoma: TEdit
-      Left = 114
+      Left = 122
       Top = 32
       Width = 39
       Height = 21
@@ -45,39 +45,57 @@ object F_RelatorioContabil: TF_RelatorioContabil
     end
   end
   object GroupBox2: TGroupBox
-    Left = 0
+    Left = -6
     Top = 0
-    Width = 344
-    Height = 185
+    Width = 327
+    Height = 273
     Caption = 'Lan'#231'amentos'
     TabOrder = 1
     object Label1: TLabel
       Left = 115
-      Top = 40
+      Top = 56
       Width = 6
       Height = 13
       Caption = #225
     end
     object Label2: TLabel
       Left = 40
-      Top = 18
-      Width = 84
+      Top = 30
+      Width = 85
       Height = 13
-      Caption = 'Relat'#243'rio por dias'
+      Caption = 'Relat'#243'rio por Dias'
     end
     object LANC_DIAS: TButton
       Left = 216
-      Top = 35
+      Top = 51
       Width = 75
       Height = 25
       Caption = 'Gerar'
       TabOrder = 0
       OnClick = LANC_DIASClick
     end
+    object LANC_DEB: TButton
+      Left = 40
+      Top = 90
+      Width = 251
+      Height = 47
+      Caption = 'Lan'#231'amentos D'#233'bito'
+      TabOrder = 1
+      OnClick = LANC_DEBClick
+    end
+    object LANC_CRED: TButton
+      Left = 40
+      Top = 143
+      Width = 251
+      Height = 48
+      Caption = 'Lan'#231'amentos Cr'#233'dito'
+      TabOrder = 2
+      OnClick = LANC_CREDClick
+    end
   end
   object editDtInicial: TMaskEdit
-    Left = 40
-    Top = 37
+    Left = 34
+    Top = 53
     Width = 69
     Height = 21
     EditMask = '!99/99/0000;1;_'
@@ -86,13 +104,54 @@ object F_RelatorioContabil: TF_RelatorioContabil
     Text = '  /  /    '
   end
   object editDtFinal: TMaskEdit
-    Left = 130
-    Top = 37
-    Width = 69
+    Left = 121
+    Top = 53
+    Width = 63
     Height = 21
     EditMask = '!99/99/0000;1;_'
     MaxLength = 10
     TabOrder = 3
     Text = '  /  /    '
+  end
+  object GroupBox3: TGroupBox
+    Left = 327
+    Top = 90
+    Width = 362
+    Height = 183
+    Caption = 'Gerais'
+    TabOrder = 4
+    object Label5: TLabel
+      Left = 32
+      Top = 48
+      Width = 3
+      Height = 13
+    end
+    object empresa: TButton
+      Left = 49
+      Top = 23
+      Width = 177
+      Height = 19
+      Caption = 'Listar Empresas'
+      TabOrder = 0
+      OnClick = empresaClick
+    end
+    object dept: TButton
+      Left = 49
+      Top = 48
+      Width = 177
+      Height = 19
+      Caption = 'Listar Departamentos'
+      TabOrder = 1
+      OnClick = deptClick
+    end
+    object ep: TButton
+      Left = 49
+      Top = 73
+      Width = 177
+      Height = 19
+      Caption = 'Listar Emp x Dept'
+      TabOrder = 2
+      OnClick = epClick
+    end
   end
 end
