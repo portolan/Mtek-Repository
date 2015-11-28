@@ -1,9 +1,11 @@
 object F_RelatorioContabil: TF_RelatorioContabil
   Left = 0
   Top = 0
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
   Caption = 'Relat'#243'rio - Contabilidade - ProjetoNecessauro'
-  ClientHeight = 211
-  ClientWidth = 612
+  ClientHeight = 212
+  ClientWidth = 618
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,8 +18,8 @@ object F_RelatorioContabil: TF_RelatorioContabil
   object GroupBox1: TGroupBox
     Left = 327
     Top = 0
-    Width = 362
-    Height = 123
+    Width = 282
+    Height = 89
     Caption = 'Raz'#227'o'
     TabOrder = 0
     object Label3: TLabel
@@ -48,7 +50,7 @@ object F_RelatorioContabil: TF_RelatorioContabil
     Left = -6
     Top = 0
     Width = 327
-    Height = 273
+    Height = 209
     Caption = 'Lan'#231'amentos'
     TabOrder = 1
     object Label1: TLabel
@@ -116,8 +118,8 @@ object F_RelatorioContabil: TF_RelatorioContabil
   object GroupBox3: TGroupBox
     Left = 327
     Top = 90
-    Width = 362
-    Height = 183
+    Width = 282
+    Height = 119
     Caption = 'Gerais'
     TabOrder = 4
     object Label5: TLabel
