@@ -17,7 +17,6 @@ type
     Label4: TLabel;
     DBEdit4: TDBEdit;
     Label5: TLabel;
-    DBEdit5: TDBEdit;
     Label6: TLabel;
     DBEdit6: TDBEdit;
     Label7: TLabel;
@@ -25,6 +24,7 @@ type
     Label8: TLabel;
     DBEdit8: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
+    DBLookupComboBox2: TDBLookupComboBox;
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
@@ -39,7 +39,7 @@ implementation
 
 {$R *.dfm}
 
-uses UDM_financeiro;
+uses UDM_financeiro, UDM_contabil;
 
 procedure Tm_novacontabancaria.FormCreate(Sender: TObject);
 begin
@@ -47,6 +47,12 @@ begin
     DM_financeiro.banco.Close;
      DM_financeiro.banco.SQL.Text := 'select * from banco';
       DM_financeiro.banco.open;
+
+
+     DM_contabil.empresa.Close;
+     DM_contabil.empresa.SQL.Text := 'select * from empresa';
+     DM_contabil.empresa.open;
+     DM_contabil.empresa.FetchAll;
 end;
 
 end.

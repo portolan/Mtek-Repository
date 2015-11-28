@@ -26,13 +26,11 @@ inherited P_banco: TP_banco
           item
             Expanded = False
             FieldName = 'BAN_CODIGO'
-            Title.Caption = 'CODIGO'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'BAN_DESCRICAO'
-            Title.Caption = 'DESCRICAO DO BANCO'
             Visible = True
           end>
       end

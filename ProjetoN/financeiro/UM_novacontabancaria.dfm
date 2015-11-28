@@ -19,8 +19,6 @@ inherited m_novacontabancaria: Tm_novacontabancaria
   inherited gbInfos: TGroupBox
     Width = 491
     Height = 199
-    ExplicitLeft = 1
-    ExplicitTop = -5
     ExplicitWidth = 491
     ExplicitHeight = 199
     object Label1: TLabel
@@ -60,7 +58,6 @@ inherited m_novacontabancaria: Tm_novacontabancaria
       Width = 41
       Height = 13
       Caption = 'Empresa'
-      FocusControl = DBEdit5
     end
     object Label6: TLabel
       Left = 167
@@ -113,15 +110,6 @@ inherited m_novacontabancaria: Tm_novacontabancaria
       DataSource = DM_financeiro.D_contasbancarias
       TabOrder = 2
     end
-    object DBEdit5: TDBEdit
-      Left = 15
-      Top = 147
-      Width = 134
-      Height = 21
-      DataField = 'CTB_EMP_CODIGO'
-      DataSource = DM_financeiro.D_contasbancarias
-      TabOrder = 3
-    end
     object DBEdit6: TDBEdit
       Left = 167
       Top = 147
@@ -129,7 +117,7 @@ inherited m_novacontabancaria: Tm_novacontabancaria
       Height = 21
       DataField = 'CTB_PESSOA'
       DataSource = DM_financeiro.D_contasbancarias
-      TabOrder = 4
+      TabOrder = 3
     end
     object DBEdit7: TDBEdit
       Left = 184
@@ -138,7 +126,7 @@ inherited m_novacontabancaria: Tm_novacontabancaria
       Height = 21
       DataField = 'CTB_SALDO'
       DataSource = DM_financeiro.D_contasbancarias
-      TabOrder = 5
+      TabOrder = 4
     end
     object DBEdit8: TDBEdit
       Left = 184
@@ -147,7 +135,7 @@ inherited m_novacontabancaria: Tm_novacontabancaria
       Height = 21
       DataField = 'CTB_STATUS'
       DataSource = DM_financeiro.D_contasbancarias
-      TabOrder = 6
+      TabOrder = 5
     end
     object DBLookupComboBox1: TDBLookupComboBox
       Left = 167
@@ -159,6 +147,18 @@ inherited m_novacontabancaria: Tm_novacontabancaria
       KeyField = 'BAN_CODIGO'
       ListField = 'BAN_DESCRICAO'
       ListSource = DM_financeiro.D_banco
+      TabOrder = 6
+    end
+    object DBLookupComboBox2: TDBLookupComboBox
+      Left = 16
+      Top = 147
+      Width = 134
+      Height = 21
+      DataField = 'CTB_EMP_CODIGO'
+      DataSource = DM_financeiro.D_contasbancarias
+      KeyField = 'EMP_COD'
+      ListField = 'EMP_RAZAO'
+      ListSource = DM_contabil.Dempresa
       TabOrder = 7
     end
   end
