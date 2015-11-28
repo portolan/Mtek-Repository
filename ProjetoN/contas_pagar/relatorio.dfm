@@ -3,8 +3,8 @@ object relcontasp: Trelcontasp
   Top = 0
   ActiveControl = Button1
   Caption = 'Relat'#243'rio'
-  ClientHeight = 130
-  ClientWidth = 177
+  ClientHeight = 151
+  ClientWidth = 430
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,22 +14,69 @@ object relcontasp: Trelcontasp
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Button1: TButton
-    Left = 32
+  object Label1: TLabel
+    Left = 25
     Top = 16
+    Width = 46
+    Height = 13
+    Caption = 'EMPRESA'
+  end
+  object Label2: TLabel
+    Left = 8
+    Top = 56
+    Width = 68
+    Height = 13
+    Caption = 'DATA INICIAL'
+  end
+  object Label3: TLabel
+    Left = 12
+    Top = 99
+    Width = 59
+    Height = 13
+    Caption = 'DATA FINAL'
+  end
+  object Button1: TButton
+    Left = 280
+    Top = 73
     Width = 115
     Height = 44
     Caption = 'Gerar Relat'#243'rio'
     TabOrder = 0
     OnClick = Button1Click
   end
+  object Edit1: TEdit
+    Left = 81
+    Top = 8
+    Width = 77
+    Height = 21
+    TabOrder = 1
+    Text = 'Edit1'
+  end
+  object DateTimePicker1: TDateTimePicker
+    Left = 81
+    Top = 48
+    Width = 120
+    Height = 21
+    Date = 42336.516184016200000000
+    Time = 42336.516184016200000000
+    TabOrder = 2
+  end
+  object DateTimePicker2: TDateTimePicker
+    Left = 81
+    Top = 91
+    Width = 120
+    Height = 21
+    Date = 42336.516665868050000000
+    Time = 42336.516665868050000000
+    TabOrder = 3
+  end
   object frxDB: TfrxDBDataset
     UserName = 'frxDBDataset1'
     CloseDataSource = False
     DataSet = relatorio
     BCDToCurrency = False
-    Left = 136
-    Top = 80
+    Left = 369
+    Top = 8
   end
   object frxContasperiodo: TfrxReport
     Version = '5.3.16'
@@ -40,14 +87,14 @@ object relcontasp: Trelcontasp
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42318.562514340300000000
-    ReportOptions.LastChange = 42332.005375925920000000
+    ReportOptions.LastChange = 42336.512904838000000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'begin'
       ''
       'end.')
-    Left = 24
-    Top = 72
+    Left = 296
+    Top = 8
     Datasets = <
       item
         DataSet = frxDB
@@ -287,17 +334,34 @@ object relcontasp: Trelcontasp
     ParamCheck = True
     SQL.Strings = (
       'select a.ttp_codigo,'
-      '       a.ttp_descricao,'
-      '       a.ttp_situacao,'
-      '       b.pess_nome,'
-      '       a.ttp_vl_total,'
-      '       a.ttp_dt_vencimento'
+      '          a.ttp_descricao,'
+      '          a.ttp_situacao,'
+      '          b.pess_nome,'
+      '          a.ttp_vl_total,'
+      '          a.ttp_dt_vencimento'
       ''
       'from titulosp a'
       'inner join pessoas b on b.pess_codigo=a.ttp_pes_codigo'
-      'where a.ttp_situacao='#39'A'#39' ')
-    Left = 88
-    Top = 72
+      'where a.ttp_situacao='#39'A'#39'  and a.ttp_emp_codigo=:empresa '
+      'and a.ttp_dt_vencimento between :dataInicial and :dataFinal')
+    Left = 208
+    Top = 8
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'empresa'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'dataInicial'
+        ParamType = ptInput
+      end
+      item
+        DataType = ftDate
+        Name = 'dataFinal'
+        ParamType = ptInput
+      end>
     object relatorioTTP_CODIGO: TIntegerField
       FieldName = 'TTP_CODIGO'
       Origin = '"TITULOSP"."TTP_CODIGO"'
@@ -307,17 +371,17 @@ object relcontasp: Trelcontasp
     object relatorioTTP_DESCRICAO: TIBStringField
       FieldName = 'TTP_DESCRICAO'
       Origin = '"TITULOSP"."TTP_DESCRICAO"'
-      Size = 400
+      Size = 100
     end
     object relatorioTTP_SITUACAO: TIBStringField
       FieldName = 'TTP_SITUACAO'
       Origin = '"TITULOSP"."TTP_SITUACAO"'
-      Size = 4
+      Size = 1
     end
     object relatorioPESS_NOME: TIBStringField
       FieldName = 'PESS_NOME'
       Origin = '"PESSOAS"."PESS_NOME"'
-      Size = 400
+      Size = 100
     end
     object relatorioTTP_VL_TOTAL: TIBBCDField
       FieldName = 'TTP_VL_TOTAL'

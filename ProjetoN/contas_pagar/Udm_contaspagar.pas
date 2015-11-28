@@ -44,7 +44,6 @@ type
     condicaoPagCDP_PARCELAS: TIntegerField;
     condicaoPagCDP_DIAS_VENCIMENTO: TIntegerField;
     procedure titulospagarAfterInsert(DataSet: TDataSet);
-    procedure titulospagarBeforePost(DataSet: TDataSet);
     procedure condicaoPagAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
@@ -73,9 +72,5 @@ begin
  titulospagar.FieldByName('ttp_codigo').Value:=dmBanco.funcRecuperaProximoIdGenerator('GEN_TITULOSP_ID');
 end;
 
-procedure Tdm_contaspagar.titulospagarBeforePost(DataSet: TDataSet);
-begin
-   titulospagarTTP_VL_TOTAL.AsFloat  := titulospagarTTP_VL_ORIGINAL.AsFloat;
-end;
 
 end.

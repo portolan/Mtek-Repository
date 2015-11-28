@@ -6,7 +6,6 @@ object dm_contaspagar: Tdm_contaspagar
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     AfterInsert = titulospagarAfterInsert
-    BeforePost = titulospagarBeforePost
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True

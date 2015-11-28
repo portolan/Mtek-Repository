@@ -20,9 +20,13 @@ type
     relatorioPESS_NOME: TIBStringField;
     relatorioTTP_VL_TOTAL: TIBBCDField;
     relatorioTTP_DT_VENCIMENTO: TDateField;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Edit1: TEdit;
+    DateTimePicker1: TDateTimePicker;
+    DateTimePicker2: TDateTimePicker;
     procedure Button1Click(Sender: TObject);
-
-
 
   private
     { Private declarations }
@@ -42,12 +46,13 @@ implementation
 procedure Trelcontasp.Button1Click(Sender: TObject);
 begin
 Application.CreateForm(Trelcontasp, relcontasp);
-frxContasperiodo.LoadFromFile('C:\Users\blist_000\Desktop\porn\trunk\ProjetoN\contas_pagar\relatorio.fr3');
 relcontasp.relatorio.Close;
-//relcontasp.relatorio.ParamByName('emp').Value:=Edit1.text;
-//relcontasp.relatorio.ParamByName('dt_inicial').Value:=DateTimePicker1.Date;
-//relcontasp.relatorio.ParamByName('dt_final').Value:=DateTimePicker2.Date;
+relcontasp.relatorio.ParamByName('empresa').Value:=Edit1.text;
+relcontasp.relatorio.ParamByName('dataInicial').Value:=DateTimePicker1.Date;
+relcontasp.relatorio.ParamByName('dataFinal').Value:=DateTimePicker2.Date;
 relcontasp.relatorio.Open;
+frxContasperiodo.LoadFromFile('relatorio.fr3');
+relcontasp.relatorio.Close;
 relcontasp.frxContasperiodo.ShowReport();
 end;
 
