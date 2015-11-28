@@ -31,12 +31,70 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
       Height = 13
       Caption = 'Relat'#243'rios'
     end
+    object Empresa: TLabel
+      Left = 272
+      Top = 59
+      Width = 41
+      Height = 13
+      Caption = 'Empresa'
+      Visible = False
+    end
+    object lbDescricaoEmpresa: TLabel
+      Left = 335
+      Top = 78
+      Width = 95
+      Height = 13
+      Caption = 'lbDescricaoEmpresa'
+      Visible = False
+    end
+    object Produto: TLabel
+      Left = 272
+      Top = 102
+      Width = 38
+      Height = 13
+      Caption = 'Produto'
+      Visible = False
+    end
+    object lbDescricaoProduto: TLabel
+      Left = 335
+      Top = 124
+      Width = 92
+      Height = 13
+      Caption = 'lbDescricaoProduto'
+      Visible = False
+    end
+    object Fornecedor: TLabel
+      Left = 272
+      Top = 148
+      Width = 55
+      Height = 13
+      Caption = 'Fornecedor'
+      Visible = False
+    end
+    object lbDescricaoFornecedor: TLabel
+      Left = 335
+      Top = 170
+      Width = 109
+      Height = 13
+      Caption = 'lbDescricaoFornecedor'
+      Visible = False
+    end
+    object NumSerie: TLabel
+      Left = 272
+      Top = 194
+      Width = 52
+      Height = 13
+      Caption = 'Num. Serie'
+      Visible = False
+    end
     object CBRelatorios: TComboBox
       Left = 56
       Top = 51
       Width = 145
       Height = 21
       TabOrder = 0
+      OnChange = CBRelatoriosChange
+      OnClick = CBRelatoriosClick
       Items.Strings = (
         'TIPO'
         'LOCALIZA'#199#195'O'
@@ -50,6 +108,38 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
       Height = 17
       Caption = 'Somente Ativos'
       TabOrder = 1
+    end
+    object EdEmpresa: TEdit
+      Left = 272
+      Top = 75
+      Width = 57
+      Height = 21
+      TabOrder = 2
+      Visible = False
+    end
+    object EdProduto: TEdit
+      Left = 272
+      Top = 121
+      Width = 57
+      Height = 21
+      TabOrder = 3
+      Visible = False
+    end
+    object EdFornecedor: TEdit
+      Left = 272
+      Top = 167
+      Width = 57
+      Height = 21
+      TabOrder = 4
+      Visible = False
+    end
+    object EdNumeroSerie: TEdit
+      Left = 272
+      Top = 213
+      Width = 121
+      Height = 21
+      TabOrder = 5
+      Visible = False
     end
   end
   object Panel1: TPanel
