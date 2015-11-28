@@ -108,11 +108,11 @@ object PFornecedorCotacao: TPFornecedorCotacao
     object sbFechar: TSpeedButton
       Left = 193
       Top = 1
-      Width = 96
+      Width = 121
       Height = 39
       Hint = 'Fecha a cota'#231#227'o com o Fornecedor selecionado'
       Align = alLeft
-      Caption = 'Fechar'
+      Caption = 'Fechar Cota'#231#227'o'
       Glyph.Data = {
         76060000424D7606000000000000360400002800000018000000180000000100
         08000000000040020000232E0000232E00000001000000000000E5D9D500E3D8

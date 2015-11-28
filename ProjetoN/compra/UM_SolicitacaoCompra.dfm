@@ -86,9 +86,12 @@ inherited MSolicitacaoCompra: TMSolicitacaoCompra
       ExplicitLeft = 76
       ExplicitTop = 13
       ExplicitWidth = 316
+      ExplicitHeight = 44
       inherited pnlFrame: TPanel
         Width = 316
+        Height = 44
         ExplicitWidth = 316
+        ExplicitHeight = 44
         inherited lbTitulo: TLabel
           Width = 41
           Caption = 'Empresa'
@@ -116,9 +119,12 @@ inherited MSolicitacaoCompra: TMSolicitacaoCompra
       ExplicitLeft = 389
       ExplicitTop = 13
       ExplicitWidth = 312
+      ExplicitHeight = 44
       inherited pnlFrame: TPanel
         Width = 312
+        Height = 44
         ExplicitWidth = 312
+        ExplicitHeight = 44
         inherited lbTitulo: TLabel
           Width = 27
           Caption = 'Dpto.'
@@ -143,9 +149,12 @@ inherited MSolicitacaoCompra: TMSolicitacaoCompra
       ExplicitLeft = 8
       ExplicitTop = 66
       ExplicitWidth = 384
+      ExplicitHeight = 44
       inherited pnlFrame: TPanel
         Width = 384
+        Height = 44
         ExplicitWidth = 384
+        ExplicitHeight = 44
         inherited lbTitulo: TLabel
           Width = 38
           Caption = 'Produto'
@@ -181,7 +190,6 @@ inherited MSolicitacaoCompra: TMSolicitacaoCompra
       Color = clBtnFace
       DataField = 'SOL_DATA_URGENCIA'
       DataSource = dmPedCompra.DSolicitacaoCompra
-      ReadOnly = True
       TabOrder = 6
     end
   end
