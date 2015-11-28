@@ -90,26 +90,31 @@ end;
 procedure TMMovimentoEstoque.exibeTelaProduto;
 var
     qryDin : TIBQuery;
+    dts : TDataSource;
 begin
     PEstoque := TPEstoque.Create(Self);
     try
+        DM_Estoque.Estoque.Close;
 
-        qryDin := funcCriaQuery;
-        qryDin.Close;
-        qryDin.SQL.Text := 'select a.*, pro_descricao from estoque a '+
-            'inner join produtos on estoq_empresa = pro_empresa and estoq_produto = pro_codigo';
-        qryDin.Open;
+        DM_Estoque.Estoque.SQL.Text := 'select a.*, pro_descricao, emp_razao, bloc_descricao, prat_descricao, cat_descricao from estoque a '+
+                         'left join produtos on estoq_empresa = pro_empresa and estoq_produto = pro_codigo         '+
+                         'inner join empresa on emp_cod = pro_empresa                                               '+
+                         'inner join bloco on estoq_bloco = bloc_codigo and estoq_empresa = bloc_empresa            '+
+                         'inner join prateleira on estoq_prateleira = prat_codigo and estoq_empresa = prat_empresa  '+
+                         'inner join categoria on estoq_categoria = cat_codigo and estoq_empresa = cat_empresa      ';
 
-        PEstoque.procInicializar(qryDin, False, True, PEstoque, TPEstoque);
+
+        DM_Estoque.Estoque.Open;
+        PEstoque.procInicializar(DM_Estoque.Estoque, False, True, PEstoque, TPEstoque);
         PEstoque.ShowModal;
     finally
 
-        editProduto.Text := qryDin.FieldByName('ESTOQ_PRODUTO').AsString;
-        DM_Estoque.MovimentoEstoqueEM_EMPRESA.Value := qryDin.FieldByName('ESTOQ_EMPRESA').AsInteger;
-        DM_Estoque.MovimentoEstoqueEM_BLOCO.Value := qryDin.FieldByName('ESTOQ_BLOCO').AsInteger;
-        DM_Estoque.MovimentoEstoqueEM_PRATELEIRA.Value := qryDin.FieldByName('ESTOQ_PRATELEIRA').AsInteger;
-        DM_Estoque.MovimentoEstoqueEM_ESTOQUE.Value := qryDin.FieldByName('ESTOQ_CODIGO').AsInteger;
-        DM_Estoque.MovimentoEstoqueEM_PRODUTO.Value := qryDin.FieldByName('ESTOQ_PRODUTO').AsString;
+        editProduto.Text := DM_Estoque.Estoque.FieldByName('PRO_DESCRICAO').AsString;
+        DM_Estoque.MovimentoEstoqueEM_EMPRESA.Value := DM_Estoque.Estoque.FieldByName('ESTOQ_EMPRESA').AsInteger;
+        DM_Estoque.MovimentoEstoqueEM_BLOCO.Value := DM_Estoque.Estoque.FieldByName('ESTOQ_BLOCO').AsInteger;
+        DM_Estoque.MovimentoEstoqueEM_PRATELEIRA.Value := DM_Estoque.Estoque.FieldByName('ESTOQ_PRATELEIRA').AsInteger;
+        DM_Estoque.MovimentoEstoqueEM_ESTOQUE.Value := DM_Estoque.Estoque.FieldByName('ESTOQ_CODIGO').AsInteger;
+        DM_Estoque.MovimentoEstoqueEM_PRODUTO.Value := DM_Estoque.Estoque.FieldByName('ESTOQ_PRODUTO').AsString;
 
         FreeAndNil(PEstoque);
     end;

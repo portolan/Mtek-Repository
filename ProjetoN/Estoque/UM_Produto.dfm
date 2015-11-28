@@ -275,7 +275,8 @@ inherited MProduto: TMProduto
         DataSource = DM_Estoque.DSProdutos
         Items.Strings = (
           'R$ (REAL)'
-          'US$ (DOLAR)')
+          'US$'
+          'C$')
         TabOrder = 4
       end
       object DBLookupComboBox2: TDBLookupComboBox

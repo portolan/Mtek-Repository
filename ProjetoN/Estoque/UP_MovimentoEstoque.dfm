@@ -12,21 +12,45 @@ inherited PMovimentoEstoque: TPMovimentoEstoque
           item
             Expanded = False
             FieldName = 'EM_EMPRESA'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'EMP_RAZAO'
+            Width = 103
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_PRODUTO'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'PRO_DESCRICAO'
+            Width = 170
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_BLOCO'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'BLOC_DESCRICAO'
+            Width = 99
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_PRATELEIRA'
+            Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'PRAT_DESCRICAO'
+            Width = 103
             Visible = True
           end
           item
@@ -42,51 +66,37 @@ inherited PMovimentoEstoque: TPMovimentoEstoque
           item
             Expanded = False
             FieldName = 'EM_TIPO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_QTD'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_DATA'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_OBS'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_VALOR_FINANCEIRO'
+            Width = 64
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EM_PEDIDOCOMPRAORIGEM'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRO_DESCRICAO'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'EMP_RAZAO'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'BLOC_DESCRICAO'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'PRAT_DESCRICAO'
+            Width = 64
             Visible = True
           end>
       end

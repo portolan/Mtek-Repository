@@ -110,7 +110,7 @@ begin
                                    ' inner join categoria on estoq_categoria = cat_codigo and estoq_empresa = cat_empresa';
     DM_Estoque.Estoque.Open;
 
-    EstoqueRelatorios.frxEstoqueAbaixo.ShowReport();
+    EstoqueRelatorios.frxEstoque.ShowReport();
 end;
 
 procedure TFEstoqueRelatorios.sbProdutoClick(Sender: TObject);
