@@ -9,63 +9,6 @@ uses
 
 type
   TUR_Relatorio = class(TForm)
-    frxDBChamadoData: TfrxDBDataset;
-    IB_ChamadoDia: TIBQuery;
-    IB_ChamadoDiaCHA_CODIGO: TIntegerField;
-    IB_ChamadoDiaCHA_EMPRESA: TIntegerField;
-    IB_ChamadoDiaCHA_DEPARTAMENTO: TIntegerField;
-    IB_ChamadoDiaCHA_FUNCIONARIO: TIntegerField;
-    IB_ChamadoDiaCHA_PROPRIETARIO: TIntegerField;
-    IB_ChamadoDiaCHA_DESCRICAO: TIBStringField;
-    IB_ChamadoDiaCHA_PRIORIDADE: TIBStringField;
-    IB_ChamadoDiaCHA_STATUS: TIBStringField;
-    IB_ChamadoDiaCHA_DATA_ENTRADA: TDateField;
-    IB_ChamadoDiaCHA_TIPO_ERRO: TIntegerField;
-    IB_ChamadoDiaCHA_DATA_SAIDA: TDateField;
-    IB_ChamadoDiaEMP_RAZAO: TIBStringField;
-    IB_ChamadoDiaDEP_NOME: TIBStringField;
-    IB_ChamadoDiaPESS_NOME: TIBStringField;
-    IB_ChamadoDiaPESS_NOME1: TIBStringField;
-    frxDBChamadoDia: TfrxDBDataset;
-    IB_ChamadoData: TIBQuery;
-    IB_ChamadoDataCHA_CODIGO: TIntegerField;
-    IB_ChamadoDataCHA_EMPRESA: TIntegerField;
-    IB_ChamadoDataCHA_DEPARTAMENTO: TIntegerField;
-    IB_ChamadoDataCHA_FUNCIONARIO: TIntegerField;
-    IB_ChamadoDataCHA_PROPRIETARIO: TIntegerField;
-    IB_ChamadoDataCHA_DESCRICAO: TIBStringField;
-    IB_ChamadoDataCHA_PRIORIDADE: TIBStringField;
-    IB_ChamadoDataCHA_STATUS: TIBStringField;
-    IB_ChamadoDataCHA_DATA_ENTRADA: TDateField;
-    IB_ChamadoDataCHA_TIPO_ERRO: TIntegerField;
-    IB_ChamadoDataCHA_DATA_SAIDA: TDateField;
-    IB_ChamadoDataEMP_RAZAO: TIBStringField;
-    IB_ChamadoDataDEP_NOME: TIBStringField;
-    IB_ChamadoDataPESS_NOME: TIBStringField;
-    IB_ChamadoDataPESS_NOME1: TIBStringField;
-    IB_ChamadoDiaTER_DESCRICAO: TIBStringField;
-    frxChamadoData: TfrxReport;
-    IB_ChamadoDataTER_DESCRICAO: TIBStringField;
-    frxChamadoDia: TfrxReport;
-    frxTipoErro: TfrxReport;
-    frxDBTipoErro: TfrxDBDataset;
-    IB_TipoErro: TIBQuery;
-    IB_TipoErroCHA_CODIGO: TIntegerField;
-    IB_TipoErroCHA_EMPRESA: TIntegerField;
-    IB_TipoErroCHA_DEPARTAMENTO: TIntegerField;
-    IB_TipoErroCHA_FUNCIONARIO: TIntegerField;
-    IB_TipoErroCHA_PROPRIETARIO: TIntegerField;
-    IB_TipoErroCHA_DESCRICAO: TIBStringField;
-    IB_TipoErroCHA_PRIORIDADE: TIBStringField;
-    IB_TipoErroCHA_STATUS: TIBStringField;
-    IB_TipoErroCHA_DATA_ENTRADA: TDateField;
-    IB_TipoErroCHA_TIPO_ERRO: TIntegerField;
-    IB_TipoErroCHA_DATA_SAIDA: TDateField;
-    IB_TipoErroEMP_RAZAO: TIBStringField;
-    IB_TipoErroDEP_NOME: TIBStringField;
-    IB_TipoErroPESS_NOME: TIBStringField;
-    IB_TipoErroPESS_NOME1: TIBStringField;
-    IB_TipoErroTER_DESCRICAO: TIBStringField;
   private
     { Private declarations }
   public

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Mask, Vcl.Buttons,
-  Vcl.DBCtrls;
+  Vcl.DBCtrls, frxClass, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery, frxDBSet;
 
 type
   TF_ChamadosRelatorios = class(TForm)
@@ -21,6 +21,63 @@ type
     SpeedButton3: TSpeedButton;
     Label3: TLabel;
     Edit1: TEdit;
+    frxDBChamadoData: TfrxDBDataset;
+    IB_ChamadoDia: TIBQuery;
+    IB_ChamadoDiaCHA_CODIGO: TIntegerField;
+    IB_ChamadoDiaCHA_EMPRESA: TIntegerField;
+    IB_ChamadoDiaCHA_DEPARTAMENTO: TIntegerField;
+    IB_ChamadoDiaCHA_FUNCIONARIO: TIntegerField;
+    IB_ChamadoDiaCHA_PROPRIETARIO: TIntegerField;
+    IB_ChamadoDiaCHA_DESCRICAO: TIBStringField;
+    IB_ChamadoDiaCHA_PRIORIDADE: TIBStringField;
+    IB_ChamadoDiaCHA_STATUS: TIBStringField;
+    IB_ChamadoDiaCHA_DATA_ENTRADA: TDateField;
+    IB_ChamadoDiaCHA_TIPO_ERRO: TIntegerField;
+    IB_ChamadoDiaCHA_DATA_SAIDA: TDateField;
+    IB_ChamadoDiaEMP_RAZAO: TIBStringField;
+    IB_ChamadoDiaDEP_NOME: TIBStringField;
+    IB_ChamadoDiaPESS_NOME: TIBStringField;
+    IB_ChamadoDiaPESS_NOME1: TIBStringField;
+    IB_ChamadoDiaTER_DESCRICAO: TIBStringField;
+    frxDBChamadoDia: TfrxDBDataset;
+    IB_ChamadoData: TIBQuery;
+    IB_ChamadoDataCHA_CODIGO: TIntegerField;
+    IB_ChamadoDataCHA_EMPRESA: TIntegerField;
+    IB_ChamadoDataCHA_DEPARTAMENTO: TIntegerField;
+    IB_ChamadoDataCHA_FUNCIONARIO: TIntegerField;
+    IB_ChamadoDataCHA_PROPRIETARIO: TIntegerField;
+    IB_ChamadoDataCHA_DESCRICAO: TIBStringField;
+    IB_ChamadoDataCHA_PRIORIDADE: TIBStringField;
+    IB_ChamadoDataCHA_STATUS: TIBStringField;
+    IB_ChamadoDataCHA_DATA_ENTRADA: TDateField;
+    IB_ChamadoDataCHA_TIPO_ERRO: TIntegerField;
+    IB_ChamadoDataCHA_DATA_SAIDA: TDateField;
+    IB_ChamadoDataEMP_RAZAO: TIBStringField;
+    IB_ChamadoDataDEP_NOME: TIBStringField;
+    IB_ChamadoDataPESS_NOME: TIBStringField;
+    IB_ChamadoDataPESS_NOME1: TIBStringField;
+    IB_ChamadoDataTER_DESCRICAO: TIBStringField;
+    frxChamadoData: TfrxReport;
+    frxChamadoDia: TfrxReport;
+    frxTipoErro: TfrxReport;
+    frxDBTipoErro: TfrxDBDataset;
+    IB_TipoErro: TIBQuery;
+    IB_TipoErroCHA_CODIGO: TIntegerField;
+    IB_TipoErroCHA_EMPRESA: TIntegerField;
+    IB_TipoErroCHA_DEPARTAMENTO: TIntegerField;
+    IB_TipoErroCHA_FUNCIONARIO: TIntegerField;
+    IB_TipoErroCHA_PROPRIETARIO: TIntegerField;
+    IB_TipoErroCHA_DESCRICAO: TIBStringField;
+    IB_TipoErroCHA_PRIORIDADE: TIBStringField;
+    IB_TipoErroCHA_STATUS: TIBStringField;
+    IB_TipoErroCHA_DATA_ENTRADA: TDateField;
+    IB_TipoErroCHA_TIPO_ERRO: TIntegerField;
+    IB_TipoErroCHA_DATA_SAIDA: TDateField;
+    IB_TipoErroEMP_RAZAO: TIBStringField;
+    IB_TipoErroDEP_NOME: TIBStringField;
+    IB_TipoErroPESS_NOME: TIBStringField;
+    IB_TipoErroPESS_NOME1: TIBStringField;
+    IB_TipoErroTER_DESCRICAO: TIBStringField;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
@@ -53,11 +110,11 @@ end;
 
 procedure TF_ChamadosRelatorios.SpeedButton1Click(Sender: TObject);
 begin
-    UR_Relatorio.frxChamadoData.Variables['dtInicial'] := strToDate(editDtInicial.Text);
-    UR_Relatorio.frxChamadoData.Variables['dtFinal'] := strToDate(editDtFinal.Text);
+    frxChamadoData.Variables['dtInicial'] := strToDate(editDtInicial.Text);
+    frxChamadoData.Variables['dtFinal'] := strToDate(editDtFinal.Text);
 
-    UR_Relatorio.IB_ChamadoData.Close;
-    UR_Relatorio.IB_ChamadoData.SQL.Text := ' SELECT A.*, '+
+    IB_ChamadoData.Close;
+    IB_ChamadoData.SQL.Text := ' SELECT A.*, '+
                                             ' B.emp_razao, '+
                                             ' c.dep_nome, '+
                                             ' D.pess_nome, '+
@@ -71,11 +128,11 @@ begin
              ' inner join pessoas E on a.cha_proprietario = e.pess_codigo '+
              ' inner join tipos_erros f on a.cha_tipo_erro = f.ter_codigo '+
              ' where a.cha_data_entrada between :dtinicial and :dtfinal ';
-    UR_Relatorio.IB_ChamadoData.ParamByName('dtInicial').Value := strToDate(editDtInicial.Text);
-    UR_Relatorio.IB_ChamadoData.ParamByName('dtFinal').Value   := strToDate(editDtFinal.Text);
-    UR_Relatorio.IB_ChamadoData.Open;
+    IB_ChamadoData.ParamByName('dtInicial').Value := strToDate(editDtInicial.Text);
+    IB_ChamadoData.ParamByName('dtFinal').Value   := strToDate(editDtFinal.Text);
+    IB_ChamadoData.Open;
 
-    UR_Relatorio.frxChamadoData.ShowReport();
+    frxChamadoData.ShowReport();
 end;
 
 procedure TF_ChamadosRelatorios.SpeedButton2Click(Sender: TObject);
@@ -98,15 +155,15 @@ begin
 
     DM_Servico.IB_Chamado.Open;
 
-    UR_Relatorio.frxChamadoDia.ShowReport();
+    frxChamadoDia.ShowReport();
 end;
 
 procedure TF_ChamadosRelatorios.SpeedButton3Click(Sender: TObject);
 begin
-    UR_Relatorio.frxTipoErro.Variables['erro'] := StrToInt(Edit1.Text);
+    frxTipoErro.Variables['erro'] := StrToInt(Edit1.Text);
 
-    UR_Relatorio.IB_TipoErro.Close;
-    UR_Relatorio.IB_TipoErro.SQL.Text := ' SELECT A.*, '+
+    IB_TipoErro.Close;
+    IB_TipoErro.SQL.Text := ' SELECT A.*, '+
                                             ' B.emp_razao, '+
                                             ' c.dep_nome, '+
                                             ' D.pess_nome, '+
@@ -120,10 +177,10 @@ begin
              ' inner join pessoas E on a.cha_proprietario = e.pess_codigo '+
              ' inner join tipos_erros f on a.cha_tipo_erro = f.ter_codigo '+
              ' where f.ter_codigo = :erro ';
-    UR_Relatorio.IB_TipoErro.ParamByName('erro').Value := StrToInt(Edit1.Text);
-    UR_Relatorio.IB_TipoErro.Open;
+    IB_TipoErro.ParamByName('erro').Value := StrToInt(Edit1.Text);
+    IB_TipoErro.Open;
 
-    UR_Relatorio.frxTipoErro.ShowReport();
+    frxTipoErro.ShowReport();
 end;
 
 end.
