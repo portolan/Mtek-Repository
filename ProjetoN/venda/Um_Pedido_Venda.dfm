@@ -15,7 +15,7 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
     Width = 662
     Height = 44
     ExplicitTop = 448
-    ExplicitWidth = 712
+    ExplicitWidth = 662
     ExplicitHeight = 44
     inherited sbGravar: TSpeedButton
       Height = 42
@@ -31,7 +31,7 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
   inherited gbInfos: TGroupBox
     Width = 662
     Height = 448
-    ExplicitWidth = 712
+    ExplicitWidth = 662
     ExplicitHeight = 448
     object Label1: TLabel
       Left = 16
@@ -64,40 +64,33 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       Height = 13
       Caption = 'Situa'#231#227'o'
     end
-    object Label9: TLabel
-      Left = 16
-      Top = 210
-      Width = 107
-      Height = 13
-      Caption = 'Tipo de Movimenta'#231#227'o'
-    end
     object Label10: TLabel
       Left = 208
-      Top = 210
+      Top = 191
       Width = 39
       Height = 13
       Caption = 'Unidade'
       FocusControl = DBEdit10
     end
     object Label11: TLabel
-      Left = 304
-      Top = 210
+      Left = 317
+      Top = 191
       Width = 56
       Height = 13
       Caption = 'Quantidade'
       FocusControl = DBEdit11
     end
     object Label13: TLabel
-      Left = 17
-      Top = 255
+      Left = 19
+      Top = 191
       Width = 45
       Height = 13
       Caption = 'Desconto'
       FocusControl = DBEdit13
     end
     object Label14: TLabel
-      Left = 208
-      Top = 256
+      Left = 435
+      Top = 192
       Width = 107
       Height = 13
       Caption = 'Quantidade Disp'#243'nivel'
@@ -159,20 +152,6 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       Caption = 'Ordem de Venda'
       FocusControl = DBEdit21
     end
-    object Label12: TLabel
-      Left = 502
-      Top = 233
-      Width = 116
-      Height = 13
-      Caption = 'Condi'#231#227'o de Pagamento'
-    end
-    object bt_condicaopg: TSpeedButton
-      Left = 624
-      Top = 224
-      Width = 23
-      Height = 22
-      OnClick = bt_condicaopgClick
-    end
     object DBEdit1: TDBEdit
       Left = 16
       Top = 35
@@ -200,10 +179,11 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       DataField = 'PED_SEQUENCIA'
       DataSource = DataSource1
       TabOrder = 2
+      OnChange = DBEdit3Change
     end
     object DBEdit10: TDBEdit
       Left = 208
-      Top = 230
+      Top = 221
       Width = 73
       Height = 21
       DataField = 'PED_UNIDADE'
@@ -211,8 +191,8 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       TabOrder = 3
     end
     object DBEdit11: TDBEdit
-      Left = 304
-      Top = 230
+      Left = 317
+      Top = 221
       Width = 73
       Height = 21
       DataField = 'PED_QUANTIDADE'
@@ -221,7 +201,7 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
     end
     object DBEdit13: TDBEdit
       Left = 16
-      Top = 274
+      Top = 221
       Width = 134
       Height = 21
       DataField = 'PED_DESCONTO'
@@ -229,8 +209,8 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       TabOrder = 5
     end
     object DBEdit14: TDBEdit
-      Left = 208
-      Top = 274
+      Left = 452
+      Top = 221
       Width = 73
       Height = 21
       DataField = 'PED_QTD_DISPONIVEL'
@@ -282,7 +262,6 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       DataField = 'PED_DTENTRADA'
       DataSource = DataSource1
       TabOrder = 11
-      OnChange = DBEdit19Change
     end
     object DBEdit20: TDBEdit
       Left = 513
@@ -302,21 +281,12 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       DataSource = DataSource1
       TabOrder = 13
     end
-    object DBComboBox1: TDBComboBox
-      Left = 16
-      Top = 230
-      Width = 145
-      Height = 21
-      Items.Strings = (
-        'Venda de Produto')
-      TabOrder = 14
-    end
     inline frm_empresa: TfrmRelacionamento
       Left = 7
       Top = 96
       Width = 386
       Height = 54
-      TabOrder = 15
+      TabOrder = 14
       ExplicitLeft = 7
       ExplicitTop = 96
       ExplicitWidth = 386
@@ -363,7 +333,7 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       Top = 143
       Width = 374
       Height = 42
-      TabOrder = 16
+      TabOrder = 15
       ExplicitLeft = 9
       ExplicitTop = 143
       ExplicitWidth = 374
@@ -372,7 +342,7 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
         Width = 374
         Height = 42
         ExplicitWidth = 374
-        ExplicitHeight = 61
+        ExplicitHeight = 42
         inherited lbTitulo: TLabel
           Top = -1
           Width = 38
@@ -407,25 +377,27 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
       Top = 74
       Width = 133
       Height = 21
-      TabOrder = 17
+      TabOrder = 16
       OnExit = ComboBox1Exit
       Items.Strings = (
-        'ABERTA'
-        'FECHADA')
+        'A'
+        'B')
     end
     inline frm_departamento: TfrmRelacionamento
       Left = 379
-      Top = 137
+      Top = 124
       Width = 326
       Height = 67
-      TabOrder = 18
+      TabOrder = 17
       ExplicitLeft = 379
-      ExplicitTop = 137
+      ExplicitTop = 124
       ExplicitWidth = 326
       ExplicitHeight = 67
       inherited pnlFrame: TPanel
         Width = 326
         Height = 67
+        ExplicitLeft = 4
+        ExplicitTop = -63
         ExplicitWidth = 326
         ExplicitHeight = 67
         inherited lbTitulo: TLabel
@@ -435,7 +407,7 @@ inherited Frm_Pedido_Venda: TFrm_Pedido_Venda
         end
         inherited panelFundo: TPanel
           Width = 204
-          ExplicitWidth = 241
+          ExplicitWidth = 204
           inherited DBT_DESCRICAO: TDBText
             Width = 191
             ExplicitWidth = 228

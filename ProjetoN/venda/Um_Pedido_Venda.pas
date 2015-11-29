@@ -20,7 +20,6 @@ type
     Label3: TLabel;
     DBEdit3: TDBEdit;
     Label4: TLabel;
-    Label9: TLabel;
     Label10: TLabel;
     DBEdit10: TDBEdit;
     Label11: TLabel;
@@ -43,18 +42,14 @@ type
     DBEdit20: TDBEdit;
     Label21: TLabel;
     DBEdit21: TDBEdit;
-    DBComboBox1: TDBComboBox;
     frm_empresa: TfrmRelacionamento;
-    Label12: TLabel;
-    bt_condicaopg: TSpeedButton;
     frm_produto: TfrmRelacionamento;
     ComboBox1: TComboBox;
     frm_departamento: TfrmRelacionamento;
     procedure FormShow(Sender: TObject);
-    procedure bt_condicaopgClick(Sender: TObject);
     procedure DBEdit18Enter(Sender: TObject);
     procedure ComboBox1Exit(Sender: TObject);
-    procedure DBEdit19Change(Sender: TObject);
+    procedure DBEdit3Change(Sender: TObject);
   private
     { Private declarations }
   public
@@ -74,11 +69,11 @@ begin
   inherited;
   if ComboBox1.ItemIndex = 0 then
    begin
-      DM_VENDA.IB_VendaPED_SITUACAO.Value := 'ABERTA';
+      DM_VENDA.IB_VendaPED_SITUACAO.Value := 'A';
    end
    ELSE if ComboBox1.ItemIndex= 1 then
         begin
-          DM_VENDA.IB_VendaPED_SITUACAO.Value := 'FECHADA'
+          DM_VENDA.IB_VendaPED_SITUACAO.Value := 'F'
         end;
 
 end;
@@ -89,7 +84,7 @@ begin
   DBEdit18.Text:=DateToStr(date);
 end;
 
-procedure TFrm_Pedido_Venda.DBEdit19Change(Sender: TObject);
+procedure TFrm_Pedido_Venda.DBEdit3Change(Sender: TObject);
 begin
   inherited;
 
@@ -144,17 +139,6 @@ begin
                                    ['PED_EMPRESA','PED_DEPOSITO'],
                                    ['DEP_COD','DEP_NOME']);
 
-end;
-
-procedure TFrm_Pedido_Venda.bt_condicaopgClick(Sender: TObject);
-begin
-  inherited;
-  Up_NFE := TUp_NFE.Create(self);
-  try
-     Up_NFE.ShowModal;
-  finally
-     FreeAndNil(Up_NFE);
-  end;
 end;
 
 end.
