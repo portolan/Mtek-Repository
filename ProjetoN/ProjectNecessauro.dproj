@@ -574,12 +574,13 @@
             <Form>F_RelControlePAtrimonial</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="ControlePatrimonial\UR_RelControlePatrimonial.pas">
-            <Form>R_RelatorioControlePatrimonial</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="contabil\UR_RelatorioContabil.pas">
             <Form>R_RelatorioContabil</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="ControlePatrimonial\UR_RelControlePatrimonial.pas">
+            <Form>R_RelatorioControlePatrimonial</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>

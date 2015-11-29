@@ -128,8 +128,8 @@ uses
   R_contabil in 'contabil\R_contabil.pas' {REL_contabil},
   UF_RelatorioContabil in 'contabil\UF_RelatorioContabil.pas' {F_RelatorioContabil},
   UF_RelatorioControlePatrimonial in 'ControlePatrimonial\UF_RelatorioControlePatrimonial.pas' {F_RelControlePAtrimonial},
-  UR_RelControlePatrimonial in 'ControlePatrimonial\UR_RelControlePatrimonial.pas' {R_RelatorioControlePatrimonial},
-  UR_RelatorioContabil in 'contabil\UR_RelatorioContabil.pas' {R_RelatorioContabil: TDataModule};
+  UR_RelatorioContabil in 'contabil\UR_RelatorioContabil.pas' {R_RelatorioContabil: TDataModule},
+  UR_RelControlePatrimonial in 'ControlePatrimonial\UR_RelControlePatrimonial.pas' {R_RelatorioControlePatrimonial: TDataModule};
 
 {$R *.res}
 
@@ -154,6 +154,7 @@ begin
   Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
   Application.CreateForm(Tpcprelatorio, pcprelatorio);
   Application.CreateForm(TR_RelatorioContabil, R_RelatorioContabil);
+  Application.CreateForm(TR_RelatorioControlePatrimonial, R_RelatorioControlePatrimonial);
   Application.CreateForm(TTelaInicial, TelaInicial);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
