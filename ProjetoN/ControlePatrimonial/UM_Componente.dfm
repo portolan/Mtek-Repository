@@ -7,7 +7,7 @@ inherited MComponente: TMComponente
   TextHeight = 13
   inherited pnRodape: TPanel
     Width = 551
-    ExplicitWidth = 486
+    ExplicitWidth = 551
     inherited sbCancelar: TSpeedButton
       Left = 454
       ExplicitLeft = 389
@@ -15,7 +15,7 @@ inherited MComponente: TMComponente
   end
   inherited gbInfos: TGroupBox
     Width = 551
-    ExplicitWidth = 486
+    ExplicitWidth = 551
     object Label1: TLabel
       Left = 40
       Top = 37
@@ -133,7 +133,6 @@ inherited MComponente: TMComponente
         DataField = 'COM_OBSERVACAO'
         DataSource = DMControlePatrimonial.DComponente
         TabOrder = 0
-        ExplicitWidth = 416
       end
     end
     object DBCOM_QTD: TDBEdit

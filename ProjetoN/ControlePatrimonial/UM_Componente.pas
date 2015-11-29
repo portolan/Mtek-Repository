@@ -33,7 +33,8 @@ type
   private
     { Private declarations }
      i_bloco, i_prateleira, i_estoque : integer;
-
+     function funcGeraMovimentacaoEstoqueCOMPONENTE(codEmpresa, codBloco, codPrateleira, codEstoque : integer; codProduto : String;
+                                     qtd : double; obs : String; vlrFinanceiro : double;  categoria : integer):boolean;
   public
     { Public declarations }
      procedure ProcVerificaSaldo;
@@ -128,6 +129,56 @@ end;
 
 
 
+function TMComponente.funcGeraMovimentacaoEstoqueCOMPONENTE(codEmpresa,
+  codBloco, codPrateleira, codEstoque: integer; codProduto: String; qtd: double;
+  obs: String; vlrFinanceiro: double; categoria: integer): boolean;
+var
+    qryDin : TIBQuery;
+    b_existeProdutoEstoque : boolean;
+    customedio : double;
+begin
+    try
+        qryDin := funcCriaQuery;
+        try
+            b_existeProdutoEstoque := funcExisteProdutoNoEstoque(codEmpresa, codBloco, codPrateleira, codProduto);
+
+            if not b_existeProdutoEstoque then
+            begin
+                customedio := funcCalcCustoMedio(codEmpresa, codProduto, codBloco, codPrateleira, codEstoque);
+                funcNovoProdutoEstoque(codEmpresa, codBloco, codPrateleira, codProduto, 'A',
+                                        qtd, 0, qtd, customedio, categoria, obs, '0', 0, 0);
+            end;
+        Except on E:Exception do
+            raise Exception.Create('Produto Não encontrado! Verifique se este produto está cadastrado!');
+        end;
+
+        qryDin.Close;
+        qryDin.SQL.Text := 'insert into ESTOQ_MOVIMENTO (EM_EMPRESA, EM_PRODUTO, EM_BLOCO, EM_PRATELEIRA,'+
+                           ' EM_ESTOQUE, EM_CODIGO, EM_TIPO, EM_QTD,EM_DATA,                             '+
+                           ' EM_OBS, EM_VALOR_FINANCEIRO, EM_PEDIDOCOMPRAORIGEM)                         '+
+                           ' values (:EM_EMPRESA, :EM_PRODUTO, :EM_BLOCO,                                 '+
+                           ' :EM_PRATELEIRA, :EM_ESTOQUE, :EM_CODIGO,                                    '+
+                           ' :EM_TIPO, :EM_QTD, :EM_DATA,:EM_OBS,                                        '+
+                           ' :EM_VALOR_FINANCEIRO, :EM_PEDIDOCOMPRAORIGEM)                               ';
+        qryDin.ParamByName('EM_EMPRESA').Value := codEmpresa;
+        qryDin.ParamByName('EM_PRODUTO').Value := codProduto;
+        qryDin.ParamByName('EM_BLOCO').Value := codBloco;
+        qryDin.ParamByName('EM_PRATELEIRA').Value := codPrateleira;
+        qryDin.ParamByName('EM_ESTOQUE').Value := codEstoque;
+        qryDin.ParamByName('EM_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQ_MOVIMENTO');
+        qryDin.ParamByName('EM_TIPO').Value := 'E';
+        qryDin.ParamByName('EM_QTD').Value := qtd;
+        qryDin.ParamByName('EM_DATA').Value := Now;
+        qryDin.ParamByName('EM_OBS').Value := obs;
+        qryDin.ParamByName('EM_VALOR_FINANCEIRO').Value := vlrFinanceiro;
+        qryDin.Open;
+
+        funcBaixaEstoque(codEmpresa, codProduto, codBloco, codPrateleira, codEstoque, qtd, 'E');
+    except on E: Exception do
+        raise Exception.Create('Erro ao Criar a Movimentação!');
+    end;
+end;
+
 procedure TMComponente.ProcVerificaSaldo;
 begin
 
@@ -142,13 +193,13 @@ end;
 procedure TMComponente.sbGravarClick(Sender: TObject);
 begin
   ProcVerificaSaldo;
-  UEstoque.funcGeraMovimentacaoEstoque(DMControlePatrimonial.ComponenteCOM_EMPRESA.AsInteger,
+  funcGeraMovimentacaoEstoqueCOMPONENTE(DMControlePatrimonial.ComponenteCOM_EMPRESA.AsInteger,
                                      i_bloco, i_prateleira, i_estoque,
                                      DBCOM_CODIGO.text,
                                      strtofloat(DBCOM_QTD.text),
                                      'REFERENTE A MANUTENÇÃO DO BEN IMOBILIZADO NÚMERO DE SÉRIE: '+ DMControlePatrimonial.BenImobilizadoBNI_NUM_SERIE.AsString,
                                      STRTOFLOAT(DBCOM_VLR_TOTAL.TEXT),
-                                     NULL, 1);
+                                      1);
   inherited;
 
 

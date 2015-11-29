@@ -126,6 +126,10 @@ procedure TDMControlePatrimonial.ManutencaoAfterInsert(DataSet: TDataSet);
 begin
    DMControlePatrimonial.ManutencaoMAN_CODIGO.ASINTEGER := dmBanco.funcRecuperaProximoIdGenerator('GEN_MANUTENCAO_BENS');
    DMControlePatrimonial.ManutencaoMAN_AGREGA_CUSTO.AsString := 'S';
+   DMControlePatrimonial.ManutencaoMAN_VLR_COMPONENTE.ASFLOAT := 0;
+   DMControlePatrimonial.ManutencaoMAN_VLR_MANUTENCAO.ASFLOAT := 0;
+   DMControlePatrimonial.ManutencaoMAN_VLR_TOTAL.ASFLOAT := 0;
+
 end;
 
 procedure TDMControlePatrimonial.TipoBensAfterInsert(DataSet: TDataSet);
