@@ -2,7 +2,6 @@ inherited MEmissao_NFE: TMEmissao_NFE
   Caption = 'Emiss'#227'o de Nota Fiscal Eletr'#244'nica'
   ClientHeight = 314
   ClientWidth = 590
-  OnShow = FormShow
   ExplicitWidth = 606
   ExplicitHeight = 353
   PixelsPerInch = 96
