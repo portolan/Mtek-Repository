@@ -308,7 +308,7 @@ begin
 end;
 
 procedure TTelaInicial.FormCreate(Sender: TObject);
-begin
+begin                 {
     fechaQuery(DM_Servico);
     fechaQuery(dmPedCompra);
     fechaQuery(DM_PCP);
@@ -317,7 +317,7 @@ begin
     fechaQuery(DM_contabil);
     fechaQuery(DM_Caixa);
     fechaQuery(DM_Estoque);
-    fechaQuery(DM_contasreceber);
+    fechaQuery(DM_contasreceber);       }
 end;
 
 procedure TTelaInicial.Histricos1Click(Sender: TObject);

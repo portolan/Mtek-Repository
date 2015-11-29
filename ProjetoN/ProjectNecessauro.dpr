@@ -125,11 +125,11 @@ uses
   UM_novacontabancaria in 'financeiro\UM_novacontabancaria.pas' {m_novacontabancaria},
   UM_novobanco in 'financeiro\UM_novobanco.pas' {M_novobanco},
   UP_banco in 'financeiro\UP_banco.pas' {P_banco},
-  UR_RelatorioContabil in 'contabil\UR_RelatorioContabil.pas' {R_RelatorioContabil},
   R_contabil in 'contabil\R_contabil.pas' {REL_contabil},
   UF_RelatorioContabil in 'contabil\UF_RelatorioContabil.pas' {F_RelatorioContabil},
   UF_RelatorioControlePatrimonial in 'ControlePatrimonial\UF_RelatorioControlePatrimonial.pas' {F_RelControlePAtrimonial},
-  UR_RelControlePatrimonial in 'ControlePatrimonial\UR_RelControlePatrimonial.pas' {R_RelatorioControlePatrimonial};
+  UR_RelControlePatrimonial in 'ControlePatrimonial\UR_RelControlePatrimonial.pas' {R_RelatorioControlePatrimonial},
+  UR_RelatorioContabil in 'contabil\UR_RelatorioContabil.pas' {R_RelatorioContabil: TDataModule};
 
 {$R *.res}
 
@@ -148,44 +148,13 @@ begin
   Application.CreateForm(TDM_VENDA, DM_VENDA);
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDMControlePatrimonial, DMControlePatrimonial);
-  Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
+  Application.CreateForm(TDataModule2, DataModule2);
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
-  Application.CreateForm(TTelaInicial, TelaInicial);
-  Application.CreateForm(Tm_condicaopag, m_condicaopag);
-  Application.CreateForm(Tp_condicaopag, p_condicaopag);
-  Application.CreateForm(TUR_Relatorio, UR_Relatorio);
+  Application.CreateForm(TDataModule1, DataModule1);
+  Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
   Application.CreateForm(Tpcprelatorio, pcprelatorio);
-  Application.CreateForm(TFRELATORIOPCP, FRELATORIOPCP);
-  Application.CreateForm(TH_FormaCalcDep, H_FormaCalcDep);
-  Application.CreateForm(TM_Manutencao, M_Manutencao);
-  Application.CreateForm(TMComponente, MComponente);
-  Application.CreateForm(TH_FormaCalcDep, H_FormaCalcDep);
-  Application.CreateForm(TDMControlePatrimonial, DMControlePatrimonial);
-  Application.CreateForm(TMBensImobilizados, MBensImobilizados);
-  Application.CreateForm(TMComponente, MComponente);
-  Application.CreateForm(TMEstadoConservacao, MEstadoConservacao);
-  Application.CreateForm(TMLocalizacao, MLocalizacao);
-  Application.CreateForm(TM_Manutencao, M_Manutencao);
-  Application.CreateForm(TMTipoBens, MTipoBens);
-  Application.CreateForm(TP_BensImobilizados, P_BensImobilizados);
-  Application.CreateForm(TP_EstadoConservacao, P_EstadoConservacao);
-  Application.CreateForm(TPLocalizacao, PLocalizacao);
-  Application.CreateForm(TP_PesquisaNotaBemImobilizado, P_PesquisaNotaBemImobilizado);
-  Application.CreateForm(TP_TipoBens, P_TipoBens);
-  Application.CreateForm(TU_Condicao_Pg, U_Condicao_Pg);
-  Application.CreateForm(TF_ChamadosRelatorios, F_ChamadosRelatorios);
-  Application.CreateForm(TUR_Relatorio, UR_Relatorio);
-  Application.CreateForm(Tp_condicaopag, p_condicaopag);
-  Application.CreateForm(TP_contasbancarias, P_contasbancarias);
-  Application.CreateForm(Tm_novacontabancaria, m_novacontabancaria);
-  Application.CreateForm(TM_novobanco, M_novobanco);
-  Application.CreateForm(TP_banco, P_banco);
   Application.CreateForm(TR_RelatorioContabil, R_RelatorioContabil);
-  Application.CreateForm(TREL_contabil, REL_contabil);
-  Application.CreateForm(TF_RelatorioContabil, F_RelatorioContabil);
-  Application.CreateForm(TF_RelControlePAtrimonial, F_RelControlePAtrimonial);
-  Application.CreateForm(TF_RelControlePAtrimonial, F_RelControlePAtrimonial);
-  Application.CreateForm(TR_RelatorioControlePatrimonial, R_RelatorioControlePatrimonial);
+  Application.CreateForm(TTelaInicial, TelaInicial);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
 end.
