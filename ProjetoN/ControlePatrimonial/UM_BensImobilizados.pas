@@ -84,12 +84,11 @@ type
 
     procedure ProcTotalizaBen;
     procedure procselect;
-
     Function FuncExtrairDatas: integer;
-    Procedure ProcAtualizaDepreciacao;
   public
 
     { Public declarations }
+     Procedure ProcAtualizaDepreciacao;
   end;
 
 var
@@ -395,9 +394,9 @@ begin
   I_DiferencaMeses := FuncExtrairDatas;
 
   if I_DiferencaMeses = 0 then
-     DBBNI_VLR_ATUAL.text := floattostr(F_BaseDepreciar)
+     DBBNI_VLR_ATUAL.text := formatfloat('0.00' ,F_BaseDepreciar)
   else
-     DBBNI_VLR_ATUAL.text := floattostr(abs((I_DiferencaMeses * F_VlrMensal) - F_BaseDepreciar ));
+     DBBNI_VLR_ATUAL.text := formatfloat ( '0.00' ,abs((I_DiferencaMeses * F_VlrMensal) - F_BaseDepreciar ));
 
 end;
 

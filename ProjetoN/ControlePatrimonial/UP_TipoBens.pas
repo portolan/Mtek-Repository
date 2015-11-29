@@ -10,7 +10,6 @@ uses
 type
   TP_TipoBens = class(TxPesqPadrao)
     procedure FormCreate(Sender: TObject);
-    procedure sbNovoClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -40,16 +39,6 @@ begin
    DMControlePatrimonial.TipoBens.Close;
    DMControlePatrimonial.TipoBens.SQL.Text := ' SELECT * FROM TIPO_DE_BENS A WHERE '+c_where;
    DMControlePatrimonial.TipoBens.Open;
-end;
-
-procedure TP_TipoBens.sbNovoClick(Sender: TObject);
-begin
-   P_PesquisaNotaBemImobilizado := TP_PesquisaNotaBemImobilizado.Create(Self);
-   try
-     P_PesquisaNotaBemImobilizado.ShowModal;
-   finally
-     FreeAndNil(P_PesquisaNotaBemImobilizado);
-   end;
 end;
 
 end.
