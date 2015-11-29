@@ -3,12 +3,11 @@ unit UR_RelatorioContabil;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, IBX.IBCustomDataSet,
-  IBX.IBQuery, frxClass, frxDBSet, Vcl.StdCtrls;
+  System.SysUtils, System.Classes, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery,
+  frxClass, frxDBSet;
 
 type
-  TR_RelatorioContabil = class(TForm)
+  TR_RelatorioContabil = class(TDataModule)
     frxLANC_DIAS: TfrxReport;
     frxDBLANC_DIAS: TfrxDBDataset;
     IB_LANC_DIAS: TIBQuery;
@@ -53,21 +52,21 @@ type
     frxEMP: TfrxReport;
     frxDBEMP: TfrxDBDataset;
     IB_EMP: TIBQuery;
-    IB_DEP: TIBQuery;
-    frxDBDEP: TfrxDBDataset;
-    frxDEP: TfrxReport;
-    frxep: TfrxReport;
-    frxDBEP: TfrxDBDataset;
-    IB_EP: TIBQuery;
     IB_EMPEMP_COD: TIntegerField;
     IB_EMPEMP_CNPJ: TIBStringField;
     IB_EMPEMP_RAZAO: TIBStringField;
     IB_EMPEMP_NOMEF: TIBStringField;
     IB_EMPEMP_CIDADE: TIBStringField;
     IB_EMPEMP_TITULAR: TIBStringField;
+    IB_DEP: TIBQuery;
     IB_DEPDEP_COD: TIntegerField;
     IB_DEPDEP_NOME: TIBStringField;
     IB_DEPDEP_DESC: TIBStringField;
+    frxDBDEP: TfrxDBDataset;
+    frxDEP: TfrxReport;
+    frxep: TfrxReport;
+    frxDBEP: TfrxDBDataset;
+    IB_EP: TIBQuery;
     IB_EPEMP_COD: TIntegerField;
     IB_EPEMP_RAZAO: TIBStringField;
     IB_EPDEP_NOME: TIBStringField;
@@ -82,6 +81,8 @@ var
   R_RelatorioContabil: TR_RelatorioContabil;
 
 implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
 

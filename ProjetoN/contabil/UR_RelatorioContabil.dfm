@@ -1,20 +1,9 @@
 object R_RelatorioContabil: TR_RelatorioContabil
-  Left = 0
-  Top = 0
-  Caption = 'R_RelatorioContabil'
-  ClientHeight = 288
-  ClientWidth = 724
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
   OldCreateOrder = False
-  PixelsPerInch = 96
-  TextHeight = 13
+  Height = 392
+  Width = 724
   object frxLANC_DIAS: TfrxReport
-    Version = '5.3.16'
+    Version = '5.1.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -728,7 +717,7 @@ object R_RelatorioContabil: TR_RelatorioContabil
     end
   end
   object frxRazaoS: TfrxReport
-    Version = '5.3.16'
+    Version = '5.1.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1249,7 +1238,7 @@ object R_RelatorioContabil: TR_RelatorioContabil
     end
   end
   object frxdebito: TfrxReport
-    Version = '5.3.16'
+    Version = '5.1.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1959,7 +1948,7 @@ object R_RelatorioContabil: TR_RelatorioContabil
     end
   end
   object frxCREDITO: TfrxReport
-    Version = '5.3.16'
+    Version = '5.1.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2672,7 +2661,7 @@ object R_RelatorioContabil: TR_RelatorioContabil
     end
   end
   object frxEMP: TfrxReport
-    Version = '5.3.16'
+    Version = '5.1.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3345,7 +3334,7 @@ object R_RelatorioContabil: TR_RelatorioContabil
     Top = 181
   end
   object frxDEP: TfrxReport
-    Version = '5.3.16'
+    Version = '5.1.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3800,7 +3789,7 @@ object R_RelatorioContabil: TR_RelatorioContabil
     end
   end
   object frxep: TfrxReport
-    Version = '5.3.16'
+    Version = '5.1.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
