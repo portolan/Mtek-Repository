@@ -397,7 +397,7 @@ begin
   if I_DiferencaMeses = 0 then
      DBBNI_VLR_ATUAL.text := floattostr(F_BaseDepreciar)
   else
-     DBBNI_VLR_ATUAL.text := floattostr((I_DiferencaMeses * F_DepreciacaoMensal) - F_BaseDepreciar );
+     DBBNI_VLR_ATUAL.text := floattostr(abs((I_DiferencaMeses * F_VlrMensal) - F_BaseDepreciar ));
 
 end;
 
