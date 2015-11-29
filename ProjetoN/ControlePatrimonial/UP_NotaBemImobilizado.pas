@@ -449,7 +449,7 @@ begin
                                        '       A.BNI_CODIGO,                      ' +
                                        '       A.BNI_NR_NOTA,                     ' +
                                        '       A.BNI_FORNECEDOR,                  ' +
-                                       '       SUM(A.BNI_CODIGO) AS QUANTIDADE    ' +
+                                       '       COUNT(A.BNI_CODIGO) AS QUANTIDADE  ' +
                                        '  FROM BENS_IMOBILIZADOS A                ' +
                                        ' WHERE A.BNI_EMPRESA = :EMPRESA AND       ' +
                                        '       A.BNI_CODIGO = :CODIGO AND         ' +
