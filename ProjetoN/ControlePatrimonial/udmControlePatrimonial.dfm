@@ -623,12 +623,21 @@ object DMControlePatrimonial: TDMControlePatrimonial
       Required = True
       Size = 30
     end
+    object BenImobilizadoBNI_TEMPO_DEPRECIACAO: TIntegerField
+      DisplayLabel = 'TempoDepreciacao'
+      FieldName = 'BNI_TEMPO_DEPRECIACAO'
+      Origin = '"BENS_IMOBILIZADOS"."BNI_TEMPO_DEPRECIACAO"'
+    end
+    object BenImobilizadoBNI_TEMPO_RESIDUAL: TIntegerField
+      DisplayLabel = 'TempoResidual'
+      FieldName = 'BNI_TEMPO_RESIDUAL'
+      Origin = '"BENS_IMOBILIZADOS"."BNI_TEMPO_RESIDUAL"'
+    end
   end
   object UBenImobilizado: TIBUpdateSQL
     RefreshSQL.Strings = (
       'Select '
       '  BNI_EMPRESA,'
-      '  BNI_CODIGO,'
       '  BNI_NUM_SERIE,'
       '  BNI_NR_NOTA,'
       '  BNI_FORNECEDOR,'
@@ -644,7 +653,10 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '  BNI_VLR_ATUAL,'
       '  BNI_DEPRECIACAO,'
       '  BNI_OBSERVACAO,'
-      '  BNI_STATUS'
+      '  BNI_STATUS,'
+      '  BNI_CODIGO,'
+      '  BNI_TEMPO_DEPRECIACAO,'
+      '  BNI_TEMPO_RESIDUAL'
       'from BENS_IMOBILIZADOS '
       'where'
       '  BNI_CODIGO = :BNI_CODIGO and'
@@ -666,6 +678,8 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '  BNI_NUM_SERIE = :BNI_NUM_SERIE,'
       '  BNI_OBSERVACAO = :BNI_OBSERVACAO,'
       '  BNI_STATUS = :BNI_STATUS,'
+      '  BNI_TEMPO_DEPRECIACAO = :BNI_TEMPO_DEPRECIACAO,'
+      '  BNI_TEMPO_RESIDUAL = :BNI_TEMPO_RESIDUAL,'
       '  BNI_TIPO = :BNI_TIPO,'
       '  BNI_VLR_AGREGADO = :BNI_VLR_AGREGADO,'
       '  BNI_VLR_AQUISICAO = :BNI_VLR_AQUISICAO,'
@@ -685,8 +699,11 @@ object DMControlePatrimonial: TDMControlePatrimonial
         'MANUTENCAO, '
       
         '   BNI_NR_NOTA, BNI_NUM_SERIE, BNI_OBSERVACAO, BNI_STATUS, BNI_T' +
-        'IPO, BNI_VLR_AGREGADO, '
-      '   BNI_VLR_AQUISICAO, BNI_VLR_ATUAL, BNI_VLR_RESIDUAL)'
+        'EMPO_DEPRECIACAO, '
+      
+        '   BNI_TEMPO_RESIDUAL, BNI_TIPO, BNI_VLR_AGREGADO, BNI_VLR_AQUIS' +
+        'ICAO, BNI_VLR_ATUAL, '
+      '   BNI_VLR_RESIDUAL)'
       'values'
       
         '  (:BNI_CODIGO, :BNI_DATA_AQUISICAO, :BNI_DEPRECIACAO, :BNI_DESC' +
@@ -698,8 +715,9 @@ object DMControlePatrimonial: TDMControlePatrimonial
         '   :BNI_MANUTENCAO, :BNI_NR_NOTA, :BNI_NUM_SERIE, :BNI_OBSERVACA' +
         'O, :BNI_STATUS, '
       
-        '   :BNI_TIPO, :BNI_VLR_AGREGADO, :BNI_VLR_AQUISICAO, :BNI_VLR_AT' +
-        'UAL, :BNI_VLR_RESIDUAL)')
+        '   :BNI_TEMPO_DEPRECIACAO, :BNI_TEMPO_RESIDUAL, :BNI_TIPO, :BNI_' +
+        'VLR_AGREGADO, '
+      '   :BNI_VLR_AQUISICAO, :BNI_VLR_ATUAL, :BNI_VLR_RESIDUAL)')
     DeleteSQL.Strings = (
       'delete from BENS_IMOBILIZADOS'
       'where'

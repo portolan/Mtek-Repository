@@ -60,6 +60,8 @@ type
     SBAtualizaDepreciacao: TSpeedButton;
     Label2: TLabel;
     DBBNI_CODIGO: TDBEdit;
+    DBVALORBASE: TEdit;
+    Label16: TLabel;
     procedure pClick(Sender: TObject);
     procedure DBBNI_NUM_SERIEExit(Sender: TObject);
     procedure DBBNI_DEPRECIACAOExit(Sender: TObject);
@@ -85,6 +87,7 @@ type
     procedure ProcTotalizaBen;
     procedure procselect;
     Function FuncExtrairDatas: integer;
+    procedure ProcAtualizaTempos;
   public
 
     { Public declarations }
@@ -110,7 +113,7 @@ begin
       f_percentual := strtofloat(dbBNI_DEPRECIACAO.Text)
   else
   begin
-     showmessage('Por Favor informe o percentual de Depreciação!');
+     raise Exception.Create('Atenção! Percentual de depreciação não informado, Por Favor informe o percentual de Depreciação!');
 
       if dbBNI_DEPRECIACAO.CanFocus then
          dbBNI_DEPRECIACAO.SetFocus
@@ -119,7 +122,7 @@ begin
 
    if (f_percentual > 100) or (f_percentual < 0)then
    begin
-      showmessage('Atenção, Percentual Invalido, Informe dados entre 0 e 100 %');
+     raise Exception.Create('Atenção! Percentual Invalido, Informe dados entre 0 e 100 %');
 
       if dbBNI_DEPRECIACAO.CanFocus then
          dbBNI_DEPRECIACAO.SetFocus
@@ -216,8 +219,7 @@ begin
         (QryVerificaNumeroDeSerie.FieldByName('BNI_NR_NOTA').AsInteger = DMControlePatrimonial.BenImobilizadoBNI_NR_NOTA.asinteger) then
      exit;
 
-
-        showmessage('Número de série Invalido!!' + slinebreak +
+     raise Exception.Create('Número de série Invalido!!' + slinebreak +
                     'Número de série já se encontra informado no ben imobilizado, Empresa: '
                      + QryVerificaNumeroDeSerie.FieldByName('BNI_EMPRESA').asstring + ' Produto: ' +
                      QryVerificaNumeroDeSerie.FieldByName('BNI_CODIGO').asstring + ' Nr. Nota: ' +
@@ -393,10 +395,49 @@ begin
 
   I_DiferencaMeses := FuncExtrairDatas;
 
+  DBVALORBASE.text := formatfloat( '0.00', F_BaseDepreciar);
+
   if I_DiferencaMeses = 0 then
      DBBNI_VLR_ATUAL.text := formatfloat('0.00' ,F_BaseDepreciar)
   else
      DBBNI_VLR_ATUAL.text := formatfloat ( '0.00' ,abs((I_DiferencaMeses * F_VlrMensal) - F_BaseDepreciar ));
+
+end;
+
+procedure TMBensImobilizados.ProcAtualizaTempos;
+var
+   F_VlrAquisicao, F_VlrResidual, F_VlrAgregado, F_PercDepreciacao, F_DepreciacaoMensal, F_BaseDepreciar: double;
+   F_VlrAnual, F_VlrMensal :double;
+   I_TempoDepreciacao : integer;
+   i_TempoResidual    : integer;
+begin
+
+   F_VlrAquisicao := strtofloat(DBBNI_VLR_AQUISICAO.text);
+   F_VlrResidual := strtofloat(DBBNI_VLR_RESIDUAL.Text);
+   F_VlrAgregado := strtofloat(DBBNI_VLR_AGREGADO.Text);
+   F_PercDepreciacao := strtofloat(DBBNI_DEPRECIACAO.text);
+
+    // recupera o valor a ser considerado na depreciação
+  F_BaseDepreciar := (F_VlrAquisicao + F_VlrAgregado) - F_VlrResidual;
+  // valor de perda anual do item
+  F_VlrAnual := (F_BaseDepreciar * F_PercDepreciacao) / 100;
+
+  if (F_BaseDepreciar > 0) and (F_VlrAnual > 0) then
+  begin
+     I_TempoDepreciacao := trunc(F_BaseDepreciar / F_VlrAnual);
+  end
+  else
+     I_TempoDepreciacao := 0;
+
+  if (F_VlrResidual > 0) and (F_PercDepreciacao > 0) then
+  begin
+     I_TempoResidual    := trunc(F_VlrResidual * (F_VlrResidual / F_PercDepreciacao));
+  end
+  else
+     I_TempoResidual := 0;
+
+  DMControlePatrimonial.BenImobilizadoBNI_TEMPO_DEPRECIACAO.AsInteger  := I_TempoDepreciacao;
+  DMControlePatrimonial.BenImobilizadoBNI_TEMPO_RESIDUAL.AsInteger     := I_TempoResidual;
 
 end;
 
@@ -534,9 +575,6 @@ begin
   end;
 end;
 
-
-
-
 procedure TMBensImobilizados.procselect;
 begin
    inherited;
@@ -617,6 +655,7 @@ end;
 procedure TMBensImobilizados.sbGravarClick(Sender: TObject);
 begin
    ProcTotalizaBen;
+   ProcAtualizaTempos;
    inherited;
 end;
 

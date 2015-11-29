@@ -72,6 +72,8 @@ type
     ComponenteCOM_VLR_TOTAL: TIBBCDField;
     BenImobilizadoBNI_CODIGO: TIBStringField;
     ManutencaoMAN_BEN: TIBStringField;
+    BenImobilizadoBNI_TEMPO_DEPRECIACAO: TIntegerField;
+    BenImobilizadoBNI_TEMPO_RESIDUAL: TIntegerField;
     procedure EstadoConservacaoAfterInsert(DataSet: TDataSet);
     procedure TipoBensAfterInsert(DataSet: TDataSet);
     procedure LocalizacaoAfterInsert(DataSet: TDataSet);

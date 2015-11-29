@@ -1,7 +1,7 @@
 object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
   OldCreateOrder = False
-  Height = 444
-  Width = 657
+  Height = 206
+  Width = 607
   object frxTIPO: TfrxReport
     Version = '5.1.5'
     DotMatrixReport = False
@@ -1003,16 +1003,6 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
           Memo.UTF8W = (
             '[frxDBTIPO."BNI_EMPRESA"]')
         end
-        object frxDBTIPOBNI_CODIGO: TfrxMemoView
-          Left = 56.692950000000000000
-          Width = 60.472480000000000000
-          Height = 18.897650000000000000
-          DataField = 'BNI_CODIGO'
-          DataSet = frxDBBensImobilizados
-          DataSetName = 'frxDBTIPO'
-          Memo.UTF8W = (
-            '[frxDBTIPO."BNI_CODIGO"]')
-        end
         object frxDBTIPOBNI_DESCRICAO: TfrxMemoView
           Left = 117.165430000000000000
           Width = 200.315090000000000000
@@ -1103,6 +1093,16 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
           Memo.UTF8W = (
             '[frxDBTIPO."BNI_STATUS"]')
         end
+        object frxDBTIPOBNI_CODIGO: TfrxMemoView
+          Left = 56.692950000000010000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          DataField = 'BNI_CODIGO'
+          DataSet = frxDBBensImobilizados
+          DataSetName = 'frxDBTIPO'
+          Memo.UTF8W = (
+            '[frxDBTIPO."BNI_CODIGO"]')
+        end
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
@@ -1147,7 +1147,6 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
     CloseDataSource = False
     FieldAliases.Strings = (
       'BNI_EMPRESA=BNI_EMPRESA'
-      'BNI_CODIGO=BNI_CODIGO'
       'BNI_NUM_SERIE=BNI_NUM_SERIE'
       'BNI_NR_NOTA=BNI_NR_NOTA'
       'BNI_FORNECEDOR=BNI_FORNECEDOR'
@@ -1163,7 +1162,10 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
       'BNI_VLR_AGREGADO=BNI_VLR_AGREGADO'
       'BNI_VLR_ATUAL=BNI_VLR_ATUAL'
       'BNI_DEPRECIACAO=BNI_DEPRECIACAO'
-      'BNI_STATUS=BNI_STATUS')
+      'BNI_STATUS=BNI_STATUS'
+      'BNI_CODIGO=BNI_CODIGO'
+      'BNI_TEMPO_RESIDUAL=BNI_TEMPO_RESIDUAL'
+      'BNI_TEMPO_DEPRECIACAO=BNI_TEMPO_DEPRECIACAO')
     DataSet = IBBensImobilizados
     BCDToCurrency = False
     Left = 400
@@ -1193,14 +1195,16 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
       '       A.BNI_VLR_AGREGADO,'
       '       A.BNI_VLR_ATUAL,'
       '       A.BNI_DEPRECIACAO,'
-      '       A.BNI_STATUS'
+      '       A.BNI_STATUS,'
+      '       A.BNI_TEMPO_RESIDUAL,'
+      '       A.BNI_TEMPO_DEPRECIACAO'
       '  FROM BENS_IMOBILIZADOS A'
       ' INNER JOIN PESSOAS B ON B.PESS_CODIGO = A.BNI_FORNECEDOR'
       ' INNER JOIN TIPO_DE_BENS C ON A.BNI_TIPO = C.TPB_CODIGO'
-      ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_DESCRICAO'
+      ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_CODIGO'
       
         ' INNER JOIN ESTADO_DE_CONSERVACAO E ON A.BNI_ESTADO_CONSERVACAO ' +
-        '= E.EDC_DESCRICAO'
+        '= E.EDC_CODIGO'
       ' WHERE A.BNI_EMPRESA = -1 AND'
       '       A.BNI_CODIGO = -1 AND'
       '       A.BNI_NUM_SERIE = -1   ')
@@ -1209,12 +1213,6 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
     object IBBensImobilizadosBNI_EMPRESA: TIntegerField
       FieldName = 'BNI_EMPRESA'
       Origin = '"BENS_IMOBILIZADOS"."BNI_EMPRESA"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object IBBensImobilizadosBNI_CODIGO: TIntegerField
-      FieldName = 'BNI_CODIGO'
-      Origin = '"BENS_IMOBILIZADOS"."BNI_CODIGO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
@@ -1307,8 +1305,24 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
       Origin = '"BENS_IMOBILIZADOS"."BNI_STATUS"'
       Size = 1
     end
+    object IBBensImobilizadosBNI_CODIGO: TIBStringField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'BNI_CODIGO'
+      Origin = '"BENS_IMOBILIZADOS"."BNI_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
+    end
+    object IBBensImobilizadosBNI_TEMPO_RESIDUAL: TIntegerField
+      FieldName = 'BNI_TEMPO_RESIDUAL'
+      Origin = '"BENS_IMOBILIZADOS"."BNI_TEMPO_RESIDUAL"'
+    end
+    object IBBensImobilizadosBNI_TEMPO_DEPRECIACAO: TIntegerField
+      FieldName = 'BNI_TEMPO_DEPRECIACAO'
+      Origin = '"BENS_IMOBILIZADOS"."BNI_TEMPO_DEPRECIACAO"'
+    end
   end
-  object frxDepreciacao: TfrxReport
+  object frxBensImobilizadosAnalitico: TfrxReport
     Version = '5.1.5'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -1317,7 +1331,7 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 42313.806204733800000000
-    ReportOptions.LastChange = 42336.721026088000000000
+    ReportOptions.LastChange = 42337.714029143520000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       '')
@@ -1325,7 +1339,7 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
     Top = 93
     Datasets = <
       item
-        DataSet = frxDBDepreciacao
+        DataSet = frxDBBensImobilizadosAnalitico
         DataSetName = 'frxDBTIPO'
       end>
     Variables = <>
@@ -1380,12 +1394,21 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
       end
       object Header1: TfrxHeader
         FillType = ftBrush
-        Height = 22.677180000000000000
         Top = 177.637910000000000000
         Width = 1046.929810000000000000
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Height = 83.149660000000000000
+        Top = 200.315090000000000000
+        Width = 1046.929810000000000000
+        OnBeforePrint = 'MasterData1OnBeforePrint'
+        DataSet = frxDBBensImobilizadosAnalitico
+        DataSetName = 'frxDBTIPO'
+        RowCount = 0
         object Memo2: TfrxMemoView
           Align = baLeft
-          Width = 56.692950000000000000
+          Width = 56.692950000000010000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
@@ -1448,8 +1471,8 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
         end
         object Memo6: TfrxMemoView
           Align = baLeft
-          Left = 419.527830000000000000
-          Width = 68.031540000000000000
+          Left = 408.189240000000100000
+          Width = 68.031540000000010000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
@@ -1465,7 +1488,7 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
         object Memo8: TfrxMemoView
           Align = baLeft
           Left = 317.480520000000000000
-          Width = 102.047310000000000000
+          Width = 90.708720000000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
@@ -1480,7 +1503,7 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
         end
         object Memo9: TfrxMemoView
           Align = baLeft
-          Left = 487.559370000000000000
+          Left = 476.220780000000100000
           Width = 117.165430000000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
@@ -1496,7 +1519,7 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
         end
         object Memo11: TfrxMemoView
           Align = baLeft
-          Left = 604.724800000000000000
+          Left = 593.386210000000000000
           Width = 98.267780000000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
@@ -1512,7 +1535,7 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
         end
         object Memo13: TfrxMemoView
           Align = baLeft
-          Left = 702.992580000000000000
+          Left = 691.653990000000000000
           Width = 98.267780000000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
@@ -1528,7 +1551,7 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
         end
         object Memo7: TfrxMemoView
           Align = baLeft
-          Left = 801.260360000000000000
+          Left = 789.921770000000000000
           Width = 98.267780000000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
@@ -1542,10 +1565,10 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
             'Est. Conserva'#231#227'o')
           ParentFont = False
         end
-        object Memo14: TfrxMemoView
+        object Memo20: TfrxMemoView
           Align = baLeft
-          Left = 899.528140000000000000
-          Width = 83.149660000000000000
+          Left = 888.189550000000000000
+          Width = 94.488250000000000000
           Height = 18.897650000000000000
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlack
@@ -1555,168 +1578,558 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           Fill.BackColor = 52376
           Memo.UTF8W = (
-            'Vlr. Atual')
+            'Dta. Aquisi'#231#227'o')
           ParentFont = False
         end
-      end
-      object MasterData1: TfrxMasterData
-        FillType = ftBrush
-        Height = 18.897650000000000000
-        Top = 222.992270000000000000
-        Width = 1046.929810000000000000
-        OnBeforePrint = 'MasterData1OnBeforePrint'
-        DataSet = frxDBDepreciacao
-        DataSetName = 'frxDBTIPO'
-        RowCount = 0
         object frxDBTIPOBNI_EMPRESA: TfrxMemoView
-          Width = 56.692950000000000000
+          Top = 18.897650000000030000
+          Width = 56.692950000000010000
           Height = 18.897650000000000000
           DataField = 'BNI_EMPRESA'
-          DataSet = frxDBDepreciacao
+          DataSet = frxDBBensImobilizadosAnalitico
           DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
           Memo.UTF8W = (
             '[frxDBTIPO."BNI_EMPRESA"]')
-        end
-        object frxDBTIPOBNI_CODIGO: TfrxMemoView
-          Left = 56.692950000000000000
-          Width = 60.472480000000000000
-          Height = 18.897650000000000000
-          DataField = 'BNI_CODIGO'
-          DataSet = frxDBDepreciacao
-          DataSetName = 'frxDBTIPO'
-          Memo.UTF8W = (
-            '[frxDBTIPO."BNI_CODIGO"]')
+          ParentFont = False
         end
         object frxDBTIPOBNI_DESCRICAO: TfrxMemoView
           Left = 117.165430000000000000
+          Top = 18.897649999999970000
           Width = 200.315090000000000000
           Height = 18.897650000000000000
           DataField = 'BNI_DESCRICAO'
-          DataSet = frxDBDepreciacao
+          DataSet = frxDBBensImobilizadosAnalitico
           DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
           Memo.UTF8W = (
             '[frxDBTIPO."BNI_DESCRICAO"]')
+          ParentFont = False
         end
         object frxDBTIPOBNI_NUM_SERIE: TfrxMemoView
           Left = 317.480520000000000000
-          Width = 102.047310000000000000
+          Top = 18.897649999999970000
+          Width = 90.708720000000000000
           Height = 18.897650000000000000
           DataField = 'BNI_NUM_SERIE'
-          DataSet = frxDBDepreciacao
+          DataSet = frxDBBensImobilizadosAnalitico
           DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
           Memo.UTF8W = (
             '[frxDBTIPO."BNI_NUM_SERIE"]')
+          ParentFont = False
         end
         object frxDBTIPOBNI_NR_NOTA: TfrxMemoView
-          Left = 419.527830000000000000
-          Width = 68.031540000000000000
+          Align = baLeft
+          Left = 408.189240000000000000
+          Top = 18.897649999999970000
+          Width = 68.031540000000010000
           Height = 18.897650000000000000
           DataField = 'BNI_NR_NOTA'
-          DataSet = frxDBDepreciacao
+          DataSet = frxDBBensImobilizadosAnalitico
           DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
           Memo.UTF8W = (
             '[frxDBTIPO."BNI_NR_NOTA"]')
+          ParentFont = False
         end
         object frxDBTIPONOME: TfrxMemoView
-          Left = 487.559370000000000000
+          Align = baLeft
+          Left = 476.220780000000000000
+          Top = 18.897649999999970000
           Width = 117.165430000000000000
           Height = 18.897650000000000000
           DataField = 'NOME'
-          DataSet = frxDBDepreciacao
+          DataSet = frxDBBensImobilizadosAnalitico
           DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
           Memo.UTF8W = (
             '[frxDBTIPO."NOME"]')
-        end
-        object frxDBTIPOTIPO: TfrxMemoView
-          Left = 604.724800000000000000
-          Width = 98.267780000000000000
-          Height = 18.897650000000000000
-          DataField = 'TIPO'
-          DataSet = frxDBDepreciacao
-          DataSetName = 'frxDBTIPO'
-          Memo.UTF8W = (
-            '[frxDBTIPO."TIPO"]')
-        end
-        object frxDBTIPOLOCALIZACAO: TfrxMemoView
-          Left = 702.992580000000000000
-          Width = 98.267780000000000000
-          Height = 18.897650000000000000
-          DataField = 'LOCALIZACAO'
-          DataSet = frxDBDepreciacao
-          DataSetName = 'frxDBTIPO'
-          Memo.UTF8W = (
-            '[frxDBTIPO."LOCALIZACAO"]')
-        end
-        object frxDBTIPOESTADO_CONSERVACAO: TfrxMemoView
-          Left = 801.260360000000000000
-          Width = 98.267780000000000000
-          Height = 18.897650000000000000
-          DataField = 'ESTADO_CONSERVACAO'
-          DataSet = frxDBDepreciacao
-          DataSetName = 'frxDBTIPO'
-          Memo.UTF8W = (
-            '[frxDBTIPO."ESTADO_CONSERVACAO"]')
-        end
-        object frxDBTIPOBNI_VLR_ATUAL: TfrxMemoView
-          Left = 899.528140000000000000
-          Width = 83.149660000000000000
-          Height = 18.897650000000000000
-          DataField = 'BNI_VLR_ATUAL'
-          DataSet = frxDBDepreciacao
-          DataSetName = 'frxDBTIPO'
-          Memo.UTF8W = (
-            '[frxDBTIPO."BNI_VLR_ATUAL"]')
+          ParentFont = False
         end
         object frxDBTIPOBNI_STATUS: TfrxMemoView
           Left = 982.677800000000000000
+          Top = 18.897649999999970000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
           DataField = 'BNI_STATUS'
-          DataSet = frxDBDepreciacao
+          DataSet = frxDBBensImobilizadosAnalitico
           DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
           Memo.UTF8W = (
             '[frxDBTIPO."BNI_STATUS"]')
+          ParentFont = False
+        end
+        object frxDBTIPOBNI_CODIGO: TfrxMemoView
+          Left = 56.692950000000000000
+          Top = 18.897649999999970000
+          Width = 60.472480000000000000
+          Height = 18.897650000000000000
+          DataField = 'BNI_CODIGO'
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTIPO."BNI_CODIGO"]')
+          ParentFont = False
+        end
+        object frxDBTIPOTIPO: TfrxMemoView
+          Align = baLeft
+          Left = 593.386210000000000000
+          Top = 18.897649999999970000
+          Width = 98.267780000000000000
+          Height = 18.897650000000000000
+          DataField = 'TIPO'
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTIPO."TIPO"]')
+          ParentFont = False
+        end
+        object frxDBTIPOLOCALIZACAO: TfrxMemoView
+          Align = baLeft
+          Left = 691.653990000000000000
+          Top = 18.897649999999970000
+          Width = 98.267780000000000000
+          Height = 18.897650000000000000
+          DataField = 'LOCALIZACAO'
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTIPO."LOCALIZACAO"]')
+          ParentFont = False
+        end
+        object frxDBTIPOESTADO_CONSERVACAO: TfrxMemoView
+          Align = baLeft
+          Left = 789.921770000000000000
+          Top = 18.897649999999970000
+          Width = 98.267780000000000000
+          Height = 18.897650000000000000
+          DataField = 'ESTADO_CONSERVACAO'
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTIPO."ESTADO_CONSERVACAO"]')
+          ParentFont = False
+        end
+        object frxDBTIPOBNI_DATA_AQUISICAO: TfrxMemoView
+          Align = baWidth
+          Left = 888.189550000000000000
+          Top = 18.897649999999970000
+          Width = 94.488249999999950000
+          Height = 18.897650000000000000
+          DataField = 'BNI_DATA_AQUISICAO'
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTIPO."BNI_DATA_AQUISICAO"]')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          Left = 120.944960000000000000
+          Top = 41.574829999999990000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clHighlightText
+          Memo.UTF8W = (
+            'Vlr. Aquisi'#231#227'o')
+          ParentFont = False
+        end
+        object Memo15: TfrxMemoView
+          Left = 287.244280000000000000
+          Top = 41.574829999999990000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clHighlightText
+          Memo.UTF8W = (
+            'Vlr. Residual')
+          ParentFont = False
+        end
+        object Memo16: TfrxMemoView
+          Left = 204.094620000000000000
+          Top = 41.574829999999990000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clHighlightText
+          Memo.UTF8W = (
+            'Vlr. Agregado')
+          ParentFont = False
+        end
+        object Memo17: TfrxMemoView
+          Left = 370.393940000000000000
+          Top = 41.574829999999990000
+          Width = 56.692950000000010000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clHighlightText
+          Memo.UTF8W = (
+            'Vlr. Base')
+          ParentFont = False
+        end
+        object Memo19: TfrxMemoView
+          Left = 427.086890000000000000
+          Top = 41.574829999999990000
+          Width = 105.826840000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clHighlightText
+          Memo.UTF8W = (
+            'Perc. Deprecia'#231#227'o')
+          ParentFont = False
+        end
+        object Memo14: TfrxMemoView
+          Left = 532.913730000000000000
+          Top = 41.574829999999990000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clHighlightText
+          Memo.UTF8W = (
+            'Vlr. Atual')
+          ParentFont = False
+        end
+        object Memo21: TfrxMemoView
+          Left = 616.063390000000000000
+          Top = 41.574829999999990000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clHighlightText
+          Memo.UTF8W = (
+            'Vlr. Dep. Mensal')
+          ParentFont = False
+        end
+        object frxDBTIPOBNI_VLR_AQUISICAO: TfrxMemoView
+          Left = 120.944960000000000000
+          Top = 64.252009999999990000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DataField = 'BNI_VLR_AQUISICAO'
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTIPO."BNI_VLR_AQUISICAO"]')
+          ParentFont = False
+        end
+        object frxDBTIPOBNI_VLR_AGREGADO: TfrxMemoView
+          Left = 204.094620000000000000
+          Top = 64.252009999999990000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DataField = 'BNI_VLR_AGREGADO'
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTIPO."BNI_VLR_AGREGADO"]')
+          ParentFont = False
+        end
+        object frxDBTIPOBNI_VLR_RESIDUAL: TfrxMemoView
+          Left = 287.244280000000000000
+          Top = 64.252009999999990000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DataField = 'BNI_VLR_RESIDUAL'
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTIPO."BNI_VLR_RESIDUAL"]')
+          ParentFont = False
+        end
+        object Memo18: TfrxMemoView
+          Left = 370.393940000000000000
+          Top = 64.252009999999990000
+          Width = 56.692950000000010000
+          Height = 18.897650000000000000
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            
+              '[(<frxDBTIPO."BNI_VLR_AQUISICAO">+<frxDBTIPO."BNI_VLR_AGREGADO">' +
+              ')-<frxDBTIPO."BNI_VLR_RESIDUAL">]')
+          ParentFont = False
+        end
+        object frxDBTIPOBNI_DEPRECIACAO: TfrxMemoView
+          Left = 427.086890000000000000
+          Top = 64.252009999999990000
+          Width = 105.826840000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTIPO."BNI_DEPRECIACAO"] %')
+          ParentFont = False
+        end
+        object frxDBTIPOBNI_VLR_ATUAL: TfrxMemoView
+          Left = 532.913730000000000000
+          Top = 64.252009999999990000
+          Width = 83.149660000000000000
+          Height = 18.897650000000000000
+          DataField = 'BNI_VLR_ATUAL'
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTIPO."BNI_VLR_ATUAL"]')
+          ParentFont = False
+        end
+        object Memo22: TfrxMemoView
+          Left = 616.063390000000000000
+          Top = 64.252009999999990000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            
+              '[((((<frxDBTIPO."BNI_VLR_AQUISICAO">+<frxDBTIPO."BNI_VLR_AGREGAD' +
+              'O">)-<frxDBTIPO."BNI_VLR_RESIDUAL">) * <frxDBTIPO."BNI_DEPRECIAC' +
+              'AO">) / 100) / 12]')
+          ParentFont = False
+        end
+        object Memo23: TfrxMemoView
+          Left = 718.110700000000000000
+          Top = 41.574829999999990000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clHighlightText
+          Memo.UTF8W = (
+            'Vlr. Dep. Anual')
+          ParentFont = False
+        end
+        object Memo24: TfrxMemoView
+          Left = 718.110700000000000000
+          Top = 64.252009999999990000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            
+              '[((((<frxDBTIPO."BNI_VLR_AQUISICAO">+<frxDBTIPO."BNI_VLR_AGREGAD' +
+              'O">)-<frxDBTIPO."BNI_VLR_RESIDUAL">) * <frxDBTIPO."BNI_DEPRECIAC' +
+              'AO">) / 100) ]')
+          ParentFont = False
+        end
+        object Memo25: TfrxMemoView
+          Left = 820.158010000000000000
+          Top = 41.574829999999990000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clHighlightText
+          Memo.UTF8W = (
+            'Tempo Dep.')
+          ParentFont = False
+        end
+        object Memo26: TfrxMemoView
+          Left = 820.158010000000000000
+          Top = 64.252009999999990000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTIPO."BNI_TEMPO_DEPRECIACAO"] Anos')
+          ParentFont = False
+        end
+        object Memo27: TfrxMemoView
+          Left = 922.205320000000000000
+          Top = 41.574829999999990000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Verdana'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Fill.BackColor = clHighlightText
+          Memo.UTF8W = (
+            'Tempo Residual')
+          ParentFont = False
+        end
+        object Memo28: TfrxMemoView
+          Left = 922.205320000000000000
+          Top = 64.252009999999990000
+          Width = 102.047310000000000000
+          Height = 18.897650000000000000
+          DataSet = frxDBBensImobilizadosAnalitico
+          DataSetName = 'frxDBTIPO'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Memo.UTF8W = (
+            '[frxDBTIPO."BNI_TEMPO_RESIDUAL"] Anos')
+          ParentFont = False
         end
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
         Height = 22.677180000000000000
-        Top = 264.567100000000000000
+        Top = 306.141930000000000000
         Width = 1046.929810000000000000
-      end
-      object Memo10: TfrxMemoView
-        Align = baCenter
-        Left = 389.291590000000100000
-        Top = 245.669450000000000000
-        Width = 268.346630000000000000
-        Height = 18.897650000000000000
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
-        Font.Name = 'Verdana'
-        Font.Style = []
-        Memo.UTF8W = (
-          'M'#243'dulo Controle Patrimonial - ERP')
-        ParentFont = False
-      end
-      object Memo12: TfrxMemoView
-        Left = 631.181510000000000000
-        Top = 253.228510000000000000
-        Width = 79.370130000000000000
-        Height = 18.897650000000000000
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Height = -13
-        Font.Name = 'Arial'
-        Font.Style = []
-        HAlign = haCenter
-        Memo.UTF8W = (
-          '[Date]')
-        ParentFont = False
+        object Memo10: TfrxMemoView
+          Align = baRight
+          Left = 778.583180000000100000
+          Width = 268.346630000000000000
+          Height = 18.897650000000000000
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clBlack
+          Font.Height = -13
+          Font.Name = 'Verdana'
+          Font.Style = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'M'#243'dulo Controle Patrimonial - ERP')
+          ParentFont = False
+        end
       end
     end
   end
-  object frxDBDepreciacao: TfrxDBDataset
+  object frxDBBensImobilizadosAnalitico: TfrxDBDataset
     UserName = 'frxDBTIPO'
     CloseDataSource = False
     FieldAliases.Strings = (
@@ -1737,13 +2150,15 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
       'BNI_VLR_AGREGADO=BNI_VLR_AGREGADO'
       'BNI_VLR_ATUAL=BNI_VLR_ATUAL'
       'BNI_DEPRECIACAO=BNI_DEPRECIACAO'
-      'BNI_STATUS=BNI_STATUS')
-    DataSet = IBDepreciacao
+      'BNI_STATUS=BNI_STATUS'
+      'BNI_TEMPO_DEPRECIACAO=BNI_TEMPO_DEPRECIACAO'
+      'BNI_TEMPO_RESIDUAL=BNI_TEMPO_RESIDUAL')
+    DataSet = IBBensImobilizadosAnalitico
     BCDToCurrency = False
     Left = 400
     Top = 93
   end
-  object IBDepreciacao: TIBQuery
+  object IBBensImobilizadosAnalitico: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
     BufferChunks = 1000
@@ -1767,119 +2182,150 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
       '       A.BNI_VLR_AGREGADO,'
       '       A.BNI_VLR_ATUAL,'
       '       A.BNI_DEPRECIACAO,'
-      '       A.BNI_STATUS'
+      '       A.BNI_STATUS,'
+      '       A.BNI_TEMPO_DEPRECIACAO,'
+      '       A.BNI_TEMPO_RESIDUAL'
       '  FROM BENS_IMOBILIZADOS A'
       ' INNER JOIN PESSOAS B ON B.PESS_CODIGO = A.BNI_FORNECEDOR'
       ' INNER JOIN TIPO_DE_BENS C ON A.BNI_TIPO = C.TPB_CODIGO'
-      ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_DESCRICAO'
+      ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_CODIGO'
       
         ' INNER JOIN ESTADO_DE_CONSERVACAO E ON A.BNI_ESTADO_CONSERVACAO ' +
-        '= E.EDC_DESCRICAO'
+        '= E.EDC_CODIGO'
       ' WHERE A.BNI_EMPRESA = -1 AND'
       '       A.BNI_CODIGO = -1 AND'
       '       A.BNI_NUM_SERIE = -1   ')
     Left = 464
     Top = 93
-    object IntegerField1: TIntegerField
+    object IBBensImobilizadosAnaliticoBNI_EMPRESA: TIntegerField
+      DisplayLabel = 'Empresa'
       FieldName = 'BNI_EMPRESA'
       Origin = '"BENS_IMOBILIZADOS"."BNI_EMPRESA"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object IntegerField2: TIntegerField
+    object IBBensImobilizadosAnaliticoBNI_CODIGO: TIBStringField
+      DisplayLabel = 'Cod. Produto'
       FieldName = 'BNI_CODIGO'
       Origin = '"BENS_IMOBILIZADOS"."BNI_CODIGO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
+      Size = 30
     end
-    object IntegerField3: TIntegerField
+    object IBBensImobilizadosAnaliticoBNI_NUM_SERIE: TIntegerField
+      DisplayLabel = 'Num. Serie'
       FieldName = 'BNI_NUM_SERIE'
       Origin = '"BENS_IMOBILIZADOS"."BNI_NUM_SERIE"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object IntegerField4: TIntegerField
+    object IBBensImobilizadosAnaliticoBNI_NR_NOTA: TIntegerField
+      DisplayLabel = 'Nr. Nota'
       FieldName = 'BNI_NR_NOTA'
       Origin = '"BENS_IMOBILIZADOS"."BNI_NR_NOTA"'
       Required = True
     end
-    object IntegerField5: TIntegerField
+    object IBBensImobilizadosAnaliticoBNI_FORNECEDOR: TIntegerField
+      DisplayLabel = 'C'#243'd. Fornecedor'
       FieldName = 'BNI_FORNECEDOR'
       Origin = '"BENS_IMOBILIZADOS"."BNI_FORNECEDOR"'
       Required = True
     end
-    object IBStringField1: TIBStringField
+    object IBBensImobilizadosAnaliticoNOME: TIBStringField
+      DisplayLabel = 'Nome Fornecedor'
       FieldName = 'NOME'
       Origin = '"PESSOAS"."PESS_NOME"'
       Size = 100
     end
-    object IBStringField2: TIBStringField
+    object IBBensImobilizadosAnaliticoBNI_DESCRICAO: TIBStringField
+      DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'BNI_DESCRICAO'
       Origin = '"BENS_IMOBILIZADOS"."BNI_DESCRICAO"'
       Required = True
       Size = 100
     end
-    object IBStringField3: TIBStringField
+    object IBBensImobilizadosAnaliticoTIPO: TIBStringField
+      DisplayLabel = 'Tipo'
       FieldName = 'TIPO'
       Origin = '"TIPO_DE_BENS"."TPB_DESCRICAO"'
       Required = True
       Size = 100
     end
-    object IBStringField4: TIBStringField
+    object IBBensImobilizadosAnaliticoLOCALIZACAO: TIBStringField
+      DisplayLabel = 'Localiza'#231#227'o'
       FieldName = 'LOCALIZACAO'
       Origin = '"LOCALIZACAO"."LOC_DESCRICAO"'
       Required = True
       Size = 100
     end
-    object IBStringField5: TIBStringField
+    object IBBensImobilizadosAnaliticoESTADO_CONSERVACAO: TIBStringField
+      DisplayLabel = 'Estado de Conserva'#231#227'o'
       FieldName = 'ESTADO_CONSERVACAO'
       Origin = '"ESTADO_DE_CONSERVACAO"."EDC_DESCRICAO"'
       Required = True
       Size = 100
     end
-    object IntegerField6: TIntegerField
+    object IBBensImobilizadosAnaliticoBNI_MANUTENCAO: TIntegerField
+      DisplayLabel = 'Manuten'#231#227'o'
       FieldName = 'BNI_MANUTENCAO'
       Origin = '"BENS_IMOBILIZADOS"."BNI_MANUTENCAO"'
     end
-    object DateField1: TDateField
+    object IBBensImobilizadosAnaliticoBNI_DATA_AQUISICAO: TDateField
+      DisplayLabel = 'Data Aquisi'#231#227'o'
       FieldName = 'BNI_DATA_AQUISICAO'
       Origin = '"BENS_IMOBILIZADOS"."BNI_DATA_AQUISICAO"'
       Required = True
     end
-    object IBBCDField1: TIBBCDField
+    object IBBensImobilizadosAnaliticoBNI_VLR_AQUISICAO: TIBBCDField
+      DisplayLabel = 'Valor Aquisi'#231#227'o'
       FieldName = 'BNI_VLR_AQUISICAO'
       Origin = '"BENS_IMOBILIZADOS"."BNI_VLR_AQUISICAO"'
       Precision = 18
       Size = 2
     end
-    object IBBCDField2: TIBBCDField
+    object IBBensImobilizadosAnaliticoBNI_VLR_RESIDUAL: TIBBCDField
+      DisplayLabel = 'Valor Residual'
       FieldName = 'BNI_VLR_RESIDUAL'
       Origin = '"BENS_IMOBILIZADOS"."BNI_VLR_RESIDUAL"'
       Precision = 18
       Size = 2
     end
-    object IBBCDField3: TIBBCDField
+    object IBBensImobilizadosAnaliticoBNI_VLR_AGREGADO: TIBBCDField
+      DisplayLabel = 'Valor Agregado'
       FieldName = 'BNI_VLR_AGREGADO'
       Origin = '"BENS_IMOBILIZADOS"."BNI_VLR_AGREGADO"'
       Precision = 18
       Size = 2
     end
-    object IBBCDField4: TIBBCDField
+    object IBBensImobilizadosAnaliticoBNI_VLR_ATUAL: TIBBCDField
+      DisplayLabel = 'Valor Atual'
       FieldName = 'BNI_VLR_ATUAL'
       Origin = '"BENS_IMOBILIZADOS"."BNI_VLR_ATUAL"'
       Precision = 18
       Size = 2
     end
-    object IBBCDField5: TIBBCDField
+    object IBBensImobilizadosAnaliticoBNI_DEPRECIACAO: TIBBCDField
+      DisplayLabel = 'Perc. Deprecia'#231#227'o'
       FieldName = 'BNI_DEPRECIACAO'
       Origin = '"BENS_IMOBILIZADOS"."BNI_DEPRECIACAO"'
       Precision = 18
       Size = 2
     end
-    object IBStringField6: TIBStringField
+    object IBBensImobilizadosAnaliticoBNI_STATUS: TIBStringField
+      DisplayLabel = 'Status'
       FieldName = 'BNI_STATUS'
       Origin = '"BENS_IMOBILIZADOS"."BNI_STATUS"'
       Size = 1
+    end
+    object IBBensImobilizadosAnaliticoBNI_TEMPO_DEPRECIACAO: TIntegerField
+      DisplayLabel = 'Tempo Deprecia'#231#227'o'
+      FieldName = 'BNI_TEMPO_DEPRECIACAO'
+      Origin = '"BENS_IMOBILIZADOS"."BNI_TEMPO_DEPRECIACAO"'
+    end
+    object IBBensImobilizadosAnaliticoBNI_TEMPO_RESIDUAL: TIntegerField
+      DisplayLabel = 'Tempo Residual'
+      FieldName = 'BNI_TEMPO_RESIDUAL'
+      Origin = '"BENS_IMOBILIZADOS"."BNI_TEMPO_RESIDUAL"'
     end
   end
 end

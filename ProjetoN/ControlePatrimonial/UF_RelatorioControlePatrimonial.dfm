@@ -20,6 +20,8 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
     Height = 305
     Align = alClient
     TabOrder = 0
+    ExplicitLeft = -8
+    ExplicitTop = 8
     object Label1: TLabel
       Left = 56
       Top = 32
@@ -28,57 +30,99 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
       Caption = 'Relat'#243'rios'
     end
     object Empresa: TLabel
-      Left = 272
-      Top = 59
+      Left = 56
+      Top = 96
       Width = 41
       Height = 13
       Caption = 'Empresa'
       Visible = False
     end
     object lbDescricaoEmpresa: TLabel
-      Left = 338
-      Top = 78
-      Width = 118
+      Left = 119
+      Top = 118
+      Width = 3
       Height = 13
       Visible = False
     end
     object Produto: TLabel
-      Left = 272
-      Top = 102
+      Left = 56
+      Top = 142
       Width = 38
       Height = 13
       Caption = 'Produto'
       Visible = False
     end
     object lbDescricaoProduto: TLabel
-      Left = 338
-      Top = 124
-      Width = 110
+      Left = 119
+      Top = 164
+      Width = 3
       Height = 13
       Visible = False
     end
     object Fornecedor: TLabel
-      Left = 272
-      Top = 148
+      Left = 56
+      Top = 188
       Width = 55
       Height = 13
       Caption = 'Fornecedor'
       Visible = False
     end
     object lbDescricaoFornecedor: TLabel
-      Left = 338
-      Top = 170
-      Width = 134
+      Left = 119
+      Top = 210
+      Width = 3
       Height = 13
       Visible = False
     end
     object NumSerie: TLabel
-      Left = 272
-      Top = 194
+      Left = 56
+      Top = 234
       Width = 52
       Height = 13
       Caption = 'Num. Serie'
       Visible = False
+    end
+    object Tipo: TLabel
+      Left = 320
+      Top = 96
+      Width = 20
+      Height = 13
+      Caption = 'Tipo'
+      Visible = False
+    end
+    object lbDescricaoTipo: TLabel
+      Left = 375
+      Top = 118
+      Width = 3
+      Height = 13
+    end
+    object Localizacao: TLabel
+      Left = 320
+      Top = 142
+      Width = 54
+      Height = 13
+      Caption = 'Localizacao'
+      Visible = False
+    end
+    object lbdescricaolocalizacao: TLabel
+      Left = 376
+      Top = 168
+      Width = 3
+      Height = 13
+    end
+    object Estado_de_Conservacao: TLabel
+      Left = 320
+      Top = 188
+      Width = 114
+      Height = 13
+      Caption = 'Estado de Conservacao'
+      Visible = False
+    end
+    object lbEstadoDeConservacao: TLabel
+      Left = 375
+      Top = 210
+      Width = 3
+      Height = 13
     end
     object CBRelatorios: TComboBox
       Left = 56
@@ -103,36 +147,78 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
       TabOrder = 1
     end
     object EdEmpresa: TEdit
-      Left = 272
-      Top = 75
+      Left = 56
+      Top = 115
       Width = 57
       Height = 21
       TabOrder = 2
       Visible = False
+      OnExit = EdEmpresaExit
     end
     object EdProduto: TEdit
-      Left = 272
-      Top = 121
+      Left = 56
+      Top = 161
       Width = 57
       Height = 21
+      Enabled = False
       TabOrder = 3
       Visible = False
+      OnExit = EdProdutoExit
     end
     object EdFornecedor: TEdit
-      Left = 272
-      Top = 167
+      Left = 56
+      Top = 207
       Width = 57
       Height = 21
+      Enabled = False
       TabOrder = 4
       Visible = False
+      OnExit = EdFornecedorExit
     end
     object EdNumeroSerie: TEdit
-      Left = 272
-      Top = 213
+      Left = 56
+      Top = 253
       Width = 121
       Height = 21
+      Enabled = False
       TabOrder = 5
       Visible = False
+    end
+    object cbAnalitico: TCheckBox
+      Left = 272
+      Top = 51
+      Width = 97
+      Height = 17
+      Caption = 'Analitico'
+      TabOrder = 6
+      Visible = False
+    end
+    object EdTipo: TEdit
+      Left = 320
+      Top = 115
+      Width = 49
+      Height = 21
+      TabOrder = 7
+      Visible = False
+      OnExit = EdTipoExit
+    end
+    object edlocalizacao: TEdit
+      Left = 321
+      Top = 161
+      Width = 49
+      Height = 21
+      TabOrder = 8
+      Visible = False
+      OnExit = edlocalizacaoExit
+    end
+    object edEstadoDeConservacao: TEdit
+      Left = 320
+      Top = 207
+      Width = 49
+      Height = 21
+      TabOrder = 9
+      Visible = False
+      OnExit = edEstadoDeConservacaoExit
     end
   end
   object Panel1: TPanel

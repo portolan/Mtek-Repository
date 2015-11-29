@@ -3,6 +3,7 @@
   ClientHeight = 533
   ClientWidth = 974
   OnShow = FormShow
+  ExplicitTop = -101
   ExplicitWidth = 990
   ExplicitHeight = 571
   PixelsPerInch = 96
@@ -89,7 +90,7 @@
             FocusControl = DBBNI_VLR_AGREGADO
           end
           object Label13: TLabel
-            Left = 460
+            Left = 532
             Top = 168
             Width = 52
             Height = 13
@@ -153,7 +154,7 @@
             FocusControl = DBBNI_VLR_RESIDUAL
           end
           object SB_Help: TSpeedButton
-            Left = 585
+            Left = 657
             Top = 180
             Width = 25
             Height = 25
@@ -225,7 +226,7 @@
             Caption = '%'
           end
           object SBAtualizaDepreciacao: TSpeedButton
-            Left = 554
+            Left = 626
             Top = 180
             Width = 25
             Height = 25
@@ -310,6 +311,13 @@
             Caption = 'C'#243'digo'
             FocusControl = DBBNI_CODIGO
           end
+          object Label16: TLabel
+            Left = 448
+            Top = 168
+            Width = 50
+            Height = 13
+            Caption = 'Valor Base'
+          end
           object DBBNI_EMPRESA: TDBEdit
             Left = 24
             Top = 40
@@ -388,7 +396,7 @@
             TabOrder = 15
           end
           object DBBNI_VLR_ATUAL: TDBEdit
-            Left = 460
+            Left = 532
             Top = 184
             Width = 88
             Height = 21
@@ -529,6 +537,15 @@
             Enabled = False
             TabOrder = 20
           end
+          object DBVALORBASE: TEdit
+            Left = 448
+            Top = 184
+            Width = 73
+            Height = 21
+            Enabled = False
+            TabOrder = 21
+            Text = 'DBVALORBASE'
+          end
         end
       end
       object Manutencão: TTabSheet
@@ -566,37 +583,31 @@
             item
               Expanded = False
               FieldName = 'MAN_DESCRICAO'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_VLR_COMPONENTE'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_VLR_MANUTENCAO'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_VLR_TOTAL'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_AGREGA_CUSTO'
-              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_NUM_SERIE'
-              Width = 64
               Visible = True
             end>
         end
