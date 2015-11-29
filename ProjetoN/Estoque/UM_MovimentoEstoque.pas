@@ -153,6 +153,7 @@ begin
     DM_contabil.departamento.Close;
     DM_contabil.departamento.SQL.Text := 'select * from departamento';
     DM_contabil.departamento.Open;
+    DM_contabil.departamento.FetchAll;
 end;
 
 procedure TMMovimentoEstoque.procDefineTipo;

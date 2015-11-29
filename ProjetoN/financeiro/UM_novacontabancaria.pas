@@ -47,6 +47,7 @@ begin
     DM_financeiro.banco.Close;
      DM_financeiro.banco.SQL.Text := 'select * from banco';
       DM_financeiro.banco.open;
+      DM_financeiro.banco.FetchAll;
 
 
      DM_contabil.empresa.Close;

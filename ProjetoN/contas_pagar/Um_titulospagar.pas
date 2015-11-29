@@ -16,7 +16,6 @@ type
     Label3: TLabel;
     ttp_pessoa: TDBEdit;
     Label4: TLabel;
-    ttp_condicao: TDBEdit;
     Label6: TLabel;
     ttp_descricao: TDBEdit;
     Label7: TLabel;
@@ -63,6 +62,7 @@ type
     emp_razao: TDBEdit;
     pess_nome: TDBEdit;
     DBLookupComboBox1: TDBLookupComboBox;
+    DBLookupComboBox2: TDBLookupComboBox;
 
     procedure FormCreate(Sender: TObject);
     procedure ttp_empresaExit(Sender: TObject);
@@ -95,6 +95,11 @@ begin
     DM_financeiro.contasbancarias.SQL.Text := 'select * from contabancaria';
     DM_financeiro.contasbancarias.Open;
     DM_financeiro.contasbancarias.FetchAll;
+
+    dm_contaspagar.condicaoPag.Close;
+    dm_contaspagar.condicaoPag.SQL.Text := 'select * from CONDICAOPAGAMENTO';
+    dm_contaspagar.condicaoPag.Open;
+    dm_contaspagar.condicaoPag.FetchAll;
 end;
 
 

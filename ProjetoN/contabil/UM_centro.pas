@@ -42,6 +42,7 @@ begin
     DM_contabil.empresa.Close;
     DM_contabil.empresa.SQL.Text := 'select * from empresa';
     DM_contabil.empresa.Open;
+    DM_contabil.empresa.fetchAll;
 end;
 
 procedure TM_centro.FormKeyDown(Sender: TObject; var Key: Word;

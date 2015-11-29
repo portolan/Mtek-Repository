@@ -59,7 +59,6 @@
       Width = 120
       Height = 13
       Caption = 'CONDI'#199#195'O PAGAMENTO'
-      FocusControl = ttp_condicao
     end
     object Label6: TLabel
       Left = 19
@@ -249,15 +248,6 @@
       TabOrder = 2
       OnExit = ttp_pessoaExit
     end
-    object ttp_condicao: TDBEdit
-      Left = 617
-      Top = 103
-      Width = 112
-      Height = 21
-      DataField = 'TTP_CON_CODIGO'
-      DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 14
-    end
     object ttp_descricao: TDBEdit
       Left = 123
       Top = 57
@@ -310,7 +300,7 @@
       Height = 21
       DataField = 'TTP_DT_CANCELAMENTO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 16
+      TabOrder = 15
     end
     object ttp_tp_titulo: TDBEdit
       Left = 123
@@ -328,7 +318,7 @@
       Height = 21
       DataField = 'TTP_VL_ORIGINAL'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 18
+      TabOrder = 17
     end
     object DBEdit16: TDBEdit
       Left = 24
@@ -337,7 +327,7 @@
       Height = 21
       DataField = 'TTP_VL_PAGO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 19
+      TabOrder = 18
     end
     object DBEdit17: TDBEdit
       Left = 24
@@ -346,7 +336,7 @@
       Height = 21
       DataField = 'TTP_VL_TOTAL'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 20
+      TabOrder = 19
     end
     object DBEdit18: TDBEdit
       Left = 24
@@ -355,7 +345,7 @@
       Height = 21
       DataField = 'TTP_MR_DIARIA'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 21
+      TabOrder = 20
     end
     object DBEdit19: TDBEdit
       Left = 24
@@ -364,7 +354,7 @@
       Height = 21
       DataField = 'TTP_MT_ATRASO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 22
+      TabOrder = 21
     end
     object ttp_desconto: TDBEdit
       Left = 123
@@ -411,7 +401,7 @@
       DataField = 'TTP_VL_TOTAL'
       DataSource = dm_contaspagar.Dtitulospagar
       ReadOnly = True
-      TabOrder = 17
+      TabOrder = 16
     end
     object ttp_mora: TDBEdit
       Left = 379
@@ -429,7 +419,7 @@
       Height = 21
       DataField = 'TTP_MT_ATRASO'
       DataSource = dm_contaspagar.Dtitulospagar
-      TabOrder = 15
+      TabOrder = 14
     end
     object DBRadioGroup1: TDBRadioGroup
       Left = 242
@@ -443,7 +433,7 @@
         'ABERTO '
         'PAGO '
         'CANCELADO')
-      TabOrder = 23
+      TabOrder = 22
       Values.Strings = (
         'A'
         'P'
@@ -460,7 +450,7 @@
       Items.Strings = (
         'R$'
         '%')
-      TabOrder = 24
+      TabOrder = 23
       Values.Strings = (
         'R'
         'P')
@@ -476,7 +466,7 @@
       Items.Strings = (
         'R$'
         '%')
-      TabOrder = 25
+      TabOrder = 24
       Values.Strings = (
         'R'
         'P')
@@ -490,7 +480,7 @@
       DataField = 'EMP_RAZAO'
       DataSource = dm_contaspagar.Dtitulospagar
       ReadOnly = True
-      TabOrder = 26
+      TabOrder = 25
     end
     object pess_nome: TDBEdit
       Left = 492
@@ -501,7 +491,7 @@
       DataField = 'PESS_NOME'
       DataSource = dm_contaspagar.Dtitulospagar
       ReadOnly = True
-      TabOrder = 27
+      TabOrder = 26
     end
     object DBLookupComboBox1: TDBLookupComboBox
       Left = 379
@@ -513,6 +503,18 @@
       KeyField = 'CTB_CODIGO'
       ListField = 'CTB_CONTA'
       ListSource = DM_financeiro.D_contasbancarias
+      TabOrder = 27
+    end
+    object DBLookupComboBox2: TDBLookupComboBox
+      Left = 617
+      Top = 103
+      Width = 113
+      Height = 21
+      DataField = 'TTP_CON_CODIGO'
+      DataSource = dm_contaspagar.Dtitulospagar
+      KeyField = 'CDP_CODIGO'
+      ListField = 'CDP_DESCRICAO'
+      ListSource = dm_contaspagar.Dcondicao
       TabOrder = 28
     end
   end
