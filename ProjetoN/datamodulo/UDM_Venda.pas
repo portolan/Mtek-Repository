@@ -26,23 +26,15 @@ type
     IB_FaturamentoFAT_DTSAIDA: TDateField;
     IB_FaturamentoFAT_SITAUCAO: TIBStringField;
     IB_FaturamentoFAT_CHAVE_ACESSO: TIntegerField;
-    U_EmissaoNFE: TIBUpdateSQL;
-    DS_EmissaoNFE: TDataSource;
-    IB_EmissaoNFE: TIBQuery;
     IB_CondicaoPGCDP_CODIGO: TIntegerField;
     IB_CondicaoPGCDP_DESCRICAO: TIBStringField;
     IB_Venda: TIBQuery;
-    IB_EmissaoNFEEMI_NUMERO: TIntegerField;
-    IB_EmissaoNFEEMI_NOTAFISCAL: TIntegerField;
-    IB_EmissaoNFEEMI_EMPRESA: TIntegerField;
-    IB_EmissaoNFEEMI_SERIE: TIntegerField;
-    IB_EmissaoNFEEMI_TIPOMOVIMENTACAO: TIntegerField;
-    IB_EmissaoNFEEMI_DESCRICAO: TIBStringField;
+    U_EmissaoNFE: TIBUpdateSQL;
+    DS_EmissaoNFE: TDataSource;
+    IB_EmissaoNFE: TIBQuery;
     IB_EmissaoNFEEMI_DTEMISSAO: TDateField;
     IB_EmissaoNFEEMI_DTSAIDA: TDateField;
-    IB_EmissaoNFEEMI_PESSOA: TIntegerField;
-    IB_EmissaoNFEEMP_RAZAO: TIBStringField;
-    IB_EmissaoNFEPESS_NOME: TIBStringField;
+    IB_EmissaoNFEEMI_NOTAFISCAL: TIntegerField;
     IB_VendaPED_NUMERO: TIntegerField;
     IB_VendaPED_PESSOA: TIBStringField;
     IB_VendaPED_SEQUENCIA: TIntegerField;
@@ -51,11 +43,8 @@ type
     IB_VendaPED_DEPOSITO: TIntegerField;
     IB_VendaPED_PRODUTO: TIntegerField;
     IB_VendaPED_DESCRICAO: TIBStringField;
-    IB_VendaPED_TIPOMOVIMENTACAO: TIntegerField;
-    IB_VendaPED_TIPODESCRICAO: TIBStringField;
     IB_VendaPED_UNIDADE: TIntegerField;
     IB_VendaPED_QUANTIDADE: TIBBCDField;
-    IB_VendaPED_LISTA_PRECO: TIBBCDField;
     IB_VendaPED_DESCONTO: TIBBCDField;
     IB_VendaPED_QTD_DISPONIVEL: TIBBCDField;
     IB_VendaPED_VLRUNITARIO: TIBBCDField;
@@ -69,6 +58,7 @@ type
     IB_VendaDEP_NOME: TIBStringField;
     IB_VendaPRO_DESCRICAO: TIBStringField;
     procedure IB_VendaAfterInsert(DataSet: TDataSet);
+    procedure IB_EmissaoNFEAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -83,6 +73,12 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+
+procedure TDM_VENDA.IB_EmissaoNFEAfterInsert(DataSet: TDataSet);
+begin
+   IB_EmissaoNFEEMI_NOTAFISCAL.Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_NFE');
+end;
 
 procedure TDM_VENDA.IB_VendaAfterInsert(DataSet: TDataSet);
 begin
