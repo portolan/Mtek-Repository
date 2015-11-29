@@ -6,13 +6,12 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UTelaPadrao, Vcl.StdCtrls, Vcl.Buttons,
   Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, UDM_Venda, dm000, Um_Pedido_Venda,
-  Um_Emissão_NFE, UF_Relatorio_PedidoVenda;
+  Um_Emissão_NFE;
 
 type
   TUP_VENDA = class(TxPesqPadrao)
     bt_Gera_Relatorio: TButton;
     procedure FormCreate(Sender: TObject);
-    procedure bt_Gera_RelatorioClick(Sender: TObject);
   private
 
     { Private declarations }
@@ -28,16 +27,6 @@ implementation
 
 {$R *.dfm}
 
-
-procedure TUP_VENDA.bt_Gera_RelatorioClick(Sender: TObject);
-begin
-  f_Pedidos := Tf_Pedidos.Create(self);
-  try
-     f_Pedidos.showModal;
-  finally
-     freeandnil(f_Pedidos);
-  end;
-end;
 
 procedure TUP_VENDA.FormCreate(Sender: TObject);
 begin
