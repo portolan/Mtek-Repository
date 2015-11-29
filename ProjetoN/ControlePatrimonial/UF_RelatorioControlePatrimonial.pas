@@ -39,6 +39,7 @@ type
     Estado_de_Conservacao: TLabel;
     edEstadoDeConservacao: TEdit;
     lbEstadoDeConservacao: TLabel;
+    cbManutencao: TCheckBox;
     procedure sbSairClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure ProcCamposBensImobilizados (Situacao : boolean);
@@ -51,9 +52,12 @@ type
     procedure edEstadoDeConservacaoExit(Sender: TObject);
     procedure EdTipoExit(Sender: TObject);
     procedure edlocalizacaoExit(Sender: TObject);
+    procedure cbAnaliticoClick(Sender: TObject);
+    procedure cbManutencaoClick(Sender: TObject);
   private
     { Private declarations }
    procedure ProcPossuiEmpresa (possui: boolean);
+   procedure ProcCOntrolaComponente;
   public
     { Public declarations }
   end;
@@ -64,6 +68,16 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TF_RelControlePAtrimonial.cbAnaliticoClick(Sender: TObject);
+begin
+   ProcCOntrolaComponente;
+end;
+
+procedure TF_RelControlePAtrimonial.cbManutencaoClick(Sender: TObject);
+begin
+   ProcCOntrolaComponente;
+end;
 
 procedure TF_RelControlePAtrimonial.CBRelatoriosChange(Sender: TObject);
 begin
@@ -384,6 +398,15 @@ begin
    lbdescricaolocalizacao.Visible  := Situacao;
    lbEstadoDeConservacao.Visible   := Situacao;
    cbAnalitico.Visible             := Situacao;
+   cbManutencao.Visible            := Situacao;
+
+end;
+
+procedure TF_RelControlePAtrimonial.ProcCOntrolaComponente;
+begin
+
+   cbAnalitico.Enabled :=  not (cbManutencao.Checked);
+   cbManutencao.Enabled := not (cbAnalitico.Checked);
 
 end;
 
@@ -411,22 +434,11 @@ procedure TF_RelControlePAtrimonial.SpeedButton1Click(Sender: TObject);
 var
    c_where        : string;
    c_status       : string;
-   c_empresa      : string;
-   c_produto      : string;
-   c_fornecedor   : string;
-   c_num_serie    : string;
-   c_tipo         : string;
-   c_localizacao  : string;
-   c_estado       : string;
+
 
 begin
    c_where         := '';
    c_status        := '';
-   c_empresa       := '';
-   c_produto       := '';
-   c_fornecedor    := '';
-   c_num_serie     := '';
-
 
     // TIPO
    if CBRelatorios.ItemIndex = 0 then
@@ -474,128 +486,142 @@ begin
 
    if CBRelatorios.ItemIndex = 3 then
    begin
-      c_where := ' WHERE ';
+      c_where := 'WHERE ';
 
       if cbAtivo.Checked then
-         c_status := ' A.TPB_STATUS = ''A'' ';
+         c_where := c_where + ' A.TPB_STATUS = ''A'' ';
 
       if EdEmpresa.Text <> EmptyStr then
-         c_empresa       := ' A.BNI_EMPRESA = ' + EdEmpresa.Text;
+         if c_where = 'WHERE ' then
+            c_where := c_where + ' A.BNI_EMPRESA = ' + EdEmpresa.Text
+         else
+            c_where := c_where + ' AND A.BNI_EMPRESA = ' + EdEmpresa.Text;
 
       if EdProduto.Text <> EmptyStr then
-         c_produto       := ' A.BNI_CODIGO = ' + EdProduto.Text;
+         if c_where = 'WHERE ' then
+            c_where := c_where +  ' A.BNI_CODIGO = ' + EdProduto.Text
+         else
+            c_where := c_where +  ' AND A.BNI_CODIGO = ' + EdProduto.Text;
 
       if EdFornecedor.Text <> EmptyStr then
-         c_fornecedor    := '  A.BNI_FORNECEDOR = ' + EdFornecedor.Text;
+         if c_where = 'WHERE ' then
+            c_where := c_where +  ' A.BNI_FORNECEDOR = ' + EdFornecedor.Text
+         ELSE
+            c_where := c_where +  ' AND A.BNI_FORNECEDOR = ' + EdFornecedor.Text;
 
       if EdNumeroSerie.Text <> EmptyStr then
-         c_num_serie     := ' A.BNI_NUM_SERIE = ' + EdNumeroSerie.Text;
+         if c_where = 'WHERE ' then
+            c_where := c_where +  ' A.BNI_NUM_SERIE = ' + EdNumeroSerie.Text
+         ELSE
+            c_where := c_where +  ' AND A.BNI_NUM_SERIE = ' + EdNumeroSerie.Text;
 
       if EdTipo.Text <> EmptyStr then
-         c_tipo          := ' A.BNI_TIPO = ' + EdTipo.Text;
+         if c_where = 'WHERE ' then
+            c_where := c_where +  ' A.BNI_TIPO = ' + EdTipo.Text
+         ELSE
+            c_where := c_where +  ' AND A.BNI_TIPO = ' + EdTipo.Text;
 
       if edlocalizacao.Text <> EmptyStr then
-         c_localizacao   := ' A.BNI_LOCALIZACAO = ' + edlocalizacao.Text;
+         if c_where = 'WHERE ' then
+            c_where := c_where +  ' A.BNI_LOCALIZACAO = ' + edlocalizacao.Text
+         ELSE
+            c_where := c_where +  ' AND A.BNI_LOCALIZACAO = ' + edlocalizacao.Text;
 
       if edEstadoDeConservacao.Text <> EmptyStr then
-         c_estado        := ' A.BNI_ESTADO_CONSERVACAO = ' + edEstadoDeConservacao.Text;
-
-      if (c_status <> '' ) then
-         c_where := c_where + c_status;
-
-      if (c_empresa <> '' ) then
-         c_where := c_where + c_empresa;
-
-      if (c_produto <> '' ) then
-         c_where := c_where + c_produto;
-
-      if (c_fornecedor <> '' ) then
-         c_where := c_where + c_fornecedor;
-
-      if (c_num_serie <> '' ) then
-         c_where := c_where + c_num_serie;
-
-      if (c_tipo <> '') then
-         c_where := c_where + c_tipo;
-
-      if (c_localizacao <> '') then
-         c_where := c_where + c_localizacao;
-
-      if (c_estado <> '') then
-         c_where := c_where + c_estado;
+         if c_where = 'WHERE ' then
+            c_where := c_where +  ' A.BNI_ESTADO_CONSERVACAO = ' + edEstadoDeConservacao.Text
+         ELSE
+            c_where := c_where +  ' AND A.BNI_ESTADO_CONSERVACAO = ' + edEstadoDeConservacao.Text;
 
       if c_where = ' WHERE ' then
          c_where := '';
 
-     if not(cbAnalitico.Checked) then
-        begin
+     if cbManutencao.Checked then
+     begin
 
-        R_RelatorioControlePatrimonial.IBBensImobilizados.Close;
-        R_RelatorioControlePatrimonial.IBBensImobilizados.SQL.Text :=   'SELECT A.BNI_EMPRESA,                                                          ' +
-                                                                        '       A.BNI_CODIGO,                                                           ' +
-                                                                        '       A.BNI_NUM_SERIE,                                                        ' +
-                                                                        '       A.BNI_NR_NOTA,                                                          ' +
-                                                                        '       A.BNI_FORNECEDOR,                                                       ' +
-                                                                        '       B.PESS_NOME AS NOME,                                                    ' +
-                                                                        '       A.BNI_DESCRICAO,                                                        ' +
-                                                                        '       C.TPB_DESCRICAO AS TIPO,                                                ' +
-                                                                        '       D.LOC_DESCRICAO AS LOCALIZACAO,                                         ' +
-                                                                        '       E.EDC_DESCRICAO AS ESTADO_CONSERVACAO,                                  ' +
-                                                                        '       A.BNI_MANUTENCAO,                                                       ' +
-                                                                        '       A.BNI_DATA_AQUISICAO,                                                   ' +
-                                                                        '       A.BNI_VLR_AQUISICAO,                                                    ' +
-                                                                        '       A.BNI_VLR_RESIDUAL,                                                     ' +
-                                                                        '       A.BNI_VLR_AGREGADO,                                                     ' +
-                                                                        '       A.BNI_VLR_ATUAL,                                                        ' +
-                                                                        '       A.BNI_DEPRECIACAO,                                                      ' +
-                                                                        '       A.BNI_STATUS,                                                           ' +
-                                                                        '       A.BNI_TEMPO_DEPRECIACAO,                                                ' +
-                                                                        '       A.BNI_TEMPO_RESIDUAL                                                    ' +
-                                                                        '  FROM BENS_IMOBILIZADOS A                                                     ' +
-                                                                        ' INNER JOIN PESSOAS B ON B.PESS_CODIGO = A.BNI_FORNECEDOR                      ' +
-                                                                        ' INNER JOIN TIPO_DE_BENS C ON A.BNI_TIPO = C.TPB_CODIGO                        ' +
-                                                                        ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_CODIGO                  ' +
-                                                                        ' INNER JOIN ESTADO_DE_CONSERVACAO E ON A.BNI_ESTADO_CONSERVACAO = E.EDC_CODIGO ' + c_where ;
-        R_RelatorioControlePatrimonial.IBBensImobilizados.Open;
+        R_RelatorioControlePatrimonial.IBManutencao.Close;
+        R_RelatorioControlePatrimonial.IBManutencao.SQL.Text :=  'SELECT *                                                        ' +
+                                                                 '  FROM BENS_IMOBILIZADOS A                                      ' +
+                                                                 ' LEFT JOIN MANUTENCAO B ON A.BNI_EMPRESA = B.MAN_EMPRESA        ' +
+                                                                 '                       AND A.BNI_CODIGO = B.MAN_BEN             ' +
+                                                                 '                       AND A.BNI_NUM_SERIE = B.MAN_NUM_SERIE    ' +
+                                                                 ' LEFT JOIN COMPONENTE C ON B.MAN_EMPRESA = C.COM_EMPRESA        ' +
+                                                                 '                       AND B.MAN_CODIGO = C.COM_MANUTENCAO      ' + c_where;
+         R_RelatorioControlePatrimonial.IBManutencao.Open;
+         R_RelatorioControlePatrimonial.frxManutencao.ShowReport();
 
-        R_RelatorioControlePatrimonial.frxBensImobilizados.ShowReport();
+
+
      end
      else
      begin
-        R_RelatorioControlePatrimonial.IBBensImobilizadosAnalitico.Close;
-        R_RelatorioControlePatrimonial.IBBensImobilizadosAnalitico.SQL.Text :=   'SELECT A.BNI_EMPRESA,                                                          ' +
-                                                                                 '       A.BNI_CODIGO,                                                           ' +
-                                                                                 '       A.BNI_NUM_SERIE,                                                        ' +
-                                                                                 '       A.BNI_NR_NOTA,                                                          ' +
-                                                                                 '       A.BNI_FORNECEDOR,                                                       ' +
-                                                                                 '       B.PESS_NOME AS NOME,                                                    ' +
-                                                                                 '       A.BNI_DESCRICAO,                                                        ' +
-                                                                                 '       C.TPB_DESCRICAO AS TIPO,                                                ' +
-                                                                                 '       D.LOC_DESCRICAO AS LOCALIZACAO,                                         ' +
-                                                                                 '       E.EDC_DESCRICAO AS ESTADO_CONSERVACAO,                                  ' +
-                                                                                 '       A.BNI_MANUTENCAO,                                                       ' +
-                                                                                 '       A.BNI_DATA_AQUISICAO,                                                   ' +
-                                                                                 '       A.BNI_VLR_AQUISICAO,                                                    ' +
-                                                                                 '       A.BNI_VLR_RESIDUAL,                                                     ' +
-                                                                                 '       A.BNI_VLR_AGREGADO,                                                     ' +
-                                                                                 '       A.BNI_VLR_ATUAL,                                                        ' +
-                                                                                 '       A.BNI_DEPRECIACAO,                                                      ' +
-                                                                                 '       A.BNI_STATUS,                                                           ' +
-                                                                                 '       A.BNI_TEMPO_DEPRECIACAO,                                                ' +
-                                                                                 '       A.BNI_TEMPO_RESIDUAL                                                    ' +
-                                                                                 '  FROM BENS_IMOBILIZADOS A                                                     ' +
-                                                                                 ' INNER JOIN PESSOAS B ON B.PESS_CODIGO = A.BNI_FORNECEDOR                      ' +
-                                                                                 ' INNER JOIN TIPO_DE_BENS C ON A.BNI_TIPO = C.TPB_CODIGO                        ' +
-                                                                                 ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_CODIGO                  ' +
-                                                                                 ' INNER JOIN ESTADO_DE_CONSERVACAO E ON A.BNI_ESTADO_CONSERVACAO = E.EDC_CODIGO ' + c_where ;
-        R_RelatorioControlePatrimonial.IBBensImobilizadosAnalitico.Open;
 
-        R_RelatorioControlePatrimonial.frxBensImobilizadosAnalitico.ShowReport();
+        if not(cbAnalitico.Checked) then
+        begin
 
+           R_RelatorioControlePatrimonial.IBBensImobilizados.Close;
+           R_RelatorioControlePatrimonial.IBBensImobilizados.SQL.Text :=   'SELECT A.BNI_EMPRESA,                                                          ' +
+                                                                           '       A.BNI_CODIGO,                                                           ' +
+                                                                           '       A.BNI_NUM_SERIE,                                                        ' +
+                                                                           '       A.BNI_NR_NOTA,                                                          ' +
+                                                                           '       A.BNI_FORNECEDOR,                                                       ' +
+                                                                           '       B.PESS_NOME AS NOME,                                                    ' +
+                                                                           '       A.BNI_DESCRICAO,                                                        ' +
+                                                                           '       C.TPB_DESCRICAO AS TIPO,                                                ' +
+                                                                           '       D.LOC_DESCRICAO AS LOCALIZACAO,                                         ' +
+                                                                           '       E.EDC_DESCRICAO AS ESTADO_CONSERVACAO,                                  ' +
+                                                                           '       A.BNI_DATA_AQUISICAO,                                                   ' +
+                                                                           '       A.BNI_VLR_AQUISICAO,                                                    ' +
+                                                                           '       A.BNI_VLR_RESIDUAL,                                                     ' +
+                                                                           '       A.BNI_VLR_AGREGADO,                                                     ' +
+                                                                           '       A.BNI_VLR_ATUAL,                                                        ' +
+                                                                           '       A.BNI_DEPRECIACAO,                                                      ' +
+                                                                           '       A.BNI_STATUS,                                                           ' +
+                                                                           '       A.BNI_TEMPO_DEPRECIACAO,                                                ' +
+                                                                           '       A.BNI_TEMPO_RESIDUAL                                                    ' +
+                                                                           '  FROM BENS_IMOBILIZADOS A                                                     ' +
+                                                                           ' INNER JOIN PESSOAS B ON B.PESS_CODIGO = A.BNI_FORNECEDOR                      ' +
+                                                                           ' INNER JOIN TIPO_DE_BENS C ON A.BNI_TIPO = C.TPB_CODIGO                        ' +
+                                                                           ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_CODIGO                  ' +
+                                                                           ' INNER JOIN ESTADO_DE_CONSERVACAO E ON A.BNI_ESTADO_CONSERVACAO = E.EDC_CODIGO ' + c_where ;
+           R_RelatorioControlePatrimonial.IBBensImobilizados.Open;
+
+           R_RelatorioControlePatrimonial.frxBensImobilizados.ShowReport();
+        end
+        else
+        begin
+           R_RelatorioControlePatrimonial.IBBensImobilizadosAnalitico.Close;
+           R_RelatorioControlePatrimonial.IBBensImobilizadosAnalitico.SQL.Text :=   'SELECT A.BNI_EMPRESA,                                                          ' +
+                                                                                    '       A.BNI_CODIGO,                                                           ' +
+                                                                                    '       A.BNI_NUM_SERIE,                                                        ' +
+                                                                                    '       A.BNI_NR_NOTA,                                                          ' +
+                                                                                    '       A.BNI_FORNECEDOR,                                                       ' +
+                                                                                    '       B.PESS_NOME AS NOME,                                                    ' +
+                                                                                    '       A.BNI_DESCRICAO,                                                        ' +
+                                                                                    '       C.TPB_DESCRICAO AS TIPO,                                                ' +
+                                                                                    '       D.LOC_DESCRICAO AS LOCALIZACAO,                                         ' +
+                                                                                    '       E.EDC_DESCRICAO AS ESTADO_CONSERVACAO,                                  ' +
+                                                                                    '       A.BNI_DATA_AQUISICAO,                                                   ' +
+                                                                                    '       A.BNI_VLR_AQUISICAO,                                                    ' +
+                                                                                    '       A.BNI_VLR_RESIDUAL,                                                     ' +
+                                                                                    '       A.BNI_VLR_AGREGADO,                                                     ' +
+                                                                                    '       A.BNI_VLR_ATUAL,                                                        ' +
+                                                                                    '       A.BNI_DEPRECIACAO,                                                      ' +
+                                                                                    '       A.BNI_STATUS,                                                           ' +
+                                                                                    '       A.BNI_TEMPO_DEPRECIACAO,                                                ' +
+                                                                                    '       A.BNI_TEMPO_RESIDUAL                                                    ' +
+                                                                                    '  FROM BENS_IMOBILIZADOS A                                                     ' +
+                                                                                    ' INNER JOIN PESSOAS B ON B.PESS_CODIGO = A.BNI_FORNECEDOR                      ' +
+                                                                                    ' INNER JOIN TIPO_DE_BENS C ON A.BNI_TIPO = C.TPB_CODIGO                        ' +
+                                                                                    ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_CODIGO                  ' +
+                                                                                    ' INNER JOIN ESTADO_DE_CONSERVACAO E ON A.BNI_ESTADO_CONSERVACAO = E.EDC_CODIGO ' + c_where ;
+           R_RelatorioControlePatrimonial.IBBensImobilizadosAnalitico.Open;
+
+           R_RelatorioControlePatrimonial.frxBensImobilizadosAnalitico.ShowReport();
+
+        end;
      end;
-
-
-   end;
+   END;
 
 end;
 

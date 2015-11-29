@@ -58,7 +58,6 @@ type
     BenImobilizadoBNI_TIPO: TIntegerField;
     BenImobilizadoBNI_LOCALIZACAO: TIntegerField;
     BenImobilizadoBNI_ESTADO_CONSERVACAO: TIntegerField;
-    BenImobilizadoBNI_MANUTENCAO: TIntegerField;
     BenImobilizadoBNI_DATA_AQUISICAO: TDateField;
     BenImobilizadoBNI_VLR_AQUISICAO: TIBBCDField;
     BenImobilizadoBNI_VLR_AGREGADO: TIBBCDField;

@@ -558,11 +558,6 @@ object DMControlePatrimonial: TDMControlePatrimonial
       Origin = '"BENS_IMOBILIZADOS"."BNI_ESTADO_CONSERVACAO"'
       Required = True
     end
-    object BenImobilizadoBNI_MANUTENCAO: TIntegerField
-      DisplayLabel = 'Manuten'#231#227'o'
-      FieldName = 'BNI_MANUTENCAO'
-      Origin = '"BENS_IMOBILIZADOS"."BNI_MANUTENCAO"'
-    end
     object BenImobilizadoBNI_DATA_AQUISICAO: TDateField
       DisplayLabel = 'Data de Aquisi'#231#227'o'
       FieldName = 'BNI_DATA_AQUISICAO'
@@ -658,7 +653,6 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '  BNI_TIPO,'
       '  BNI_LOCALIZACAO,'
       '  BNI_ESTADO_CONSERVACAO,'
-      '  BNI_MANUTENCAO,'
       '  BNI_DATA_AQUISICAO,'
       '  BNI_VLR_AQUISICAO,'
       '  BNI_VLR_RESIDUAL,'
@@ -686,7 +680,6 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '  BNI_ESTADO_CONSERVACAO = :BNI_ESTADO_CONSERVACAO,'
       '  BNI_FORNECEDOR = :BNI_FORNECEDOR,'
       '  BNI_LOCALIZACAO = :BNI_LOCALIZACAO,'
-      '  BNI_MANUTENCAO = :BNI_MANUTENCAO,'
       '  BNI_NR_NOTA = :BNI_NR_NOTA,'
       '  BNI_NUM_SERIE = :BNI_NUM_SERIE,'
       '  BNI_OBSERVACAO = :BNI_OBSERVACAO,'
@@ -709,14 +702,13 @@ object DMControlePatrimonial: TDMControlePatrimonial
         'O, BNI_EMPRESA, '
       
         '   BNI_ESTADO_CONSERVACAO, BNI_FORNECEDOR, BNI_LOCALIZACAO, BNI_' +
-        'MANUTENCAO, '
+        'NR_NOTA, '
       
-        '   BNI_NR_NOTA, BNI_NUM_SERIE, BNI_OBSERVACAO, BNI_STATUS, BNI_T' +
-        'EMPO_DEPRECIACAO, '
+        '   BNI_NUM_SERIE, BNI_OBSERVACAO, BNI_STATUS, BNI_TEMPO_DEPRECIA' +
+        'CAO, BNI_TEMPO_RESIDUAL, '
       
-        '   BNI_TEMPO_RESIDUAL, BNI_TIPO, BNI_VLR_AGREGADO, BNI_VLR_AQUIS' +
-        'ICAO, BNI_VLR_ATUAL, '
-      '   BNI_VLR_RESIDUAL)'
+        '   BNI_TIPO, BNI_VLR_AGREGADO, BNI_VLR_AQUISICAO, BNI_VLR_ATUAL,' +
+        ' BNI_VLR_RESIDUAL)'
       'values'
       
         '  (:BNI_CODIGO, :BNI_DATA_AQUISICAO, :BNI_DEPRECIACAO, :BNI_DESC' +
@@ -725,12 +717,12 @@ object DMControlePatrimonial: TDMControlePatrimonial
         '   :BNI_EMPRESA, :BNI_ESTADO_CONSERVACAO, :BNI_FORNECEDOR, :BNI_' +
         'LOCALIZACAO, '
       
-        '   :BNI_MANUTENCAO, :BNI_NR_NOTA, :BNI_NUM_SERIE, :BNI_OBSERVACA' +
-        'O, :BNI_STATUS, '
+        '   :BNI_NR_NOTA, :BNI_NUM_SERIE, :BNI_OBSERVACAO, :BNI_STATUS, :' +
+        'BNI_TEMPO_DEPRECIACAO, '
       
-        '   :BNI_TEMPO_DEPRECIACAO, :BNI_TEMPO_RESIDUAL, :BNI_TIPO, :BNI_' +
-        'VLR_AGREGADO, '
-      '   :BNI_VLR_AQUISICAO, :BNI_VLR_ATUAL, :BNI_VLR_RESIDUAL)')
+        '   :BNI_TEMPO_RESIDUAL, :BNI_TIPO, :BNI_VLR_AGREGADO, :BNI_VLR_A' +
+        'QUISICAO, '
+      '   :BNI_VLR_ATUAL, :BNI_VLR_RESIDUAL)')
     DeleteSQL.Strings = (
       'delete from BENS_IMOBILIZADOS'
       'where'

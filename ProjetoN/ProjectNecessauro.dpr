@@ -133,7 +133,8 @@ uses
   UR_fechamentocx in 'Caixa\UR_fechamentocx.pas' {REL_fechamentocx},
   UR_fluxocaixa in 'Caixa\UR_fluxocaixa.pas' {UR_fluxocx},
   UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda},
-  UR_prevtitulos in 'Caixa\UR_prevtitulos.pas' {REL_prevtitulos};
+  UR_prevtitulos in 'Caixa\UR_prevtitulos.pas' {REL_prevtitulos},
+  HP_PesquisaNota in 'ControlePatrimonial\HP_PesquisaNota.pas' {H_PesquisaNota};
 
 {$R *.res}
 
@@ -158,6 +159,7 @@ begin
   Application.CreateForm(TR_RelatorioControlePatrimonial, R_RelatorioControlePatrimonial);
   Application.CreateForm(TcaixaRelatorios, caixaRelatorios);
   Application.CreateForm(TTelaInicial, TelaInicial);
+  Application.CreateForm(TH_PesquisaNota, H_PesquisaNota);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
 end.

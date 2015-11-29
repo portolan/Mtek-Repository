@@ -38,7 +38,6 @@ type
     IBBensImobilizadosTIPO: TIBStringField;
     IBBensImobilizadosLOCALIZACAO: TIBStringField;
     IBBensImobilizadosESTADO_CONSERVACAO: TIBStringField;
-    IBBensImobilizadosBNI_MANUTENCAO: TIntegerField;
     IBBensImobilizadosBNI_DATA_AQUISICAO: TDateField;
     IBBensImobilizadosBNI_VLR_AQUISICAO: TIBBCDField;
     IBBensImobilizadosBNI_VLR_RESIDUAL: TIBBCDField;
@@ -59,7 +58,6 @@ type
     IBBensImobilizadosAnaliticoTIPO: TIBStringField;
     IBBensImobilizadosAnaliticoLOCALIZACAO: TIBStringField;
     IBBensImobilizadosAnaliticoESTADO_CONSERVACAO: TIBStringField;
-    IBBensImobilizadosAnaliticoBNI_MANUTENCAO: TIntegerField;
     IBBensImobilizadosAnaliticoBNI_DATA_AQUISICAO: TDateField;
     IBBensImobilizadosAnaliticoBNI_VLR_AQUISICAO: TIBBCDField;
     IBBensImobilizadosAnaliticoBNI_VLR_RESIDUAL: TIBBCDField;
@@ -72,6 +70,46 @@ type
     IBBensImobilizadosAnaliticoBNI_TEMPO_RESIDUAL: TIntegerField;
     IBBensImobilizadosBNI_TEMPO_RESIDUAL: TIntegerField;
     IBBensImobilizadosBNI_TEMPO_DEPRECIACAO: TIntegerField;
+    frxManutencao: TfrxReport;
+    frxDBManutencao: TfrxDBDataset;
+    IBManutencao: TIBQuery;
+    IBManutencaoBNI_EMPRESA: TIntegerField;
+    IBManutencaoBNI_NUM_SERIE: TIntegerField;
+    IBManutencaoBNI_NR_NOTA: TIntegerField;
+    IBManutencaoBNI_FORNECEDOR: TIntegerField;
+    IBManutencaoBNI_DESCRICAO: TIBStringField;
+    IBManutencaoBNI_TIPO: TIntegerField;
+    IBManutencaoBNI_LOCALIZACAO: TIntegerField;
+    IBManutencaoBNI_ESTADO_CONSERVACAO: TIntegerField;
+    IBManutencaoBNI_DATA_AQUISICAO: TDateField;
+    IBManutencaoBNI_VLR_AQUISICAO: TIBBCDField;
+    IBManutencaoBNI_VLR_RESIDUAL: TIBBCDField;
+    IBManutencaoBNI_VLR_AGREGADO: TIBBCDField;
+    IBManutencaoBNI_VLR_ATUAL: TIBBCDField;
+    IBManutencaoBNI_DEPRECIACAO: TIBBCDField;
+    IBManutencaoBNI_OBSERVACAO: TBlobField;
+    IBManutencaoBNI_STATUS: TIBStringField;
+    IBManutencaoBNI_CODIGO: TIBStringField;
+    IBManutencaoBNI_TEMPO_DEPRECIACAO: TIntegerField;
+    IBManutencaoBNI_TEMPO_RESIDUAL: TIntegerField;
+    IBManutencaoMAN_EMPRESA: TIntegerField;
+    IBManutencaoMAN_CODIGO: TIntegerField;
+    IBManutencaoMAN_DESCRICAO: TIBStringField;
+    IBManutencaoMAN_OBSERVACAO: TBlobField;
+    IBManutencaoMAN_VLR_COMPONENTE: TIBBCDField;
+    IBManutencaoMAN_VLR_MANUTENCAO: TIBBCDField;
+    IBManutencaoMAN_VLR_TOTAL: TIBBCDField;
+    IBManutencaoMAN_AGREGA_CUSTO: TIBStringField;
+    IBManutencaoMAN_NUM_SERIE: TIntegerField;
+    IBManutencaoMAN_BEN: TIBStringField;
+    IBManutencaoCOM_EMPRESA: TIntegerField;
+    IBManutencaoCOM_MANUTENCAO: TIntegerField;
+    IBManutencaoCOM_CODIGO: TIBStringField;
+    IBManutencaoCOM_OBSERVACAO: TBlobField;
+    IBManutencaoCOM_VLR_COMPONENTE: TFloatField;
+    IBManutencaoCOM_QTD: TIBBCDField;
+    IBManutencaoCOM_VLR_TOTAL: TIBBCDField;
+    IBManutencaoCOM_MOV_ESTOQUE: TIntegerField;
   private
     { Private declarations }
   public

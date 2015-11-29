@@ -1,7 +1,5 @@
 inherited P_BensImobilizados: TP_BensImobilizados
   Caption = 'Pesquisa de Bens Imobilizados'
-  ExplicitWidth = 880
-  ExplicitHeight = 440
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel
@@ -12,11 +10,6 @@ inherited P_BensImobilizados: TP_BensImobilizados
           item
             Expanded = False
             FieldName = 'BNI_EMPRESA'
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'BNI_CODIGO'
             Visible = True
           end
           item
@@ -56,11 +49,6 @@ inherited P_BensImobilizados: TP_BensImobilizados
           end
           item
             Expanded = False
-            FieldName = 'BNI_MANUTENCAO'
-            Visible = True
-          end
-          item
-            Expanded = False
             FieldName = 'BNI_DATA_AQUISICAO'
             Visible = True
           end
@@ -81,6 +69,11 @@ inherited P_BensImobilizados: TP_BensImobilizados
           end
           item
             Expanded = False
+            FieldName = 'BNI_VLR_RESIDUAL'
+            Visible = True
+          end
+          item
+            Expanded = False
             FieldName = 'BNI_DEPRECIACAO'
             Visible = True
           end
@@ -92,6 +85,21 @@ inherited P_BensImobilizados: TP_BensImobilizados
           item
             Expanded = False
             FieldName = 'BNI_STATUS'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'BNI_CODIGO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'BNI_TEMPO_DEPRECIACAO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'BNI_TEMPO_RESIDUAL'
             Visible = True
           end>
       end

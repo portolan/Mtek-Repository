@@ -20,8 +20,6 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
     Height = 305
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = -8
-    ExplicitTop = 8
     object Label1: TLabel
       Left = 56
       Top = 32
@@ -192,6 +190,7 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
       Caption = 'Analitico'
       TabOrder = 6
       Visible = False
+      OnClick = cbAnaliticoClick
     end
     object EdTipo: TEdit
       Left = 320
@@ -219,6 +218,16 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
       TabOrder = 9
       Visible = False
       OnExit = edEstadoDeConservacaoExit
+    end
+    object cbManutencao: TCheckBox
+      Left = 272
+      Top = 74
+      Width = 97
+      Height = 17
+      Caption = 'Manutencao'
+      TabOrder = 10
+      Visible = False
+      OnClick = cbManutencaoClick
     end
   end
   object Panel1: TPanel

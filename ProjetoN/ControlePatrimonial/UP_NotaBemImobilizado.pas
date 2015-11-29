@@ -44,6 +44,7 @@ type
     procedure DBEdit1Exit(Sender: TObject);
     procedure Edit1Exit(Sender: TObject);
     procedure SB_HelpClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -276,6 +277,11 @@ begin
   end;
 end;
 
+procedure TP_PesquisaNotaBemImobilizado.FormCreate(Sender: TObject);
+begin
+   cdsProdutos.CreateDataSet;
+end;
+
 procedure TP_PesquisaNotaBemImobilizado.DBEdit1Exit(Sender: TObject);
 var
    QryVerificaEmpresa : TIBQuery;
@@ -480,7 +486,6 @@ begin
          end;
 
 
-         cdsProdutos.CreateDataSet;
          cdsProdutos.EmptyDataSet;
 
          cdsProdutos.append;

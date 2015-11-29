@@ -28,7 +28,7 @@
       Top = 15
       Width = 970
       Height = 475
-      ActivePage = C_BensImobilizados
+      ActivePage = Manutencão
       Align = alClient
       TabOrder = 0
       object C_BensImobilizados: TTabSheet
