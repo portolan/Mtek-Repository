@@ -5,12 +5,16 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, UTelaPadrao, Vcl.StdCtrls, Vcl.Buttons,
-  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, UDM_Venda, dm000, Um_Pedido_Venda;
+  Vcl.Grids, Vcl.DBGrids, Vcl.ExtCtrls, UDM_Venda, dm000, Um_Pedido_Venda,
+  Um_Emissão_NFE, UF_Relatorio_PedidoVenda;
 
 type
   TUP_VENDA = class(TxPesqPadrao)
+    bt_Gera_Relatorio: TButton;
     procedure FormCreate(Sender: TObject);
+    procedure bt_Gera_RelatorioClick(Sender: TObject);
   private
+
     { Private declarations }
   public
   procedure procSelect; override;
@@ -24,6 +28,17 @@ implementation
 
 {$R *.dfm}
 
+
+procedure TUP_VENDA.bt_Gera_RelatorioClick(Sender: TObject);
+begin
+  f_Pedidos := Tf_Pedidos.Create(self);
+  try
+     f_Pedidos.showModal;
+  finally
+     freeandnil(f_Pedidos);
+  end;
+end;
+
 procedure TUP_VENDA.FormCreate(Sender: TObject);
 begin
   inherited;
@@ -36,7 +51,6 @@ begin
    inherited;
    procMontaWhere;
       DM_VENDA.IB_Venda.Close;
-      DM_VENDA.IB_Venda.SQL.Clear;
       DM_VENDA.IB_Venda.SQL.Text:= 'SELECT A.*,            '+
                                    '       B.EMP_RAZAO,     '+
                                    '       C.DEP_NOME,      '+
@@ -50,7 +64,6 @@ begin
                                    '    WHERE '+c_where;
       DM_VENDA.IB_Venda.Open;
 end;
-
 
 
 end.
