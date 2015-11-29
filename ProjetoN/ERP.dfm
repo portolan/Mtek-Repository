@@ -5581,6 +5581,33 @@ object TelaInicial: TTelaInicial
         Caption = 'Bancos'
         OnClick = Bancos1Click
       end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object RelatrioFechamentoCaixa1: TMenuItem
+        Caption = 'Relat'#243'rio Fechamento Caixa'
+        OnClick = RelatrioFechamentoCaixa1Click
+      end
+      object RelatrioBalanoCaixa1: TMenuItem
+        Caption = 'Relat'#243'rio Balan'#231'o Caixa Di'#225'rio'
+        OnClick = RelatrioBalanoCaixa1Click
+      end
+      object RelatrioBalanoMensal1: TMenuItem
+        Caption = 'Relat'#243'rio Balan'#231'o Mensal'
+        OnClick = RelatrioBalanoMensal1Click
+      end
+      object RelatriosPrevisoContasReceberPagar1: TMenuItem
+        Caption = 'Relat'#243'rios Previs'#227'o Contas Receber/Pagar'
+        OnClick = RelatriosPrevisoContasReceberPagar1Click
+      end
+      object RelatriosPrevisoVendasCompras1: TMenuItem
+        Caption = 'Relat'#243'rios Previs'#227'o Vendas/Compras'
+        OnClick = RelatriosPrevisoVendasCompras1Click
+      end
+      object RelatrioFluxoCaixa1: TMenuItem
+        Caption = 'Relat'#243'rio Fluxo Caixa'
+        OnClick = RelatrioFluxoCaixa1Click
+      end
     end
     object Contbil1: TMenuItem
       Caption = 'Cont'#225'bil'

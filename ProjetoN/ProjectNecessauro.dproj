@@ -428,22 +428,6 @@
             <Form>I_sobre</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Caixa\UR_balancocx.pas">
-            <Form>REL_balancocx</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Caixa\UR_fechamentocx.pas">
-            <Form>REL_fechamentocx</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Caixa\UR_prevcompravenda.pas">
-            <Form>REL_prevcompravenda</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Caixa\UR_prevtitulos.pas">
-            <Form>REL_prevtitulos</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="compra\UP_Cotacao.pas">
             <Form>PCotacao</Form>
             <FormType>dfm</FormType>
@@ -567,6 +551,55 @@
             <Form>R_RelatorioControlePatrimonial</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Caixa\UM_caixa.pas">
+            <Form>M_caixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UP_abrircx.pas">
+            <Form>UP_abrircaixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UP_Caixa.pas">
+            <Form>P_caixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UP_fecharcx.pas">
+            <Form>UP_fecharcaixa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_balancocx.pas">
+            <Form>REL_balancocx</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_balancocxdiario.pas">
+            <Form>REL_balancocxdia</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_balancocxmensal.pas">
+            <Form>REL_balancocxmes</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_caixaRelatorios.pas">
+            <Form>caixaRelatorios</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_fechamentocx.pas">
+            <Form>REL_fechamentocx</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_fluxocaixa.pas">
+            <Form>UR_fluxocx</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_prevcompravenda.pas">
+            <Form>REL_prevcompravenda</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Caixa\UR_prevtitulos.pas">
+            <Form>REL_prevtitulos</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

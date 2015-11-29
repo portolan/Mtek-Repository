@@ -69,6 +69,13 @@ type
     Relatrios3: TMenuItem;
     Bancos1: TMenuItem;
     Relatorios1: TMenuItem;
+    N1: TMenuItem;
+    RelatrioFechamentoCaixa1: TMenuItem;
+    RelatrioBalanoCaixa1: TMenuItem;
+    RelatrioBalanoMensal1: TMenuItem;
+    RelatriosPrevisoContasReceberPagar1: TMenuItem;
+    RelatriosPrevisoVendasCompras1: TMenuItem;
+    RelatrioFluxoCaixa1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Produtos1Click(Sender: TObject);
     procedure EnstradaSada1Click(Sender: TObject);
@@ -114,6 +121,12 @@ type
     procedure PedidodeVenda1Click(Sender: TObject);
     procedure Bancos1Click(Sender: TObject);
     procedure Relatorios1Click(Sender: TObject);
+    procedure RelatrioFechamentoCaixa1Click(Sender: TObject);
+    procedure RelatrioBalanoCaixa1Click(Sender: TObject);
+    procedure RelatrioBalanoMensal1Click(Sender: TObject);
+    procedure RelatriosPrevisoContasReceberPagar1Click(Sender: TObject);
+    procedure RelatriosPrevisoVendasCompras1Click(Sender: TObject);
+    procedure RelatrioFluxoCaixa1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -144,7 +157,10 @@ uses UP_Marcas, UP_Produto, UM_Estoque, UM_Marcas, UM_Produto, UP_Estoque, UP_Mo
   UM_BensImobilizados, UM_ManutencaoBen, UM_TipoBens, UP_BensImobilizados,
   Um_Condição_Pagamento, Up_condicaop, UR_Relatorio_Chamado, dm000,
   UR_Relatorios, Um_condicaop, Up_Emissao_NFE, UP_banco, UM_novobanco,
-  UF_RelatorioContabil;
+  UF_RelatorioContabil, UR_caixaRelatorios, UR_RelatorioContabil,
+  UR_RelControlePatrimonial, UDM_Caixa, UM_caixa, UP_Caixa, UR_fluxocaixa,
+  UP_abrircx, UP_fecharcx, UR_balancocx, UR_balancocxdiario, UR_balancocxmensal,
+  UR_fechamentocx;
 
 
 procedure TTelaInicial.AjudacomEstoque1Click(Sender: TObject);
@@ -480,6 +496,46 @@ begin
     end;
 end;
 
+procedure TTelaInicial.RelatrioBalanoCaixa1Click(Sender: TObject);
+begin
+    REL_balancocxdia := TREL_balancocxdia.Create(Self);
+    try
+        REL_balancocxdia.ShowModal;
+    finally
+        FreeAndNil(REL_balancocxdia);
+    end;
+end;
+
+procedure TTelaInicial.RelatrioBalanoMensal1Click(Sender: TObject);
+begin
+    REL_balancocxmes := TREL_balancocxmes.Create(Self);
+    try
+        REL_balancocxmes.ShowModal;
+    finally
+        FreeAndNil(REL_balancocxmes);
+    end;
+end;
+
+procedure TTelaInicial.RelatrioFechamentoCaixa1Click(Sender: TObject);
+begin
+    REL_fechamentocx := TREL_fechamentocx.Create(Self);
+    try
+        REL_fechamentocx.ShowModal;
+    finally
+        FreeAndNil(REL_fechamentocx);
+    end;
+end;
+
+procedure TTelaInicial.RelatrioFluxoCaixa1Click(Sender: TObject);
+begin
+    UR_fluxocx := TUR_fluxocx.Create(Self);
+    try
+        UR_fluxocx.ShowModal;
+    finally
+        FreeAndNil(UR_fluxocx);
+    end;                                 
+end;
+
 procedure TTelaInicial.Relatrios1Click(Sender: TObject);
 begin
     FEstoqueRelatorios := TFEstoqueRelatorios.Create(Self);
@@ -508,6 +564,27 @@ begin
       F_ChamadosRelatorios.ShowModal;
     finally
       FreeAndNil(F_ChamadosRelatorios);
+    end;
+end;
+
+procedure TTelaInicial.RelatriosPrevisoContasReceberPagar1Click(
+  Sender: TObject);
+begin
+    REL_prevtitulos := TREL_prevtitulos.Create(Self);
+    try
+        REL_prevtitulos.ShowModal;
+    finally
+        FreeAndNil(REL_prevtitulos);
+    end;
+end;
+
+procedure TTelaInicial.RelatriosPrevisoVendasCompras1Click(Sender: TObject);
+begin
+    REL_prevcompravenda := TREL_prevcompravenda.Create(Self);
+    try
+        REL_prevcompravenda.ShowModal;
+    finally
+        FreeAndNil(REL_prevcompravenda);
     end;
 end;
 

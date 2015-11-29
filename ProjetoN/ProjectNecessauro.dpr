@@ -92,10 +92,6 @@ uses
   Up_Pedido_Venda in 'venda\Up_Pedido_Venda.pas' {UP_VENDA},
   ERP in 'ERP.pas' {TelaInicial},
   UI_sobre in 'UI_sobre.pas' {I_sobre},
-  UR_balancocx in 'Caixa\UR_balancocx.pas' {REL_balancocx},
-  UR_fechamentocx in 'Caixa\UR_fechamentocx.pas' {REL_fechamentocx},
-  UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda},
-  UR_prevtitulos in 'Caixa\UR_prevtitulos.pas' {REL_prevtitulos},
   UP_Cotacao in 'compra\UP_Cotacao.pas' {PCotacao},
   Um_condicaop in 'contas_pagar\Um_condicaop.pas' {m_condicaopag},
   UR_RELATORIOPCP in 'pcp\UR_RELATORIOPCP.pas' {pcprelatorio: TDataModule},
@@ -125,7 +121,19 @@ uses
   UF_RelatorioContabil in 'contabil\UF_RelatorioContabil.pas' {F_RelatorioContabil},
   UF_RelatorioControlePatrimonial in 'ControlePatrimonial\UF_RelatorioControlePatrimonial.pas' {F_RelControlePAtrimonial},
   UR_RelatorioContabil in 'contabil\UR_RelatorioContabil.pas' {R_RelatorioContabil: TDataModule},
-  UR_RelControlePatrimonial in 'ControlePatrimonial\UR_RelControlePatrimonial.pas' {R_RelatorioControlePatrimonial: TDataModule};
+  UR_RelControlePatrimonial in 'ControlePatrimonial\UR_RelControlePatrimonial.pas' {R_RelatorioControlePatrimonial: TDataModule},
+  UM_caixa in 'Caixa\UM_caixa.pas' {M_caixa},
+  UP_abrircx in 'Caixa\UP_abrircx.pas' {UP_abrircaixa},
+  UP_Caixa in 'Caixa\UP_Caixa.pas' {P_caixa},
+  UP_fecharcx in 'Caixa\UP_fecharcx.pas' {UP_fecharcaixa},
+  UR_balancocx in 'Caixa\UR_balancocx.pas' {REL_balancocx},
+  UR_balancocxdiario in 'Caixa\UR_balancocxdiario.pas' {REL_balancocxdia},
+  UR_balancocxmensal in 'Caixa\UR_balancocxmensal.pas' {REL_balancocxmes},
+  UR_caixaRelatorios in 'Caixa\UR_caixaRelatorios.pas' {caixaRelatorios: TDataModule},
+  UR_fechamentocx in 'Caixa\UR_fechamentocx.pas' {REL_fechamentocx},
+  UR_fluxocaixa in 'Caixa\UR_fluxocaixa.pas' {UR_fluxocx},
+  UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda},
+  UR_prevtitulos in 'Caixa\UR_prevtitulos.pas' {REL_prevtitulos};
 
 {$R *.res}
 
@@ -148,6 +156,7 @@ begin
   Application.CreateForm(Tpcprelatorio, pcprelatorio);
   Application.CreateForm(TR_RelatorioContabil, R_RelatorioContabil);
   Application.CreateForm(TR_RelatorioControlePatrimonial, R_RelatorioControlePatrimonial);
+  Application.CreateForm(TcaixaRelatorios, caixaRelatorios);
   Application.CreateForm(TTelaInicial, TelaInicial);
   TStyleManager.TrySetStyle('Aqua Light Slate');
   Application.Run;
