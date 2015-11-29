@@ -241,11 +241,6 @@ object DM_VENDA: TDM_VENDA
       Origin = '"PEDIDOVENDA"."PED_DEPOSITO"'
       Required = True
     end
-    object IB_VendaPED_PRODUTO: TIntegerField
-      FieldName = 'PED_PRODUTO'
-      Origin = '"PEDIDOVENDA"."PED_PRODUTO"'
-      Required = True
-    end
     object IB_VendaPED_DESCRICAO: TIBStringField
       FieldName = 'PED_DESCRICAO'
       Origin = '"PEDIDOVENDA"."PED_DESCRICAO"'
@@ -325,6 +320,12 @@ object DM_VENDA: TDM_VENDA
       Origin = '"PRODUTOS"."PRO_DESCRICAO"'
       Required = True
       Size = 60
+    end
+    object IB_VendaPED_PRODUTO: TIBStringField
+      FieldName = 'PED_PRODUTO'
+      Origin = '"PEDIDOVENDA"."PED_PRODUTO"'
+      Required = True
+      Size = 30
     end
   end
   object U_EmissaoNFE: TIBUpdateSQL

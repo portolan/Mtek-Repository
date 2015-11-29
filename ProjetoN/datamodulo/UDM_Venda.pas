@@ -41,7 +41,6 @@ type
     IB_VendaPED_SITUACAO: TIBStringField;
     IB_VendaPED_EMPRESA: TIntegerField;
     IB_VendaPED_DEPOSITO: TIntegerField;
-    IB_VendaPED_PRODUTO: TIntegerField;
     IB_VendaPED_DESCRICAO: TIBStringField;
     IB_VendaPED_UNIDADE: TIntegerField;
     IB_VendaPED_QUANTIDADE: TIBBCDField;
@@ -57,6 +56,7 @@ type
     IB_VendaEMP_RAZAO: TIBStringField;
     IB_VendaDEP_NOME: TIBStringField;
     IB_VendaPRO_DESCRICAO: TIBStringField;
+    IB_VendaPED_PRODUTO: TIBStringField;
     procedure IB_VendaAfterInsert(DataSet: TDataSet);
     procedure IB_EmissaoNFEAfterInsert(DataSet: TDataSet);
   private
