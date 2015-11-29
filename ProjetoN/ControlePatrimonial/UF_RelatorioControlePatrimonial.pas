@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls,
-  UR_RelControlePatrimonial, udmRelatorioControlePatrimonial;
+  UR_RelControlePatrimonial;
 
 type
   TF_RelControlePAtrimonial = class(TForm)
@@ -107,12 +107,12 @@ begin
         c_where := ' WHERE A.TPB_STATUS = ''A'' ';
 
 
-     DM_RelatorioControlePatrimonial.IB_TIPO.Close;
-     DM_RelatorioControlePatrimonial.IB_TIPO.SQL.Text := 'SELECT *              ' +
+     R_RelatorioControlePatrimonial.IB_TIPO.Close;
+     R_RelatorioControlePatrimonial.IB_TIPO.SQL.Text := 'SELECT *              ' +
                                                         '  FROM TIPO_DE_BENS A ' + c_where ;
-     DM_RelatorioControlePatrimonial.IB_TIPO.Open;
+     R_RelatorioControlePatrimonial.IB_TIPO.Open;
 
-     DM_RelatorioControlePatrimonial.frxTIPO.ShowReport();
+     R_RelatorioControlePatrimonial.frxTIPO.ShowReport();
    end;
 
    // LOCALIZACAO
@@ -122,12 +122,12 @@ begin
         c_where := ' WHERE A.LOC_STATUS = ''A'' ';
 
 
-     DM_RelatorioControlePatrimonial.IB_Localizacao.Close;
-     DM_RelatorioControlePatrimonial.IB_Localizacao.SQL.Text := 'SELECT *             ' +
+     R_RelatorioControlePatrimonial.IB_Localizacao.Close;
+     R_RelatorioControlePatrimonial.IB_Localizacao.SQL.Text := 'SELECT *             ' +
                                                                '  FROM LOCALIZACAO A ' + c_where ;
-     DM_RelatorioControlePatrimonial.IB_Localizacao.Open;
+     R_RelatorioControlePatrimonial.IB_Localizacao.Open;
 
-     DM_RelatorioControlePatrimonial.frxLocalizacao.ShowReport();
+     R_RelatorioControlePatrimonial.frxLocalizacao.ShowReport();
    end;
 
    if CBRelatorios.ItemIndex = 2 then
@@ -135,12 +135,12 @@ begin
     if cbAtivo.Checked then
         c_where := ' WHERE A.EDC_STATUS = ''A'' ';
 
-     DM_RelatorioControlePatrimonial.IB_EstadoConservacao.Close;
-     DM_RelatorioControlePatrimonial.IB_EstadoConservacao.SQL.Text := 'SELECT *                       ' +
+     R_RelatorioControlePatrimonial.IB_EstadoConservacao.Close;
+     R_RelatorioControlePatrimonial.IB_EstadoConservacao.SQL.Text := 'SELECT *                       ' +
                                                                      '  FROM ESTADO_DE_CONSERVACAO A ' + c_where ;
-     DM_RelatorioControlePatrimonial.IB_EstadoConservacao.Open;
+     R_RelatorioControlePatrimonial.IB_EstadoConservacao.Open;
 
-     DM_RelatorioControlePatrimonial.frxEstadoConservacao.ShowReport();
+     R_RelatorioControlePatrimonial.frxEstadoConservacao.ShowReport();
 
    end;
 
@@ -182,8 +182,8 @@ begin
          c_where := '';
 
 
-     DM_RelatorioControlePatrimonial.IBBensImobilizados.Close;
-     DM_RelatorioControlePatrimonial.IBBensImobilizados.SQL.Text :=   'SELECT A.BNI_EMPRESA,                                                          ' +
+     R_RelatorioControlePatrimonial.IBBensImobilizados.Close;
+     R_RelatorioControlePatrimonial.IBBensImobilizados.SQL.Text :=   'SELECT A.BNI_EMPRESA,                                                          ' +
                                                                      '       A.BNI_CODIGO,                                                           ' +
                                                                      '       A.BNI_NUM_SERIE,                                                        ' +
                                                                      '       A.BNI_NR_NOTA,                                                          ' +
@@ -206,9 +206,9 @@ begin
                                                                      ' INNER JOIN TIPO_DE_BENS C ON A.BNI_TIPO = C.TPB_CODIGO                        ' +
                                                                      ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_CODIGO                  ' +
                                                                      ' INNER JOIN ESTADO_DE_CONSERVACAO E ON A.BNI_ESTADO_CONSERVACAO = E.EDC_CODIGO ' + c_where ;
-     DM_RelatorioControlePatrimonial.IBBensImobilizados.Open;
+     R_RelatorioControlePatrimonial.IBBensImobilizados.Open;
 
-     DM_RelatorioControlePatrimonial.frxBensImobilizados.ShowReport();
+     R_RelatorioControlePatrimonial.frxBensImobilizados.ShowReport();
    end;
 
 end;
