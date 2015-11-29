@@ -76,6 +76,7 @@ type
     procedure SBAtualizaDepreciacaoClick(Sender: TObject);
     procedure SB_HelpClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure sbRemoverClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -275,7 +276,7 @@ begin
 
    D_DtaAquisicao := StrToDate(DBBNI_DATA_AQUISICAO.Text);
    D_DtaAtual     := Now;
-   D_Meses        := MonthsBetween( D_DtaAquisicao, D_DtaAtual);   //IntToStr(MonthsBetween(StrToDate('01/07/07'), StrToDate('31/01/08')));
+   D_Meses        := MonthsBetween( D_DtaAquisicao, D_DtaAtual);
 
    result := D_Meses;
 end;
@@ -657,6 +658,61 @@ begin
    ProcTotalizaBen;
    ProcAtualizaTempos;
    inherited;
+end;
+
+procedure TMBensImobilizados.sbRemoverClick(Sender: TObject);
+var
+   qryExcluiManutencao           : TIBQuery;
+   qryVerificapossuiCOmponente   : TIBQuery;
+   b_PossuiComponente            : boolean;
+
+begin
+   b_PossuiComponente := false;
+   qryVerificapossuiCOmponente := dmBanco.funcCriaQuery;
+   try
+      qryVerificapossuiCOmponente.close;
+      qryVerificapossuiCOmponente.SQL.Clear;
+      qryVerificapossuiCOmponente.SQL.Text := 'SELECT *                              ' +
+                                              '  FROM COMPONENTE A                   ' +
+                                              ' WHERE A.COM_EMPRESA = :EMPRESA AND   ' +
+                                              '       A.COM_MANUTENCAO = :MANUTENCAO ' ;
+      qryVerificapossuiCOmponente.ParamByName('EMPRESA').AsInteger := DMControlePatrimonial.ManutencaoMAN_EMPRESA.AsInteger;
+      qryVerificapossuiCOmponente.ParamByName('MANUTENCAO').AsInteger := DMControlePatrimonial.ManutencaoMAN_CODIGO.AsInteger;
+      qryVerificapossuiCOmponente.Open;
+
+      if not (qryVerificapossuiCOmponente.IsEmpty) then
+         b_PossuiComponente := true;
+
+   finally
+      FreeAndNil(qryVerificapossuiCOmponente);
+   end;
+
+   if not(b_PossuiComponente) then
+   begin
+      try
+        qryExcluiManutencao           := dmBanco.funcCriaQuery;
+
+        qryExcluiManutencao.Close;
+        qryExcluiManutencao.SQL.Text :=   'DELETE FROM MANUTENCAO A              ' +
+                                          'WHERE A.MAN_EMPRESA = :EMPRESA AND    ' +
+                                          '      A.MAN_BEN = :BEN AND            ' +
+                                          '      A.MAN_NUM_SERIE = :NUMEROSERIE  ' ;
+        qryExcluiManutencao.ParamByName('EMPRESA').asinteger := DMControlePatrimonial.ManutencaoMAN_EMPRESA.AsInteger;
+        qryExcluiManutencao.ParamByName('BEN').asstring := DMControlePatrimonial.ManutencaoMAN_BEN.asstring;
+        qryExcluiManutencao.ParamByName('NUMEROSERIE').asinteger := DMControlePatrimonial.ManutencaoMAN_NUM_SERIE.AsInteger;
+        qryExcluiManutencao.open;
+
+        procSelect;
+
+      except on E: Exception do
+           raise Exception.Create('Erro ao Excluir Manutenação do Ben Imobilizado!');
+      end;
+   end
+   else
+     raise Exception.Create('Atenção! Não Será possível Excluir a manutenção, o Mesmo possui componente!');
+
+     procSelect;
+
 end;
 
 procedure TMBensImobilizados.SB_HelpClick(Sender: TObject);

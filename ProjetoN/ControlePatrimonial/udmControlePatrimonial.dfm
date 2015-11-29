@@ -277,6 +277,11 @@ object DMControlePatrimonial: TDMControlePatrimonial
       Precision = 18
       Size = 2
     end
+    object ComponenteCOM_MOV_ESTOQUE: TIntegerField
+      DisplayLabel = 'MovimentoSaida'
+      FieldName = 'COM_MOV_ESTOQUE'
+      Origin = '"COMPONENTE"."COM_MOV_ESTOQUE"'
+    end
   end
   object UComponente: TIBUpdateSQL
     RefreshSQL.Strings = (
@@ -285,7 +290,10 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '  COM_MANUTENCAO,'
       '  COM_CODIGO,'
       '  COM_OBSERVACAO,'
-      '  COM_VLR_COMPONENTE'
+      '  COM_VLR_COMPONENTE,'
+      '  COM_QTD,'
+      '  COM_VLR_TOTAL,'
+      '  COM_MOV_ESTOQUE'
       'from COMPONENTE '
       'where'
       '  COM_CODIGO = :COM_CODIGO and'
@@ -296,20 +304,25 @@ object DMControlePatrimonial: TDMControlePatrimonial
       '  COM_CODIGO = :COM_CODIGO,'
       '  COM_EMPRESA = :COM_EMPRESA,'
       '  COM_MANUTENCAO = :COM_MANUTENCAO,'
+      '  COM_MOV_ESTOQUE = :COM_MOV_ESTOQUE,'
       '  COM_OBSERVACAO = :COM_OBSERVACAO,'
-      '  COM_VLR_COMPONENTE = :COM_VLR_COMPONENTE'
+      '  COM_QTD = :COM_QTD,'
+      '  COM_VLR_COMPONENTE = :COM_VLR_COMPONENTE,'
+      '  COM_VLR_TOTAL = :COM_VLR_TOTAL'
       'where'
       '  COM_CODIGO = :OLD_COM_CODIGO and'
       '  COM_EMPRESA = :OLD_COM_EMPRESA')
     InsertSQL.Strings = (
       'insert into COMPONENTE'
       
-        '  (COM_CODIGO, COM_EMPRESA, COM_MANUTENCAO, COM_OBSERVACAO, COM_' +
-        'VLR_COMPONENTE)'
+        '  (COM_CODIGO, COM_EMPRESA, COM_MANUTENCAO, COM_MOV_ESTOQUE, COM' +
+        '_OBSERVACAO, '
+      '   COM_QTD, COM_VLR_COMPONENTE, COM_VLR_TOTAL)'
       'values'
       
-        '  (:COM_CODIGO, :COM_EMPRESA, :COM_MANUTENCAO, :COM_OBSERVACAO, ' +
-        ':COM_VLR_COMPONENTE)')
+        '  (:COM_CODIGO, :COM_EMPRESA, :COM_MANUTENCAO, :COM_MOV_ESTOQUE,' +
+        ' :COM_OBSERVACAO, '
+      '   :COM_QTD, :COM_VLR_COMPONENTE, :COM_VLR_TOTAL)')
     DeleteSQL.Strings = (
       'delete from COMPONENTE'
       'where'

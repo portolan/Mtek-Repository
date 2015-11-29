@@ -40,6 +40,7 @@ type
     procedure sbAlterarClick(Sender: TObject);
     procedure DBMAN_VLR_MANUTENCAOExit(Sender: TObject);
     procedure sbGravarClick(Sender: TObject);
+    procedure sbRemoverClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -182,6 +183,42 @@ begin
    finally
       FreeAndNil(MComponente);
       procTotalizaManutencao;
+   end;
+end;
+
+procedure TM_Manutencao.sbRemoverClick(Sender: TObject);
+var
+   qryDin         : TIBQuery;
+   QryDeletaIten  : TIBQuery;
+
+begin
+   qryDin           := dmBanco.funcCriaQuery;
+   QryDeletaIten    := dmBanco.funcCriaQuery;
+   try
+
+     qryDin.Close;
+     qryDin.SQL.Text := 'DELETE FROM ESTOQ_MOVIMENTO A     ' +
+                        'WHERE A.EM_EMPRESA = :EMPRESA AND ' +
+                        '      A.EM_CODIGO = :CODIGO       ' ;
+     qryDin.ParamByName('Empresa').asinteger := DMControlePatrimonial.ComponenteCOM_EMPRESA.AsInteger;
+     qryDin.ParamByName('CODIGO').asinteger := DMControlePatrimonial.ComponenteCOM_MOV_ESTOQUE.asinteger;
+     qryDin.open;
+
+     QryDeletaIten.Close;
+     QryDeletaIten.SQL.Clear;
+     QryDeletaIten.SQL.text := 'DELETE FROM COMPONENTE A                  ' +
+                               'WHERE A.COM_EMPRESA = :EMPRESA AND        ' +
+                               '      A.COM_MANUTENCAO = :MANUTENCAO AND  ' +
+                               '      A.COM_CODIGO = :COMPONENTE          ' ;
+     QryDeletaIten.ParamByName('EMPRESA').AsInteger := DMControlePatrimonial.ComponenteCOM_EMPRESA.AsInteger;
+     QryDeletaIten.ParamByName('MANUTENCAO').AsInteger := DMControlePatrimonial.ComponenteCOM_MANUTENCAO.AsInteger;
+     QryDeletaIten.ParamByName('COMPONENTE').asstring := DMControlePatrimonial.ComponenteCOM_CODIGO.asstring;
+     QryDeletaIten.open;
+
+     procSelect;
+
+   except on E: Exception do
+        raise Exception.Create('Erro ao Excluir Movimentação do Componente!');
    end;
 end;
 

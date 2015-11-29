@@ -74,6 +74,7 @@ type
     ManutencaoMAN_BEN: TIBStringField;
     BenImobilizadoBNI_TEMPO_DEPRECIACAO: TIntegerField;
     BenImobilizadoBNI_TEMPO_RESIDUAL: TIntegerField;
+    ComponenteCOM_MOV_ESTOQUE: TIntegerField;
     procedure EstadoConservacaoAfterInsert(DataSet: TDataSet);
     procedure TipoBensAfterInsert(DataSet: TDataSet);
     procedure LocalizacaoAfterInsert(DataSet: TDataSet);
@@ -140,6 +141,11 @@ begin
 
 end;
 
+
+//         if Application.MessageBox('Existe Bens Imobilizados cadastrado para este produto, deseja inativar o registro?','Aviso ao Usuário',MB_YESNO+MB_ICONQUESTION) = IDNO then
+//         Exit;
+
+
 procedure TDMControlePatrimonial.TipoBensAfterInsert(DataSet: TDataSet);
 begin
    DMControlePatrimonial.TipoBensTPB_CODIGO.AsInteger := dmBanco.funcRecuperaProximoIdGenerator('GEN_TIPO_BENS');
@@ -170,8 +176,8 @@ begin
 
       if sl_filtros.Text <> EmptyStr then
       begin
-         showmessage(sl_filtros.Text);
-         exit;
+         raise Exception.Create(sl_filtros.Text);
+
       end;
 
    finally

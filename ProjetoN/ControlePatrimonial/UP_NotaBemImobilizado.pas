@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Datasnap.DBClient, Vcl.Grids,
   Vcl.DBGrids, IBX.IBQuery, Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.Buttons,
-  UM_BensImobilizados, UP_NotaEntrada;
+  UM_BensImobilizados, UP_NotaEntrada, HP_PesquisaNota;
 
 type
   TP_PesquisaNotaBemImobilizado = class(TForm)
@@ -33,6 +33,7 @@ type
     DBEdit2: TEdit;
     DBEdit5: TEdit;
     DBEdit4: TEdit;
+    SB_Help: TSpeedButton;
     procedure sdfExit(Sender: TObject);
     procedure DBEdit2Exit(Sender: TObject);
     procedure DBEdit5Exit(Sender: TObject);
@@ -42,6 +43,7 @@ type
     procedure bt_GerarEntradaClick(Sender: TObject);
     procedure DBEdit1Exit(Sender: TObject);
     procedure Edit1Exit(Sender: TObject);
+    procedure SB_HelpClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -495,6 +497,16 @@ begin
    finally
       FreeAndNil(QrySelecionanota);
       FreeAndNil(QryVerificaSaldo);
+   end;
+end;
+
+procedure TP_PesquisaNotaBemImobilizado.SB_HelpClick(Sender: TObject);
+begin
+   H_PesquisaNota := TH_PesquisaNota.Create(Self);
+   try
+      H_PesquisaNota.ShowModal;
+   finally
+      FreeAndNil(H_PesquisaNota);
    end;
 end;
 

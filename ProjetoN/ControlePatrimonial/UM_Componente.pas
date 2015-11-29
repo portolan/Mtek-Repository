@@ -32,8 +32,8 @@ type
     procedure sbGravarClick(Sender: TObject);
   private
     { Private declarations }
-     i_bloco, i_prateleira, i_estoque : integer;
-     function funcGeraMovimentacaoEstoqueCOMPONENTE(codEmpresa, codBloco, codPrateleira, codEstoque : integer; codProduto : String;
+     i_bloco, i_prateleira, i_estoque, i_movimento : integer;
+     function funcGeraMovimentacaoEstoqueCOMPONENTE(codEmpresa, codBloco, codPrateleira, codEstoque, i_movimento : integer; codProduto : String;
                                      qtd : double; obs : String; vlrFinanceiro : double;  categoria : integer):boolean;
   public
     { Public declarations }
@@ -130,7 +130,7 @@ end;
 
 
 function TMComponente.funcGeraMovimentacaoEstoqueCOMPONENTE(codEmpresa,
-  codBloco, codPrateleira, codEstoque: integer; codProduto: String; qtd: double;
+  codBloco, codPrateleira, codEstoque, i_movimento: integer; codProduto: String; qtd: double;
   obs: String; vlrFinanceiro: double; categoria: integer): boolean;
 var
     qryDin : TIBQuery;
@@ -165,8 +165,8 @@ begin
         qryDin.ParamByName('EM_BLOCO').Value := codBloco;
         qryDin.ParamByName('EM_PRATELEIRA').Value := codPrateleira;
         qryDin.ParamByName('EM_ESTOQUE').Value := codEstoque;
-        qryDin.ParamByName('EM_CODIGO').Value := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQ_MOVIMENTO');
-        qryDin.ParamByName('EM_TIPO').Value := 'E';
+        qryDin.ParamByName('EM_CODIGO').Value := i_movimento;
+        qryDin.ParamByName('EM_TIPO').Value := 'S';
         qryDin.ParamByName('EM_QTD').Value := qtd;
         qryDin.ParamByName('EM_DATA').Value := Now;
         qryDin.ParamByName('EM_OBS').Value := obs;
@@ -193,13 +193,15 @@ end;
 procedure TMComponente.sbGravarClick(Sender: TObject);
 begin
   ProcVerificaSaldo;
+  i_movimento := dmBanco.funcRecuperaProximoIdGenerator('GEN_ESTOQ_MOVIMENTO');
   funcGeraMovimentacaoEstoqueCOMPONENTE(DMControlePatrimonial.ComponenteCOM_EMPRESA.AsInteger,
-                                     i_bloco, i_prateleira, i_estoque,
+                                     i_bloco, i_prateleira, i_estoque, i_movimento,
                                      DBCOM_CODIGO.text,
                                      strtofloat(DBCOM_QTD.text),
                                      'REFERENTE A MANUTENÇÃO DO BEN IMOBILIZADO NÚMERO DE SÉRIE: '+ DMControlePatrimonial.BenImobilizadoBNI_NUM_SERIE.AsString,
                                      STRTOFLOAT(DBCOM_VLR_TOTAL.TEXT),
                                       1);
+  DMControlePatrimonial.ComponenteCOM_MOV_ESTOQUE.AsInteger := i_movimento;
   inherited;
 
 

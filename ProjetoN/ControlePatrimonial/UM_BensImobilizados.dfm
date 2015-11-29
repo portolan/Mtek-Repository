@@ -3,7 +3,6 @@
   ClientHeight = 533
   ClientWidth = 974
   OnShow = FormShow
-  ExplicitTop = -101
   ExplicitWidth = 990
   ExplicitHeight = 571
   PixelsPerInch = 96
@@ -654,6 +653,7 @@
               323232323232323232373737402C01000000000000011F423731313132323232
               323237421F010000000000000000000E39403A312D2D2D323B42390E00000000
               0000000000000000000C1F39424442391F0C0000000000000000}
+            OnClick = sbRemoverClick
             ExplicitLeft = 9
             ExplicitTop = 2
           end

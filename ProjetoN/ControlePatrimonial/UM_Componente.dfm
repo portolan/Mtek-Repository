@@ -66,9 +66,9 @@ inherited MComponente: TMComponente
     object Label7: TLabel
       Left = 472
       Top = 83
-      Width = 42
+      Width = 51
       Height = 13
-      Caption = 'Vlr_Total'
+      Caption = 'Valor Total'
       FocusControl = DBCOM_VLR_TOTAL
     end
     object DBCOM_EMPRESA: TDBEdit
@@ -89,7 +89,7 @@ inherited MComponente: TMComponente
       DataField = 'COM_MANUTENCAO'
       DataSource = DMControlePatrimonial.DComponente
       Enabled = False
-      TabOrder = 1
+      TabOrder = 3
     end
     object DBCOM_CODIGO: TDBEdit
       Left = 40
@@ -98,7 +98,7 @@ inherited MComponente: TMComponente
       Height = 21
       DataField = 'COM_CODIGO'
       DataSource = DMControlePatrimonial.DComponente
-      TabOrder = 2
+      TabOrder = 1
       OnExit = DBCOM_CODIGOExit
     end
     object DBCOMDESCRICAO: TEdit
@@ -106,7 +106,8 @@ inherited MComponente: TMComponente
       Top = 99
       Width = 242
       Height = 21
-      TabOrder = 3
+      Enabled = False
+      TabOrder = 4
     end
     object DBCOM_VLR_COMPONENTE: TDBEdit
       Left = 351
@@ -116,7 +117,7 @@ inherited MComponente: TMComponente
       DataField = 'COM_VLR_COMPONENTE'
       DataSource = DMControlePatrimonial.DComponente
       Enabled = False
-      TabOrder = 4
+      TabOrder = 5
     end
     object GroupBox1: TGroupBox
       Left = 40
@@ -124,7 +125,7 @@ inherited MComponente: TMComponente
       Width = 497
       Height = 105
       Caption = 'Observa'#231#227'o'
-      TabOrder = 5
+      TabOrder = 6
       object DBMemo1: TDBMemo
         Left = 2
         Top = 15
@@ -143,7 +144,7 @@ inherited MComponente: TMComponente
       Height = 21
       DataField = 'COM_QTD'
       DataSource = DMControlePatrimonial.DComponente
-      TabOrder = 6
+      TabOrder = 2
       OnExit = DBCOM_QTDExit
     end
     object DBCOM_VLR_TOTAL: TDBEdit
