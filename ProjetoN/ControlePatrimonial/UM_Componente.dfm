@@ -115,6 +115,7 @@ inherited MComponente: TMComponente
       Height = 21
       DataField = 'COM_VLR_COMPONENTE'
       DataSource = DMControlePatrimonial.DComponente
+      Enabled = False
       TabOrder = 4
     end
     object GroupBox1: TGroupBox

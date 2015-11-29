@@ -72,7 +72,7 @@ begin
      if NOT(QryVerificaProduto.IsEmpty) then
      BEGIN
         DBCOMDESCRICAO.Text := QryVerificaProduto.FieldByName('pro_descricao').AsString;
-        DMControlePatrimonial.ComponenteCOM_VLR_COMPONENTE.AsFloat := QryVerificaProduto.FieldByName('pro_customedio').ASFLOAT;
+        DBCOM_VLR_COMPONENTE.Text := FLOATTOSTR(QryVerificaProduto.FieldByName('pro_customedio').ASFLOAT);
         B_ACHOU := true;
      END;
   finally
@@ -88,7 +88,7 @@ begin
         PProduto.ShowModal;
      finally
         DMControlePatrimonial.ComponenteCOM_CODIGO.AsInteger := DM_Estoque.ProdutosPRO_CODIGO.AsInteger;
-        DMControlePatrimonial.ComponenteCOM_VLR_COMPONENTE.AsFloat := DM_Estoque.ProdutosPRO_CUSTOMEDIO.AsFloat;
+        DBCOM_VLR_COMPONENTE.Text := FLOATTOSTR(DM_Estoque.ProdutosPRO_CUSTOMEDIO.AsFloat);
         DBCOMDESCRICAO.Text := DM_Estoque.ProdutosPRO_DESCRICAO.asstring;
         FreeAndNil(PProduto);
      end;
@@ -106,17 +106,17 @@ begin
   inherited;
    if DBCOM_QTD.Text = EmptyStr then
    begin
-      ShowMessage('Campo de Quantidade Nulo, por favor informe uma quantidade valida!');
+      raise Exception.Create('Campo de Quantidade Nulo, por favor informe uma quantidade valida!');
 
-      if DBCOM_QTD.CanUndo then
-         DBCOM_QTD.SetFocus;
+      DBCOM_QTD.SetFocus;
    end;
 
    if DBCOM_QTD.Text = '0' then
    begin
-      showmessage ('Atenção, Quantidade Invalida, por favor informe quantidade maior que zero!');
-      if DBCOM_QTD.CanUndo then
-         DBCOM_QTD.SetFocus;
+      raise Exception.Create('Atenção, Quantidade Invalida, por favor informe quantidade maior que zero!');
+
+
+      DBCOM_QTD.SetFocus;
    end;
    ProcVerificaSaldo;
 

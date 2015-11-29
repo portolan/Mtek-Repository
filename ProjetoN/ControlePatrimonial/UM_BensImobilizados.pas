@@ -72,6 +72,7 @@ type
     procedure DBBNI_VLR_RESIDUALExit(Sender: TObject);
     procedure sbGravarClick(Sender: TObject);
     procedure SBAtualizaDepreciacaoClick(Sender: TObject);
+    procedure SB_HelpClick(Sender: TObject);
   private
     { Private declarations }
 
@@ -252,6 +253,7 @@ begin
   if DMControlePatrimonial.BenImobilizado.State in [dsEdit] then
       ProcAlimentaDescricoes;
    ProcTotalizaBen;
+   ProcAtualizaDepreciacao;
    procselect;
 
 end;
@@ -415,6 +417,7 @@ begin
         if not(QryVerificaEstado.IsEmpty) then
         begin
            DBBNI_ESTADO_CONSERVACAO_DESCRICAO.Text := QryVerificaEstado.FieldByName('EDC_DESCRICAO').asstring;
+           b_achou := TRUE;
         end
         else
            b_achou := false;
@@ -571,8 +574,7 @@ begin
       else
          F_VLR_AGREGADO := QryVerificaAgregado.FieldByName('VALOR').AsFloat;
 
-      F_VLR_ATUAL     := strtofloat(DBBNI_VLR_AQUISICAO.Text);
-      F_VLR_RESIDUAL  := strtofloat(DBBNI_VLR_RESIDUAL.Text);
+      DBBNI_VLR_AGREGADO.Text := FLOATTOSTR(F_VLR_AGREGADO);
 
    finally
       FreeAndNil(QryVerificaAgregado);
@@ -601,6 +603,8 @@ begin
       M_Manutencao.ShowModal;
    finally
       FreeAndNil(M_Manutencao);
+      ProcTotalizaBen;
+      ProcAtualizaDepreciacao;
    end;
 end;
 
@@ -608,6 +612,17 @@ procedure TMBensImobilizados.sbGravarClick(Sender: TObject);
 begin
    ProcTotalizaBen;
    inherited;
+end;
+
+procedure TMBensImobilizados.SB_HelpClick(Sender: TObject);
+begin
+
+   H_FormaCalcDep := TH_FormaCalcDep.Create(Self);
+   try
+      H_FormaCalcDep.ShowModal;
+   finally
+      FreeAndNil(H_FormaCalcDep);
+   end;
 end;
 
 procedure TMBensImobilizados.SBAtualizaDepreciacaoClick(Sender: TObject);
@@ -644,6 +659,8 @@ begin
       M_Manutencao.ShowModal;
    finally
       FreeAndNil(M_Manutencao);
+      ProcTotalizaBen;
+      ProcAtualizaDepreciacao;
    end;
 
 end;

@@ -223,6 +223,7 @@
               FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000}
             ParentShowHint = False
             ShowHint = True
+            OnClick = SB_HelpClick
           end
           object LBPERCENTUAL: TLabel
             Left = 431
@@ -570,26 +571,31 @@
             item
               Expanded = False
               FieldName = 'MAN_VLR_COMPONENTE'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_VLR_MANUTENCAO'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_VLR_TOTAL'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_AGREGA_CUSTO'
+              Width = 64
               Visible = True
             end
             item
               Expanded = False
               FieldName = 'MAN_NUM_SERIE'
+              Width = 64
               Visible = True
             end>
         end

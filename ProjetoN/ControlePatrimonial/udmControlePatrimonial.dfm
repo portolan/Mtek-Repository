@@ -212,6 +212,7 @@ object DMControlePatrimonial: TDMControlePatrimonial
   object Componente: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
+    AfterInsert = ComponenteAfterInsert
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True

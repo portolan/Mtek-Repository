@@ -152,7 +152,6 @@ procedure TM_Manutencao.sbGravarClick(Sender: TObject);
 begin
    procTotalizaManutencao;
    inherited;
-
 end;
 
 procedure TM_Manutencao.sbNovoClick(Sender: TObject);

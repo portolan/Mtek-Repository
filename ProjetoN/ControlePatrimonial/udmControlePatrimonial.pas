@@ -77,6 +77,7 @@ type
     procedure LocalizacaoAfterInsert(DataSet: TDataSet);
     procedure ManutencaoAfterInsert(DataSet: TDataSet);
     procedure BenImobilizadoAfterInsert(DataSet: TDataSet);
+    procedure ComponenteAfterInsert(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -106,6 +107,11 @@ begin
    DMControlePatrimonial.BenImobilizadoBNI_DEPRECIACAO.AsFloat := 0;
    DMControlePatrimonial.BenImobilizadoBNI_VLR_RESIDUAL.AsFloat := 0;
 
+end;
+
+procedure TDMControlePatrimonial.ComponenteAfterInsert(DataSet: TDataSet);
+begin
+   DMControlePatrimonial.ComponenteCOM_QTD.ASFLOAT := 0;
 end;
 
 procedure TDMControlePatrimonial.EstadoConservacaoAfterInsert(
