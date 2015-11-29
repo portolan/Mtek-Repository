@@ -430,7 +430,6 @@ begin
       QrySelecionanota.ParamByName('PESSOA').asinteger    := strtoint(DBEdit5.Text);
       QrySelecionanota.ParamByName('PRODUTO').asstring    :=  s_produto;
       QrySelecionanota.Open;
-      QrySelecionanota.First;
 
       if QrySelecionanota.IsEmpty then
       begin

@@ -169,11 +169,11 @@ end;
 
 procedure TTelaInicial.BemImobilizado1Click(Sender: TObject);
 begin
-   P_PesquisaNotaBemImobilizado := TP_PesquisaNotaBemImobilizado.Create(Self);
+   P_BensImobilizados := TP_BensImobilizados.Create(Self);
    try
-      P_PesquisaNotaBemImobilizado.ShowModal;
+      P_BensImobilizados.ShowModal;
    finally
-     FreeAndNil(P_PesquisaNotaBemImobilizado);
+     FreeAndNil(P_BensImobilizados);
    end;
 end;
 

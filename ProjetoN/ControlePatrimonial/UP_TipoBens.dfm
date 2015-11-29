@@ -1,5 +1,7 @@
 inherited P_TipoBens: TP_TipoBens
   Caption = 'Pesquisa de Tipo de Bens'
+  ExplicitWidth = 880
+  ExplicitHeight = 440
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnCorpo: TPanel

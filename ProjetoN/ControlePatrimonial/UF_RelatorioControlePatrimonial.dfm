@@ -36,11 +36,10 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
       Visible = False
     end
     object lbDescricaoEmpresa: TLabel
-      Left = 335
+      Left = 338
       Top = 78
-      Width = 95
+      Width = 118
       Height = 13
-      Caption = 'lbDescricaoEmpresa'
       Visible = False
     end
     object Produto: TLabel
@@ -52,11 +51,10 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
       Visible = False
     end
     object lbDescricaoProduto: TLabel
-      Left = 335
+      Left = 338
       Top = 124
-      Width = 92
+      Width = 110
       Height = 13
-      Caption = 'lbDescricaoProduto'
       Visible = False
     end
     object Fornecedor: TLabel
@@ -68,11 +66,10 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
       Visible = False
     end
     object lbDescricaoFornecedor: TLabel
-      Left = 335
+      Left = 338
       Top = 170
-      Width = 109
+      Width = 134
       Height = 13
-      Caption = 'lbDescricaoFornecedor'
       Visible = False
     end
     object NumSerie: TLabel

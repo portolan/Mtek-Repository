@@ -208,6 +208,14 @@ begin
 
      if not (QryVerificaNumeroDeSerie.IsEmpty) then
      begin
+
+     if (QryVerificaNumeroDeSerie.FieldByName('BNI_EMPRESA').AsInteger = DMControlePatrimonial.BenImobilizadoBNI_EMPRESA.asinteger) and
+        (QryVerificaNumeroDeSerie.FieldByName('BNI_CODIGO').AsInteger = DMControlePatrimonial.BenImobilizadoBNI_CODIGO.asinteger) and
+        (QryVerificaNumeroDeSerie.FieldByName('BNI_NUM_SERIE').AsInteger = DMControlePatrimonial.BenImobilizadoBNI_NUM_SERIE.asinteger) and
+        (QryVerificaNumeroDeSerie.FieldByName('BNI_NR_NOTA').AsInteger = DMControlePatrimonial.BenImobilizadoBNI_NR_NOTA.asinteger) then
+     exit;
+
+
         showmessage('Número de série Invalido!!' + slinebreak +
                     'Número de série já se encontra informado no ben imobilizado, Empresa: '
                      + QryVerificaNumeroDeSerie.FieldByName('BNI_EMPRESA').asstring + ' Produto: ' +
@@ -314,7 +322,7 @@ begin
       QryLocEstadoConservacao.SQL.Text := 'SELECT A.EDC_DESCRICAO          ' +
                                           '  FROM ESTADO_DE_CONSERVACAO A  ' +
                                           ' WHERE A.EDC_CODIGO = :CODIGO   ' ;
-      QryLocEstadoConservacao.ParamByName('codigo').AsInteger := DMControlePatrimonial.EstadoConservacaoEDC_CODIGO.AsInteger;
+      QryLocEstadoConservacao.ParamByName('codigo').AsInteger := DMControlePatrimonial.BenImobilizadoBNI_ESTADO_CONSERVACAO.AsInteger;
       QryLocEstadoConservacao.Open;
 
       DBBNI_ESTADO_CONSERVACAO_DESCRICAO.Text := QryLocEstadoConservacao.FieldByName('EDC_DESCRICAO').AsString;
@@ -419,13 +427,13 @@ begin
   if (b_achou = false) or (DBBNI_ESTADO_CONSERVACAO.text = Emptystr) then
   begin
 
-    P_TipoBens := TP_TipoBens.Create(Self);
+    P_EstadoConservacao := TP_EstadoConservacao.Create(Self);
     try
-       P_TipoBens.ShowModal;
+       P_EstadoConservacao.ShowModal;
     finally
        DBBNI_ESTADO_CONSERVACAO.Text := DMControlePatrimonial.EstadoConservacaoEDC_CODIGO.AsString;
        DBBNI_ESTADO_CONSERVACAO_DESCRICAO.Text := DMControlePatrimonial.EstadoConservacaoEDC_DESCRICAO.AsString;
-       FreeAndNil(P_TipoBens);
+       FreeAndNil(P_EstadoConservacao);
     end;
   end;
 end;

@@ -61,7 +61,6 @@ object P_PesquisaNotaBemImobilizado: TP_PesquisaNotaBemImobilizado
     Align = alClient
     Caption = 'Dados'
     TabOrder = 1
-    ExplicitWidth = 747
     object Label1: TLabel
       Left = 24
       Top = 24
