@@ -3,12 +3,11 @@ unit UR_RelControlePatrimonial;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, IBX.IBCustomDataSet,
-  IBX.IBQuery, frxClass, frxDBSet;
+  System.SysUtils, System.Classes, Data.DB, IBX.IBCustomDataSet, IBX.IBQuery,
+  frxClass, frxDBSet;
 
 type
-  TR_RelatorioControlePatrimonial = class(TForm)
+  TR_RelatorioControlePatrimonial = class(TDataModule)
     frxTIPO: TfrxReport;
     frxDBTIPO: TfrxDBDataset;
     IB_TIPO: TIBQuery;
@@ -16,11 +15,11 @@ type
     IB_TIPOTPB_DESCRICAO: TIBStringField;
     IB_TIPOTPB_STATUS: TIBStringField;
     IB_LOCALIZACAO: TIBQuery;
-    frxLocalizacao: TfrxReport;
-    frxDBLocalizacao: TfrxDBDataset;
     IB_LOCALIZACAOLOC_CODIGO: TIntegerField;
     IB_LOCALIZACAOLOC_DESCRICAO: TIBStringField;
     IB_LOCALIZACAOLOC_STATUS: TIBStringField;
+    frxLocalizacao: TfrxReport;
+    frxDBLocalizacao: TfrxDBDataset;
     frxEstadoConservacao: TfrxReport;
     frxDBEstadoConservacao: TfrxDBDataset;
     IB_EstadoConservacao: TIBQuery;
@@ -79,6 +78,8 @@ var
   R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial;
 
 implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
 

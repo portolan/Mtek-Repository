@@ -1,18 +1,7 @@
 object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
-  Left = 0
-  Top = 0
-  Caption = 'R_RelatorioControlePatrimonial'
-  ClientHeight = 202
-  ClientWidth = 666
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
   OldCreateOrder = False
-  PixelsPerInch = 96
-  TextHeight = 13
+  Height = 444
+  Width = 657
   object frxTIPO: TfrxReport
     Version = '5.1.5'
     DotMatrixReport = False
@@ -227,7 +216,6 @@ object R_RelatorioControlePatrimonial: TR_RelatorioControlePatrimonial
   object IB_TIPO: TIBQuery
     Database = dmBanco.Banco
     Transaction = dmBanco.TBanco
-    Active = True
     BufferChunks = 1000
     CachedUpdates = False
     ParamCheck = True
