@@ -428,22 +428,6 @@
             <Form>I_sobre</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="Caixa\UM_caixa.pas">
-            <Form>M_caixa</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Caixa\UP_abrircx.pas">
-            <Form>UP_abrircaixa</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Caixa\UP_Caixa.pas">
-            <Form>P_caixa</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
-        <DCCReference Include="Caixa\UP_fecharcx.pas">
-            <Form>UP_fecharcaixa</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="Caixa\UR_balancocx.pas">
             <Form>REL_balancocx</Form>
             <FormType>dfm</FormType>

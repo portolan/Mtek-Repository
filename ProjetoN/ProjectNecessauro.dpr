@@ -92,10 +92,6 @@ uses
   Up_Pedido_Venda in 'venda\Up_Pedido_Venda.pas' {UP_VENDA},
   ERP in 'ERP.pas' {TelaInicial},
   UI_sobre in 'UI_sobre.pas' {I_sobre},
-  UM_caixa in 'Caixa\UM_caixa.pas' {M_caixa},
-  UP_abrircx in 'Caixa\UP_abrircx.pas' {UP_abrircaixa},
-  UP_Caixa in 'Caixa\UP_Caixa.pas' {P_caixa},
-  UP_fecharcx in 'Caixa\UP_fecharcx.pas' {UP_fecharcaixa},
   UR_balancocx in 'Caixa\UR_balancocx.pas' {REL_balancocx},
   UR_fechamentocx in 'Caixa\UR_fechamentocx.pas' {REL_fechamentocx},
   UR_prevcompravenda in 'Caixa\UR_prevcompravenda.pas' {REL_prevcompravenda},
@@ -138,7 +134,6 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TdmBanco, dmBanco);
   Application.CreateForm(TdmPedido, dmPedido);
-  Application.CreateForm(TDM_Caixa, DM_Caixa);
   Application.CreateForm(TDM_contabil, DM_contabil);
   Application.CreateForm(TDM_contasreceber, DM_contasreceber);
   Application.CreateForm(TDM_Estoque, DM_Estoque);
@@ -148,9 +143,7 @@ begin
   Application.CreateForm(TDM_VENDA, DM_VENDA);
   Application.CreateForm(TDM_Servico, DM_Servico);
   Application.CreateForm(TDMControlePatrimonial, DMControlePatrimonial);
-  Application.CreateForm(TDataModule2, DataModule2);
   Application.CreateForm(Tdm_contaspagar, dm_contaspagar);
-  Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TEstoqueRelatorios, EstoqueRelatorios);
   Application.CreateForm(Tpcprelatorio, pcprelatorio);
   Application.CreateForm(TR_RelatorioContabil, R_RelatorioContabil);
