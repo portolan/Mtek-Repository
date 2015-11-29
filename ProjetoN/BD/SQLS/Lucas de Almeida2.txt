@@ -1,0 +1,96 @@
+CRIADO DOIS GENERATORS A MAIS 
+
+CAMPOS ABAIXO COM ************ FORAM ELIMINADOS
+
+PED_NUMERO   -  PK 
+PED_EMPRESA  - PK
+
+EMI_NUMERO  - PK
+EMI_EMPRESA - PK
+
+CREATE TABLE PEDIDOVENDA (
+    PED_NUMERO            INTEGER NOT NULL,
+    PED_PESSOA            VARCHAR(60) NOT NULL,
+    PED_SEQUENCIA         INTEGER,
+    PED_SITUACAO          VARCHAR(5) DEFAULT 'A',
+    PED_EMPRESA           INTEGER NOT NULL,
+    PED_DEPOSITO          INTEGER NOT NULL,
+    PED_PRODUTO           INTEGER NOT NULL,
+    PED_DESCRICAO         VARCHAR(60),
+    PED_TIPOMOVIMENTACAO  INTEGER NOT NULL,  ***************
+    PED_TIPODESCRICAO     VARCHAR(30),                *****************
+    PED_UNIDADE           INTEGER,
+    PED_QUANTIDADE        NUMERIC(18,2) DEFAULT 0.0,
+    PED_LISTA_PRECO       NUMERIC(18,2),              ******************
+    PED_DESCONTO          NUMERIC(18,2),
+    PED_QTD_DISPONIVEL    NUMERIC(18,2) DEFAULT 0.0,
+    PED_VLRUNITARIO       NUMERIC(18,2),
+    PED_VLRTOTAL          NUMERIC(18,2),
+    PED_REAJUSTE          NUMERIC(18,2),
+    PED_DTPEDIDO          DATE,
+    PED_DTENTRADA         DATE,
+    PED_DTPRAZOENTREGA    DATE,
+    PED_ORDEMVENDA        INTEGER NOT NULL
+);
+
+
+/******************************************************************************/
+/***                               Generators                               ***/
+/******************************************************************************/
+
+CREATE GENERATOR GEN_NFE;
+SET GENERATOR GEN_NFE TO 1;
+
+CREATE GENERATOR GEN_ORDEMVENDA;
+SET GENERATOR GEN_ORDEMVENDA TO 13;
+
+
+
+/******************************************************************************/
+/***                                 Tables                                 ***/
+/******************************************************************************/
+
+
+
+CREATE TABLE EMISSAO_NFE (
+    EMI_NUMERO            INTEGER NOT NULL,
+    EMI_NOTAFISCAL        NUMERIC(9,0),
+    EMI_EMPRESA           INTEGER NOT NULL,
+    EMI_SERIE             NUMERIC(9,0),
+    EMI_TIPOMOVIMENTACAO  INTEGER NOT NULL,
+    EMI_DESCRICAO         VARCHAR(60) NOT NULL,
+    EMI_PESSOA            VARCHAR(60) NOT NULL,
+    EMI_DTEMISSAO         DATE,
+    EMI_DTSAIDA           DATE
+);
+
+CREATE TABLE PEDIDOVENDA (
+    PED_NUMERO          INTEGER NOT NULL,
+    PED_PESSOA          VARCHAR(60) NOT NULL,
+    PED_SEQUENCIA       INTEGER,
+    PED_SITUACAO        VARCHAR(5) DEFAULT 'A',
+    PED_EMPRESA         INTEGER NOT NULL,
+    PED_DEPOSITO        INTEGER NOT NULL,
+    PED_PRODUTO         INTEGER NOT NULL,
+    PED_DESCRICAO       VARCHAR(60),
+    PED_UNIDADE         INTEGER,
+    PED_QUANTIDADE      NUMERIC(18,2) DEFAULT 0.0,
+    PED_DESCONTO        NUMERIC(18,2),
+    PED_QTD_DISPONIVEL  NUMERIC(18,2) DEFAULT 0.0,
+    PED_VLRUNITARIO     NUMERIC(18,2),
+    PED_VLRTOTAL        NUMERIC(18,2),
+    PED_REAJUSTE        NUMERIC(18,2),
+    PED_DTPEDIDO        DATE,
+    PED_DTENTRADA       DATE,
+    PED_DTPRAZOENTREGA  DATE,
+    PED_ORDEMVENDA      INTEGER NOT NULL
+);
+
+
+
+/******************************************************************************/
+/***                              Primary Keys                              ***/
+/******************************************************************************/
+
+ALTER TABLE EMISSAO_NFE ADD CONSTRAINT PK_EMISSAO_NFE PRIMARY KEY (EMI_NUMERO, EMI_EMPRESA);
+ALTER TABLE PEDIDOVENDA ADD CONSTRAINT PK_PEDIDOVENDA PRIMARY KEY (PED_NUMERO, PED_EMPRESA);
