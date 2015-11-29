@@ -258,6 +258,24 @@ object DMControlePatrimonial: TDMControlePatrimonial
       DisplayFormat = '###,###,##0.00'
       EditFormat = '0.00'
     end
+    object ComponenteCOM_QTD: TIBBCDField
+      DisplayLabel = 'Quantidade'
+      FieldName = 'COM_QTD'
+      Origin = '"COMPONENTE"."COM_QTD"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
+      Precision = 18
+      Size = 2
+    end
+    object ComponenteCOM_VLR_TOTAL: TIBBCDField
+      DisplayLabel = 'Vlr_Total'
+      FieldName = 'COM_VLR_TOTAL'
+      Origin = '"COMPONENTE"."COM_VLR_TOTAL"'
+      DisplayFormat = '###,###,##0.00'
+      EditFormat = '0.00'
+      Precision = 18
+      Size = 2
+    end
   end
   object UComponente: TIBUpdateSQL
     RefreshSQL.Strings = (

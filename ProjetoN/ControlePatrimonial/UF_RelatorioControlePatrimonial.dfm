@@ -20,10 +20,6 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
     Height = 305
     Align = alClient
     TabOrder = 0
-    ExplicitLeft = 160
-    ExplicitTop = 56
-    ExplicitWidth = 185
-    ExplicitHeight = 105
     object Label1: TLabel
       Left = 56
       Top = 32
@@ -149,9 +145,6 @@ object F_RelControlePAtrimonial: TF_RelControlePAtrimonial
     Height = 41
     Align = alBottom
     TabOrder = 1
-    ExplicitLeft = 144
-    ExplicitTop = 297
-    ExplicitWidth = 185
     object sbSair: TSpeedButton
       Left = 544
       Top = 1

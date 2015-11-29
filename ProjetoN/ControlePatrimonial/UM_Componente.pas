@@ -7,7 +7,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, udmControlePatrimonial, UManuPadrao,
   Vcl.StdCtrls, Vcl.Mask, Vcl.DBCtrls, Vcl.Buttons, Vcl.ExtCtrls, db, IBX.IBQuery,
-  dm000, UP_Produto, UDM_Estoque;
+  dm000, UP_Produto, UDM_Estoque, UEstoque;
 
 type
   TMComponente = class(TxManuPadrao)
@@ -23,13 +23,21 @@ type
     DBCOM_VLR_COMPONENTE: TDBEdit;
     GroupBox1: TGroupBox;
     DBMemo1: TDBMemo;
+    Label6: TLabel;
+    DBCOM_QTD: TDBEdit;
+    Label7: TLabel;
+    DBCOM_VLR_TOTAL: TDBEdit;
     procedure DBCOM_CODIGOExit(Sender: TObject);
+    procedure DBCOM_QTDExit(Sender: TObject);
     procedure sbGravarClick(Sender: TObject);
   private
     { Private declarations }
+     i_bloco, i_prateleira, i_estoque : integer;
+
   public
     { Public declarations }
-     procedure procTotalizaManutencao;
+     procedure ProcVerificaSaldo;
+
   end;
 
 var
@@ -88,52 +96,62 @@ end;
 
 
 
-procedure TMComponente.procTotalizaManutencao;
+procedure TMComponente.DBCOM_QTDExit(Sender: TObject);
 var
-   QryLocalizaComponentes     : tibquery;
-   QryAtualizaValorComponente : tibquery;
-   f_valor                    : double;
+   F_Vlr_Unit : double;
+   F_qtd      : double;
+   F_VlrTotal : double;
 begin
-   try
-      QryLocalizaComponentes := dmBanco.funcCriaQuery;
-      QryAtualizaValorComponente := dmBanco.funcCriaQuery;
+  inherited;
+   if DBCOM_QTD.Text = EmptyStr then
+   begin
+      ShowMessage('Campo de Quantidade Nulo, por favor informe uma quantidade valida!');
 
-      QryLocalizaComponentes.Close;
-      QryLocalizaComponentes.SQL.Clear;
-      QryLocalizaComponentes.SQL.Text :=  'SELECT SUM(A.COM_VLR_COMPONENTE) as valor  ' +
-                                          '  FROM COMPONENTE A                        ' +
-                                          ' WHERE A.COM_EMPRESA = :EMPRESA AND        ' +
-                                          '       A.COM_MANUTENCAO = :MANUTENCAO      ' ;
-      QryLocalizaComponentes.ParamByName('empresa').AsInteger := DMControlePatrimonial.ManutencaoMAN_EMPRESA.AsInteger;
-      QryLocalizaComponentes.ParamByName('manutencao').AsInteger := DMControlePatrimonial.ManutencaoMAN_CODIGO.AsInteger;
-      QryLocalizaComponentes.Open;
-
-      if QryLocalizaComponentes.IsEmpty then
-         f_valor := 0
-      else
-         f_valor := QryLocalizaComponentes.FieldByName('valor').AsFloat;
-
-
-      QryAtualizaValorComponente.Close;
-      QryAtualizaValorComponente.SQL.Clear;
-      QryAtualizaValorComponente.SQL.Text := 'UPDATE MANUTENCAO A SET             ' +
-                                             '    A.MAN_VLR_COMPONENTE = :VALOR   ' +
-                                             'WHERE A.MAN_EMPRESA = :EMPRESA AND  ' +
-                                             '      A.MAN_CODIGO = :CODIGO        ' ;
-      QryAtualizaValorComponente.ParamByName('valor').AsFloat := f_valor;
-      QryAtualizaValorComponente.ExecSQL;
-
-
-   finally
-      FreeAndNil(QryLocalizaComponentes);
-      FreeAndNil(QryAtualizaValorComponente);
+      if DBCOM_QTD.CanUndo then
+         DBCOM_QTD.SetFocus;
    end;
+
+   if DBCOM_QTD.Text = '0' then
+   begin
+      showmessage ('Atenção, Quantidade Invalida, por favor informe quantidade maior que zero!');
+      if DBCOM_QTD.CanUndo then
+         DBCOM_QTD.SetFocus;
+   end;
+   ProcVerificaSaldo;
+
+   F_Vlr_Unit := strtofloat(DBCOM_VLR_COMPONENTE.Text);
+   F_qtd := strtofloat(DBCOM_QTD.Text);
+   F_VlrTotal := F_Vlr_Unit * F_qtd;
+
+   DBCOM_VLR_TOTAL.Text := FLOATTOSTR(F_VlrTotal);
+end;
+
+
+
+procedure TMComponente.ProcVerificaSaldo;
+begin
+
+   UEstoque.funcVerificaEstoque(DMControlePatrimonial.ComponenteCOM_EMPRESA.AsInteger,
+                          DBCOM_CODIGO.Text,
+                          STRTOFLOAT(DBCOM_QTD.Text),
+                          i_bloco, i_prateleira, i_estoque);
+
+
 end;
 
 procedure TMComponente.sbGravarClick(Sender: TObject);
 begin
+  ProcVerificaSaldo;
+  UEstoque.funcGeraMovimentacaoEstoque(DMControlePatrimonial.ComponenteCOM_EMPRESA.AsInteger,
+                                     i_bloco, i_prateleira, i_estoque,
+                                     DBCOM_CODIGO.text,
+                                     strtofloat(DBCOM_QTD.text),
+                                     'REFERENTE A MANUTENÇÃO DO BEN IMOBILIZADO NÚMERO DE SÉRIE: '+ DMControlePatrimonial.BenImobilizadoBNI_NUM_SERIE.AsString,
+                                     STRTOFLOAT(DBCOM_VLR_TOTAL.TEXT),
+                                     NULL, 1);
   inherited;
-   procTotalizaManutencao;
+
+
 end;
 
 end.

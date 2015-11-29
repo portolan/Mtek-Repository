@@ -96,7 +96,7 @@ begin
 
       QryLocalizaComponentes.Close;
       QryLocalizaComponentes.SQL.Clear;
-      QryLocalizaComponentes.SQL.Text :=  'SELECT SUM(A.COM_VLR_COMPONENTE) AS VALOR ' +
+      QryLocalizaComponentes.SQL.Text :=  'SELECT SUM(A.COM_VLR_TOTAL) AS VALOR      ' +
                                           '  FROM COMPONENTE A                       ' +
                                           ' WHERE A.COM_EMPRESA = :EMPRESA AND       ' +
                                           '       A.COM_MANUTENCAO = :MANUTENCAO     ' ;

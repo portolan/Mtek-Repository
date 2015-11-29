@@ -70,6 +70,8 @@ type
     BenImobilizadoBNI_STATUS: TIBStringField;
     BenImobilizadoBNI_VLR_RESIDUAL: TIBBCDField;
     ComponenteCOM_VLR_COMPONENTE: TFloatField;
+    ComponenteCOM_QTD: TIBBCDField;
+    ComponenteCOM_VLR_TOTAL: TIBBCDField;
     procedure EstadoConservacaoAfterInsert(DataSet: TDataSet);
     procedure TipoBensAfterInsert(DataSet: TDataSet);
     procedure LocalizacaoAfterInsert(DataSet: TDataSet);

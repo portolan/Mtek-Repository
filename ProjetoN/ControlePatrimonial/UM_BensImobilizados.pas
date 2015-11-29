@@ -257,7 +257,7 @@ begin
 
    D_DtaAquisicao := StrToDate(DBBNI_DATA_AQUISICAO.Text);
    D_DtaAtual     := Now;
-   D_Meses        := MonthsBetween(D_DtaAtual, D_DtaAquisicao );
+   D_Meses        := MonthsBetween( D_DtaAquisicao, D_DtaAtual);   //IntToStr(MonthsBetween(StrToDate('01/07/07'), StrToDate('31/01/08')));
 
    result := D_Meses;
 end;

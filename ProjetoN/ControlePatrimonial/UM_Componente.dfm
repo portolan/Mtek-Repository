@@ -1,20 +1,20 @@
 inherited MComponente: TMComponente
   Caption = 'Manuten'#231#227'o do Componente'
-  ClientWidth = 486
-  ExplicitWidth = 502
+  ClientWidth = 551
+  ExplicitWidth = 567
   ExplicitHeight = 319
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnRodape: TPanel
-    Width = 486
+    Width = 551
     ExplicitWidth = 486
     inherited sbCancelar: TSpeedButton
-      Left = 389
+      Left = 454
       ExplicitLeft = 389
     end
   end
   inherited gbInfos: TGroupBox
-    Width = 486
+    Width = 551
     ExplicitWidth = 486
     object Label1: TLabel
       Left = 40
@@ -50,10 +50,26 @@ inherited MComponente: TMComponente
     object Label4: TLabel
       Left = 351
       Top = 83
-      Width = 88
+      Width = 50
       Height = 13
-      Caption = 'Valor Componente'
+      Caption = 'Valor Unit.'
       FocusControl = DBCOM_VLR_COMPONENTE
+    end
+    object Label6: TLabel
+      Left = 407
+      Top = 83
+      Width = 56
+      Height = 13
+      Caption = 'Quantidade'
+      FocusControl = DBCOM_QTD
+    end
+    object Label7: TLabel
+      Left = 472
+      Top = 83
+      Width = 42
+      Height = 13
+      Caption = 'Vlr_Total'
+      FocusControl = DBCOM_VLR_TOTAL
     end
     object DBCOM_EMPRESA: TDBEdit
       Left = 40
@@ -95,7 +111,7 @@ inherited MComponente: TMComponente
     object DBCOM_VLR_COMPONENTE: TDBEdit
       Left = 351
       Top = 99
-      Width = 109
+      Width = 50
       Height = 21
       DataField = 'COM_VLR_COMPONENTE'
       DataSource = DMControlePatrimonial.DComponente
@@ -104,20 +120,41 @@ inherited MComponente: TMComponente
     object GroupBox1: TGroupBox
       Left = 40
       Top = 129
-      Width = 420
+      Width = 497
       Height = 105
       Caption = 'Observa'#231#227'o'
       TabOrder = 5
       object DBMemo1: TDBMemo
         Left = 2
         Top = 15
-        Width = 416
+        Width = 493
         Height = 88
         Align = alClient
         DataField = 'COM_OBSERVACAO'
         DataSource = DMControlePatrimonial.DComponente
         TabOrder = 0
+        ExplicitWidth = 416
       end
+    end
+    object DBCOM_QTD: TDBEdit
+      Left = 407
+      Top = 99
+      Width = 56
+      Height = 21
+      DataField = 'COM_QTD'
+      DataSource = DMControlePatrimonial.DComponente
+      TabOrder = 6
+      OnExit = DBCOM_QTDExit
+    end
+    object DBCOM_VLR_TOTAL: TDBEdit
+      Left = 472
+      Top = 99
+      Width = 57
+      Height = 21
+      DataField = 'COM_VLR_TOTAL'
+      DataSource = DMControlePatrimonial.DComponente
+      Enabled = False
+      TabOrder = 7
     end
   end
 end
