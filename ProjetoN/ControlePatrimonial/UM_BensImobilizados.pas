@@ -16,8 +16,6 @@ type
     GroupBox1: TGroupBox;
     Label1: TLabel;
     DBBNI_EMPRESA: TDBEdit;
-    Label2: TLabel;
-    DBBNI_CODIGO: TDBEdit;
     Label5: TLabel;
     DBBNI_FORNECEDOR: TDBEdit;
     Label6: TLabel;
@@ -60,6 +58,8 @@ type
     DBMemo1: TDBMemo;
     LBPERCENTUAL: TLabel;
     SBAtualizaDepreciacao: TSpeedButton;
+    Label2: TLabel;
+    DBBNI_CODIGO: TDBEdit;
     procedure pClick(Sender: TObject);
     procedure DBBNI_NUM_SERIEExit(Sender: TObject);
     procedure DBBNI_DEPRECIACAOExit(Sender: TObject);
@@ -73,6 +73,7 @@ type
     procedure sbGravarClick(Sender: TObject);
     procedure SBAtualizaDepreciacaoClick(Sender: TObject);
     procedure SB_HelpClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
 
@@ -247,6 +248,12 @@ begin
    ProcTotalizaBen;
 end;
 
+procedure TMBensImobilizados.FormCreate(Sender: TObject);
+begin
+  inherited;
+   BensImobilizados.ActivePage := C_BensImobilizados;
+end;
+
 procedure TMBensImobilizados.FormShow(Sender: TObject);
 begin
   inherited;
@@ -291,7 +298,7 @@ begin
                                  ' WHERE A.PRO_EMPRESA = :EMPRESA AND  ' +
                                  '       A.PRO_CODIGO = :CODIGO        ' ;
       QryLocProduto.ParamByName('EMPRESA').AsInteger := DMControlePatrimonial.BenImobilizadoBNI_EMPRESA.AsInteger;
-      QryLocProduto.ParamByName('CODIGO').AsInteger := DMControlePatrimonial.BenImobilizadoBNI_CODIGO.AsInteger;
+      QryLocProduto.ParamByName('CODIGO').asstring := DMControlePatrimonial.BenImobilizadoBNI_CODIGO.asstring;
       QryLocProduto.Open;
 
       dbBNI_DESCRICAO.Text := QryLocProduto.FieldByName('PRO_DESCRICAO').AsString;
@@ -565,7 +572,7 @@ begin
                                        '       A.MAN_NUM_SERIE = :NUMSERIE AND ' +
                                        '       A.MAN_AGREGA_CUSTO = ''S''      ' ;
       QryVerificaAgregado.ParamByName('EMPRESA').AsInteger := DMControlePatrimonial.BenImobilizadoBNI_EMPRESA.AsInteger;
-      QryVerificaAgregado.ParamByName('BEN').AsInteger := DMControlePatrimonial.BenImobilizadoBNI_CODIGO.AsInteger;
+      QryVerificaAgregado.ParamByName('BEN').asstring := DMControlePatrimonial.BenImobilizadoBNI_CODIGO.asstring;
       QryVerificaAgregado.ParamByName('NUMSERIE').AsInteger := DMControlePatrimonial.BenImobilizadoBNI_NUM_SERIE.AsInteger;
       QryVerificaAgregado.Open;
 

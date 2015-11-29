@@ -559,6 +559,7 @@ begin
       end;
    finally
       FreeAndNil(QryRetornaDados);
+      close;
    end;
 
 end;

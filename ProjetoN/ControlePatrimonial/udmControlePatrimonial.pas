@@ -40,7 +40,6 @@ type
     DManutencao: TDataSource;
     ManutencaoMAN_EMPRESA: TIntegerField;
     ManutencaoMAN_CODIGO: TIntegerField;
-    ManutencaoMAN_BEN: TIntegerField;
     ManutencaoMAN_DESCRICAO: TIBStringField;
     ManutencaoMAN_OBSERVACAO: TBlobField;
     ManutencaoMAN_VLR_COMPONENTE: TIBBCDField;
@@ -52,7 +51,6 @@ type
     UBenImobilizado: TIBUpdateSQL;
     DBenImobilizado: TDataSource;
     BenImobilizadoBNI_EMPRESA: TIntegerField;
-    BenImobilizadoBNI_CODIGO: TIntegerField;
     BenImobilizadoBNI_NUM_SERIE: TIntegerField;
     BenImobilizadoBNI_NR_NOTA: TIntegerField;
     BenImobilizadoBNI_FORNECEDOR: TIntegerField;
@@ -72,6 +70,8 @@ type
     ComponenteCOM_VLR_COMPONENTE: TFloatField;
     ComponenteCOM_QTD: TIBBCDField;
     ComponenteCOM_VLR_TOTAL: TIBBCDField;
+    BenImobilizadoBNI_CODIGO: TIBStringField;
+    ManutencaoMAN_BEN: TIBStringField;
     procedure EstadoConservacaoAfterInsert(DataSet: TDataSet);
     procedure TipoBensAfterInsert(DataSet: TDataSet);
     procedure LocalizacaoAfterInsert(DataSet: TDataSet);

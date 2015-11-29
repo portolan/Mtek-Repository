@@ -355,12 +355,6 @@ object DMControlePatrimonial: TDMControlePatrimonial
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object ManutencaoMAN_BEN: TIntegerField
-      DisplayLabel = 'Ben'
-      FieldName = 'MAN_BEN'
-      Origin = '"MANUTENCAO"."MAN_BEN"'
-      Required = True
-    end
     object ManutencaoMAN_DESCRICAO: TIBStringField
       DisplayLabel = 'Descri'#231#227'o'
       FieldName = 'MAN_DESCRICAO'
@@ -413,6 +407,13 @@ object DMControlePatrimonial: TDMControlePatrimonial
       FieldName = 'MAN_NUM_SERIE'
       Origin = '"MANUTENCAO"."MAN_NUM_SERIE"'
       Required = True
+    end
+    object ManutencaoMAN_BEN: TIBStringField
+      DisplayLabel = 'Ben'
+      FieldName = 'MAN_BEN'
+      Origin = '"MANUTENCAO"."MAN_BEN"'
+      Required = True
+      Size = 30
     end
   end
   object UManutencao: TIBUpdateSQL
@@ -497,13 +498,6 @@ object DMControlePatrimonial: TDMControlePatrimonial
       DisplayLabel = 'Empresa'
       FieldName = 'BNI_EMPRESA'
       Origin = '"BENS_IMOBILIZADOS"."BNI_EMPRESA"'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object BenImobilizadoBNI_CODIGO: TIntegerField
-      DisplayLabel = 'C'#243'digo'
-      FieldName = 'BNI_CODIGO'
-      Origin = '"BENS_IMOBILIZADOS"."BNI_CODIGO"'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
@@ -620,6 +614,14 @@ object DMControlePatrimonial: TDMControlePatrimonial
       FieldName = 'BNI_STATUS'
       Origin = '"BENS_IMOBILIZADOS"."BNI_STATUS"'
       Size = 1
+    end
+    object BenImobilizadoBNI_CODIGO: TIBStringField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'BNI_CODIGO'
+      Origin = '"BENS_IMOBILIZADOS"."BNI_CODIGO"'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
     end
   end
   object UBenImobilizado: TIBUpdateSQL

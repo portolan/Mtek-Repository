@@ -12,6 +12,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure sbNovoClick(Sender: TObject);
     procedure sbAlterarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,6 +34,12 @@ procedure TP_BensImobilizados.FormCreate(Sender: TObject);
 begin
   inherited;
   procInicializar(DMControlePatrimonial.BenImobilizado, True, False, P_PesquisaNotaBemImobilizado, TP_PesquisaNotaBemImobilizado);
+end;
+
+procedure TP_BensImobilizados.FormShow(Sender: TObject);
+begin
+  inherited;
+   procselect;
 end;
 
 procedure TP_BensImobilizados.procSelect;

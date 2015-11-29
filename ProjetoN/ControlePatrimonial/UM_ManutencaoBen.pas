@@ -145,6 +145,7 @@ begin
       MComponente.ShowModal;
    finally
       FreeAndNil(MComponente);
+      procTotalizaManutencao;
    end;
 end;
 
@@ -180,6 +181,7 @@ begin
       MComponente.ShowModal;
    finally
       FreeAndNil(MComponente);
+      procTotalizaManutencao;
    end;
 end;
 

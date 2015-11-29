@@ -171,9 +171,9 @@ begin
         qryDin.ParamByName('EM_DATA').Value := Now;
         qryDin.ParamByName('EM_OBS').Value := obs;
         qryDin.ParamByName('EM_VALOR_FINANCEIRO').Value := vlrFinanceiro;
-        qryDin.Open;
+        qryDin.open;
 
-        funcBaixaEstoque(codEmpresa, codProduto, codBloco, codPrateleira, codEstoque, qtd, 'E');
+        funcBaixaEstoque(codEmpresa, codProduto, codBloco, codPrateleira, codEstoque, qtd, 'S');
     except on E: Exception do
         raise Exception.Create('Erro ao Criar a Movimentação!');
     end;
