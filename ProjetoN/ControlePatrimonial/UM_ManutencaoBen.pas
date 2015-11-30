@@ -169,7 +169,7 @@ begin
    if not (DMControlePatrimonial.Componente.Active) then
          DMControlePatrimonial.Componente.Open;
 
-   DMControlePatrimonial.Componente.Edit;
+   DMControlePatrimonial.Componente.INSERT;
 
    MComponente := TMComponente.Create(Self);
    try
