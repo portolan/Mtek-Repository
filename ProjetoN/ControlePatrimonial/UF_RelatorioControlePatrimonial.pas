@@ -533,10 +533,10 @@ begin
          ELSE
             c_where := c_where +  ' AND A.BNI_ESTADO_CONSERVACAO = ' + edEstadoDeConservacao.Text;
 
-      if c_where = ' WHERE ' then
+      if c_where = 'WHERE ' then
          c_where := '';
 
-     if cbManutencao.Checked then
+     if (cbManutencao.Checked) and not(cbAnalitico.Checked) then
      begin
 
         R_RelatorioControlePatrimonial.IBManutencao.Close;
@@ -552,76 +552,76 @@ begin
 
 
 
-     end
-     else
+     end;
+
+
+     if not(cbAnalitico.Checked) and not (cbManutencao.Checked) then
      begin
 
-        if not(cbAnalitico.Checked) then
-        begin
+        R_RelatorioControlePatrimonial.IBBensImobilizados.Close;
+        R_RelatorioControlePatrimonial.IBBensImobilizados.SQL.Text :=   'SELECT A.BNI_EMPRESA,                                                          ' +
+                                                                        '       A.BNI_CODIGO,                                                           ' +
+                                                                        '       A.BNI_NUM_SERIE,                                                        ' +
+                                                                        '       A.BNI_NR_NOTA,                                                          ' +
+                                                                        '       A.BNI_FORNECEDOR,                                                       ' +
+                                                                        '       B.PESS_NOME AS NOME,                                                    ' +
+                                                                        '       A.BNI_DESCRICAO,                                                        ' +
+                                                                        '       C.TPB_DESCRICAO AS TIPO,                                                ' +
+                                                                        '       D.LOC_DESCRICAO AS LOCALIZACAO,                                         ' +
+                                                                        '       E.EDC_DESCRICAO AS ESTADO_CONSERVACAO,                                  ' +
+                                                                        '       A.BNI_DATA_AQUISICAO,                                                   ' +
+                                                                        '       A.BNI_VLR_AQUISICAO,                                                    ' +
+                                                                        '       A.BNI_VLR_RESIDUAL,                                                     ' +
+                                                                        '       A.BNI_VLR_AGREGADO,                                                     ' +
+                                                                        '       A.BNI_VLR_ATUAL,                                                        ' +
+                                                                        '       A.BNI_DEPRECIACAO,                                                      ' +
+                                                                        '       A.BNI_STATUS,                                                           ' +
+                                                                        '       A.BNI_TEMPO_DEPRECIACAO,                                                ' +
+                                                                        '       A.BNI_TEMPO_RESIDUAL                                                    ' +
+                                                                        '  FROM BENS_IMOBILIZADOS A                                                     ' +
+                                                                        ' INNER JOIN PESSOAS B ON B.PESS_CODIGO = A.BNI_FORNECEDOR                      ' +
+                                                                        ' INNER JOIN TIPO_DE_BENS C ON A.BNI_TIPO = C.TPB_CODIGO                        ' +
+                                                                        ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_CODIGO                  ' +
+                                                                        ' INNER JOIN ESTADO_DE_CONSERVACAO E ON A.BNI_ESTADO_CONSERVACAO = E.EDC_CODIGO ' + c_where ;
+        R_RelatorioControlePatrimonial.IBBensImobilizados.Open;
 
-           R_RelatorioControlePatrimonial.IBBensImobilizados.Close;
-           R_RelatorioControlePatrimonial.IBBensImobilizados.SQL.Text :=   'SELECT A.BNI_EMPRESA,                                                          ' +
-                                                                           '       A.BNI_CODIGO,                                                           ' +
-                                                                           '       A.BNI_NUM_SERIE,                                                        ' +
-                                                                           '       A.BNI_NR_NOTA,                                                          ' +
-                                                                           '       A.BNI_FORNECEDOR,                                                       ' +
-                                                                           '       B.PESS_NOME AS NOME,                                                    ' +
-                                                                           '       A.BNI_DESCRICAO,                                                        ' +
-                                                                           '       C.TPB_DESCRICAO AS TIPO,                                                ' +
-                                                                           '       D.LOC_DESCRICAO AS LOCALIZACAO,                                         ' +
-                                                                           '       E.EDC_DESCRICAO AS ESTADO_CONSERVACAO,                                  ' +
-                                                                           '       A.BNI_DATA_AQUISICAO,                                                   ' +
-                                                                           '       A.BNI_VLR_AQUISICAO,                                                    ' +
-                                                                           '       A.BNI_VLR_RESIDUAL,                                                     ' +
-                                                                           '       A.BNI_VLR_AGREGADO,                                                     ' +
-                                                                           '       A.BNI_VLR_ATUAL,                                                        ' +
-                                                                           '       A.BNI_DEPRECIACAO,                                                      ' +
-                                                                           '       A.BNI_STATUS,                                                           ' +
-                                                                           '       A.BNI_TEMPO_DEPRECIACAO,                                                ' +
-                                                                           '       A.BNI_TEMPO_RESIDUAL                                                    ' +
-                                                                           '  FROM BENS_IMOBILIZADOS A                                                     ' +
-                                                                           ' INNER JOIN PESSOAS B ON B.PESS_CODIGO = A.BNI_FORNECEDOR                      ' +
-                                                                           ' INNER JOIN TIPO_DE_BENS C ON A.BNI_TIPO = C.TPB_CODIGO                        ' +
-                                                                           ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_CODIGO                  ' +
-                                                                           ' INNER JOIN ESTADO_DE_CONSERVACAO E ON A.BNI_ESTADO_CONSERVACAO = E.EDC_CODIGO ' + c_where ;
-           R_RelatorioControlePatrimonial.IBBensImobilizados.Open;
-
-           R_RelatorioControlePatrimonial.frxBensImobilizados.ShowReport();
-        end
-        else
-        begin
-           R_RelatorioControlePatrimonial.IBBensImobilizadosAnalitico.Close;
-           R_RelatorioControlePatrimonial.IBBensImobilizadosAnalitico.SQL.Text :=   'SELECT A.BNI_EMPRESA,                                                          ' +
-                                                                                    '       A.BNI_CODIGO,                                                           ' +
-                                                                                    '       A.BNI_NUM_SERIE,                                                        ' +
-                                                                                    '       A.BNI_NR_NOTA,                                                          ' +
-                                                                                    '       A.BNI_FORNECEDOR,                                                       ' +
-                                                                                    '       B.PESS_NOME AS NOME,                                                    ' +
-                                                                                    '       A.BNI_DESCRICAO,                                                        ' +
-                                                                                    '       C.TPB_DESCRICAO AS TIPO,                                                ' +
-                                                                                    '       D.LOC_DESCRICAO AS LOCALIZACAO,                                         ' +
-                                                                                    '       E.EDC_DESCRICAO AS ESTADO_CONSERVACAO,                                  ' +
-                                                                                    '       A.BNI_DATA_AQUISICAO,                                                   ' +
-                                                                                    '       A.BNI_VLR_AQUISICAO,                                                    ' +
-                                                                                    '       A.BNI_VLR_RESIDUAL,                                                     ' +
-                                                                                    '       A.BNI_VLR_AGREGADO,                                                     ' +
-                                                                                    '       A.BNI_VLR_ATUAL,                                                        ' +
-                                                                                    '       A.BNI_DEPRECIACAO,                                                      ' +
-                                                                                    '       A.BNI_STATUS,                                                           ' +
-                                                                                    '       A.BNI_TEMPO_DEPRECIACAO,                                                ' +
-                                                                                    '       A.BNI_TEMPO_RESIDUAL                                                    ' +
-                                                                                    '  FROM BENS_IMOBILIZADOS A                                                     ' +
-                                                                                    ' INNER JOIN PESSOAS B ON B.PESS_CODIGO = A.BNI_FORNECEDOR                      ' +
-                                                                                    ' INNER JOIN TIPO_DE_BENS C ON A.BNI_TIPO = C.TPB_CODIGO                        ' +
-                                                                                    ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_CODIGO                  ' +
-                                                                                    ' INNER JOIN ESTADO_DE_CONSERVACAO E ON A.BNI_ESTADO_CONSERVACAO = E.EDC_CODIGO ' + c_where ;
-           R_RelatorioControlePatrimonial.IBBensImobilizadosAnalitico.Open;
-
-           R_RelatorioControlePatrimonial.frxBensImobilizadosAnalitico.ShowReport();
-
-        end;
+        R_RelatorioControlePatrimonial.frxBensImobilizados.ShowReport();
      end;
-   END;
+
+     if (cbAnalitico.Checked) then
+     begin
+        R_RelatorioControlePatrimonial.IBBensImobilizadosAnalitico.Close;
+        R_RelatorioControlePatrimonial.IBBensImobilizadosAnalitico.SQL.Text :=   'SELECT A.BNI_EMPRESA,                                                          ' +
+                                                                                 '       A.BNI_CODIGO,                                                           ' +
+                                                                                 '       A.BNI_NUM_SERIE,                                                        ' +
+                                                                                 '       A.BNI_NR_NOTA,                                                          ' +
+                                                                                 '       A.BNI_FORNECEDOR,                                                       ' +
+                                                                                 '       B.PESS_NOME AS NOME,                                                    ' +
+                                                                                 '       A.BNI_DESCRICAO,                                                        ' +
+                                                                                 '       C.TPB_DESCRICAO AS TIPO,                                                ' +
+                                                                                 '       D.LOC_DESCRICAO AS LOCALIZACAO,                                         ' +
+                                                                                 '       E.EDC_DESCRICAO AS ESTADO_CONSERVACAO,                                  ' +
+                                                                                 '       A.BNI_DATA_AQUISICAO,                                                   ' +
+                                                                                 '       A.BNI_VLR_AQUISICAO,                                                    ' +
+                                                                                 '       A.BNI_VLR_RESIDUAL,                                                     ' +
+                                                                                 '       A.BNI_VLR_AGREGADO,                                                     ' +
+                                                                                 '       A.BNI_VLR_ATUAL,                                                        ' +
+                                                                                 '       A.BNI_DEPRECIACAO,                                                      ' +
+                                                                                 '       A.BNI_STATUS,                                                           ' +
+                                                                                 '       A.BNI_TEMPO_DEPRECIACAO,                                                ' +
+                                                                                 '       A.BNI_TEMPO_RESIDUAL                                                    ' +
+                                                                                 '  FROM BENS_IMOBILIZADOS A                                                     ' +
+                                                                                 ' INNER JOIN PESSOAS B ON B.PESS_CODIGO = A.BNI_FORNECEDOR                      ' +
+                                                                                 ' INNER JOIN TIPO_DE_BENS C ON A.BNI_TIPO = C.TPB_CODIGO                        ' +
+                                                                                 ' INNER JOIN LOCALIZACAO D ON A.BNI_LOCALIZACAO = D.LOC_CODIGO                  ' +
+                                                                                 ' INNER JOIN ESTADO_DE_CONSERVACAO E ON A.BNI_ESTADO_CONSERVACAO = E.EDC_CODIGO ' + c_where ;
+        R_RelatorioControlePatrimonial.IBBensImobilizadosAnalitico.Open;
+
+        R_RelatorioControlePatrimonial.frxBensImobilizadosAnalitico.ShowReport();
+
+     end;
+  end;
+
 
 end;
 
